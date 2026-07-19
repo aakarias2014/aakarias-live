@@ -1,0 +1,79 @@
+// Aakar IAS — Prisma schema (Phase 4).
+// Not migrated in Phase 1. Activated when PostgreSQL is connected.
+// Run: npx prisma migrate dev --name init   (after setting DATABASE_URL)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  locale    Locale   @default(HI)
+  source    String?  // "footer" | "article" | "homepage"
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@map("newsletter_subscribers")
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String?
+  message   String
+  locale    Locale   @default(HI)
+  userAgent String?
+  ipAddress String?
+  status    String   @default("new") // "new" | "read" | "replied" | "archived"
+  createdAt DateTime @default(now())
+
+  @@index([status])
+  @@index([createdAt])
+  @@map("contact_messages")
+}
+
+model Download {
+  id        String   @id @default(cuid())
+  resource  String // slug or external id
+  title     String
+  kind      String // "monthly_pdf" | "pyq" | "syllabus" | "free_pdf"
+  locale    Locale   @default(HI)
+  format    String   @default("pdf")
+  url       String
+  count     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([kind])
+  @@index([locale])
+  @@map("downloads")
+}
+
+model SearchLog {
+  id        String   @id @default(cuid())
+  query     String
+  locale    Locale   @default(HI)
+  resultCount Int
+  clickedResultId String?
+  ipAddress String?
+  createdAt DateTime @default(now())
+
+  @@index([query])
+  @@index([createdAt])
+  @@map("search_logs")
+}
+
+enum Locale {
+  HI
+  EN
+}

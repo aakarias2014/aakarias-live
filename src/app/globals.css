@@ -1,26 +1,353 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
+/*
+ * Aakar IAS — Design System
+ * Inspired by Apple + Perplexity + Medium.
+ * Palette:
+ *   primary    #C8102E  (Aakar red)
+ *   secondary  #0F172A  (slate-900)
+ *   accent     #F59E0B  (amber-500)
+ *   bg         #FFFFFF
+ *   dark bg    #0B1120
+ */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans);
+  --font-devanagari: var(--font-devanagari);
+  --font-heading: var(--font-sans);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Brand tokens exposed to Tailwind utilities (bg-primary, text-accent, etc.) */
+  --color-brand-primary: #c8102e;
+  --color-brand-secondary: #0f172a;
+  --color-brand-accent: #f59e0b;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* Surfaces */
+  --background: oklch(1 0 0); /* #FFFFFF */
+  --foreground: oklch(0.18 0.02 264); /* near #0F172A */
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.02 264);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.02 264);
+
+  /* Brand: Aakar red #C8102E -> oklch */
+  --primary: oklch(0.56 0.21 27);
+  --primary-foreground: oklch(0.99 0 0);
+
+  /* Slate-900 #0F172A */
+  --secondary: oklch(0.27 0.04 264);
+  --secondary-foreground: oklch(0.99 0 0);
+
+  --muted: oklch(0.97 0.005 264);
+  --muted-foreground: oklch(0.52 0.02 264);
+
+  /* Amber-500 #F59E0B */
+  --accent: oklch(0.8 0.17 75);
+  --accent-foreground: oklch(0.27 0.04 264);
+
+  --destructive: oklch(0.58 0.22 27);
+  --border: oklch(0.92 0.01 264);
+  --input: oklch(0.92 0.01 264);
+  --ring: oklch(0.56 0.21 27 / 0.5);
+
+  --chart-1: oklch(0.56 0.21 27);
+  --chart-2: oklch(0.8 0.17 75);
+  --chart-3: oklch(0.27 0.04 264);
+  --chart-4: oklch(0.62 0.12 230);
+  --chart-5: oklch(0.7 0.1 150);
+
+  --radius: 0.75rem;
+
+  --sidebar: oklch(0.99 0.002 264);
+  --sidebar-foreground: oklch(0.18 0.02 264);
+  --sidebar-primary: oklch(0.56 0.21 27);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.97 0.005 264);
+  --sidebar-accent-foreground: oklch(0.27 0.04 264);
+  --sidebar-border: oklch(0.92 0.01 264);
+  --sidebar-ring: oklch(0.56 0.21 27 / 0.5);
+
+  /* App-level tokens */
+  --header-height: 4rem;
+  --content-max: 80rem;
+}
+
+.dark {
+  /* Dark background #0B1120 */
+  --background: oklch(0.16 0.03 264);
+  --foreground: oklch(0.97 0.005 264);
+
+  --card: oklch(0.21 0.03 264);
+  --card-foreground: oklch(0.97 0.005 264);
+
+  --popover: oklch(0.21 0.03 264);
+  --popover-foreground: oklch(0.97 0.005 264);
+
+  --primary: oklch(0.62 0.2 27);
+  --primary-foreground: oklch(0.99 0 0);
+
+  --secondary: oklch(0.27 0.03 264);
+  --secondary-foreground: oklch(0.97 0.005 264);
+
+  --muted: oklch(0.25 0.03 264);
+  --muted-foreground: oklch(0.68 0.02 264);
+
+  --accent: oklch(0.82 0.16 75);
+  --accent-foreground: oklch(0.16 0.03 264);
+
+  --destructive: oklch(0.68 0.19 22);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.62 0.2 27 / 0.6);
+
+  --chart-1: oklch(0.62 0.2 27);
+  --chart-2: oklch(0.82 0.16 75);
+  --chart-3: oklch(0.7 0.03 264);
+  --chart-4: oklch(0.65 0.13 230);
+  --chart-5: oklch(0.72 0.11 150);
+
+  --sidebar: oklch(0.19 0.03 264);
+  --sidebar-foreground: oklch(0.97 0.005 264);
+  --sidebar-primary: oklch(0.62 0.2 27);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.25 0.03 264);
+  --sidebar-accent-foreground: oklch(0.97 0.005 264);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.62 0.2 27 / 0.6);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  html {
+    @apply font-sans scroll-smooth;
+  }
+  /* Devanagari override for Hindi content */
+  :lang(hi) {
+    font-family: var(--font-devanagari), var(--font-sans), sans-serif;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Long-form reading typography (article body) */
+@layer components {
+  .prose-aakar {
+    @apply text-[1.1rem] leading-[1.95] text-foreground/90 tracking-[0.01em];
+  }
+  .prose-aakar h2 {
+    @apply mt-14 mb-5 text-2xl font-bold tracking-tight text-foreground scroll-mt-24;
+  }
+  .prose-aakar h3 {
+    @apply mt-10 mb-4 text-xl font-semibold tracking-tight text-foreground scroll-mt-24;
+  }
+  .prose-aakar p {
+    @apply mb-6;
+  }
+  .prose-aakar ul {
+    @apply mb-6 ml-6 list-disc space-y-3 marker:text-primary;
+  }
+  .prose-aakar ol {
+    @apply mb-6 ml-6 list-decimal space-y-3 marker:text-primary marker:font-semibold;
+  }
+  .prose-aakar li {
+    @apply leading-[1.85] pl-1;
+  }
+  .prose-aakar a {
+    @apply font-medium text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary;
+  }
+  .prose-aakar strong {
+    @apply font-bold text-foreground;
+  }
+  .prose-aakar blockquote {
+    @apply my-8 border-l-4 border-primary pl-6 py-4 italic text-muted-foreground rounded-r-lg bg-primary/5;
+  }
+  .prose-aakar blockquote p {
+    @apply mb-0 text-primary/90 font-medium not-italic;
+  }
+  .prose-aakar table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .prose-aakar thead {
+    background-color: color-mix(in oklch, var(--muted) 50%, transparent);
+  }
+  .prose-aakar th {
+    border: 1px solid var(--border);
+    padding: 0.625rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--foreground);
+  }
+  .prose-aakar td {
+    border: 1px solid var(--border);
+    padding: 0.5rem 1rem;
+    color: var(--muted-foreground);
+  }
+  .prose-aakar tbody tr:hover {
+    background-color: color-mix(in oklch, var(--muted) 30%, transparent);
+  }
+  .prose-aakar h4 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    color: var(--foreground);
+  }
+  .prose-aakar hr {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    border-color: var(--border);
+  }
+  /* Drop-cap on first paragraph of article body */
+  .prose-aakar > .article-section:first-child p:first-of-type::first-letter,
+  .prose-aakar > p:first-of-type::first-letter {
+    float: left;
+    font-size: 3.5rem;
+    line-height: 1;
+    font-weight: 700;
+    color: var(--primary);
+    margin-right: 0.15em;
+    margin-top: 0.05em;
+  }
+
+  /* ─── Article section spacing & dividers ─── */
+  .prose-aakar .article-section {
+    @apply mt-10 first:mt-0;
+  }
+  .prose-aakar .article-section + .article-section {
+    @apply pt-4;
+  }
+
+  /* ─── Highlight box for key terms / important inline content ─── */
+  .prose-aakar mark,
+  .prose-aakar .highlight {
+    background: linear-gradient(120deg, oklch(0.93 0.08 85) 0%, oklch(0.96 0.04 85) 100%);
+    padding: 0.1em 0.25em;
+    border-radius: 0.2em;
+    color: var(--foreground);
+  }
+  .dark .prose-aakar mark,
+  .dark .prose-aakar .highlight {
+    background: linear-gradient(120deg, oklch(0.3 0.06 85) 0%, oklch(0.25 0.04 85) 100%);
+  }
+}
+
+/* Soft, Apple-style card shadow utility */
+@utility shadow-soft {
+  box-shadow:
+    0 1px 2px rgb(15 23 42 / 0.04),
+    0 8px 24px rgb(15 23 42 / 0.06);
+}
+@utility shadow-soft-lg {
+  box-shadow:
+    0 2px 4px rgb(15 23 42 / 0.05),
+    0 16px 48px rgb(15 23 42 / 0.1);
+}
+.dark .shadow-soft {
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.3),
+    0 8px 24px rgb(0 0 0 / 0.4);
+}
+.dark .shadow-soft-lg {
+  box-shadow:
+    0 2px 4px rgb(0 0 0 / 0.4),
+    0 16px 48px rgb(0 0 0 / 0.55);
+}
+
+/* Reading progress bar + scrollbar polish */
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--muted-foreground) transparent;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hide header, footer, inquiry popups, mobile bottom bar, and trackers in the admin panel */
+body:has(#admin-panel-container) header,
+body:has(#admin-panel-container) footer,
+body:has(#admin-panel-container) [class*="mobile-bottom-bar"],
+body:has(#admin-panel-container) [class*="MobileBottomBar"],
+body:has(#admin-panel-container) [class*="inquiry-popup"],
+body:has(#admin-panel-container) [class*="InquiryPopup"],
+body:has(#admin-panel-container) [class*="whatsapp-tracker"],
+body:has(#admin-panel-container) [class*="WhatsAppTracker"] {
+  display: none !important;
+}
+
+body:has(#admin-panel-container) main {
+  padding-bottom: 0 !important;
 }

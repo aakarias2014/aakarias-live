@@ -1,0 +1,16 @@
+# Aakar IAS
+> India's premium bilingual (Hindi & English) current affairs platform for UPSC, MPPSC, and State PSC aspirants.
+
+## Key Pages
+- /current-affairs — Daily current affairs articles
+- /editorial — Analysis & editorial articles  
+- /mppsc — MPPSC exam preparation hub
+- /upsc — UPSC exam preparation hub
+- /general-awareness — Static GK reference topics
+- /online-courses — Live & recorded coaching courses
+- /publications — Books & study materials
+- /free-pdf — Downloadable PDF study materials
+- /test-series — Mock test series
+- /weekly — Weekly current affairs compilations
+- /monthly — Monthly current affairs compilations
+- /monthly-pdf — Monthly/yearly PDF downloads

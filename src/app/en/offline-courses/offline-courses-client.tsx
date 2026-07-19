@@ -1,0 +1,987 @@
+"use client";
+
+import React from "react";
+import Image from "next/image";
+import {
+  Calendar,
+  Clock,
+  MapPin,
+  Phone,
+  MessageSquare,
+  Download,
+  ArrowRight,
+  GraduationCap,
+  BookOpen,
+  Users,
+  BookOpenCheck,
+  Map,
+  Sparkles,
+} from "lucide-react";
+import { Container } from "@/components/layout/container";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { AnimatedSection } from "@/components/ui/animated-section";
+import { siteConfig } from "@/lib/site-config";
+import { TrackedDownloadLink } from "@/components/content/tracked-download-link";
+import { submitOfflineEnquiry } from "@/actions/contact";
+import { X, Loader2, CheckCircle2 } from "lucide-react";
+
+interface Batch {
+  title: string;
+  startDate: string;
+  time: string;
+  medium: string;
+  badge?: string;
+  seatsFillPercent?: number;
+  description: string;
+  locationName: string;
+  isNew?: boolean;
+}
+
+interface CenterDetails {
+  name: string;
+  fullName: string;
+  address: string;
+  phone: string;
+  schedule: string;
+  mapImage: string;
+  directionsUrl: string;
+  batches: Batch[];
+}
+
+const centersData: Record<string, CenterDetails> = {
+  indore: {
+    name: "Indore",
+    fullName: "Indore Center (Head Office)",
+    address: siteConfig.contact.address,
+    phone: siteConfig.contact.phone,
+    schedule: "Monday - Saturday: 08:00 AM - 08:00 PM",
+    mapImage: "",
+    directionsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteConfig.contact.mapQuery)}`,
+    batches: [
+      {
+        title: "UPSC GS Foundation",
+        startDate: "October 15, 2024",
+        time: "08:00 AM - 12:00 PM",
+        medium: "Hindi / English (Bilingual)",
+        badge: "Admission Open",
+        seatsFillPercent: 85,
+        description: "Complete foundational prep for General Studies (Pre + Mains) and CSAT.",
+        locationName: "Rajiv Gandhi Circle Campus",
+      },
+      {
+        title: "MPPSC Foundation",
+        startDate: "October 20, 2024",
+        time: "02:00 PM - 06:00 PM",
+        medium: "Hindi Medium",
+        badge: "Admission Open",
+        seatsFillPercent: 60,
+        description: "Specialized batch dedicated for MPPSC Prelims, Mains, and Interview guidance.",
+        locationName: "Rajiv Gandhi Circle Campus",
+      },
+      {
+        title: "MPSI Specialized",
+        startDate: "November 01, 2024",
+        time: "10:00 AM - 01:00 PM",
+        medium: "Hindi Medium",
+        badge: "New Batch",
+        seatsFillPercent: 40,
+        description: "Targeted guidance and physical preparation strategies for MP Police Sub Inspector exam.",
+        locationName: "Rajiv Gandhi Circle Campus",
+      },
+    ],
+  },
+};
+
+const features = [
+  {
+    icon: GraduationCap,
+    title: "Expert Faculty",
+    desc: "Years of experience and excellent teaching methodology making complex subjects simple.",
+  },
+  {
+    icon: BookOpen,
+    title: "Printed Notes",
+    desc: "Fully updated, precise, and exam-oriented study materials compiled in simple language.",
+  },
+  {
+    icon: Users,
+    title: "Personal Mentorship",
+    desc: "One-on-one sessions by mentors to review each student's progress and guide strategy.",
+  },
+  {
+    icon: BookOpenCheck,
+    title: "Backup Classes & Tests",
+    desc: "Regular mock tests and online backup video availability in case a class is missed.",
+  },
+];
+
+const facultiesHindi = [
+  {
+    name: "Ashwini Kumar Mudgil",
+    title: "Senior Faculty (Polity & Philosophy)",
+    desc: "16+ years teaching UPSC & State PSC. Selected as Asst. Superintendent of Land Records (MPPSC), Intelligence Bureau (IB), and Protocol Officer in Parliament.",
+    image: "/images/faculty/ashwini-kumar.png",
+  },
+  {
+    name: "Atharv Tiwari",
+    title: "Senior Faculty (History & Culture)",
+    desc: "16+ years teaching UPSC & MPPSC. M.A. History, UGC-NET & MP-SET qualified, enrolled in Ph.D. Selected as Asst. Professor - History (MPPSC) & Sub-Inspector (SSC).",
+    image: "/images/faculty/atharv-tiwari.png",
+  },
+  {
+    name: "Gaurav Tiwari",
+    title: "Senior Faculty (Geography & Science)",
+    desc: "12+ years of teaching UPSC & State PSC. UGC-NET Qualified in Geography. Selected as Junior Engineer and Indian Railways Loco Pilot.",
+    image: "/images/faculty/gaurav-tiwari.png",
+  },
+  {
+    name: "Nitin Gupta",
+    title: "Faculty (Hindi & Essay)",
+    desc: "11+ years teaching UPSC & State PSC. BCA & MA Social Work topper. Selected as Project Head, Watershed Management at Hindi Bhawan Bhopal.",
+    image: "/images/faculty/nitin-gupta.png",
+  },
+  {
+    name: "Jeevan Patidar",
+    title: "Faculty (Science & Environment)",
+    desc: "10+ years teaching UPSC & State PSC. Postgraduate in Political Science.",
+    image: "/images/faculty/jeevan-patidar.png",
+  },
+  {
+    name: "Rahul Baghel",
+    title: "Faculty (MPGK)",
+    desc: "10+ years teaching UPSC & State PSC. Bachelor's in Biomedical Engineering (SGSITS). Specialist in MP General Knowledge.",
+    image: "/images/faculty/rahul-baghel.png",
+  },
+];
+
+const facultiesEnglish = [
+  {
+    name: "Vivek Parmar",
+    title: "Faculty (History & Culture)",
+    desc: "13+ years teaching UPSC & State PSC. Appeared in State Services (MPPSC) Interview. MA in History, SSC CGL & CPO Written Qualified.",
+    image: "/images/faculty/vivek-parmar.png",
+  },
+  {
+    name: "Abhishek Yadav",
+    title: "Faculty (Polity)",
+    desc: "8+ years teaching UPSC & State PSC. Appeared in State Services (MPPSC) Interview. B.E. & pursuing M.A. in Political Science and History.",
+    image: "/images/faculty/abhishek-yadav.png",
+  },
+  {
+    name: "Kartik Gautam",
+    title: "Faculty (Economics & Management)",
+    desc: "7+ years teaching UPSC & State PSC. Appeared in State Services (MPPSC) Interview. Master's in Political Science, Qualified UPSC CDS Written.",
+    image: "/images/faculty/kartik-gautam.png",
+  },
+  {
+    name: "Nihar Ranjan",
+    title: "Faculty (Science & Tech & Environment)",
+    desc: "9+ years teaching UPSC & MPPSC. Appeared in UPSC & OPSC Mains. M.Sc. (Biotechnology) and M.A. (Public Administration).",
+    image: "/images/faculty/nihar-ranjan.png",
+  },
+  {
+    name: "Amit Kumar Jain",
+    title: "Faculty (MPGS)",
+    desc: "8+ years teaching MPPSC & UPSC. Appeared in UPSC Mains & 6 MPPSC Mains. MA (History) & B.Sc (Industrial Chemistry), UGC NET Qualified.",
+    image: "/images/faculty/amit-kumar-jain.png",
+  },
+  {
+    name: "Dharmendra Choudhary",
+    title: "Faculty (Philosophy, Polity & Ethics)",
+    desc: "9+ years teaching MPPSC & UPSC. Appeared in UPSC CSE Interview. Bachelor of Engineering, MA Philosophy & MA Political Science (UGC NET). Selected as Sanitary Inspector (Govt. of MP).",
+    image: "/images/faculty/dharmendra-choudhary.png",
+  },
+  {
+    name: "Varun Saxena",
+    title: "Faculty (Sociology, Law & Constitution)",
+    desc: "10 years teaching UPSC & MPPSC. Appeared in UPSC Interview, Qualified SSC CGL Written 5 times. Practicing Lawyer at MP High Court. B.E., LL.B., LL.M.",
+    image: "/images/faculty/varun-saxena.png",
+  },
+];
+
+const successStories = [
+  {
+    name: "Shruti Sharma",
+    rank: "Rank 1, UPSC CSE 2023",
+    quote: "Aakar IAS offline classes gave a brand new direction to my preparation. The personal mentorship program helped me identify and fix my weak areas.",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDEeWk4yJM_vPqEIFmceFKptbpcr09zQV-SyxV6qJ1tCc4WffhgAVdhMNovFiE_4CLnm8GnPKgdjj0EXB6udVtgjla0UTCkthy2tAJQXjypu6hr0wHi9dN9w5bPubb0vMKI7DsM8w23UGUcZoykkq5fir2tOfYOrQJrYZhN24rbHhiBszV1HpcTRRmGjq9T_eQDup_WZH6-FlcBZal0NRcf_W8Mtt52eNV1vUC0wjx1Dn2GVD5mG_e8RUNZLHxsVVdsqSbZvqOko4E",
+  },
+  {
+    name: "Abhishek Gupta",
+    rank: "Rank 4, MPPSC 2022",
+    quote: "The regular tests and class notes were more than enough for the examination. The dedicated environment at the center inspires you to work hard.",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBTTk-8Y8xDXvO3egZvcBKF33y_sEl0JBoI-4ddwXFo2BnVAkJtvkppaWDhdbQ0e93VlfI4-sfZoifFuKQ9MQms6bu4Q1_a3xfJfoUnEy9vqzG3IM1Khy8eEKrUSxoIqQcBMMT9WqFPFy4ANKwzlDrkKtQbLIp1S00-0GxlDiKEerUvtZa0F-AXbagtsqHfZY0MKW-I-Z3L6J60IJbZ2JpBSMIo587N649uuvE2MsRtkQKK5LNgtn5G-oTKkY1Mfb-6v8n2FanDxzg",
+  },
+  {
+    name: "Aditya Pratap Singh",
+    rank: "AIR 42, UPSC 2023",
+    quote: "Aakar IAS Mains Answer Writing Series played a critical role in my selection. The personal support and guidance is simply unmatched.",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCwG5aUiOlN_IQaA_8AzXmudp0yFwrBkJyN1knhfZswK6_ulwMZKzo8-cPSwq1myWJ2Gzlc9D9_uKmmtOqtyLDp_mNVhtP1P_iba3QZJ_WcwuEJnWHlIIbPZW1J0J6uilNtKK8w-pCtIi6wB57SEAXJ9sYzYs2oRqPh-jzuEDjFaVrkTJm65pmsciQsm-YJm4tVU74ItvUqK-7EpZXQ_GOHucHufltQGb3NeiCfR6-fwQq8qfkJ5L3cUlINXmPD3oFEyAMMH5vvXPs",
+  },
+  {
+    name: "Priya Sharma",
+    rank: "Rank 08, UPPSC 2022",
+    quote: "It is hard to find a better study atmosphere and faculty team than here in Indore. The study notes are extremely precise and updated.",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB092r7zMOQ2Ktz6xbKkgg4U0AzFN9wnWHPuXf0ELDL0v3VyECbLqV2tw3bWJvpov14lbKyXHzrDvjM22hnWBiMIiJssynmNCzaAVIE7KjKXcvUqC67gTCTTzqWZuna5o5Thm4JKQP7xa1jT_7ABAEaecpK4tSBiyEbIeh-PVCk4wK0k4R94v9WnL5Mt62XhINtEjOqGhE72SQrGbdjSTL2UJ4xYwzJkYN3FpNoN9lot7vDsIaO5qFpyylihoUkdP24pKpXxrQhCXs",
+  },
+];
+
+interface BatchDescriptionProps {
+  description: string;
+  seeMoreLabel?: string;
+  seeLessLabel?: string;
+}
+
+function BatchDescription({
+  description,
+  seeMoreLabel = "See More",
+  seeLessLabel = "See Less",
+}: BatchDescriptionProps) {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+
+  if (!description) return null;
+
+  const lines = description.split("\n");
+  const hasMore = description.includes("\n") || description.length > 100;
+
+  // Helper to remove outer markdown formatting asterisks (e.g. *text* -> text)
+  const cleanMarkdownText = (str: string) => {
+    return str.replace(/^\*+(.*?)\*+$/, "$1").trim();
+  };
+
+  const renderFormattedDescription = () => {
+    const elements: React.ReactNode[] = [];
+    let currentList: string[] = [];
+    let isListSection = false;
+
+    lines.forEach((line, idx) => {
+      const trimmed = line.trim();
+      if (!trimmed) {
+        if (currentList.length > 0) {
+          elements.push(
+            <ul key={`list-${idx}`} className="list-disc pl-5 space-y-1 my-1.5 text-sm text-muted-foreground">
+              {currentList.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          );
+          currentList = [];
+        }
+        return;
+      }
+
+      // Check if line is a header like "हमारी विशेषताएँ" or "Features"
+      const isHeader =
+        trimmed.includes("विशेषताएँ") ||
+        trimmed.includes("विशेषता") ||
+        trimmed.toLowerCase().includes("features") ||
+        trimmed.toLowerCase().includes("specialities") ||
+        trimmed.endsWith(":");
+
+      if (isHeader) {
+        if (currentList.length > 0) {
+          elements.push(
+            <ul key={`list-${idx}`} className="list-disc pl-5 space-y-1 my-1.5 text-sm text-muted-foreground">
+              {currentList.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          );
+          currentList = [];
+        }
+        elements.push(
+          <p key={`header-${idx}`} className="font-bold text-foreground mt-3 mb-1 text-sm">
+            {cleanMarkdownText(trimmed)}
+          </p>
+        );
+        isListSection = true;
+        return;
+      }
+
+      // Check if line starts with a list marker (e.g. •, -, *, +)
+      const listMarkerRegex = /^([•\-\*\+\s]+|\d+\.\s*)/;
+      const markerMatch = trimmed.match(listMarkerRegex);
+
+      if (markerMatch) {
+        const content = trimmed.substring(markerMatch[0].length).trim();
+        currentList.push(cleanMarkdownText(content));
+      } else if (isListSection) {
+        // If we are in the list section (after a heading), treat non-empty lines as list items
+        currentList.push(cleanMarkdownText(trimmed));
+      } else {
+        // Regular paragraph
+        elements.push(
+          <p key={`p-${idx}`} className="text-sm text-muted-foreground mb-1 leading-relaxed">
+            {cleanMarkdownText(trimmed)}
+          </p>
+        );
+      }
+    });
+
+    if (currentList.length > 0) {
+      elements.push(
+        <ul key={`list-end`} className="list-disc pl-5 space-y-1 my-1.5 text-sm text-muted-foreground">
+          {currentList.map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
+        </ul>
+      );
+    }
+
+    return elements;
+  };
+
+  if (!isExpanded) {
+    // Replace newlines with spaces for a clean inline preview and clean markdown
+    const inlineText = lines
+      .map(l => cleanMarkdownText(l.trim()))
+      .filter(Boolean)
+      .join(" ");
+
+    return (
+      <div className="mb-4">
+        <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
+          {inlineText}
+        </p>
+        {hasMore && (
+          <button
+            type="button"
+            onClick={() => setIsExpanded(true)}
+            className="text-xs font-semibold text-primary hover:underline mt-1 focus:outline-none cursor-pointer"
+          >
+            {seeMoreLabel}
+          </button>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div className="mb-4 transition-all duration-300">
+      <div className="space-y-1">
+        {renderFormattedDescription()}
+      </div>
+      <button
+        type="button"
+        onClick={() => setIsExpanded(false)}
+        className="text-xs font-semibold text-primary hover:underline mt-2 focus:outline-none cursor-pointer"
+      >
+        {seeLessLabel}
+      </button>
+    </div>
+  );
+}
+
+interface OfflineCoursesClientProps {
+  faculties?: import("@/lib/content/types").Faculty[];
+  offlineBatches?: import("@/lib/content/types").OfflineBatch[];
+  brochureUrl?: string;
+}
+
+
+export function OfflineCoursesClient({ faculties, offlineBatches, brochureUrl }: OfflineCoursesClientProps) {
+  // States for Enquiry Modal
+  const [isEnquiryModalOpen, setIsEnquiryModalOpen] = React.useState(false);
+  const [selectedBatchTitle, setSelectedBatchTitle] = React.useState("");
+  const [enquiryName, setEnquiryName] = React.useState("");
+  const [enquiryPhone, setEnquiryPhone] = React.useState("");
+  const [isSubmittingEnquiry, setIsSubmittingEnquiry] = React.useState(false);
+  const [enquiryStatus, setEnquiryStatus] = React.useState<"idle" | "success" | "error">("idle");
+  const [enquiryError, setEnquiryError] = React.useState("");
+
+  const handleEnquirySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmittingEnquiry(true);
+    setEnquiryStatus("idle");
+    setEnquiryError("");
+
+    try {
+      const res = await submitOfflineEnquiry({
+        name: enquiryName,
+        phone: enquiryPhone,
+        batchTitle: selectedBatchTitle,
+        locale: "en",
+      });
+
+      if (res.success) {
+        setEnquiryStatus("success");
+        setEnquiryName("");
+        setEnquiryPhone("");
+        // Auto close after 2 seconds
+        setTimeout(() => {
+          setIsEnquiryModalOpen(false);
+          setEnquiryStatus("idle");
+        }, 2000);
+      } else {
+        setEnquiryStatus("error");
+        setEnquiryError(res.message || "Failed to submit enquiry.");
+      }
+    } catch (err: any) {
+      setEnquiryStatus("error");
+      setEnquiryError(err.message || "An unexpected error occurred.");
+    } finally {
+      setIsSubmittingEnquiry(false);
+    }
+  };
+
+  const openEnquiryModal = (batchTitle: string) => {
+    setSelectedBatchTitle(batchTitle);
+    setEnquiryName("");
+    setEnquiryPhone("");
+    setEnquiryStatus("idle");
+    setEnquiryError("");
+    setIsEnquiryModalOpen(true);
+  };
+
+  const displayHindiMentors = faculties && faculties.filter(f => f.medium === "hindi").length > 0
+    ? faculties.filter(f => f.medium === "hindi").map(f => ({
+        name: f.nameEn || f.nameHi,
+        title: f.titleEn || f.titleHi,
+        desc: f.descEn || f.descHi,
+        image: f.image
+      }))
+    : facultiesHindi;
+
+  const displayEnglishMentors = faculties && faculties.filter(f => f.medium === "english").length > 0
+    ? faculties.filter(f => f.medium === "english").map(f => ({
+        name: f.nameEn || f.nameHi,
+        title: f.titleEn || f.titleHi,
+        desc: f.descEn || f.descHi,
+        image: f.image
+      }))
+    : facultiesEnglish;
+
+  const dynamicBatches = React.useMemo(() => {
+    if (offlineBatches && offlineBatches.length > 0) {
+      const indoreBatches = offlineBatches.filter(b => b.center === "indore");
+      if (indoreBatches.length > 0) {
+        return indoreBatches.map(b => ({
+          title: b.titleEn || b.titleHi,
+          startDate: b.startDateEn || b.startDateHi,
+          time: b.timeEn || b.timeHi,
+          medium: b.medium === "bilingual"
+            ? "Hindi / English (Bilingual)"
+            : b.medium === "hindi"
+              ? "Hindi Medium"
+              : "English Medium",
+          badge: b.badgeEn || b.badgeHi,
+          seatsFillPercent: b.seatsFillPercent || 0,
+          description: b.descEn || b.descHi || "",
+          locationName: b.locationNameEn || b.locationNameHi || "Rajiv Gandhi Circle Campus",
+          isNew: b.isNew || false,
+        }));
+      }
+    }
+    // Fallback to hardcoded batches
+    return centersData.indore.batches;
+  }, [offlineBatches]);
+
+  const selectedCenter = {
+    ...centersData.indore,
+    batches: dynamicBatches,
+  };
+
+  return (
+    <div className="space-y-16 pb-24">
+      {/* ─── Hero Section ────────────────────────────────────────── */}
+      <section className="relative overflow-hidden bg-secondary text-secondary-foreground">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--primary)_0%,_transparent_50%)] opacity-20" />
+        <Container size="wide" className="relative py-16 sm:py-24 lg:py-32">
+          <AnimatedSection variant="scale-in" duration={0.8} className="mx-auto max-w-4xl text-center">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/20 px-3 py-1.5 text-xs font-semibold text-accent mb-6 uppercase tracking-wider">
+              <Sparkles className="h-3.5 w-3.5" /> Premium Offline Coaching
+            </span>
+            <h1 className="text-balance text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Offline Classes &amp; Courses
+            </h1>
+            <p className="mt-6 text-pretty text-lg text-white/75 sm:text-xl max-w-2xl mx-auto">
+              Achieve success under the personal guidance of experienced faculty. Disciplined academic environment, updated study materials, and one-on-one mentorship sessions.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+              <Button size="lg" asChild className="rounded-full bg-primary hover:bg-primary/95 text-white font-semibold">
+                <a href="#centers">Enroll Now (Admission Open)</a>
+              </Button>
+              {brochureUrl ? (
+                <Button variant="outline" size="lg" className="rounded-full border-white/20 text-white bg-transparent hover:bg-white/10 hover:text-white font-semibold gap-2" asChild>
+                  <TrackedDownloadLink
+                    input={{
+                      slug: "offline-brochure",
+                      title: "Offline Classroom Program Brochure",
+                      kind: "brochure",
+                      url: brochureUrl,
+                      locale: "en",
+                    }}
+                  >
+                    <Download className="h-4 w-4" /> Download Brochure
+                  </TrackedDownloadLink>
+                </Button>
+              ) : (
+                <Button variant="outline" size="lg" className="rounded-full border-white/20 text-white bg-transparent hover:bg-white/10 hover:text-white font-semibold gap-2 opacity-50 cursor-not-allowed" disabled>
+                  <Download className="h-4 w-4" /> Brochure Coming Soon
+                </Button>
+              )}
+              <Button variant="outline" size="lg" className="rounded-full border-[#25D366]/40 text-white bg-transparent hover:bg-[#25D366]/10 hover:text-white font-semibold gap-2">
+                <span className="text-[#25D366] font-bold">WA</span> WhatsApp Chat
+              </Button>
+            </div>
+          </AnimatedSection>
+        </Container>
+      </section>
+
+      {/* ─── Center Selector Section ────────────────────────────── */}
+      <section id="centers" className="scroll-mt-24">
+        <Container size="wide">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              Our Offline Study Center
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              Visit our campus or get in touch to know more about our upcoming batches.
+            </p>
+          </div>
+
+          <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
+            {/* Left: Batches Grid */}
+            <div className="lg:col-span-8 space-y-6">
+              <div className="flex items-center justify-between border-b border-border/60 pb-4">
+                <h3 className="text-xl font-bold text-primary flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+                  New & Upcoming Offline Batches ({selectedCenter.name})
+                </h3>
+                <span className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">
+                  Session 2026 - 2027
+                </span>
+              </div>
+
+              <div className="grid gap-6 md:grid-cols-2">
+                {selectedCenter.batches.map((batch, index) => (
+                  <Card key={index} className="relative overflow-hidden border border-border/70 hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between group">
+                    {/* Top Progress Line */}
+                    {batch.seatsFillPercent && (
+                      <div className="absolute top-0 left-0 w-full h-[3px] bg-primary/10">
+                        <div
+                          className="h-full bg-primary transition-all duration-500"
+                          style={{ width: `${batch.seatsFillPercent}%` }}
+                        />
+                      </div>
+                    )}
+                    <div className="p-6">
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-2">
+                          {batch.isNew && (
+                            <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-extrabold uppercase bg-red-600 text-white tracking-wider animate-pulse shadow-[0_0_10px_rgba(220,38,38,0.5)]">
+                              NEW
+                            </span>
+                          )}
+                          {batch.badge && (
+                            <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-extrabold uppercase bg-primary/10 text-primary tracking-wider">
+                              {batch.badge}
+                            </span>
+                          )}
+                        </div>
+                        {batch.seatsFillPercent && (
+                          <span className="text-[11px] font-bold text-muted-foreground">
+                            {batch.seatsFillPercent}% Filled
+                          </span>
+                        )}
+                      </div>
+                      <h4 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                        {batch.title}
+                      </h4>
+                      <BatchDescription 
+                        description={batch.description} 
+                        seeMoreLabel="See More" 
+                        seeLessLabel="See Less" 
+                      />
+
+                      <div className="space-y-2 border-t border-border/40 pt-4 text-sm text-muted-foreground">
+                        <div className="flex items-center gap-2.5">
+                          <Calendar className="h-4 w-4 text-primary shrink-0" />
+                          <span>Starts: <strong className="text-foreground">{batch.startDate}</strong></span>
+                        </div>
+                        <div className="flex items-center gap-2.5">
+                          <Clock className="h-4 w-4 text-primary shrink-0" />
+                          <span>Timing: <strong className="text-foreground">{batch.time}</strong></span>
+                        </div>
+                        <div className="flex items-center gap-2.5">
+                          <GraduationCap className="h-4 w-4 text-primary shrink-0" />
+                          <span>Medium: <strong className="text-foreground">{batch.medium}</strong></span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="p-6 bg-muted/30 border-t border-border/30 flex items-center justify-between">
+                      <span className="text-xs text-muted-foreground flex items-center gap-1">
+                        <MapPin className="h-3.5 w-3.5 text-primary shrink-0" />
+                        {batch.locationName}
+                      </span>
+                      <Button 
+                        variant="ghost" 
+                        className="text-primary hover:text-primary/80 font-bold p-0 gap-1 hover:bg-transparent"
+                        onClick={() => openEnquiryModal(batch.title)}
+                      >
+                        Enquiry Now <ArrowRight className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: Center Contact Info & Map */}
+            <div className="lg:col-span-4 bg-muted/30 border border-border/80 rounded-2xl p-6 lg:sticky lg:top-24 space-y-6">
+              <div className="space-y-1">
+                <span className="text-xs font-bold text-primary uppercase tracking-widest">
+                  Study Center
+                </span>
+                <h3 className="text-2xl font-bold text-foreground">
+                  {selectedCenter.fullName}
+                </h3>
+              </div>
+
+              <div className="space-y-4 text-sm text-muted-foreground">
+                <div className="flex items-start gap-3">
+                  <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                  <p className="text-foreground/90 font-medium leading-relaxed">
+                    {selectedCenter.address}
+                  </p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Phone className="h-5 w-5 text-primary shrink-0" />
+                  <span className="font-semibold text-foreground">{selectedCenter.phone}</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Clock className="h-5 w-5 text-primary shrink-0" />
+                  <span>{selectedCenter.schedule}</span>
+                </div>
+              </div>
+
+              {/* Live Interactive Map */}
+              <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-border shadow-sm">
+                <iframe
+                  src={siteConfig.contact.mapEmbedUrl}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="Aakar IAS Indore Center Map Location"
+                  className="w-full h-full absolute inset-0"
+                />
+              </div>
+
+              <Button asChild className="w-full font-bold bg-primary hover:bg-primary/90 text-white gap-2">
+                <a href={selectedCenter.directionsUrl} target="_blank" rel="noopener noreferrer">
+                  <Map className="h-4 w-4" /> Get Directions
+                </a>
+              </Button>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ─── Why Offline Section (Features) ────────────────────────── */}
+      <section className="bg-muted/20 py-16">
+        <Container size="wide">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              Why Aakar IAS Offline?
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              A unique blend of traditional excellence and modern learning facilities.
+            </p>
+          </div>
+
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {features.map((feat, index) => (
+              <Card key={index} className="p-6 border border-border/60 hover:-translate-y-1 transition-all duration-300">
+                <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary mb-4">
+                  <feat.icon className="h-6 w-6" />
+                </div>
+                <h4 className="text-lg font-bold text-foreground mb-2">
+                  {feat.title}
+                </h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {feat.desc}
+                </p>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* ─── Faculty Members (Hindi Medium) ─────────────────────────── */}
+      <section>
+        <Container size="wide">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              Our Senior Mentors (Hindi Medium)
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              A dedicated team of expert educators ready to turn your civil service aspirations into reality.
+            </p>
+          </div>
+
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {displayHindiMentors.map((fac, index) => (
+              <Card key={index} className="overflow-hidden border border-border/80 hover:shadow-soft-lg transition-all duration-300 flex flex-col">
+                <div className="relative aspect-square w-full bg-muted">
+                  <Image
+                    src={fac.image}
+                    alt={fac.name}
+                    fill
+                    className="object-cover"
+                    unoptimized
+                  />
+                </div>
+                <div className="p-5 flex-1 flex flex-col justify-between">
+                  <div className="space-y-2">
+                    <h4 className="text-lg font-bold text-foreground leading-tight">
+                      {fac.name}
+                    </h4>
+                    <span className="inline-block text-xs font-bold text-primary uppercase tracking-wider">
+                      {fac.title}
+                    </span>
+                    <p className="text-xs text-muted-foreground leading-relaxed pt-2">
+                      {fac.desc}
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* ─── Faculty Members (English Medium) ───────────────────────── */}
+      <section className="bg-muted/10 py-16 border-t border-b border-border/40">
+        <Container size="wide">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              Our Senior Mentors (English Medium)
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              A dedicated team of expert educators ready to turn your civil service aspirations into reality.
+            </p>
+          </div>
+
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {displayEnglishMentors.map((fac, index) => (
+              <Card key={index} className="overflow-hidden border border-border/80 bg-card hover:shadow-soft-lg transition-all duration-300 flex flex-col">
+                <div className="relative aspect-square w-full bg-muted">
+                  <Image
+                    src={fac.image}
+                    alt={fac.name}
+                    fill
+                    className="object-cover"
+                    unoptimized
+                  />
+                </div>
+                <div className="p-5 flex-1 flex flex-col justify-between">
+                  <div className="space-y-2">
+                    <h4 className="text-lg font-bold text-foreground leading-tight">
+                      {fac.name}
+                    </h4>
+                    <span className="inline-block text-xs font-bold text-primary uppercase tracking-wider">
+                      {fac.title}
+                    </span>
+                    <p className="text-xs text-muted-foreground leading-relaxed pt-2">
+                      {fac.desc}
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* ─── Success Stories ────────────────────────────────────── */}
+      <section className="bg-primary/5 py-16">
+        <Container size="wide">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="text-xs font-bold text-primary uppercase tracking-widest">
+              Toppers&apos; Choice
+            </span>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl mt-1">
+              Success Stories
+            </h2>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2">
+            {successStories.map((story, index) => (
+              <Card key={index} className="p-8 border border-border bg-card relative overflow-hidden shadow-soft flex flex-col sm:flex-row gap-6 items-center sm:items-start group">
+                <div className="relative h-20 w-20 rounded-full overflow-hidden shrink-0 border-4 border-primary/20">
+                  <Image
+                    src={story.image}
+                    alt={story.name}
+                    fill
+                    className="object-cover"
+                    unoptimized
+                  />
+                </div>
+                <div className="space-y-4">
+                  <div className="space-y-1 text-center sm:text-left">
+                    <h4 className="text-lg font-bold text-foreground">{story.name}</h4>
+                    <span className="text-xs font-bold text-primary uppercase tracking-wider">
+                      {story.rank}
+                    </span>
+                  </div>
+                  <p className="text-sm italic text-muted-foreground leading-relaxed relative z-10">
+                    &ldquo;{story.quote}&rdquo;
+                  </p>
+                </div>
+                {/* Large Decorative Quote mark */}
+                <span className="absolute right-4 bottom-[-10px] text-8xl font-serif text-primary/5 select-none pointer-events-none">
+                  &ldquo;
+                </span>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* ─── Bottom CTA ──────────────────────────────────────────── */}
+      <section>
+        <Container size="wide">
+          <div className="relative rounded-3xl overflow-hidden bg-primary text-white p-8 md:p-16 text-center shadow-soft-lg">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-brand-accent)_0%,_transparent_60%)] opacity-10" />
+            <div className="relative z-10 max-w-2xl mx-auto space-y-6">
+              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">
+                New Session Starting: Enroll Today!
+              </h2>
+              <p className="text-white/80 text-base md:text-lg">
+                Secure your seat in the new batches and get free personal counselling from our experts.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4 pt-4">
+                <Button asChild size="lg" className="rounded-full bg-white text-primary hover:bg-white/95 font-bold shadow-lg gap-2">
+                  <a href={`tel:${siteConfig.contact.phone.replace(/\s+/g, "")}`}>
+                    <Phone className="h-4 w-4" /> Call Now
+                  </a>
+                </Button>
+                <Button asChild size="lg" className="rounded-full bg-[#25D366] text-white hover:bg-[#25D366]/95 font-bold shadow-lg gap-2 border-none">
+                  <a href={siteConfig.links.whatsapp} target="_blank" rel="noopener noreferrer">
+                    <MessageSquare className="h-4 w-4 fill-white" /> WhatsApp Help
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ─── Enquiry Modal ────────────────────────────────────────── */}
+      {isEnquiryModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="relative w-full max-w-md overflow-hidden rounded-2xl border border-border bg-background shadow-2xl transition-all duration-300">
+            {/* Header */}
+            <div className="flex items-center justify-between border-b border-border/80 px-6 py-4 bg-muted/20">
+              <h3 className="text-lg font-bold text-foreground">
+                Offline Batch Enquiry
+              </h3>
+              <button
+                onClick={() => setIsEnquiryModalOpen(false)}
+                className="rounded-lg p-1 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            {/* Form Content */}
+            <div className="p-6">
+              {enquiryStatus === "success" ? (
+                <div className="flex flex-col items-center justify-center py-6 text-center space-y-3 animate-in zoom-in-95 duration-200">
+                  <div className="h-12 w-12 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center animate-pulse">
+                    <CheckCircle2 className="h-8 w-8" />
+                  </div>
+                  <h4 className="text-base font-bold text-foreground">
+                    Enquiry Submitted Successfully!
+                  </h4>
+                  <p className="text-sm text-muted-foreground">
+                    Our counsellor will contact you shortly.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleEnquirySubmit} className="space-y-4">
+                  {enquiryStatus === "error" && (
+                    <div className="p-3.5 rounded-lg bg-destructive/10 border border-destructive/20 text-destructive text-xs font-semibold">
+                      {enquiryError}
+                    </div>
+                  )}
+
+                  {/* Pre-filled Batch */}
+                  <div>
+                    <label className="block text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1.5">
+                      Selected Batch
+                    </label>
+                    <input
+                      type="text"
+                      value={selectedBatchTitle}
+                      disabled
+                      className="w-full h-10 px-3 bg-muted border border-border/80 rounded-lg text-xs font-semibold text-foreground/80 cursor-not-allowed select-none"
+                    />
+                  </div>
+
+                  {/* Name Input */}
+                  <div>
+                    <label className="block text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1.5">
+                      Full Name <span className="text-primary font-bold">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={enquiryName}
+                      onChange={(e) => setEnquiryName(e.target.value)}
+                      placeholder="e.g. Rahul Sharma"
+                      className="w-full h-10 px-3 bg-background border border-border hover:border-border/80 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition"
+                    />
+                  </div>
+
+                  {/* Mobile Input */}
+                  <div>
+                    <label className="block text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1.5">
+                      Mobile Number <span className="text-primary font-bold">*</span>
+                    </label>
+                    <div className="relative">
+                      <span className="absolute left-3 top-2.5 text-sm font-semibold text-muted-foreground select-none">
+                        +91
+                      </span>
+                      <input
+                        type="tel"
+                        required
+                        pattern="[0-9]{10}"
+                        maxLength={10}
+                        value={enquiryPhone}
+                        onChange={(e) => setEnquiryPhone(e.target.value.replace(/\D/g, ""))}
+                        placeholder="10-digit mobile number"
+                        className="w-full h-10 pl-11 pr-3 bg-background border border-border hover:border-border/80 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition font-semibold tracking-wider"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Submit Button */}
+                  <Button
+                    type="submit"
+                    disabled={isSubmittingEnquiry}
+                    className="w-full h-10 bg-primary hover:bg-primary/95 text-white font-bold rounded-lg transition-all duration-200 mt-2 flex items-center justify-center gap-2"
+                  >
+                    {isSubmittingEnquiry ? (
+                      <>
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                        Submitting...
+                      </>
+                    ) : (
+                      "Submit Inquiry"
+                    )}
+                  </Button>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
