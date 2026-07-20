@@ -63,6 +63,13 @@ export function WhatsAppTracker() {
   useEffect(() => {
     console.log("🟢 [whatsapp-tracker] Global tracker component mounted.");
 
+    // Clear any previously saved phone number from localStorage
+    try {
+      localStorage.removeItem("aakar_whatsapp_phone");
+    } catch (err) {
+      console.error("⚠ [whatsapp-tracker] Failed to clear localStorage:", err);
+    }
+
     // Determine language from page URL on mount
     const isEn = window.location.pathname.startsWith("/en");
     setLocale(isEn ? "en" : "hi");
@@ -92,19 +99,8 @@ export function WhatsAppTracker() {
         console.log("ℹ [whatsapp-tracker] Healed WhatsApp URL with message:", healedHref);
         setTargetUrl(healedHref);
         
-        // Retrieve and pre-fill phone number if available
-        let savedPhone = "";
-        try {
-          savedPhone = localStorage.getItem("aakar_whatsapp_phone") || "";
-          if (savedPhone === "undefined" || savedPhone === "null") {
-            savedPhone = "";
-          }
-        } catch (err) {
-          console.error("⚠ [whatsapp-tracker] Failed to read localStorage:", err);
-        }
-
-        console.log("ℹ [whatsapp-tracker] Pre-filling phone number:", savedPhone);
-        setPhone(savedPhone);
+        // Reset phone number input to empty
+        setPhone("");
         setError("");
         setIsOpen(true);
       }
@@ -135,18 +131,7 @@ export function WhatsAppTracker() {
         console.log("ℹ [whatsapp-tracker] Healed WhatsApp URL with message:", healedUrl);
         setTargetUrl(healedUrl);
         
-        let savedPhone = "";
-        try {
-          savedPhone = localStorage.getItem("aakar_whatsapp_phone") || "";
-          if (savedPhone === "undefined" || savedPhone === "null") {
-            savedPhone = "";
-          }
-        } catch (err) {
-          console.error("⚠ [whatsapp-tracker] Failed to read localStorage:", err);
-        }
-
-        console.log("ℹ [whatsapp-tracker] Pre-filling phone number:", savedPhone);
-        setPhone(savedPhone);
+        setPhone("");
         setError("");
         setIsOpen(true);
         return null;
@@ -180,11 +165,11 @@ export function WhatsAppTracker() {
     const pageUrl = window.location.href;
     console.log("📤 [whatsapp-tracker] Saving lead in background & redirecting synchronously.");
 
-    // 1. Save to local storage
+    // Clear saved phone from local storage if any exists
     try {
-      localStorage.setItem("aakar_whatsapp_phone", cleanPhone);
+      localStorage.removeItem("aakar_whatsapp_phone");
     } catch (err) {
-      console.error("⚠ [whatsapp-tracker] Failed to write to localStorage:", err);
+      console.error("⚠ [whatsapp-tracker] Failed to clear localStorage:", err);
     }
 
     // 2. Fire the server action in the background (no await to bypass popup blocker)
