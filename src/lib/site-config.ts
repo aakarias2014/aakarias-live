@@ -105,6 +105,7 @@ export const navigationConfig: MegaNavItem[] = [
       { title: "मंथली करेंट अफेयर्स", titleEn: "Monthly CA", href: "/monthly" },
       { title: "संपादकीय", titleEn: "Editorials", href: "/editorial" },
       { title: "एमपी करेंट अफेयर्स", titleEn: "MP Current Affairs", href: "/tag/mp-current-affairs" },
+      { title: "महत्वपूर्ण दिवस", titleEn: "Important Days", href: "/important-days" },
       { title: "राष्ट्रीय मामले", titleEn: "National Affairs", href: "/tag/national-affairs" },
       { title: "अंतरराष्ट्रीय मामले", titleEn: "International Affairs", href: "/tag/international-affairs" },
       { title: "करेंट अफेयर्स क्विज़", titleEn: "CA Quiz", href: "/current-affairs/quiz" },
