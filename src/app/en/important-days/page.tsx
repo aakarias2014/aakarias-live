@@ -97,17 +97,17 @@ export default async function EnglishImportantDaysPage({ searchParams }: Props) 
               { name: "Current Affairs", href: "/en/current-affairs" },
               { name: "Important Days" }
             ]}
-            className="text-white/60 hover:text-white"
+            variant="light"
           />
           <div className="mt-6 max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 border border-primary/30 text-xs font-bold text-primary mb-3">
-              <CalendarDays className="h-3.5 w-3.5" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/25 text-xs font-bold text-white mb-3 shadow-sm">
+              <CalendarDays className="h-3.5 w-3.5 text-primary-foreground" />
               <span>Exam Oriented Important Days Series</span>
             </div>
             <h1 className="text-balance text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
               Important Days & Events
             </h1>
-            <p className="mt-4 text-pretty text-lg text-white/75 sm:text-xl font-devanagari">
+            <p className="mt-4 text-pretty text-lg text-white/90 sm:text-xl font-devanagari">
               In-depth coverage of national and international days, themes, historical significance, and key exam takeaways for Civil Services.
             </p>
           </div>

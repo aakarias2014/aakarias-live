@@ -7,14 +7,23 @@ export interface BreadcrumbItem {
   href?: string;
 }
 
-export function Breadcrumb({ items, className }: { items: BreadcrumbItem[]; className?: string }) {
+export function Breadcrumb({
+  items,
+  className,
+  variant = "default",
+}: {
+  items: BreadcrumbItem[];
+  className?: string;
+  variant?: "default" | "light";
+}) {
+  const isLight = variant === "light";
   return (
     <nav aria-label="Breadcrumb" className={cn("text-sm", className)}>
-      <ol className="flex flex-wrap items-center gap-1.5 text-muted-foreground">
+      <ol className={cn("flex flex-wrap items-center gap-1.5", isLight ? "text-white/70" : "text-muted-foreground")}>
         <li>
           <Link
             href="/"
-            className="inline-flex items-center gap-1 transition-colors hover:text-foreground"
+            className={cn("inline-flex items-center gap-1 transition-colors", isLight ? "hover:text-white text-white/80" : "hover:text-foreground")}
             aria-label="Home"
           >
             <Home className="h-3.5 w-3.5" />
@@ -24,18 +33,18 @@ export function Breadcrumb({ items, className }: { items: BreadcrumbItem[]; clas
           const isLast = i === items.length - 1;
           return (
             <li key={`${item.name}-${i}`} className="flex items-center gap-1.5">
-              <ChevronRight className="h-3.5 w-3.5 text-muted-foreground/50" />
+              <ChevronRight className={cn("h-3.5 w-3.5", isLight ? "text-white/40" : "text-muted-foreground/50")} />
               {item.href && !isLast ? (
-                <Link href={item.href} className="transition-colors hover:text-foreground">
+                <Link href={item.href} className={cn("transition-colors", isLight ? "hover:text-white text-white/80" : "hover:text-foreground")}>
                   {item.name}
                 </Link>
               ) : (
-                <span className={cn(isLast && "font-medium text-foreground")} aria-current="page">
+                <span className={cn(isLast && (isLight ? "font-semibold text-white" : "font-medium text-foreground"))} aria-current="page">
                   {item.name}
                 </span>
               )}
             </li>
-          )
+          );
         })}
       </ol>
     </nav>

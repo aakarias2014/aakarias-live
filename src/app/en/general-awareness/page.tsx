@@ -69,7 +69,7 @@ export default async function GeneralAwarenessPage({ searchParams }: Props) {
       <section className="relative overflow-hidden bg-secondary text-secondary-foreground py-12 sm:py-16">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--primary)_0%,_transparent_50%)] opacity-20" />
         <Container size="wide" className="relative">
-          <Breadcrumb items={[{ name: "General Studies" }]} className="text-white/60 hover:text-white" />
+          <Breadcrumb items={[{ name: "General Studies" }]} variant="light" />
           <div className="mt-6 max-w-3xl">
             <h1 className="text-balance text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
               General Studies
