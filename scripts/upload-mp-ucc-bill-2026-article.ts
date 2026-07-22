@@ -146,6 +146,7 @@ async function main() {
       { _type: "reference", _ref: "tag-mppsc" },
       { _type: "reference", _ref: "tag-prelims" },
       { _type: "reference", _ref: "tag-mains" },
+      { _type: "reference", _ref: "tag-mp-ca" },
     ],
     syllabus: ["GS-2", "MPPSC Paper-2", "Prelims-GS"],
     featuredImage: {
