@@ -18,12 +18,12 @@ export async function ScrollInquiryModalWrapper() {
 
   try {
     const banner = await sanityFetch<PopupBannerData>({
-      query: `*[_type == "popupBanner" && isActive == true][0]{
+      query: `*[_type == "popupBanner" && isActive == true] | order(_updatedAt desc)[0]{
         image,
         altText,
         isActive
       }`,
-      revalidate: 300, // 5 min cache
+      revalidate: process.env.NODE_ENV === "development" ? 0 : 60,
       tags: ["popupBanner"],
     });
 
