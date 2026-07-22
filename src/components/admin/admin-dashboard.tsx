@@ -196,23 +196,25 @@ const STATIC_PAGES_META: AdminStaticPage[] = [
   },
 ];
 
+const EMPTY_ARRAY: any[] = [];
+
 export function AdminDashboard({
   metrics,
   subscribers,
   messages: initialMessages,
   downloads,
   students,
-  staticPages = [],
-  faculties = [],
-  offlineBatches = [],
-  onlineCourses = [],
-  testSeries = [],
-  testSchedules = [],
-  toppers = [],
-  dailyQuizzes = [],
-  subjectQuizzes = [],
-  publications = [],
-  notices = [],
+  staticPages = EMPTY_ARRAY,
+  faculties = EMPTY_ARRAY,
+  offlineBatches = EMPTY_ARRAY,
+  onlineCourses = EMPTY_ARRAY,
+  testSeries = EMPTY_ARRAY,
+  testSchedules = EMPTY_ARRAY,
+  toppers = EMPTY_ARRAY,
+  dailyQuizzes = EMPTY_ARRAY,
+  subjectQuizzes = EMPTY_ARRAY,
+  publications = EMPTY_ARRAY,
+  notices = EMPTY_ARRAY,
 }: AdminDashboardProps) {
   const router = useRouter();
 
