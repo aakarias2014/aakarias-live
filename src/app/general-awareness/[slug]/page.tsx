@@ -65,7 +65,7 @@ export default async function GeneralAwarenessArticlePage({ params }: Props) {
   const articleUrl = `${siteConfig.url}${article.href}`;
   const breadcrumb = breadcrumbJsonLd([
     { name: "Home", url: siteConfig.url },
-    { name: "सामान्य ज्ञान (Static GK)", url: `${siteConfig.url}/general-awareness` },
+    { name: "सामान्य अध्ययन (General Studies)", url: `${siteConfig.url}/general-awareness` },
     { name: article.title, url: articleUrl },
   ]);
 

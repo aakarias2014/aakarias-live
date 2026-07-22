@@ -548,16 +548,16 @@ export default async function HomePage() {
         </Section>
       )}
 
-      {/* ─── Static GK Snippet Section ───────────────────────────── */}
+      {/* ─── General Studies Snippet Section ───────────────────────────── */}
       {latestStaticGk.items.length > 0 && (
         <Section
-          title="सामान्य ज्ञान (Static GK)"
-          description="इतिहास, भूगोल, राजव्यवस्था और विज्ञान जैसे विषयों के महत्वपूर्ण स्टेटिक तथ्य।"
+          title="सामान्य अध्ययन (General Studies)"
+          description="इतिहास, भूगोल, राजव्यवस्था और विज्ञान जैसे विषयों के महत्वपूर्ण अध्ययन तथ्य।"
           className="bg-muted/10 border-t border-border/40"
           action={
             <Button variant="outline" className="rounded-full" asChild>
               <Link href="/general-awareness">
-                सामान्य ज्ञान पोर्टल पर जाएं <ArrowRight className="ml-1.5 h-4 w-4" />
+                सामान्य अध्ययन पोर्टल पर जाएं <ArrowRight className="ml-1.5 h-4 w-4" />
               </Link>
             </Button>
           }

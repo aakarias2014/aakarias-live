@@ -24,10 +24,10 @@ import {
 export const revalidate = 600;
 
 export const metadata: Metadata = buildMetadata({
-  title: "General Awareness (Static GK) | Aakar IAS",
-  description: "Comprehensive study material and articles on Indian History, Geography, Polity, Economics, General Science, Sci & Tech, and MP GK for UPSC & State PSC exams.",
+  title: "General Studies | Aakar IAS",
+  description: "Comprehensive study material and articles on Indian History, Geography, Polity, Economics, General Science, Sci & Tech, and General Studies for UPSC & State PSC exams.",
   path: "/en/general-awareness",
-  keywords: ["Static GK", "General Awareness", "General Knowledge", "UPSC GS", "MPPSC GK", "Indian History", "Geography"],
+  keywords: ["General Studies", "General Awareness", "General Knowledge", "UPSC GS", "MPPSC GS", "Indian History", "Geography"],
 });
 
 interface Props {
@@ -69,10 +69,10 @@ export default async function GeneralAwarenessPage({ searchParams }: Props) {
       <section className="relative overflow-hidden bg-secondary text-secondary-foreground py-12 sm:py-16">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--primary)_0%,_transparent_50%)] opacity-20" />
         <Container size="wide" className="relative">
-          <Breadcrumb items={[{ name: "General Awareness" }]} className="text-white/60 hover:text-white" />
+          <Breadcrumb items={[{ name: "General Studies" }]} className="text-white/60 hover:text-white" />
           <div className="mt-6 max-w-3xl">
             <h1 className="text-balance text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
-              General Awareness & Static GK
+              General Studies
             </h1>
             <p className="mt-4 text-pretty text-lg text-white/75 sm:text-xl font-devanagari">
               Structured subject-wise study material and reference content for UPSC, MPPSC, and other competitive examinations, integrated with contemporary updates.

@@ -549,16 +549,16 @@ export default async function EnglishHomePage() {
         </Section>
       )}
 
-      {/* ─── Static GK Snippet Section ───────────────────────────── */}
+      {/* ─── General Studies Snippet Section ───────────────────────────── */}
       {latestStaticGk.items.length > 0 && (
         <Section
-          title="General GK / Static GK"
-          description="Important static reference topics in History, Geography, Polity, Science, and MPGK."
+          title="General Studies"
+          description="Important reference topics in History, Geography, Polity, Science, and General Studies."
           className="bg-muted/10 border-t border-border/40"
           action={
             <Button variant="outline" className="rounded-full" asChild>
               <Link href="/en/general-awareness">
-                Go to General Awareness Portal <ArrowRight className="ml-1.5 h-4 w-4" />
+                Go to General Studies Portal <ArrowRight className="ml-1.5 h-4 w-4" />
               </Link>
             </Button>
           }

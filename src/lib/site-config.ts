@@ -111,8 +111,8 @@ export const navigationConfig: MegaNavItem[] = [
     ],
   },
   {
-    title: "सामान्य ज्ञान (Static GK)",
-    titleEn: "General GK / Static GK",
+    title: "सामान्य अध्ययन (General Studies)",
+    titleEn: "General Studies",
     href: "/general-awareness",
     dropdown: [
       { title: "भारतीय इतिहास", titleEn: "Indian History", href: "/general-awareness?subject=history" },
@@ -137,7 +137,7 @@ export const navigationConfig: MegaNavItem[] = [
       { title: "एमपीपीएससी पीवाईक्यू", titleEn: "MPPSC PYQ", href: "/pyq?exam=MPPSC" },
       { title: "टेस्ट सीरीज", titleEn: "Test Series", href: "/test-series" },
       { title: "रणनीति", titleEn: "Strategy", href: "/mppsc" },
-      { title: "एमपी स्टेटिक जीके", titleEn: "MP Static GK", href: "/mppsc" },
+      { title: "एमपी सामान्य अध्ययन", titleEn: "MP General Studies", href: "/mppsc" },
     ],
   },
   {

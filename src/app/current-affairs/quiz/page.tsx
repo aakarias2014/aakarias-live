@@ -14,7 +14,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = buildMetadata({
   title: "डेली करेंट अफेयर्स क्विज़ | Aakar IAS",
-  description: "UPSC, MPPSC और अन्य राज्य नागरिक सेवा परीक्षाओं के लिए दैनिक समाचार विश्लेषण और स्टेटिक विषयों पर आधारित समसामयिकी अभ्यास एमसीक्यू क्विज़।",
+  description: "UPSC, MPPSC और अन्य राज्य नागरिक सेवा परीक्षाओं के लिए दैनिक समाचार विश्लेषण और सामान्य अध्ययन पर आधारित समसामयिकी अभ्यास एमसीक्यू क्विज़।",
   path: "/current-affairs/quiz",
   keywords: ["Current Affairs Quiz", "Daily CA Quiz", "करेंट अफेयर्स क्विज़", "MPPSC CA Quiz", "UPSC Quiz"],
 });
@@ -57,7 +57,7 @@ export default async function CurrentAffairsQuizPage() {
                 <span>करेंट अफेयर्स क्विज़ (Current Affairs Quiz)</span>
               </h1>
               <p className="mt-3 text-pretty text-base text-muted-foreground leading-relaxed font-devanagari">
-                दैनिक समाचार विश्लेषण और स्टेटिक सामान्य ज्ञान पर आधारित अभ्यास प्रश्नों (MCQs) को हल करें और अपनी परीक्षा तैयारी का स्व-मूल्यांकन करें।
+                दैनिक समाचार विश्लेषण और सामान्य अध्ययन पर आधारित अभ्यास प्रश्नों (MCQs) को हल करें और अपनी परीक्षा तैयारी का स्व-मूल्यांकन करें।
               </p>
             </div>
           </div>

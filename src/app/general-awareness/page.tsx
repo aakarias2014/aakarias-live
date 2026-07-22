@@ -24,10 +24,10 @@ import {
 export const revalidate = 600;
 
 export const metadata: Metadata = buildMetadata({
-  title: "सामान्य ज्ञान (Static GK) | Aakar IAS",
-  description: "UPSC, MPPSC और अन्य राज्य नागरिक सेवा परीक्षाओं के लिए इतिहास, भूगोल, राजव्यवस्था, अर्थव्यवस्था, विज्ञान एवं प्रौद्योगिकी और एमपी सामान्य ज्ञान का व्यापक संकलन।",
+  title: "सामान्य अध्ययन (General Studies) | Aakar IAS",
+  description: "UPSC, MPPSC और अन्य राज्य नागरिक सेवा परीक्षाओं के लिए इतिहास, भूगोल, राजव्यवस्था, अर्थव्यवस्था, विज्ञान एवं प्रौद्योगिकी और सामान्य अध्ययन का व्यापक संकलन।",
   path: "/general-awareness",
-  keywords: ["Static GK", "General Awareness", "सामान्य ज्ञान", "UPSC GS", "MPPSC GK", "Indian History GK", "Geography GK"],
+  keywords: ["General Studies", "सामान्य अध्ययन", "General Awareness", "UPSC GS", "MPPSC GS", "Indian History", "Geography"],
 });
 
 interface Props {
@@ -69,10 +69,10 @@ export default async function GeneralAwarenessPage({ searchParams }: Props) {
       <section className="relative overflow-hidden bg-secondary text-secondary-foreground py-12 sm:py-16">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--primary)_0%,_transparent_50%)] opacity-20" />
         <Container size="wide" className="relative">
-          <Breadcrumb items={[{ name: "सामान्य ज्ञान (Static GK)" }]} className="text-white/60 hover:text-white" />
+          <Breadcrumb items={[{ name: "सामान्य अध्ययन (General Studies)" }]} className="text-white/60 hover:text-white" />
           <div className="mt-6 max-w-3xl">
             <h1 className="text-balance text-4xl font-extrabold tracking-tight text-white sm:text-5xl font-devanagari">
-              सामान्य ज्ञान / सामान्य अध्ययन (Static GK)
+              सामान्य अध्ययन (General Studies)
             </h1>
             <p className="mt-4 text-pretty text-lg text-white/75 sm:text-xl font-devanagari">
               सिविल सेवा परीक्षाओं (UPSC, MPPSC) एवं अन्य प्रतियोगी परीक्षाओं के लिए मुख्य विषयों का विषय-वार संकलन और समसामयिक विकास से समन्वय।
@@ -136,7 +136,7 @@ export default async function GeneralAwarenessPage({ searchParams }: Props) {
               <BookOpen className="h-12 w-12 text-muted-foreground/60 stroke-[1.5]" />
               <p className="mt-4 text-lg font-semibold text-foreground">इस विषय में अभी कोई लेख नहीं है</p>
               <p className="mt-2 text-sm text-muted-foreground max-w-sm">
-                जल्द ही इस विषय के अंतर्गत परीक्षा-उपयोगी स्टेटिक अध्ययन सामग्री जोड़ी जाएगी।
+                जल्द ही इस विषय के अंतर्गत परीक्षा-उपयोगी सामान्य अध्ययन सामग्री जोड़ी जाएगी।
               </p>
             </div>
           )}
