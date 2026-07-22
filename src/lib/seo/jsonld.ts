@@ -15,13 +15,44 @@ const base = (type: string, data: Record<string, unknown>): JsonLd => ({
 });
 
 export function organizationJsonLd(): JsonLd {
-  return base("Organization", {
+  return base("EducationalOrganization", {
     "@id": `${siteConfig.url}/#organization`,
     name: siteConfig.name,
+    alternateName: "आकार IAS",
     url: siteConfig.url,
     logo: `${siteConfig.url}/logo.png`,
+    image: `${siteConfig.url}/logo.png`,
     description: siteConfig.description,
+    foundingDate: "2010",
     sameAs: Object.values(siteConfig.links),
+    areaServed: {
+      "@type": "Country",
+      name: "India",
+    },
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "178/2/4 - A B Road, near Rajiv Gandhi Circle, Pipliya Rao",
+      addressLocality: "Indore",
+      addressRegion: "Madhya Pradesh",
+      postalCode: "452001",
+      addressCountry: "IN",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 22.6845,
+      longitude: 75.8596,
+    },
+    knowsAbout: [
+      "MPPSC State Services Examination",
+      "MPSI Examination",
+      "UPSC Civil Services Examination",
+      "Current Affairs",
+      "General Studies",
+      "Indian Polity",
+      "Indian Economy",
+      "Indian History",
+      "Geography",
+    ],
     contactPoint: [
       {
         "@type": "ContactPoint",
@@ -270,6 +301,69 @@ export function bookJsonLd(input: BookJsonLdInput): JsonLd {
         }
       : {}),
   });
+}
+
+/* ─── ItemList Schema (for course/resource lists on homepage) ──── */
+
+export interface ItemListJsonLdInput {
+  name: string;
+  description?: string;
+  url: string;
+  items: { name: string; url: string; image?: string; description?: string }[];
+}
+
+export function itemListJsonLd(input: ItemListJsonLdInput): JsonLd {
+  return base("ItemList", {
+    "@id": `${input.url}#itemlist`,
+    name: input.name,
+    description: input.description,
+    url: input.url,
+    numberOfItems: input.items.length,
+    itemListElement: input.items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      url: item.url,
+      ...(item.image ? { image: item.image } : {}),
+      ...(item.description ? { description: item.description } : {}),
+    })),
+  });
+}
+
+/* ─── Homepage JSON-LD composer ─────────────────────────────────── */
+
+export interface HomepageJsonLdInput {
+  faqs?: { question: string; answer: string }[];
+  courses?: { name: string; url: string; image?: string; description?: string }[];
+  locale?: "hi" | "en";
+}
+
+export function homepageJsonLd(input: HomepageJsonLdInput = {}): JsonLd[] {
+  const schemas: JsonLd[] = [];
+
+  // BreadcrumbList — Home only
+  schemas.push(breadcrumbJsonLd([
+    { name: input.locale === "en" ? "Home" : "होम", url: siteConfig.url },
+  ]));
+
+  // FAQPage if FAQs exist
+  if (input.faqs && input.faqs.length > 0) {
+    schemas.push(faqJsonLd(input.faqs));
+  }
+
+  // ItemList for courses
+  if (input.courses && input.courses.length > 0) {
+    schemas.push(itemListJsonLd({
+      name: input.locale === "en" ? "Courses & Test Series by Aakar IAS" : "आकार IAS कोर्सेज और टेस्ट सीरीज",
+      description: input.locale === "en"
+        ? "Online and offline coaching courses for UPSC and MPPSC by Aakar IAS, Indore"
+        : "UPSC और MPPSC की तैयारी के लिए आकार IAS इंदौर के ऑनलाइन और ऑफलाइन कोर्सेज",
+      url: `${siteConfig.url}${input.locale === "en" ? "/en" : ""}`,
+      items: input.courses,
+    }));
+  }
+
+  return schemas;
 }
 
 /** Merge several schemas into one JSON-LD graph (recommended for pages). */

@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
+import { JsonLd } from "@/components/seo/json-ld";
+import { homepageJsonLd, jsonLdGraph } from "@/lib/seo/jsonld";
 import { ArrowRight, Download, FileText, Monitor, Users, Award, BookOpen, Brain, Trophy, ChevronRight, HelpCircle, CheckCircle2, Play, Tv, ExternalLink, Eye, Calendar, MessageSquare, Bell, CalendarDays, GraduationCap } from "lucide-react";
 import { getContentRepository } from "@/lib/content/content-repository";
 import { buildMetadata, formatDate } from "@/lib/seo/metadata";
@@ -27,9 +29,33 @@ import { NoticeTicker } from "@/components/layout/notice-ticker";
 export const revalidate = 900; // 15 min ISR
 
 export const metadata = buildMetadata({
-  title: "आकार IAS — UPSC & MPPSC के लिए भारत का सर्वश्रेष्ठ संस्थान",
-  description: "Aakar IAS द्वारा सिविल सेवा परीक्षा (UPSC CSE, MPPSC) की सर्वश्रेष्ठ तैयारी के लिए ऑनलाइन और ऑफलाइन कोर्सेज, टेस्ट सीरीज और दैनिक करेंट अफेयर्स पोर्टल।",
+  title: "आकार IAS — MPPSC, MPSI & UPSC के लिए भारत का सर्वश्रेष्ठ कोचिंग संस्थान, इंदौर",
+  description: "Aakar IAS इंदौर — MPPSC, MPSI और UPSC CSE की तैयारी के लिए सर्वश्रेष्ठ कोचिंग। ऑनलाइन/ऑफलाइन कोर्सेज, टेस्ट सीरीज, दैनिक करेंट अफेयर्स, फ्री PDF नोट्स और 5000+ सफल अभ्यर्थी।",
   path: "/",
+  keywords: [
+    "Aakar IAS",
+    "आकार IAS",
+    "MPPSC coaching",
+    "MPPSC coaching Indore",
+    "MPSI coaching",
+    "MPSI coaching Indore",
+    "UPSC coaching",
+    "UPSC coaching Indore",
+    "best IAS coaching Indore",
+    "IAS coaching institute",
+    "civil services coaching",
+    "MPPSC preparation",
+    "MPSI preparation",
+    "UPSC preparation",
+    "current affairs UPSC",
+    "करेंट अफेयर्स",
+    "MPPSC online classes",
+    "UPSC test series",
+    "MPPSC test series",
+    "free PDF UPSC",
+    "UPSC notes Hindi",
+    "सिविल सेवा परीक्षा कोचिंग",
+  ],
 });
 
 export default async function HomePage() {
@@ -177,8 +203,44 @@ export default async function HomePage() {
       }))
     : staticChannels;
 
+  // ─── Build homepage JSON-LD ────────────────────────────────────────
+  const courseItems = [
+    ...(onlineCourses || []).slice(0, 4).map((c) => ({
+      name: c.titleHi || c.titleEn,
+      url: `${siteConfig.url}/online-courses`,
+      description: c.descriptionHi || c.descriptionEn || undefined,
+    })),
+    ...(offlineBatches || []).slice(0, 2).map((b) => ({
+      name: b.titleHi || b.titleEn,
+      url: `${siteConfig.url}/offline-courses`,
+      description: b.descriptionHi || b.descriptionEn || undefined,
+    })),
+    ...(testSeries || []).slice(0, 2).map((ts) => ({
+      name: ts.titleHi || ts.titleEn,
+      url: `${siteConfig.url}/test-series`,
+      description: ts.descriptionHi || ts.descriptionEn || undefined,
+    })),
+  ];
+
+  const faqItems = (faqs || []).slice(0, 6).map((f) => ({
+    question: f.question,
+    answer: f.answer,
+  }));
+
+  const hpSchemas = homepageJsonLd({
+    faqs: faqItems,
+    courses: courseItems,
+    locale: "hi",
+  });
+
   return (
     <>
+      {/* ─── Homepage Structured Data ──────────────────────────────────── */}
+      <JsonLd data={jsonLdGraph(hpSchemas)} />
+
+      {/* ─── SEO: Visually-hidden H1 for heading hierarchy ────────────── */}
+      <h1 className="sr-only">आकार IAS — MPPSC, MPSI और UPSC के लिए भारत का सर्वश्रेष्ठ कोचिंग संस्थान, इंदौर</h1>
+
       {/* ─── Hero Slider ────────────────────────────────────────────────── */}
       <HeroSlider slides={homeConfig?.heroSlides} locale="hi" />
 
@@ -255,7 +317,7 @@ export default async function HomePage() {
                   Aakar IAS Update
                 </h3>
                 <Button variant="ghost" size="sm" className="text-primary hover:text-primary/80 font-bold p-0 gap-1 hover:bg-transparent" asChild>
-                  <Link href="/notifications">सभी देखें <ArrowRight className="h-4 w-4" /></Link>
+                  <Link href="/notifications">सभी परीक्षा सूचनाएं देखें <ArrowRight className="h-4 w-4" /></Link>
                 </Button>
               </div>
 
@@ -519,7 +581,7 @@ export default async function HomePage() {
           action={
             <Button variant="ghost" asChild>
               <Link href="/free-pdf">
-                सभी देखें <ArrowRight className="ml-1 h-4 w-4" />
+                फ्री पीडीएफ लाइब्रेरी देखें <ArrowRight className="ml-1 h-4 w-4" />
               </Link>
             </Button>
           }
@@ -580,7 +642,7 @@ export default async function HomePage() {
                     {topper.avatar ? (
                       <Image
                         src={topper.avatar}
-                        alt={topper.name}
+                        alt={`Aakar IAS सफल अभ्यर्थी ${topper.name} - ${topper.exam} Rank ${topper.rank}`}
                         fill
                         sizes="144px"
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -609,7 +671,7 @@ export default async function HomePage() {
             <div className="text-center mt-10">
               <Button variant="outline" className="rounded-full" asChild>
                 <Link href="/selections">
-                  सभी सफल छात्र देखें <ArrowRight className="ml-1.5 h-4 w-4" />
+                  UPSC MPPSC सफल अभ्यर्थी देखें <ArrowRight className="ml-1.5 h-4 w-4" />
                 </Link>
               </Button>
             </div>
@@ -650,7 +712,7 @@ export default async function HomePage() {
                         {faculty.image ? (
                           <Image
                             src={faculty.image}
-                            alt={name}
+                            alt={`Aakar IAS शिक्षक ${name} - ${title}`}
                             fill
                             sizes="144px"
                             className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -680,7 +742,7 @@ export default async function HomePage() {
             <div className="text-center mt-10">
               <Button variant="outline" className="rounded-full" asChild>
                 <Link href="/faculty">
-                  सभी शिक्षक देखें <ArrowRight className="ml-1.5 h-4 w-4" />
+                  UPSC MPPSC विशेषज्ञ शिक्षक देखें <ArrowRight className="ml-1.5 h-4 w-4" />
                 </Link>
               </Button>
             </div>

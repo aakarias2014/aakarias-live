@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
+import { JsonLd } from "@/components/seo/json-ld";
+import { homepageJsonLd, jsonLdGraph } from "@/lib/seo/jsonld";
 import { ArrowRight, Download, FileText, Monitor, Users, Award, BookOpen, Brain, Trophy, ChevronRight, HelpCircle, CheckCircle2, Play, Tv, ExternalLink, Eye, Calendar, MessageSquare, Bell, CalendarDays, GraduationCap } from "lucide-react";
 import { getContentRepository } from "@/lib/content/content-repository";
 import { buildMetadata, formatDate } from "@/lib/seo/metadata";
@@ -27,9 +29,34 @@ import { NoticeTicker } from "@/components/layout/notice-ticker";
 export const revalidate = 900; // 15 min ISR
 
 export const metadata = buildMetadata({
-  title: "Aakar IAS — India's Premier Institute for UPSC & MPPSC",
-  description: "Best online and offline classes, mock test series, and resources for UPSC CSE, MPPSC and other Civil Services exams by Aakar IAS.",
+  title: "Aakar IAS — Best MPPSC, MPSI & UPSC Coaching Institute in Indore, India",
+  description: "Aakar IAS Indore — India's top coaching institute for MPPSC, MPSI & UPSC CSE. Online/offline courses, mock test series, daily current affairs, free PDF notes & 5000+ selections.",
   path: "/en",
+  keywords: [
+    "Aakar IAS",
+    "MPPSC coaching",
+    "MPPSC coaching Indore",
+    "MPSI coaching",
+    "MPSI coaching Indore",
+    "UPSC coaching",
+    "UPSC coaching Indore",
+    "best IAS coaching Indore",
+    "best MPPSC coaching institute",
+    "MPSI preparation online",
+    "IAS coaching institute",
+    "civil services coaching",
+    "UPSC preparation online",
+    "MPPSC preparation",
+    "current affairs UPSC MPPSC MPSI",
+    "UPSC online coaching",
+    "MPPSC online classes",
+    "UPSC test series",
+    "MPPSC test series",
+    "MPSI test series",
+    "free UPSC PDF notes",
+    "UPSC notes Hindi English",
+    "civil services exam coaching",
+  ],
 });
 
 export default async function EnglishHomePage() {
@@ -177,8 +204,44 @@ export default async function EnglishHomePage() {
       }))
     : staticChannels;
 
+  // ─── Build homepage JSON-LD ────────────────────────────────────────
+  const courseItems = [
+    ...(onlineCourses || []).slice(0, 4).map((c) => ({
+      name: c.titleEn || c.titleHi,
+      url: `${siteConfig.url}/en/online-courses`,
+      description: c.descriptionEn || c.descriptionHi || undefined,
+    })),
+    ...(offlineBatches || []).slice(0, 2).map((b) => ({
+      name: b.titleEn || b.titleHi,
+      url: `${siteConfig.url}/en/offline-courses`,
+      description: b.descriptionEn || b.descriptionHi || undefined,
+    })),
+    ...(testSeries || []).slice(0, 2).map((ts) => ({
+      name: ts.titleEn || ts.titleHi,
+      url: `${siteConfig.url}/en/test-series`,
+      description: ts.descriptionEn || ts.descriptionHi || undefined,
+    })),
+  ];
+
+  const faqItems = (faqs || []).slice(0, 6).map((f) => ({
+    question: f.question,
+    answer: f.answer,
+  }));
+
+  const hpSchemas = homepageJsonLd({
+    faqs: faqItems,
+    courses: courseItems,
+    locale: "en",
+  });
+
   return (
     <>
+      {/* ─── Homepage Structured Data ──────────────────────────────────── */}
+      <JsonLd data={jsonLdGraph(hpSchemas)} />
+
+      {/* ─── SEO: Visually-hidden H1 for heading hierarchy ────────────── */}
+      <h1 className="sr-only">Aakar IAS — Best MPPSC, MPSI &amp; UPSC Coaching Institute in Indore, India</h1>
+
       {/* ─── Hero Slider ────────────────────────────────────────────────── */}
       <HeroSlider slides={homeConfig?.heroSlides} locale="en" />
 
@@ -255,7 +318,7 @@ export default async function EnglishHomePage() {
                   Aakar IAS Update
                 </h3>
                 <Button variant="ghost" size="sm" className="text-primary hover:text-primary/80 font-bold p-0 gap-1 hover:bg-transparent" asChild>
-                  <Link href="/en/notifications">View All <ArrowRight className="h-4 w-4" /></Link>
+                  <Link href="/en/notifications">All Exam Notifications <ArrowRight className="h-4 w-4" /></Link>
                 </Button>
               </div>
 
@@ -519,7 +582,7 @@ export default async function EnglishHomePage() {
           action={
             <Button variant="ghost" asChild>
               <Link href="/en/free-pdf">
-                View all <ArrowRight className="ml-1 h-4 w-4" />
+                Free UPSC MPPSC Study PDFs <ArrowRight className="ml-1 h-4 w-4" />
               </Link>
             </Button>
           }
@@ -579,7 +642,7 @@ export default async function EnglishHomePage() {
                     {topper.avatar ? (
                       <Image
                         src={topper.avatar}
-                        alt={topper.nameEn || topper.name}
+                        alt={`Aakar IAS Selected Candidate ${topper.nameEn || topper.name} - ${topper.exam} Rank ${topper.rank}`}
                         fill
                         sizes="144px"
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -608,7 +671,7 @@ export default async function EnglishHomePage() {
             <div className="text-center mt-10">
               <Button variant="outline" className="rounded-full" asChild>
                 <Link href="/en/selections">
-                  View All Selections <ArrowRight className="ml-1.5 h-4 w-4" />
+                  UPSC MPPSC Selected Candidates <ArrowRight className="ml-1.5 h-4 w-4" />
                 </Link>
               </Button>
             </div>
@@ -649,7 +712,7 @@ export default async function EnglishHomePage() {
                         {faculty.image ? (
                           <Image
                             src={faculty.image}
-                            alt={name}
+                            alt={`Aakar IAS Faculty ${name} - ${title}`}
                             fill
                             sizes="144px"
                             className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -679,7 +742,7 @@ export default async function EnglishHomePage() {
             <div className="text-center mt-10">
               <Button variant="outline" className="rounded-full" asChild>
                 <Link href="/en/faculty">
-                  View All Mentors & Faculty <ArrowRight className="ml-1.5 h-4 w-4" />
+                  UPSC MPPSC Expert Faculty <ArrowRight className="ml-1.5 h-4 w-4" />
                 </Link>
               </Button>
             </div>
