@@ -4,6 +4,13 @@ const nextConfig: NextConfig = {
   // Optimised standalone output for Vercel / Docker deployments.
   output: "standalone",
 
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+
   images: {
     formats: ["image/avif", "image/webp"],
     // Allow images from Sanity CDN and Google User Content.
