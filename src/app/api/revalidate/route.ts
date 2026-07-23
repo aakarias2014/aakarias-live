@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import crypto from "crypto";
 
 // Function to verify HMAC SHA256 signature from Sanity
@@ -64,6 +64,7 @@ export async function POST(req: NextRequest) {
 
   // Map type to path segment
   const typeMap: Record<string, string> = {
+    "currentAffairs": "current-affairs",
     "current-affairs": "current-affairs",
     "editorial": "editorial",
     "blog": "blog",
@@ -71,6 +72,11 @@ export async function POST(req: NextRequest) {
     "monthly": "monthly",
     "monthly-pdf": "monthly-pdf",
     "downloadPageConfig": "download",
+    "onlineCourse": "online-courses",
+    "testSeries": "test-series",
+    "publication": "publications",
+    "offlineBatch": "offline-courses",
+    "faculty": "faculty",
   };
 
   const segment = typeMap[_type];
@@ -97,17 +103,40 @@ export async function POST(req: NextRequest) {
     pathsToRevalidate.push("/en/calendar");
   }
 
-  // Trigger on-demand revalidation for all matching paths
+  // Trigger on-demand revalidation for all matching paths & cache tags
   try {
     for (const path of pathsToRevalidate) {
       revalidatePath(path);
       console.log(`[ISR] Revalidated path: ${path}`);
     }
 
+    // Trigger cache tag invalidation
+    const tagMap: Record<string, string> = {
+      onlineCourse: "onlineCourses",
+      testSeries: "testSeries",
+      publication: "publications",
+      offlineBatch: "offlineBatches",
+      faculty: "faculties",
+      topper: "toppers",
+      topperCopy: "topperCopies",
+      pyq: "pyqs",
+      monthlyPdf: "monthlyPdfs",
+      currentAffairs: "articles",
+      editorial: "articles",
+      blog: "articles",
+    };
+
+    const targetTag = tagMap[_type];
+    if (targetTag) {
+      revalidateTag(targetTag);
+      console.log(`[ISR] Revalidated cache tag: ${targetTag}`);
+    }
+
     return NextResponse.json({
       revalidated: true,
-      message: `Successfully revalidated ${pathsToRevalidate.length} paths`,
+      message: `Successfully revalidated ${pathsToRevalidate.length} paths and tag ${targetTag || "none"}`,
       paths: pathsToRevalidate,
+      tag: targetTag || null,
     });
   } catch (err) {
     console.error("ISR revalidation execution error:", err);
