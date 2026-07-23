@@ -45,40 +45,40 @@ export function BatchesShowcase({
         </div>
 
         {/* Tab Controls */}
-        <div className="flex justify-center mb-10">
-          <div className="inline-flex p-1.5 bg-background rounded-2xl border border-border shadow-sm">
+        <div className="flex justify-center mb-8 sm:mb-10 px-1">
+          <div className="grid grid-cols-3 w-full max-w-xl p-1.5 bg-background rounded-2xl border border-border shadow-soft">
             <button
               onClick={() => setActiveTab("online")}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all ${
+              className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 px-2 sm:px-5 py-2.5 rounded-xl text-[11px] sm:text-sm font-extrabold transition-all select-none ${
                 activeTab === "online"
-                  ? "bg-primary text-white shadow-md"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "bg-primary text-white shadow-md shadow-primary/20"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted/40"
               }`}
             >
-              <Monitor className="h-4 w-4" />
-              {isHi ? "ऑनलाइन क्लासेस" : "Online Courses"}
+              <Monitor className="h-4 w-4 shrink-0" />
+              <span className="whitespace-nowrap">{isHi ? "ऑनलाइन क्लासेस" : "Online Courses"}</span>
             </button>
             <button
               onClick={() => setActiveTab("offline")}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all ${
+              className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 px-2 sm:px-5 py-2.5 rounded-xl text-[11px] sm:text-sm font-extrabold transition-all select-none ${
                 activeTab === "offline"
-                  ? "bg-primary text-white shadow-md"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "bg-primary text-white shadow-md shadow-primary/20"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted/40"
               }`}
             >
-              <Users className="h-4 w-4" />
-              {isHi ? "ऑफलाइन केंद्र (Indore)" : "Offline Classes (Indore)"}
+              <Users className="h-4 w-4 shrink-0" />
+              <span className="whitespace-nowrap">{isHi ? "ऑफलाइन केंद्र" : "Offline Classes"}</span>
             </button>
             <button
               onClick={() => setActiveTab("test-series")}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all ${
+              className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 px-2 sm:px-5 py-2.5 rounded-xl text-[11px] sm:text-sm font-extrabold transition-all select-none ${
                 activeTab === "test-series"
-                  ? "bg-primary text-white shadow-md"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "bg-primary text-white shadow-md shadow-primary/20"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted/40"
               }`}
             >
-              <FileText className="h-4 w-4" />
-              {isHi ? "टेस्ट सीरीज" : "Test Series"}
+              <FileText className="h-4 w-4 shrink-0" />
+              <span className="whitespace-nowrap">{isHi ? "टेस्ट सीरीज" : "Test Series"}</span>
             </button>
           </div>
         </div>

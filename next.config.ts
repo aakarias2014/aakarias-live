@@ -1,12 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Disable Next.js dev indicator overlay badge on bottom left
+  devIndicators: false,
+
   // Optimised standalone output for Vercel / Docker deployments.
   output: "standalone",
 
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },

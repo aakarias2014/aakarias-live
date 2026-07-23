@@ -39,21 +39,6 @@ export default async function EnglishOfflineCoursesPage() {
 
   return (
     <>
-      {/* Page Header with Breadcrumb */}
-      <Section className="pb-0 pt-8">
-        <Container size="wide">
-          <Breadcrumb items={[{ name: "Offline Courses", href: "/en/offline-courses" }]} />
-          <div className="mt-6">
-            <h1 className="text-balance text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-              Offline Classroom Program
-            </h1>
-            <p className="mt-2 max-w-3xl text-lg text-muted-foreground">
-              Our exclusive offline classroom programs held at our Indore and Prayagraj campuses.
-            </p>
-          </div>
-        </Container>
-      </Section>
-
       {/* Main Interactive Offline Courses Content */}
       <OfflineCoursesClient faculties={faculties} offlineBatches={offlineBatches} brochureUrl={brochureUrl || undefined} />
 

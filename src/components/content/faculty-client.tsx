@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { GraduationCap, BookOpen, ArrowLeft, Search, Users, Sparkles } from "lucide-react";
+import { GraduationCap, Sparkles, Search, Users, ChevronDown, ChevronUp } from "lucide-react";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Card } from "@/components/ui/card";
@@ -18,6 +18,14 @@ interface FacultyClientProps {
 export function FacultyClient({ faculties, locale }: FacultyClientProps) {
   const [activeFilter, setActiveFilter] = useState<"all" | "hindi" | "english">("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [expandedIds, setExpandedIds] = useState<Record<string, boolean>>({});
+
+  const toggleExpand = (id: string) => {
+    setExpandedIds((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
 
   const filteredFaculties = faculties.filter((faculty) => {
     // Media filter
@@ -105,13 +113,14 @@ export function FacultyClient({ faculties, locale }: FacultyClientProps) {
 
           {/* Grid Layout */}
           {filteredFaculties.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-start">
               {filteredFaculties.map((faculty) => {
                 const name = locale === "hi" ? faculty.nameHi : faculty.nameEn;
                 const title = locale === "hi" ? faculty.titleHi : faculty.titleEn;
                 const desc = locale === "hi" ? faculty.descHi : faculty.descEn;
+                const isExpanded = !!expandedIds[faculty.id];
                 return (
-                  <Card key={faculty.id} className="group border border-border/60 rounded-2xl shadow-soft hover:shadow-soft-lg hover:border-primary/20 transition-all duration-300 overflow-hidden flex flex-col justify-between">
+                  <Card key={faculty.id} className="group border border-border/60 rounded-2xl shadow-soft hover:shadow-soft-lg hover:border-primary/20 transition-all duration-300 overflow-hidden flex flex-col justify-between h-full">
                     <div>
                       {/* Faculty Image Banner */}
                       <div className="relative aspect-[4/5] w-full bg-muted overflow-hidden">
@@ -139,15 +148,36 @@ export function FacultyClient({ faculties, locale }: FacultyClientProps) {
 
                       {/* Bio Details */}
                       <div className="p-5 space-y-2">
-                        <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors line-clamp-1">
+                        <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors line-clamp-1 font-devanagari">
                           {name}
                         </h3>
                         <p className="text-xs font-bold text-primary tracking-wide uppercase line-clamp-1">
                           {title}
                         </p>
-                        <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3 pt-1">
+                        <p className={`text-xs text-muted-foreground leading-relaxed font-devanagari transition-all duration-300 ${
+                          isExpanded ? "line-clamp-none" : "line-clamp-3"
+                        }`}>
                           {desc}
                         </p>
+                        {desc && desc.length > 70 && (
+                          <button
+                            type="button"
+                            onClick={() => toggleExpand(faculty.id)}
+                            className="pt-1 inline-flex items-center gap-1 text-xs font-bold text-primary hover:text-primary/80 transition-colors"
+                          >
+                            {isExpanded ? (
+                              <>
+                                {locale === "hi" ? "कम दिखाएं" : "Show Less"}
+                                <ChevronUp className="h-3.5 w-3.5" />
+                              </>
+                            ) : (
+                              <>
+                                {locale === "hi" ? "और देखें..." : "See More..."}
+                                <ChevronDown className="h-3.5 w-3.5" />
+                              </>
+                            )}
+                          </button>
+                        )}
                       </div>
                     </div>
                   </Card>

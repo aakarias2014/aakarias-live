@@ -24,7 +24,11 @@ import {
   Briefcase,
   GraduationCap,
   UserCheck,
-  Calendar
+  Calendar,
+  Rocket,
+  Shield,
+  Laptop,
+  Trophy
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -111,7 +115,7 @@ export default async function AboutPage() {
                 <nav className="flex flex-col gap-1 p-5 bg-card border border-border/60 rounded-2xl shadow-soft">
                   <h4 className="font-mono text-xs font-bold text-primary tracking-wider uppercase mb-3 px-2">NAVIGATION</h4>
                   {[
-                    { name: "हमारी कहानी", href: "#story" },
+                    { name: "हमारी यात्रा", href: "#story" },
                     { name: "लक्ष्य और दृष्टिकोण", href: "#mission" },
                     { name: "आकार ही क्यों?", href: "#why-aakar" },
                     { name: "आंकड़े", href: "#stats" },
@@ -124,8 +128,8 @@ export default async function AboutPage() {
                       href={item.href}
                       className="flex items-center justify-between px-3 py-2 text-sm font-medium text-muted-foreground rounded-lg hover:bg-muted hover:text-foreground transition-all group"
                     >
-                      {item.name}
-                      <ChevronRight className="h-4 w-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary" />
+                      <span>{item.name}</span>
+                      <ChevronRight className="h-4 w-4 text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
                     </a>
                   ))}
                 </nav>
@@ -157,50 +161,145 @@ export default async function AboutPage() {
             {/* Main Content Content */}
             <div className="col-span-12 lg:col-span-9 space-y-20 pb-20">
               
-              {/* Our Story (Timeline) */}
-              <section id="story" className="scroll-mt-28 space-y-6">
-                <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl border-b border-border/60 pb-3">
-                  हमारी कहानी (Our Story)
-                </h2>
+              {/* Our Story / Our Journey (Timeline) */}
+              <section id="story" className="scroll-mt-28 space-y-8">
+                <div className="space-y-3 border-b border-border/60 pb-6">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-xs font-black font-mono text-red-600 dark:text-red-400 uppercase tracking-widest">
+                    <Sparkles className="h-3.5 w-3.5" /> OUR JOURNEY • हमारी यात्रा
+                  </div>
+                  <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground font-devanagari">
+                    हमारी यात्रा (Our Journey)
+                  </h2>
+                  <p className="text-base sm:text-lg text-muted-foreground max-w-3xl leading-relaxed font-devanagari">
+                    एक छोटे से प्रयास से शुरू हुई हमारी यात्रा आज हजारों अभ्यर्थियों के विश्वास और सफलता की कहानी बन चुकी है।
+                  </p>
+                </div>
+
                 {page && page.body && (
                   <div className="prose prose-aakar dark:prose-invert max-w-none pb-4 text-muted-foreground leading-relaxed">
                     <PortableText value={page.body} />
                   </div>
                 )}
-                <div className="relative pl-8 md:pl-12 border-l-2 border-primary/20 py-4 space-y-12">
-                  
-                  {/* Timeline 2012 */}
-                  <div className="relative">
-                    <div className="absolute -left-[39px] md:-left-[55px] top-1.5 w-4 h-4 bg-primary rounded-full border-4 border-background ring-4 ring-primary/15"></div>
-                    <div className="max-w-2xl space-y-2">
-                      <span className="inline-block font-mono text-xs font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded-full">2014</span>
-                      <h3 className="text-xl font-bold text-foreground">शुरुआत (The Seed is Sown)</h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        मुखर्जी नगर में एक छोटे से कमरे में 10 छात्रों और सिविल सेवा परीक्षा की तैयारी की जटिलताओं को सरल बनाने के एक मजबूत दृष्टिकोण के साथ आकार एकेडमी की शुरुआत हुई।
+
+                {/* Timeline Container */}
+                <div className="relative pl-6 sm:pl-10 md:pl-12 pt-2 pb-4 space-y-16 md:space-y-20">
+                  {/* Timeline Continuous Gradient Line */}
+                  <div 
+                    className="absolute left-2.5 sm:left-4 md:left-5 top-3 bottom-3 w-0.5 bg-gradient-to-b from-red-500 via-primary to-red-500/20 rounded-full shadow-[0_0_8px_rgba(239,68,68,0.3)]"
+                    aria-hidden="true"
+                  />
+
+                  {/* Timeline Item 2014 */}
+                  <div className="relative group transition-all duration-500">
+                    {/* Node Dot */}
+                    <div className="absolute -left-[23px] sm:-left-[31px] md:-left-[35px] top-2.5 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-zinc-900 border-2 border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)] flex items-center justify-center transition-all duration-300 group-hover:scale-125 group-hover:border-red-600 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.5)]">
+                      <Rocket className="h-4 w-4 text-red-600 dark:text-red-400" />
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="bg-white dark:bg-card border border-border/80 rounded-2xl p-6 sm:p-8 shadow-soft hover:shadow-xl hover:border-red-500/40 transition-all duration-300 hover:-translate-y-1">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs sm:text-sm font-bold bg-[#FEE2E2] text-red-700 dark:bg-red-950/80 dark:text-red-300 border border-red-200/80 dark:border-red-800/40 shadow-xs mb-3">
+                        2014
+                      </span>
+                      
+                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white leading-tight flex items-center gap-2.5 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors font-devanagari">
+                        <span>एक छोटे कदम से बड़ी शुरुआत</span>
+                      </h3>
+
+                      <p className="text-base sm:text-[17px] leading-[1.9] text-gray-600 dark:text-zinc-300 font-devanagari mt-3.5">
+                        सिविल सेवा एवं राज्य लोक सेवा आयोग की तैयारी को सरल, व्यवस्थित और गुणवत्तापूर्ण बनाने के उद्देश्य से <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">आकार IAS की स्थापना इंदौर में हुई</strong>। सीमित संसाधनों लेकिन बड़े सपनों के साथ शुरू हुई यह यात्रा आज <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">हजारों अभ्यर्थियों के विश्वास का प्रतीक</strong> बन चुकी है।
                       </p>
                     </div>
                   </div>
 
-                  {/* Timeline 2016 */}
-                  <div className="relative">
-                    <div className="absolute -left-[39px] md:-left-[55px] top-1.5 w-4 h-4 bg-primary/40 rounded-full border-4 border-background ring-4 ring-primary/5"></div>
-                    <div className="max-w-2xl space-y-2">
-                      <span className="inline-block font-mono text-xs font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded-full">2016</span>
-                      <h3 className="text-xl font-bold text-foreground">राष्ट्रव्यापी उपस्थिति</h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        हमने अपना पहला प्रमुख केंद्र स्थापित किया और देश भर के छात्रों को जोड़ने के लिए एकीकृत हिंदी-अंग्रेजी टेस्ट सीरीज प्लेटफॉर्म लॉन्च किया।
+                  {/* Timeline Item 2016 */}
+                  <div className="relative group transition-all duration-500">
+                    {/* Node Dot */}
+                    <div className="absolute -left-[23px] sm:-left-[31px] md:-left-[35px] top-2.5 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-zinc-900 border-2 border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)] flex items-center justify-center transition-all duration-300 group-hover:scale-125 group-hover:border-red-600 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.5)]">
+                      <Shield className="h-4 w-4 text-red-600 dark:text-red-400" />
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="bg-white dark:bg-card border border-border/80 rounded-2xl p-6 sm:p-8 shadow-soft hover:shadow-xl hover:border-red-500/40 transition-all duration-300 hover:-translate-y-1">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs sm:text-sm font-bold bg-[#FEE2E2] text-red-700 dark:bg-red-950/80 dark:text-red-300 border border-red-200/80 dark:border-red-800/40 shadow-xs mb-3">
+                        2016
+                      </span>
+                      
+                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white leading-tight flex items-center gap-2.5 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors font-devanagari">
+                        <span>भरोसे की मजबूत नींव</span>
+                      </h3>
+
+                      <p className="text-base sm:text-[17px] leading-[1.9] text-gray-600 dark:text-zinc-300 font-devanagari mt-3.5">
+                        बेहतरीन शिक्षण पद्धति, <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">अनुभवी फैकल्टी</strong> और परीक्षा-केंद्रित तैयारी के कारण <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">आकार IAS</strong> ने मध्यप्रदेश के प्रतियोगी छात्रों के बीच अपनी अलग पहचान बनाई। <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">नियमित टेस्ट, उत्तर लेखन अभ्यास और 1-on-1 व्यक्तिगत मार्गदर्शन</strong> ने सफलता की नई कहानियाँ लिखनी शुरू कीं।
                       </p>
                     </div>
                   </div>
 
-                  {/* Timeline 2024 */}
-                  <div className="relative">
-                    <div className="absolute -left-[39px] md:-left-[55px] top-1.5 w-4 h-4 bg-primary/40 rounded-full border-4 border-background ring-4 ring-primary/5"></div>
-                    <div className="max-w-2xl space-y-2">
-                      <span className="inline-block font-mono text-xs font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded-full">2024</span>
-                      <h3 className="text-xl font-bold text-foreground">डिजिटल क्रांति का नेतृत्व</h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        हमारे हाइब्रिड लर्निंग इकोसिस्टम, दैनिक करेंट अफेयर्स अपडेट और व्यक्तिगत परामर्श के माध्यम से देश भर में सालाना 50,000 से अधिक उम्मीदवारों को ऑनलाइन व ऑफलाइन सशक्त बनाना।
+                  {/* Timeline Item 2020 */}
+                  <div className="relative group transition-all duration-500">
+                    {/* Node Dot */}
+                    <div className="absolute -left-[23px] sm:-left-[31px] md:-left-[35px] top-2.5 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-zinc-900 border-2 border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)] flex items-center justify-center transition-all duration-300 group-hover:scale-125 group-hover:border-red-600 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.5)]">
+                      <Laptop className="h-4 w-4 text-red-600 dark:text-red-400" />
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="bg-white dark:bg-card border border-border/80 rounded-2xl p-6 sm:p-8 shadow-soft hover:shadow-xl hover:border-red-500/40 transition-all duration-300 hover:-translate-y-1">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs sm:text-sm font-bold bg-[#FEE2E2] text-red-700 dark:bg-red-950/80 dark:text-red-300 border border-red-200/80 dark:border-red-800/40 shadow-xs mb-3">
+                        2020
+                      </span>
+                      
+                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white leading-tight flex items-center gap-2.5 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors font-devanagari">
+                        <span>शिक्षा में डिजिटल विस्तार</span>
+                      </h3>
+
+                      <p className="text-base sm:text-[17px] leading-[1.9] text-gray-600 dark:text-zinc-300 font-devanagari mt-3.5">
+                        समय की आवश्यकता को समझते हुए आकार IAS ने <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">ऑनलाइन शिक्षा</strong> की दिशा में महत्वपूर्ण कदम बढ़ाया। <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">Live Classes, Recorded Lectures, Digital Study Material</strong> और <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">Online Test Series</strong> के माध्यम से देशभर के विद्यार्थियों तक गुणवत्तापूर्ण शिक्षा पहुँचाई गई।
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Timeline Item 2024 */}
+                  <div className="relative group transition-all duration-500">
+                    {/* Node Dot */}
+                    <div className="absolute -left-[23px] sm:-left-[31px] md:-left-[35px] top-2.5 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-zinc-900 border-2 border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)] flex items-center justify-center transition-all duration-300 group-hover:scale-125 group-hover:border-red-600 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.5)]">
+                      <Sparkles className="h-4 w-4 text-red-600 dark:text-red-400" />
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="bg-white dark:bg-card border border-border/80 rounded-2xl p-6 sm:p-8 shadow-soft hover:shadow-xl hover:border-red-500/40 transition-all duration-300 hover:-translate-y-1">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs sm:text-sm font-bold bg-[#FEE2E2] text-red-700 dark:bg-red-950/80 dark:text-red-300 border border-red-200/80 dark:border-red-800/40 shadow-xs mb-3">
+                        2024
+                      </span>
+                      
+                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white leading-tight flex items-center gap-2.5 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors font-devanagari">
+                        <span>नवाचार के साथ नई उड़ान</span>
+                      </h3>
+
+                      <p className="text-base sm:text-[17px] leading-[1.9] text-gray-600 dark:text-zinc-300 font-devanagari mt-3.5">
+                        आधुनिक डिजिटल तकनीक, <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">AI आधारित शिक्षण संसाधनों</strong>, अद्यतन <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">Current Affairs</strong>, उत्कृष्टतापूर्ण अध्ययन सामग्री और <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">Hybrid Learning Model</strong> के माध्यम से आकार IAS ने अभ्यर्थियों की तैयारी को अधिक प्रभावी और सुलभ बनाया।
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Timeline Item 2026 */}
+                  <div className="relative group transition-all duration-500">
+                    {/* Node Dot */}
+                    <div className="absolute -left-[23px] sm:-left-[31px] md:-left-[35px] top-2.5 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-zinc-900 border-2 border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)] flex items-center justify-center transition-all duration-300 group-hover:scale-125 group-hover:border-red-600 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.5)]">
+                      <Trophy className="h-4 w-4 text-red-600 dark:text-red-400" />
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="bg-white dark:bg-card border border-border/80 rounded-2xl p-6 sm:p-8 shadow-soft hover:shadow-xl hover:border-red-500/40 transition-all duration-300 hover:-translate-y-1">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs sm:text-sm font-bold bg-[#FEE2E2] text-red-700 dark:bg-red-950/80 dark:text-red-300 border border-red-200/80 dark:border-red-800/40 shadow-xs mb-3">
+                        2026
+                      </span>
+                      
+                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white leading-tight flex items-center gap-2.5 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors font-devanagari">
+                        <span>सफलता की ओर निरंतर अग्रसर</span>
+                      </h3>
+
+                      <p className="text-base sm:text-[17px] leading-[1.9] text-gray-600 dark:text-zinc-300 font-devanagari mt-3.5">
+                        आज आकार IAS <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">MPPSC, UPSC</strong>, MPSI, ESB एवं अन्य प्रतियोगी परीक्षाओं की तैयारी के लिए एक <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">विश्वसनीय संस्थान</strong> के रूप में स्थापित है। हमारा लक्ष्य केवल परीक्षा उत्तीर्ण कराना नहीं, बल्कि प्रत्येक अभ्यर्थी को उसकी क्षमता के अनुरूप <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">व्यक्तिगत मार्गदर्शन</strong> प्रदान करना है।
                       </p>
                     </div>
                   </div>

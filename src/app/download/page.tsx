@@ -178,7 +178,7 @@ export default async function DownloadPage() {
                     तैयारी को दें नया <span className="text-primary">आकार</span>
                   </h2>
                   <p className="text-sm text-muted-foreground max-w-xs mx-auto mb-6">
-                    UPSC और राज्य लोक सेवा आयोग की सर्वश्रेष्ठ तैयारी के लिए अब आकार IAS ऐप डाउनलोड करें।
+                    UPSC, MPPSC एवं अन्य Govt. Exams की सर्वश्रेष्ठ तैयारी के लिए अब आकार IAS ऐप डाउनलोड करें।
                   </p>
                   <div className="flex flex-col gap-2 items-center">
                     <Button className="w-full max-w-xs bg-primary hover:bg-primary/95 text-primary-foreground py-6 rounded-full text-base font-bold shadow-lg shadow-primary/20 flex items-center justify-center gap-2" asChild>
@@ -191,33 +191,66 @@ export default async function DownloadPage() {
                 </div>
               </div>
 
-              {/* Mobile Download Cards Stack */}
-              <div className="space-y-4">
-                <a href={playStoreUrl} target="_blank" rel="noopener noreferrer" className="bg-card p-5 rounded-2xl flex items-center justify-between border border-border/80 shadow-soft hover:shadow-soft-lg hover:border-primary/20 transition-all cursor-pointer group">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center">
-                      <Smartphone className="h-6 w-6" />
+              {/* Mobile Download Cards 2x2 Grid (All 4 Setups) */}
+              <div className="space-y-3">
+                <h3 className="text-sm font-bold text-foreground text-center sm:text-left">प्लेटफ़ॉर्म चुनें (Choose Platform)</h3>
+                <div className="grid grid-cols-2 gap-3">
+                  {/* Android Card */}
+                  <a href={playStoreUrl} target="_blank" rel="noopener noreferrer" className="bg-card p-3.5 rounded-2xl flex flex-col items-center justify-between text-center border border-primary/30 bg-primary/5 shadow-soft hover:shadow-soft-lg transition-all cursor-pointer group min-h-[135px]">
+                    <div className="w-10 h-10 bg-primary/15 text-primary rounded-xl flex items-center justify-center mb-1.5">
+                      <Smartphone className="h-5 w-5" />
                     </div>
-                    <div className="text-left">
-                      <h3 className="font-bold text-base text-foreground">Google Play</h3>
-                      <p className="text-xs text-muted-foreground">Android 8.0+ (v{appVersion})</p>
+                    <div>
+                      <h4 className="font-extrabold text-xs sm:text-sm text-foreground">Android</h4>
+                      <p className="text-[10px] text-muted-foreground mt-0.5">Play Store (v{appVersion})</p>
                     </div>
-                  </div>
-                  <ArrowRight className="h-5 w-5 text-primary group-hover:translate-x-1 transition-transform" />
-                </a>
+                    <span className="mt-2 text-[10px] font-bold text-primary flex items-center gap-0.5">
+                      डाउनलोड <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
+                    </span>
+                  </a>
 
-                <a href={appStoreUrl} target="_blank" rel="noopener noreferrer" className="bg-card p-5 rounded-2xl flex items-center justify-between border border-border/80 shadow-soft hover:shadow-soft-lg hover:border-primary/20 transition-all cursor-pointer group">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-secondary/10 text-secondary dark:bg-muted/40 dark:text-foreground rounded-full flex items-center justify-center">
-                      <Smartphone className="h-6 w-6" />
+                  {/* Windows Card */}
+                  <a href={windowsUrl} target="_blank" rel="noopener noreferrer" className="bg-card p-3.5 rounded-2xl flex flex-col items-center justify-between text-center border border-border/80 shadow-soft hover:shadow-soft-lg hover:border-primary/20 transition-all cursor-pointer group min-h-[135px]">
+                    <div className="w-10 h-10 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-1.5">
+                      <Monitor className="h-5 w-5" />
                     </div>
-                    <div className="text-left">
-                      <h3 className="font-bold text-base text-foreground">App Store</h3>
-                      <p className="text-xs text-muted-foreground">iOS 14.0+ (v{appVersion})</p>
+                    <div>
+                      <h4 className="font-extrabold text-xs sm:text-sm text-foreground">Windows</h4>
+                      <p className="text-[10px] text-muted-foreground mt-0.5">Direct .exe file</p>
                     </div>
-                  </div>
-                  <ArrowRight className="h-5 w-5 text-primary group-hover:translate-x-1 transition-transform" />
-                </a>
+                    <span className="mt-2 text-[10px] font-bold text-primary flex items-center gap-0.5">
+                      डाउनलोड <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
+                    </span>
+                  </a>
+
+                  {/* Mac Intel Card */}
+                  <a href={macIntelUrl} target="_blank" rel="noopener noreferrer" className="bg-card p-3.5 rounded-2xl flex flex-col items-center justify-between text-center border border-border/80 shadow-soft hover:shadow-soft-lg hover:border-primary/20 transition-all cursor-pointer group min-h-[135px]">
+                    <div className="w-10 h-10 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-1.5">
+                      <Laptop className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h4 className="font-extrabold text-xs sm:text-sm text-foreground">Mac Intel</h4>
+                      <p className="text-[10px] text-muted-foreground mt-0.5">macOS DMG (Intel)</p>
+                    </div>
+                    <span className="mt-2 text-[10px] font-bold text-primary flex items-center gap-0.5">
+                      डाउनलोड <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
+                    </span>
+                  </a>
+
+                  {/* Apple Silicon Card */}
+                  <a href={macSiliconUrl} target="_blank" rel="noopener noreferrer" className="bg-card p-3.5 rounded-2xl flex flex-col items-center justify-between text-center border border-border/80 shadow-soft hover:shadow-soft-lg hover:border-primary/20 transition-all cursor-pointer group min-h-[135px]">
+                    <div className="w-10 h-10 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-1.5">
+                      <Laptop className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h4 className="font-extrabold text-xs sm:text-sm text-foreground">Apple Silicon</h4>
+                      <p className="text-[10px] text-muted-foreground mt-0.5">M1 / M2 / M3 Chip</p>
+                    </div>
+                    <span className="mt-2 text-[10px] font-bold text-primary flex items-center gap-0.5">
+                      डाउनलोड <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
+                    </span>
+                  </a>
+                </div>
               </div>
 
               {/* Mobile Features Grid */}

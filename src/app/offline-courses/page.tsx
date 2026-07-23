@@ -24,8 +24,8 @@ const offlineFaqs = [
 ];
 
 export const metadata: Metadata = buildMetadata({
-  title: "ऑफलाइन कोर्सेज & क्लासरूम प्रोग्राम",
-  description: "आकार आईएएस (Aakar IAS) के ऑफलाइन कोर्सेज, इंदौर और प्रयागराज केंद्रों की आगामी कक्षाएं, अध्ययन सामग्री और व्यक्तिगत मेंटरशिप प्रोग्राम।",
+  title: "ऑफलाइन कक्षाएँ & क्लासरूम प्रोग्राम",
+  description: "इंदौर में अनुभवी शिक्षकों, आधुनिक क्लासरूम, अद्यतन अध्ययन सामग्री, नियमित टेस्ट एवं व्यक्तिगत मार्गदर्शन के साथ MPPSC, UPSC एवं अन्य प्रतियोगी परीक्षाओं की उत्कृष्ट तैयारी।",
   path: "/offline-courses",
 });
 
@@ -39,21 +39,6 @@ export default async function OfflineCoursesPage() {
 
   return (
     <>
-      {/* Page Header with Breadcrumb */}
-      <Section className="pb-0 pt-8">
-        <Container size="wide">
-          <Breadcrumb items={[{ name: "Offline Courses", href: "/offline-courses" }]} />
-          <div className="mt-6">
-            <h1 className="text-balance text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl font-devanagari">
-              ऑफलाइन कक्षाएं (Offline Classroom Program)
-            </h1>
-            <p className="mt-2 max-w-3xl text-lg text-muted-foreground font-devanagari">
-              इंदौर और प्रयागराज केंद्रों पर आयोजित होने वाले हमारे विशेष क्लासरूम प्रोग्राम।
-            </p>
-          </div>
-        </Container>
-      </Section>
-
       {/* Main Interactive Offline Courses Content */}
       <OfflineCoursesClient faculties={faculties} offlineBatches={offlineBatches} brochureUrl={brochureUrl || undefined} />
 

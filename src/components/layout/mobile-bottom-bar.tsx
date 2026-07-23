@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Home, BookOpen, Award, Search, User } from "lucide-react";
+import { Home, BookOpen, GraduationCap, Download, Search } from "lucide-react";
 import { SearchDialog } from "@/components/search/search-dialog";
 import { useLanguage } from "@/components/providers/language-provider";
 import { cn } from "@/lib/utils";
@@ -24,8 +24,19 @@ export function MobileBottomBar() {
   };
 
   const isHomeActive = pathname === "/" || pathname === "/en";
-  const isCaActive = pathname.startsWith("/current-affairs") || pathname.startsWith("/en/current-affairs") || pathname.startsWith("/weekly") || pathname.startsWith("/en/weekly") || pathname.startsWith("/monthly") || pathname.startsWith("/en/monthly");
-  const isDashboardActive = pathname.startsWith("/dashboard") || pathname.startsWith("/en/dashboard") || pathname.startsWith("/login") || pathname.startsWith("/en/login");
+  const isCaActive =
+    pathname.startsWith("/current-affairs") ||
+    pathname.startsWith("/en/current-affairs") ||
+    pathname.startsWith("/weekly") ||
+    pathname.startsWith("/en/weekly") ||
+    pathname.startsWith("/monthly") ||
+    pathname.startsWith("/en/monthly");
+  const isCoursesActive =
+    pathname.startsWith("/online-courses") ||
+    pathname.startsWith("/en/online-courses") ||
+    pathname.startsWith("/offline-courses") ||
+    pathname.startsWith("/en/offline-courses");
+  const isDownloadActive = pathname.startsWith("/download") || pathname.startsWith("/en/download");
 
   const navItems = [
     {
@@ -41,22 +52,31 @@ export function MobileBottomBar() {
       active: isCaActive,
     },
     {
-      label: locale === "hi" ? "क्विज़" : "Quiz",
-      href: getHref("/current-affairs"),
-      icon: Award,
-      active: false,
+      label: locale === "hi" ? "कोर्सेज" : "Courses",
+      href: getHref("/#courses"),
+      onClick: (e: React.MouseEvent) => {
+        if (pathname === "/" || pathname === "/en") {
+          e.preventDefault();
+          const el = document.getElementById("courses");
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      },
+      icon: GraduationCap,
+      active: isCoursesActive,
+    },
+    {
+      label: locale === "hi" ? "ऐप डाउनलोड" : "App Download",
+      href: getHref("/download"),
+      icon: Download,
+      active: isDownloadActive,
     },
     {
       label: locale === "hi" ? "खोजें" : "Search",
       onClick: () => setSearchOpen(true),
       icon: Search,
       active: searchOpen,
-    },
-    {
-      label: locale === "hi" ? "प्रोफ़ाइल" : "Account",
-      href: getHref("/dashboard"),
-      icon: User,
-      active: isDashboardActive,
     },
   ];
 
@@ -68,14 +88,24 @@ export function MobileBottomBar() {
             const Icon = item.icon;
             const content = (
               <span className="flex flex-col items-center justify-center h-full gap-0.5 text-center transition-all duration-150">
-                <Icon className={cn("h-[20px] w-[20px] transition-transform duration-200", item.active ? "text-primary scale-110" : "text-muted-foreground")} />
-                <span className={cn("text-[9px] font-semibold tracking-wide truncate max-w-full", item.active ? "text-primary font-bold" : "text-muted-foreground")}>
+                <Icon
+                  className={cn(
+                    "h-[20px] w-[20px] transition-transform duration-200",
+                    item.active ? "text-primary scale-110" : "text-muted-foreground"
+                  )}
+                />
+                <span
+                  className={cn(
+                    "text-[9px] font-semibold tracking-wide truncate max-w-full px-0.5",
+                    item.active ? "text-primary font-bold" : "text-muted-foreground"
+                  )}
+                >
                   {item.label}
                 </span>
               </span>
             );
 
-            if (item.onClick) {
+            if (item.onClick && !item.href) {
               return (
                 <button
                   key={index}
@@ -91,6 +121,7 @@ export function MobileBottomBar() {
               <Link
                 key={index}
                 href={item.href || "#"}
+                onClick={item.onClick}
                 className="flex flex-col items-center justify-center w-full h-full hover:bg-muted/10 active:bg-muted/20 transition-colors"
               >
                 {content}

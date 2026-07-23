@@ -292,7 +292,7 @@ export default async function HomePage() {
               </Link>
             </AnimatedSection>
             {/* Quick Link 5 */}
-            <AnimatedSection variant="stagger-item">
+            <AnimatedSection variant="stagger-item" className="col-span-2 md:col-span-1">
               <Link href="/monthly-pdf" className="group block rounded-3xl border border-border bg-card p-6 text-center hover:border-primary/30 hover:shadow-soft transition-all duration-300">
                 <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform">
                   <Download className="h-5 w-5" />
@@ -636,9 +636,9 @@ export default async function HomePage() {
                 <AnimatedSection
                   key={topper.id}
                   variant="stagger-item"
-                  className="group rounded-3xl border border-border bg-card p-5 text-center shadow-soft hover:shadow-soft-lg transition-all duration-300"
+                  className="group rounded-3xl border border-border bg-card p-3.5 sm:p-5 text-center shadow-soft hover:shadow-soft-lg transition-all duration-300 flex flex-col items-center justify-between"
                 >
-                  <div className="relative mx-auto h-32 w-32 sm:h-36 sm:w-36 overflow-hidden rounded-full border-4 border-primary/20 bg-muted">
+                  <div className="relative mx-auto h-20 w-20 xs:h-24 xs:w-24 sm:h-32 sm:w-32 lg:h-36 lg:w-36 shrink-0 overflow-hidden rounded-full border-2 sm:border-4 border-primary/20 bg-muted">
                     {topper.avatar ? (
                       <Image
                         src={topper.avatar}
@@ -708,7 +708,7 @@ export default async function HomePage() {
                           निदेशक
                         </span>
                       )}
-                      <div className="relative mx-auto h-32 w-32 sm:h-36 sm:w-36 overflow-hidden rounded-full border-4 border-primary/20 bg-muted">
+                      <div className="relative mx-auto h-20 w-20 xs:h-24 xs:w-24 sm:h-32 sm:w-32 lg:h-36 lg:w-36 shrink-0 overflow-hidden rounded-full border-2 sm:border-4 border-primary/20 bg-muted">
                         {faculty.image ? (
                           <Image
                             src={faculty.image}

@@ -12,9 +12,10 @@ interface ShareDropdownProps {
   url: string;
   locale?: "hi" | "en";
   className?: string;
+  showBullet?: boolean;
 }
 
-export function ShareDropdown({ title, url, locale = "hi", className }: ShareDropdownProps) {
+export function ShareDropdown({ title, url, locale = "hi", className, showBullet = false }: ShareDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -66,7 +67,9 @@ export function ShareDropdown({ title, url, locale = "hi", className }: ShareDro
   return (
     <div className={cn("relative inline-flex items-center gap-2", className)} ref={containerRef}>
       {/* Separator Bullet */}
-      <span className="text-muted-foreground/40 text-xs select-none font-normal">•</span>
+      {showBullet && (
+        <span className="text-muted-foreground/40 text-xs select-none font-normal">•</span>
+      )}
 
       {/* Trigger Button */}
       <Button

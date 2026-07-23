@@ -351,3 +351,11 @@ body:has(#admin-panel-container) [class*="WhatsAppTracker"] {
 body:has(#admin-panel-container) main {
   padding-bottom: 0 !important;
 }
+
+/* Hide Next.js dev indicator badge that overlaps bottom navigation bar */
+[data-nextjs-toast-errors],
+nextjs-portal,
+#next-logo,
+[data-next-badge] {
+  display: none !important;
+}

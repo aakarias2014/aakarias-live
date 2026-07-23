@@ -79,20 +79,20 @@ export function SiteHeader() {
         </div>
 
         {/* 2. Main Navbar */}
-        <Container size="wide" className="flex h-16 items-center gap-3">
+        <Container size="wide" className="px-2.5 sm:px-4 lg:px-8 flex h-16 items-center gap-1.5 sm:gap-3">
           {/* Mobile hamburger menu panel */}
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
               <Button
                 variant="ghost"
                 size="icon"
-                className="lg:hidden shrink-0"
+                className="h-8 w-8 sm:h-9 sm:w-9 p-0 lg:hidden shrink-0"
                 aria-label="Open navigation menu"
               >
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-80 overflow-y-auto">
+            <SheetContent side="left" className="w-80 max-w-[85vw] overflow-y-auto">
               <SheetHeader>
                 <SheetTitle asChild>
                   <div className="pb-2">
@@ -202,10 +202,10 @@ export function SiteHeader() {
           </nav>
 
           {/* Right cluster */}
-          <div className="ml-auto flex items-center gap-2">
+          <div className="ml-auto flex items-center gap-1 sm:gap-2 shrink-0">
             {/* Search trigger (hidden on desktop, handled by Top Bar) */}
             <div className="lg:hidden">
-              <SearchTrigger className="h-9 w-9 px-0" />
+              <SearchTrigger iconOnly className="h-8 w-8 sm:h-9 sm:w-9 px-0 shrink-0" />
             </div>
 
             <ThemeToggle />
@@ -213,7 +213,7 @@ export function SiteHeader() {
             {/* CTA Join Now Button */}
             <Button
               onClick={() => setJoinModalOpen(true)}
-              className="rounded-full bg-primary hover:bg-primary/95 text-primary-foreground font-bold shadow-soft text-xs px-4"
+              className="rounded-full bg-primary hover:bg-primary/95 text-primary-foreground font-bold shadow-soft text-[11px] sm:text-xs px-2.5 sm:px-4 h-8 sm:h-9 shrink-0 whitespace-nowrap"
             >
               {locale === "hi" ? "अभी जुड़ें" : "Join Now"}
             </Button>

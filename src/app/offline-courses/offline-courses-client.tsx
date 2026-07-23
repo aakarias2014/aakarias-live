@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Calendar,
   Clock,
@@ -18,6 +19,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Container } from "@/components/layout/container";
+import { Breadcrumb } from "@/components/content/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { AnimatedSection } from "@/components/ui/animated-section";
@@ -485,25 +487,44 @@ export function OfflineCoursesClient({ faculties, offlineBatches, brochureUrl }:
   return (
     <div className="space-y-16 pb-24">
       {/* ─── Hero Section ────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-secondary text-secondary-foreground">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--primary)_0%,_transparent_50%)] opacity-20" />
-        <Container size="wide" className="relative py-16 sm:py-24 lg:py-32">
-          <AnimatedSection variant="scale-in" duration={0.8} className="mx-auto max-w-4xl text-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/20 px-3 py-1.5 text-xs font-semibold text-accent mb-6 uppercase tracking-wider">
-              <Sparkles className="h-3.5 w-3.5" /> Premium Offline Coaching
-            </span>
-            <h1 className="text-balance text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Offline Classes &amp; Courses
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-zinc-950 text-white border-b border-white/10">
+        {/* Ambient light glows & subtle grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+        <div className="absolute top-0 right-0 h-96 w-96 rounded-full bg-primary/20 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none" />
+
+        <Container size="wide" className="relative py-10 sm:py-16 lg:py-20">
+          <div className="mb-6">
+            <Breadcrumb items={[{ name: "ऑफलाइन कोर्सेज" }]} />
+          </div>
+
+          <AnimatedSection variant="scale-in" duration={0.8} className="mx-auto max-w-4xl text-center space-y-5">
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 px-3.5 py-1 text-xs font-extrabold text-emerald-400 uppercase tracking-wider backdrop-blur-md">
+                <Sparkles className="h-3.5 w-3.5" /> प्रीमियम ऑफलाइन कोचिंग
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/15 px-3.5 py-1 text-xs font-bold text-white/90 uppercase tracking-wider backdrop-blur-md">
+                📍 इंदौर एवं प्रयागराज केंद्र
+              </span>
+            </div>
+
+            <h1 className="text-balance text-3xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl leading-[1.15] font-devanagari">
+              ऑफलाइन कक्षाएँ एवं क्लासरूम प्रोग्राम
             </h1>
-            <p className="mt-6 text-pretty text-lg text-white/75 sm:text-xl max-w-2xl mx-auto">
-              Achieve success under the personal guidance of experienced faculty. Disciplined academic environment, updated study materials, and one-on-one mentorship sessions.
+
+            <p className="mt-4 text-pretty text-sm sm:text-lg text-zinc-300 max-w-3xl mx-auto leading-relaxed font-devanagari">
+              इंदौर में अनुभवी शिक्षकों, आधुनिक क्लासरूम, अद्यतन अध्ययन सामग्री, नियमित टेस्ट एवं व्यक्तिगत मार्गदर्शन के साथ MPPSC, UPSC एवं अन्य प्रतियोगी परीक्षाओं की उत्कृष्ट तैयारी।
             </p>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-              <Button size="lg" asChild className="rounded-full bg-primary hover:bg-primary/95 text-white font-semibold">
-                <a href="#centers">Enroll Now (प्रवेश प्रारंभ)</a>
+
+            <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
+              <Button size="lg" asChild className="rounded-full bg-primary hover:bg-primary/95 text-white font-extrabold shadow-lg shadow-primary/20">
+                <a href="#centers" className="gap-2">
+                  प्रवेश प्रारंभ (Enroll Now) <ArrowRight className="h-4 w-4" />
+                </a>
               </Button>
+
               {brochureUrl ? (
-                <Button variant="outline" size="lg" className="rounded-full border-white/20 text-white bg-transparent hover:bg-white/10 hover:text-white font-semibold gap-2" asChild>
+                <Button variant="outline" size="lg" className="rounded-full border-white/20 text-white bg-white/5 hover:bg-white/15 hover:text-white font-bold gap-2 backdrop-blur-md" asChild>
                   <TrackedDownloadLink
                     input={{
                       slug: "offline-brochure",
@@ -516,13 +537,17 @@ export function OfflineCoursesClient({ faculties, offlineBatches, brochureUrl }:
                     <Download className="h-4 w-4" /> ब्रोशर डाउनलोड करें
                   </TrackedDownloadLink>
                 </Button>
-              ) : (
-                <Button variant="outline" size="lg" className="rounded-full border-white/20 text-white bg-transparent hover:bg-white/10 hover:text-white font-semibold gap-2 opacity-50 cursor-not-allowed" disabled>
-                  <Download className="h-4 w-4" /> ब्रोशर जल्द उपलब्ध होगा
-                </Button>
-              )}
-              <Button variant="outline" size="lg" className="rounded-full border-[#25D366]/40 text-white bg-transparent hover:bg-[#25D366]/10 hover:text-white font-semibold gap-2">
-                <span className="text-[#25D366] font-bold">WA</span> WhatsApp Chat
+              ) : null}
+
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="rounded-full border-emerald-500/30 text-emerald-400 bg-emerald-500/10 hover:bg-emerald-500/20 hover:text-emerald-300 font-bold gap-2 backdrop-blur-md"
+                asChild
+              >
+                <a href="https://wa.me/919425055050?text=Hello%20Aakar%20IAS,%20I%20want%20information%20about%20offline%20batches" target="_blank" rel="noopener noreferrer">
+                  <MessageSquare className="h-4 w-4 text-emerald-400" /> WhatsApp सलाह लें
+                </a>
               </Button>
             </div>
           </AnimatedSection>
@@ -544,84 +569,93 @@ export function OfflineCoursesClient({ faculties, offlineBatches, brochureUrl }:
           <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
             {/* Left: Batches Grid */}
             <div className="lg:col-span-8 space-y-6">
-              <div className="flex items-center justify-between border-b border-border/60 pb-4">
-                <h3 className="text-xl font-bold text-primary flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-                  New & Upcoming Offline Batches ({selectedCenter.name})
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 border-b border-border/60 pb-4">
+                <h3 className="text-lg sm:text-xl font-bold text-primary flex items-start sm:items-center gap-2.5">
+                  <span className="h-2.5 w-2.5 rounded-full bg-primary animate-pulse shrink-0 mt-1.5 sm:mt-0" />
+                  <span>New & Upcoming Offline Batches ({selectedCenter.name})</span>
                 </h3>
-                <span className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">
+                <span className="self-start sm:self-auto inline-flex items-center px-2.5 py-1 rounded-md bg-muted/60 border border-border/50 text-[11px] sm:text-xs font-semibold text-muted-foreground uppercase tracking-widest whitespace-nowrap">
                   Session 2026 - 2027
                 </span>
               </div>
 
               <div className="grid gap-6 md:grid-cols-2">
                 {selectedCenter.batches.map((batch, index) => (
-                  <Card key={index} className="relative overflow-hidden border border-border/70 hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between group">
-                    {/* Top Progress Line */}
-                    {batch.seatsFillPercent && (
-                      <div className="absolute top-0 left-0 w-full h-[3px] bg-primary/10">
+                  <Card key={index} className="relative overflow-hidden border border-border/70 hover:border-primary/40 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group rounded-2xl bg-card">
+                    {/* Top Progress Bar */}
+                    {batch.seatsFillPercent ? (
+                      <div className="absolute top-0 left-0 w-full h-[4px] bg-muted overflow-hidden">
                         <div
-                          className="h-full bg-primary transition-all duration-500"
+                          className="h-full bg-gradient-to-r from-primary via-emerald-500 to-primary transition-all duration-500 rounded-r-full"
                           style={{ width: `${batch.seatsFillPercent}%` }}
                         />
                       </div>
-                    )}
-                    <div className="p-6">
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center gap-2">
+                    ) : null}
+                    
+                    <div className="p-4 sm:p-6 space-y-3 sm:space-y-4">
+                      <div className="flex items-center justify-between gap-2 flex-wrap">
+                        <div className="flex items-center gap-1.5 flex-wrap">
                           {batch.isNew && (
-                            <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-extrabold uppercase bg-red-600 text-white tracking-wider animate-pulse shadow-[0_0_10px_rgba(220,38,38,0.5)]">
-                              NEW
+                            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-red-600 text-white tracking-wider animate-pulse shadow-sm">
+                              🔥 NEW BATCH
                             </span>
                           )}
                           {batch.badge && (
-                            <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-extrabold uppercase bg-primary/10 text-primary tracking-wider">
-                              {batch.badge}
+                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-primary/10 text-primary border border-primary/20 tracking-wider">
+                              ✨ {batch.badge}
                             </span>
                           )}
                         </div>
-                        {batch.seatsFillPercent && (
-                          <span className="text-[11px] font-bold text-muted-foreground">
-                            {batch.seatsFillPercent}% Filled
+                        {batch.seatsFillPercent ? (
+                          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-600 dark:text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-full">
+                            ⚡ {batch.seatsFillPercent}% Seats Filled
                           </span>
-                        )}
+                        ) : null}
                       </div>
-                      <h4 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+
+                      <h4 className="text-lg sm:text-xl font-black text-foreground group-hover:text-primary transition-colors font-devanagari leading-snug">
                         {batch.title}
                       </h4>
+
                       <BatchDescription 
                         description={batch.description} 
                         seeMoreLabel="और देखें" 
                         seeLessLabel="कम दिखाएं" 
                       />
 
-                      <div className="space-y-2 border-t border-border/40 pt-4 text-sm text-muted-foreground">
+                      <div className="space-y-2 border-t border-border/50 pt-3 text-xs sm:text-sm text-muted-foreground font-devanagari">
                         <div className="flex items-center gap-2.5">
-                          <Calendar className="h-4 w-4 text-primary shrink-0" />
-                          <span>Starts: <strong className="text-foreground">{batch.startDate}</strong></span>
+                          <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                            <Calendar className="h-3.5 w-3.5" />
+                          </div>
+                          <span>प्रारंभ (Start): <strong className="text-foreground font-semibold">{batch.startDate}</strong></span>
                         </div>
                         <div className="flex items-center gap-2.5">
-                          <Clock className="h-4 w-4 text-primary shrink-0" />
-                          <span>Timing: <strong className="text-foreground">{batch.time}</strong></span>
+                          <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                            <Clock className="h-3.5 w-3.5" />
+                          </div>
+                          <span>समय (Timing): <strong className="text-foreground font-semibold">{batch.time}</strong></span>
                         </div>
                         <div className="flex items-center gap-2.5">
-                          <GraduationCap className="h-4 w-4 text-primary shrink-0" />
-                          <span>Medium: <strong className="text-foreground">{batch.medium}</strong></span>
+                          <div className="h-7 w-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                            <GraduationCap className="h-3.5 w-3.5" />
+                          </div>
+                          <span>माध्यम (Medium): <strong className="text-foreground font-semibold">{batch.medium}</strong></span>
                         </div>
                       </div>
                     </div>
 
-                    <div className="p-6 bg-muted/30 border-t border-border/30 flex items-center justify-between">
-                      <span className="text-xs text-muted-foreground flex items-center gap-1">
+                    <div className="p-4 sm:p-5 bg-muted/40 border-t border-border/50 flex items-center justify-between gap-3">
+                      <span className="text-[11px] sm:text-xs text-muted-foreground flex items-center gap-1 font-medium truncate">
                         <MapPin className="h-3.5 w-3.5 text-primary shrink-0" />
-                        {batch.locationName}
+                        <span className="truncate">{batch.locationName}</span>
                       </span>
                       <Button 
-                        variant="ghost" 
-                        className="text-primary hover:text-primary/80 font-bold p-0 gap-1 hover:bg-transparent"
+                        size="sm"
+                        className="rounded-full bg-primary hover:bg-primary/95 text-white font-extrabold text-xs shadow-md shadow-primary/20 shrink-0 gap-1.5 px-4"
                         onClick={() => openEnquiryModal(batch.title)}
                       >
-                        पूछताछ करें <ArrowRight className="h-4 w-4" />
+                        पूछताछ करें <ArrowRight className="h-3.5 w-3.5" />
                       </Button>
                     </div>
                   </Card>
@@ -683,29 +717,31 @@ export function OfflineCoursesClient({ faculties, offlineBatches, brochureUrl }:
       </section>
 
       {/* ─── Why Offline Section (Features) ────────────────────────── */}
-      <section className="bg-muted/20 py-16">
+      <section className="bg-muted/20 py-10 sm:py-16">
         <Container size="wide">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-devanagari">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-4xl font-devanagari">
               आकार आईएएस ऑफलाइन ही क्यों?
             </h2>
-            <p className="mt-3 text-muted-foreground">
+            <p className="mt-2 text-xs sm:text-base text-muted-foreground">
               परंपरागत उत्कृष्ट शिक्षण और आधुनिक तकनीकी सुविधाओं का बेजोड़ संगम।
             </p>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-3 sm:gap-6 grid-cols-2 lg:grid-cols-4">
             {features.map((feat, index) => (
-              <Card key={index} className="p-6 border border-border/60 hover:-translate-y-1 transition-all duration-300">
-                <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary mb-4">
-                  <feat.icon className="h-6 w-6" />
+              <Card key={index} className="p-4 sm:p-6 border border-border/60 hover:-translate-y-1 transition-all duration-300 flex flex-col items-start justify-between">
+                <div>
+                  <div className="inline-flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-primary/10 text-primary mb-3">
+                    <feat.icon className="h-5 w-5 sm:h-6 sm:w-6" />
+                  </div>
+                  <h4 className="text-sm sm:text-lg font-bold text-foreground mb-1 sm:mb-2">
+                    {feat.title}
+                  </h4>
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    {feat.desc}
+                  </p>
                 </div>
-                <h4 className="text-lg font-bold text-foreground mb-2">
-                  {feat.title}
-                </h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {feat.desc}
-                </p>
               </Card>
             ))}
           </div>
@@ -713,86 +749,102 @@ export function OfflineCoursesClient({ faculties, offlineBatches, brochureUrl }:
       </section>
 
       {/* ─── Faculty Members (Hindi Medium) ─────────────────────────── */}
-      <section>
+      <section className="py-10 sm:py-16">
         <Container size="wide">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-devanagari">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-4xl font-devanagari">
               हमारे वरिष्ठ मार्गदर्शक (Hindi Medium)
             </h2>
-            <p className="mt-3 text-muted-foreground">
+            <p className="mt-2 text-xs sm:text-base text-muted-foreground">
               सिविल सेवा परीक्षा के विशेषज्ञ शिक्षकों की टीम, जो आपके सपनों को हकीकत में बदलने में सक्षम है।
             </p>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-2.5 sm:gap-5">
             {displayHindiMentors.map((fac, index) => (
-              <Card key={index} className="overflow-hidden border border-border/80 hover:shadow-soft-lg transition-all duration-300 flex flex-col">
-                <div className="relative aspect-square w-full bg-muted">
-                  <Image
-                    src={fac.image}
-                    alt={fac.name}
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
-                </div>
-                <div className="p-5 flex-1 flex flex-col justify-between">
-                  <div className="space-y-2">
-                    <h4 className="text-lg font-bold text-foreground leading-tight">
+              <Link key={index} href="/faculty" className="block group">
+                <Card className="overflow-hidden border border-border/80 bg-card hover:shadow-soft-lg hover:border-primary/40 transition-all duration-300 p-2.5 sm:p-4 text-center flex flex-col items-center justify-between h-full cursor-pointer">
+                  <div className="w-full flex flex-col items-center">
+                    <div className="relative h-16 w-16 xs:h-20 xs:w-20 sm:h-24 sm:w-24 rounded-full overflow-hidden shrink-0 border-2 sm:border-4 border-primary/20 bg-muted mb-2 group-hover:scale-105 group-hover:border-primary transition-all duration-300">
+                      {fac.image ? (
+                        <Image
+                          src={fac.image}
+                          alt={fac.name}
+                          fill
+                          className="object-cover"
+                          unoptimized
+                        />
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center bg-primary/10 text-primary">
+                          <GraduationCap className="h-6 w-6 sm:h-8 sm:w-8" />
+                        </div>
+                      )}
+                    </div>
+                    <h3 className="text-xs sm:text-sm font-extrabold text-foreground group-hover:text-primary transition-colors line-clamp-1 font-devanagari">
                       {fac.name}
-                    </h4>
-                    <span className="inline-block text-xs font-bold text-primary uppercase tracking-wider">
+                    </h3>
+                    <p className="text-[9px] sm:text-xs font-bold text-primary tracking-wide uppercase line-clamp-1 mt-0.5">
                       {fac.title}
-                    </span>
-                    <p className="text-xs text-muted-foreground leading-relaxed pt-2">
-                      {fac.desc}
                     </p>
+                    {fac.desc && (
+                      <p className="text-[10px] sm:text-xs text-muted-foreground leading-relaxed line-clamp-2 pt-1 font-devanagari hidden sm:block">
+                        {fac.desc}
+                      </p>
+                    )}
                   </div>
-                </div>
-              </Card>
+                </Card>
+              </Link>
             ))}
           </div>
         </Container>
       </section>
 
       {/* ─── Faculty Members (English Medium) ───────────────────────── */}
-      <section className="bg-muted/10 py-16 border-t border-b border-border/40">
+      <section className="bg-muted/10 py-10 sm:py-16 border-t border-b border-border/40">
         <Container size="wide">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-devanagari">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-4xl font-devanagari">
               हमारे वरिष्ठ मार्गदर्शक (English Medium)
             </h2>
-            <p className="mt-3 text-muted-foreground">
+            <p className="mt-2 text-xs sm:text-base text-muted-foreground">
               सिविल सेवा परीक्षा के विशेषज्ञ शिक्षकों की टीम, जो आपके सपनों को हकीकत में बदलने में सक्षम है।
             </p>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-2.5 sm:gap-5">
             {displayEnglishMentors.map((fac, index) => (
-              <Card key={index} className="overflow-hidden border border-border/80 bg-card hover:shadow-soft-lg transition-all duration-300 flex flex-col">
-                <div className="relative aspect-square w-full bg-muted">
-                  <Image
-                    src={fac.image}
-                    alt={fac.name}
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
-                </div>
-                <div className="p-5 flex-1 flex flex-col justify-between">
-                  <div className="space-y-2">
-                    <h4 className="text-lg font-bold text-foreground leading-tight">
+              <Link key={index} href="/faculty" className="block group">
+                <Card className="overflow-hidden border border-border/80 bg-card hover:shadow-soft-lg hover:border-primary/40 transition-all duration-300 p-2.5 sm:p-4 text-center flex flex-col items-center justify-between h-full cursor-pointer">
+                  <div className="w-full flex flex-col items-center">
+                    <div className="relative h-16 w-16 xs:h-20 xs:w-20 sm:h-24 sm:w-24 rounded-full overflow-hidden shrink-0 border-2 sm:border-4 border-primary/20 bg-muted mb-2 group-hover:scale-105 group-hover:border-primary transition-all duration-300">
+                      {fac.image ? (
+                        <Image
+                          src={fac.image}
+                          alt={fac.name}
+                          fill
+                          className="object-cover"
+                          unoptimized
+                        />
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center bg-primary/10 text-primary">
+                          <GraduationCap className="h-6 w-6 sm:h-8 sm:w-8" />
+                        </div>
+                      )}
+                    </div>
+                    <h3 className="text-xs sm:text-sm font-extrabold text-foreground group-hover:text-primary transition-colors line-clamp-1 font-devanagari">
                       {fac.name}
-                    </h4>
-                    <span className="inline-block text-xs font-bold text-primary uppercase tracking-wider">
+                    </h3>
+                    <p className="text-[9px] sm:text-xs font-bold text-primary tracking-wide uppercase line-clamp-1 mt-0.5">
                       {fac.title}
-                    </span>
-                    <p className="text-xs text-muted-foreground leading-relaxed pt-2">
-                      {fac.desc}
                     </p>
+                    {fac.desc && (
+                      <p className="text-[10px] sm:text-xs text-muted-foreground leading-relaxed line-clamp-2 pt-1 font-devanagari hidden sm:block">
+                        {fac.desc}
+                      </p>
+                    )}
                   </div>
-                </div>
-              </Card>
+                </Card>
+              </Link>
             ))}
           </div>
         </Container>

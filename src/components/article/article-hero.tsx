@@ -117,6 +117,7 @@ export async function ArticleHero({ article }: { article: Article }) {
                 title={article.title}
                 url={`${siteConfig.url}${article.href}`}
                 locale={article.locale}
+                showBullet={true}
               />
             </div>
 

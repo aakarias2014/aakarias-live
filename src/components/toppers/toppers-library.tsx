@@ -31,6 +31,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { ShareDropdown } from "@/components/article/share-dropdown";
 
 interface ToppersLibraryProps {
   locale: "hi" | "en";
@@ -503,13 +504,19 @@ export function ToppersLibrary({ locale, sanityCopies = [] }: ToppersLibraryProp
                   </div>
                 </div>
 
-                <div className="flex gap-3">
+                <div className="flex gap-3 items-center flex-wrap">
                   <Button className="flex-1 rounded-xl" onClick={() => setSelectedCopy(allCopies[0])}>
                     {isHi ? "उत्तर-पुस्तिका देखें" : "View PDF"}
                   </Button>
                   <Button variant="outline" className="px-3 rounded-xl" onClick={(e) => handleToggleBookmark(allCopies[0].id, e)}>
                     <Bookmark className={`h-5 w-5 ${bookmarked[allCopies[0].id] ? "fill-primary text-primary" : "text-muted-foreground"}`} />
                   </Button>
+                  <ShareDropdown
+                    title={isHi ? `आकार IAS MPPSC टॉपर उत्तर पुस्तिका - ${allCopies[0].name}` : `Aakar IAS MPPSC Topper Copy - ${allCopies[0].nameEn}`}
+                    url={typeof window !== "undefined" ? `${window.location.origin}/mppsc/toppers-copy#${allCopies[0].id}` : `https://aakarias.com/mppsc/toppers-copy#${allCopies[0].id}`}
+                    locale={locale}
+                    showBullet={false}
+                  />
                 </div>
               </div>
             </div>
@@ -565,11 +572,11 @@ export function ToppersLibrary({ locale, sanityCopies = [] }: ToppersLibraryProp
                         </p>
                       </div>
 
-                      <div className="flex gap-2 pt-1 border-t border-border/50">
+                      <div className="flex items-center gap-2 pt-1 border-t border-border/50">
                         <Button 
                           variant="secondary" 
                           size="sm" 
-                          className="flex-1 rounded-lg text-xs"
+                          className="flex-1 rounded-lg text-xs font-bold"
                           onClick={() => setSelectedCopy(copy)}
                         >
                           {isHi ? "उत्तर पढ़ें" : "Read Copy"}
@@ -582,6 +589,12 @@ export function ToppersLibrary({ locale, sanityCopies = [] }: ToppersLibraryProp
                         >
                           <Bookmark className={`h-4 w-4 ${bookmarked[copy.id] ? "fill-primary text-primary" : "text-muted-foreground"}`} />
                         </Button>
+                        <ShareDropdown
+                          title={isHi ? `आकार IAS MPPSC टॉपर उत्तर पुस्तिका - ${copy.name}` : `Aakar IAS MPPSC Topper Copy - ${copy.nameEn}`}
+                          url={typeof window !== "undefined" ? `${window.location.origin}/mppsc/toppers-copy#${copy.id}` : `https://aakarias.com/mppsc/toppers-copy#${copy.id}`}
+                          locale={locale}
+                          showBullet={false}
+                        />
                       </div>
                     </CardContent>
                   </Card>
@@ -765,7 +778,15 @@ export function ToppersLibrary({ locale, sanityCopies = [] }: ToppersLibraryProp
               <span className="text-xs text-muted-foreground">
                 {isHi ? "* यह एक प्रमाणित टॉपर कॉपी का पूर्वावलोकन है।" : "* This is a verified topper copy preview."}
               </span>
-              <div className="flex gap-2">
+              <div className="flex gap-2 items-center flex-wrap">
+                {selectedCopy && (
+                  <ShareDropdown
+                    title={isHi ? `आकार IAS MPPSC टॉपर उत्तर पुस्तिका - ${selectedCopy.name}` : `Aakar IAS MPPSC Topper Copy - ${selectedCopy.nameEn}`}
+                    url={typeof window !== "undefined" ? `${window.location.origin}/mppsc/toppers-copy#${selectedCopy.id}` : `https://aakarias.com/mppsc/toppers-copy#${selectedCopy.id}`}
+                    locale={locale}
+                    showBullet={false}
+                  />
+                )}
                 <Button
                   variant="outline"
                   size="sm"

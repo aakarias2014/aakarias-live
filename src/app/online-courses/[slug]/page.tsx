@@ -265,124 +265,132 @@ export default async function CourseDetailPage({ params }: PageProps) {
       </Section>
 
       {/* ─── Hero ───────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-secondary text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--primary)_0%,_transparent_50%)] opacity-20" />
-        <Container size="wide" className="relative py-12 sm:py-16 lg:py-20">
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-zinc-950 text-white border-b border-white/10">
+        {/* Subtle grid pattern & ambient glows */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+        <div className="absolute top-0 right-0 h-96 w-96 rounded-full bg-primary/20 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none" />
+
+        <Container size="wide" className="relative py-10 sm:py-14 lg:py-16">
           <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
             {/* Left: Course Info */}
             <AnimatedSection
               variant="slide-in"
-              className="lg:col-span-7 space-y-6"
+              className="lg:col-span-7 space-y-5"
             >
-              <div className="flex flex-wrap items-center gap-3">
+              {/* Badges */}
+              <div className="flex flex-wrap items-center gap-2.5">
                 {course.badge && (
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/20 px-3 py-1.5 text-xs font-bold text-white uppercase tracking-wider">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 px-3.5 py-1 text-xs font-extrabold text-emerald-400 uppercase tracking-wider backdrop-blur-md">
                     <Sparkles className="h-3.5 w-3.5" />
                     {course.badge}
                   </span>
                 )}
                 {course.isLive && (
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-red-600/90 px-3 py-1.5 text-xs font-bold text-white uppercase tracking-wider animate-pulse">
-                    <span className="h-1.5 w-1.5 bg-white rounded-full" />
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-red-500/15 border border-red-500/30 px-3.5 py-1 text-xs font-extrabold text-red-400 uppercase tracking-wider backdrop-blur-md">
+                    <span className="h-2 w-2 bg-red-500 rounded-full animate-ping" />
                     LIVE Classes
                   </span>
                 )}
-                <span className="inline-flex items-center rounded-full bg-white/10 px-3 py-1.5 text-xs font-bold text-white/80 uppercase tracking-wider">
+                <span className="inline-flex items-center rounded-full bg-white/10 border border-white/15 px-3.5 py-1 text-xs font-bold text-white/90 uppercase tracking-wider backdrop-blur-md">
                   {course.category.toUpperCase()} Program
                 </span>
               </div>
 
-              <h1 className="text-balance text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl font-devanagari">
+              {/* Title */}
+              <h1 className="text-balance text-2.5xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-[1.18] font-devanagari">
                 {course.title}
               </h1>
 
+              {/* Description without raw <br> */}
               {course.description && (
-                <p className="text-pretty text-lg text-white/75 max-w-2xl font-devanagari">
-                  {course.description}
-                </p>
+                <div className="text-sm sm:text-base text-zinc-300/90 leading-relaxed font-devanagari max-w-2xl space-y-2 whitespace-pre-line">
+                  {course.description.replace(/<br\s*\/?>/gi, "\n")}
+                </div>
               )}
 
-              {/* Quick Stats */}
-              <div className="flex flex-wrap gap-4 pt-2">
+              {/* Quick Stats Grid */}
+              <div className="grid grid-cols-2 xs:grid-cols-4 gap-2.5 pt-2 max-w-xl">
                 {course.rating && (
-                  <div className="flex items-center gap-1.5 text-sm text-white/90">
-                    <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-                    <span className="font-bold">{course.rating}</span>
-                    <span className="text-white/50">rating</span>
+                  <div className="flex items-center gap-2 rounded-xl bg-white/[0.06] border border-white/10 px-3 py-2 text-xs font-bold text-white backdrop-blur-md">
+                    <Star className="h-4 w-4 fill-amber-400 text-amber-400 shrink-0" />
+                    <span className="truncate">{course.rating} Rating</span>
                   </div>
                 )}
                 {course.studentsCount && (
-                  <div className="flex items-center gap-1.5 text-sm text-white/90">
-                    <Users className="h-4 w-4" />
-                    <span className="font-bold">{course.studentsCount}</span>
+                  <div className="flex items-center gap-2 rounded-xl bg-white/[0.06] border border-white/10 px-3 py-2 text-xs font-bold text-white backdrop-blur-md">
+                    <Users className="h-4 w-4 text-emerald-400 shrink-0" />
+                    <span className="truncate">{course.studentsCount}</span>
                   </div>
                 )}
                 {course.duration && (
-                  <div className="flex items-center gap-1.5 text-sm text-white/90">
-                    <Clock className="h-4 w-4" />
-                    <span className="font-bold">{course.duration}</span>
+                  <div className="flex items-center gap-2 rounded-xl bg-white/[0.06] border border-white/10 px-3 py-2 text-xs font-bold text-white backdrop-blur-md">
+                    <Clock className="h-4 w-4 text-sky-400 shrink-0" />
+                    <span className="truncate">{course.duration}</span>
                   </div>
                 )}
                 {course.lecturesCount && (
-                  <div className="flex items-center gap-1.5 text-sm text-white/90">
-                    <Video className="h-4 w-4" />
-                    <span className="font-bold">{course.lecturesCount}</span>
+                  <div className="flex items-center gap-2 rounded-xl bg-white/[0.06] border border-white/10 px-3 py-2 text-xs font-bold text-white backdrop-blur-md">
+                    <Video className="h-4 w-4 text-primary shrink-0" />
+                    <span className="truncate">{course.lecturesCount}</span>
                   </div>
                 )}
               </div>
 
-              {/* Mentor Preview */}
-              {!isGenericMentor ? (
-                <div className="flex items-center gap-4 rounded-2xl bg-white/5 border border-white/10 p-4 backdrop-blur-sm">
-                  <div className="relative h-12 w-12 rounded-full overflow-hidden shrink-0 ring-2 ring-white/20">
-                    <Image
-                      src={course.mentorImage}
-                      alt={course.mentorName}
-                      fill
-                      className="object-cover"
-                      unoptimized
-                    />
+              {/* Mentor Preview Pill */}
+              <div className="pt-1">
+                {!isGenericMentor ? (
+                  <div className="inline-flex items-center gap-3.5 rounded-2xl bg-white/[0.07] border border-white/15 p-2.5 pr-5 backdrop-blur-md shadow-soft">
+                    <div className="relative h-11 w-11 rounded-full overflow-hidden shrink-0 ring-2 ring-primary/40">
+                      <Image
+                        src={course.mentorImage}
+                        alt={course.mentorName}
+                        fill
+                        className="object-cover"
+                        unoptimized
+                      />
+                    </div>
+                    <div>
+                      <p className="font-extrabold text-white text-xs sm:text-sm font-devanagari">
+                        {course.mentorName}
+                      </p>
+                      <p className="text-[11px] font-semibold text-primary uppercase tracking-wide">{course.mentorTitle}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-bold text-white text-sm">
-                      {course.mentorName}
-                    </p>
-                    <p className="text-xs text-white/60">{course.mentorTitle}</p>
+                ) : (
+                  <div className="inline-flex items-center gap-3.5 rounded-2xl bg-white/[0.07] border border-white/15 p-2.5 pr-5 backdrop-blur-md shadow-soft">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-primary/30 text-white shrink-0 ring-2 ring-primary/40">
+                      <GraduationCap className="h-5 w-5 text-white" />
+                    </div>
+                    <div>
+                      <p className="font-extrabold text-white text-xs sm:text-sm font-devanagari">
+                        आकार आईएएस फैकल्टी टीम
+                      </p>
+                      <p className="text-[11px] font-semibold text-zinc-400">विषय विशेषज्ञ द्वारा शिक्षण</p>
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <div className="flex items-center gap-4 rounded-2xl bg-white/5 border border-white/10 p-4 backdrop-blur-sm">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 shrink-0 ring-2 ring-white/20">
-                    <GraduationCap className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-white text-sm">
-                      आकार आईएएस फैकल्टी टीम
-                    </p>
-                    <p className="text-xs text-white/60">विषय विशेषज्ञ</p>
-                  </div>
-                </div>
-              )}
+                )}
+              </div>
             </AnimatedSection>
 
-            {/* Right: Course Image */}
+            {/* Right: Course Image Media Card */}
             <AnimatedSection
               variant="scale-in"
               className="lg:col-span-5 flex justify-center"
             >
-              <div className="relative aspect-video w-full max-w-lg overflow-hidden rounded-2xl border border-white/10 shadow-soft-lg group">
+              <div className="relative aspect-video w-full max-w-lg overflow-hidden rounded-2xl border-2 border-white/15 shadow-2xl group bg-zinc-950">
                 <Image
                   src={course.image}
                   alt={course.alt}
                   fill
-                  className="object-cover group-hover:scale-102 transition-transform duration-500"
+                  className="object-cover group-hover:scale-103 transition-transform duration-500"
                   unoptimized
                   priority
                 />
                 {/* Play overlay */}
-                <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="h-16 w-16 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
-                    <Play className="h-7 w-7 text-primary ml-1" />
+                <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="h-14 w-14 rounded-full bg-white flex items-center justify-center shadow-xl transform group-hover:scale-110 transition-transform">
+                    <Play className="h-6 w-6 text-primary ml-0.5" />
                   </div>
                 </div>
               </div>
@@ -445,6 +453,107 @@ export default async function CourseDetailPage({ params }: PageProps) {
                 </AnimatedSection>
               )}
 
+              {/* Mobile Buy / Pricing Card (Appears above Faculty on mobile screens) */}
+              <div className="lg:hidden">
+                <AnimatedSection variant="scale-in">
+                  <Card className="overflow-hidden border border-border/60 shadow-soft-lg">
+                    {/* Price Header */}
+                    <div className="bg-primary text-white p-6 text-center space-y-2 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.1)_0%,_transparent_60%)]" />
+                      <div className="relative z-10">
+                        <p className="text-sm text-white/70 font-semibold uppercase tracking-wider">
+                          कोर्स शुल्क
+                        </p>
+                        <div className="flex items-baseline justify-center gap-2 mt-1">
+                          <span className="text-4xl font-extrabold">
+                            {course.price}
+                          </span>
+                          <span className="text-lg text-white/50 line-through">
+                            {course.originalPrice}
+                          </span>
+                        </div>
+                        <p className="text-xs text-white/60 mt-1">
+                          {Math.round(
+                            ((parseInt(course.originalPrice.replace(/[₹,]/g, "")) -
+                              parseInt(course.price.replace(/[₹,]/g, ""))) /
+                              parseInt(
+                                course.originalPrice.replace(/[₹,]/g, "")
+                              )) *
+                              100
+                          )}
+                          % की छूट
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* CTA Buttons */}
+                    <div className="p-5 space-y-2.5">
+                      <EnrollButton
+                        courseTitle={course.title}
+                        enrollUrl={course.enrollUrl || "https://wa.me/919713300123"}
+                        locale="hi"
+                        className="w-full rounded-xl bg-primary hover:bg-primary/95 text-white font-bold text-base gap-2 h-11 flex items-center justify-center cursor-pointer transition-all duration-200"
+                      />
+                      <div className="grid grid-cols-2 gap-2">
+                        <Button
+                          variant="outline"
+                          size="md"
+                          className="rounded-xl font-bold text-xs gap-1.5 border-[#25D366]/40 text-[#25D366] hover:bg-[#25D366]/10 hover:text-[#25D366] h-10 justify-center"
+                          asChild
+                        >
+                          <a
+                            href="https://wa.me/919713300123"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <MessageSquare className="h-4 w-4 shrink-0" />
+                            WhatsApp पर पूछें
+                          </a>
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="md"
+                          className="rounded-xl font-bold text-xs gap-1.5 h-10 justify-center border border-border/60"
+                          asChild
+                        >
+                          <a href="tel:+919713300123">
+                            <Phone className="h-4 w-4 shrink-0" />
+                            कॉल करें
+                          </a>
+                        </Button>
+                      </div>
+                    </div>
+
+                    {/* Features List */}
+                    {course.features && course.features.length > 0 && (
+                      <div className="border-t border-border/40 p-5 space-y-2.5">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                          इस कोर्स में शामिल है
+                        </h4>
+                        {course.features.map((f, i) => (
+                          <div
+                            key={i}
+                            className="flex items-center gap-2.5 text-xs sm:text-sm"
+                          >
+                            <div className="shrink-0 h-7 w-7 rounded-lg bg-primary/5 flex items-center justify-center text-primary">
+                              <FeatureIcon name={f.icon} />
+                            </div>
+                            <div className="flex-1 flex items-center justify-between">
+                              <span className="text-muted-foreground font-devanagari">
+                                {f.label}
+                              </span>
+                              <span className="font-bold text-foreground font-devanagari">
+                                {f.value}
+                              </span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </Card>
+                </AnimatedSection>
+              </div>
+
               {/* Instructor */}
               <AnimatedSection variant="fade-up">
                 <div className="space-y-6">
@@ -452,93 +561,95 @@ export default async function CourseDetailPage({ params }: PageProps) {
                     {!isGenericMentor ? "शिक्षक (Instructor)" : "हमारे वरिष्ठ मार्गदर्शक (Our Senior Faculty)"}
                   </h2>
                   {!isGenericMentor ? (
-                    <Card className="p-6 sm:p-8 border border-border/60 shadow-soft">
-                      <div className="flex flex-col sm:flex-row gap-6">
-                        <div className="relative h-24 w-24 sm:h-28 sm:w-28 rounded-2xl overflow-hidden shrink-0 ring-2 ring-primary/20">
-                          <Image
-                            src={course.mentorImage}
-                            alt={course.mentorName}
-                            fill
-                            className="object-cover"
-                            unoptimized
-                          />
-                        </div>
-                        <div className="space-y-3 flex-1">
-                          <div>
-                            <h3 className="text-xl font-bold text-foreground">
-                              {course.mentorName}
-                            </h3>
-                            <p className="text-sm font-semibold text-primary">
-                              {course.mentorTitle}
-                            </p>
+                    <Link href="/faculty" className="block group">
+                      <Card className="p-6 sm:p-8 border border-border/60 shadow-soft group-hover:border-primary/40 group-hover:shadow-soft-md transition-all cursor-pointer">
+                        <div className="flex flex-col sm:flex-row gap-6">
+                          <div className="relative h-24 w-24 sm:h-28 sm:w-28 rounded-2xl overflow-hidden shrink-0 ring-2 ring-primary/20 group-hover:scale-105 transition-transform duration-300">
+                            <Image
+                              src={course.mentorImage}
+                              alt={course.mentorName}
+                              fill
+                              className="object-cover"
+                              unoptimized
+                            />
                           </div>
-                          {course.mentorBio && (
-                            <p className="text-sm text-muted-foreground leading-relaxed font-devanagari">
-                              {course.mentorBio}
-                            </p>
-                          )}
-                          <div className="flex flex-wrap gap-3 pt-1">
-                            {course.rating && (
-                              <span className="inline-flex items-center gap-1 text-xs font-bold text-foreground bg-muted/60 rounded-full px-3 py-1">
-                                <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
-                                {course.rating} Rating
-                              </span>
+                          <div className="space-y-3 flex-1">
+                            <div>
+                              <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                                {course.mentorName}
+                              </h3>
+                              <p className="text-sm font-semibold text-primary">
+                                {course.mentorTitle}
+                              </p>
+                            </div>
+                            {course.mentorBio && (
+                              <p className="text-sm text-muted-foreground leading-relaxed font-devanagari">
+                                {course.mentorBio}
+                              </p>
                             )}
-                            {course.studentsCount && (
-                              <span className="inline-flex items-center gap-1 text-xs font-bold text-foreground bg-muted/60 rounded-full px-3 py-1">
-                                <Users className="h-3 w-3" />
-                                {course.studentsCount}
-                              </span>
-                            )}
-                            {course.lecturesCount && (
-                              <span className="inline-flex items-center gap-1 text-xs font-bold text-foreground bg-muted/60 rounded-full px-3 py-1">
-                                <Video className="h-3 w-3" />
-                                {course.lecturesCount}
-                              </span>
-                            )}
+                            <div className="flex flex-wrap gap-3 pt-1">
+                              {course.rating && (
+                                <span className="inline-flex items-center gap-1 text-xs font-bold text-foreground bg-muted/60 rounded-full px-3 py-1">
+                                  <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
+                                  {course.rating} Rating
+                                </span>
+                              )}
+                              {course.studentsCount && (
+                                <span className="inline-flex items-center gap-1 text-xs font-bold text-foreground bg-muted/60 rounded-full px-3 py-1">
+                                  <Users className="h-3 w-3" />
+                                  {course.studentsCount}
+                                </span>
+                              )}
+                              {course.lecturesCount && (
+                                <span className="inline-flex items-center gap-1 text-xs font-bold text-foreground bg-muted/60 rounded-full px-3 py-1">
+                                  <Video className="h-3 w-3" />
+                                  {course.lecturesCount}
+                                </span>
+                              )}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </Card>
+                      </Card>
+                    </Link>
                   ) : (
-                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-2.5 sm:gap-4">
                       {rawFaculties.map((fac, index) => {
                         const name = fac.nameHi || fac.nameEn;
                         const title = fac.titleHi || fac.titleEn;
                         const desc = fac.descHi || fac.descEn;
                         return (
-                          <Card key={fac.id || index} className="group overflow-hidden border border-border/80 bg-card hover:shadow-soft-lg hover:border-primary/20 transition-all duration-300 flex flex-col justify-between">
-                            <div>
-                              <div className="relative aspect-[4/5] w-full bg-muted overflow-hidden">
-                                {fac.image ? (
-                                  <Image
-                                    src={fac.image}
-                                    alt={name}
-                                    fill
-                                    className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
-                                    unoptimized
-                                  />
-                                ) : (
-                                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/5 flex items-center justify-center">
-                                    <GraduationCap className="h-12 w-12 text-primary/40" />
-                                  </div>
-                                )}
-                              </div>
-                              <div className="p-5 space-y-2">
-                                <h3 className="text-base font-bold text-foreground group-hover:text-primary transition-colors line-clamp-1 font-devanagari">
+                          <Link key={fac.id || index} href="/faculty" className="block group">
+                            <Card className="overflow-hidden border border-border/80 bg-card hover:shadow-soft-lg hover:border-primary/40 transition-all duration-300 p-2.5 sm:p-4 text-center flex flex-col items-center justify-between h-full cursor-pointer">
+                              <div className="w-full flex flex-col items-center">
+                                <div className="relative h-16 w-16 xs:h-20 xs:w-20 sm:h-24 sm:w-24 rounded-full overflow-hidden shrink-0 border-2 sm:border-4 border-primary/20 bg-muted mb-2 group-hover:scale-105 group-hover:border-primary transition-all duration-300">
+                                  {fac.image ? (
+                                    <Image
+                                      src={fac.image}
+                                      alt={name}
+                                      fill
+                                      className="object-cover"
+                                      unoptimized
+                                    />
+                                  ) : (
+                                    <div className="flex h-full w-full items-center justify-center bg-primary/10 text-primary">
+                                      <GraduationCap className="h-6 w-6 sm:h-8 sm:w-8" />
+                                    </div>
+                                  )}
+                                </div>
+                                <h3 className="text-xs sm:text-sm font-extrabold text-foreground group-hover:text-primary transition-colors line-clamp-1 font-devanagari">
                                   {name}
                                 </h3>
-                                <p className="text-xs font-bold text-primary tracking-wide uppercase line-clamp-1">
+                                <p className="text-[9px] sm:text-xs font-bold text-primary tracking-wide uppercase line-clamp-1 mt-0.5">
                                   {title}
                                 </p>
                                 {desc && (
-                                  <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3 pt-1 font-devanagari">
+                                  <p className="text-[10px] sm:text-xs text-muted-foreground leading-relaxed line-clamp-2 pt-1 font-devanagari hidden sm:block">
                                     {desc}
                                   </p>
                                 )}
                               </div>
-                            </div>
-                          </Card>
+                            </Card>
+                          </Link>
                         );
                       })}
                     </div>
@@ -583,102 +694,104 @@ export default async function CourseDetailPage({ params }: PageProps) {
 
             {/* Right: Sticky Sidebar */}
             <aside className="lg:col-span-4 lg:sticky lg:top-24 space-y-6">
-              {/* Pricing Card */}
-              <AnimatedSection variant="scale-in">
-                <Card className="overflow-hidden border border-border/60 shadow-soft-lg">
-                  {/* Price Header */}
-                  <div className="bg-primary text-white p-6 text-center space-y-2 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.1)_0%,_transparent_60%)]" />
-                    <div className="relative z-10">
-                      <p className="text-sm text-white/70 font-semibold uppercase tracking-wider">
-                        कोर्स शुल्क
-                      </p>
-                      <div className="flex items-baseline justify-center gap-2 mt-1">
-                        <span className="text-4xl font-extrabold">
-                          {course.price}
-                        </span>
-                        <span className="text-lg text-white/50 line-through">
-                          {course.originalPrice}
-                        </span>
-                      </div>
-                      <p className="text-xs text-white/60 mt-1">
-                        {Math.round(
-                          ((parseInt(course.originalPrice.replace(/[₹,]/g, "")) -
-                            parseInt(course.price.replace(/[₹,]/g, ""))) /
-                            parseInt(
-                              course.originalPrice.replace(/[₹,]/g, "")
-                            )) *
-                            100
-                        )}
-                        % की छूट
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* CTA Buttons */}
-                  <div className="p-6 space-y-3">
-                    <EnrollButton
-                      courseTitle={course.title}
-                      enrollUrl={course.enrollUrl || "https://wa.me/919713300123"}
-                      locale="hi"
-                      className="w-full rounded-xl bg-primary hover:bg-primary/95 text-white font-bold text-base gap-2 h-11 flex items-center justify-center cursor-pointer transition-all duration-200"
-                    />
-                    <Button
-                      variant="outline"
-                      size="lg"
-                      className="w-full rounded-xl font-bold text-base gap-2 border-[#25D366]/40 text-[#25D366] hover:bg-[#25D366]/10 hover:text-[#25D366]"
-                      asChild
-                    >
-                      <a
-                        href="https://wa.me/919713300123"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <MessageSquare className="h-5 w-5" />
-                        WhatsApp पर पूछें
-                      </a>
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="lg"
-                      className="w-full rounded-xl font-bold text-base gap-2"
-                      asChild
-                    >
-                      <a href="tel:+919713300123">
-                        <Phone className="h-5 w-5" />
-                        कॉल करें
-                      </a>
-                    </Button>
-                  </div>
-
-                  {/* Features List */}
-                  {course.features && course.features.length > 0 && (
-                    <div className="border-t border-border/40 p-6 space-y-3">
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                        इस कोर्स में शामिल है
-                      </h4>
-                      {course.features.map((f, i) => (
-                        <div
-                          key={i}
-                          className="flex items-center gap-3 text-sm"
-                        >
-                          <div className="shrink-0 h-8 w-8 rounded-lg bg-primary/5 flex items-center justify-center text-primary">
-                            <FeatureIcon name={f.icon} />
-                          </div>
-                          <div className="flex-1 flex items-center justify-between">
-                            <span className="text-muted-foreground font-devanagari">
-                              {f.label}
-                            </span>
-                            <span className="font-bold text-foreground font-devanagari">
-                              {f.value}
-                            </span>
-                          </div>
+              {/* Desktop Pricing Card */}
+              <div className="hidden lg:block">
+                <AnimatedSection variant="scale-in">
+                  <Card className="overflow-hidden border border-border/60 shadow-soft-lg">
+                    {/* Price Header */}
+                    <div className="bg-primary text-white p-6 text-center space-y-2 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.1)_0%,_transparent_60%)]" />
+                      <div className="relative z-10">
+                        <p className="text-sm text-white/70 font-semibold uppercase tracking-wider">
+                          कोर्स शुल्क
+                        </p>
+                        <div className="flex items-baseline justify-center gap-2 mt-1">
+                          <span className="text-4xl font-extrabold">
+                            {course.price}
+                          </span>
+                          <span className="text-lg text-white/50 line-through">
+                            {course.originalPrice}
+                          </span>
                         </div>
-                      ))}
+                        <p className="text-xs text-white/60 mt-1">
+                          {Math.round(
+                            ((parseInt(course.originalPrice.replace(/[₹,]/g, "")) -
+                              parseInt(course.price.replace(/[₹,]/g, ""))) /
+                              parseInt(
+                                course.originalPrice.replace(/[₹,]/g, "")
+                              )) *
+                              100
+                          )}
+                          % की छूट
+                        </p>
+                      </div>
                     </div>
-                  )}
-                </Card>
-              </AnimatedSection>
+
+                    {/* CTA Buttons */}
+                    <div className="p-6 space-y-3">
+                      <EnrollButton
+                        courseTitle={course.title}
+                        enrollUrl={course.enrollUrl || "https://wa.me/919713300123"}
+                        locale="hi"
+                        className="w-full rounded-xl bg-primary hover:bg-primary/95 text-white font-bold text-base gap-2 h-11 flex items-center justify-center cursor-pointer transition-all duration-200"
+                      />
+                      <Button
+                        variant="outline"
+                        size="lg"
+                        className="w-full rounded-xl font-bold text-base gap-2 border-[#25D366]/40 text-[#25D366] hover:bg-[#25D366]/10 hover:text-[#25D366]"
+                        asChild
+                      >
+                        <a
+                          href="https://wa.me/919713300123"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <MessageSquare className="h-5 w-5" />
+                          WhatsApp पर पूछें
+                        </a>
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="lg"
+                        className="w-full rounded-xl font-bold text-base gap-2"
+                        asChild
+                      >
+                        <a href="tel:+919713300123">
+                          <Phone className="h-5 w-5" />
+                          कॉल करें
+                        </a>
+                      </Button>
+                    </div>
+
+                    {/* Features List */}
+                    {course.features && course.features.length > 0 && (
+                      <div className="border-t border-border/40 p-6 space-y-3">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                          इस कोर्स में शामिल है
+                        </h4>
+                        {course.features.map((f, i) => (
+                          <div
+                            key={i}
+                            className="flex items-center gap-3 text-sm"
+                          >
+                            <div className="shrink-0 h-8 w-8 rounded-lg bg-primary/5 flex items-center justify-center text-primary">
+                              <FeatureIcon name={f.icon} />
+                            </div>
+                            <div className="flex-1 flex items-center justify-between">
+                              <span className="text-muted-foreground font-devanagari">
+                                {f.label}
+                              </span>
+                              <span className="font-bold text-foreground font-devanagari">
+                                {f.value}
+                              </span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </Card>
+                </AnimatedSection>
+              </div>
 
               {/* Download Brochure */}
               {brochureUrl && (

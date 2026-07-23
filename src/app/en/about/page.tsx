@@ -24,7 +24,11 @@ import {
   Briefcase,
   GraduationCap,
   UserCheck,
-  Calendar
+  Calendar,
+  Rocket,
+  Shield,
+  Laptop,
+  Trophy
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -109,7 +113,7 @@ export default async function EnglishAboutPage() {
                 <nav className="flex flex-col gap-1 p-5 bg-card border border-border/60 rounded-2xl shadow-soft">
                   <h4 className="font-mono text-xs font-bold text-primary tracking-wider uppercase mb-3 px-2">NAVIGATION</h4>
                   {[
-                    { name: "Our Story", href: "#story" },
+                    { name: "Our Journey", href: "#story" },
                     { name: "Mission & Vision", href: "#mission" },
                     { name: "Why Aakar?", href: "#why-aakar" },
                     { name: "By The Numbers", href: "#stats" },
@@ -122,8 +126,8 @@ export default async function EnglishAboutPage() {
                       href={item.href}
                       className="flex items-center justify-between px-3 py-2 text-sm font-medium text-muted-foreground rounded-lg hover:bg-muted hover:text-foreground transition-all group"
                     >
-                      {item.name}
-                      <ChevronRight className="h-4 w-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary" />
+                      <span>{item.name}</span>
+                      <ChevronRight className="h-4 w-4 text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
                     </a>
                   ))}
                 </nav>
@@ -155,50 +159,145 @@ export default async function EnglishAboutPage() {
             {/* Main Content Content */}
             <div className="col-span-12 lg:col-span-9 space-y-20 pb-20">
               
-              {/* Our Story (Timeline) */}
-              <section id="story" className="scroll-mt-28 space-y-6">
-                <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl border-b border-border/60 pb-3">
-                  Our Story
-                </h2>
+              {/* Our Story / Our Journey (Timeline) */}
+              <section id="story" className="scroll-mt-28 space-y-8">
+                <div className="space-y-3 border-b border-border/60 pb-6">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-xs font-black font-mono text-red-600 dark:text-red-400 uppercase tracking-widest">
+                    <Sparkles className="h-3.5 w-3.5" /> OUR JOURNEY
+                  </div>
+                  <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground">
+                    Our Journey
+                  </h2>
+                  <p className="text-base sm:text-lg text-muted-foreground max-w-3xl leading-relaxed">
+                    Starting from a humble effort, our journey has evolved into a story of trust and success for thousands of civil services aspirants.
+                  </p>
+                </div>
+
                 {page && page.body && (
                   <div className="prose prose-aakar dark:prose-invert max-w-none pb-4 text-muted-foreground leading-relaxed">
                     <PortableText value={page.body} />
                   </div>
                 )}
-                <div className="relative pl-8 md:pl-12 border-l-2 border-primary/20 py-4 space-y-12">
-                  
-                  {/* Timeline 2014 */}
-                  <div className="relative">
-                    <div className="absolute -left-[39px] md:-left-[55px] top-1.5 w-4 h-4 bg-primary rounded-full border-4 border-background ring-4 ring-primary/15"></div>
-                    <div className="max-w-2xl space-y-2">
-                      <span className="inline-block font-mono text-xs font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded-full">2014</span>
-                      <h3 className="text-xl font-bold text-foreground">The Seed is Sown</h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        Started in a small room in Mukherjee Nagar with 10 students and a strong vision to simplify the complexities of the civil services journey.
+
+                {/* Timeline Container */}
+                <div className="relative pl-6 sm:pl-10 md:pl-12 pt-2 pb-4 space-y-16 md:space-y-20">
+                  {/* Timeline Continuous Gradient Line */}
+                  <div 
+                    className="absolute left-2.5 sm:left-4 md:left-5 top-3 bottom-3 w-0.5 bg-gradient-to-b from-red-500 via-primary to-red-500/20 rounded-full shadow-[0_0_8px_rgba(239,68,68,0.3)]"
+                    aria-hidden="true"
+                  />
+
+                  {/* Timeline Item 2014 */}
+                  <div className="relative group transition-all duration-500">
+                    {/* Node Dot */}
+                    <div className="absolute -left-[23px] sm:-left-[31px] md:-left-[35px] top-2.5 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-zinc-900 border-2 border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)] flex items-center justify-center transition-all duration-300 group-hover:scale-125 group-hover:border-red-600 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.5)]">
+                      <Rocket className="h-4 w-4 text-red-600 dark:text-red-400" />
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="bg-white dark:bg-card border border-border/80 rounded-2xl p-6 sm:p-8 shadow-soft hover:shadow-xl hover:border-red-500/40 transition-all duration-300 hover:-translate-y-1">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs sm:text-sm font-bold bg-[#FEE2E2] text-red-700 dark:bg-red-950/80 dark:text-red-300 border border-red-200/80 dark:border-red-800/40 shadow-xs mb-3">
+                        2014
+                      </span>
+                      
+                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white leading-tight flex items-center gap-2.5 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
+                        <span>A Small Step, A Grand Beginning</span>
+                      </h3>
+
+                      <p className="text-base sm:text-[17px] leading-[1.9] text-gray-600 dark:text-zinc-300 mt-3.5">
+                        Aakar IAS was <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">established in Indore</strong> with the vision to make Civil Services and State PSC preparation simple, structured, and high-quality. Started with humble resources but big dreams, this journey has grown into a <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">symbol of trust for thousands of aspirants</strong>.
                       </p>
                     </div>
                   </div>
 
-                  {/* Timeline 2016 */}
-                  <div className="relative">
-                    <div className="absolute -left-[39px] md:-left-[55px] top-1.5 w-4 h-4 bg-primary/40 rounded-full border-4 border-background ring-4 ring-primary/5"></div>
-                    <div className="max-w-2xl space-y-2">
-                      <span className="inline-block font-mono text-xs font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded-full">2016</span>
-                      <h3 className="text-xl font-bold text-foreground">National Footprint</h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        Established our first major center and launched the integrated Hindi-English test series platform to connect aspirants nationwide.
+                  {/* Timeline Item 2016 */}
+                  <div className="relative group transition-all duration-500">
+                    {/* Node Dot */}
+                    <div className="absolute -left-[23px] sm:-left-[31px] md:-left-[35px] top-2.5 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-zinc-900 border-2 border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)] flex items-center justify-center transition-all duration-300 group-hover:scale-125 group-hover:border-red-600 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.5)]">
+                      <Shield className="h-4 w-4 text-red-600 dark:text-red-400" />
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="bg-white dark:bg-card border border-border/80 rounded-2xl p-6 sm:p-8 shadow-soft hover:shadow-xl hover:border-red-500/40 transition-all duration-300 hover:-translate-y-1">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs sm:text-sm font-bold bg-[#FEE2E2] text-red-700 dark:bg-red-950/80 dark:text-red-300 border border-red-200/80 dark:border-red-800/40 shadow-xs mb-3">
+                        2016
+                      </span>
+                      
+                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white leading-tight flex items-center gap-2.5 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
+                        <span>Strong Foundation of Trust</span>
+                      </h3>
+
+                      <p className="text-base sm:text-[17px] leading-[1.9] text-gray-600 dark:text-zinc-300 mt-3.5">
+                        With exceptional teaching methodology, <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">experienced faculty</strong>, and exam-focused preparation, Aakar IAS carved a distinct identity among competitive exam aspirants in MP. <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">Regular tests, answer writing practice, and 1-on-1 mentorship</strong> began writing new success stories.
                       </p>
                     </div>
                   </div>
 
-                  {/* Timeline 2024 */}
-                  <div className="relative">
-                    <div className="absolute -left-[39px] md:-left-[55px] top-1.5 w-4 h-4 bg-primary/40 rounded-full border-4 border-background ring-4 ring-primary/5"></div>
-                    <div className="max-w-2xl space-y-2">
-                      <span className="inline-block font-mono text-xs font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded-full">2024</span>
-                      <h3 className="text-xl font-bold text-foreground">Leading the Digital Wave</h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        Empowering over 50,000 aspirants annually through our hybrid learning ecosystem, daily current affairs breakdowns, and personalized mentorship.
+                  {/* Timeline Item 2020 */}
+                  <div className="relative group transition-all duration-500">
+                    {/* Node Dot */}
+                    <div className="absolute -left-[23px] sm:-left-[31px] md:-left-[35px] top-2.5 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-zinc-900 border-2 border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)] flex items-center justify-center transition-all duration-300 group-hover:scale-125 group-hover:border-red-600 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.5)]">
+                      <Laptop className="h-4 w-4 text-red-600 dark:text-red-400" />
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="bg-white dark:bg-card border border-border/80 rounded-2xl p-6 sm:p-8 shadow-soft hover:shadow-xl hover:border-red-500/40 transition-all duration-300 hover:-translate-y-1">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs sm:text-sm font-bold bg-[#FEE2E2] text-red-700 dark:bg-red-950/80 dark:text-red-300 border border-red-200/80 dark:border-red-800/40 shadow-xs mb-3">
+                        2020
+                      </span>
+                      
+                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white leading-tight flex items-center gap-2.5 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
+                        <span>Digital Expansion in Education</span>
+                      </h3>
+
+                      <p className="text-base sm:text-[17px] leading-[1.9] text-gray-600 dark:text-zinc-300 mt-3.5">
+                        Recognizing the need of the hour, Aakar IAS took a major leap into online education. High-quality education reached students nationwide through <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">Live Classes, Recorded Lectures, Digital Study Material</strong>, and <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">Online Test Series</strong>.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Timeline Item 2024 */}
+                  <div className="relative group transition-all duration-500">
+                    {/* Node Dot */}
+                    <div className="absolute -left-[23px] sm:-left-[31px] md:-left-[35px] top-2.5 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-zinc-900 border-2 border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)] flex items-center justify-center transition-all duration-300 group-hover:scale-125 group-hover:border-red-600 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.5)]">
+                      <Sparkles className="h-4 w-4 text-red-600 dark:text-red-400" />
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="bg-white dark:bg-card border border-border/80 rounded-2xl p-6 sm:p-8 shadow-soft hover:shadow-xl hover:border-red-500/40 transition-all duration-300 hover:-translate-y-1">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs sm:text-sm font-bold bg-[#FEE2E2] text-red-700 dark:bg-red-950/80 dark:text-red-300 border border-red-200/80 dark:border-red-800/40 shadow-xs mb-3">
+                        2024
+                      </span>
+                      
+                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white leading-tight flex items-center gap-2.5 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
+                        <span>New Heights with Innovation</span>
+                      </h3>
+
+                      <p className="text-base sm:text-[17px] leading-[1.9] text-gray-600 dark:text-zinc-300 mt-3.5">
+                        Empowering thousands of aspirants through modern digital technology, <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">AI-driven learning tools</strong>, updated Current Affairs, top-grade study material, and a seamless <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">Hybrid Learning Model</strong>.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Timeline Item 2026 */}
+                  <div className="relative group transition-all duration-500">
+                    {/* Node Dot */}
+                    <div className="absolute -left-[23px] sm:-left-[31px] md:-left-[35px] top-2.5 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-zinc-900 border-2 border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)] flex items-center justify-center transition-all duration-300 group-hover:scale-125 group-hover:border-red-600 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.5)]">
+                      <Trophy className="h-4 w-4 text-red-600 dark:text-red-400" />
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="bg-white dark:bg-card border border-border/80 rounded-2xl p-6 sm:p-8 shadow-soft hover:shadow-xl hover:border-red-500/40 transition-all duration-300 hover:-translate-y-1">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs sm:text-sm font-bold bg-[#FEE2E2] text-red-700 dark:bg-red-950/80 dark:text-red-300 border border-red-200/80 dark:border-red-800/40 shadow-xs mb-3">
+                        2026
+                      </span>
+                      
+                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white leading-tight flex items-center gap-2.5 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
+                        <span>Steadfastly Moving Towards Success</span>
+                      </h3>
+
+                      <p className="text-base sm:text-[17px] leading-[1.9] text-gray-600 dark:text-zinc-300 mt-3.5">
+                        Today, Aakar IAS stands as a <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">trusted institution for MPPSC, UPSC</strong>, MPSI, ESB, and other competitive exams. Our mission goes beyond clearing exams—we aim to unlock every student's <strong className="font-bold text-red-600 dark:text-red-400 hover:underline underline-offset-4 decoration-red-500/40 transition-all cursor-pointer">full potential and 1-on-1 guidance</strong>.
                       </p>
                     </div>
                   </div>

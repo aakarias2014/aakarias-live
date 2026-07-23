@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useTransition } from "react";
-import { Send, Phone, Mail, MapPin, MessageSquare, CheckCircle2, AlertCircle, Loader2, Rss } from "lucide-react";
+import { Send, Phone, Mail, MapPin, MessageSquare, CheckCircle2, AlertCircle, Loader2, Rss, Smartphone, Monitor, Laptop } from "lucide-react";
 import { Logo } from "@/components/layout/logo";
 import { Container } from "@/components/layout/container";
 import { Separator } from "@/components/ui/separator";
@@ -116,14 +116,16 @@ export function SiteFooter() {
       {/* 1. Full-Width WhatsApp / Telegram Strip */}
       <div className="w-full border-b border-border/50 bg-gradient-to-r from-emerald-500/[0.04] via-background to-sky-500/[0.04] py-8 lg:py-10">
         <Container size="wide" className="grid gap-6 lg:grid-cols-12 items-center">
-          <div className="lg:col-span-5 space-y-1.5">
-            <h3 className="text-lg lg:text-xl font-extrabold text-foreground tracking-tight flex items-center gap-2">
-              <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
-              {locale === "hi" 
-                ? "रोज का Current Affairs PDF — सीधे WhatsApp पर। Free." 
-                : "Daily Current Affairs PDF — Directly on WhatsApp. Free."}
+          <div className="lg:col-span-5 space-y-2">
+            <h3 className="text-base sm:text-lg lg:text-xl font-extrabold text-foreground tracking-tight leading-snug flex items-start gap-2.5">
+              <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse shrink-0 mt-1.5" />
+              <span>
+                {locale === "hi"
+                  ? "रोज का Current Affairs PDF — सीधे WhatsApp पर। Free."
+                  : "Daily Current Affairs PDF — Directly on WhatsApp. Free."}
+              </span>
             </h3>
-            <p className="text-xs lg:text-sm text-muted-foreground">
+            <p className="text-xs lg:text-sm text-muted-foreground leading-relaxed pl-5 sm:pl-0">
               {locale === "hi"
                 ? "मुफ्त दैनिक पीडीएफ प्राप्त करने के लिए अपना मोबाइल नंबर दर्ज करें या सीधे हमारे आधिकारिक चैनल्स से जुड़ें।"
                 : "Enter your mobile number to receive daily updates, or join our official channels directly."}
@@ -141,13 +143,13 @@ export function SiteFooter() {
                   onChange={(e) => setPhone(e.target.value)}
                   required
                   aria-label="WhatsApp Phone Number"
-                  className="h-10 pl-9 rounded-xl bg-background border-border/60 focus-visible:ring-emerald-500/20"
+                  className="h-10 pl-9 rounded-xl bg-background border-border/60 focus-visible:ring-emerald-500/20 text-xs sm:text-sm"
                 />
               </div>
-              <Button 
-                type="submit" 
-                disabled={isPending} 
-                className="shrink-0 h-10 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5"
+              <Button
+                type="submit"
+                disabled={isPending}
+                className="shrink-0 h-10 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 sm:px-5 text-xs sm:text-sm shadow-soft"
               >
                 {isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : (locale === "hi" ? "सब्सक्राइब" : "Subscribe")}
               </Button>
@@ -168,14 +170,14 @@ export function SiteFooter() {
             )}
           </div>
 
-          <div className="lg:col-span-3 flex flex-wrap gap-2 lg:justify-end">
-            <Button variant="outline" size="sm" className="rounded-xl border-emerald-500/20 bg-emerald-500/5 hover:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 font-bold gap-1.5" asChild>
+          <div className="lg:col-span-3 flex flex-row gap-2 lg:justify-end">
+            <Button variant="outline" size="sm" className="flex-1 sm:flex-initial rounded-xl border-emerald-500/20 bg-emerald-500/5 hover:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 font-bold text-xs gap-1.5 justify-center" asChild>
               <a href={siteConfig.links.whatsapp} target="_blank" rel="noopener noreferrer">
                 <WhatsappIcon className="h-3.5 w-3.5" />
                 {locale === "hi" ? "व्हाट्सएप चैनल" : "WhatsApp Channel"}
               </a>
             </Button>
-            <Button variant="outline" size="sm" className="rounded-xl border-sky-500/20 bg-sky-500/5 hover:bg-sky-500/10 text-sky-600 dark:text-sky-400 hover:text-sky-700 font-bold gap-1.5" asChild>
+            <Button variant="outline" size="sm" className="flex-1 sm:flex-initial rounded-xl border-sky-500/20 bg-sky-500/5 hover:bg-sky-500/10 text-sky-600 dark:text-sky-400 hover:text-sky-700 font-bold text-xs gap-1.5 justify-center" asChild>
               <a href={siteConfig.links.telegram} target="_blank" rel="noopener noreferrer">
                 <Send className="h-3.5 w-3.5" />
                 {locale === "hi" ? "टेलीग्राम चैनल" : "Telegram Channel"}
@@ -187,7 +189,7 @@ export function SiteFooter() {
 
       {/* 2. 5-Column Navigation Grid */}
       <Container size="wide" className="pt-12 pb-8">
-        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12">
+        <div className="grid gap-10 lg:grid-cols-12">
           {/* Column 1: Brand Info */}
           <div className="lg:col-span-4 space-y-5">
             <Logo />
@@ -198,45 +200,68 @@ export function SiteFooter() {
             </p>
             
             {/* App Download Badges */}
-            <div className="space-y-2">
+            <div className="space-y-2.5">
               <span className="block text-xs font-bold text-muted-foreground tracking-wider uppercase">
                 {locale === "hi" ? "ऐप डाउनलोड करें" : "Download App"}
               </span>
-              <div className="grid grid-cols-2 gap-2 max-w-[280px]">
+              <div className="grid grid-cols-2 gap-2.5 max-w-[340px]">
                 <Link
                   href={getHref("/download")}
-                  className="inline-flex items-center gap-2 rounded-xl bg-zinc-900 border border-zinc-800 text-white px-3 py-1.5 hover:bg-zinc-800 transition-colors shadow-soft"
+                  className="inline-flex items-center gap-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-white px-3 py-2 hover:bg-zinc-800 transition-all shadow-soft group"
                 >
-                  <span className="font-bold text-[9px] uppercase leading-none block text-left">
-                    <span className="text-[7px] text-zinc-400 font-medium block">GET IT ON</span>
-                    Google Play
+                  <Smartphone className="h-4 w-4 text-primary shrink-0 group-hover:scale-110 transition-transform" />
+                  <span className="block text-left min-w-0">
+                    <span className="text-[8px] text-zinc-400 font-semibold block leading-tight tracking-wider uppercase">
+                      GET IT ON
+                    </span>
+                    <span className="text-[11px] font-extrabold text-white block leading-tight truncate">
+                      Google Play
+                    </span>
                   </span>
                 </Link>
+
                 <Link
                   href={getHref("/download")}
-                  className="inline-flex items-center gap-2 rounded-xl bg-zinc-900 border border-zinc-800 text-white px-3 py-1.5 hover:bg-zinc-800 transition-colors shadow-soft"
+                  className="inline-flex items-center gap-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-white px-3 py-2 hover:bg-zinc-800 transition-all shadow-soft group"
                 >
-                  <span className="font-bold text-[9px] uppercase leading-none block text-left">
-                    <span className="text-[7px] text-zinc-400 font-medium block">Download on the</span>
-                    App Store
+                  <Smartphone className="h-4 w-4 text-primary shrink-0 group-hover:scale-110 transition-transform" />
+                  <span className="block text-left min-w-0">
+                    <span className="text-[8px] text-zinc-400 font-semibold block leading-tight tracking-wider uppercase">
+                      DOWNLOAD ON
+                    </span>
+                    <span className="text-[11px] font-extrabold text-white block leading-tight truncate">
+                      App Store
+                    </span>
                   </span>
                 </Link>
+
                 <Link
                   href={getHref("/download")}
-                  className="inline-flex items-center gap-2 rounded-xl bg-zinc-900 border border-zinc-800 text-white px-3 py-1.5 hover:bg-zinc-800 transition-colors shadow-soft"
+                  className="inline-flex items-center gap-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-white px-3 py-2 hover:bg-zinc-800 transition-all shadow-soft group"
                 >
-                  <span className="font-bold text-[9px] uppercase leading-none block text-left">
-                    <span className="text-[7px] text-zinc-400 font-medium block">Download for</span>
-                    Windows
+                  <Monitor className="h-4 w-4 text-primary shrink-0 group-hover:scale-110 transition-transform" />
+                  <span className="block text-left min-w-0">
+                    <span className="text-[8px] text-zinc-400 font-semibold block leading-tight tracking-wider uppercase">
+                      DOWNLOAD FOR
+                    </span>
+                    <span className="text-[11px] font-extrabold text-white block leading-tight truncate">
+                      Windows
+                    </span>
                   </span>
                 </Link>
+
                 <Link
                   href={getHref("/download")}
-                  className="inline-flex items-center gap-2 rounded-xl bg-zinc-900 border border-zinc-800 text-white px-3 py-1.5 hover:bg-zinc-800 transition-colors shadow-soft"
+                  className="inline-flex items-center gap-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-white px-3 py-2 hover:bg-zinc-800 transition-all shadow-soft group"
                 >
-                  <span className="font-bold text-[9px] uppercase leading-none block text-left">
-                    <span className="text-[7px] text-zinc-400 font-medium block">Download for</span>
-                    macOS
+                  <Laptop className="h-4 w-4 text-primary shrink-0 group-hover:scale-110 transition-transform" />
+                  <span className="block text-left min-w-0">
+                    <span className="text-[8px] text-zinc-400 font-semibold block leading-tight tracking-wider uppercase">
+                      DOWNLOAD FOR
+                    </span>
+                    <span className="text-[11px] font-extrabold text-white block leading-tight truncate">
+                      macOS
+                    </span>
                   </span>
                 </Link>
               </div>
@@ -380,10 +405,28 @@ export function SiteFooter() {
         <div className="flex flex-col items-center justify-between gap-4 text-xs text-muted-foreground md:flex-row">
           <div className="flex flex-col gap-1 text-center md:text-left">
             <p className="font-semibold text-foreground/80">
-              © {new Date().getFullYear()} Aakar IAS · Social Bano Technologies Pvt. Ltd. All rights reserved.
+              © {new Date().getFullYear()} Aakar IAS ·{" "}
+              <a
+                href="https://www.socialbano.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary transition-colors hover:underline"
+              >
+                Social Bano Technologies Pvt. Ltd.
+              </a>{" "}
+              All rights reserved.
             </p>
             <p className="text-[10px] text-muted-foreground/75">
-              Developed & Managed by Social Bano Technologies Pvt. Ltd. Indore.
+              Developed & Managed by{" "}
+              <a
+                href="https://www.socialbano.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary transition-colors hover:underline"
+              >
+                Social Bano Technologies Pvt. Ltd. Indore
+              </a>
+              .
             </p>
           </div>
           
