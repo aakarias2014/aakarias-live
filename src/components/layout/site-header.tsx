@@ -203,9 +203,9 @@ export function SiteHeader() {
 
           {/* Right cluster */}
           <div className="ml-auto flex items-center gap-1 sm:gap-2 shrink-0">
-            {/* Search trigger (hidden on desktop, handled by Top Bar) */}
+            {/* Language switcher on mobile view */}
             <div className="lg:hidden">
-              <SearchTrigger iconOnly className="h-8 w-8 sm:h-9 sm:w-9 px-0 shrink-0" />
+              <LanguageSwitcher />
             </div>
 
             <ThemeToggle />
