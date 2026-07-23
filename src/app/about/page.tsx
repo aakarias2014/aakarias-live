@@ -36,9 +36,10 @@ import { Button } from "@/components/ui/button";
 import { ArticleAdRotator } from "@/components/article/article-ad-rotator";
 
 export const metadata: Metadata = buildMetadata({
-  title: "हमारे बारे में (About Us)",
-  description: "आकार आईएएस की कहानी, मिशन, विज़न और हमारी महत्वपूर्ण उपलब्धियां।",
+  title: "About Aakar IAS | Our Journey, Vision & Mission",
+  description: "Know more about Aakar IAS, our journey, experienced faculty, vision, mission and commitment towards MPPSC, UPSC and other competitive examinations.",
   path: "/about",
+  keywords: ["About Aakar IAS", "Aakar IAS history", "Aakar IAS faculty", "Aakar IAS Indore vision", "MPPSC UPSC coaching vision"],
 });
 
 export default async function AboutPage() {

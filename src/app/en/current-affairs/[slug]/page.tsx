@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getContentRepository } from "@/lib/content/content-repository";
-import { buildMetadata } from "@/lib/seo/metadata";
+import { buildMetadata, formatArticleSeoTitle, formatArticleSeoDescription } from "@/lib/seo/metadata";
 import { JsonLd } from "@/components/seo/json-ld";
 import { breadcrumbJsonLd, articleJsonLd, faqJsonLd, quizJsonLd, jsonLdGraph } from "@/lib/seo/jsonld";
 import { ArticleHero } from "@/components/article/article-hero";
@@ -62,14 +62,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = await repo.getArticle(slug, "en");
   if (!article) return {};
 
+  const seoTitle = formatArticleSeoTitle(article.title, undefined, "en");
+  const seoDesc = formatArticleSeoDescription(article.excerpt, article.title, "en");
+
   const baseMeta = buildMetadata({
-    title: article.title,
-    description: article.excerpt,
+    title: seoTitle,
+    description: seoDesc,
     path: article.href,
     image: article.featuredImage?.url,
     type: "article",
     publishedTime: article.date,
     keywords: article.keywords,
+    locale: "en",
   });
 
   if (slug === "jagannath-rath-yatra-2026-complete-notes" || article.keywords?.includes("Rath Yatra") || article.keywords?.includes("Puri")) {

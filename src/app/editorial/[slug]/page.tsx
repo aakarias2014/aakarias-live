@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getContentRepository } from "@/lib/content/content-repository";
-import { buildMetadata } from "@/lib/seo/metadata";
+import { buildMetadata, formatArticleSeoTitle, formatArticleSeoDescription } from "@/lib/seo/metadata";
 import { JsonLd } from "@/components/seo/json-ld";
 import { breadcrumbJsonLd, articleJsonLd, faqJsonLd, quizJsonLd, jsonLdGraph } from "@/lib/seo/jsonld";
 import { ArticleHero } from "@/components/article/article-hero";
@@ -33,9 +33,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = await repo.getArticle(slug, "hi");
   if (!article) return {};
 
+  const seoTitle = formatArticleSeoTitle(article.title, "hi");
+  const seoDesc = formatArticleSeoDescription(article.excerpt, article.title, "hi");
+
   return buildMetadata({
-    title: article.title,
-    description: article.excerpt,
+    title: seoTitle,
+    description: seoDesc,
     path: article.href,
     image: article.featuredImage?.url,
     type: "article",

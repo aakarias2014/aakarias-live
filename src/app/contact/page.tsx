@@ -12,10 +12,10 @@ import { getContentRepository } from "@/lib/content/content-repository";
 import { ArticleAdRotator } from "@/components/article/article-ad-rotator";
 
 export const metadata: Metadata = buildMetadata({
-  title: "संपर्क करें (Contact Us) | Aakar IAS",
-  description: "आकार आईएएस से संपर्क करें। फ़ॉर्म भरें, व्हाट्सएप पर संदेश भेजें, या हमारे कार्यालय का पता जानें।",
+  title: "Contact Aakar IAS | Admission, Support & Enquiry",
+  description: "Contact Aakar IAS for admissions, course information, technical support and general enquiries. Visit our Indore centre or connect via phone, WhatsApp and email.",
   path: "/contact",
-  keywords: ["Aakar IAS contact number", "Aakar IAS address", "Indore IAS coaching", "Bhanwarkua coaching contact"],
+  keywords: ["Contact Aakar IAS", "Aakar IAS admissions", "Aakar IAS contact number", "Aakar IAS address Indore", "MPPSC enquiry", "UPSC coaching contact"],
 });
 
 export default async function ContactPage() {
@@ -44,7 +44,7 @@ export default async function ContactPage() {
     },
     {
       q: "आकार आईएएस MPPSC कोचिंग की फीस क्या है?",
-      a: "आकार आईएएस MPPSC कोचिंग के लिए लचीली फीस संरचना प्रदान करता है। फीस कोर्स के अनुसार अलग-अलग होती है — प्रीलिम्स, मेन्स, प्री+मेन्स कम्बाइंड, फाउंडेशन बैच और टेस्ट सीरीज़ सभी की अलग-अलग कीमत है। नवीनतम फीस विवरण और किस्त योजना के लिए हमारे इंदौर सेंटर पर संपर्क करें।"
+      a: "आकार आईएएस MPPSC कोचिंग के लिए लचीली फीस संरचना प्रदान करता है। फीस कोर्स के अनुसार अलग-अलग होती है — प्रीलिम्स, मेन्स, प्री+मेन्स कम्बाइंड, फाउंडेशन बैच और टेस्ट सीरीज़ सभी की अलग-अलग कीमत है। नवीनतम फीस विवरण और किस्त योजना के लिए हमारे इंदौर सेंटर पर संपर्क करें。"
     },
     {
       q: "क्या आकर आईएएस अध्ययन सामग्री प्रदान करता है?",
@@ -61,26 +61,22 @@ export default async function ContactPage() {
         </Container>
       </section>
 
-      {/* Main contact section */}
-      <Section className="bg-background">
-        <Container size="wide" className="space-y-12">
-          
-          {/* Hero Header */}
-          <div className="text-center py-6 max-w-3xl mx-auto space-y-4">
-            <h1 className="font-display-hindi text-4xl sm:text-5xl font-extrabold tracking-tight text-foreground">
-              हमसे संपर्क करें
+      <Section className="py-8 md:py-12">
+        <Container size="wide">
+          {/* Header section */}
+          <div className="mb-10 text-center max-w-3xl mx-auto space-y-3">
+            <h1 className="text-3xl font-extrabold text-foreground sm:text-4xl tracking-tight">
+              आकार IAS से संपर्क करें
             </h1>
-            <p className="font-article-body text-lg text-muted-foreground leading-relaxed">
-              आपकी सफलता हमारी प्राथमिकता है। MPPSC, UPSC और अन्य सरकारी परीक्षाओं के लिए किसी भी सहायता या पाठ्यक्रम संबंधी जानकारी के लिए हमसे जुड़ें।
+            <p className="text-base text-muted-foreground">
+              MPPSC, UPSC एवं अन्य प्रतियोगी परीक्षाओं के नए बैच, प्रवेश प्रक्रिया, टेस्ट सीरीज़ और मार्गदर्शन के लिए हमसे जुड़ें।
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            
-            {/* Left Content Area (8 Columns) */}
-            <main className="lg:col-span-8 space-y-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {/* Main Content Area (8 Columns) */}
+            <main className="lg:col-span-8 space-y-8">
               
-              {/* Quick Contact Bento Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 
                 {/* Call card */}

@@ -12,11 +12,11 @@ import { getContentRepository } from "@/lib/content/content-repository";
 import { ArticleAdRotator } from "@/components/article/article-ad-rotator";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Contact Us | Aakar IAS",
-  description: "Contact Aakar IAS. Fill out the query form, contact us on WhatsApp, or find our office location map.",
+  title: "Contact Aakar IAS | Admission, Support & Enquiry",
+  description: "Contact Aakar IAS for admissions, course information, technical support and general enquiries. Visit our Indore centre or connect via phone, WhatsApp and email.",
   path: "/en/contact",
   locale: "en",
-  keywords: ["Aakar IAS contact number", "Aakar IAS address", "Indore IAS coaching", "Bhanwarkua coaching contact"],
+  keywords: ["Contact Aakar IAS", "Aakar IAS admissions", "Aakar IAS contact number", "Aakar IAS address Indore", "MPPSC enquiry", "UPSC coaching contact"],
 });
 
 export default async function EnglishContactPage() {
@@ -263,7 +263,7 @@ export default async function EnglishContactPage() {
             </main>
 
             {/* Right Sidebar Area (4 Columns) */}
-            <aside className="lg:col-span-4 space-y-6">
+            <aside data-nosnippet className="lg:col-span-4 space-y-6">
               
               {/* Latest Current Affairs */}
               <div className="bg-card border border-border p-6 rounded-2xl shadow-soft space-y-4">

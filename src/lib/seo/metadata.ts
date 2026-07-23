@@ -44,14 +44,18 @@ export function buildMetadata({
   articleType = "article",
 }: BuildMetadataInput = {}): Metadata {
   const url = `${siteConfig.url}${path === "/" ? "" : path}`;
-  const fullTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.name;
+  
+  // Format title without duplicating brand name if already present
+  const fullTitle = title 
+    ? (title.includes(siteConfig.name) ? title : `${title} | ${siteConfig.name}`)
+    : siteConfig.name;
 
   // Dynamic OG image: use /api/og with query params when title exists
   let ogImage: string;
   if (image) {
     ogImage = image;
   } else if (title) {
-    const ogParams = new URLSearchParams({ title });
+    const ogParams = new URLSearchParams({ title: title.replace(/\s*\|\s*Aakar IAS/gi, "") });
     if (category) ogParams.set("category", category);
     if (publishedTime) {
       ogParams.set("date", formatDate(publishedTime, locale));
@@ -64,11 +68,11 @@ export function buildMetadata({
   }
 
   return {
-    title: title ?? undefined,
+    title: { absolute: fullTitle },
     description,
     keywords: keywords ?? siteConfig.keywords,
     alternates: {
-      canonical: path,
+      canonical: url,
       languages: buildAlternates(stripLocale(path)),
     },
     openGraph: {
@@ -77,8 +81,8 @@ export function buildMetadata({
       url,
       siteName: siteConfig.name,
       images: [{ url: ogImage, width: 1200, height: 630, alt: title ?? siteConfig.name }],
-      locale: "hi_IN",
-      alternateLocale: ["en_IN"],
+      locale: locale === "en" ? "en_IN" : "hi_IN",
+      alternateLocale: locale === "en" ? ["hi_IN"] : ["en_IN"],
       type,
       ...(type === "article" && publishedTime
         ? { publishedTime, modifiedTime: modifiedTime ?? publishedTime, authors }
@@ -90,8 +94,86 @@ export function buildMetadata({
       description,
       images: [ogImage],
     },
-    robots: noIndex ? { index: false, follow: false } : { index: true, follow: true },
+    robots: noIndex 
+      ? { index: false, follow: false } 
+      : { 
+          index: true, 
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+            "max-video-preview": -1,
+          }
+        },
   };
+}
+
+/** Format Article SEO Title ensuring primary keyword comes first, secondary keywords follow, and ends with exam & brand */
+export function formatArticleSeoTitle(
+  rawTitle: string,
+  englishTitle?: string,
+  locale: "hi" | "en" = "hi"
+): string {
+  let title = rawTitle.trim();
+  
+  // Clean up any trailing brand suffixes if repeated
+  title = title.replace(/\s*\|\s*Aakar IAS/gi, "").trim();
+
+  // If title already has full formatted structure (main part | exam part), retain main part
+  if (title.includes("|")) {
+    const parts = title.split("|").map((p) => p.trim());
+    const mainPart = parts[0];
+    const examPart = parts.slice(1).join(", ");
+    const hasExam = examPart.includes("MPPSC") || examPart.includes("UPSC");
+    const examSuffix = hasExam ? examPart : "MPPSC, UPSC";
+    return `${mainPart} | ${examSuffix} | ${siteConfig.name}`;
+  }
+
+  // If title does not contain English in brackets but englishTitle is provided, append it
+  if (englishTitle && !title.includes("(") && !title.toLowerCase().includes(englishTitle.toLowerCase())) {
+    title = `${title} (${englishTitle})`;
+  }
+
+  // Ensure exam keywords are present if missing
+  if (!title.includes("MPPSC") && !title.includes("UPSC")) {
+    title = `${title} | MPPSC, UPSC`;
+  }
+  
+  return `${title} | ${siteConfig.name}`;
+}
+
+/** Format Article SEO Description (140-160 characters) with Primary Keyword + Facts + Exam Keywords + CTA */
+export function formatArticleSeoDescription(
+  rawExcerpt?: string, 
+  title?: string, 
+  locale: "hi" | "en" = "hi"
+): string {
+  let desc = rawExcerpt?.trim() || "";
+  const cleanTitle = title?.replace(/\s*\|.*/g, "").trim() || "";
+  
+  if (!desc || desc.length < 50) {
+    desc = locale === "en"
+      ? `${cleanTitle} - Date, history, significance, key facts, MCQs and complete study material for MPPSC and UPSC exams.`
+      : `${cleanTitle} की तिथि, इतिहास, प्रमुख तथ्य, महत्व, MCQs एवं MPPSC, UPSC परीक्षा की दृष्टि से सम्पूर्ण जानकारी पढ़ें।`;
+  }
+
+  // Ensure exam keywords and CTA are present in description
+  if (locale === "hi" && !desc.includes("MPPSC") && !desc.includes("UPSC")) {
+    desc = `${desc} MPPSC एवं UPSC परीक्षा हेतु महत्वपूर्ण संपूर्ण जानकारी पढ़ें।`;
+  } else if (locale === "en" && !desc.includes("MPPSC") && !desc.includes("UPSC")) {
+    desc = `${desc} Key current affairs study material for MPPSC and UPSC exams.`;
+  }
+
+  // Optimize length strictly to 140-160 chars
+  if (desc.length > 160) {
+    desc = desc.slice(0, 157).trim() + "...";
+  } else if (desc.length < 130 && locale === "hi") {
+    desc = `${desc} MPPSC, UPSC परीक्षा की दृष्टि से सम्पूर्ण नोट्स।`.slice(0, 160);
+  }
+
+  return desc;
 }
 
 

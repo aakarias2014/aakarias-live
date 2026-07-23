@@ -68,10 +68,11 @@ export function localizedHref(pathname: string, targetLocale: Locale): string {
  * Returns entries suitable for Next.js Metadata `alternates.languages`.
  */
 export function buildAlternates(localeNeutralPath: string): Record<string, string> {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://aakarias.com";
   const path = localeNeutralPath === "/" ? "" : localeNeutralPath;
   return {
-    "hi-IN": path || "/",
-    "en-IN": `/en${path}` || "/en",
-    "x-default": path || "/",
+    "hi-IN": `${baseUrl}${path || "/"}`,
+    "en-IN": `${baseUrl}/en${path}`,
+    "x-default": `${baseUrl}${path || "/"}`,
   };
 }
