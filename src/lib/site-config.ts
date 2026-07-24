@@ -12,7 +12,7 @@ export const siteConfig = {
   tagline: "MPPSC एवं UPSC हेतु मध्य भारत का सर्वश्रेष्ठ कोचिंग संस्थान",
   taglineEn: "Best MPPSC & UPSC Coaching Institute in Indore",
   description:
-    "Aakar IAS Indore — Best MPPSC & UPSC Coaching in Indore. Daily Current Affairs, Mains Answer Writing, Test Series, Toppers Copies, PYQs & Free Study Material.",
+    "Aakar IAS is a leading Best UPSC & MPPSC coaching institute in Indore offering Online & Offline Classes, Daily Current Affairs, Test Series, Answer Writing, Interview Guidance, and complete Civil Services Exam Preparation.",
   ogImage: "/api/og", // OG image route (dynamic) — implemented in a later step
   keywords: [
     "Aakar IAS",

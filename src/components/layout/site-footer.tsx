@@ -195,8 +195,8 @@ export function SiteFooter() {
             <Logo />
             <p className="text-sm text-muted-foreground leading-relaxed">
               {locale === "hi"
-                ? "आकार IAS — सिविल सेवा परीक्षा (UPSC व MPPSC) के लिए देश का सबसे विश्वसनीय और सुव्यवस्थित हिंदी व अंग्रेजी माध्यम का डिजिटल अध्ययन मंच।"
-                : "Aakar IAS — India's trusted bilingual platform preparing civil services aspirants for UPSC and State PSC exams with high-quality daily current affairs."}
+                ? "आकार IAS इंदौर — इंदौर में सर्वश्रेष्ठ UPSC व MPPSC कोचिंग संस्थान। ऑनलाइन व ऑफलाइन क्लासेस, डेली करेंट अफेयर्स, टेस्ट सीरीज, आंसर राइटिंग व इंटरव्यू गाइडेंस।"
+                : "Aakar IAS is a leading Best UPSC & MPPSC coaching institute in Indore offering Online & Offline Classes, Daily Current Affairs, Test Series, Answer Writing, Interview Guidance, and complete Civil Services Exam Preparation."}
             </p>
             
             {/* App Download Badges */}

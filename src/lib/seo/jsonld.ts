@@ -72,6 +72,7 @@ export function localBusinessJsonLd(): JsonLd {
     url: siteConfig.url,
     telephone: siteConfig.contact.phone,
     email: siteConfig.contact.email,
+    description: siteConfig.description,
     priceRange: "₹₹₹",
     address: {
       "@type": "PostalAddress",
