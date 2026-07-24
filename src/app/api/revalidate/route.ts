@@ -146,3 +146,35 @@ export async function POST(req: NextRequest) {
     );
   }
 }
+
+/**
+ * GET Handler for 1-Click Manual Cache Clearing in Browser
+ * Usage: /api/revalidate?secret=YOUR_SECRET&path=/faculty
+ */
+export async function GET(req: NextRequest) {
+  const secret = process.env.SANITY_REVALIDATE_SECRET;
+  const { searchParams } = new URL(req.url);
+  const reqSecret = searchParams.get("secret");
+  const path = searchParams.get("path") || "/faculty";
+
+  if (secret && reqSecret !== secret) {
+    return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
+  }
+
+  try {
+    revalidatePath(path);
+    revalidatePath(`/en${path === "/" ? "" : path}`);
+    revalidatePath("/faculty");
+    revalidatePath("/en/faculty");
+    revalidateTag("faculties");
+    revalidateTag("homeConfig");
+
+    return NextResponse.json({
+      revalidated: true,
+      message: `Successfully purged cache for path: ${path} and tags: faculties, homeConfig`,
+      now: new Date().toISOString(),
+    });
+  } catch (err) {
+    return NextResponse.json({ message: "Failed to purge cache", error: String(err) }, { status: 500 });
+  }
+}

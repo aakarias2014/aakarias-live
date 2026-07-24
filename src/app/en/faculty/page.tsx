@@ -3,6 +3,8 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import { getContentRepository } from "@/lib/content/content-repository";
 import { FacultyClient } from "@/components/content/faculty-client";
 
+export const revalidate = 60; // Revalidate from Sanity every 60 seconds
+
 export const metadata: Metadata = buildMetadata({
   title: "Our Mentors & Faculty Members | Aakar IAS",
   description: "Meet our highly experienced senior mentors and expert faculty members at Aakar IAS. Personal guidance for UPSC & MPPSC.",
