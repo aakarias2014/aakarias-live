@@ -3,6 +3,7 @@ import { getContentRepository } from "@/lib/content/content-repository";
 export interface UnifiedTopperCopy {
   id: string;
   slug: string;
+  sanityId?: string;
   name: string;
   nameEn: string;
   rank: string;
@@ -23,6 +24,7 @@ export const HARDCODED_TOPPER_COPIES: UnifiedTopperCopy[] = [
   {
     id: "gs-ajeet-mishra",
     slug: "gs-ajeet-mishra",
+    sanityId: "gs-ajeet-mishra",
     name: "अजीत कुमार मिश्रा",
     nameEn: "Ajeet Kumar Mishra",
     rank: "DC रैंक 1 (2023)",
@@ -41,6 +43,7 @@ export const HARDCODED_TOPPER_COPIES: UnifiedTopperCopy[] = [
   {
     id: "ethics-ananya",
     slug: "ethics-ananya",
+    sanityId: "ethics-ananya",
     name: "अनन्या शर्मा",
     nameEn: "Ananya Sharma",
     rank: "रैंक 1 (2022)",
@@ -58,6 +61,7 @@ export const HARDCODED_TOPPER_COPIES: UnifiedTopperCopy[] = [
   {
     id: "history-rohan",
     slug: "history-rohan",
+    sanityId: "history-rohan",
     name: "रोहन देशमुख",
     nameEn: "Rohan Deshmukh",
     rank: "रैंक 12 (2022)",
@@ -75,6 +79,7 @@ export const HARDCODED_TOPPER_COPIES: UnifiedTopperCopy[] = [
   {
     id: "polity-ishani",
     slug: "polity-ishani",
+    sanityId: "polity-ishani",
     name: "ईशानी गुप्ता",
     nameEn: "Ishani Gupta",
     rank: "रैंक 4 (2022)",
@@ -92,6 +97,7 @@ export const HARDCODED_TOPPER_COPIES: UnifiedTopperCopy[] = [
   {
     id: "essay-vikram",
     slug: "essay-vikram",
+    sanityId: "essay-vikram",
     name: "विक्रम सिंह",
     nameEn: "Vikram Singh",
     rank: "रैंक 21 (2021)",
@@ -109,6 +115,7 @@ export const HARDCODED_TOPPER_COPIES: UnifiedTopperCopy[] = [
   {
     id: "geography-shreya",
     slug: "geography-shreya",
+    sanityId: "geography-shreya",
     name: "श्रेया मालवीय",
     nameEn: "Shreya Malviya",
     rank: "रैंक 18 (2023)",
@@ -126,6 +133,7 @@ export const HARDCODED_TOPPER_COPIES: UnifiedTopperCopy[] = [
   {
     id: "economy-neha",
     slug: "economy-neha",
+    sanityId: "economy-neha",
     name: "नेहा तिवारी",
     nameEn: "Neha Tiwari",
     rank: "रैंक 42 (2023)",
@@ -152,6 +160,7 @@ export async function getAllTopperCopies(locale: "hi" | "en" = "hi"): Promise<Un
       return {
         id: s.slug || rawId,
         slug: s.slug || rawId,
+        sanityId: rawId,
         name: s.name,
         nameEn: s.name,
         rank: s.rank ? `DC रैंक ${s.rank} (${s.year || 2023})` : "टॉपर",
@@ -178,14 +187,19 @@ export async function getAllTopperCopies(locale: "hi" | "en" = "hi"): Promise<Un
 
 export async function getTopperCopyBySlug(slug: string, locale: "hi" | "en" = "hi"): Promise<UnifiedTopperCopy | null> {
   const all = await getAllTopperCopies(locale);
-  const cleanSlug = decodeURIComponent(slug).replace(/^sanity-/, "");
+  const cleanSlug = decodeURIComponent(slug).toLowerCase().replace(/^sanity-/, "");
   
   return (
-    all.find(
-      (c) =>
-        c.slug.toLowerCase() === cleanSlug.toLowerCase() ||
-        c.id.toLowerCase() === cleanSlug.toLowerCase() ||
-        c.id.toLowerCase() === `sanity-${cleanSlug.toLowerCase()}`
-    ) || null
+    all.find((c) => {
+      const cSlug = (c.slug || "").toLowerCase();
+      const cId = (c.id || "").toLowerCase().replace(/^sanity-/, "");
+      const cSanityId = (c.sanityId || "").toLowerCase().replace(/^sanity-/, "");
+
+      return (
+        cSlug === cleanSlug ||
+        cId === cleanSlug ||
+        cSanityId === cleanSlug
+      );
+    }) || null
   );
 }

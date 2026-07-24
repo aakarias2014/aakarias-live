@@ -23,7 +23,13 @@ interface Props {
 
 export async function generateStaticParams() {
   const copies = await getAllTopperCopies("hi");
-  return copies.map((c) => ({ slug: c.slug }));
+  const slugs = new Set<string>();
+  for (const c of copies) {
+    if (c.slug) slugs.add(c.slug);
+    if (c.id) slugs.add(c.id);
+    if (c.sanityId) slugs.add(c.sanityId);
+  }
+  return Array.from(slugs).map((s) => ({ slug: s }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
