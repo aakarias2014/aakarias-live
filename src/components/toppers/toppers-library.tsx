@@ -513,7 +513,7 @@ export function ToppersLibrary({ locale, sanityCopies = [] }: ToppersLibraryProp
                   </Button>
                   <ShareDropdown
                     title={isHi ? `आकार IAS MPPSC टॉपर उत्तर पुस्तिका - ${allCopies[0].name}` : `Aakar IAS MPPSC Topper Copy - ${allCopies[0].nameEn}`}
-                    url={typeof window !== "undefined" ? `${window.location.origin}/mppsc/toppers-copy#${allCopies[0].id}` : `https://aakarias.com/mppsc/toppers-copy#${allCopies[0].id}`}
+                    url={typeof window !== "undefined" ? `${window.location.origin}${locale === "hi" ? "" : "/en"}/mppsc/toppers-copy/${allCopies[0].id.replace(/^sanity-/, "")}` : `https://aakarias.com${locale === "hi" ? "" : "/en"}/mppsc/toppers-copy/${allCopies[0].id.replace(/^sanity-/, "")}`}
                     locale={locale}
                     showBullet={false}
                   />
@@ -546,59 +546,66 @@ export function ToppersLibrary({ locale, sanityCopies = [] }: ToppersLibraryProp
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredCopies.map((copy) => (
-                  <Card key={copy.id} className="overflow-hidden border-border bg-card hover:border-primary/50 hover:shadow-soft-lg transition-all group">
-                    <div className="h-44 bg-muted/40 relative">
-                      <div 
-                        className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
-                        style={{ backgroundImage: `url('${copy.image}')` }}
-                      />
-                      <div className="absolute bottom-3 left-3 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm px-2.5 py-1 rounded-lg text-[10px] font-bold text-foreground uppercase tracking-wider">
-                        {isHi ? copy.paper.split(":")[0] : copy.paperEn.split(":")[0]}
-                      </div>
-                    </div>
-                    <CardContent className="p-5 space-y-4">
-                      <div>
-                        <div className="flex justify-between items-start">
-                          <h4 className="font-bold text-foreground leading-tight group-hover:text-primary transition-colors">
-                            {isHi ? copy.name : copy.nameEn}
-                          </h4>
-                          <span className="text-xs font-bold text-primary bg-primary/5 px-2 py-0.5 rounded">
-                            {copy.marks}
-                          </span>
-                        </div>
-                        <p className="text-xs text-muted-foreground mt-1">
-                          {isHi ? copy.rank : copy.rankEn} • {copy.year}
-                        </p>
-                      </div>
-
-                      <div className="flex items-center gap-2 pt-1 border-t border-border/50">
-                        <Button 
-                          variant="secondary" 
-                          size="sm" 
-                          className="flex-1 rounded-lg text-xs font-bold"
-                          onClick={() => setSelectedCopy(copy)}
-                        >
-                          {isHi ? "उत्तर पढ़ें" : "Read Copy"}
-                        </Button>
-                        <Button 
-                          variant="outline" 
-                          size="sm" 
-                          className="px-2.5 rounded-lg"
-                          onClick={(e) => handleToggleBookmark(copy.id, e)}
-                        >
-                          <Bookmark className={`h-4 w-4 ${bookmarked[copy.id] ? "fill-primary text-primary" : "text-muted-foreground"}`} />
-                        </Button>
-                        <ShareDropdown
-                          title={isHi ? `आकार IAS MPPSC टॉपर उत्तर पुस्तिका - ${copy.name}` : `Aakar IAS MPPSC Topper Copy - ${copy.nameEn}`}
-                          url={typeof window !== "undefined" ? `${window.location.origin}/mppsc/toppers-copy#${copy.id}` : `https://aakarias.com/mppsc/toppers-copy#${copy.id}`}
-                          locale={locale}
-                          showBullet={false}
+                {filteredCopies.map((copy) => {
+                  const cleanCopyId = copy.id.replace(/^sanity-/, "");
+                  const copyDetailHref = locale === "hi" ? `/mppsc/toppers-copy/${cleanCopyId}` : `/en/mppsc/toppers-copy/${cleanCopyId}`;
+                  const copyShareUrl = typeof window !== "undefined" ? `${window.location.origin}${copyDetailHref}` : `https://aakarias.com${copyDetailHref}`;
+                  return (
+                    <Card key={copy.id} className="overflow-hidden border-border bg-card hover:border-primary/50 hover:shadow-soft-lg transition-all group">
+                      <Link href={copyDetailHref} className="block h-44 bg-muted/40 relative">
+                        <div 
+                          className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
+                          style={{ backgroundImage: `url('${copy.image}')` }}
                         />
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
+                        <div className="absolute bottom-3 left-3 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm px-2.5 py-1 rounded-lg text-[10px] font-bold text-foreground uppercase tracking-wider">
+                          {isHi ? copy.paper.split(":")[0] : copy.paperEn.split(":")[0]}
+                        </div>
+                      </Link>
+                      <CardContent className="p-5 space-y-4">
+                        <div>
+                          <div className="flex justify-between items-start">
+                            <Link href={copyDetailHref} className="font-bold text-foreground leading-tight group-hover:text-primary transition-colors">
+                              {isHi ? copy.name : copy.nameEn}
+                            </Link>
+                            <span className="text-xs font-bold text-primary bg-primary/5 px-2 py-0.5 rounded">
+                              {copy.marks}
+                            </span>
+                          </div>
+                          <p className="text-xs text-muted-foreground mt-1">
+                            {isHi ? copy.rank : copy.rankEn} • {copy.year}
+                          </p>
+                        </div>
+
+                        <div className="flex items-center gap-2 pt-1 border-t border-border/50">
+                          <Button 
+                            asChild
+                            variant="secondary" 
+                            size="sm" 
+                            className="flex-1 rounded-lg text-xs font-bold"
+                          >
+                            <Link href={copyDetailHref}>
+                              {isHi ? "उत्तर पढ़ें" : "Read Copy"}
+                            </Link>
+                          </Button>
+                          <Button 
+                            variant="outline" 
+                            size="sm" 
+                            className="px-2.5 rounded-lg"
+                            onClick={(e) => handleToggleBookmark(copy.id, e)}
+                          >
+                            <Bookmark className={`h-4 w-4 ${bookmarked[copy.id] ? "fill-primary text-primary" : "text-muted-foreground"}`} />
+                          </Button>
+                          <ShareDropdown
+                            title={isHi ? `आकार IAS MPPSC टॉपर उत्तर पुस्तिका - ${copy.name} (${copy.rank})` : `Aakar IAS MPPSC Topper Copy - ${copy.nameEn} (${copy.rankEn})`}
+                            url={copyShareUrl}
+                            locale={locale}
+                            showBullet={false}
+                          />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
               </div>
             )}
           </div>
@@ -781,8 +788,8 @@ export function ToppersLibrary({ locale, sanityCopies = [] }: ToppersLibraryProp
               <div className="flex gap-2 items-center flex-wrap">
                 {selectedCopy && (
                   <ShareDropdown
-                    title={isHi ? `आकार IAS MPPSC टॉपर उत्तर पुस्तिका - ${selectedCopy.name}` : `Aakar IAS MPPSC Topper Copy - ${selectedCopy.nameEn}`}
-                    url={typeof window !== "undefined" ? `${window.location.origin}/mppsc/toppers-copy#${selectedCopy.id}` : `https://aakarias.com/mppsc/toppers-copy#${selectedCopy.id}`}
+                    title={isHi ? `आकार IAS MPPSC टॉपर उत्तर पुस्तिका - ${selectedCopy.name} (${selectedCopy.rank})` : `Aakar IAS MPPSC Topper Copy - ${selectedCopy.nameEn} (${selectedCopy.rankEn})`}
+                    url={typeof window !== "undefined" ? `${window.location.origin}${locale === "hi" ? "" : "/en"}/mppsc/toppers-copy/${selectedCopy.id.replace(/^sanity-/, "")}` : `https://aakarias.com${locale === "hi" ? "" : "/en"}/mppsc/toppers-copy/${selectedCopy.id.replace(/^sanity-/, "")}`}
                     locale={locale}
                     showBullet={false}
                   />

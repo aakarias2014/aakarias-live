@@ -191,12 +191,42 @@ function renderFormattedText(text: string) {
 
 function BlockRenderer({ block }: { block: ArticleBlock }) {
   switch (block.type) {
-    case "paragraph":
+    case "paragraph": {
+      const text = block.text.trim();
+      const firstTwo = text.slice(0, 2);
+      const isCallout = ["⚡", "💡", "⚠️", "📌", "🔥"].some((symbol) => text.startsWith(symbol));
+
+      if (isCallout) {
+        const isWarning = text.startsWith("⚠️");
+        const isTip = text.startsWith("💡") || text.startsWith("⚡");
+
+        return (
+          <div
+            className={cn(
+              "my-6 rounded-2xl p-4 sm:p-5 border transition-all shadow-soft-xs",
+              isWarning
+                ? "bg-amber-500/10 border-amber-500/30 text-amber-950 dark:text-amber-100"
+                : isTip
+                ? "bg-primary/5 border-primary/20 text-foreground"
+                : "bg-muted/40 border-border text-foreground"
+            )}
+          >
+            <div className="flex gap-3 items-start">
+              <span className="text-xl shrink-0 mt-0.5 select-none">{firstTwo}</span>
+              <div className="text-sm sm:text-base leading-relaxed font-medium text-foreground/90">
+                {renderFormattedText(text.slice(2).trim())}
+              </div>
+            </div>
+          </div>
+        );
+      }
+
       return (
         <p className="text-foreground/85 leading-[1.95]">
           {renderFormattedText(block.text)}
         </p>
       );
+    }
 
     case "heading":
       return (
@@ -261,34 +291,36 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
 
     case "table":
       return (
-        <div className="my-6 overflow-x-auto rounded-xl border border-border">
-          <table className="w-full text-sm">
-            {block.table.caption && (
-              <caption className="bg-muted/50 px-4 py-2 text-left text-xs font-semibold text-muted-foreground">
-                {block.table.caption}
-              </caption>
-            )}
-            <thead>
-              <tr className="border-b border-border bg-muted/30">
-                {block.table.headers.map((h, i) => (
-                  <th key={i} className="px-4 py-3 text-left font-semibold text-foreground">
-                    {renderFormattedText(h)}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {block.table.rows.map((row, ri) => (
-                <tr key={ri} className="border-b border-border/50 last:border-0">
-                  {row.map((cell, ci) => (
-                    <td key={ci} className="px-4 py-3 text-foreground/90">
-                      {renderFormattedText(cell)}
-                    </td>
+        <div className="my-8 overflow-hidden rounded-2xl border border-primary/20 bg-background shadow-soft-sm">
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm text-left border-collapse">
+              {block.table.caption && (
+                <caption className="bg-primary/5 px-5 py-2.5 text-left text-xs font-bold text-primary border-b border-primary/15 tracking-wide">
+                  {block.table.caption}
+                </caption>
+              )}
+              <thead>
+                <tr className="border-b border-primary/20 bg-primary/10">
+                  {block.table.headers.map((h, i) => (
+                    <th key={i} className="px-4 py-3 font-bold text-foreground tracking-wide whitespace-nowrap text-xs uppercase">
+                      {renderFormattedText(h)}
+                    </th>
                   ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y divide-border/40">
+                {block.table.rows.map((row, ri) => (
+                  <tr key={ri} className="transition-colors hover:bg-primary/5 odd:bg-background even:bg-muted/20">
+                    {row.map((cell, ci) => (
+                      <td key={ci} className="px-4 py-3 text-foreground/90 font-medium whitespace-nowrap">
+                        {renderFormattedText(cell)}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       );
 

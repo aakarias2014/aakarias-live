@@ -376,14 +376,23 @@ function mapPortableTextToBlocks(
       if (img) out.push({ type: "image", image: img });
     } else if (btype === "table") {
       flushList();
-      const rawTable = b.table as any;
+      const rawTable = (b.table ?? b) as any;
       if (rawTable) {
+        let headers: string[] = Array.isArray(rawTable.headers) ? rawTable.headers : [];
+        let rows: string[][] = Array.isArray(rawTable.rows) ? rawTable.rows : [];
+        
+        if (headers.length === 0 && Array.isArray(rawTable.rows) && rawTable.rows.length > 0 && (rawTable.rows[0] as any)?.cells) {
+          const allRows = rawTable.rows.map((r: any) => Array.isArray(r.cells) ? r.cells : []);
+          headers = allRows[0] || [];
+          rows = allRows.slice(1);
+        }
+
         out.push({
           type: "table",
           table: {
-            caption: rawTable.caption,
-            headers: Array.isArray(rawTable.headers) ? rawTable.headers : [],
-            rows: Array.isArray(rawTable.rows) ? rawTable.rows : [],
+            caption: rawTable.caption || (b.caption as string),
+            headers,
+            rows,
           },
         });
       }

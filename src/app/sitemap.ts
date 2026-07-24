@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getContentRepository } from "@/lib/content/content-repository";
 import { siteConfig } from "@/lib/site-config";
+import { getAllTopperCopies } from "@/lib/toppers-data";
 
 /**
  * Dynamic sitemap. Includes static pages + all articles per locale.
@@ -136,6 +137,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(s.updatedAt),
       changeFrequency: "weekly" as const,
       priority: s.type === "editorial" ? 0.75 : 0.7,
+    })),
+  ];
+
+  const topperCopies = await getAllTopperCopies("hi");
+  const topperCopyPages: MetadataRoute.Sitemap = [
+    ...topperCopies.map((c) => ({
+      url: `${siteConfig.url}/mppsc/toppers-copy/${c.slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+    ...topperCopies.map((c) => ({
+      url: `${siteConfig.url}/en/mppsc/toppers-copy/${c.slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.65,
     })),
   ];
 
