@@ -148,30 +148,84 @@ export async function POST(req: NextRequest) {
 }
 
 /**
- * GET Handler for 1-Click Manual Cache Clearing in Browser
- * Usage: /api/revalidate?secret=YOUR_SECRET&path=/faculty
+ * GET Handler for 1-Click Manual Cache Clearing in Browser across ALL Sanity Content
+ * Usage: /api/revalidate?secret=YOUR_SECRET&path=all (or specific path like /mppsc)
  */
 export async function GET(req: NextRequest) {
   const secret = process.env.SANITY_REVALIDATE_SECRET;
   const { searchParams } = new URL(req.url);
   const reqSecret = searchParams.get("secret");
-  const path = searchParams.get("path") || "/faculty";
+  const targetPath = searchParams.get("path");
 
   if (secret && reqSecret !== secret) {
     return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
   }
 
+  const allPaths = [
+    "/",
+    "/en",
+    "/mppsc",
+    "/en/mppsc",
+    "/faculty",
+    "/en/faculty",
+    "/current-affairs",
+    "/en/current-affairs",
+    "/editorial",
+    "/en/editorial",
+    "/test-series",
+    "/en/test-series",
+    "/online-courses",
+    "/en/online-courses",
+    "/offline-courses",
+    "/en/offline-courses",
+    "/publications",
+    "/en/publications",
+    "/free-pdf",
+    "/en/free-pdf",
+    "/monthly-pdf",
+    "/en/monthly-pdf",
+    "/pyq",
+    "/en/pyq",
+    "/download",
+    "/en/download",
+    "/notifications",
+    "/en/notifications",
+  ];
+
+  const allTags = [
+    "faculties",
+    "homeConfig",
+    "articles",
+    "toppers",
+    "topperCopies",
+    "pyqs",
+    "monthlyPdfs",
+    "testSeries",
+    "onlineCourses",
+    "offlineBatches",
+    "publications",
+    "notifications",
+    "downloadPageConfig",
+  ];
+
   try {
-    revalidatePath(path);
-    revalidatePath(`/en${path === "/" ? "" : path}`);
-    revalidatePath("/faculty");
-    revalidatePath("/en/faculty");
-    revalidateTag("faculties");
-    revalidateTag("homeConfig");
+    if (targetPath && targetPath !== "all") {
+      revalidatePath(targetPath);
+      revalidatePath(`/en${targetPath === "/" ? "" : targetPath}`);
+    } else {
+      for (const p of allPaths) {
+        revalidatePath(p);
+      }
+      for (const t of allTags) {
+        revalidateTag(t);
+      }
+    }
 
     return NextResponse.json({
       revalidated: true,
-      message: `Successfully purged cache for path: ${path} and tags: faculties, homeConfig`,
+      message: targetPath && targetPath !== "all" 
+        ? `Successfully purged cache for path: ${targetPath}`
+        : `Successfully purged ENTIRE site cache across ${allPaths.length} paths and ${allTags.length} tags!`,
       now: new Date().toISOString(),
     });
   } catch (err) {

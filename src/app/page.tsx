@@ -26,7 +26,7 @@ import { DownloadAppSection } from "@/components/sections/download-app-section";
 import { Countdown } from "@/components/content/countdown";
 import { NoticeTicker } from "@/components/layout/notice-ticker";
 
-export const revalidate = 900; // 15 min ISR
+export const revalidate = 60; // 60s fast ISR for live Sanity updates
 
 export const metadata = buildMetadata({
   title: "Aakar IAS | Best MPPSC & UPSC Coaching in Indore | MPPSC टेस्ट सीरीज़, नोट्स व करेंट अफेयर्स",
