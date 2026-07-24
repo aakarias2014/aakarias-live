@@ -17,8 +17,8 @@ const base = (type: string, data: Record<string, unknown>): JsonLd => ({
 export function organizationJsonLd(): JsonLd {
   return base("EducationalOrganization", {
     "@id": `${siteConfig.url}/#organization`,
-    name: siteConfig.name,
-    alternateName: "आकार IAS",
+    name: "Aakar IAS | Best MPPSC & UPSC Coaching in Indore",
+    alternateName: ["Aakar IAS", "आकार IAS", "Aakar IAS Indore", "Aakar IAS Coaching"],
     url: siteConfig.url,
     logo: `${siteConfig.url}/logo.png`,
     image: `${siteConfig.url}/logo.png`,
@@ -44,14 +44,11 @@ export function organizationJsonLd(): JsonLd {
     },
     knowsAbout: [
       "MPPSC State Services Examination",
-      "MPSI Examination",
+      "MPPSC Mains Answer Writing",
+      "MPPSC Test Series",
       "UPSC Civil Services Examination",
       "Current Affairs",
       "General Studies",
-      "Indian Polity",
-      "Indian Economy",
-      "Indian History",
-      "Geography",
     ],
     contactPoint: [
       {
@@ -66,11 +63,47 @@ export function organizationJsonLd(): JsonLd {
   });
 }
 
+export function localBusinessJsonLd(): JsonLd {
+  return base("LocalBusiness", {
+    "@id": `${siteConfig.url}/#localbusiness`,
+    name: "Aakar IAS | Best MPPSC & UPSC Coaching in Indore",
+    alternateName: ["Aakar IAS Indore", "आकार IAS इंदौर", "Aakar IAS Coaching Center"],
+    image: `${siteConfig.url}/logo.png`,
+    url: siteConfig.url,
+    telephone: siteConfig.contact.phone,
+    email: siteConfig.contact.email,
+    priceRange: "₹₹₹",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: siteConfig.contact.address,
+      addressLocality: "Indore",
+      addressRegion: "Madhya Pradesh",
+      postalCode: "452001",
+      addressCountry: "IN",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 22.6845,
+      longitude: 75.8596,
+    },
+    hasMap: "https://maps.google.com/?q=Aakar+IAS+Indore",
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        opens: "08:00",
+        closes: "20:00",
+      },
+    ],
+  });
+}
+
 export function websiteJsonLd(): JsonLd {
   return base("WebSite", {
     "@id": `${siteConfig.url}/#website`,
     url: siteConfig.url,
-    name: siteConfig.name,
+    name: "Aakar IAS | Best MPPSC & UPSC Coaching in Indore",
+    alternateName: ["Aakar IAS", "Aakar IAS Indore", "आकार आईएएस"],
     description: siteConfig.description,
     publisher: { "@id": `${siteConfig.url}/#organization` },
     inLanguage: "hi-IN",

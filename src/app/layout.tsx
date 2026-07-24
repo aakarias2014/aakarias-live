@@ -31,7 +31,7 @@ const notoDevanagari = Noto_Sans_Devanagari({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: siteConfig.name,
+    default: siteConfig.siteTitle,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -50,13 +50,13 @@ export const metadata: Metadata = {
     locale: "hi_IN",
     alternateLocale: ["en_IN"],
     url: siteConfig.url,
-    title: siteConfig.name,
+    title: siteConfig.siteTitle,
     description: siteConfig.description,
     siteName: siteConfig.name,
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.name,
+    title: siteConfig.siteTitle,
     description: siteConfig.description,
   },
   robots: {

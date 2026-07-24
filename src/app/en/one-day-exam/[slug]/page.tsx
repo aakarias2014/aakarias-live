@@ -57,9 +57,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const exam = ONE_DAY_EXAMS[slug];
   if (!exam) return buildMetadata();
 
+  if (slug === "mpsi") {
+    return buildMetadata({
+      title: "Best MPSI Coaching in Indore | Aakar IAS MP Sub Inspector Prep",
+      description: "Aakar IAS — Best MPSI Coaching in Indore. Comprehensive MP Sub Inspector preparation, study material, test series, and expert guidance.",
+      path: `/en/one-day-exam/${slug}`,
+      keywords: ["Best MPSI Coaching in Indore", "MPSI Coaching Indore", "MP Sub Inspector Coaching", "Aakar IAS MPSI"],
+      locale: "en",
+    });
+  }
+
   return buildMetadata({
     title: `${exam.title} Exam Prep | Aakar IAS`,
-    description: `${exam.desc} This page is currently being compiled and will be live shortly.`,
+    description: `${exam.desc} Quality study material and test series available at Aakar IAS.`,
     path: `/en/one-day-exam/${slug}`,
     locale: "en",
   });

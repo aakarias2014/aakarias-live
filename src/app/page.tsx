@@ -29,23 +29,24 @@ import { NoticeTicker } from "@/components/layout/notice-ticker";
 export const revalidate = 900; // 15 min ISR
 
 export const metadata = buildMetadata({
-  title: "Aakar IAS | MPPSC, UPSC Current Affairs, Daily News, Monthly PDF & Study Material",
-  description: "Aakar IAS provides Daily Current Affairs, Weekly & Monthly Current Affairs, Editorials, Free PDFs, NCERT Notes and complete preparation resources for MPPSC, UPSC and other Government Exams.",
+  title: "Aakar IAS | Best MPPSC & UPSC Coaching in Indore | MPPSC टेस्ट सीरीज़, नोट्स व करेंट अफेयर्स",
+  description: "आकार IAS इंदौर (Aakar IAS) — MPPSC एवं UPSC की सर्वश्रेष्ठ कोचिंग। डेली करेंट अफेयर्स, मुख्य परीक्षा उत्तर लेखन, टेस्ट सीरीज, टॉपर्स आंसर कॉपी और फ्री स्टडी मटेरियल।",
   path: "/",
   keywords: [
     "Aakar IAS",
+    "Aakar IAS Indore",
+    "Best MPPSC Coaching in Indore",
+    "MPPSC Coaching Indore",
+    "UPSC Coaching Indore",
+    "Best MPPSC Test Series",
+    "MPPSC Mains Answer Writing",
+    "MPPSC Notes",
     "Current Affairs",
     "करेंट अफेयर्स",
+    "आकार आईएएस",
     "UPSC Current Affairs",
     "MPPSC Current Affairs",
     "Daily Current Affairs",
-    "MPPSC coaching Indore",
-    "UPSC coaching Indore",
-    "IAS coaching institute",
-    "civil services coaching",
-    "Monthly Current Affairs PDF",
-    "Free PDF UPSC",
-    "NCERT Notes",
   ],
 });
 

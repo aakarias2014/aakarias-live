@@ -57,9 +57,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const exam = ONE_DAY_EXAMS[slug];
   if (!exam) return buildMetadata();
 
+  if (slug === "mpsi") {
+    return buildMetadata({
+      title: "Best MPSI Coaching in Indore | Aakar IAS MP Sub Inspector Preparation",
+      description: "Aakar IAS — Best MPSI Coaching in Indore. Comprehensive MP Sub Inspector exam preparation, Hindi, GS, Maths, Reasoning notes, online & offline batches and mock test series.",
+      path: `/one-day-exam/${slug}`,
+      keywords: ["Best MPSI Coaching in Indore", "MPSI Coaching Indore", "MP Sub Inspector Coaching", "Aakar IAS MPSI", "MPSI Notes", "MPSI Test Series"],
+      locale: "hi",
+    });
+  }
+
   return buildMetadata({
     title: `${exam.title} परीक्षा तैयारी | Aakar IAS`,
-    description: `${exam.desc} यह कोर्स/पेज वर्तमान में तैयार किया जा रहा है और जल्द ही लाइव होगा।`,
+    description: `${exam.desc} आकार IAS में बेस्ट स्टडी मटेरियल व टेस्ट सीरीज उपलब्ध।`,
     path: `/one-day-exam/${slug}`,
     locale: "hi",
   });

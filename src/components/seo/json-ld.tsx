@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import {
   organizationJsonLd,
+  localBusinessJsonLd,
   websiteJsonLd,
   jsonLdGraph,
 } from "@/lib/seo/jsonld";
@@ -19,9 +20,9 @@ export function JsonLd({ data }: { data: Record<string, unknown> | Record<string
 }
 
 /**
- * Global Organization + WebSite schema, mounted in the root layout.
- * Powers brand entity recognition + sitelinks search box in Google.
+ * Global Organization + LocalBusiness + WebSite schema, mounted in the root layout.
+ * Powers brand entity recognition, local map signals + sitelinks search box in Google.
  */
 export function OrganizationJsonLd(): ReactNode {
-  return <JsonLd data={jsonLdGraph([organizationJsonLd(), websiteJsonLd()])} />;
+  return <JsonLd data={jsonLdGraph([organizationJsonLd(), localBusinessJsonLd(), websiteJsonLd()])} />;
 }

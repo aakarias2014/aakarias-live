@@ -15,10 +15,18 @@ import { getContentRepository } from "@/lib/content/content-repository";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = buildMetadata({
-  title: "आकार IAS टेस्ट सीरीज़ – सिविल सेवा परीक्षा हेतु सर्वश्रेष्ठ टेस्ट सीरीज़",
-  description: "UPSC एवं MPPSC प्रारंभिक व मुख्य परीक्षाओं के लिए आकार IAS की प्रीमियम टेस्ट सीरीज़। AI रैंकिंग और त्वरित विशेषज्ञ मूल्यांकन।",
+  title: "Best MPPSC Test Series & Mains Answer Writing | Aakar IAS Indore",
+  description: "Best MPPSC & UPSC Test Series in Indore. 6 Full Length Tests (FLTs), 48-hour expert answer evaluation, model answers, Answer Improvement Lab, and All-MP ranking list.",
   path: "/test-series",
-  keywords: ["MPPSC Test Series", "UPSC Test Series", "Aakar IAS Test Series 2026", "Mains Answer Evaluation", "Online Test Series"],
+  keywords: [
+    "Best MPPSC Test Series",
+    "MPPSC Mains Answer Writing",
+    "Best MPPSC Coaching in Indore",
+    "Aakar IAS Test Series",
+    "MPPSC Test Series Indore",
+    "MPPSC FLT 2026",
+    "Mains Answer Evaluation"
+  ],
 });
 
 export default async function TestSeriesPage() {
