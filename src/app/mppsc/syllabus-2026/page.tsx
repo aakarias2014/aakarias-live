@@ -9,16 +9,17 @@ import { breadcrumbJsonLd, articleJsonLd, jsonLdGraph } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = buildMetadata({
-  title: "मध्यप्रदेश राज्य सेवा परीक्षा 2026 – परीक्षा योजना एवं संपूर्ण पाठ्यक्रम",
+  title: "MPPSC Syllabus 2026 PDF Download | Prelims & Mains Complete Pattern | Aakar IAS",
   description:
-    "MPPSC राज्य सेवा परीक्षा 2026 का पूर्ण पैटर्न एवं पाठ्यक्रम — प्रारंभिक, मुख्य एवं साक्षात्कार। प्रश्नपत्र-वार एवं इकाई-वार विवरण।",
+    "MPPSC राज्य सेवा परीक्षा 2026 का आधिकारिक सिलेबस व परीक्षा पैटर्न PDF डाउनलोड करें। प्रारंभिक परीक्षा (Prelims) व मुख्य परीक्षा (Mains GS 1-6) का इकाई-वार विवरण।",
   path: "/mppsc/syllabus-2026",
   keywords: [
+    "mppsc syllabus",
+    "mppsc syllabus 2026 pdf",
+    "mppsc prelims syllabus",
+    "mppsc mains syllabus",
     "MPPSC 2026",
-    "राज्य सेवा परीक्षा",
     "MPPSC पाठ्यक्रम",
-    "MPPSC प्रारंभिक",
-    "MPPSC मुख्य परीक्षा",
     "MPPSC परीक्षा पैटर्न",
   ],
   type: "article",

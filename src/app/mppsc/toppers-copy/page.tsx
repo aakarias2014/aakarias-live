@@ -7,14 +7,15 @@ import { siteConfig } from "@/lib/site-config";
 import { getContentRepository } from "@/lib/content/content-repository";
 
 export const metadata: Metadata = buildMetadata({
-  title: "MPPSC टॉपर्स आंसर कॉपियां – मुख्य परीक्षा उत्तर लेखन पुस्तकालय",
+  title: "MPPSC Mains Paper with Answer (Solved Papers & Toppers Copies) | Aakar IAS",
   description:
-    "MPPSC राज्य सेवा परीक्षा के सफल अभ्यर्थियों (टॉपर्स) की वास्तविक उत्तर पुस्तिकाएं (Answer Copies) मुफ्त डाउनलोड करें। उत्तर संरचना, चित्र और केस स्टडी प्रस्तुति रणनीतियाँ सीखें।",
+    "MPPSC मुख्य परीक्षा के हल किए गए प्रश्न पत्र (Mains Solved Papers with Model Answers) और MPPSC टॉपर्स की उत्तर पुस्तिकाएं (Answer Copies) मुफ़्त PDF डाउनलोड करें।",
   path: "/mppsc/toppers-copy",
   keywords: [
+    "mppsc mains paper with answer",
+    "MPPSC Mains Solved Papers",
     "MPPSC Toppers Copy",
     "MPPSC Toppers Answer Sheets",
-    "टॉपर उत्तर पुस्तिकाएं",
     "MPPSC मुख्य परीक्षा उत्तर लेखन",
     "MPPSC Mains Answer Writing",
   ],

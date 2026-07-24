@@ -39,11 +39,11 @@ export default async function MppscPage() {
   ]);
 
   const quickLinks = [
+    { href: "/mppsc/previous-year-papers", title: "Previous Year Papers", desc: "2014-2025 Solved PYQs PDF" },
     { href: "/mppsc/syllabus-2026", title: "MPPSC Syllabus 2026", desc: "Complete exam plan & syllabus" },
     { href: "/mppsc/toppers-copy", title: "Toppers Answer Copies", desc: "Real answer sheets & analysis" },
     { href: "/test-series", title: "Best MPPSC Test Series", desc: "FLT & Mains answer writing" },
     { href: "/editorial", title: "Editorials", desc: "Mains analysis in Hindi & English" },
-    { href: "/free-pdf", title: "Free Study Material", desc: "MPPSC notes & PYQs" },
   ];
 
   const faqs = [
