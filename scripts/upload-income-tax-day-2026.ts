@@ -609,7 +609,7 @@ async function main() {
     await client.createOrReplace(article);
     console.log("✨ Successfully uploaded Income Tax Day 2026 Static GK Article to Sanity CMS!");
 
-    // 2. Upload Current Affairs Article (short slug: income-tax-day-2026)
+    // 2. Upload Current Affairs Article (slug: income-tax-day-2026)
     const caArticle1 = {
       ...article,
       _id: "ca-income-tax-day-2026-in-hindi",
@@ -618,16 +618,6 @@ async function main() {
     };
     await client.createOrReplace(caArticle1);
     console.log("✨ Successfully uploaded Current Affairs Article (income-tax-day-2026) to Sanity CMS!");
-
-    // 3. Upload Current Affairs Article (long slug: income-tax-day-2026-in-hindi-history-cbdt-1961-act)
-    const caArticle2 = {
-      ...article,
-      _id: "ca-income-tax-day-2026-long-slug",
-      _type: "currentAffairs",
-      slug: { _type: "slug", current: "income-tax-day-2026-in-hindi-history-cbdt-1961-act" },
-    };
-    await client.createOrReplace(caArticle2);
-    console.log("✨ Successfully uploaded Current Affairs Article (income-tax-day-2026-in-hindi-history-cbdt-1961-act) to Sanity CMS!");
   } catch (err) {
     console.error("❌ Failed to create/replace document in Sanity:", err);
   }
