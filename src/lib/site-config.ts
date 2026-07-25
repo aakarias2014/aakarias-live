@@ -244,12 +244,13 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
   {
     title: "MPPSC Coaching",
     items: [
-      { title: "MPPSC Online Coaching", href: "/online-courses" },
-      { title: "Best MPPSC Coaching in Indore", href: "/offline-courses" },
+      { title: "Best MPPSC Coaching in Indore", href: "/best-mppsc-coaching-in-indore" },
+      { title: "MPPSC Coaching Fees in Indore", href: "/mppsc-coaching-fees-in-indore" },
+      { title: "MPPSC Online Coaching", href: "/mppsc-online-coaching" },
+      { title: "MPPSC English Medium Coaching", href: "/mppsc-english-medium-coaching" },
+      { title: "MPPSC Mains Answer Writing", href: "/mppsc-mains-answer-writing" },
       { title: "MPPSC Notes PDF", href: "/mppsc-notes" },
       { title: "MPPSC Test Series", href: "/test-series" },
-      { title: "MPPSC Toppers Copy", href: "/mppsc/toppers-copy" },
-      { title: "MPPSC Syllabus 2026", href: "/mppsc/syllabus-2026" },
     ],
   },
   {
