@@ -14,6 +14,7 @@ import {
   Globe,
   Landmark,
   TrendingUp,
+  Leaf,
   FlaskConical,
   Cpu,
   MapPin,
@@ -25,9 +26,9 @@ export const revalidate = 600;
 
 export const metadata: Metadata = buildMetadata({
   title: "सामान्य अध्ययन (General Studies) | Aakar IAS",
-  description: "UPSC, MPPSC और अन्य राज्य नागरिक सेवा परीक्षाओं के लिए इतिहास, भूगोल, राजव्यवस्था, अर्थव्यवस्था, विज्ञान एवं प्रौद्योगिकी और सामान्य अध्ययन का व्यापक संकलन।",
+  description: "UPSC, MPPSC और अन्य राज्य नागरिक सेवा परीक्षाओं के लिए इतिहास, भूगोल, राजव्यवस्था, अर्थव्यवस्था, पर्यावरण एवं पारिस्थितिकी, विज्ञान एवं प्रौद्योगिकी और सामान्य अध्ययन का व्यापक संकलन।",
   path: "/general-awareness",
-  keywords: ["General Studies", "सामान्य अध्ययन", "General Awareness", "UPSC GS", "MPPSC GS", "Indian History", "Geography"],
+  keywords: ["General Studies", "सामान्य अध्ययन", "General Awareness", "UPSC GS", "MPPSC GS", "Indian History", "Geography", "Environment & Ecology", "पर्यावरण और जैव विविधता"],
 });
 
 interface Props {
@@ -40,6 +41,7 @@ const SUBJECTS = [
   { slug: "geography", title: "भूगोल", titleEn: "Geography", Icon: Globe },
   { slug: "polity", title: "राजव्यवस्था", titleEn: "Polity", Icon: Landmark },
   { slug: "economy", title: "अर्थव्यवस्था", titleEn: "Economics", Icon: TrendingUp },
+  { slug: "environment", title: "पर्यावरण और जैव विविधता", titleEn: "Environment & Ecology", Icon: Leaf },
   { slug: "general-science", title: "सामान्य विज्ञान", titleEn: "General Science", Icon: FlaskConical },
   { slug: "science-technology", title: "विज्ञान एवं प्रौद्योगिकी", titleEn: "Sci & Tech", Icon: Cpu },
   { slug: "mpgk", title: "एमपी सामान्य ज्ञान", titleEn: "MP GK", Icon: MapPin },

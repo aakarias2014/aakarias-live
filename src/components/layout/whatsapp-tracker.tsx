@@ -83,6 +83,9 @@ export function WhatsAppTracker() {
       if (!anchor) return;
 
       const href = anchor.getAttribute("href") || "";
+      // Ignore data: and blob: URIs (used for CSV/PDF file downloads)
+      if (href.startsWith("data:") || href.startsWith("blob:")) return;
+
       if (href.includes("wa.me") || href.includes("whatsapp.com")) {
         console.log("ℹ [whatsapp-tracker] Intercepted click on WhatsApp link:", href);
 
@@ -115,19 +118,21 @@ export function WhatsAppTracker() {
       target?: string,
       features?: string
     ) {
+      const urlStr = url ? url.toString() : "";
       if (
-        url &&
-        (url.toString().includes("wa.me") ||
-          url.toString().includes("whatsapp.com"))
+        urlStr &&
+        !urlStr.startsWith("data:") &&
+        !urlStr.startsWith("blob:") &&
+        (urlStr.includes("wa.me") || urlStr.includes("whatsapp.com"))
       ) {
-        console.log("ℹ [whatsapp-tracker] Intercepted window.open call for WhatsApp:", url.toString());
+        console.log("ℹ [whatsapp-tracker] Intercepted window.open call for WhatsApp:", urlStr);
 
         const pageUrl = window.location.href;
         const pageLocale = pageUrl.includes("/en") ? "en" : "hi";
         setLocale(pageLocale);
 
         // Auto-heal empty text parameter with context-aware message
-        const healedUrl = appendDefaultMessageIfNeeded(url.toString(), pageLocale);
+        const healedUrl = appendDefaultMessageIfNeeded(urlStr, pageLocale);
         console.log("ℹ [whatsapp-tracker] Healed WhatsApp URL with message:", healedUrl);
         setTargetUrl(healedUrl);
         

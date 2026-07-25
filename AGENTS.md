@@ -10,4 +10,8 @@ This version has breaking changes — APIs, conventions, and file structure may 
 # Git Push Rule
 - NEVER execute `git push` automatically. Always build, test, and wait for explicit approval/command from the user before pushing any changes to Git.
 
+# MPPSC Priority Rule
+- **MPPSC MUST ALWAYS be prioritized first** over UPSC across all articles, SEO titles, meta descriptions, excerpts, tags, exam points, FAQs, and MCQs (e.g. always use "MPPSC & UPSC", "MPPSC / UPSC", put `tag-mppsc` before `tag-upsc`, and target MPPSC exam syllabus explicitly).
+
+
 

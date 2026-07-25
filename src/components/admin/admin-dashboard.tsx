@@ -1228,14 +1228,15 @@ export function AdminDashboard({
         .join(",")
     );
     
-    const csvContent = "data:text/csv;charset=utf-8,\uFEFF" + [headers, ...rows].join("\n");
-    const encodedUri = encodeURI(csvContent);
+    const blob = new Blob(["\uFEFF" + [headers, ...rows].join("\n")], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
+    link.href = url;
     link.setAttribute("download", filename);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   const handleExportOfflineEnquiriesCSV = () => {
@@ -1272,14 +1273,15 @@ export function AdminDashboard({
       return fields.join(",");
     });
 
-    const csvContent = "data:text/csv;charset=utf-8," + [csvHeaders, ...csvRows].join("\n");
-    const encodedUri = encodeURI(csvContent);
+    const blob = new Blob(["\uFEFF" + [csvHeaders, ...csvRows].join("\n")], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
+    link.href = url;
     link.setAttribute("download", `offline_enquiries_${new Date().toISOString().split("T")[0]}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   const handleExportOnlineLeadsCSV = () => {
@@ -1314,14 +1316,15 @@ export function AdminDashboard({
       return fields.join(",");
     });
 
-    const csvContent = "data:text/csv;charset=utf-8," + [csvHeaders, ...csvRows].join("\n");
-    const encodedUri = encodeURI(csvContent);
+    const blob = new Blob(["\uFEFF" + [csvHeaders, ...csvRows].join("\n")], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
+    link.href = url;
     link.setAttribute("download", `online_leads_${new Date().toISOString().split("T")[0]}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   const handleExportInquiriesCSV = () => {
@@ -1374,14 +1377,15 @@ export function AdminDashboard({
       return fields.join(",");
     });
 
-    const csvContent = "data:text/csv;charset=utf-8,\uFEFF" + [headers, ...rows].join("\n");
-    const encodedUri = encodeURI(csvContent);
+    const blob = new Blob(["\uFEFF" + [headers, ...rows].join("\n")], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
+    link.href = url;
     link.setAttribute("download", `inquiry_leads_${new Date().toISOString().split("T")[0]}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
 

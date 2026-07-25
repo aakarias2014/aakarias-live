@@ -14,6 +14,7 @@ import {
   Globe,
   Landmark,
   TrendingUp,
+  Leaf,
   FlaskConical,
   Cpu,
   MapPin,
@@ -25,9 +26,9 @@ export const revalidate = 600;
 
 export const metadata: Metadata = buildMetadata({
   title: "General Studies | Aakar IAS",
-  description: "Comprehensive study material and articles on Indian History, Geography, Polity, Economics, General Science, Sci & Tech, and General Studies for UPSC & State PSC exams.",
+  description: "Comprehensive study material and articles on Indian History, Geography, Polity, Economics, Environment & Ecology, General Science, Sci & Tech, and General Studies for UPSC & State PSC exams.",
   path: "/en/general-awareness",
-  keywords: ["General Studies", "General Awareness", "General Knowledge", "UPSC GS", "MPPSC GS", "Indian History", "Geography"],
+  keywords: ["General Studies", "General Awareness", "General Knowledge", "UPSC GS", "MPPSC GS", "Indian History", "Geography", "Environment & Ecology"],
 });
 
 interface Props {
@@ -40,6 +41,7 @@ const SUBJECTS = [
   { slug: "geography", title: "Geography", titleEn: "Geography", Icon: Globe },
   { slug: "polity", title: "Polity", titleEn: "Polity", Icon: Landmark },
   { slug: "economy", title: "Economics", titleEn: "Economics", Icon: TrendingUp },
+  { slug: "environment", title: "Environment & Ecology", titleEn: "Environment & Ecology", Icon: Leaf },
   { slug: "general-science", title: "General Science", titleEn: "General Science", Icon: FlaskConical },
   { slug: "science-technology", title: "Science & Technology", titleEn: "Sci & Tech", Icon: Cpu },
   { slug: "mpgk", title: "MP GK", titleEn: "MP GK", Icon: MapPin },
