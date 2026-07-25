@@ -10,6 +10,7 @@
 
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import type { Database } from "./types";
+import ws from "ws";
 
 let _serverClient: SupabaseClient<Database> | null = null;
 
@@ -21,17 +22,21 @@ export function getSupabaseServerClient() {
     return null;
   }
 
-  if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
-    console.warn("[supabase] Warning: SUPABASE_SERVICE_ROLE_KEY is not set in environment variables. Falling back to ANON key. Ensure RLS policies allow inserts.");
-  }
-
   if (!_serverClient) {
-    _serverClient = createClient<Database>(url, key, {
-      auth: {
-        autoRefreshToken: false,
-        persistSession: false,
-      },
-    });
+    try {
+      _serverClient = createClient<Database>(url, key, {
+        auth: {
+          autoRefreshToken: false,
+          persistSession: false,
+        },
+        realtime: {
+          transport: ws,
+        },
+      });
+    } catch (err) {
+      console.error("[supabase] Failed to initialize Supabase server client:", err);
+      return null;
+    }
   }
   return _serverClient;
 }
