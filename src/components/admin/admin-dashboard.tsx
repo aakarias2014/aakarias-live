@@ -32,7 +32,8 @@ import {
   Loader2,
   Video,
   Eye,
-  LogOut
+  LogOut,
+  Sparkles
 } from "lucide-react";
 import { 
   updateMessageStatus,
