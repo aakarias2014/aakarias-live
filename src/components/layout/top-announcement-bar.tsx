@@ -68,18 +68,19 @@ export function TopAnnouncementBar({
   };
 
   return (
-    <div className="relative w-full bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 text-white text-xs font-semibold py-2 px-3 sm:px-6 shadow-md border-b border-amber-400/20 z-[60] select-none">
-      <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
-        {/* Main Text / Ribbon Content */}
-        <div className="flex items-center gap-2 flex-1 overflow-hidden min-w-0">
-          <span className="hidden sm:inline-flex items-center gap-1 bg-white/20 backdrop-blur-md px-2.5 py-0.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider shrink-0">
-            <Flame className="h-3.5 w-3.5 text-yellow-300 fill-yellow-300 animate-bounce" />
+    <div className="relative w-full bg-gradient-to-r from-[#B91C1C] via-[#DC2626] to-[#991B1B] text-white text-xs font-semibold py-2 px-2.5 sm:px-6 shadow-md border-b border-red-400/30 z-[60] select-none">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1.5 sm:gap-4">
+        {/* Main Content Area */}
+        <div className="flex items-center gap-2 flex-1 min-w-0 w-full sm:w-auto justify-center sm:justify-start text-center sm:text-left">
+          <span className="inline-flex items-center gap-1 bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider shrink-0">
+            <Flame className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-yellow-300 fill-yellow-300 animate-bounce" />
             {offerBadge}
           </span>
 
-          <div className="flex items-center gap-2 truncate text-[11px] sm:text-xs">
+          <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs">
             <span className="font-extrabold tracking-tight font-devanagari">
-              {offerBadge} MPPSC Mains 2027 (₹21,999/-) एवं Pre+Mains Hybrid Batch (₹40,000/-) पर स्पेशल डिस्काउंट!
+              <span className="sm:hidden">MPPSC Mains (₹21,999/-) व Hybrid (₹40,000/-) पर मानसून ऑफर!</span>
+              <span className="hidden sm:inline">MPPSC Mains 2027 (₹21,999/-) एवं Pre+Mains Hybrid Batch (₹40,000/-) पर स्पेशल डिस्काउंट!</span>
             </span>
             <span className="hidden md:inline-block text-white/70">•</span>
             <span className="hidden md:inline-block text-yellow-200 font-bold font-devanagari">
@@ -89,7 +90,7 @@ export function TopAnnouncementBar({
 
           {/* Live Countdown Badge */}
           {timeLeft && (
-            <div className="hidden lg:inline-flex items-center gap-1 bg-black/20 px-2 py-0.5 rounded-md text-[11px] font-mono font-bold text-yellow-200 border border-white/10 shrink-0">
+            <div className="hidden lg:inline-flex items-center gap-1 bg-black/30 px-2 py-0.5 rounded-md text-[11px] font-mono font-bold text-yellow-200 border border-white/10 shrink-0">
               <Clock className="h-3 w-3 text-yellow-300 animate-pulse" />
               <span>
                 {timeLeft.days > 0 ? `${timeLeft.days}d ` : ""}
@@ -103,10 +104,10 @@ export function TopAnnouncementBar({
         <div className="flex items-center gap-2 shrink-0">
           <Link
             href={targetLink}
-            className="inline-flex items-center gap-1 bg-white text-orange-700 hover:bg-yellow-100 font-extrabold text-[11px] px-3 py-1 rounded-full shadow transition-all hover:scale-105 font-sans"
+            className="inline-flex items-center gap-1 bg-white text-red-700 hover:bg-red-50 font-extrabold text-[11px] px-3 py-1 rounded-full shadow transition-all hover:scale-105 font-sans"
           >
             <span>ऑफर क्लेम करें</span>
-            <ArrowRight className="h-3.5 w-3.5" />
+            <ArrowRight className="h-3.5 w-3.5 text-red-700" />
           </Link>
 
           <button

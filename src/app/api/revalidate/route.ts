@@ -128,7 +128,7 @@ export async function POST(req: NextRequest) {
 
     const targetTag = tagMap[_type];
     if (targetTag) {
-      revalidateTag(targetTag);
+      (revalidateTag as any)(targetTag);
       console.log(`[ISR] Revalidated cache tag: ${targetTag}`);
     }
 
@@ -218,7 +218,7 @@ export async function GET(req: NextRequest) {
         revalidatePath(p);
       }
       for (const t of allTags) {
-        revalidateTag(t);
+        (revalidateTag as any)(t);
       }
     }
 
