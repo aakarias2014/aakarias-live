@@ -5,6 +5,8 @@ import Link from "next/link";
 import { ArrowRight, X, Clock, Flame, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+import { usePathname } from "next/navigation";
+
 type TopAnnouncementBarProps = {
   offerBadge?: string;
   offerDateText?: string;
@@ -30,9 +32,19 @@ export function TopAnnouncementBar({
   targetLink = "/#courses",
   isActive = true,
 }: TopAnnouncementBarProps) {
+  const pathname = usePathname() ?? "/";
   const [isVisible, setIsVisible] = useState(true);
   const [currentStep, setCurrentStep] = useState(0);
   const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(null);
+
+  // Hide on Studio and Admin routes
+  if (
+    pathname.startsWith("/studio") ||
+    pathname.startsWith("/admin") ||
+    pathname.startsWith("/en/admin")
+  ) {
+    return null;
+  }
 
   // Check session storage so user can dismiss it if wanted
   useEffect(() => {
