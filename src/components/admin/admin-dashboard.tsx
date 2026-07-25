@@ -327,11 +327,50 @@ export function AdminDashboard({
   const [existingImageUrl, setExistingImageUrl] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Filter subscribers based on type and search query
+  // Filter subscribers based on type, search query, and date filters
   const filteredSubs = (subType === "newsletter" ? subscribers.newsletter : subscribers.whatsapp).filter(
     (sub) => {
+      // 1. Search query filter
       const target = subType === "newsletter" ? sub.email : sub.phone;
-      return target?.toLowerCase().includes(searchQuery.toLowerCase());
+      const source = sub.source || "";
+      const matchesSearch =
+        !searchQuery ||
+        target?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        source.toLowerCase().includes(searchQuery.toLowerCase());
+
+      if (!matchesSearch) return false;
+
+      // 2. Date Filter
+      const subDateStr = sub.created_at || sub.createdAt;
+      if (!subDateStr) return true;
+
+      const subDate = new Date(subDateStr);
+      const now = new Date();
+
+      if (dateFilter === "today") {
+        return subDate.toDateString() === now.toDateString();
+      }
+
+      if (dateFilter === "yesterday") {
+        const yesterday = new Date();
+        yesterday.setDate(now.getDate() - 1);
+        return subDate.toDateString() === yesterday.toDateString();
+      }
+
+      if (dateFilter === "custom") {
+        if (startDate) {
+          const start = new Date(startDate);
+          start.setHours(0, 0, 0, 0);
+          if (subDate < start) return false;
+        }
+        if (endDate) {
+          const end = new Date(endDate);
+          end.setHours(23, 59, 59, 999);
+          if (subDate > end) return false;
+        }
+      }
+
+      return true;
     }
   );
 
@@ -1388,6 +1427,46 @@ export function AdminDashboard({
     URL.revokeObjectURL(url);
   };
 
+  const handleExportSubscribersCSV = () => {
+    if (!filteredSubs || filteredSubs.length === 0) {
+      alert(`No ${subType} subscriber data available to export`);
+      return;
+    }
+    
+    const headers = [
+      "ID",
+      "Subscriber Identifier (" + (subType === "newsletter" ? "Email" : "Phone") + ")",
+      "Locale",
+      "Source",
+      "Status",
+      "Date Subscribed"
+    ].join(",");
+
+    const rows = filteredSubs.map((sub: AdminSubscriber) => {
+      const target = subType === "newsletter" ? sub.email : sub.phone;
+      const fields = [
+        sub.id,
+        target || "",
+        sub.locale || "",
+        sub.source || "Direct",
+        sub.active ? "Active" : "Inactive",
+        new Date(sub.created_at || sub.createdAt || "").toLocaleString()
+      ].map(val => `"${String(val ?? "").replace(/"/g, '""')}"`);
+
+      return fields.join(",");
+    });
+
+    const blob = new Blob(["\uFEFF" + [headers, ...rows].join("\n")], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", `${subType}_subscribers_${new Date().toISOString().split("T")[0]}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
 
   return (
     <div id="admin-panel-container" className="container mx-auto px-4 py-8 max-w-7xl">
@@ -1848,53 +1927,10 @@ export function AdminDashboard({
                 </button>
               </div>
 
-              {/* CSV Export Button (Only relevant tabs) */}
-              {(activeTab === "subscribers" || activeTab === "students" || activeTab === "downloads") && (
-                <button
-                  onClick={() => {
-                    if (activeTab === "subscribers") {
-                      handleExportCSV(filteredSubs, `${subType}_subscribers.csv`);
-                    } else if (activeTab === "students") {
-                      handleExportCSV(filteredStudents, "registered_students.csv");
-                    } else {
-                      handleExportCSV(filteredDownloads, "pdf_downloads_statistics.csv");
-                    }
-                  }}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-muted bg-background hover:bg-muted/30 text-xs font-medium text-foreground transition"
-                >
-                  <FileDown className="h-3.5 w-3.5 text-muted-foreground" />
-                  Export CSV
-                </button>
-              )}
-            </div>
-
             {/* Filtering bar */}
             <div className="p-4 border-b border-muted bg-muted/5 flex flex-col sm:flex-row gap-4 items-center justify-between">
-              {/* Subscriber Sub-tabs */}
-              {activeTab === "subscribers" ? (
-                <div className="flex rounded-md border border-muted overflow-hidden w-full sm:w-auto">
-                  <button
-                    onClick={() => setSubType("newsletter")}
-                    className={`flex-1 sm:flex-none px-3.5 py-1.5 text-xs font-semibold transition ${
-                      subType === "newsletter"
-                        ? "bg-muted text-foreground font-bold"
-                        : "bg-background text-muted-foreground hover:bg-muted/20"
-                    }`}
-                  >
-                    Newsletter ({subscribers.newsletter.length})
-                  </button>
-                  <button
-                    onClick={() => setSubType("whatsapp")}
-                    className={`flex-1 sm:flex-none px-3.5 py-1.5 text-xs font-semibold transition ${
-                      subType === "whatsapp"
-                        ? "bg-muted text-foreground font-bold"
-                        : "bg-background text-muted-foreground hover:bg-muted/20"
-                    }`}
-                  >
-                    WhatsApp ({subscribers.whatsapp.length})
-                  </button>
-                </div>
-              ) : activeTab === "mentors" ? (
+              {/* Mentors Medium Filter */}
+              {activeTab === "mentors" ? (
                 <div className="flex rounded-md border border-muted overflow-hidden w-full sm:w-auto">
                   <button
                     onClick={() => setMentorMediumFilter("all")}
@@ -2153,51 +2189,133 @@ export function AdminDashboard({
               
               {/* Tab: Subscribers */}
               {activeTab === "subscribers" && (
-                <table className="w-full text-left border-collapse">
-                  <thead>
-                    <tr className="bg-muted/10 border-b border-muted text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                      <th className="px-6 py-3.5">Subscriber Identifier</th>
-                      <th className="px-6 py-3.5">Locale</th>
-                      <th className="px-6 py-3.5">Source</th>
-                      <th className="px-6 py-3.5">Active</th>
-                      <th className="px-6 py-3.5">Date Subscribed</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-muted/50 text-sm">
-                    {filteredSubs.length > 0 ? (
-                      filteredSubs.map((sub: AdminSubscriber) => (
-                        <tr key={sub.id} className="hover:bg-muted/5 transition">
-                          <td className="px-6 py-3.5 font-medium text-foreground">
-                            {subType === "newsletter" ? sub.email : sub.phone}
-                          </td>
-                          <td className="px-6 py-3.5">
-                            <span className="uppercase px-2 py-0.5 rounded-full text-2xs font-bold bg-muted text-foreground">
-                              {sub.locale}
-                            </span>
-                          </td>
-                          <td className="px-6 py-3.5 text-muted-foreground">
-                            {sub.source || "Direct"}
-                          </td>
-                          <td className="px-6 py-3.5">
-                            <span className={`inline-flex items-center gap-1 text-xs font-medium ${sub.active ? "text-emerald-600 dark:text-emerald-400" : "text-muted-foreground"}`}>
-                              <span className={`h-1.5 w-1.5 rounded-full ${sub.active ? "bg-emerald-500" : "bg-muted"}`} />
-                              {sub.active ? "Active" : "Inactive"}
-                            </span>
-                          </td>
-                          <td className="px-6 py-3.5 text-muted-foreground">
-                            {new Date(sub.created_at).toLocaleDateString()}
-                          </td>
-                        </tr>
-                      ))
-                    ) : (
-                      <tr>
-                        <td colSpan={5} className="px-6 py-12 text-center text-muted-foreground">
-                          No subscribers found matching the query.
-                        </td>
-                      </tr>
-                    )}
-                  </tbody>
-                </table>
+                <div className="space-y-4">
+                  {/* Filters & Export Bar */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-muted/20 p-4 rounded-xl border border-border/60">
+                    <div className="flex flex-wrap items-center gap-3">
+                      {/* SubType Switcher buttons */}
+                      <div className="flex items-center bg-muted/40 p-1 rounded-lg border border-border/50">
+                        <button
+                          onClick={() => setSubType("newsletter")}
+                          className={cn(
+                            "px-3 py-1.5 rounded-md text-xs font-bold transition cursor-pointer",
+                            subType === "newsletter"
+                              ? "bg-primary text-primary-foreground shadow-xs"
+                              : "text-muted-foreground hover:text-foreground"
+                          )}
+                        >
+                          Newsletter ({subscribers.newsletter.length})
+                        </button>
+                        <button
+                          onClick={() => setSubType("whatsapp")}
+                          className={cn(
+                            "px-3 py-1.5 rounded-md text-xs font-bold transition cursor-pointer",
+                            subType === "whatsapp"
+                              ? "bg-primary text-primary-foreground shadow-xs"
+                              : "text-muted-foreground hover:text-foreground"
+                          )}
+                        >
+                          WhatsApp ({subscribers.whatsapp.length})
+                        </button>
+                      </div>
+
+                      {/* Date Filter */}
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider font-sans">Date Filter:</span>
+                        <select
+                          value={dateFilter}
+                          onChange={(e) => setDateFilter(e.target.value as any)}
+                          className="h-9 px-3 bg-background border border-border rounded-lg text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer font-sans"
+                        >
+                          <option value="all">All Time</option>
+                          <option value="today">Today</option>
+                          <option value="yesterday">Yesterday</option>
+                          <option value="custom">Custom Range</option>
+                        </select>
+                      </div>
+
+                      {dateFilter === "custom" && (
+                        <div className="flex items-center gap-2 animate-in fade-in slide-in-from-left-2 duration-200">
+                          <input
+                            type="date"
+                            value={startDate}
+                            onChange={(e) => setStartDate(e.target.value)}
+                            className="h-9 px-3 bg-background border border-border rounded-lg text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-primary/20 font-sans"
+                            placeholder="Start Date"
+                          />
+                          <span className="text-xs text-muted-foreground">to</span>
+                          <input
+                            type="date"
+                            value={endDate}
+                            onChange={(e) => setEndDate(e.target.value)}
+                            className="h-9 px-3 bg-background border border-border rounded-lg text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-primary/20 font-sans"
+                            placeholder="End Date"
+                          />
+                        </div>
+                      )}
+                    </div>
+
+                    <button
+                      onClick={handleExportSubscribersCSV}
+                      disabled={filteredSubs.length === 0}
+                      className="h-9 px-4 bg-primary text-primary-foreground font-bold rounded-lg text-xs uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-primary/95 transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed shadow-sm font-sans"
+                    >
+                      <FileDown className="h-4 w-4 shrink-0" />
+                      Export Excel (CSV)
+                    </button>
+                  </div>
+
+                  {/* Spreadsheet style Table */}
+                  <div className="border border-border/80 rounded-xl overflow-hidden shadow-xs bg-background">
+                    <div className="overflow-x-auto max-h-[600px] overflow-y-auto">
+                      <table className="w-full text-left border-collapse font-sans text-xs">
+                        <thead>
+                          <tr className="bg-muted/40 border-b border-border sticky top-0 z-10">
+                            <th className="p-3.5 font-bold uppercase tracking-wider text-muted-foreground text-[10px] bg-muted/40 whitespace-nowrap">Subscriber Identifier</th>
+                            <th className="p-3.5 font-bold uppercase tracking-wider text-muted-foreground text-[10px] bg-muted/40 whitespace-nowrap">Locale</th>
+                            <th className="p-3.5 font-bold uppercase tracking-wider text-muted-foreground text-[10px] bg-muted/40 whitespace-nowrap">Source</th>
+                            <th className="p-3.5 font-bold uppercase tracking-wider text-muted-foreground text-[10px] bg-muted/40 whitespace-nowrap">Active</th>
+                            <th className="p-3.5 font-bold uppercase tracking-wider text-muted-foreground text-[10px] bg-muted/40 whitespace-nowrap">Date Subscribed</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-border text-xs font-sans">
+                          {filteredSubs.length > 0 ? (
+                            filteredSubs.map((sub: AdminSubscriber) => (
+                              <tr key={sub.id} className="hover:bg-muted/30 transition">
+                                <td className="p-3.5 font-bold text-foreground">
+                                  {subType === "newsletter" ? sub.email : sub.phone}
+                                </td>
+                                <td className="p-3.5">
+                                  <span className="uppercase px-2 py-0.5 rounded text-[10px] font-bold bg-muted text-foreground">
+                                    {sub.locale}
+                                  </span>
+                                </td>
+                                <td className="p-3.5 text-muted-foreground">
+                                  {sub.source || "Direct"}
+                                </td>
+                                <td className="p-3.5">
+                                  <span className={`inline-flex items-center gap-1.5 text-xs font-bold ${sub.active ? "text-emerald-600 dark:text-emerald-400" : "text-muted-foreground"}`}>
+                                    <span className={`h-2 w-2 rounded-full ${sub.active ? "bg-emerald-500" : "bg-muted"}`} />
+                                    {sub.active ? "Active" : "Inactive"}
+                                  </span>
+                                </td>
+                                <td className="p-3.5 text-muted-foreground whitespace-nowrap">
+                                  {new Date(sub.created_at || sub.createdAt || "").toLocaleString()}
+                                </td>
+                              </tr>
+                            ))
+                          ) : (
+                            <tr>
+                              <td colSpan={5} className="p-8 text-center text-muted-foreground text-xs">
+                                No subscribers found matching the date filter or search query.
+                              </td>
+                            </tr>
+                          )}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
               )}
 
               {/* Tab: Messages */}
