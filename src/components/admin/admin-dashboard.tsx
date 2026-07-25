@@ -2309,8 +2309,8 @@ export function AdminDashboard({
                   </div>
 
                   {/* Spreadsheet style Table */}
-                  <div className="border border-border/80 rounded-xl overflow-hidden shadow-xs bg-background">
-                    <div className="overflow-x-auto max-h-[600px] overflow-y-auto">
+                  <div className="border border-border/80 rounded-xl shadow-xs bg-background">
+                    <div className="admin-table-scroll max-h-[600px] w-full">
                       <table className="w-full text-left border-collapse font-sans text-xs">
                         <thead>
                           <tr className="bg-muted/40 border-b border-border sticky top-0 z-10">
@@ -2413,8 +2413,8 @@ export function AdminDashboard({
                   </div>
 
                   {/* Spreadsheet style Table */}
-                  <div className="border border-border/80 rounded-xl overflow-hidden shadow-xs bg-background">
-                    <div className="overflow-x-auto max-h-[600px] overflow-y-auto">
+                  <div className="border border-border/80 rounded-xl shadow-xs bg-background">
+                    <div className="admin-table-scroll max-h-[600px] w-full">
                       <table className="w-full text-left border-collapse font-sans text-xs">
                         <thead>
                           <tr className="bg-muted/40 border-b border-border sticky top-0 z-10">
@@ -2635,8 +2635,8 @@ export function AdminDashboard({
                   </div>
 
                   {/* Spreadsheet style Table */}
-                  <div className="border border-border/80 rounded-xl overflow-hidden shadow-xs bg-background">
-                    <div className="overflow-x-auto max-h-[600px] overflow-y-auto">
+                  <div className="border border-border/80 rounded-xl shadow-xs bg-background">
+                    <div className="admin-table-scroll max-h-[600px] w-full">
                       <table className="w-full text-left border-collapse font-sans text-xs">
                         <thead>
                           <tr className="bg-muted/40 border-b border-border sticky top-0 z-10">
@@ -2809,8 +2809,8 @@ export function AdminDashboard({
                   </div>
 
                   {/* Spreadsheet style Table */}
-                  <div className="border border-border/80 rounded-xl overflow-hidden shadow-xs bg-background">
-                    <div className="overflow-x-auto max-h-[600px] overflow-y-auto">
+                  <div className="border border-border/80 rounded-xl shadow-xs bg-background">
+                    <div className="admin-table-scroll max-h-[600px] w-full">
                       <table className="w-full text-left border-collapse font-sans text-xs">
                         <thead>
                           <tr className="bg-muted/40 border-b border-border sticky top-0 z-10">

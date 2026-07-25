@@ -323,6 +323,39 @@
   .text-pretty {
     text-wrap: pretty;
   }
+  .admin-table-scroll {
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+    scrollbar-width: auto !important;
+    scrollbar-color: #dc2626 #e2e8f0 !important;
+  }
+  .admin-table-scroll::-webkit-scrollbar {
+    height: 12px !important;
+    width: 12px !important;
+    display: block !important;
+  }
+  .admin-table-scroll::-webkit-scrollbar-track {
+    background: #e2e8f0 !important;
+    border-radius: 6px !important;
+  }
+  .admin-table-scroll::-webkit-scrollbar-thumb {
+    background: #dc2626 !important;
+    border-radius: 6px !important;
+    border: 2px solid #e2e8f0 !important;
+  }
+  .admin-table-scroll::-webkit-scrollbar-thumb:hover {
+    background: #b91c1c !important;
+  }
+  .dark .admin-table-scroll {
+    scrollbar-color: #ef4444 #1e293b !important;
+  }
+  .dark .admin-table-scroll::-webkit-scrollbar-track {
+    background: #1e293b !important;
+  }
+  .dark .admin-table-scroll::-webkit-scrollbar-thumb {
+    background: #ef4444 !important;
+    border: 2px solid #1e293b !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
