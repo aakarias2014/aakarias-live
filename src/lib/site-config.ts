@@ -266,6 +266,8 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
       { title: "MPPSC Online Coaching", href: "/mppsc-online-coaching" },
       { title: "MPPSC English Medium Coaching", href: "/mppsc-english-medium-coaching" },
       { title: "MPPSC Mains Answer Writing", href: "/mppsc-mains-answer-writing" },
+      { title: "NCERT Books for MPPSC", href: "/ncert-books-for-mppsc" },
+      { title: "MPPSC Mains Books", href: "/mppsc-mains-books" },
       { title: "MPPSC Notes PDF", href: "/mppsc-notes" },
       { title: "MPPSC Test Series", href: "/test-series" },
     ],

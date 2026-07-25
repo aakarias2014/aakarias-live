@@ -58,6 +58,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${siteConfig.url}/mppsc-online-coaching`, changeFrequency: "weekly", priority: 0.95 },
     { url: `${siteConfig.url}/mppsc-english-medium-coaching`, changeFrequency: "weekly", priority: 0.95 },
     { url: `${siteConfig.url}/mppsc-mains-answer-writing`, changeFrequency: "weekly", priority: 0.95 },
+    { url: `${siteConfig.url}/ncert-books-for-mppsc`, changeFrequency: "weekly", priority: 0.95 },
+    { url: `${siteConfig.url}/mppsc-mains-books`, changeFrequency: "weekly", priority: 0.95 },
     // ─── One Day Exam Pages (Hindi) ──────────────────────────────────
     { url: `${siteConfig.url}/one-day-exam/mpsi`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${siteConfig.url}/one-day-exam/mp-constable`, changeFrequency: "monthly", priority: 0.7 },

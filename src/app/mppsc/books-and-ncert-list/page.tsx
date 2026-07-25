@@ -6,6 +6,7 @@ import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Breadcrumb } from "@/components/content/breadcrumb";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { BookOpen, Download, CheckCircle2, Sparkles, HelpCircle, ArrowRight, Star, FileText, Check } from "lucide-react";
 import { JsonLd } from "@/components/seo/json-ld";
 import { breadcrumbJsonLd, faqJsonLd, jsonLdGraph } from "@/lib/seo/jsonld";
