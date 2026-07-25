@@ -9,6 +9,9 @@ type TopAnnouncementBarProps = {
   offerBadge?: string;
   offerDateText?: string;
   endDate?: string;
+  step1Text?: string;
+  step2Text?: string;
+  buttonText?: string;
   phoneContact?: string;
   whatsappContact?: string;
   targetLink?: string;
@@ -19,6 +22,9 @@ export function TopAnnouncementBar({
   offerBadge = "🌧️ मानसून मेगा ऑफर!",
   offerDateText = "24 से 28 जुलाई तक",
   endDate = "2026-07-28T23:59:59.000Z",
+  step1Text = "🌧️ MPPSC Mains 2027 Batch — ₹21,999/- (विशेष छूट)",
+  step2Text = "⚡ Pre + Mains Hybrid Batch — ₹40,000/- (विशेष छूट)",
+  buttonText = "ऑफर देखें",
   phoneContact = "+91 9713300123",
   whatsappContact = "919713300123",
   targetLink = "/#courses",
@@ -36,8 +42,9 @@ export function TopAnnouncementBar({
     }
   }, []);
 
-  // Live countdown timer calculation
+  // Live countdown timer calculation & AUTO-HIDE ON OFFER EXPIRY
   useEffect(() => {
+    if (!endDate) return;
     const target = new Date(endDate).getTime();
     if (isNaN(target)) return;
 
@@ -46,6 +53,7 @@ export function TopAnnouncementBar({
       const diff = target - now;
       if (diff <= 0) {
         setTimeLeft(null);
+        setIsVisible(false); // AUTO HIDE ANNOUNCEMENT BAR WHEN OFFER ENDS!
         return;
       }
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -78,10 +86,10 @@ export function TopAnnouncementBar({
   const nextStep = () => setCurrentStep((prev) => (prev + 1) % 3);
   const prevStep = () => setCurrentStep((prev) => (prev - 1 + 3) % 3);
 
-  // Restore earlier compact countdown format: 3d 12h 45m 03s
+  // Restore compact countdown format: 3d 12h 45m 03s
   const formattedCountdown = timeLeft
     ? `${timeLeft.days > 0 ? `${timeLeft.days}d ` : ""}${String(timeLeft.hours).padStart(2, "0")}h ${String(timeLeft.minutes).padStart(2, "0")}m ${String(timeLeft.seconds).padStart(2, "0")}s`
-    : "Ended";
+    : "Offer Ended";
 
   return (
     <div className="relative w-full bg-gradient-to-r from-[#B91C1C] via-[#DC2626] to-[#991B1B] text-white text-xs font-semibold py-2 px-2 sm:px-6 shadow-md border-b border-red-400/30 z-[60] select-none">
@@ -113,7 +121,7 @@ export function TopAnnouncementBar({
                   ऑफर #1
                 </span>
                 <span className="font-extrabold tracking-tight text-[11px] sm:text-xs font-devanagari text-white">
-                  🌧️ MPPSC Mains 2027 Batch — <span className="text-yellow-200 underline decoration-yellow-300 underline-offset-2">₹21,999/-</span> (विशेष छूट)
+                  {step1Text}
                 </span>
               </motion.div>
             )}
@@ -132,7 +140,7 @@ export function TopAnnouncementBar({
                   ऑफर #2
                 </span>
                 <span className="font-extrabold tracking-tight text-[11px] sm:text-xs font-devanagari text-white">
-                  ⚡ Pre + Mains Hybrid Batch — <span className="text-yellow-200 underline decoration-yellow-300 underline-offset-2">₹40,000/-</span> (विशेष छूट)
+                  {step2Text}
                 </span>
               </motion.div>
             )}
@@ -176,7 +184,7 @@ export function TopAnnouncementBar({
             href={targetLink}
             className="inline-flex items-center gap-1 bg-white text-red-700 hover:bg-red-50 font-extrabold text-[10px] sm:text-[11px] px-2.5 sm:px-3 py-1 rounded-full shadow transition-all hover:scale-105 font-sans"
           >
-            <span className="whitespace-nowrap">ऑफर देखें</span>
+            <span className="whitespace-nowrap">{buttonText}</span>
             <ArrowRight className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-red-700" />
           </Link>
 

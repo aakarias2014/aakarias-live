@@ -1671,6 +1671,32 @@ export const popupBanner: SchemaTypeDefinition = defineType({
       description: "Select the date & time when this offer expires (e.g. 2026-07-28T23:59:59Z)",
     }),
     defineField({
+      name: "step1Text",
+      title: "Top Bar Step 1 Text (e.g. 🌧️ MPPSC Mains 2027 Batch — ₹21,999/-)",
+      type: "string",
+      description: "Text shown for Course 1 in the top announcement bar slider",
+      initialValue: "🌧️ MPPSC Mains 2027 Batch — ₹21,999/- (विशेष छूट)",
+    }),
+    defineField({
+      name: "step2Text",
+      title: "Top Bar Step 2 Text (e.g. ⚡ Pre + Mains Hybrid Batch — ₹40,000/-)",
+      type: "string",
+      description: "Text shown for Course 2 in the top announcement bar slider",
+      initialValue: "⚡ Pre + Mains Hybrid Batch — ₹40,000/- (विशेष छूट)",
+    }),
+    defineField({
+      name: "buttonText",
+      title: "Top Bar Button Text (e.g. ऑफर देखें)",
+      type: "string",
+      initialValue: "ऑफर देखें",
+    }),
+    defineField({
+      name: "buttonLink",
+      title: "Top Bar Button Target Link (e.g. /#courses)",
+      type: "string",
+      initialValue: "/#courses",
+    }),
+    defineField({
       name: "phoneContact",
       title: "Contact Phone Number (e.g. +91 9713300123)",
       type: "string",

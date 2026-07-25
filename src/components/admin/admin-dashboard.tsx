@@ -1612,6 +1612,19 @@ export function AdminDashboard({
             
             <div className="grid grid-cols-1 gap-3">
               <a
+                href="/studio/structure/popupBanner"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between p-3 rounded-lg border border-red-500/30 bg-red-500/10 hover:bg-red-500/20 transition duration-150 text-sm font-semibold text-red-600 dark:text-red-400"
+              >
+                <span className="flex items-center gap-2">
+                  <Sparkles className="h-4 w-4 text-red-500 animate-pulse" />
+                  📢 ऑफर एवं अनाउंसमेंट बार (Monsoon / Diwali Offer Manager)
+                </span>
+                <ExternalLink className="h-3.5 w-3.5 text-red-500" />
+              </a>
+
+              <a
                 href="/studio/structure/homeConfig"
                 target="_blank"
                 rel="noopener noreferrer"
