@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Sparkles, ArrowRight, X, Clock, Flame } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { ArrowRight, X, Clock, Flame, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 type TopAnnouncementBarProps = {
   offerBadge?: string;
@@ -18,13 +18,14 @@ type TopAnnouncementBarProps = {
 export function TopAnnouncementBar({
   offerBadge = "🌧️ मानसून मेगा ऑफर!",
   offerDateText = "24 से 28 जुलाई तक",
-  endDate,
+  endDate = "2026-07-28T23:59:59.000Z",
   phoneContact = "+91 9713300123",
   whatsappContact = "919713300123",
   targetLink = "/#courses",
   isActive = true,
 }: TopAnnouncementBarProps) {
   const [isVisible, setIsVisible] = useState(true);
+  const [currentStep, setCurrentStep] = useState(0);
   const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(null);
 
   // Check session storage so user can dismiss it if wanted
@@ -37,7 +38,6 @@ export function TopAnnouncementBar({
 
   // Live countdown timer calculation
   useEffect(() => {
-    if (!endDate) return;
     const target = new Date(endDate).getTime();
     if (isNaN(target)) return;
 
@@ -60,6 +60,14 @@ export function TopAnnouncementBar({
     return () => clearInterval(interval);
   }, [endDate]);
 
+  // Step Rotator: Step 0 (Course 1) -> Step 1 (Course 2) -> Step 2 (Countdown)
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentStep((prev) => (prev + 1) % 3);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
+
   if (!isActive || !isVisible) return null;
 
   const handleDismiss = () => {
@@ -67,47 +75,105 @@ export function TopAnnouncementBar({
     sessionStorage.setItem("aakar_announcement_bar_dismissed", "true");
   };
 
+  const nextStep = () => setCurrentStep((prev) => (prev + 1) % 3);
+  const prevStep = () => setCurrentStep((prev) => (prev - 1 + 3) % 3);
+
+  const formattedCountdown = timeLeft
+    ? `${timeLeft.days > 0 ? `${timeLeft.days}दिन ` : ""}${String(timeLeft.hours).padStart(2, "0")}घंटे ${String(timeLeft.minutes).padStart(2, "0")}मिनट ${String(timeLeft.seconds).padStart(2, "0")}सेकंड`
+    : "सीमित समय शेष";
+
   return (
-    <div className="relative w-full bg-gradient-to-r from-[#B91C1C] via-[#DC2626] to-[#991B1B] text-white text-xs font-semibold py-2 px-2.5 sm:px-6 shadow-md border-b border-red-400/30 z-[60] select-none">
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1.5 sm:gap-4">
-        {/* Main Content Area */}
-        <div className="flex items-center gap-2 flex-1 min-w-0 w-full sm:w-auto justify-center sm:justify-start text-center sm:text-left">
-          <span className="inline-flex items-center gap-1 bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider shrink-0">
-            <Flame className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-yellow-300 fill-yellow-300 animate-bounce" />
-            {offerBadge}
-          </span>
+    <div className="relative w-full bg-gradient-to-r from-[#B91C1C] via-[#DC2626] to-[#991B1B] text-white text-xs font-semibold py-2 px-2 sm:px-6 shadow-md border-b border-red-400/30 z-[60] select-none">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-1.5 sm:gap-4">
+        
+        {/* Left Arrow Nav (Desktop/Tablet) */}
+        <button
+          onClick={prevStep}
+          className="hidden sm:flex p-1 hover:bg-white/20 rounded-full transition-colors text-white/70 hover:text-white shrink-0"
+          title="पिछला ऑफर देखें"
+        >
+          <ChevronLeft className="h-4 w-4" />
+        </button>
 
-          <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs">
-            <span className="font-extrabold tracking-tight font-devanagari">
-              <span className="sm:hidden">MPPSC Mains (₹21,999/-) व Hybrid (₹40,000/-) पर मानसून ऑफर!</span>
-              <span className="hidden sm:inline">MPPSC Mains 2027 (₹21,999/-) एवं Pre+Mains Hybrid Batch (₹40,000/-) पर स्पेशल डिस्काउंट!</span>
-            </span>
-            <span className="hidden md:inline-block text-white/70">•</span>
-            <span className="hidden md:inline-block text-yellow-200 font-bold font-devanagari">
-              {offerDateText}
-            </span>
-          </div>
+        {/* Step Content Container (Animated Step-by-Step) */}
+        <div className="flex-1 min-w-0 flex items-center justify-center overflow-hidden py-0.5">
+          <AnimatePresence mode="wait">
+            {currentStep === 0 && (
+              <motion.div
+                key="step-1"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.3 }}
+                className="flex items-center gap-2 text-center"
+              >
+                <span className="inline-flex items-center gap-1 bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-extrabold uppercase shrink-0">
+                  <Flame className="h-3 w-3 text-yellow-300 fill-yellow-300 animate-bounce" />
+                  ऑफर #1
+                </span>
+                <span className="font-extrabold tracking-tight text-[11px] sm:text-xs font-devanagari text-white">
+                  🌧️ MPPSC Mains 2027 Batch — <span className="text-yellow-200 underline decoration-yellow-300 underline-offset-2">₹21,999/-</span> (विशेष छूट)
+                </span>
+              </motion.div>
+            )}
 
-          {/* Live Countdown Badge */}
-          {timeLeft && (
-            <div className="hidden lg:inline-flex items-center gap-1 bg-black/30 px-2 py-0.5 rounded-md text-[11px] font-mono font-bold text-yellow-200 border border-white/10 shrink-0">
-              <Clock className="h-3 w-3 text-yellow-300 animate-pulse" />
-              <span>
-                {timeLeft.days > 0 ? `${timeLeft.days}d ` : ""}
-                {String(timeLeft.hours).padStart(2, "0")}h {String(timeLeft.minutes).padStart(2, "0")}m {String(timeLeft.seconds).padStart(2, "0")}s
-              </span>
-            </div>
-          )}
+            {currentStep === 1 && (
+              <motion.div
+                key="step-2"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.3 }}
+                className="flex items-center gap-2 text-center"
+              >
+                <span className="inline-flex items-center gap-1 bg-yellow-400/25 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-extrabold uppercase shrink-0 border border-yellow-300/30">
+                  <Sparkles className="h-3 w-3 text-yellow-300 animate-spin" />
+                  ऑफर #2
+                </span>
+                <span className="font-extrabold tracking-tight text-[11px] sm:text-xs font-devanagari text-white">
+                  ⚡ Pre + Mains Hybrid Batch — <span className="text-yellow-200 underline decoration-yellow-300 underline-offset-2">₹40,000/-</span> (विशेष छूट)
+                </span>
+              </motion.div>
+            )}
+
+            {currentStep === 2 && (
+              <motion.div
+                key="step-3"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.3 }}
+                className="flex items-center gap-2 text-center"
+              >
+                <span className="inline-flex items-center gap-1 bg-black/30 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-extrabold uppercase shrink-0 border border-yellow-300/40 text-yellow-300">
+                  <Clock className="h-3 w-3 text-yellow-300 animate-pulse" />
+                  काउंटडाउन
+                </span>
+                <span className="font-extrabold tracking-tight text-[11px] sm:text-xs font-mono text-yellow-200 bg-black/20 px-2 py-0.5 rounded">
+                  ⏱️ समाप्त होने में: {formattedCountdown} ({offerDateText})
+                </span>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
+        {/* Right Arrow Nav (Desktop/Tablet) */}
+        <button
+          onClick={nextStep}
+          className="hidden sm:flex p-1 hover:bg-white/20 rounded-full transition-colors text-white/70 hover:text-white shrink-0"
+          title="अगला ऑफर देखें"
+        >
+          <ChevronRight className="h-4 w-4" />
+        </button>
+
         {/* Action Button & Close */}
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-1.5 shrink-0">
           <Link
             href={targetLink}
-            className="inline-flex items-center gap-1 bg-white text-red-700 hover:bg-red-50 font-extrabold text-[11px] px-3 py-1 rounded-full shadow transition-all hover:scale-105 font-sans"
+            className="inline-flex items-center gap-1 bg-white text-red-700 hover:bg-red-50 font-extrabold text-[10px] sm:text-[11px] px-2.5 sm:px-3 py-1 rounded-full shadow transition-all hover:scale-105 font-sans"
           >
-            <span>ऑफर क्लेम करें</span>
-            <ArrowRight className="h-3.5 w-3.5 text-red-700" />
+            <span className="whitespace-nowrap">ऑफर देखें</span>
+            <ArrowRight className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-red-700" />
           </Link>
 
           <button
@@ -115,9 +181,10 @@ export function TopAnnouncementBar({
             className="p-1 hover:bg-white/20 rounded-full transition-colors text-white/80 hover:text-white"
             aria-label="Close Announcement Bar"
           >
-            <X className="h-4 w-4" />
+            <X className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
           </button>
         </div>
+
       </div>
     </div>
   );
