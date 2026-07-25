@@ -357,6 +357,20 @@ export function AdminDashboard({
         return subDate.toDateString() === yesterday.toDateString();
       }
 
+      if (dateFilter === "7days") {
+        const sevenDaysAgo = new Date();
+        sevenDaysAgo.setDate(now.getDate() - 7);
+        sevenDaysAgo.setHours(0, 0, 0, 0);
+        return subDate >= sevenDaysAgo;
+      }
+
+      if (dateFilter === "30days") {
+        const thirtyDaysAgo = new Date();
+        thirtyDaysAgo.setDate(now.getDate() - 30);
+        thirtyDaysAgo.setHours(0, 0, 0, 0);
+        return subDate >= thirtyDaysAgo;
+      }
+
       if (dateFilter === "custom") {
         if (startDate) {
           const start = new Date(startDate);
@@ -399,6 +413,20 @@ export function AdminDashboard({
       const yesterday = new Date();
       yesterday.setDate(now.getDate() - 1);
       return msgDate.toDateString() === yesterday.toDateString();
+    }
+
+    if (dateFilter === "7days") {
+      const sevenDaysAgo = new Date();
+      sevenDaysAgo.setDate(now.getDate() - 7);
+      sevenDaysAgo.setHours(0, 0, 0, 0);
+      return msgDate >= sevenDaysAgo;
+    }
+
+    if (dateFilter === "30days") {
+      const thirtyDaysAgo = new Date();
+      thirtyDaysAgo.setDate(now.getDate() - 30);
+      thirtyDaysAgo.setHours(0, 0, 0, 0);
+      return msgDate >= thirtyDaysAgo;
     }
 
     if (dateFilter === "custom") {
@@ -1776,7 +1804,7 @@ export function AdminDashboard({
             <div className="border-b border-muted bg-muted/10 px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div className="flex flex-wrap gap-2">
                 <button
-                  onClick={() => { setActiveTab("subscribers"); setSearchQuery(""); }}
+                  onClick={() => { setActiveTab("subscribers"); setSearchQuery(""); setDateFilter("all"); }}
                   className={`px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition ${
                     activeTab === "subscribers"
                       ? "bg-primary text-primary-foreground"
@@ -1786,7 +1814,7 @@ export function AdminDashboard({
                   Subscribers
                 </button>
                 <button
-                  onClick={() => { setActiveTab("messages"); setSearchQuery(""); }}
+                  onClick={() => { setActiveTab("messages"); setSearchQuery(""); setDateFilter("all"); }}
                   className={`px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition ${
                     activeTab === "messages"
                       ? "bg-primary text-primary-foreground"
@@ -1796,7 +1824,7 @@ export function AdminDashboard({
                   Inquiries ({messagesList.filter(m => m.status === "new" && !m.subject?.startsWith("Offline Batch Enquiry:") && !m.subject?.startsWith("Online Enrollment Lead:")).length})
                 </button>
                 <button
-                  onClick={() => { setActiveTab("offlineEnquiries"); setSearchQuery(""); }}
+                  onClick={() => { setActiveTab("offlineEnquiries"); setSearchQuery(""); setDateFilter("all"); }}
                   className={`px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition ${
                     activeTab === "offlineEnquiries"
                       ? "bg-primary text-primary-foreground"
@@ -1806,7 +1834,7 @@ export function AdminDashboard({
                   Offline Enquiries ({messagesList.filter(m => m.status === "new" && m.subject?.startsWith("Offline Batch Enquiry:")).length})
                 </button>
                 <button
-                  onClick={() => { setActiveTab("onlineLeads"); setSearchQuery(""); }}
+                  onClick={() => { setActiveTab("onlineLeads"); setSearchQuery(""); setDateFilter("all"); }}
                   className={`px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition ${
                     activeTab === "onlineLeads"
                       ? "bg-primary text-primary-foreground"
