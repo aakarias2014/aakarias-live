@@ -28,34 +28,29 @@ const client = createClient({
 async function main() {
   console.log("🚀 Starting upload process for Income Tax Day 2026 (आयकर दिवस) Static GK Article...");
 
-  // Source images from brain artifacts directory or public/images/blog/
-  const artifactDir = "/Users/aakariastech/.gemini/antigravity-ide/brain/b98c605b-850a-4c91-a0d8-d4d815df1aa4";
+  // Source images from public/images/blog/ or fallback to artifact directory
   const publicBlogDir = path.resolve(process.cwd(), "public/images/blog");
+  const artifactDir = "/Users/aakariastech/.gemini/antigravity-ide/brain/b98c605b-850a-4c91-a0d8-d4d815df1aa4";
 
-  if (!fs.existsSync(publicBlogDir)) {
-    fs.mkdirSync(publicBlogDir, { recursive: true });
-  }
-
-  const imageFiles = {
-    wilson: path.join(artifactDir, "income_tax_day_james_wilson_1860_1784969240093.png"),
-    building: path.join(artifactDir, "cbdt_income_tax_department_building_1784969253341.png"),
-    digital: path.join(artifactDir, "digital_income_tax_efiling_cpc_1784969267113.png"),
-  };
-
-  // Check if artifact images exist
-  if (!fs.existsSync(imageFiles.wilson) || !fs.existsSync(imageFiles.building) || !fs.existsSync(imageFiles.digital)) {
-    console.error("❌ Required images not found in brain artifacts!");
-    process.exit(1);
-  }
-
-  // Copy images to public/images/blog/ for permanent record
   const destWilson = path.join(publicBlogDir, "income_tax_day_james_wilson_1860.png");
   const destBuilding = path.join(publicBlogDir, "cbdt_income_tax_department_building.png");
   const destDigital = path.join(publicBlogDir, "digital_income_tax_efiling_cpc.png");
 
-  fs.copyFileSync(imageFiles.wilson, destWilson);
-  fs.copyFileSync(imageFiles.building, destBuilding);
-  fs.copyFileSync(imageFiles.digital, destDigital);
+  if (!fs.existsSync(destWilson) || !fs.existsSync(destBuilding) || !fs.existsSync(destDigital)) {
+    const srcWilson = path.join(artifactDir, "income_tax_day_james_wilson_1860_1784969240093.png");
+    const srcBuilding = path.join(artifactDir, "cbdt_income_tax_department_building_1784969253341.png");
+    const srcDigital = path.join(artifactDir, "digital_income_tax_efiling_cpc_1784969267113.png");
+
+    if (fs.existsSync(srcWilson) && fs.existsSync(srcBuilding) && fs.existsSync(srcDigital)) {
+      if (!fs.existsSync(publicBlogDir)) fs.mkdirSync(publicBlogDir, { recursive: true });
+      fs.copyFileSync(srcWilson, destWilson);
+      fs.copyFileSync(srcBuilding, destBuilding);
+      fs.copyFileSync(srcDigital, destDigital);
+    } else {
+      console.error("❌ Required images not found!");
+      process.exit(1);
+    }
+  }
 
   // 1. Upload James Wilson Image
   console.log("📸 Uploading Sir James Wilson 1860 image...");
@@ -87,7 +82,7 @@ async function main() {
     titleEn: "Income Tax Day 2026: History, Sir James Wilson (1860), Income Tax Act 1961, CBDT & Key Facts | MPPSC & UPSC",
     excerpt: "भारत में प्रतिवर्ष 24 जुलाई को आयकर दिवस (Income Tax Day) मनाया जाता है। जानिए Sir James Wilson (1860), 1961 अधिनियम, CBDT, और आय के 5 प्रमुख स्रोतों का ऐतिहासिक सफर। MPPSC एवं UPSC हेतु संपूर्ण नोट्स।",
     excerptEn: "Comprehensive exam guide on Income Tax Day observed on 24th July in India. Covers historical background (1860 to 2026), Income Tax Act 1961, CBDT structure, 5 heads of income, and digital tax initiatives for MPPSC and UPSC exams.",
-    ca_date: "2026-07-24",
+    ca_date: "2026-07-26",
     publishedAt: new Date().toISOString(),
     featured: true,
     readingTime: 7,
@@ -590,6 +585,15 @@ async function main() {
         correctIndex: 0,
         explanation: "'विवाद से विश्वास योजना' लंबित प्रत्यक्ष कर विवादों को समाप्त करने और फंसे राजस्व को एकत्र करने के लिए शुरू किया गया निपटान कार्यक्रम है।",
         explanationEn: "The Vivad Se Vishwas Scheme provides a resolution platform for settling pending direct tax litigation."
+      },
+      {
+        question: "आयकर अधिनियम 1961 की धारा 139(1) के तहत व्यक्तिगत करदाताओं के लिए (जहाँ ऑडिट आवश्यक नहीं है) वार्षिक आयकर रिटर्न (ITR) दाखिल करने की सामान्य अंतिम तिथि (Due Date) क्या है?",
+        questionEn: "What is the standard due date for filing individual Income Tax Returns (ITR) under Section 139(1) of the Income Tax Act 1961 (where audit is not required)?",
+        options: ["A. 31 मार्च", "B. 31 जुलाई", "C. 31 अक्टूबर", "D. 31 दिसंबर"],
+        optionsEn: ["A. 31st March", "B. 31st July", "C. 31st October", "D. 31st December"],
+        correctIndex: 1,
+        explanation: "आयकर अधिनियम 1961 की धारा 139(1) के अंतर्गत गैर-ऑडिट मामलों में व्यक्तिगत करदाताओं के लिए आईटीआर फाइलिंग की सामान्य अंतिम तिथि 31 जुलाई होती है।",
+        explanationEn: "Under Section 139(1) of the Income Tax Act 1961, the standard due date for filing ITR by non-audit individual taxpayers is 31st July."
       }
     ],
 
@@ -601,18 +605,29 @@ async function main() {
   };
 
   try {
+    // 1. Upload Static GK Article
     await client.createOrReplace(article);
     console.log("✨ Successfully uploaded Income Tax Day 2026 Static GK Article to Sanity CMS!");
 
-    // Also upload as Current Affairs so it appears on the Current Affairs Portal (/current-affairs)
-    const caArticle = {
+    // 2. Upload Current Affairs Article (short slug: income-tax-day-2026)
+    const caArticle1 = {
       ...article,
       _id: "ca-income-tax-day-2026-in-hindi",
       _type: "currentAffairs",
       slug: { _type: "slug", current: "income-tax-day-2026" },
     };
-    await client.createOrReplace(caArticle);
-    console.log("✨ Successfully uploaded Income Tax Day 2026 Current Affairs Article to Sanity CMS!");
+    await client.createOrReplace(caArticle1);
+    console.log("✨ Successfully uploaded Current Affairs Article (income-tax-day-2026) to Sanity CMS!");
+
+    // 3. Upload Current Affairs Article (long slug: income-tax-day-2026-in-hindi-history-cbdt-1961-act)
+    const caArticle2 = {
+      ...article,
+      _id: "ca-income-tax-day-2026-long-slug",
+      _type: "currentAffairs",
+      slug: { _type: "slug", current: "income-tax-day-2026-in-hindi-history-cbdt-1961-act" },
+    };
+    await client.createOrReplace(caArticle2);
+    console.log("✨ Successfully uploaded Current Affairs Article (income-tax-day-2026-in-hindi-history-cbdt-1961-act) to Sanity CMS!");
   } catch (err) {
     console.error("❌ Failed to create/replace document in Sanity:", err);
   }

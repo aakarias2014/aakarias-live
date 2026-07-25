@@ -508,6 +508,10 @@ export interface OnlineCourse {
   mentorBioEn?: string;
   price: string;
   originalPrice: string;
+  isOfferActive?: boolean;
+  offerBadgeHi?: string;
+  offerBadgeEn?: string;
+  offerEndDate?: string;
   durationHi?: string;
   durationEn?: string;
   lecturesCountHi?: string;

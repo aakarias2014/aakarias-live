@@ -1211,6 +1211,10 @@ export const onlineCourse: SchemaTypeDefinition = defineType({
     defineField({ name: "mentorBioEn", title: "Mentor Bio (English)", type: "text", rows: 3 }),
     defineField({ name: "price", title: "Discounted Price (e.g. ₹12,499)", type: "string", validation: (r) => r.required() }),
     defineField({ name: "originalPrice", title: "Original Price (e.g. ₹24,999)", type: "string" }),
+    defineField({ name: "isOfferActive", title: "Is Seasonal Offer Active?", type: "boolean", initialValue: false }),
+    defineField({ name: "offerBadgeHi", title: "Offer Badge Text (Hindi, e.g. 🌧️ मानसून स्पेशल)", type: "string" }),
+    defineField({ name: "offerBadgeEn", title: "Offer Badge Text (English, e.g. 🌧️ Monsoon Special)", type: "string" }),
+    defineField({ name: "offerEndDate", title: "Offer End Date (for auto-expiry)", type: "datetime" }),
     defineField({ name: "durationHi", title: "Duration (Hindi, e.g. 18 महीने)", type: "string" }),
     defineField({ name: "durationEn", title: "Duration (English, e.g. 18 Months)", type: "string" }),
     defineField({ name: "lecturesCountHi", title: "Lectures Count (Hindi)", type: "string" }),
@@ -1639,22 +1643,51 @@ export const examCalendar: SchemaTypeDefinition = defineType({
 
 export const popupBanner: SchemaTypeDefinition = defineType({
   name: "popupBanner",
-  title: "Popup Banner (Enquiry Poster)",
+  title: "Popup Banner & Offer Modal",
   type: "document",
   fields: [
     defineField({
       name: "title",
       title: "Title / Label",
       type: "string",
-      description: "Internal label for identification (e.g. 'Admission 2026-27 Poster')",
+      description: "Internal label for identification (e.g. 'Monsoon Offer July 2026')",
       validation: (r) => r.required(),
     }),
     defineField({
+      name: "offerBadge",
+      title: "Offer Badge Header (e.g. 🌧️ मानसून मेगा ऑफर / 🪔 दिवाली स्पेशल)",
+      type: "string",
+      description: "Header badge shown at the top of the popup modal",
+    }),
+    defineField({
+      name: "offerDateText",
+      title: "Offer Dates Subtitle (e.g. 24 से 28 जुलाई के लिए)",
+      type: "string",
+    }),
+    defineField({
+      name: "endDate",
+      title: "Offer End Date & Time (for Countdown Timer & Auto Expiry)",
+      type: "datetime",
+      description: "Select the date & time when this offer expires (e.g. 2026-07-28T23:59:59Z)",
+    }),
+    defineField({
+      name: "phoneContact",
+      title: "Contact Phone Number (e.g. +91 9713300123)",
+      type: "string",
+      initialValue: "+91 9713300123",
+    }),
+    defineField({
+      name: "whatsappContact",
+      title: "WhatsApp Number (e.g. 919713300123)",
+      type: "string",
+      initialValue: "919713300123",
+    }),
+    defineField({
       name: "image",
-      title: "Poster Image (1:1 Square Recommended)",
+      title: "Poster Image (1:1 Square or High Res)",
       type: "image",
       options: { hotspot: true },
-      description: "Upload the banner image that appears on the left side of the enquiry popup. Recommended: 1:1 square (e.g. 500x500px or 800x800px).",
+      description: "Upload the banner image for the popup.",
       validation: (r) => r.required(),
     }),
     defineField({
@@ -1662,23 +1695,39 @@ export const popupBanner: SchemaTypeDefinition = defineType({
       title: "Alt Text",
       type: "string",
       description: "Accessibility alt text for the image",
-      initialValue: "Aakar IAS Academy — Admission Open",
+      initialValue: "Aakar IAS Academy — Admission Open & Special Offer",
+    }),
+    defineField({
+      name: "offerCourses",
+      title: "Featured Offer Batches (Shown in Modal)",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            { name: "courseName", type: "string", title: "Course Name (e.g. MPPSC MAINS 2027)" },
+            { name: "originalPrice", type: "string", title: "Original Price (e.g. 24,999)" },
+            { name: "offerPrice", type: "string", title: "Offer Price (e.g. 21,999)" },
+            { name: "badgeText", type: "string", title: "Badge / Tag (e.g. LIVE / HYBRID)" },
+          ],
+        },
+      ],
     }),
     defineField({
       name: "isActive",
       title: "Active (Show on Website)",
       type: "boolean",
-      description: "Toggle to enable/disable this popup banner on the website",
+      description: "Toggle to enable/disable this offer popup on the website",
       initialValue: true,
     }),
   ],
   preview: {
-    select: { title: "title", media: "image", active: "isActive" },
+    select: { title: "title", media: "image", active: "isActive", offerBadge: "offerBadge" },
     prepare(selection) {
-      const { title, media, active } = selection;
+      const { title, media, active, offerBadge } = selection;
       return {
         title: title || "Popup Banner",
-        subtitle: active ? "✅ Active" : "❌ Inactive",
+        subtitle: `${active ? "🟢 Active" : "🔴 Inactive"} ${offerBadge ? `| ${offerBadge}` : ""}`,
         media,
       };
     },

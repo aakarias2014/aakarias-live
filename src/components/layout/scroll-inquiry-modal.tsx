@@ -11,25 +11,65 @@ import { cn } from "@/lib/utils";
 import { submitInquiry } from "@/actions/contact";
 import Link from "next/link";
 
+import type { OfferCourseItem } from "./scroll-inquiry-modal-wrapper";
+
 type ScrollInquiryModalProps = {
   posterUrl?: string;
   posterAlt?: string;
+  offerBadge?: string;
+  offerDateText?: string;
+  endDate?: string;
+  phoneContact?: string;
+  whatsappContact?: string;
+  offerCourses?: OfferCourseItem[];
 };
 
 export function ScrollInquiryModal({
   posterUrl = "/images/ads/inquiry-poster.png",
   posterAlt = "Aakar IAS Academy — Admission Open 2026-27",
+  offerBadge,
+  offerDateText,
+  endDate,
+  phoneContact = "+91 9713300123",
+  whatsappContact = "919713300123",
+  offerCourses,
 }: ScrollInquiryModalProps) {
   const pathname = usePathname() ?? "/";
 
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
-  const [course, setCourse] = useState("MPPSC Prelims");
+  const [course, setCourse] = useState("MPPSC Prelims & Mains");
   const [customText, setCustomText] = useState("");
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<{ name?: string; mobile?: string }>({});
+
+  const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(null);
+
+  useEffect(() => {
+    if (!endDate) return;
+    const target = new Date(endDate).getTime();
+    if (isNaN(target)) return;
+
+    const updateTimer = () => {
+      const now = new Date().getTime();
+      const diff = target - now;
+      if (diff <= 0) {
+        setTimeLeft(null);
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      setTimeLeft({ days, hours, minutes, seconds });
+    };
+
+    updateTimer();
+    const interval = setInterval(updateTimer, 1000);
+    return () => clearInterval(interval);
+  }, [endDate]);
 
   // Hide on studio/admin routes
   const isExcluded = pathname.startsWith("/studio") || pathname.startsWith("/admin");
@@ -212,8 +252,8 @@ export function ScrollInquiryModal({
                       <Sparkles className="h-4.5 w-4.5 text-primary" />
                     </div>
                     <div>
-                      <h2 className="text-lg font-bold text-foreground leading-tight tracking-tight font-sans">
-                        Quick Enquiry
+                      <h2 className="text-lg font-bold text-foreground leading-tight tracking-tight font-sans font-devanagari">
+                        Quick Enquiry / पूछताछ फॉर्म
                       </h2>
                       <p className="text-[11px] text-muted-foreground font-sans">
                         Get free counselling from our MPPSC experts
@@ -328,12 +368,32 @@ export function ScrollInquiryModal({
                     )}
                   </button>
 
+                  {/* Quick Action Buttons: Call Now & WhatsApp */}
+                  <div className="grid grid-cols-2 gap-2 pt-1">
+                    <a
+                      href={`tel:${phoneContact.replace(/\s+/g, "")}`}
+                      className="h-10 border border-primary/30 bg-primary/5 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 text-primary hover:bg-primary hover:text-white transition-all font-sans"
+                    >
+                      <Phone className="h-3.5 w-3.5" />
+                      <span>{phoneContact}</span>
+                    </a>
+                    <a
+                      href={`https://wa.me/${whatsappContact.replace(/\+/g, "").replace(/\s+/g, "")}?text=${encodeURIComponent("Hello Aakar IAS, I want to claim the Monsoon Mega Offer!")}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="h-10 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all font-sans shadow-sm"
+                    >
+                      <span className="text-sm">💬</span>
+                      <span>WhatsApp Offer</span>
+                    </a>
+                  </div>
+
                   {/* Brochure & Syllabus Download Link */}
                   <a
                     href="https://cdn.sanity.io/files/pnc4agic/production321/7aa3563b35ae74b8e9b52c3e28f6ba0c999d0c63.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full h-10 border border-border rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 text-muted-foreground hover:text-primary hover:border-primary/40 transition-all font-sans"
+                    className="w-full h-9 border border-border rounded-xl text-[11px] font-bold uppercase tracking-wider flex items-center justify-center gap-2 text-muted-foreground hover:text-primary hover:border-primary/40 transition-all font-sans"
                   >
                     <Download className="h-3.5 w-3.5" />
                     Download Brochure & Syllabus

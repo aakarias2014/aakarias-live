@@ -5,6 +5,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { LanguageProvider } from "@/components/providers/language-provider";
+import { TopAnnouncementBarWrapper } from "@/components/layout/top-announcement-bar-wrapper";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { MobileBottomBar } from "@/components/layout/mobile-bottom-bar";
@@ -119,6 +120,7 @@ export default function RootLayout({
           <LanguageProvider>
             <WhatsAppTracker />
             <OrganizationJsonLd />
+            <TopAnnouncementBarWrapper />
             <SiteHeader />
             <main className="flex-1 pb-16 lg:pb-0">{children}</main>
             <SiteFooter />

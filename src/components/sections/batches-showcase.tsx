@@ -121,11 +121,17 @@ export function BatchesShowcase({
                             <Monitor className="h-12 w-12 opacity-40" />
                           </div>
                         )}
-                        {badge && (
+                        {/* Status / Offer Badge */}
+                        {course.isOfferActive ? (
+                          <span className="absolute top-4 left-4 inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 px-3 py-1 text-[10px] font-extrabold text-white uppercase tracking-wider shadow-md animate-pulse">
+                            <span>{isHi ? (course.offerBadgeHi || "🌧️ मानसून ऑफर") : (course.offerBadgeEn || "🌧️ Monsoon Offer")}</span>
+                          </span>
+                        ) : badge ? (
                           <span className="absolute top-4 left-4 inline-block rounded-full bg-accent px-2.5 py-0.5 text-[10px] font-bold text-accent-foreground uppercase tracking-wider shadow-sm">
                             {badge}
                           </span>
-                        )}
+                        ) : null}
+
                         {course.isLive && (
                           <span className="absolute top-4 right-4 inline-flex items-center gap-1.5 rounded-full bg-red-600 px-2.5 py-0.5 text-[10px] font-bold text-white uppercase tracking-wider shadow-sm animate-pulse">
                             <span className="h-1.5 w-1.5 rounded-full bg-white" />
@@ -169,12 +175,21 @@ export function BatchesShowcase({
                         {/* Price & CTA */}
                         <div className="flex items-center justify-between mt-2">
                           <div className="flex flex-col">
-                            <span className="text-xs text-muted-foreground line-through">
-                              ₹{course.originalPrice}
-                            </span>
-                            <span className="text-lg font-extrabold text-foreground">
-                              ₹{course.price}
-                            </span>
+                            {course.originalPrice && (
+                              <span className="text-xs text-muted-foreground line-through">
+                                ₹{course.originalPrice}
+                              </span>
+                            )}
+                            <div className="flex items-center gap-1.5">
+                              <span className="text-lg font-extrabold text-foreground">
+                                ₹{course.price}
+                              </span>
+                              {course.isOfferActive && (
+                                <span className="text-[10px] font-extrabold text-emerald-600 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">
+                                  {isHi ? "स्पेशल ऑफर" : "SPECIAL OFFER"}
+                                </span>
+                              )}
+                            </div>
                           </div>
                           <Button size="sm" className="rounded-xl font-bold bg-primary text-white hover:bg-primary/95" asChild>
                             <Link href={isHi ? `/online-courses/${course.slug}` : `/en/online-courses/${course.slug}`}>
