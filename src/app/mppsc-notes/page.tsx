@@ -17,35 +17,29 @@ import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Breadcrumb } from "@/components/content/breadcrumb";
 import { Button } from "@/components/ui/button";
+import { buildMetadata } from "@/lib/seo/metadata";
 import { JsonLd } from "@/components/seo/json-ld";
 import { faqJsonLd, breadcrumbJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = buildMetadata({
-  title: "आकार आईएएस MPPSC नोट्स PDF (प्रीलिम्स & मेन्स) — हिंदी & अंग्रेजी माध्यम",
-  description: "आकार आईएएस (Aakar IAS) के प्रीमियम MPPSC स्टडी नोट्स हिंदी और अंग्रेजी में डाउनलोड करें। यूनिट-वार पाठ्यक्रम कवरेज, मुख्य परीक्षा उत्तर पुस्तिकाएं और मुफ्त पीडीएफ नमूने प्राप्त करें।",
+  title: "Aakar IAS MPPSC Notes PDF | हिंदी & English Medium Study Material",
+  description: "आकार आईएएस (Aakar IAS) के MPPSC प्रारंभिक एवं मुख्य परीक्षा के प्रामाणिक स्टडी नोट्स PDF मुफ़्त डाउनलोड करें। Unit-wise Hindi & English Medium Notes, Mains Papers & Complete Study Material.",
   path: "/mppsc-notes",
+  keywords: [
+    "Aakar IAS MPPSC Notes PDF",
+    "Aakar IAS Notes Free Download",
+    "Aakar IAS MPPSC Mains Notes PDF",
+    "Aakar IAS Notes in Hindi",
+    "Aakar IAS Notes PDF in Hindi",
+    "Aakar IAS Complete Notes PDF",
+    "Aakar IAS Indore MPPSC Notes",
+    "Aakar IAS Study Material",
+    "Aakar IAS MP Notes PDF",
+    "Aakar IAS Coaching Indore Notes PDF",
+    "MPPSC Mains Notes PDF English",
+  ],
 });
-
-function buildMetadata({ title, description, path }: { title: string; description: string; path: string }) {
-  return {
-    title: `${title} | Aakar IAS`,
-    description,
-    alternates: {
-      canonical: `${siteConfig.url}${path}`,
-      languages: {
-        "hi-IN": `${siteConfig.url}${path}`,
-        "en-IN": `${siteConfig.url}/en${path}`,
-      },
-    },
-    openGraph: {
-      title: `${title} | Aakar IAS`,
-      description,
-      url: `${siteConfig.url}${path}`,
-      type: "website",
-    },
-  };
-}
 
 export default function HindiMppscNotesPage() {
   const pageUrl = `${siteConfig.url}/mppsc-notes`;

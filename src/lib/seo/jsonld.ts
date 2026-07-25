@@ -18,7 +18,17 @@ export function organizationJsonLd(): JsonLd {
   return base("EducationalOrganization", {
     "@id": `${siteConfig.url}/#organization`,
     name: "Aakar IAS | Best MPPSC & UPSC Coaching in Indore",
-    alternateName: ["Aakar IAS", "आकार IAS", "Aakar IAS Indore", "Aakar IAS Coaching"],
+    alternateName: [
+      "Aakar IAS",
+      "आकार IAS",
+      "Aakar IAS Indore",
+      "Aakar IAS Coaching",
+      "Aakar IAS Academy",
+      "Aakar IAS Academy Indore",
+      "Akar Academy",
+      "Aakar Institute",
+      "Aakar IAS Official Website",
+    ],
     url: siteConfig.url,
     logo: `${siteConfig.url}/logo.png`,
     image: `${siteConfig.url}/logo.png`,
