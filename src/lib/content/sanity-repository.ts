@@ -682,7 +682,9 @@ export class SanityRepository implements ContentRepository {
     const filters = [
       `_type in [${ARTICLE_TYPES.map((t) => `"${t}"`).join(",")}]`,
       `!(_id in path("drafts.**"))`,
-      `featured == true`
+      `featured == true`,
+      // Exclude staticGk from featured feed to prevent duplicates with currentAffairs
+      `_type != "staticGk"`,
     ];
     if (contentType) filters.push(`_type == $contentType`);
     if (category) filters.push(`category->slug.current == $category`);
@@ -706,19 +708,34 @@ export class SanityRepository implements ContentRepository {
   ): Promise<ArticleListItem[]> {
     const filters = [
       `_type in [${ARTICLE_TYPES.map((t) => `"${t}"`).join(",")}]`,
-      `!(_id in path("drafts.**"))`
+      `!(_id in path("drafts.**"))`,
+      // Exclude staticGk from popular feed to prevent duplicates with currentAffairs
+      `_type != "staticGk"`,
     ];
     if (category) filters.push(`category->slug.current == $category`);
     if (tag) filters.push(`$tag in tags[]->slug.current`);
 
-    const q = `*[ ${filters.join(" && ")} ] | order(publishedAt desc) [0...$limit] ${cardProjection(locale)}`;
+    // Fetch extra to allow deduplication by title
+    const fetchLimit = limit + 4;
+    const q = `*[ ${filters.join(" && ")} ] | order(publishedAt desc) [0...$fetchLimit] ${cardProjection(locale)}`;
     const raw = await sanityFetch<RawArticleCard[]>({
       query: q,
-      params: { limit, tag, category },
+      params: { fetchLimit, tag, category },
       revalidate: REVALIDATE,
       tags: ["articles", "popular"],
     });
-    return raw.map((r) => mapCard(r, locale));
+    // Deduplicate by title (same article may exist in multiple _types)
+    const seen = new Set<string>();
+    const deduped: ArticleListItem[] = [];
+    for (const r of raw) {
+      const mapped = mapCard(r, locale);
+      const key = mapped.title.trim().toLowerCase();
+      if (seen.has(key)) continue;
+      seen.add(key);
+      deduped.push(mapped);
+      if (deduped.length >= limit) break;
+    }
+    return deduped;
   }
 
   async getFilters(locale: Locale): Promise<ListFilters> {
