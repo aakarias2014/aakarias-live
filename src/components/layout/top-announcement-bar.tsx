@@ -37,11 +37,13 @@ export function TopAnnouncementBar({
   const [currentStep, setCurrentStep] = useState(0);
   const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(null);
 
-  // Hide on Studio and Admin routes
+  // Hide on Studio, Admin, and Login routes
   if (
     pathname.startsWith("/studio") ||
     pathname.startsWith("/admin") ||
-    pathname.startsWith("/en/admin")
+    pathname.startsWith("/en/admin") ||
+    pathname.startsWith("/login") ||
+    pathname.startsWith("/en/login")
   ) {
     return null;
   }
