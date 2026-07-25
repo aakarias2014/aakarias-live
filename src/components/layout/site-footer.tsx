@@ -448,12 +448,21 @@ export function SiteFooter() {
             </Link>
             <span className="text-border/40">|</span>
             <a
-              href="/admin"
+              href="/studio"
               target="_blank"
               rel="noopener noreferrer"
               className="font-bold text-red-600 dark:text-red-400 hover:underline transition-colors flex items-center gap-1"
             >
-              🔒 {locale === "hi" ? "एडमिन पैनल" : "Admin Panel"}
+              ✏️ {locale === "hi" ? "कंटेंट एडिटर (Studio)" : "Content Studio"}
+            </a>
+            <span className="text-border/40">|</span>
+            <a
+              href="/admin"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-muted-foreground hover:text-primary hover:underline transition-colors flex items-center gap-1"
+            >
+              🔒 {locale === "hi" ? "एडमिन डैशबोर्ड" : "Admin Dashboard"}
             </a>
           </div>
         </div>
