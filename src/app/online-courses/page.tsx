@@ -9,9 +9,26 @@ import { DownloadAppSection } from "@/components/sections/download-app-section";
 import { getContentRepository } from "@/lib/content/content-repository";
 
 export const metadata: Metadata = buildMetadata({
-  title: "ऑनलाइन कोर्सेज & लाइव क्लासेस",
-  description: "आकार आईएएस (Aakar IAS) के ऑनलाइन कोर्सेज, लाइव और रिकॉर्डेड कक्षाएं, दैनिक करेंट अफेयर्स और व्यक्तिगत मेंटरशिप प्रोग्राम।",
+  title: "MPPSC Online Coaching | ऑनलाइन कोर्स & लाइव क्लासेज | Best MPPSC Course Online | Aakar IAS Indore",
+  description: "Aakar IAS — Best MPPSC Online Coaching. MPPSC ऑनलाइन कोर्स, लाइव क्लासेज, रिकॉर्डेड बैच, मेन्स आंसर राइटिंग, टेस्ट सीरीज़ और स्टडी मटेरियल। 5000+ छात्रों का भरोसा।",
   path: "/online-courses",
+  keywords: [
+    "MPPSC Online Coaching",
+    "MPPSC Course Online",
+    "MPPSC Online Course",
+    "MPPSC Online Classes",
+    "MPPSC Live Classes",
+    "Best MPPSC Coaching",
+    "Best MPPSC Coaching in MP",
+    "MPPSC Coaching Online",
+    "MPPSC Mains Online Course",
+    "MPPSC Classes Online",
+    "Best Online Coaching for MPPSC in Indore",
+    "Aakar IAS Online Course",
+    "Aakar IAS MPPSC Online Course Fees",
+    "MPPSC Prelims Online Course",
+    "MPPSC Mains Online Batch",
+  ],
 });
 
 export default async function OnlineCoursesPage() {

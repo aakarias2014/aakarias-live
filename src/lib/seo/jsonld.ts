@@ -67,12 +67,12 @@ export function localBusinessJsonLd(): JsonLd {
   return base("LocalBusiness", {
     "@id": `${siteConfig.url}/#localbusiness`,
     name: "Aakar IAS | Best MPPSC & UPSC Coaching in Indore",
-    alternateName: ["Aakar IAS Indore", "आकार IAS इंदौर", "Aakar IAS Coaching Center"],
+    alternateName: ["Aakar IAS Indore", "आकार IAS इंदौर", "Aakar IAS Coaching Center", "Akar Academy", "Aakar Institute"],
     image: `${siteConfig.url}/logo.png`,
     url: siteConfig.url,
     telephone: siteConfig.contact.phone,
     email: siteConfig.contact.email,
-    description: siteConfig.description,
+    description: "Aakar IAS is the Best MPPSC Coaching Institute in Indore offering Online & Offline Classes, MPPSC Test Series, Mains Answer Writing, Daily Current Affairs, Notes PDF and complete exam preparation.",
     priceRange: "₹₹₹",
     address: {
       "@type": "PostalAddress",
@@ -88,6 +88,35 @@ export function localBusinessJsonLd(): JsonLd {
       longitude: 75.8596,
     },
     hasMap: "https://maps.google.com/?q=Aakar+IAS+Indore",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.7",
+      reviewCount: "280",
+      bestRating: "5",
+      worstRating: "1",
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "MPPSC & UPSC Coaching Courses",
+      itemListElement: [
+        {
+          "@type": "OfferCatalog",
+          name: "MPPSC Online Coaching",
+          itemListElement: [
+            { "@type": "Offer", itemOffered: { "@type": "Course", name: "MPPSC Prelims + Mains Online Batch" } },
+            { "@type": "Offer", itemOffered: { "@type": "Course", name: "MPPSC Mains Answer Writing Program" } },
+          ],
+        },
+        {
+          "@type": "OfferCatalog",
+          name: "MPPSC Offline Coaching in Indore",
+          itemListElement: [
+            { "@type": "Offer", itemOffered: { "@type": "Course", name: "MPPSC Foundation Classroom Batch" } },
+            { "@type": "Offer", itemOffered: { "@type": "Course", name: "MPPSC Test Series (Vijayasiddhi)" } },
+          ],
+        },
+      ],
+    },
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",

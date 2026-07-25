@@ -12,10 +12,20 @@ import { getContentRepository } from "@/lib/content/content-repository";
 import { ArticleAdRotator } from "@/components/article/article-ad-rotator";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Contact Aakar IAS | Admission, Support & Enquiry",
-  description: "Contact Aakar IAS for admissions, course information, technical support and general enquiries. Visit our Indore centre or connect via phone, WhatsApp and email.",
+  title: "Contact Aakar IAS Indore | MPPSC Coaching Admission, Fees & Phone Number",
+  description: "Contact Aakar IAS Indore — MPPSC coaching admission enquiry, fee structure, phone number +91 9713300123। इंदौर सेंटर विज़िट, WhatsApp, ईमेल से संपर्क करें।",
   path: "/contact",
-  keywords: ["Contact Aakar IAS", "Aakar IAS admissions", "Aakar IAS contact number", "Aakar IAS address Indore", "MPPSC enquiry", "UPSC coaching contact"],
+  keywords: [
+    "Contact Aakar IAS",
+    "Aakar IAS Contact Number",
+    "Aakar IAS Indore Contact Number",
+    "Aakar IAS Admissions",
+    "Aakar IAS Address Indore",
+    "MPPSC Coaching Fees in Indore",
+    "MPPSC Enquiry",
+    "Aakar IAS Phone Number",
+    "Aakar IAS WhatsApp Number",
+  ],
 });
 
 export default async function ContactPage() {

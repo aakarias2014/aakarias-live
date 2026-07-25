@@ -36,10 +36,21 @@ import { Button } from "@/components/ui/button";
 import { ArticleAdRotator } from "@/components/article/article-ad-rotator";
 
 export const metadata: Metadata = buildMetadata({
-  title: "About Aakar IAS | Our Journey, Vision & Mission",
-  description: "Know more about Aakar IAS, our journey, experienced faculty, vision, mission and commitment towards MPPSC, UPSC and other competitive examinations.",
+  title: "About Aakar IAS | Best MPPSC & UPSC Coaching Institute in Indore | Reviews & Faculty",
+  description: "Aakar IAS — Indore's Best MPPSC & UPSC Coaching Institute. जानिये आकार IAS का इतिहास, फैकल्टी, विज़न, 5000+ छात्रों के रिव्यूज़ और सिविल सेवा परीक्षा की तैयारी के लिए हमारी प्रतिबद्धता।",
   path: "/about",
-  keywords: ["About Aakar IAS", "Aakar IAS history", "Aakar IAS faculty", "Aakar IAS Indore vision", "MPPSC UPSC coaching vision"],
+  keywords: [
+    "About Aakar IAS",
+    "Aakar IAS Reviews",
+    "Aakar IAS Indore",
+    "Best MPPSC Coaching in Indore",
+    "Aakar IAS Faculty",
+    "Aakar IAS History",
+    "Aakar IAS Contact Number",
+    "MPPSC Coaching Indore Reviews",
+    "Aakar Institute",
+    "Akar Academy",
+  ],
 });
 
 export default async function AboutPage() {

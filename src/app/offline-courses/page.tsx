@@ -24,9 +24,26 @@ const offlineFaqs = [
 ];
 
 export const metadata: Metadata = buildMetadata({
-  title: "ऑफलाइन कक्षाएँ & क्लासरूम प्रोग्राम",
-  description: "इंदौर में अनुभवी शिक्षकों, आधुनिक क्लासरूम, अद्यतन अध्ययन सामग्री, नियमित टेस्ट एवं व्यक्तिगत मार्गदर्शन के साथ MPPSC, UPSC एवं अन्य प्रतियोगी परीक्षाओं की उत्कृष्ट तैयारी।",
+  title: "Best MPPSC Coaching in Indore | ऑफलाइन क्लासरूम कोचिंग & फीस | Aakar IAS",
+  description: "Aakar IAS — Best MPPSC Coaching in Indore. ऑफलाइन क्लासरूम प्रोग्राम, MPPSC कोचिंग फीस, अनुभवी फैकल्टी, टेस्ट सीरीज़, मेन्स आंसर राइटिंग। 5000+ छात्रों का विश्वास।",
   path: "/offline-courses",
+  keywords: [
+    "Best MPPSC Coaching in Indore",
+    "MPPSC Coaching in Indore",
+    "MPPSC Coaching Fees in Indore",
+    "MPPSC Coaching in Indore with Fees",
+    "Top 10 MPPSC Coaching in Indore",
+    "Top MPPSC Coaching in Indore",
+    "Best Online Coaching for MPPSC in Indore",
+    "Best Coaching for MPPSC in Indore",
+    "PSC Coaching in Indore",
+    "Indore MPPSC Coaching",
+    "Indore MPPSC Best Coaching",
+    "MPPSC English Medium Coaching in Indore",
+    "Aakar IAS Offline Coaching",
+    "Aakar IAS Fees",
+    "MPPSC Classroom Coaching Indore",
+  ],
 });
 
 export default async function OfflineCoursesPage() {
