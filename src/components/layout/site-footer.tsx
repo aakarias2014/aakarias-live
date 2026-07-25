@@ -446,6 +446,15 @@ export function SiteFooter() {
             <Link href={getHref("/disclaimer")} className="hover:text-primary transition-colors hover:underline">
               {locale === "hi" ? "अस्वीकरण" : "Disclaimer"}
             </Link>
+            <span className="text-border/40">|</span>
+            <a
+              href="/admin"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold text-red-600 dark:text-red-400 hover:underline transition-colors flex items-center gap-1"
+            >
+              🔒 {locale === "hi" ? "एडमिन पैनल" : "Admin Panel"}
+            </a>
           </div>
         </div>
       </Container>
