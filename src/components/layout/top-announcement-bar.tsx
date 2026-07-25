@@ -78,9 +78,10 @@ export function TopAnnouncementBar({
   const nextStep = () => setCurrentStep((prev) => (prev + 1) % 3);
   const prevStep = () => setCurrentStep((prev) => (prev - 1 + 3) % 3);
 
+  // Restore earlier compact countdown format: 3d 12h 45m 03s
   const formattedCountdown = timeLeft
-    ? `${timeLeft.days > 0 ? `${timeLeft.days}दिन ` : ""}${String(timeLeft.hours).padStart(2, "0")}घंटे ${String(timeLeft.minutes).padStart(2, "0")}मिनट ${String(timeLeft.seconds).padStart(2, "0")}सेकंड`
-    : "सीमित समय शेष";
+    ? `${timeLeft.days > 0 ? `${timeLeft.days}d ` : ""}${String(timeLeft.hours).padStart(2, "0")}h ${String(timeLeft.minutes).padStart(2, "0")}m ${String(timeLeft.seconds).padStart(2, "0")}s`
+    : "Ended";
 
   return (
     <div className="relative w-full bg-gradient-to-r from-[#B91C1C] via-[#DC2626] to-[#991B1B] text-white text-xs font-semibold py-2 px-2 sm:px-6 shadow-md border-b border-red-400/30 z-[60] select-none">
@@ -147,10 +148,13 @@ export function TopAnnouncementBar({
               >
                 <span className="inline-flex items-center gap-1 bg-black/30 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-extrabold uppercase shrink-0 border border-yellow-300/40 text-yellow-300">
                   <Clock className="h-3 w-3 text-yellow-300 animate-pulse" />
-                  काउंटडाउन
+                  ऑफर समाप्त समय
                 </span>
-                <span className="font-extrabold tracking-tight text-[11px] sm:text-xs font-mono text-yellow-200 bg-black/20 px-2 py-0.5 rounded">
-                  ⏱️ समाप्त होने में: {formattedCountdown} ({offerDateText})
+                <span className="font-extrabold tracking-tight text-[11px] sm:text-xs font-mono text-yellow-200 bg-black/30 px-2 py-0.5 rounded border border-white/10">
+                  ⏱️ {formattedCountdown}
+                </span>
+                <span className="hidden sm:inline text-white/80 text-[11px] font-devanagari">
+                  ({offerDateText})
                 </span>
               </motion.div>
             )}
