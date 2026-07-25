@@ -1926,6 +1926,7 @@ export function AdminDashboard({
                   Notices ({noticesList.length})
                 </button>
               </div>
+            </div>
 
             {/* Filtering bar */}
             <div className="p-4 border-b border-muted bg-muted/5 flex flex-col sm:flex-row gap-4 items-center justify-between">
