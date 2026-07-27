@@ -14,9 +14,8 @@ const { NEXT_PUBLIC_SANITY_PROJECT_ID: projectId, NEXT_PUBLIC_SANITY_DATASET: da
 export const sanityClient = createClient({
   projectId,
   dataset,
-  apiVersion: "2024-10-01", // pin a stable GROQ API version
-  useCdn: process.env.NODE_ENV === "production", // edge-cached, fast reads in production; fresh reads in dev
-  token: env().SANITY_API_READ_TOKEN, // optional; needed for private datasets
+  apiVersion: "2024-10-01",
+  useCdn: false, // Fresh reads directly from Sanity DB; Next.js handles ISR caching
   perspective: "published",
   stega: {
     // Stegano encoding powers click-to-edit in Presentation (Phase 2).
