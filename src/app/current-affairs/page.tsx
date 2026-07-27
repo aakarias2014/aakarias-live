@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Download, FileText, HelpCircle, BookOpen, Brain } from "lucide-react";
+import { ArrowRight, Download, FileText, HelpCircle, BookOpen, Brain, Trophy } from "lucide-react";
 import { getContentRepository } from "@/lib/content/content-repository";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { getAllArticleQuizzesAction } from "@/actions/current-affairs";
@@ -23,7 +23,7 @@ export const revalidate = 900; // 15 min ISR
 
 export const metadata = buildMetadata({
   title: "समसामयिकी (Current Affairs) पोर्टल | Aakar IAS",
-  description: "UPSC, MPPSC और राज्य सिविल सेवा परीक्षाओं के लिए दैनिक, साप्ताहिक और मासिक करेंट अफेयर्स विश्लेषण।",
+  description: "UPSC, MPPSC और राज्य सिविल सेवा परीक्षाओं के लिए दैनिक, साप्ताहिक, खेल एवं मासिक करेंट अफेयर्स विश्लेषण।",
   path: "/current-affairs",
 });
 
@@ -41,6 +41,7 @@ export default async function CurrentAffairsPortalPage() {
     pdfs,
     faqs,
     mpCurrentAffairs,
+    sportsCurrentAffairs,
     homeConfig,
     latestDateResult,
     quizzes,
@@ -56,6 +57,7 @@ export default async function CurrentAffairsPortalPage() {
     repo.listMonthlyPdfs("hi", undefined, 4),
     repo.listGlobalFaqs("hi"),
     repo.listArticles({ locale: "hi", tag: "mp-current-affairs", page: 1, pageSize: 3 }),
+    repo.listArticles({ locale: "hi", tag: "sports", page: 1, pageSize: 3 }),
     repo.getHomeConfig("hi"),
     repo.getLatestDateWithContent(),
     getAllArticleQuizzesAction("hi"),
@@ -218,6 +220,30 @@ export default async function CurrentAffairsPortalPage() {
           <AnimatedSection variant="stagger-container" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {mpCurrentAffairs.items.map((a, i) => (
               <AnimatedSection key={a.id || `mp-ca-${i}`} variant="stagger-item">
+                <ArticleCard article={a} />
+              </AnimatedSection>
+            ))}
+          </AnimatedSection>
+        </Section>
+      )}
+
+      {/* ─── Sports Current Affairs ─────────────────────────────────────── */}
+      {sportsCurrentAffairs.items.length > 0 && (
+        <Section
+          title="खेल समसामयिकी (Sports Current Affairs)"
+          description="राष्ट्रमंडल खेल 2026, ओलंपिक, एशियाई खेल, क्रिकेट व राष्ट्रीय-अंतरराष्ट्रीय खेल स्पर्धाओं की विस्तृत कवरेज।"
+          className="bg-muted/10 border-t border-b border-border/40"
+          action={
+            <Button variant="outline" className="rounded-full" asChild>
+              <Link href="/tag/sports">
+                सभी खेल समाचार <Trophy className="ml-1.5 h-4 w-4 text-primary" />
+              </Link>
+            </Button>
+          }
+        >
+          <AnimatedSection variant="stagger-container" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {sportsCurrentAffairs.items.map((a, i) => (
+              <AnimatedSection key={a.id || `sports-ca-${i}`} variant="stagger-item">
                 <ArticleCard article={a} />
               </AnimatedSection>
             ))}

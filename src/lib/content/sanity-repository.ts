@@ -396,6 +396,16 @@ function mapPortableTextToBlocks(
           },
         });
       }
+    } else if (btype === "facts") {
+      flushList();
+      const items = Array.isArray(b.items) ? (b.items as any[]) : [];
+      out.push({
+        type: "facts",
+        items: items.map((it: any) => ({
+          label: it.label || it.title || "",
+          value: it.value || it.description || "",
+        })),
+      });
     }
   }
 

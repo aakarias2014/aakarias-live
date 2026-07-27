@@ -18,6 +18,7 @@ import {
   FlaskConical,
   Cpu,
   MapPin,
+  Trophy,
   Layers,
   BookOpen
 } from "lucide-react";
@@ -45,6 +46,7 @@ const SUBJECTS = [
   { slug: "general-science", title: "General Science", titleEn: "General Science", Icon: FlaskConical },
   { slug: "science-technology", title: "Science & Technology", titleEn: "Sci & Tech", Icon: Cpu },
   { slug: "mpgk", title: "MP GK", titleEn: "MP GK", Icon: MapPin },
+  { slug: "sports", title: "Sports & Games", titleEn: "Sports & Games", Icon: Trophy },
   { slug: "misc", title: "Miscellaneous", titleEn: "Miscellaneous", Icon: Layers },
 ];
 

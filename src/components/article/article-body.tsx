@@ -342,16 +342,21 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
 
     case "facts":
       return (
-        <div className="my-6 grid gap-3 sm:grid-cols-2">
+        <div className="my-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
           {block.items.map((fact, i) => (
             <div
               key={i}
-              className="rounded-xl border border-border bg-muted/30 p-4"
+              className="group relative overflow-hidden rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-primary/5 to-background p-4 sm:p-5 shadow-soft-xs transition-all duration-300 hover:border-primary/40 hover:shadow-soft-md"
             >
-              <div className="text-xs font-semibold uppercase tracking-wide text-primary">
-                {fact.label}
+              <div className="flex items-center justify-between gap-2 border-b border-primary/15 pb-2 mb-2">
+                <span className="text-xs font-extrabold uppercase tracking-wider text-primary">
+                  {renderFormattedText(fact.label)}
+                </span>
+                <span className="h-2 w-2 rounded-full bg-primary/60 group-hover:scale-125 transition-transform" />
               </div>
-              <div className="mt-1 text-lg font-bold text-foreground">{fact.value}</div>
+              <div className="text-sm sm:text-base font-bold text-foreground leading-relaxed">
+                {renderFormattedText(fact.value)}
+              </div>
             </div>
           ))}
         </div>
