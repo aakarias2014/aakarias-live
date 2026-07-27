@@ -20,16 +20,17 @@ import {
   MapPin,
   Trophy,
   Layers,
-  BookOpen
+  BookOpen,
+  ShieldAlert
 } from "lucide-react";
 
 export const revalidate = 600;
 
 export const metadata: Metadata = buildMetadata({
   title: "सामान्य अध्ययन (General Studies) | Aakar IAS",
-  description: "UPSC, MPPSC और अन्य राज्य नागरिक सेवा परीक्षाओं के लिए इतिहास, भूगोल, राजव्यवस्था, अर्थव्यवस्था, पर्यावरण एवं पारिस्थितिकी, विज्ञान एवं प्रौद्योगिकी और सामान्य अध्ययन का व्यापक संकलन।",
+  description: "UPSC, MPPSC और अन्य राज्य नागरिक सेवा परीक्षाओं के लिए इतिहास, भूगोल, राजव्यवस्था, अर्थव्यवस्था, पर्यावरण एवं पारिस्थितिकी, आपदा प्रबंधन, विज्ञान एवं प्रौद्योगिकी और सामान्य अध्ययन का व्यापक संकलन।",
   path: "/general-awareness",
-  keywords: ["General Studies", "सामान्य अध्ययन", "General Awareness", "UPSC GS", "MPPSC GS", "Indian History", "Geography", "Environment & Ecology", "पर्यावरण और जैव विविधता"],
+  keywords: ["General Studies", "सामान्य अध्ययन", "General Awareness", "UPSC GS", "MPPSC GS", "Indian History", "Geography", "Disaster Management", "आपदा प्रबंधन", "Environment & Ecology"],
 });
 
 interface Props {
@@ -38,6 +39,7 @@ interface Props {
 
 const SUBJECTS = [
   { slug: "all", title: "सभी विषय", titleEn: "All Subjects", Icon: Grid },
+  { slug: "disaster-management", title: "आपदा प्रबंधन", titleEn: "Disaster Management", Icon: ShieldAlert },
   { slug: "history", title: "भारतीय इतिहास", titleEn: "Indian History", Icon: History },
   { slug: "geography", title: "भूगोल", titleEn: "Geography", Icon: Globe },
   { slug: "polity", title: "राजव्यवस्था", titleEn: "Polity", Icon: Landmark },

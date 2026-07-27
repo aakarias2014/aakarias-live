@@ -20,16 +20,17 @@ import {
   MapPin,
   Trophy,
   Layers,
-  BookOpen
+  BookOpen,
+  ShieldAlert
 } from "lucide-react";
 
 export const revalidate = 600;
 
 export const metadata: Metadata = buildMetadata({
   title: "General Studies | Aakar IAS",
-  description: "Comprehensive study material and articles on Indian History, Geography, Polity, Economics, Environment & Ecology, General Science, Sci & Tech, and General Studies for UPSC & State PSC exams.",
+  description: "Comprehensive study material and articles on Indian History, Geography, Polity, Economics, Environment & Ecology, Disaster Management, Sci & Tech, and General Studies for UPSC & State PSC exams.",
   path: "/en/general-awareness",
-  keywords: ["General Studies", "General Awareness", "General Knowledge", "UPSC GS", "MPPSC GS", "Indian History", "Geography", "Environment & Ecology"],
+  keywords: ["General Studies", "General Awareness", "General Knowledge", "UPSC GS", "MPPSC GS", "Indian History", "Geography", "Disaster Management", "Environment & Ecology"],
 });
 
 interface Props {
@@ -38,6 +39,7 @@ interface Props {
 
 const SUBJECTS = [
   { slug: "all", title: "All Subjects", titleEn: "All Subjects", Icon: Grid },
+  { slug: "disaster-management", title: "Disaster Management", titleEn: "Disaster Management", Icon: ShieldAlert },
   { slug: "history", title: "Indian History", titleEn: "Indian History", Icon: History },
   { slug: "geography", title: "Geography", titleEn: "Geography", Icon: Globe },
   { slug: "polity", title: "Polity", titleEn: "Polity", Icon: Landmark },
