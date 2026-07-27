@@ -487,7 +487,7 @@ export class SanityRepository implements ContentRepository {
       _type in [${ARTICLE_TYPES.map((t) => `"${t}"`).join(",")}] &&
       slug.current == $slug &&
       !(_id in path("drafts.**"))
-    ][0]{
+    ] | order(_updatedAt desc)[0]{
       _id,
       _type,
       "slug": slug.current,
