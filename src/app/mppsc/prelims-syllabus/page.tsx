@@ -22,19 +22,21 @@ import {
 /* ─── SEO Metadata ────────────────────────────────────────────────────────── */
 export const metadata: Metadata = buildMetadata({
   title:
-    "MPPSC Prelims Syllabus 2026 PDF Download | Paper 1 GS & Paper 2 CSAT | Aakar IAS",
+    "MPPSC Prelims Syllabus 2026 PDF Free Download in Hindi | Paper 1 GS & CSAT | Aakar IAS",
   description:
-    "MPPSC Prelims Syllabus 2026 हिंदी में: प्रथम प्रश्नपत्र (सामान्य अध्ययन - 10 इकाइयाँ) एवं द्वितीय प्रश्नपत्र (CSAT - सामान्य अभिरुचि)। परीक्षा पैटर्न, नेगेटिव मार्किंग व PDF डाउनलोड।",
+    "MPPSC Prelims Syllabus 2026 PDF Free Download in Hindi: 10 इकाइयों में प्रथम प्रश्नपत्र (सामान्य अध्ययन) एवं द्वितीय प्रश्नपत्र (CSAT)। परीक्षा पैटर्न, नेगेटिव मार्किंग व PDF देखें।",
   path: "/mppsc/prelims-syllabus",
   keywords: [
+    "mppsc prelims syllabus 2026 pdf free download in hindi",
+    "mppsc prelims syllabus 2026 pdf in hindi",
+    "mppsc prelims syllabus 2026 pdf",
+    "mppsc pre syllabus 2026 pdf download",
+    "mppsc pre syllabus 2026 pdf",
+    "mppsc pre mains syllabus 2026 pdf",
+    "mppsc prelims and mains syllabus 2026 pdf",
     "mppsc prelims syllabus",
     "mppsc prelims syllabus 2026",
     "mppsc pre syllabus in hindi",
-    "mppsc prelims syllabus pdf",
-    "mppsc csat syllabus",
-    "MPPSC प्रारंभिक परीक्षा पाठ्यक्रम",
-    "MPPSC Prelims Paper 1 Syllabus",
-    "MPPSC Prelims Paper 2 Syllabus",
   ],
   type: "article",
   publishedTime: "2026-01-10",
@@ -76,13 +78,13 @@ export default function MppscPrelimsSyllabusPage() {
   ]);
 
   const article = articleJsonLd({
-    title: "MPPSC Prelims Syllabus 2026 – Complete Pattern & 10 Units Breakdown in Hindi",
-    description: "MPPSC प्रारंभिक परीक्षा 2026 का संपूर्ण 10 इकाइयों में विस्तृत पाठ्यक्रम।",
+    title: "MPPSC Prelims Syllabus 2026 PDF Free Download in Hindi – Complete 10 Units Breakdown",
+    description: "MPPSC प्रारंभिक परीक्षा 2026 का संपूर्ण 10 इकाइयों में विस्तृत पाठ्यक्रम हिंदी PDF।",
     url: pageUrl,
-    image: `${siteConfig.url}/api/og?title=MPPSC+Prelims+Syllabus+2026&category=MPPSC&lang=hi&type=article`,
+    image: `${siteConfig.url}/api/og?title=MPPSC+Prelims+Syllabus+2026+PDF&category=MPPSC&lang=hi&type=article`,
     datePublished: "2026-01-10",
     authorName: "आकार आईएएस",
-    keywords: ["MPPSC Prelims Syllabus", "MPPSC Pre Syllabus 2026", "MPPSC CSAT Syllabus"],
+    keywords: ["MPPSC Prelims Syllabus", "MPPSC Pre Syllabus 2026 PDF", "MPPSC CSAT Syllabus"],
     inLanguage: "hi-IN",
     alternates: {
       hi: pageUrl,
@@ -99,14 +101,32 @@ export default function MppscPrelimsSyllabusPage() {
         <Container size="wide" className="relative py-16 sm:py-20">
           <div className="max-w-3xl">
             <span className="inline-block rounded-full bg-primary/15 px-4 py-1 text-sm font-semibold text-primary">
-              MPPSC प्रारंभिक परीक्षा 2026
+              MPPSC प्रारंभिक परीक्षा 2026 PDF Download
             </span>
             <h1 className="mt-4 text-balance text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              MPPSC Prelims Syllabus 2026 — प्रारंभिक परीक्षा का संपूर्ण पाठ्यक्रम
+              MPPSC Prelims Syllabus 2026 PDF Free Download in Hindi
             </h1>
             <p className="mt-4 text-pretty text-lg text-white/75">
-              मध्यप्रदेश राज्य सेवा प्रारंभिक परीक्षा (Prelims 2026) का <strong>10 इकाइयों में सम्पूर्ण पाठ्यक्रम</strong> — Paper 1 (General Studies) एवं Paper 2 (CSAT)।
+              मध्यप्रदेश राज्य सेवा प्रारंभिक परीक्षा (Prelims 2026) का <strong>10 इकाइयों में सम्पूर्ण पाठ्यक्रम हिंदी PDF</strong> — Paper 1 (General Studies) एवं Paper 2 (CSAT)।
             </p>
+            <div className="mt-6 flex flex-wrap gap-4">
+              <a
+                href="/pdf/mppsc-prelims-syllabus-in-hindi.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-primary-foreground shadow-md transition hover:bg-primary/90"
+              >
+                📄 MPPSC Prelims Syllabus PDF (Hindi) देखें / View
+              </a>
+              <a
+                href="/pdf/mppsc-mains-syllabus-in-hindi.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-5 py-3 text-sm font-bold text-white border border-white/20 transition hover:bg-white/20"
+              >
+                📄 MPPSC Mains Syllabus PDF (Hindi) देखें / View
+              </a>
+            </div>
           </div>
         </Container>
       </section>

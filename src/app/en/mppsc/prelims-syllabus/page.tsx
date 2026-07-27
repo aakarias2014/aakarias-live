@@ -15,12 +15,14 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = buildMetadata({
   title:
-    "MPPSC Prelims Syllabus 2026 PDF Download | General Studies & CSAT | Aakar IAS",
+    "MPPSC Prelims Syllabus 2026 PDF Download in English | GS & CSAT | Aakar IAS",
   description:
-    "Official MPPSC Prelims Syllabus 2026 in English: Paper 1 General Studies (10 Units breakdown) and Paper 2 CSAT. Exam pattern, negative marking details, and PDF.",
+    "Official MPPSC Prelims Syllabus 2026 in English PDF Download: Paper 1 General Studies (10 Units breakdown) and Paper 2 CSAT. Exam pattern, negative marking & free PDF.",
   path: "/en/mppsc/prelims-syllabus",
   locale: "en",
   keywords: [
+    "mppsc prelims syllabus 2026 pdf english",
+    "mppsc syllabus 2026 pdf prelims english",
     "mppsc prelims syllabus",
     "mppsc prelims syllabus 2026 english",
     "mppsc pre syllabus english pdf",
@@ -43,10 +45,10 @@ export default function EnMppscPrelimsSyllabusPage() {
   ]);
 
   const article = articleJsonLd({
-    title: "MPPSC Prelims Syllabus 2026 – 10 Units Complete Breakdown in English",
-    description: "Official MPPSC State Service Prelims Exam 2026 syllabus in English medium.",
+    title: "MPPSC Prelims Syllabus 2026 PDF Download in English – 10 Units Complete Breakdown",
+    description: "Official MPPSC State Service Prelims Exam 2026 syllabus in English medium PDF.",
     url: pageUrl,
-    image: `${siteConfig.url}/api/og?title=MPPSC+Prelims+Syllabus+2026+English&category=MPPSC&lang=en&type=article`,
+    image: `${siteConfig.url}/api/og?title=MPPSC+Prelims+Syllabus+2026+English+PDF&category=MPPSC&lang=en&type=article`,
     datePublished: "2026-01-10",
     authorName: "Aakar IAS",
     keywords: ["MPPSC Prelims Syllabus", "MPPSC Pre Syllabus 2026 English"],
@@ -64,14 +66,32 @@ export default function EnMppscPrelimsSyllabusPage() {
         <Container size="wide" className="relative py-16 sm:py-20">
           <div className="max-w-3xl">
             <span className="inline-block rounded-full bg-primary/15 px-4 py-1 text-sm font-semibold text-primary">
-              MPPSC Prelims Exam 2026
+              MPPSC Prelims Exam 2026 PDF Download
             </span>
             <h1 className="mt-4 text-balance text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              MPPSC Prelims Syllabus 2026 — Complete 10 Units Breakdown
+              MPPSC Prelims Syllabus 2026 PDF Download in English
             </h1>
             <p className="mt-4 text-pretty text-lg text-white/75">
               Official MPPSC State Service Prelims Examination 2026 complete syllabus in English Medium — Paper 1 General Studies (10 Units) & Paper 2 CSAT.
             </p>
+            <div className="mt-6 flex flex-wrap gap-4">
+              <a
+                href="/pdf/mppsc-prelims-syllabus-in-hindi.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-primary-foreground shadow-md transition hover:bg-primary/90"
+              >
+                📄 View Prelims Syllabus PDF
+              </a>
+              <a
+                href="/pdf/mppsc-mains-syllabus-in-english.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-5 py-3 text-sm font-bold text-white border border-white/20 transition hover:bg-white/20"
+              >
+                📄 View Mains Syllabus PDF (English)
+              </a>
+            </div>
           </div>
         </Container>
       </section>
