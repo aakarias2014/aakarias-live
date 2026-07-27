@@ -17,7 +17,7 @@ function escapeXml(unsafe: string): string {
 
 export async function GET() {
   const repo = await getContentRepository();
-  const { items } = await repo.listArticles({ locale: "hi", pageSize: 20, page: 1 });
+  const { items } = await repo.listArticles({ locale: "hi", pageSize: 30, page: 1 });
 
   const channel = [
     `<?xml version="1.0" encoding="UTF-8"?>`,
@@ -32,13 +32,14 @@ export async function GET() {
 
   for (const a of items) {
     const url = `${siteConfig.url}${a.href}`;
+    const pubDateStr = a.date ? new Date(a.date).toUTCString() : new Date().toUTCString();
     channel.push(
       `    <item>`,
       `      <title>${escapeXml(a.title)}</title>`,
       `      <link>${url}</link>`,
       `      <guid isPermaLink="true">${url}</guid>`,
       `      <description>${escapeXml(a.excerpt)}</description>`,
-      `      <pubDate>${new Date(a.date).toUTCString()}</pubDate>`,
+      `      <pubDate>${pubDateStr}</pubDate>`,
       a.category ? `      <category>${escapeXml(a.category.title)}</category>` : "",
       `    </item>`,
     );
@@ -48,7 +49,7 @@ export async function GET() {
 
   return new Response(channel.filter(Boolean).join("\n"), {
     headers: {
-      "Content-Type": "application/rss+xml; charset=utf-8",
+      "Content-Type": "text/xml; charset=utf-8",
       "Cache-Control": "public, max-age=3600, s-maxage=3600",
     },
   });

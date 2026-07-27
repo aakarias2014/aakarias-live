@@ -30,7 +30,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/studio/", "/admin/"],
       },
     ],
-    sitemap: `${siteConfig.url}/sitemap.xml`,
+    sitemap: [`${siteConfig.url}/sitemap.xml`, `${siteConfig.url}/rss.xml`],
     host: siteConfig.url,
   };
 }
