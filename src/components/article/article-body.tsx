@@ -172,13 +172,13 @@ function renderFormattedText(text: string) {
     // Check if it is a markdown link: [Text](URL)
     const linkMatch = part.match(/^\[(.*?)\]\((.*?)\)$/);
     if (linkMatch) {
-      const linkText = linkMatch[1];
+      const linkText = linkMatch[1].replace(/\*\*/g, "");
       const linkUrl = linkMatch[2];
       return (
         <Link
           key={index}
           href={linkUrl}
-          className="text-primary hover:underline font-semibold"
+          className="text-primary font-extrabold underline decoration-primary/60 underline-offset-4 hover:decoration-primary hover:text-primary/80 transition-colors cursor-pointer"
         >
           {linkText}
         </Link>

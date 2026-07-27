@@ -283,17 +283,44 @@ function mapPortableTextToBlocks(
   const toc: TOCItem[] = [];
   if (!Array.isArray(blocks)) return { blocks: out, toc };
 
-  // Helper: extract text from children, preserving bold marks
-  function extractText(children: Array<{ text?: string; marks?: string[] }> | undefined): string {
-    return children
-      ?.map((c) => {
-        const t = c.text ?? "";
-        if (!t) return "";
-        const marks = c.marks ?? [];
-        const isBold = marks.includes("strong");
-        return isBold ? `**${t}**` : t;
-      })
-      .join("") ?? "";
+  // Helper: extract text from children, preserving bold marks and markDefs links
+  function extractText(
+    children: Array<{ text?: string; marks?: string[] }> | undefined,
+    markDefs?: Array<Record<string, any>>
+  ): string {
+    const markMap = new Map<string, string>();
+    if (Array.isArray(markDefs)) {
+      for (const m of markDefs) {
+        if (m._key && (m.href || m.url)) {
+          markMap.set(m._key, (m.href || m.url) as string);
+        }
+      }
+    }
+
+    return (
+      children
+        ?.map((c) => {
+          const t = c.text ?? "";
+          if (!t) return "";
+          const marks = c.marks ?? [];
+          const isBold = marks.includes("strong");
+
+          let linkUrl: string | undefined = undefined;
+          for (const m of marks) {
+            if (markMap.has(m)) {
+              linkUrl = markMap.get(m);
+              break;
+            }
+          }
+
+          let formatted = isBold ? `**${t}**` : t;
+          if (linkUrl) {
+            formatted = `[${t}](${linkUrl})`;
+          }
+          return formatted;
+        })
+        .join("") ?? ""
+    );
   }
 
   // Helper: detect if text starts with a bullet or numbered prefix
@@ -345,7 +372,8 @@ function mapPortableTextToBlocks(
     if (btype === "block") {
       const blockStyle = (b.style as string) ?? "normal";
       const children = b.children as Array<{ text?: string; marks?: string[] }> | undefined;
-      const text = extractText(children);
+      const markDefs = b.markDefs as Array<Record<string, any>> | undefined;
+      const text = extractText(children, markDefs);
 
       if (blockStyle === "normal") {
         const { isBullet, isOrdered, cleanText } = parseBulletItem(text);
