@@ -58,6 +58,8 @@ export async function POST(req: NextRequest) {
   const typeMap: Record<string, string> = {
     "currentAffairs": "current-affairs",
     "current-affairs": "current-affairs",
+    "staticGk": "general-awareness",
+    "static-gk": "general-awareness",
     "editorial": "editorial",
     "blog": "blog",
     "weekly": "weekly",
@@ -87,6 +89,9 @@ export async function POST(req: NextRequest) {
     if (slugString) {
       pathsToRevalidate.push(`/${segment}/${slugString}`);
       pathsToRevalidate.push(`/en/${segment}/${slugString}`);
+      // Also invalidate cross-linked routes for staticGk / currentAffairs
+      pathsToRevalidate.push(`/general-awareness/${slugString}`);
+      pathsToRevalidate.push(`/current-affairs/${slugString}`);
     }
   }
 
@@ -98,7 +103,7 @@ export async function POST(req: NextRequest) {
   // Trigger on-demand revalidation for all matching paths & cache tags
   try {
     for (const path of pathsToRevalidate) {
-      revalidatePath(path);
+      revalidatePath(path, "page");
       console.log(`[ISR] Revalidated path: ${path}`);
     }
 
@@ -114,13 +119,15 @@ export async function POST(req: NextRequest) {
       pyq: "pyqs",
       monthlyPdf: "monthlyPdfs",
       currentAffairs: "articles",
+      staticGk: "articles",
       editorial: "articles",
       blog: "articles",
     };
 
-    const targetTag = tagMap[_type];
+    const targetTag = tagMap[_type] || "articles";
     if (targetTag) {
       (revalidateTag as any)(targetTag);
+      (revalidateTag as any)("articles");
       console.log(`[ISR] Revalidated cache tag: ${targetTag}`);
     }
 
@@ -163,10 +170,19 @@ export async function GET(req: NextRequest) {
     "/en",
     "/mppsc",
     "/en/mppsc",
+    "/mppsc/mains-syllabus",
+    "/en/mppsc/mains-syllabus",
+    "/mppsc/prelims-syllabus",
+    "/en/mppsc/prelims-syllabus",
     "/faculty",
     "/en/faculty",
     "/current-affairs",
     "/en/current-affairs",
+    "/general-awareness",
+    "/en/general-awareness",
+    "/general-awareness/disaster-management-amendment-act-2025-mppsc-upsc-notes",
+    "/current-affairs/disaster-management-amendment-act-2025-mppsc-upsc-notes",
+    "/general-awareness/what-is-disaster-management-ncert-types-mppsc-notes",
     "/editorial",
     "/en/editorial",
     "/test-series",
