@@ -39,11 +39,12 @@ export default async function MppscPage() {
   ]);
 
   const quickLinks = [
+    { href: "/mppsc/mains-syllabus", title: "MPPSC Mains Syllabus", desc: "Paper 1-6 complete breakdown" },
+    { href: "/mppsc/prelims-syllabus", title: "MPPSC Prelims Syllabus", desc: "10 Units GS Paper 1 & CSAT" },
+    { href: "/mppsc/syllabus-2026", title: "MPPSC Full Syllabus 2026", desc: "Complete exam plan & syllabus" },
     { href: "/mppsc/previous-year-papers", title: "Previous Year Papers", desc: "2014-2025 Solved PYQs PDF" },
-    { href: "/mppsc/syllabus-2026", title: "MPPSC Syllabus 2026", desc: "Complete exam plan & syllabus" },
     { href: "/mppsc/toppers-copy", title: "Toppers Answer Copies", desc: "Real answer sheets & analysis" },
     { href: "/test-series", title: "Best MPPSC Test Series", desc: "FLT & Mains answer writing" },
-    { href: "/editorial", title: "Editorials", desc: "Mains analysis in Hindi & English" },
   ];
 
   const faqs = [

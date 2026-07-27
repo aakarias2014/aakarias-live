@@ -1,5 +1,6 @@
 import { getContentRepository } from "@/lib/content/content-repository";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
@@ -9,21 +10,26 @@ import { breadcrumbJsonLd, articleJsonLd, jsonLdGraph } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = buildMetadata({
-  title: "MPPSC Syllabus 2026 PDF Download | Prelims & Mains Complete Pattern | Aakar IAS",
+  title: "MPPSC Syllabus 2026 PDF Download | Prelims & Mains Full Pattern in Hindi | Aakar IAS",
   description:
-    "MPPSC राज्य सेवा परीक्षा 2026 का आधिकारिक सिलेबस व परीक्षा पैटर्न PDF डाउनलोड करें। प्रारंभिक परीक्षा (Prelims) व मुख्य परीक्षा (Mains GS 1-6) का इकाई-वार विवरण।",
+    "MPPSC राज्य सेवा परीक्षा 2026 का आधिकारिक सिलेबस व परीक्षा पैटर्न PDF डाउनलोड करें। प्रारंभिक परीक्षा (Prelims 10 इकाइयाँ) व मुख्य परीक्षा (Mains GS 1-6) का सम्पूर्ण विवरण।",
   path: "/mppsc/syllabus-2026",
   keywords: [
     "mppsc syllabus",
     "mppsc syllabus 2026 pdf",
     "mppsc prelims syllabus",
     "mppsc mains syllabus",
+    "mppsc mains syllabus in hindi",
+    "mppsc prelims syllabus 2026",
+    "mppsc mains syllabus pdf",
     "MPPSC 2026",
     "MPPSC पाठ्यक्रम",
     "MPPSC परीक्षा पैटर्न",
   ],
   type: "article",
   publishedTime: "2026-01-05",
+  modifiedTime: new Date().toISOString().split("T")[0],
+  category: "MPPSC",
 });
 
 export default async function MppscSyllabus2026Page() {
@@ -120,6 +126,24 @@ export default async function MppscSyllabus2026Page() {
             <p className="mt-4 text-pretty text-lg text-white/75">
               मध्यप्रदेश लोक सेवा आयोग (MPPSC) द्वारा जारी। दिनांक 05 जनवरी 2026।
             </p>
+            <div className="mt-6 flex flex-wrap gap-4">
+              <a
+                href="/pdf/mppsc-mains-syllabus-in-hindi.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-primary-foreground shadow-md transition hover:bg-primary/90"
+              >
+                📄 MPPSC Mains Syllabus PDF (Hindi) देखें
+              </a>
+              <a
+                href="/pdf/mppsc-mains-syllabus-in-english.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-5 py-3 text-sm font-bold text-white border border-white/20 transition hover:bg-white/20"
+              >
+                📄 MPPSC Mains Syllabus PDF (English) देखें
+              </a>
+            </div>
           </div>
         </Container>
       </section>
