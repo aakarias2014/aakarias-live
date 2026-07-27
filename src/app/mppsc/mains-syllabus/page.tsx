@@ -736,16 +736,38 @@ export default function MppscMainsSyllabusPage() {
               </li>
             </ul>
 
-            <h4>इकाई-5 पर्यावरण</h4>
+            <h4>इकाई-5 पर्यावरण एवं आपदा प्रबंधन</h4>
             <ul>
               <li>
-                पर्यावरण नैतिकता, जैव विविधता, प्रदूषण, जलवायु परिवर्तन।
+                पर्यावरण नैतिकता, जैव विविधता, प्रदूषण, जलवायु परिवर्तन एवं आपदा प्रबंधन।
               </li>
               <li>
                 मध्यप्रदेश की जनजातियों की पर्यावरण संरक्षण में भूमिका, स्वच्छता
-                सर्वेक्षण, जल सुरक्षा।
+                सर्वेक्षण, जल सुरक्षा एवं आपदा शमन।
               </li>
             </ul>
+
+            {/* Disaster Management Article Interlinking Box */}
+            <div className="my-6 rounded-xl border border-primary/20 bg-primary/5 p-5 shadow-sm">
+              <h5 className="m-0 text-base font-bold text-primary flex items-center gap-2">
+                📚 MPPSC Mains Paper 3 & 4: आपदा प्रबंधन विशेष अध्ययन सामग्री
+              </h5>
+              <p className="mt-2 text-sm text-foreground/90 leading-relaxed">
+                मुख्य परीक्षा हेतु आपदा प्रबंधन (Disaster Management) के लिए तैयार किए गए हमारे अद्यतन नोट्स एवं 2025 अधिनियम की विस्तृत समीक्षा पढ़ें:
+              </p>
+              <ul className="mt-2 space-y-1.5 text-sm font-semibold">
+                <li>
+                  👉 <Link href="/general-awareness/what-is-disaster-management-ncert-types-mppsc-notes" className="text-primary hover:underline">
+                    आपदा प्रबंधन क्या है? अर्थ, प्रकार, 6 चरण, आवश्यकता व मुख्य सिद्धांत (MPPSC Notes)
+                  </Link>
+                </li>
+                <li>
+                  👉 <Link href="/current-affairs/disaster-management-amendment-act-2025-mppsc-upsc-notes" className="text-primary hover:underline">
+                    आपदा प्रबंधन (संशोधन) अधिनियम, 2025: मुख्य विशेषताएँ, UDMA धारा 41A व महत्व
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
             <hr />
 
