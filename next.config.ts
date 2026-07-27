@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
   },
 
   images: {
+    unoptimized: true,
     formats: ["image/avif", "image/webp"],
     // Allow images from Sanity CDN and Google User Content.
     remotePatterns: [
