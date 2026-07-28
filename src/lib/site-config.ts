@@ -137,6 +137,7 @@ export const navigationConfig: MegaNavItem[] = [
     titleEn: "Current Affairs",
     href: "/current-affairs",
     dropdown: [
+      { title: "MPPSC करेंट अफेयर्स 2026", titleEn: "MPPSC Current Affairs 2026", href: "/mppsc-current-affairs" },
       { title: "डेली करेंट अफेयर्स", titleEn: "Daily CA", href: "/current-affairs/daily" },
       { title: "खेल समसामयिकी", titleEn: "Sports CA", href: "/tag/sports" },
       { title: "वीकली करेंट अफेयर्स", titleEn: "Weekly CA", href: "/weekly" },
