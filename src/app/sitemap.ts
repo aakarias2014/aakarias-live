@@ -85,6 +85,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // ─── English mirrors ─────────────────────────────────────────────
     { url: `${siteConfig.url}/en`, changeFrequency: "daily", priority: 0.85 },
     { url: `${siteConfig.url}/en/current-affairs`, changeFrequency: "daily", priority: 0.75 },
+    { url: `${siteConfig.url}/en/mppsc-current-affairs`, changeFrequency: "daily", priority: 0.85 },
     { url: `${siteConfig.url}/en/current-affairs/quiz`, changeFrequency: "daily", priority: 0.75 },
     { url: `${siteConfig.url}/en/current-affairs/daily`, changeFrequency: "daily", priority: 0.75 },
     { url: `${siteConfig.url}/en/general-awareness`, changeFrequency: "daily", priority: 0.75 },
