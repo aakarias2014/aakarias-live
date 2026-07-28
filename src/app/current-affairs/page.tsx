@@ -22,9 +22,42 @@ import { HeroSlider } from "@/components/sections/hero-slider";
 export const revalidate = 900; // 15 min ISR
 
 export const metadata = buildMetadata({
-  title: "समसामयिकी (Current Affairs) पोर्टल | Aakar IAS",
-  description: "UPSC, MPPSC और राज्य सिविल सेवा परीक्षाओं के लिए दैनिक, साप्ताहिक, खेल एवं मासिक करेंट अफेयर्स विश्लेषण।",
+  title: "MPPSC Current Affairs 2026 in Hindi | MP Current Affairs PDF & Notes | Aakar IAS",
+  description: "MPPSC Current Affairs 2026 (MPPSC & MP GK करेंट अफेयर्स 2026): दैनिक समाचार विश्लेषण, MPPSC Monthly Current Affairs Magazine, PDF Download, Daily Quiz & MP Police Current Affairs Notes.",
   path: "/current-affairs",
+  keywords: [
+    "mppsc current affairs",
+    "mppsc current affairs hindi",
+    "mppsc current affairs 2026",
+    "mppsc current affairs magazine",
+    "mppsc current affairs 2025",
+    "mppsc current affairs pdf",
+    "mppsc current affairs book",
+    "mppsc current affairs 2026 in hindi",
+    "mppsc current affairs monthly magazine",
+    "mppsc current affairs source",
+    "mppsc current affairs 2026 pdf",
+    "mp current affairs",
+    "mp current affairs 2026",
+    "mp current affairs 2025 in hindi",
+    "mp current affairs book",
+    "mp current affairs 2025",
+    "mp gk current affairs 2025",
+    "mp current affairs 2026 pdf",
+    "mp current affairs 2026 in hindi",
+    "mp gk current affairs",
+    "mp current affairs 2026 book",
+    "mp police current affairs",
+    "mp current affairs 2026 monthly",
+    "mp current affairs 2026 mcq",
+    "mp current affairs 2026 pdf download",
+    "mp current affairs 2026 mppsc",
+    "MPPSC Daily Current Affairs",
+    "MPPSC Monthly Current Affairs PDF",
+    "MPPSC Current Affairs Notes",
+    "MPPSC Current Affairs Quiz",
+    "MPPSC Exam Current Affairs"
+  ]
 });
 
 export default async function CurrentAffairsPortalPage() {

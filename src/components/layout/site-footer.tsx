@@ -67,12 +67,12 @@ export function SiteFooter() {
   // 5-Column Navigation Data
   const columns = [
     {
-      title: locale === "hi" ? "करेंट अफेयर्स" : "Current Affairs",
+      title: locale === "hi" ? "MPPSC करेंट अफेयर्स" : "MPPSC Current Affairs",
       items: [
-        { title: locale === "hi" ? "डेली करेंट अफेयर्स" : "Daily Current Affairs", href: "/current-affairs" },
-        { title: locale === "hi" ? "वीकली करेंट अफेयर्स" : "Weekly Current Affairs", href: "/weekly" },
-        { title: locale === "hi" ? "मंथली करेंट अफेयर्स" : "Monthly Current Affairs", href: "/monthly" },
-        { title: locale === "hi" ? "मंथली पीडीएफ" : "Monthly PDF Library", href: "/monthly-pdf" },
+        { title: locale === "hi" ? "MPPSC Current Affairs 2026" : "MPPSC Current Affairs 2026", href: "/mppsc-current-affairs" },
+        { title: locale === "hi" ? "डेली MPPSC समाचार" : "Daily Current Affairs", href: "/current-affairs" },
+        { title: locale === "hi" ? "MP Current Affairs PDF" : "MP Current Affairs PDF", href: "/mppsc-current-affairs" },
+        { title: locale === "hi" ? "MPPSC Monthly Magazine" : "MPPSC Monthly Magazine", href: "/monthly-pdf" },
         { title: locale === "hi" ? "संपादकीय विश्लेषण" : "Editorial Analysis", href: "/editorial" },
       ],
     },

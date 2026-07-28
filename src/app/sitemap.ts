@@ -21,6 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // ─── Core pages ─────────────────────────────────────────────────
     { url: `${siteConfig.url}`, changeFrequency: "daily", priority: 1 },
     { url: `${siteConfig.url}/current-affairs`, changeFrequency: "daily", priority: 0.9 },
+    { url: `${siteConfig.url}/mppsc-current-affairs`, changeFrequency: "daily", priority: 0.98 },
     { url: `${siteConfig.url}/general-awareness`, changeFrequency: "daily", priority: 0.9 },
     { url: `${siteConfig.url}/weekly`, changeFrequency: "weekly", priority: 0.85 },
     { url: `${siteConfig.url}/monthly`, changeFrequency: "monthly", priority: 0.85 },
