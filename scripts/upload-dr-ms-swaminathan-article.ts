@@ -25,7 +25,41 @@ const client = createClient({
 });
 
 async function main() {
-  console.log("🚀 Uploading Complete Dr. M.S. Swaminathan Article to Sanity CMS...");
+  console.log("🚀 Uploading Dr. M.S. Swaminathan Article with 4 Real Photos to Sanity CMS...");
+
+  const publicBlogDir = path.resolve(process.cwd(), "public/images/blog");
+  const artifactDir = "/Users/aakariastech/.gemini/antigravity-ide/brain/46ddf059-c542-4af1-8a30-e0605b309cce";
+
+  if (!fs.existsSync(publicBlogDir)) fs.mkdirSync(publicBlogDir, { recursive: true });
+
+  const destPortrait = path.join(publicBlogDir, "ms_swaminathan_real_portrait.jpg");
+  const destSpeech = path.join(publicBlogDir, "ms_swaminathan_rajya_sabha_speech.jpg");
+  const destBharatRatna = path.join(publicBlogDir, "ms_swaminathan_bharat_ratna_award.png");
+  const destCeremony = path.join(publicBlogDir, "ms_swaminathan_bharat_ratna_ceremony_droupadi_murmu.jpg");
+
+  const srcPortrait = path.join(artifactDir, "media__1785330110049.jpg");
+  const srcSpeech = path.join(artifactDir, "media__1785330146303.jpg");
+  const srcBharatRatna = path.join(artifactDir, "media__1785330193250.png");
+  const srcCeremony = path.join(artifactDir, "media__1785330322906.jpg");
+
+  if (fs.existsSync(srcPortrait)) fs.copyFileSync(srcPortrait, destPortrait);
+  if (fs.existsSync(srcSpeech)) fs.copyFileSync(srcSpeech, destSpeech);
+  if (fs.existsSync(srcBharatRatna)) fs.copyFileSync(srcBharatRatna, destBharatRatna);
+  if (fs.existsSync(srcCeremony)) fs.copyFileSync(srcCeremony, destCeremony);
+
+  console.log("📸 Uploading real photos to Sanity CMS...");
+  const assetPortrait = await client.assets.upload("image", fs.createReadStream(destPortrait), {
+    filename: "ms_swaminathan_real_portrait.jpg",
+  });
+  const assetSpeech = await client.assets.upload("image", fs.createReadStream(destSpeech), {
+    filename: "ms_swaminathan_rajya_sabha_speech.jpg",
+  });
+  const assetBharatRatna = await client.assets.upload("image", fs.createReadStream(destBharatRatna), {
+    filename: "ms_swaminathan_bharat_ratna_award.png",
+  });
+  const assetCeremony = await client.assets.upload("image", fs.createReadStream(destCeremony), {
+    filename: "ms_swaminathan_bharat_ratna_ceremony_droupadi_murmu.jpg",
+  });
 
   const docId = "gk-dr-ms-swaminathan-green-revolution";
   const slug = "dr-ms-swaminathan-father-of-green-revolution-mppsc-upsc-notes";
@@ -67,6 +101,11 @@ async function main() {
       "MPPSC Notes",
       "UPSC Notes"
     ],
+    featuredImage: {
+      _type: "image",
+      asset: { _type: "reference", _ref: assetPortrait._id },
+      alt: "Dr MS Swaminathan Father of Green Revolution in India Real Portrait MPPSC UPSC Notes",
+    },
 
     /* ────────────── HINDI BODY ────────────── */
     body: [
@@ -74,6 +113,12 @@ async function main() {
         _type: "block",
         style: "h3",
         children: [{ _type: "span", text: "1. डॉ. एम. एस. स्वामीनाथन: परिचय एवं जीवन यात्रा" }],
+      },
+      {
+        _type: "image",
+        asset: { _type: "reference", _ref: assetPortrait._id },
+        alt: "Dr MS Swaminathan Real Photo Father of Green Revolution MPPSC UPSC Notes",
+        caption: "डॉ. एम. एस. स्वामीनाथन (1925–2023): भारत में हरित क्रांति के जनक एवं महान कृषि वैज्ञानिक",
       },
       {
         _type: "block",
@@ -119,6 +164,12 @@ async function main() {
         _type: "block",
         style: "h3",
         children: [{ _type: "span", text: "2. प्रमुख पद एवं प्रशासनिक कैरियर" }],
+      },
+      {
+        _type: "image",
+        asset: { _type: "reference", _ref: assetSpeech._id },
+        alt: "Dr MS Swaminathan Speaking as Rajya Sabha Member MPPSC UPSC Notes",
+        caption: "डॉ. एम. एस. स्वामीनाथन राज्यसभा सांसद एवं राष्ट्रीय किसान आयोग के अध्यक्ष के रूप में विचार व्यक्त करते हुए",
       },
       {
         _type: "table",
@@ -270,11 +321,23 @@ async function main() {
         children: [{ _type: "span", text: "• **GIAHS विश्व धरोहर मान्यता**: 'मन्नार की खाड़ी समुद्री जीवमंडल' तथा समुद्र तल से नीचे धान की खेती करने वाले केरल के **कुट्टनाड (Kuttanad)** को GIAHS (विश्व स्तर पर महत्वपूर्ण कृषि विरासत स्थल) की मान्यता दिलाई।" }]
       },
 
-      /* ── 7. Awards & Honors ── */
+      /* ── 7. Awards & Honors with Bharat Ratna ── */
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "7. प्रमुख पुरस्कार एवं सम्मान (Awards & Recognitions)" }],
+        children: [{ _type: "span", text: "7. प्रमुख पुरस्कार एवं सम्मान: भारत रत्न 2024 व विश्व खाद्य पुरस्कार" }],
+      },
+      {
+        _type: "image",
+        asset: { _type: "reference", _ref: assetCeremony._id },
+        alt: "President Droupadi Murmu Presenting Bharat Ratna Award to Dr MS Swaminathan Daughter Nitya Rao MPPSC UPSC Notes",
+        caption: "राष्ट्रपति द्रौपदी मुर्मू द्वारा डॉ. एम. एस. स्वामीनाथन को मरणोपरांत सर्वोच्च नागरिक सम्मान 'भारत रत्न (2024)' प्रदान किया गया (उनकी सुपुत्री डॉ. नित्या राव द्वारा ग्रहण किया गया)",
+      },
+      {
+        _type: "image",
+        asset: { _type: "reference", _ref: assetBharatRatna._id },
+        alt: "Dr MS Swaminathan Conferred Bharat Ratna 2024 Insignia MPPSC UPSC Notes",
+        caption: "डॉ. एम. एस. स्वामीनाथन: भारत रत्न (2024) से सम्मानित महान भारतीय आनुवंशिकीविद् व कृषि वैज्ञानिक",
       },
       {
         _type: "facts",
@@ -352,6 +415,12 @@ async function main() {
         children: [{ _type: "span", text: "1. Dr. M.S. Swaminathan: Introduction & Life Journey" }],
       },
       {
+        _type: "image",
+        asset: { _type: "reference", _ref: assetPortrait._id },
+        alt: "Dr MS Swaminathan Real Photo Father of Green Revolution MPPSC UPSC Notes",
+        caption: "Dr. M.S. Swaminathan (1925–2023): Father of Green Revolution in India & Eminent Agricultural Scientist",
+      },
+      {
         _type: "block",
         style: "normal",
         children: [
@@ -394,6 +463,12 @@ async function main() {
         _type: "block",
         style: "h3",
         children: [{ _type: "span", text: "2. Key Institutional Roles & Administrative Leadership" }],
+      },
+      {
+        _type: "image",
+        asset: { _type: "reference", _ref: assetSpeech._id },
+        alt: "Dr MS Swaminathan Speaking as Rajya Sabha Member MPPSC UPSC Notes",
+        caption: "Dr. M.S. Swaminathan addressing a conference as Rajya Sabha Member & Chairman of National Commission on Farmers",
       },
       {
         _type: "table",
@@ -520,6 +595,18 @@ async function main() {
         _type: "block",
         style: "h3",
         children: [{ _type: "span", text: "7. Awards & International Honors" }],
+      },
+      {
+        _type: "image",
+        asset: { _type: "reference", _ref: assetCeremony._id },
+        alt: "President Droupadi Murmu Presenting Bharat Ratna Award to Dr MS Swaminathan Daughter Nitya Rao MPPSC UPSC Notes",
+        caption: "President Droupadi Murmu conferring the Bharat Ratna (2024) posthumously upon Dr. M.S. Swaminathan, received by his daughter Dr. Nitya Rao",
+      },
+      {
+        _type: "image",
+        asset: { _type: "reference", _ref: assetBharatRatna._id },
+        alt: "Dr MS Swaminathan Conferred Bharat Ratna 2024 Insignia MPPSC UPSC Notes",
+        caption: "Dr. M.S. Swaminathan: Conferred with Bharat Ratna (2024), India's Highest Civilian Award",
       },
       {
         _type: "facts",
@@ -677,13 +764,13 @@ async function main() {
     ]
   };
 
-  console.log(`📝 Syncing Dr. M.S. Swaminathan Article "${articleDoc._id}" to Sanity CMS...`);
+  console.log(`📝 Syncing Dr. M.S. Swaminathan Article with 4 Real Photos "${articleDoc._id}" to Sanity CMS...`);
   const res = await client.createOrReplace(articleDoc);
-  console.log(`🎉 SUCCESS! Dr. M.S. Swaminathan Article uploaded & published in Sanity CMS. Document ID: ${res._id}`);
+  console.log(`🎉 SUCCESS! Article uploaded & published in Sanity CMS. Document ID: ${res._id}`);
   console.log(`URL slug: ${res.slug.current}`);
 }
 
 main().catch((err) => {
-  console.error("❌ Error uploading Dr. M.S. Swaminathan article:", err);
+  console.error("❌ Error uploading Dr. M.S. Swaminathan article with images:", err);
   process.exit(1);
 });
