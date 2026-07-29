@@ -25,35 +25,35 @@ const client = createClient({
 });
 
 async function main() {
-  console.log("🚀 Uploading Complete Bilingual (Hindi & English) India Population Policy Article to Sanity CMS...");
+  console.log("🚀 Uploading Complete Expanded & Fully Bilingual Population Policy Article to Sanity CMS...");
 
   const publicBlogDir = path.resolve(process.cwd(), "public/images/blog");
-  const artifactDir = "/Users/aakariastech/.gemini/antigravity-ide/brain/46ddf059-c542-4af1-8a30-e0605b309cce";
-
   const destHealth = path.join(publicBlogDir, "india_population_policy_family_welfare_healthcare.png");
   const destInfographic = path.join(publicBlogDir, "national_population_policy_2000_targets_infographic.png");
   const destYouth = path.join(publicBlogDir, "india_demographic_dividend_youth_development.png");
 
-  if (!fs.existsSync(publicBlogDir)) fs.mkdirSync(publicBlogDir, { recursive: true });
+  let assetHealthRef: string | undefined = undefined;
+  let assetInfographicRef: string | undefined = undefined;
+  let assetYouthRef: string | undefined = undefined;
 
-  const srcHealth = path.join(artifactDir, "india_population_policy_family_welfare_healthcare_1785322121293.png");
-  const srcInfographic = path.join(artifactDir, "national_population_policy_2000_targets_infographic_1785322137518.png");
-  const srcYouth = path.join(artifactDir, "india_demographic_dividend_youth_development_1785322150238.png");
-
-  if (fs.existsSync(srcHealth)) fs.copyFileSync(srcHealth, destHealth);
-  if (fs.existsSync(srcInfographic)) fs.copyFileSync(srcInfographic, destInfographic);
-  if (fs.existsSync(srcYouth)) fs.copyFileSync(srcYouth, destYouth);
-
-  console.log("📸 Uploading images to Sanity CMS...");
-  const assetHealth = await client.assets.upload("image", fs.createReadStream(destHealth), {
-    filename: "india_population_policy_family_welfare_healthcare.png",
-  });
-  const assetInfographic = await client.assets.upload("image", fs.createReadStream(destInfographic), {
-    filename: "national_population_policy_2000_targets_infographic.png",
-  });
-  const assetYouth = await client.assets.upload("image", fs.createReadStream(destYouth), {
-    filename: "india_demographic_dividend_youth_development.png",
-  });
+  if (fs.existsSync(destHealth)) {
+    const assetHealth = await client.assets.upload("image", fs.createReadStream(destHealth), {
+      filename: "india_population_policy_family_welfare_healthcare.png",
+    });
+    assetHealthRef = assetHealth._id;
+  }
+  if (fs.existsSync(destInfographic)) {
+    const assetInfographic = await client.assets.upload("image", fs.createReadStream(destInfographic), {
+      filename: "national_population_policy_2000_targets_infographic.png",
+    });
+    assetInfographicRef = assetInfographic._id;
+  }
+  if (fs.existsSync(destYouth)) {
+    const assetYouth = await client.assets.upload("image", fs.createReadStream(destYouth), {
+      filename: "india_demographic_dividend_youth_development.png",
+    });
+    assetYouthRef = assetYouth._id;
+  }
 
   const docId = "gk-india-population-policy-notes";
   const slug = "population-policy-of-india-npp-2000-mppsc-upsc-notes";
@@ -61,55 +61,54 @@ async function main() {
   const articleDoc = {
     _id: docId,
     _type: "staticGk",
-    title: "भारत की जनसंख्या नीति: विकास, राष्ट्रीय जनसंख्या नीति 2000 (NPP-2000) एवं प्रमुख प्रावधान | MPPSC & UPSC Notes",
-    titleEn: "Population Policy of India: Evolution, National Population Policy 2000 (NPP-2000) & Key Provisions | MPPSC & UPSC Notes",
+    title: "भारत की जनसंख्या नीति: विकास, राष्ट्रीय जनसंख्या नीति 2000, जनगणना 2011 आंकड़े एवं कानून | MPPSC & UPSC Notes",
+    titleEn: "Population Policy of India: Evolution, NPP-2000, Census 2011 Data, Cairo Model & Legislation | MPPSC & UPSC Notes",
     slug: { _type: "slug", current: slug },
-    category: { _type: "reference", _ref: "cat-misc" }, // General Studies / Misc
+    category: { _type: "reference", _ref: "cat-misc" },
     ca_date: "2026-07-29",
     publishedAt: new Date().toISOString(),
     featured: true,
-    readingTime: 10,
+    readingTime: 14,
     tags: [
       { _type: "reference", _ref: "tag-mppsc" },
       { _type: "reference", _ref: "tag-upsc" },
       { _type: "reference", _ref: "tag-prelims" },
       { _type: "reference", _ref: "tag-mains" },
     ],
-    excerpt: "भारत की जनसंख्या नीति का विकास (1952 से 2000), पहली राष्ट्रीय जनसंख्या नीति 1976, राष्ट्रीय जनसंख्या नीति 2000 (NPP-2000) के मुख्य उद्देश्य, लक्ष्य (TFR 2.1, 2045 स्थिरता), RCH कार्यक्रम, हालिया पहल, ट्रिक्स, FAQs व MCQs। MPPSC व UPSC परीक्षा हेतु संपूर्ण नोट्स।",
-    excerptEn: "Comprehensive exam notes on Population Policy of India, 1952 Family Planning, 1976 Policy, National Population Policy 2000 (NPP-2000) targets (TFR 2.1, 2045 stabilization, IMR/MMR), RCH programme, recent control initiatives, memory tricks, FAQs and MCQs for MPPSC & UPSC.",
-    seoTitle: "भारत की जनसंख्या नीति | National Population Policy 2000 | MPPSC & UPSC Notes",
-    seoDescription: "भारत की जनसंख्या नीति (NPP-2000), पहली जनसंख्या नीति 1976, परिवार नियोजन कार्यक्रम 1952, TFR 2.1 लक्ष्य, RCH कार्यक्रम व जनसंख्या नियंत्रण पहलों के संपूर्ण नोट्स। MPPSC & UPSC परीक्षा हेतु ट्रिक्स, FAQs व MCQs।",
+    excerpt: "आज़ादी के बाद भारत की जनसंख्या नीति (1952 परिवार नियोजन, 1976 पहली नीति, NPP-2000 स्वामीनाथन समिति), काहिरा मॉडल 1996, राष्ट्रीय जनसंख्या आयोग, जनगणना 2011 संपूर्ण आंकड़े, जनसंख्या वृद्धि के कारण, फायदे, नुकसान, NCRWC सिफारिशें व समाधान। MPPSC & UPSC सम्पूर्ण नोट्स।",
+    excerptEn: "Comprehensive exam notes on Population Policy of India post-independence (1952 Family Planning, 1976 Policy, NPP-2000 Swaminathan Committee), Cairo Model 1996, National Commission on Population, Census 2011 statistics, causes of growth, benefits, drawbacks, NCRWC recommendations & solutions for MPPSC & UPSC.",
+    seoTitle: "भारत की जनसंख्या नीति | National Population Policy 2000 & Census 2011 | MPPSC & UPSC Notes",
+    seoDescription: "भारत की जनसंख्या नीति (NPP-2000), 1952 परिवार नियोजन, 1976 पहली नीति, काहिरा मॉडल, जनगणना 2011 आंकड़े, राष्ट्रीय जनसंख्या आयोग, NCRWC सिफारिशें, जनसंख्या वृद्धि के कारण, फायदे, नुकसान व समाधान। MPPSC & UPSC सम्पूर्ण नोट्स।",
     keywords: [
       "भारत की जनसंख्या नीति",
-      "भारत की जनसंख्या नीति 2000",
+      "आज़ादी के बाद भारत की जनसंख्या नीति",
       "राष्ट्रीय जनसंख्या नीति 2000",
       "National Population Policy 2000",
       "NPP 2000",
-      "भारत की जनसंख्या नीति की विवेचना कीजिए",
-      "भारत की जनसंख्या नीति पर संक्षिप्त टिप्पणी",
-      "भारत की जनसंख्या नीति pdf",
-      "भारत की जनसंख्या नीति क्या है",
-      "भारत की राष्ट्रीय जनसंख्या नीति 2000 पर एक लेख लिखिए",
-      "राष्ट्रीय जनसंख्या नीति की मुख्य विशेषताएं",
-      "राष्ट्रीय जनसंख्या नीति 1976",
-      "bharat ki jansankhya niti mppsc",
+      "काहिरा मॉडल 1996",
+      "राष्ट्रीय जनसंख्या आयोग",
+      "राष्ट्रीय जनसंख्या स्थिरता कोष",
+      "जनगणना 2011 आंकड़े",
+      "जनसंख्या वृद्धि के कारण और निवारण",
+      "जनसंख्या लाभांश",
+      "NCRWC जनसंख्या नियंत्रण कानून",
       "MPPSC Notes",
-      "UPSC Notes",
-      "Population Policy India",
-      "Family Planning Programme India"
+      "UPSC Notes"
     ],
-    featuredImage: {
-      _type: "image",
-      asset: { _type: "reference", _ref: assetHealth._id },
-      alt: "India Population Policy Family Welfare Healthcare RCH Programme MPPSC UPSC Notes",
-    },
+    ...(assetHealthRef ? {
+      featuredImage: {
+        _type: "image",
+        asset: { _type: "reference", _ref: assetHealthRef },
+        alt: "India Population Policy Family Welfare Healthcare Census 2011 MPPSC UPSC Notes",
+      }
+    } : {}),
 
-    /* ─── HINDI BODY ─── */
+    /* ────────────── HINDI BODY ────────────── */
     body: [
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "1. चर्चा में क्यों? एवं जनसंख्या नीति का अर्थ" }],
+        children: [{ _type: "span", text: "1. स्वतंत्रता पश्चात भारत में जनसंख्या नीति का ऐतिहासिक विकास (1952 से 2000)" }],
       },
       {
         _type: "block",
@@ -117,27 +116,84 @@ async function main() {
         children: [
           {
             _type: "span",
-            text: "वर्तमान में भारत विश्व का सर्वाधिक जनसंख्या वाला देश है। तीव्र गति से बढ़ती जनसंख्या का सीधा प्रभाव प्राकृतिक संसाधनों, रोजगार, स्वास्थ्य सुविधाओं, शिक्षा व्यवस्था और देश के समग्र आर्थिक विकास पर पड़ता है। इसी चुनौती से कुशलतापूर्वक निपटने के लिए भारत सरकार ने समय-समय पर ",
+            text: "भारत दुनिया का पहला ऐसा देश है जिसने सबसे पहले वर्ष ",
           },
           {
             _type: "span",
             marks: ["strong"],
-            text: "जनसंख्या नीति (Population Policy)",
+            text: "1952 में राष्ट्रीय परिवार नियोजन कार्यक्रम (National Family Planning Programme)",
           },
           {
             _type: "span",
-            text: " और परिवार कल्याण कार्यक्रम लागू किए हैं। प्रतियोगी परीक्षाओं जैसे ",
+            text: " को अपनाया। स्वतंत्रता के बाद प्रथम पंचवर्षीय योजना (1951–56) में ही तीव्र गति से बढ़ती आबादी को देश के आर्थिक एवं सामाजिक विकास के बाधक के तौर पर चिन्हित किया गया था। तभी से विभिन्न पंचवर्षीय योजनाओं में जनसंख्या नियंत्रण एवं परिवार कल्याण के लिए निरंतर प्रयास किए जाते रहे हैं।",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **1960 की विशेषज्ञ समिति**: भारत में सबसे पहले एक समर्पित जनसंख्या नीति बनाने का औपचारिक सुझाव वर्ष 1960 में गठित एक विशेषज्ञ समूह ने दिया था।" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **पहली राष्ट्रीय जनसंख्या नीति (1976)**: वर्ष 1976 में देश की पहली औपचारिक राष्ट्रीय जनसंख्या नीति की घोषणा की गई (बाद में 1981 में इसमें कुछ संशोधन किए गए)। इस नीति के मुख्य लक्ष्य जन्म दर में कमी लाना, विवाह की न्यूनतम आयु में वृद्धि (लड़कियों हेतु 18 वर्ष व लड़कों हेतु 21 वर्ष), परिवार नियोजन को प्रोत्साहित करना और महिला शिक्षा पर विशेष जोर देना था।" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **राष्ट्रीय जनसंख्या नीति, 2000 (NPP-2000)**: फरवरी 2000 में भारत सरकार ने नई राष्ट्रीय जनसंख्या नीति की घोषणा की। यह नीति प्रसिद्ध कृषि वैज्ञानिक **डॉ. एम. एस. स्वामीनाथन** की अध्यक्षता में गठित विशेषज्ञ दल की रिपोर्ट पर आधारित थी। इसका मुख्य उद्देश्य प्रजनन तथा शिशु स्वास्थ्य देखभाल हेतु बुनियादी ढाँचा मजबूत करना तथा दीर्घकालिक लक्ष्य वर्ष **2045 तक जनसंख्या में स्थायित्व** प्राप्त करना है।" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **काहिरा मॉडल (Cairo Model 1996)**: आबादी पर काबू पाने के लिहाज़ से भारत में वर्ष 1996 से काहिरा मॉडल लागू है। इसके तहत आबादी घटाने के लिए आम जनता पर किसी प्रकार का दबाव या जबरदस्ती नहीं डाली जाती, बल्कि शिक्षा व जन-जागरूकता के ज़रिए उनमें छोटे परिवार का अहसास जगाया जाता है। वर्तमान में संपूर्ण विश्व में यही काहिरा मॉडल लागू है।" }],
+      },
+
+      /* ── 2. National Commission on Population ── */
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "2. राष्ट्रीय जनसंख्या आयोग एवं राष्ट्रीय जनसंख्या स्थिरता कोष" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "मई 2000 में भारत के प्रधानमंत्री की अध्यक्षता में ",
           },
           {
             _type: "span",
             marks: ["strong"],
-            text: "MPPSC (प्रारम्भिक व मुख्य परीक्षा) तथा UPSC",
+            text: "राष्ट्रीय जनसंख्या आयोग (National Commission on Population)",
           },
           {
             _type: "span",
-            text: " में भारत की जनसंख्या नीतियों एवं राष्ट्रीय जनसंख्या नीति 2000 से संबंधित प्रश्न नियमित रूप से पूछे जाते हैं।",
+            text: " का गठन किया गया। इस आयोग के प्रमुख कार्य निम्नलिखित हैं:",
           },
         ],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **1. नीति समीक्षा**: राष्ट्रीय जनसंख्या नीति के क्रियान्वयन की समय-समय पर समीक्षा करना।" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **2. निगरानी एवं निर्देशन**: जनसंख्या नियंत्रण कार्यक्रमों की निगरानी करना और आवश्यक नीतिगत दिशा-निर्देश देना।" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **3. अंतर-क्षेत्रीय सहक्रिया**: स्वास्थ्य, शैक्षणिक, पर्यावरणीय और विकास कार्यक्रमों के मध्य सहक्रिया (Synergy) को बढ़ावा देना।" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **4. संस्थागत तालमेल**: कार्यक्रमों की योजना बनाने व क्रियान्वयन करने में अंतर-क्षेत्रीय (Inter-sectoral) तालमेल स्थापित करना।" }],
       },
       {
         _type: "block",
@@ -145,99 +201,50 @@ async function main() {
         children: [
           {
             _type: "span",
-            text: "📌 **जनसंख्या नीति का अर्थ**: जनसंख्या नीति वह सुव्यवस्थित सरकारी नीति है जिसके माध्यम से जनसंख्या वृद्धि दर को नियंत्रित व संतुलित करना, प्रजनन दर (TFR) में कमी लाना, मातृ एवं शिशु स्वास्थ्य में सुधार करना तथा देश के भौतिक संसाधनों और मानव जनसंख्या के मध्य सतत संतुलन स्थापित करना मुख्य लक्ष्य होता है।",
+            text: "📌 **राष्ट्रीय जनसंख्या स्थिरता कोष (JJSK)**: इस आयोग के अंतर्गत 'राष्ट्रीय जनसंख्या स्थिरता कोष' की स्थापना की गई थी, जिसे बाद में स्वास्थ्य और परिवार कल्याण मंत्रालय के अंतर्गत स्थानांतरित कर दिया गया।",
           },
         ],
       },
+
+      /* ── 3. Census 2011 Facts & Key Demographic Metrics ── */
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "2. भारत में जनसंख्या नीति का ऐतिहासिक विकास (1952 से 2000 तक)" }],
+        children: [{ _type: "span", text: "3. भारत में जनगणना 2011 एवं स्वास्थ्य सर्वे के महत्वपूर्ण आंकड़े" }],
       },
-      {
+      ...(assetInfographicRef ? [{
         _type: "image",
-        asset: { _type: "reference", _ref: assetInfographic._id },
-        alt: "Evolution of India Population Policy Timeline 1952 to National Population Policy 2000 MPPSC UPSC Notes",
-        caption: "भारत में जनसंख्या नीति का ऐतिहासिक क्रम: 1952 के राष्ट्रीय परिवार नियोजन से 2000 की राष्ट्रीय जनसंख्या नीति तक का सफर",
-      },
+        asset: { _type: "reference", _ref: assetInfographicRef },
+        alt: "Census 2011 Key Demographic Facts India Population Policy MPPSC UPSC Notes",
+        caption: "जनगणना 2011: भारत के प्रमुख जनसांख्यिकीय आंकड़े व साक्षरता दर",
+      }] : []),
       {
         _type: "table",
-        caption: "भारत में जनसंख्या नीति एवं परिवार कल्याण कार्यक्रमों का विकास क्रम",
-        headers: ["वर्ष", "महत्वपूर्ण पहल / नीति", "मुख्य प्रावधान एवं विशेषताएँ"],
+        caption: "जनगणना 2011 एवं स्वास्थ्य सूचकांकों के प्रामाणिक आंकड़े (MPPSC & UPSC)",
+        headers: ["जनसांख्यिकीय मापदंड / सूचकांक", "प्रामाणिक आंकड़ा (Census 2011 / NFHS)"],
         rows: [
-          ["**1952**", "**राष्ट्रीय परिवार नियोजन कार्यक्रम**", "• **भारत विश्व का पहला देश बना** जिसने राष्ट्रीय स्तर पर परिवार नियोजन कार्यक्रम शुरू किया।\n• उद्देश्य: जनसंख्या वृद्धि को नियंत्रित करना एवं मातृ-शिशु स्वास्थ्य में सुधार।"],
-          ["**1961–62**", "**परिवार कल्याण कार्यक्रम का विस्तार**", "• परिवार नियोजन कार्यक्रम का दायरा बढ़ाकर इसे व्यापक **परिवार कल्याण कार्यक्रम (Family Welfare Programme)** का स्वरूप दिया गया।"],
-          ["**1966**", "**परिवार नियोजन विभाग का गठन**", "• स्वास्थ्य मंत्रालय के अंतर्गत पृथक **परिवार नियोजन विभाग (Department of Family Planning)** स्थापित किया गया।"],
-          ["**1976**", "**पहली राष्ट्रीय जनसंख्या नीति (NPP-1976)**", "• भारत की पहली औपचारिक जनसंख्या नीति घोषित हुई।\n• लड़कियों के विवाह की न्यूनतम आयु **15 से बढ़ाकर 18 वर्ष** की गई।\n• लड़कों के विवाह की न्यूनतम आयु **18 से बढ़ाकर 21 वर्ष** की गई।\n• **1971 की जनगणना फ्रीज**: संसद में प्रतिनिधित्व, केंद्रीय सहायता एवं करों के वितरण के लिए 1971 की जनगणना को आधार माना गया (वर्ष 2001 तक)।"],
-          ["**1997**", "**प्रजनन एवं बाल स्वास्थ्य कार्यक्रम (RCH)**", "• **RCH (Reproductive and Child Health Programme)** प्रारंभ किया गया।\n• मुख्य ध्यान मातृ मृत्यु दर (MMR) व शिशु मृत्यु दर (IMR) घटाने तथा सुरक्षित प्रसव पर केंद्रित किया गया।"],
-          ["**2000**", "**राष्ट्रीय जनसंख्या नीति, 2000 (NPP-2000)**", "• भारत की सबसे महत्वपूर्ण और वर्तमान में प्रभावी नीति (एम.एस. स्वामीनाथन समिति की सिफारिशों पर आधारित)।\n• **दीर्घकालिक लक्ष्य**: 2045 तक जनसंख्या स्थिरता।"]
+          ["**भारत की कुल जनसंख्या (2011)**", "**1,21,08,54,977 (121.08 करोड़)**"],
+          ["**पुरुष जनसंख्या की हिस्सेदारी**", "**51.47%**"],
+          ["**महिला जनसंख्या की हिस्सेदारी**", "**48.53%**"],
+          ["**0–6 वर्ष आयु वर्ग के बच्चों की हिस्सेदारी**", "**13.6%**"],
+          ["**दशकीय जनसंख्या वृद्धि दर (2001–2011)**", "**17.7%**"],
+          ["**वार्षिक जनसंख्या वृद्धि दर**", "**1.64%**"],
+          ["**कुल लिंगानुपात (Sex Ratio)**", "**943 महिलाएँ प्रति 1000 पुरुष**"],
+          ["**बाल लिंगानुपात (Child Sex Ratio 0-6)**", "**919 बालिकाएँ प्रति 1000 बालक**"],
+          ["**कुल साक्षरता दर (Literacy Rate)**", "**73.0%**"],
+          ["**पुरुष साक्षरता दर**", "**80.9%**"],
+          ["**महिला साक्षरता दर**", "**64.6%**"],
+          ["**जनसंख्या घनत्व (2011)**", "**382 व्यक्ति प्रति वर्ग किमी** (2001 में 325/किमी²)"],
+          ["**ग्रामीण जनसंख्या की हिस्सेदारी**", "**68.84%**"],
+          ["**शहरी जनसंख्या की हिस्सेदारी**", "**31.16%**"],
+          ["**जनसंख्या की दृष्टि से सबसे बड़ा राज्य**", "**उत्तर प्रदेश**"],
+          ["**जनसंख्या की दृष्टि से सबसे छोटा राज्य**", "**सिक्किम**"],
+          ["**शिशु मृत्यु दर (IMR - 2016)**", "**34 प्रति 1,000 जीवित जन्म**"],
+          ["**जन्म दर (Crude Birth Rate - 2016)**", "**20.4 प्रति 1,000**"],
+          ["**मृत्यु दर (Crude Death Rate - 2016)**", "**6.4 प्रति 1,000**"],
+          ["**मातृ मृत्यु दर (MMR - 2014-16)**", "**130 प्रति 1 लाख जीवित जन्म**"],
+          ["**NFHS-4 (2015-16) कुल प्रजनन दर (TFR)**", "**2.18** (वैश्विक प्रतिस्थापन दर 2.30 से कम)"]
         ]
-      },
-      {
-        _type: "block",
-        style: "h3",
-        children: [{ _type: "span", text: "3. राष्ट्रीय जनसंख्या नीति, 2000 (NPP-2000): मुख्य उद्देश्य व लक्ष्य" }],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [{ _type: "span", text: "• **1. तत्काल लक्ष्य**: प्रजनन स्वास्थ्य एवं बुनियादी स्वास्थ्य ढाँचे का विस्तार करना, स्वास्थ्य कार्यकर्ताओं की उपलब्धता बढ़ाना तथा गर्भनिरोधक साधनों की पहुँच सुनिश्चित करना।" }],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [{ _type: "span", text: "• **2. मध्यमकालिक लक्ष्य**: वर्ष 2010 तक कुल प्रजनन दर (TFR - Total Fertility Rate) को घटाकर **2.1 (प्रतिस्थापन स्तर / Replacement Level)** तक लाना।" }],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [{ _type: "span", text: "• **3. दीर्घकालिक लक्ष्य**: वर्ष **2045 तक** सतत आर्थिक विकास, सामाजिक प्रगति और पर्यावरण संरक्षण की आवश्यकताओं के अनुरूप जनसंख्या में स्थिरता (Population Stabilization) प्राप्त करना।" }],
-      },
-      {
-        _type: "table",
-        caption: "राष्ट्रीय जनसंख्या नीति 2000 के प्रमुख सामाजिक व स्वास्थ्य लक्ष्य",
-        headers: ["क्षेत्र / पैरामीटर", "NPP-2000 द्वारा निर्धारित लक्ष्य"],
-        rows: [
-          ["**शिशु मृत्यु दर (IMR)**", "प्रति 1000 जीवित जन्मों पर शिशु मृत्यु दर को **30 से कम** करना।"],
-          ["**मातृ मृत्यु दर (MMR)**", "प्रति 1 लाख जीवित जन्मों पर मातृ मृत्यु दर को **100 से कम** करना।"],
-          ["**कुल प्रजनन दर (TFR)**", "कुल प्रजनन दर को घटाकर **2.1 (प्रतिस्थापन स्तर)** पर लाना।"],
-          ["**टीकाकरण (Immunization)**", "सभी बच्चों का संक्रामक बीमारियों के विरुद्ध **100% सार्वभौमिक टीकाकरण**।"],
-          ["**संस्थागत प्रसव (Institutional Delivery)**", "100% प्रसव प्रशिक्षित स्वास्थ्य कर्मियों व अस्पतालों द्वारा संपन्न कराना।"],
-          ["**निःशुल्क प्राथमिक शिक्षा**", "14 वर्ष तक के बच्चों के लिए प्राथमिक शिक्षा को निःशुल्क एवं अनिवार्य बनाना।"],
-          ["**विवाह की आयु**", "लड़कियों के विवाह की आयु 18 वर्ष से ऊपर (बेहतर 20 वर्ष) रखने को बढ़ावा देना।"],
-          ["**पंजीकरण (Registration)**", "जन्म, मृत्यु, विवाह एवं गर्भावस्था का 100% शत-प्रतिशत पंजीकरण।"]
-        ]
-      },
-      {
-        _type: "block",
-        style: "h3",
-        children: [{ _type: "span", text: "4. जनसंख्या नियंत्रण हेतु हालिया सरकारी पहल एवं जनसांख्यिकीय लाभांश" }],
-      },
-      {
-        _type: "image",
-        asset: { _type: "reference", _ref: assetYouth._id },
-        alt: "India Demographic Dividend Youth Skill Development Human Capital MPPSC UPSC Notes",
-        caption: "भारत का जनसांख्यिकीय लाभांश (Demographic Dividend): युवाओं के कौशल विकास और उत्पादकता द्वारा राष्ट्रीय विकास में योगदान",
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [{ _type: "span", text: "• **मिशन परिवार विकास**: वर्ष 2016 में देश के 7 उच्च TFR वाले राज्यों (मध्य प्रदेश, उत्तर प्रदेश, बिहार, राजस्थान, झारखंड, छत्तीसगढ़ व असम) के 145 जिलों में परिवार नियोजन सेवाओं की पहुँच बढ़ाने के लिए शुरू किया गया।" }],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [{ _type: "span", text: "• **राष्ट्रीय स्वास्थ्य मिशन (NHM)**: जननी सुरक्षा योजना (JSY) एवं जननी शिशु सुरक्षा कार्यक्रम (JSSK) के माध्यम से मातृ एवं शिशु स्वास्थ्य में अभूतपूर्व सुधार।" }],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [{ _type: "span", text: "• **जनसांख्यिकीय लाभांश (Demographic Dividend)**: भारत की लगभग 65% आबादी कार्यशील आयु वर्ग (15–59 वर्ष) में है। यदि स्वास्थ्य, शिक्षा और कौशल विकास में निवेश किया जाए, तो यह जनसंख्या वृद्धि भारत को आर्थिक महाशक्ति बनाने की क्षमता रखती है।" }],
-      },
-      {
-        _type: "block",
-        style: "h3",
-        children: [{ _type: "span", text: "5. परीक्षा हेतु महत्वपूर्ण तथ्य एवं स्मरणीय बिंदु" }],
       },
       {
         _type: "block",
@@ -245,25 +252,247 @@ async function main() {
         children: [
           {
             _type: "span",
-            text: "💡 **स्मार्ट याद रखने की ट्रिक**: \"52 में परिवार, 66 में विभाग, 76 में नीति, 97 में RCH, 2000 में नई जनसंख्या नीति।\"",
+            text: "📌 **UN रिपोर्ट का अनुमान**: वर्ष 2017 में संयुक्त राष्ट्र के आर्थिक और सामाजिक मामले विभाग (UN DESA) द्वारा जारी 'द वर्ल्ड पापुलेशन प्रॉस्पेक्ट्स: 2017 रिवीजन' रिपोर्ट में अनुमान लगाया गया था कि भारत की आबादी 7 वर्षों में चीन से अधिक हो जाएगी।",
           },
         ],
+      },
+
+      /* ── 4. Causes of Population Growth ── */
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "4. भारत में जनसंख्या वृद्धि के मुख्य कारण" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **1. जीवन प्रत्याशा में वृद्धि**: आधुनिक चिकित्सा सुविधाओं एवं टीकाकरण के कारण औसत जीवन प्रत्याशा बढ़ी है तथा मृत्यु दर में भारी गिरावट आई है।" }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **2. परिवार नियोजन एवं साधनों की कमी**: ग्रामीण व दूरस्थ क्षेत्रों में गर्भनिरोधक साधनों एवं परिवार नियोजन की पर्याप्त जानकारी व उपलब्धता का अभाव।" }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **3. बाल विवाह**: कम उम्र में विवाह होने के कारण महिलाओं की प्रजनन अवधि लंबी हो जाती है।" }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **4. अशिक्षा एवं जागरूकता का अभाव**: विशेष रूप से महिला साक्षरता की कमी से परिवार नियोजन का महत्व न समझ पाना।" }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **5. धार्मिक कारण एवं रूढ़िवादिता**: पुत्र प्राप्ति की सामाजिक लालसा तथा परिवार नियोजन के प्रति पारंपरिक भ्रांतियाँ।" }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **6. गरीबी**: निर्धन परिवारों में अधिक बच्चों को अतिरिक्त आय कमाने वाले हाथ के रूप में देखा जाना।" }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **7. अवैध प्रवास (Illegal Migration)**: पड़ौसी देशों से होने वाले अवैध प्रवासन के कारण सीमावर्ती राज्यों में जनसंख्या का दबाव बढ़ना।" }]
+      },
+
+      /* ── 5. Benefits & Advantages of Demographic Dividend ── */
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "5. जनसंख्या वृद्धि के सकारात्मक पहलू एवं जनसांख्यिकीय लाभांश" }],
+      },
+      ...(assetYouthRef ? [{
+        _type: "image",
+        asset: { _type: "reference", _ref: assetYouthRef },
+        alt: "Demographic Dividend Youth Advantage Skill Development MPPSC UPSC Notes",
+        caption: "भारत का जनसांख्यिकीय लाभांश: युवा कार्यशील आबादी राष्ट्रीय विकास की रीढ़",
+      }] : []),
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "यदि जनसंख्या वृद्धि को एक सकारात्मक दृष्टिकोण से देखा जाए, तो भारत जैसे विकासशील देश के लिए यह एक बड़ा अवसर सिद्ध हो सकती है:",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **1. जनसांख्यिकीय लाभांश (Demographic Dividend)**: भारत में कुल आबादी में कार्यशील उम्र (15-59 वर्ष) का अनुपात बहुत अधिक है। 2011 की जनगणना के अनुसार भारत की लगभग **50% आबादी 25 वर्ष से कम आयु** की है। यह युवा आबादी देश के तेज़ आर्थिक विकास का संवाहक बन सकती है।" }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **2. मानव संसाधन में बढ़ोतरी (Human Capital)**: कुशल श्रम (Skilled Labour), मानव संसाधनों का वैश्विक निर्यात, और प्रतिस्पर्धी लागत पर श्रम की उपलब्धता भारत को विनिर्माण व सेवा क्षेत्र में वैश्विक केंद्र बना सकती है।" }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **3. विशाल घरेलू बाजार (Huge Consumer Market)**: विशाल जनसंख्या विदेशी व घरेलू कंपनियों के लिए एक बड़ा उपभोक्ता बाजार प्रदान करती है, जिससे प्रत्यक्ष विदेशी निवेश (FDI) आकर्षित होता है।" }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **4. शक्तिशाली सैन्य बल**: पर्याप्त मानव संसाधन के कारण भारत के पास दुनिया की सबसे बड़ी और मजबूत थल सेनाओं में से एक है।" }]
+      },
+
+      /* ── 6. Drawbacks & Challenges of Overpopulation ── */
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "6. जनसंख्या विस्फोट के नुकसान एवं गंभीर सामाजिक-आर्थिक चुनौतियाँ" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "अनियंत्रित जनसंख्या वृद्धि भारत के बुनियादी विकास में कई गंभीर बाधएँ उत्पन्न करती है:",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **1. बेरोजगारी (Unemployment)**: पूंजीगत साधनों की कमी के कारण सभी युवाओं के लिए पर्याप्त रोजगार के अवसर सृजित करना सबसे बड़ी चुनौती है।" }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **2. खाद्य सुरक्षा एवं कुपोषण**: बढ़ती मांग के कारण खाद्यान्न आपूर्ति पर दबाव, बच्चों व महिलाओं में कुपोषण की समस्या।" }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **3. प्रति व्यक्ति आय व निर्धनता**: प्रति व्यक्ति निम्न आय, निर्धनता रेखा के नीचे जीवन यापन करने वाली आबादी में वृद्धि और महंगाई।" }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **4. जनोपयोगी सेवाओं पर अतिरिक्त व्यय**: स्वास्थ्य, शिक्षा, परिवहन और आवास जैसे बुनियादी बुनियादी ढाँचे पर अत्यधिक वित्तीय बोझ।" }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **5. कृषि एवं पर्यावरण पर दबाव**: भूमि का विखंडन, वनों की कटाई, जल संकट और अनियंत्रित शहरीकरण व पलायन।" }]
+      },
+
+      /* ── 7. Constitution Review Commission (NCRWC) & Legislation Proposals ── */
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "7. संविधान समीक्षा आयोग (NCRWC) की सिफारिशें एवं जनसंख्या नियंत्रण कानून" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "वर्ष 2000 में गठित ",
+          },
+          {
+            _type: "span",
+            marks: ["strong"],
+            text: "संविधान के कार्यकरण की समीक्षा के लिए राष्ट्रीय आयोग (NCRWC - जस्टिस एम.एन. वेंकटचेलैया आयोग)",
+          },
+          {
+            _type: "span",
+            text: " ने व्यापक विचार-विमर्श के बाद जनसंख्या नियंत्रण हेतु महत्वपूर्ण सुझाव दिए थे:",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **अनुच्छेद 47A का समावेश**: NCRWC ने संविधान के नीति निर्देशक तत्वों के अंतर्गत **अनुच्छेद 47A (Article 47A)** शामिल करने और एक सख्त जनसंख्या नियंत्रण कानून बनाने का सुझाव दिया था।" }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **अन्य कानूनों से तुलना**: NCRWC की सिफारिश पर मनरेगा (MGNREGA), शिक्षा का अधिकार (RTE), सूचना का अधिकार (RTI) और खाद्य सुरक्षा अधिकार (Right to Food) जैसे कानून बने, परंतु जनसंख्या नियंत्रण कानून पर विधायी सहमति नहीं बन सकी।" }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **दो बच्चों का नियम (Two-Child Norm Proposal)**: जनहित याचिकाओं में सुझाव दिया गया है कि केंद्र सरकार सरकारी नौकरियों, वित्तीय सहायता व सब्सिडी हेतु दो बच्चों का नियम लागू कर सकती है तथा इसका उल्लंघन करने पर कुछ चुनावी व कानूनी अधिकारों को प्रतिबंधित किया जा सकता है।" }]
+      },
+      {
+        _type: "table",
+        caption: "संसाधन व जनसंख्या की दृष्टि से भारत एवं चीन की तुलना",
+        headers: ["मापदंड", "भारत की स्थिति", "चीन की स्थिति / तुलना"],
+        rows: [
+          ["**वैश्विक कृषि योग्य भूमि**", "**मात्र 2%**", "भारत के पास वैश्विक भूमि का 2.4% भाग"],
+          ["**वैश्विक पीने योग्य पानी**", "**मात्र 4%**", "भारत के पास वैश्विक जल संसाधनों का 4%"],
+          ["**वैश्विक जनसंख्या हिस्सेदारी**", "**लगभग 18% - 20%**", "विश्व की 18% से अधिक जनसंख्या"],
+          ["**भौगोलिक क्षेत्रफल**", "**32.87 लाख वर्ग किमी**", "चीन का क्षेत्रफल भारत से **लगभग 3 गुना बड़ा**"],
+          ["**जनसंख्या वृद्धि दर**", "प्रति मिनट **33 बच्चे** पैदा होते हैं", "चीन में प्रति मिनट **11 बच्चे** पैदा होते हैं"]
+        ]
+      },
+
+      /* ── 8. Measures & Solutions ── */
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "8. जनसंख्या स्थायित्व हेतु भावी राह एवं आवश्यक उपाय" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **1. महिला शिक्षा व सशक्तिकरण**: महिला साक्षरता दर बढ़ाने पर विशेष ध्यान देना, क्योंकि साक्षर महिलाएँ परिवार नियोजन के प्रति अधिक जागरूक होती हैं।" }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **2. विवाह की न्यूनतम आयु का सख्ती से पालन**: बाल विवाह रोकथाम अधिनियम का कड़ाई से पालन कराना।" }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **3. परिवार नियोजन सेवाओं की सुलभता**: आशा (ASHA) कार्यकर्ताओं के माध्यम से प्राथमिक स्वास्थ्य केंद्रों पर गर्भनिरोधक साधनों की होम-डिलीवरी व गुणवत्तापूर्ण सेवाएँ पहुँचाना।" }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **4. सार्वजनिक स्वास्थ्य एवं संस्थागत प्रसव**: मातृ व शिशु मृत्यु दर घटाने हेतु संस्थागत प्रसव (Institutional Delivery) को प्रोत्साहन।" }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **5. संतुलित क्षेत्रीय विकास एवं औद्योगीकरण**: ग्रामीण क्षेत्रों में रोजगार सृजित कर शहरों की ओर अनियंत्रित पलायन रोकना।" }]
+      },
+
+      /* ── 9. High-Yield Revision Takeaways ── */
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "9. MPPSC एवं UPSC परीक्षा हेतु त्वरित स्मरणीय बिंदु" }],
       },
       {
         _type: "facts",
         items: [
-          { label: "1952", value: "**परिवार नियोजन कार्यक्रम** (विश्व में पहला देश)" },
-          { label: "1961–62", value: "**परिवार कल्याण कार्यक्रम**" },
-          { label: "1966", value: "**परिवार नियोजन विभाग** का गठन" },
+          { label: "1952", value: "**राष्ट्रीय परिवार नियोजन कार्यक्रम** (विश्व में पहला देश)" },
           { label: "1976", value: "**पहली राष्ट्रीय जनसंख्या नीति** (विवाह आयु 18 व 21 वर्ष)" },
-          { label: "1997", value: "**RCH (प्रजनन एवं बाल स्वास्थ्य कार्यक्रम)**" },
-          { label: "2000", value: "**राष्ट्रीय जनसंख्या नीति 2000 (NPP-2000)** (TFR 2.1 व 2045 स्थिरता)" },
+          { label: "1996", value: "**काहिरा मॉडल (Cairo Model)** (स्वेच्छा व शिक्षा पर आधारित)" },
+          { label: "2000", value: "**राष्ट्रीय जनसंख्या नीति 2000 (NPP-2000)** (स्वामीनाथन समिति, 2045 तक स्थायित्व लक्ष्य)" },
+          { label: "मई 2000", value: "**राष्ट्रीय जनसंख्या आयोग** (अध्यक्ष: भारत के प्रधानमंत्री)" },
+          { label: "जनगणना 2011", value: "**कुल जनसंख्या 121.08 करोड़ | लिंगानुपात 943 | साक्षरता 73% | घनत्व 382/किमी²**" },
+          { label: "NCRWC सुझाव", value: "**संविधान में अनुच्छेद 47A जोड़ने का प्रस्ताव**" }
         ]
       },
+
+      /* ── 10. Interlinking ── */
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "6. संबंधित अध्ययन सामग्री एवं नोट्स" }],
+        children: [{ _type: "span", text: "10. संबंधित अध्ययन सामग्री एवं नोट्स" }],
       },
       {
         _type: "block",
@@ -297,8 +526,20 @@ async function main() {
       },
       {
         _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "👉 [MPPSC 2026 नवीन पाठ्यक्रम, परीक्षा पैटर्न व संपूर्ण रणनीति](/mppsc/syllabus-2026)",
+          },
+        ],
+      },
+
+      /* ── 11. Conclusion ── */
+      {
+        _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "7. निष्कर्ष" }],
+        children: [{ _type: "span", text: "11. निष्कर्ष" }],
       },
       {
         _type: "block",
@@ -306,18 +547,18 @@ async function main() {
         children: [
           {
             _type: "span",
-            text: "भारत की जनसंख्या नीति केवल जनसंख्या नियंत्रण तक सीमित नहीं है, बल्कि यह मातृ-शिशु स्वास्थ्य, शिक्षा, लैंगिक समानता और मानव संसाधन के विकास से जुड़ी एक व्यापक विकास नीति है। MPPSC एवं UPSC अभ्यर्थियों के लिए जनसंख्या नीति का ऐतिहासिक क्रम, TFR 2.1 का लक्ष्य तथा हाल की सरकारी पहलों का गहराई से अध्ययन करना अत्यंत आवश्यक है।",
+            text: "भारत की जनसंख्या नीति केवल जन्म दर को नियंत्रित करने तक सीमित नहीं है, बल्कि यह मानव पूंजी निर्माण, शिक्षा, महिला अधिकार एवं सतत विकास से जुड़ी एक व्यापक राष्ट्रीय रणनीति है। काहिरा मॉडल के सिद्धांतों के अनुरूप शिक्षा और स्वास्थ्य सेवाओं के विस्तार से ही भारत अपनी विशाल जनसंख्या को जनसांख्यिकीय लाभांश में परिवर्तित कर सकता है।",
           },
         ],
       },
     ],
 
-    /* ─── ENGLISH BODY ─── */
+    /* ────────────── ENGLISH BODY ────────────── */
     bodyEn: [
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "1. Why in News? & Definition of Population Policy" }],
+        children: [{ _type: "span", text: "1. Historical Evolution of Population Policy in India Post-Independence (1952 to 2000)" }],
       },
       {
         _type: "block",
@@ -325,27 +566,83 @@ async function main() {
         children: [
           {
             _type: "span",
-            text: "India is currently the most populous country in the world. Rapid population growth impacts natural resources, employment, healthcare infrastructure, education, and national economic development. To address these demographic challenges, the Government of India has periodically instituted comprehensive ",
+            text: "India holds the distinction of being the first country in the world to launch an official ",
           },
           {
             _type: "span",
             marks: ["strong"],
-            text: "Population Policies and Family Welfare Programmes",
+            text: "National Family Planning Programme in 1952",
           },
           {
             _type: "span",
-            text: ". Topics surrounding India's population policies and the National Population Policy 2000 (NPP-2000) are essential for ",
+            text: ". Right from the First Five-Year Plan (1951–56), rapid population growth was identified as a major bottleneck to economic development. Subsequent Five-Year Plans progressively incorporated population stabilization measures.",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **1960 Expert Group Recommendation**: An expert group appointed in 1960 first formally recommended formulating a dedicated national population policy." }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **First National Population Policy (1976)**: India's first formal National Population Policy was announced in 1976 (amended in 1981). Key objectives included lowering birth rates, raising the legal minimum age at marriage (18 for females, 21 for males), promoting family planning, and emphasizing female education." }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **National Population Policy 2000 (NPP-2000)**: Announced in February 2000 based on the recommendations of the Dr. M.S. Swaminathan Expert Committee. It set the long-term target of **population stabilization by the year 2045**." }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **Cairo Model (1996)**: Since 1996, India has adopted the Cairo Model of population management. Under this approach, population control relies on voluntary choices, education, and health empowerment rather than coercion or forced targets." }]
+      },
+
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "2. National Commission on Population & Stabilization Fund" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "In May 2000, the ",
           },
           {
             _type: "span",
             marks: ["strong"],
-            text: "MPPSC (Prelims & Mains Paper-1/2) and UPSC CSE",
+            text: "National Commission on Population",
           },
           {
             _type: "span",
-            text: " examinations.",
+            text: " was established under the chairmanship of the Prime Minister of India. Its mandated functions include:",
           },
         ],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **1. Policy Review**: Reviewing the implementation of the National Population Policy periodically." }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **2. Monitoring & Direction**: Monitoring population control programmes and providing policy direction." }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **3. Synergizing Sectoral Schemes**: Promoting synergy across health, educational, environmental, and developmental programmes." }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **4. Inter-Sectoral Coordination**: Fostering inter-sectoral coordination in planning and execution." }]
       },
       {
         _type: "block",
@@ -353,125 +650,214 @@ async function main() {
         children: [
           {
             _type: "span",
-            text: "📌 **Definition of Population Policy**: A Population Policy is a systematic government framework designed to balance population growth rates, reduce Total Fertility Rate (TFR), enhance maternal and child healthcare, and align human population with available physical resources for sustainable national development.",
+            text: "📌 **National Population Stabilization Fund**: Established under the Commission and later transferred under the Ministry of Health and Family Welfare.",
           },
         ],
       },
+
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "2. Historical Evolution of Population Policy in India (1952 to 2000)" }],
-      },
-      {
-        _type: "image",
-        asset: { _type: "reference", _ref: assetInfographic._id },
-        alt: "Evolution of India Population Policy Timeline 1952 to National Population Policy 2000 MPPSC UPSC Notes",
-        caption: "Timeline of Population Policy in India: From 1952 National Family Planning to National Population Policy 2000 (NPP-2000)",
+        children: [{ _type: "span", text: "3. Census 2011 Key Demographic Facts & Health Indicators" }],
       },
       {
         _type: "table",
-        caption: "Historical Timeline of India Population Policies & Family Welfare Programmes",
-        headers: ["Year", "Key Initiative / Policy", "Major Provisions & Directives"],
+        caption: "Key Demographic Data from Census 2011 & Health Surveys for MPPSC & UPSC",
+        headers: ["Demographic Indicator / Parameter", "Official Metric (Census 2011 / NFHS)"],
         rows: [
-          ["**1952**", "**National Family Planning Programme**", "• **India became the first country in the world** to launch a national family planning programme.\n• Focus: Controlling population growth & improving maternal/child health."],
-          ["**1961–62**", "**Expansion to Family Welfare Programme**", "• Scope expanded from clinical birth control to comprehensive **Family Welfare Programme**."],
-          ["**1966**", "**Department of Family Planning**", "• Created a dedicated **Department of Family Planning** under the Ministry of Health."],
-          ["**1976**", "**First National Population Policy (NPP-1976)**", "• First formal population policy statement.\n• Raised minimum marriage age for females from **15 to 18 years** and males from **18 to 21 years**.\n• **1971 Census Freeze**: Fixed parliamentary seat allocation and central financial assistance based on the 1971 Census until 2001."],
-          ["**1997**", "**Reproductive and Child Health (RCH) Programme**", "• Launched **RCH Programme** targeting reduction in Maternal Mortality Ratio (MMR) and Infant Mortality Rate (IMR)."],
-          ["**2000**", "**National Population Policy 2000 (NPP-2000)**", "• Formulated on the recommendations of the Dr. M.S. Swaminathan Committee.\n• **Long-term Goal**: Population stabilization by 2045."]
+          ["**Total Population of India (2011)**", "**1,21,08,54,977 (121.08 Crore)**"],
+          ["**Male Population Share**", "**51.47%**"],
+          ["**Female Population Share**", "**48.53%**"],
+          ["**0–6 Years Child Share**", "**13.6%**"],
+          ["**Decadal Population Growth (2001–2011)**", "**17.7%**"],
+          ["**Annual Population Growth Rate**", "**1.64%**"],
+          ["**Overall Sex Ratio**", "**943 Females per 1000 Males**"],
+          ["**Child Sex Ratio (0-6 Years)**", "**919 Girls per 1000 Boys**"],
+          ["**Total Literacy Rate**", "**73.0%**"],
+          ["**Male Literacy Rate**", "**80.9%**"],
+          ["**Female Literacy Rate**", "**64.6%**"],
+          ["**Population Density (2011)**", "**382 persons per sq. km** (325 in 2001)"],
+          ["**Rural Population Share**", "**68.84%**"],
+          ["**Urban Population Share**", "**31.16%**"],
+          ["**Most Populous State**", "**Uttar Pradesh**"],
+          ["**Least Populous State**", "**Sikkim**"],
+          ["**Infant Mortality Rate (IMR 2016)**", "**34 per 1,000 live births**"],
+          ["**Crude Birth Rate (2016)**", "**20.4 per 1,000**"],
+          ["**Crude Death Rate (2016)**", "**6.4 per 1,000**"],
+          ["**Maternal Mortality Ratio (MMR 2014-16)**", "**130 per 100,000 live births**"],
+          ["**NFHS-4 (2015-16) Total Fertility Rate (TFR)**", "**2.18** (Below global replacement rate 2.30)"]
         ]
       },
+
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "3. National Population Policy 2000 (NPP-2000): Key Objectives & Targets" }],
+        children: [{ _type: "span", text: "4. Causes of Rapid Population Growth in India" }],
       },
       {
         _type: "block",
         style: "normal",
-        children: [{ _type: "span", text: "• **1. Immediate Objective**: Meeting unmet needs for health infrastructure, health personnel, and providing integrated service delivery for basic reproductive and child healthcare." }]
+        children: [{ _type: "span", text: "• **1. Rise in Life Expectancy**: Improved medical healthcare and immunization lowered mortality rates while extending average life span." }]
       },
       {
         _type: "block",
         style: "normal",
-        children: [{ _type: "span", text: "• **2. Medium-term Target**: Bringing Total Fertility Rate (TFR) down to **2.1 (Replacement Level)** by the year 2010." }]
+        children: [{ _type: "span", text: "• **2. Lack of Family Planning Awareness**: Limited availability and access to contraceptives in remote rural areas." }]
       },
       {
         _type: "block",
         style: "normal",
-        children: [{ _type: "span", text: "• **3. Long-term Target**: Achieving **population stabilization by 2045**, consistent with sustainable economic growth and social development." }]
+        children: [{ _type: "span", text: "• **3. Early & Child Marriage**: Early marriage prolongs the total reproductive age span of women." }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **4. Illiteracy**: Low female literacy reduces awareness regarding reproductive rights and family welfare." }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **5. Social & Religious Orthodoxy**: Preference for male children and traditional misconceptions about contraception." }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **6. Poverty**: Impoverished families often view additional children as extra earning hands." }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **7. Illegal Migration**: Influx of illegal migrants in border states adds demographic pressure." }]
+      },
+
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "5. Advantages & Opportunities of Demographic Dividend" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **1. Demographic Dividend**: Over **50% of India's population is under 25 years of age**. A large working-age ratio accelerates economic productivity." }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **2. Human Capital Expansion**: Export of skilled manpower, competitive labor cost, and large talent pool in tech and services." }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **3. Huge Consumer Market**: Attracts foreign direct investment (FDI) due to a massive domestic market." }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **4. Powerful Armed Forces**: Vast human resources sustain one of the world's largest defense forces." }]
+      },
+
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "6. Socio-Economic Challenges of Overpopulation" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **1. Unemployment**: Shortage of capital resources makes job creation for youth a major challenge." }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **2. Food Security & Malnutrition**: Pressure on agricultural land and child/maternal malnutrition." }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **3. Low Per Capita Income**: Increased poverty ratio and inflation." }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **4. Burden on Public Services**: High expenditure on healthcare, education, housing, and urban transport." }]
+      },
+
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "7. Constitution Review Commission (NCRWC) & Legislative Proposals" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **Article 47A Recommendation**: The National Commission to Review the Working of the Constitution (NCRWC - Justice Venkatachaliah Commission) recommended inserting **Article 47A** into the Directive Principles of State Policy for population control." }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **Two-Child Norm Proposal**: PILs suggest enforcing a two-child policy for government jobs, subsidies, and contesting elections." }]
       },
       {
         _type: "table",
-        caption: "Key Socio-Demographic Targets of National Population Policy 2000",
-        headers: ["Parameter / Domain", "NPP-2000 Targeted Goal"],
+        caption: "Resource Comparison: India vs. China Demographic Balance",
+        headers: ["Parameter", "India's Share / Metric", "China Comparison"],
         rows: [
-          ["**Infant Mortality Rate (IMR)**", "Reduce IMR to **below 30 per 1,000** live births."],
-          ["**Maternal Mortality Ratio (MMR)**", "Reduce MMR to **below 100 per 100,000** live births."],
-          ["**Total Fertility Rate (TFR)**", "Achieve replacement level TFR of **2.1**."],
-          ["**Immunization**", "Achieve **100% universal immunization** of children against vaccine-preventable diseases."],
-          ["**Institutional Deliveries**", "Achieve 100% institutional deliveries by trained health attendants."],
-          ["**Free Primary Education**", "Promote free and compulsory primary education up to age 14."],
-          ["**Age at Marriage**", "Promote delayed marriage for girls (preferably after 20 years)."],
-          ["**Vital Registration**", "Achieve 100% registration of births, deaths, marriages, and pregnancies."]
+          ["**Global Arable Land**", "**Only 2%**", "India has 2.4% of total land area"],
+          ["**Global Drinking Water**", "**Only 4%**", "India has 4% of global freshwater"],
+          ["**Global Population Share**", "**~18% to 20%**", "Over 18% of world population"],
+          ["**Geographical Area**", "**3.28 Million sq. km**", "China is **~3 times larger** in area"],
+          ["**Birth Rate Speed**", "**33 births per minute**", "China records **11 births per minute**"]
         ]
       },
+
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "4. Recent Population Control Initiatives & Demographic Dividend" }],
-      },
-      {
-        _type: "image",
-        asset: { _type: "reference", _ref: assetYouth._id },
-        alt: "India Demographic Dividend Youth Skill Development Human Capital MPPSC UPSC Notes",
-        caption: "India's Demographic Dividend: Harnessing youth potential through healthcare, skill development and quality education",
+        children: [{ _type: "span", text: "8. Solutions & Future Roadmap" }],
       },
       {
         _type: "block",
         style: "normal",
-        children: [{ _type: "span", text: "• **Mission Parivar Vikas**: Launched in 2016 across 145 high-fertility districts in 7 focus states (including Madhya Pradesh, UP, Bihar, Rajasthan) to accelerate family planning access." }]
+        children: [{ _type: "span", text: "• **1. Female Literacy & Empowerment**: Educated women are key to reproductive choice and family planning." }]
       },
       {
         _type: "block",
         style: "normal",
-        children: [{ _type: "span", text: "• **National Health Mission (NHM)**: Janani Suraksha Yojana (JSY) and JSSK ensuring free maternal and child health services." }]
+        children: [{ _type: "span", text: "• **2. Strict Enforcement of Minimum Marriage Age**: Curbing child marriage through stringent legal implementation." }]
       },
       {
         _type: "block",
         style: "normal",
-        children: [{ _type: "span", text: "• **Demographic Dividend**: Over 65% of India's population belongs to the working-age group (15–59 years). Strategic investment in youth skill development transforms demographic growth into economic prosperity." }]
+        children: [{ _type: "span", text: "• **3. Doorstep Family Planning Services**: Utilizing ASHA workers for contraceptive distribution." }]
       },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **4. Strengthening Institutional Deliveries**: Reducing IMR and MMR under NHM." }]
+      },
+
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "5. High-Yield Revision Takeaways & Memory Tricks" }],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "💡 **Memory Trick**: \"1952 Family Planning, 1966 Department, 1976 First Policy, 1997 RCH, 2000 NPP-2000 Policy.\"",
-          },
-        ],
+        children: [{ _type: "span", text: "9. High-Yield Revision Takeaways for MPPSC & UPSC" }],
       },
       {
         _type: "facts",
         items: [
           { label: "1952", value: "**National Family Planning Programme** (First in World)" },
-          { label: "1961–62", value: "**Family Welfare Programme** Expansion" },
-          { label: "1966", value: "**Department of Family Planning** Created" },
           { label: "1976", value: "**First National Population Policy** (Marriage Age 18 & 21)" },
-          { label: "1997", value: "**RCH Programme** Launched" },
-          { label: "2000", value: "**National Population Policy 2000 (NPP-2000)** (TFR 2.1 & 2045 Goal)" },
+          { label: "1996", value: "**Cairo Model** (Voluntary choice and education)" },
+          { label: "2000", value: "**NPP-2000 Policy** (Swaminathan Committee, 2045 Stabilization Goal)" },
+          { label: "May 2000", value: "**National Commission on Population** (Chaired by PM)" },
+          { label: "Census 2011", value: "**Population 121.08 Cr | Sex Ratio 943 | Literacy 73% | Density 382/sq km**" },
+          { label: "NCRWC Proposal", value: "**Insertion of Article 47A into Constitution**" }
         ]
       },
+
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "6. Related Study Material & Interlinked Notes" }],
+        children: [{ _type: "span", text: "10. Related Study Material & Interlinked Notes" }],
       },
       {
         _type: "block",
@@ -489,7 +875,7 @@ async function main() {
         children: [
           {
             _type: "span",
-            text: "👉 [Disaster Management (Amendment) Act 2025: UDMA Section 41A Notes](/en/current-affairs/disaster-management-amendment-act-2025-mppsc-upsc-notes)",
+            text: "👉 [Disaster Management (Amendment) Act 2025 Notes](/en/current-affairs/disaster-management-amendment-act-2025-mppsc-upsc-notes)",
           },
         ],
       },
@@ -499,14 +885,15 @@ async function main() {
         children: [
           {
             _type: "span",
-            text: "👉 [What is Disaster Management? NCERT Concepts & MPPSC Notes](/en/general-awareness/what-is-disaster-management-ncert-types-mppsc-notes)",
+            text: "👉 [What is Disaster Management? NCERT Concepts](/en/general-awareness/what-is-disaster-management-ncert-types-mppsc-notes)",
           },
         ],
       },
+
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "7. Conclusion" }],
+        children: [{ _type: "span", text: "11. Conclusion" }],
       },
       {
         _type: "block",
@@ -514,160 +901,148 @@ async function main() {
         children: [
           {
             _type: "span",
-            text: "India's population policy extends beyond birth control into maternal health, education, and human capital development. Understanding NPP-2000 targets (TFR 2.1, 2045 stabilization) is crucial for MPPSC and UPSC mains answer writing.",
+            text: "India's population policy post-independence reflects a shift from clinical targets to voluntary human rights and Cairo Model principles. Strategic focus on female literacy, healthcare, and skill development will convert demographic growth into sustainable economic growth.",
           },
         ],
       },
     ],
 
-    /* ─── BILINGUAL FAQS ─── */
+    /* ────────────── BILINGUAL FAQS ────────────── */
     faqs: [
-      {
-        question: "भारत में पहली राष्ट्रीय जनसंख्या नीति की घोषणा किस वर्ष की गई थी?",
-        questionEn: "In which year was the first National Population Policy announced in India?",
-        answer: "भारत में पहली राष्ट्रीय जनसंख्या नीति की घोषणा वर्ष 1976 में की गई थी। इसके अंतर्गत लड़कियों के विवाह की न्यूनतम आयु 18 वर्ष और लड़कों की 21 वर्ष तय की गई थी।",
-        answerEn: "The first National Population Policy in India was announced in 1976, raising legal marriage age to 18 for females and 21 for males."
-      },
-      {
-        question: "राष्ट्रीय जनसंख्या नीति 2000 (NPP-2000) का मुख्य दीर्घकालिक लक्ष्य क्या है?",
-        questionEn: "What is the primary long-term target of the National Population Policy 2000 (NPP-2000)?",
-        answer: "NPP-2000 का दीर्घकालिक लक्ष्य वर्ष 2045 तक सतत आर्थिक विकास और सामाजिक प्रगति के अनुरूप भारत की जनसंख्या में स्थिरता (Population Stabilization) प्राप्त करना है।",
-        answerEn: "The long-term goal of NPP-2000 is to achieve population stabilization by the year 2045."
-      },
-      {
-        question: "प्रतिस्थापन स्तर कुल प्रजनन दर (Replacement Level TFR) क्या होता है?",
-        questionEn: "What is Replacement Level Total Fertility Rate (TFR)?",
-        answer: "प्रतिस्थापन स्तर TFR का मान 2.1 होता है। इसका तात्पर्य है कि एक पीढ़ी बिना जनसंख्या वृद्धि या कमी के अगली पीढ़ी को प्रतिस्थापित करती है। NPP-2000 में इसे 2010 तक प्राप्त करने का लक्ष्य रखा गया था।",
-        answerEn: "Replacement level TFR is 2.1, where population exactly replaces itself from one generation to the next without migration."
-      },
-      {
-        question: "विश्व में राष्ट्रीय स्तर पर परिवार नियोजन कार्यक्रम शुरू करने वाला पहला देश कौन सा है?",
-        questionEn: "Which is the first country in the world to launch a national family planning programme?",
-        answer: "भारत विश्व का पहला देश है जिसने वर्ष 1952 में राष्ट्रीय स्तर पर परिवार नियोजन कार्यक्रम (National Family Planning Programme) शुरू किया था।",
-        answerEn: "India is the first country in the world to launch a national programme for family planning in 1952."
-      },
-      {
-        question: "प्रजनन एवं बाल स्वास्थ्य कार्यक्रम (RCH Programme) किस वर्ष शुरू किया गया?",
-        questionEn: "In which year was the Reproductive and Child Health (RCH) Programme launched?",
-        answer: "RCH (Reproductive and Child Health Programme) वर्ष 1997 में शुरू किया गया था, जिसका उद्देश्य मातृ व शिशु मृत्यु दर को नियंत्रित करना था।",
-        answerEn: "The RCH Programme was launched in 1997 focusing on maternal and child health care."
-      },
-      {
-        question: "NPP-2000 में शिशु मृत्यु दर (IMR) और मातृ मृत्यु दर (MMR) का क्या लक्ष्य रखा गया था?",
-        questionEn: "What targets were set for IMR and MMR under NPP-2000?",
-        answer: "NPP-2000 में शिशु मृत्यु दर (IMR) को प्रति 1000 पर 30 से कम करने तथा मातृ मृत्यु दर (MMR) को प्रति 1 लाख जीवित जन्मों पर 100 से कम करने का लक्ष्य निर्धारित किया गया था।",
-        answerEn: "NPP-2000 aimed to reduce IMR below 30 per 1,000 live births and MMR below 100 per 100,000 live births."
-      },
-      {
-        question: "1976 की जनसंख्या नीति में परिसीमन हेतु किस जनगणना को आधार माना गया था?",
-        questionEn: "Which census was fixed as the baseline under the 1976 Population Policy?",
-        answer: "1976 की नीति के तहत संसद में राज्यों के प्रतिनिधित्व, परिसीमन एवं वित्तीय सहायता हेतु 1971 की जनगणना को वर्ष 2001 तक के लिए फ्रीज किया गया था।",
-        answerEn: "The 1971 Census was fixed as the base for parliamentary seat representation and tax distribution until 2001."
-      },
-      {
-        question: "'मिशन परिवार विकास' का मुख्य उद्देश्य क्या है?",
-        questionEn: "What is the primary objective of Mission Parivar Vikas?",
-        answer: "वर्ष 2016 में शुरू मिशन परिवार विकास का उद्देश्य उच्च प्रजनन दर (High TFR) वाले 7 राज्यों के 145 जिलों में परिवार नियोजन सेवाओं की पहुँच में तेजी से वृद्धि करना है।",
-        answerEn: "Launched in 2016, Mission Parivar Vikas aims to accelerate access to family planning services in 145 high-fertility districts."
-      },
-      {
-        question: "भारत की वर्तमान जनसंख्या नीति किस समिति की सिफारिशों पर आधारित थी?",
-        questionEn: "On which committee's recommendations was the NPP-2000 drafted?",
-        answer: "राष्ट्रीय जनसंख्या नीति 2000 का मसौदा प्रसिद्ध कृषि वैज्ञानिक डॉ. एम.एस. स्वामीनाथन की अध्यक्षता वाली विशेषज्ञ समिति की रिपोर्ट पर आधारित था।",
-        answerEn: "The draft of NPP-2000 was based on the expert committee report headed by Dr. M.S. Swaminathan."
-      },
-      {
-        question: "MPPSC मुख्य परीक्षा में जनसंख्या नीति से संबंधित किस प्रकार के प्रश्न पूछे जाते हैं?",
-        questionEn: "What type of questions are asked on Population Policy in MPPSC Mains?",
-        answer: "MPPSC Mains GS Paper-1 (भूगोल व जनसांख्यिकी) एवं GS Paper-2 (सामाजिक क्षेत्र व स्वास्थ्य) में जनसंख्या नीति का विकास, NPP-2000 की विशेषताएँ व जनसंख्या नियंत्रण के उपायों पर 5 और 11 अंकों के प्रश्न पूछे जाते हैं।",
-        answerEn: "In MPPSC Mains, 5-mark and 11-mark questions are asked on the evolution of population policy, NPP-2000 features, and demographic challenges."
-      }
-    ],
-
-    /* ─── BILINGUAL MCQS ─── */
-    mcqs: [
-      {
-        question: "भारत में पहली राष्ट्रीय जनसंख्या नीति की घोषणा किस वर्ष की गई थी?",
-        questionEn: "In which year was the first National Population Policy announced in India?",
-        options: ["A. 1952", "B. 1966", "C. 1976", "D. 2000"],
-        optionsEn: ["A. 1952", "B. 1966", "C. 1976", "D. 2000"],
-        correctIndex: 2,
-        explanation: "भारत सरकार ने पहली बार वर्ष 1976 में औपचारिक 'राष्ट्रीय जनसंख्या नीति' घोषित की थी, जिसके तहत विवाह की न्यूनतम आयु बढ़ाई गई थी।",
-        explanationEn: "India announced its first formal National Population Policy in 1976, which raised the legal marriage age."
-      },
-      {
-        question: "राष्ट्रीय जनसंख्या नीति 2000 (NPP-2000) के अनुसार कुल प्रजनन दर (TFR) का प्रतिस्थापन स्तर कितना निर्धारित किया गया है?",
-        questionEn: "What replacement level of Total Fertility Rate (TFR) was set under NPP-2000?",
-        options: ["A. 1.8", "B. 2.1", "C. 2.5", "D. 3.0"],
-        optionsEn: ["A. 1.8", "B. 2.1", "C. 2.5", "D. 3.0"],
-        correctIndex: 1,
-        explanation: "NPP-2000 में वर्ष 2010 तक कुल प्रजनन दर (TFR) को घटाकर 2.1 (प्रतिस्थापन स्तर) पर लाने का मध्यमकालिक लक्ष्य रखा गया था।",
-        explanationEn: "NPP-2000 targeted achieving a replacement level TFR of 2.1 by 2010."
-      },
-      {
-        question: "भारत सरकार द्वारा वर्ष 2045 तक जनसंख्या स्थिरता प्राप्त करने का लक्ष्य किस नीति में निर्धारित किया गया था?",
-        questionEn: "In which policy was the target of population stabilization by 2045 set?",
-        options: ["A. राष्ट्रीय जनसंख्या नीति 1976", "B. राष्ट्रीय जनसंख्या नीति 2000", "C. राष्ट्रीय स्वास्थ्य नीति 2017", "D. 1952 परिवार नियोजन नीति"],
-        optionsEn: ["A. National Population Policy 1976", "B. National Population Policy 2000", "C. National Health Policy 2017", "D. 1952 Family Planning Policy"],
-        correctIndex: 1,
-        explanation: "राष्ट्रीय जनसंख्या नीति 2000 (NPP-2000) का मुख्य दीर्घकालिक लक्ष्य वर्ष 2045 तक जनसंख्या स्थिरता प्राप्त करना है।",
-        explanationEn: "NPP-2000 set the long-term objective of population stabilization by the year 2045."
-      },
-      {
-        question: "'प्रजनन एवं बाल स्वास्थ्य कार्यक्रम (RCH Programme)' की शुरुआत किस वर्ष की गई थी?",
-        questionEn: "In which year was the Reproductive and Child Health (RCH) Programme launched?",
-        options: ["A. 1952", "B. 1976", "C. 1997", "D. 2005"],
-        optionsEn: ["A. 1952", "B. 1976", "C. 1997", "D. 2005"],
-        correctIndex: 2,
-        explanation: "भारत में प्रजनन एवं बाल स्वास्थ्य कार्यक्रम (RCH Programme) की शुरुआत वर्ष 1997 में की गई थी।",
-        explanationEn: "The RCH Programme was launched in India in 1997."
-      },
-      {
-        question: "राष्ट्रीय जनसंख्या नीति 1976 के तहत लड़कियों के विवाह की न्यूनतम आयु बढ़ाकर कितनी की गई थी?",
-        questionEn: "What was the minimum marriage age for females raised to under the 1976 Population Policy?",
-        options: ["A. 15 वर्ष से 18 वर्ष", "B. 14 वर्ष से 16 वर्ष", "C. 18 वर्ष से 21 वर्ष", "D. 16 वर्ष से 18 वर्ष"],
-        optionsEn: ["A. 15 years to 18 years", "B. 14 years to 16 years", "C. 18 years to 21 years", "D. 16 years to 18 years"],
-        correctIndex: 0,
-        explanation: "1976 की नीति में लड़कियों के विवाह की न्यूनतम आयु 15 से बढ़ाकर 18 वर्ष तथा लड़कों की 18 से बढ़ाकर 21 वर्ष की गई थी।",
-        explanationEn: "The 1976 policy raised female marriage age from 15 to 18 years and male marriage age from 18 to 21 years."
-      },
       {
         question: "विश्व में राष्ट्रीय स्तर पर परिवार नियोजन कार्यक्रम शुरू करने वाला प्रथम देश कौन सा है?",
         questionEn: "Which is the first country in the world to launch a national family planning programme?",
-        options: ["A. चीन", "B. भारत", "C. अमेरिका", "D. जापान"],
-        optionsEn: ["A. China", "B. India", "C. USA", "D. Japan"],
+        answer: "भारत विश्व का पहला देश है जिसने वर्ष 1952 में राष्ट्रीय स्तर पर परिवार नियोजन कार्यक्रम शुरू किया था।",
+        answerEn: "India is the first country in the world to launch a national family planning programme in 1952."
+      },
+      {
+        question: "राष्ट्रीय जनसंख्या नीति 2000 (NPP-2000) किस समिति की सिफारिशों पर आधारित थी?",
+        questionEn: "On which committee's recommendations was the National Population Policy 2000 drafted?",
+        answer: "NPP-2000 का मसौदा प्रसिद्ध कृषि वैज्ञानिक डॉ. एम. एस. स्वामीनाथन की अध्यक्षता वाली विशेषज्ञ समिति की रिपोर्ट पर आधारित था।",
+        answerEn: "NPP-2000 was drafted based on the expert committee report headed by Dr. M.S. Swaminathan."
+      },
+      {
+        question: "काहिरा मॉडल (Cairo Model 1996) का मुख्य सिद्धांत क्या है?",
+        questionEn: "What is the core principle of the Cairo Model (1996)?",
+        answer: "काहिरा मॉडल के तहत आबादी नियंत्रण हेतु कोई दबाव या जबरदस्ती नहीं डाली जाती, बल्कि शिक्षा व स्वास्थ्य सेवाओं के ज़रिए स्वेच्छा से छोटे परिवार के प्रति जागरूकता फैलाई जाती है।",
+        answerEn: "The Cairo Model emphasizes voluntary family planning through female education and reproductive healthcare empowerment rather than coercive targets."
+      },
+      {
+        question: "राष्ट्रीय जनसंख्या आयोग के अध्यक्ष कौन होते हैं?",
+        questionEn: "Who is the ex-officio Chairman of the National Commission on Population?",
+        answer: "मई 2000 में गठित राष्ट्रीय जनसंख्या आयोग के पदेन अध्यक्ष भारत के प्रधानमंत्री होते हैं।",
+        answerEn: "The Prime Minister of India is the ex-officio Chairman of the National Commission on Population."
+      },
+      {
+        question: "संविधान समीक्षा आयोग (NCRWC) ने जनसंख्या नियंत्रण हेतु किस अनुच्छेद को जोड़ने का सुझाव दिया था?",
+        questionEn: "Which Article did the NCRWC recommend adding to the Constitution for population control?",
+        answer: "NCRWC (जस्टिस वेंकटचेलैया आयोग) ने संविधान के नीति निर्देशक तत्वों में अनुच्छेद 47A (Article 47A) जोड़ने का सुझाव दिया था।",
+        answerEn: "NCRWC recommended inserting Article 47A into the Directive Principles of State Policy for population control."
+      },
+      {
+        question: "जनगणना 2011 के अनुसार भारत की कुल जनसंख्या और साक्षरता दर क्या थी?",
+        questionEn: "What was India's total population and literacy rate according to Census 2011?",
+        answer: "2011 की जनगणना के अनुसार भारत की कुल जनसंख्या 1,21,08,54,977 (121.08 करोड़) और साक्षरता दर 73.0% (पुरुष 80.9%, महिला 64.6%) थी।",
+        answerEn: "According to Census 2011, India's total population was 121.08 crore and literacy rate was 73.0% (Male 80.9%, Female 64.6%)."
+      },
+      {
+        question: "जनसंख्या स्थायित्व का दीर्घकालिक लक्ष्य किस वर्ष तक रखा गया है?",
+        questionEn: "What is the target year for achieving population stabilization under NPP-2000?",
+        answer: "राष्ट्रीय जनसंख्या नीति 2000 के तहत वर्ष 2045 तक भारत की जनसंख्या में स्थायित्व (Population Stabilization) प्राप्त करने का लक्ष्य रखा गया है।",
+        answerEn: "NPP-2000 targeted achieving population stabilization by the year 2045."
+      },
+      {
+        question: "MPPSC मुख्य परीक्षा में जनसंख्या नीति से संबंधित प्रश्न किस पेपर में आते हैं?",
+        questionEn: "In which MPPSC Mains paper are questions on Population Policy asked?",
+        answer: "MPPSC Mains GS Paper-1 (भूगोल व जनसांख्यिकी) एवं GS Paper-2 (सामाजिक क्षेत्र व स्वास्थ्य) में जनसंख्या नीति, 2011 जनगणना व जनसांख्यिकीय लाभांश पर 5 व 11 अंकों के प्रश्न पूछे जाते हैं।",
+        answerEn: "In MPPSC Mains, 5-mark and 11-mark questions appear in GS Paper-1 (Demography) and GS Paper-2 (Social Sector & Health)."
+      }
+    ],
+
+    /* ────────────── BILINGUAL MCQS ────────────── */
+    mcqs: [
+      {
+        question: "भारत में पहली बार राष्ट्रीय स्तर पर परिवार नियोजन कार्यक्रम किस वर्ष शुरू किया गया था?",
+        questionEn: "In which year was the national family planning programme launched in India?",
+        options: ["A. 1947", "B. 1952", "C. 1966", "D. 1976"],
+        optionsEn: ["A. 1947", "B. 1952", "C. 1966", "D. 1976"],
         correctIndex: 1,
         explanation: "भारत वर्ष 1952 में राष्ट्रीय स्तर पर परिवार नियोजन कार्यक्रम लागू करने वाला दुनिया का पहला देश बना था।",
-        explanationEn: "India was the first country in the world to launch a national family planning programme in 1952."
+        explanationEn: "India became the first country in the world to launch a national family planning programme in 1952."
       },
       {
-        question: "राष्ट्रीय जनसंख्या नीति 2000 के तहत शिशु मृत्यु दर (IMR) को घटाकर कितना लाने का लक्ष्य रखा गया था?",
-        questionEn: "What target was set for Infant Mortality Rate (IMR) under NPP-2000?",
-        options: ["A. प्रति 1000 पर 50 से कम", "B. प्रति 1000 पर 30 से कम", "C. प्रति 1000 पर 20 से कम", "D. प्रति 1000 पर 10 से कम"],
-        optionsEn: ["A. Below 50 per 1000", "B. Below 30 per 1000", "C. Below 20 per 1000", "D. Below 10 per 1000"],
+        question: "राष्ट्रीय जनसंख्या नीति 2000 का मसौदा किस विशेषज्ञ समिति की रिपोर्ट पर आधारित था?",
+        questionEn: "On which expert committee's report was the National Population Policy 2000 drafted?",
+        options: ["A. कस्तूरीरंगन समिति", "B. डॉ. एम. एस. स्वामीनाथन समिति", "C. केेलकर समिति", "D. वेंकटचेलैया आयोग"],
+        optionsEn: ["A. Kasturirangan Committee", "B. Dr. M.S. Swaminathan Committee", "C. Kelkar Committee", "D. Venkatachaliah Commission"],
         correctIndex: 1,
-        explanation: "NPP-2000 में शिशु मृत्यु दर (IMR) को प्रति 1,000 जीवित जन्मों पर 30 से कम करने का सामाजिक लक्ष्य रखा गया था।",
-        explanationEn: "NPP-2000 aimed to reduce Infant Mortality Rate (IMR) below 30 per 1,000 live births."
+        explanation: "NPP-2000 का मसौदा डॉ. एम. एस. स्वामीनाथन की अध्यक्षता वाली समिति की सिफारिशों पर आधारित था।",
+        explanationEn: "NPP-2000 was drafted based on the recommendations of the Dr. M.S. Swaminathan Expert Committee."
       },
       {
-        question: "भारत के 145 उच्च प्रजनन दर वाले जिलों में परिवार नियोजन पहुँच बढ़ाने हेतु कौन सा मिशन शुरू किया गया है?",
-        questionEn: "Which mission was launched to improve family planning access in 145 high-fertility districts?",
-        options: ["A. मिशन परिवार विकास", "B. राष्ट्रीय स्वास्थ्य मिशन", "C. मिशन इन्द्रधनुष", "D. जननी सुरक्षा योजना"],
-        optionsEn: ["A. Mission Parivar Vikas", "B. National Health Mission", "C. Mission Indradhanush", "D. Janani Suraksha Yojana"],
-        correctIndex: 0,
-        explanation: "वर्ष 2016 में केंद्र सरकार द्वारा 145 उच्च TFR जिलों में 'मिशन परिवार विकास' शुरू किया गया था।",
-        explanationEn: "Mission Parivar Vikas was launched in 2016 targeting 145 high-fertility districts across 7 states."
+        question: "भारत में जनसंख्या नियंत्रण हेतु 'काहिरा मॉडल (Cairo Model)' किस वर्ष से लागू है?",
+        questionEn: "Since which year has the Cairo Model of population control been in effect in India?",
+        options: ["A. 1976", "B. 1985", "C. 1996", "D. 2000"],
+        optionsEn: ["A. 1976", "B. 1985", "C. 1996", "D. 2000"],
+        correctIndex: 2,
+        explanation: "भारत में 1996 से काहिरा मॉडल लागू है, जो बिना किसी दबाव के शिक्षा व जागरूकता के जरिए जनसंख्या नियंत्रण पर बल देता है।",
+        explanationEn: "India adopted the Cairo Model in 1996, focusing on voluntary family planning through education and health."
+      },
+      {
+        question: "मई 2000 में गठित राष्ट्रीय जनसंख्या आयोग की अध्यक्षता किसके द्वारा की जाती है?",
+        questionEn: "Who chairpersons the National Commission on Population established in May 2000?",
+        options: ["A. केंद्रीय स्वास्थ्य मंत्री", "B. भारत के राष्ट्रपति", "C. भारत के प्रधानमंत्री", "D. नीति आयोग के उपाध्यक्ष"],
+        optionsEn: ["A. Union Health Minister", "B. President of India", "C. Prime Minister of India", "D. Vice Chairman of NITI Aayog"],
+        correctIndex: 2,
+        explanation: "राष्ट्रीय जनसंख्या आयोग के पदेन अध्यक्ष भारत के प्रधानमंत्री होते हैं।",
+        explanationEn: "The Prime Minister of India is the ex-officio Chairman of the National Commission on Population."
+      },
+      {
+        question: "जनगणना 2011 के अनुसार भारत का लिंगानुपात (Sex Ratio) कितना दर्ज किया गया था?",
+        questionEn: "What was India's Sex Ratio according to Census 2011?",
+        options: ["A. 933 / 1000", "B. 940 / 1000", "C. 943 / 1000", "D. 950 / 1000"],
+        optionsEn: ["A. 933 / 1000", "B. 940 / 1000", "C. 943 / 1000", "D. 950 / 1000"],
+        correctIndex: 2,
+        explanation: "जनगणना 2011 के अनुसार भारत का लिंगानुपात 943 महिलाएँ प्रति 1,000 पुरुष था।",
+        explanationEn: "According to Census 2011, India's sex ratio was recorded at 943 females per 1,000 males."
+      },
+      {
+        question: "संविधान समीक्षा आयोग (NCRWC) ने संविधान में किस अनुच्छेद को जोड़ने की सिफारिश की थी?",
+        questionEn: "Which Article was recommended by NCRWC to be inserted into the Constitution?",
+        options: ["A. अनुच्छेद 21A", "B. अनुच्छेद 47A", "C. अनुच्छेद 51A", "D. अनुच्छेद 300A"],
+        optionsEn: ["A. Article 21A", "B. Article 47A", "C. Article 51A", "D. Article 300A"],
+        correctIndex: 1,
+        explanation: "NCRWC ने नीति निर्देशक तत्वों में जनसंख्या नियंत्रण हेतु अनुच्छेद 47A जोड़ने का सुझाव दिया था।",
+        explanationEn: "NCRWC recommended inserting Article 47A under Directive Principles of State Policy for population control."
+      },
+      {
+        question: "जनगणना 2011 के अनुसार भारत का जनसंख्या घनत्व (Population Density) कितना दर्ज किया गया था?",
+        questionEn: "What was India's Population Density according to Census 2011?",
+        options: ["A. 325 प्रति किमी²", "B. 350 प्रति किमी²", "C. 382 प्रति किमी²", "D. 415 प्रति किमी²"],
+        optionsEn: ["A. 325 per sq km", "B. 350 per sq km", "C. 382 per sq km", "D. 415 per sq km"],
+        correctIndex: 2,
+        explanation: "2011 में भारत का जनसंख्या घनत्व 382 व्यक्ति प्रति वर्ग किलोमीटर दर्ज किया गया (जो 2001 में 325 था)।",
+        explanationEn: "India's population density in Census 2011 was 382 persons per sq km, up from 325 in 2001."
+      },
+      {
+        question: "राष्ट्रीय जनसंख्या नीति 2000 के अनुसार किस वर्ष तक जनसंख्या स्थिरता प्राप्त करने का दीर्घकालिक लक्ष्य है?",
+        questionEn: "Under NPP-2000, what is the long-term target year for achieving population stabilization?",
+        options: ["A. 2030", "B. 2040", "C. 2045", "D. 2050"],
+        optionsEn: ["A. 2030", "B. 2040", "C. 2045", "D. 2050"],
+        correctIndex: 2,
+        explanation: "NPP-2000 का दीर्घकालिक लक्ष्य वर्ष 2045 तक सतत विकास के अनुरूप जनसंख्या स्थायित्व प्राप्त करना है।",
+        explanationEn: "NPP-2000 set the long-term target of population stabilization by the year 2045."
       }
     ]
   };
 
-  console.log(`📝 Syncing Fully Bilingual India Population Policy Article "${articleDoc._id}" to Sanity CMS...`);
+  console.log(`📝 Syncing Fully Expanded Bilingual Article "${articleDoc._id}" to Sanity CMS...`);
   const res = await client.createOrReplace(articleDoc);
-  console.log(`🎉 SUCCESS! Fully Bilingual Article uploaded & published in Sanity CMS. Document ID: ${res._id}`);
+  console.log(`🎉 SUCCESS! Fully Expanded Article uploaded & published in Sanity CMS. Document ID: ${res._id}`);
   console.log(`URL slug: ${res.slug.current}`);
 }
 
 main().catch((err) => {
-  console.error("❌ Error uploading India Population Policy article:", err);
+  console.error("❌ Error uploading Population Policy article:", err);
   process.exit(1);
 });
