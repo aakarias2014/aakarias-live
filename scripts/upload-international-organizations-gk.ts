@@ -25,7 +25,7 @@ const client = createClient({
 });
 
 async function main() {
-  console.log("🚀 Starting upload for International Organizations and Their Headquarters GK Article...");
+  console.log("🚀 Starting upload for Ultimate SEO Optimized International Organizations Article...");
 
   const publicBlogDir = path.resolve(process.cwd(), "public/images/blog");
   const artifactDir = "/Users/aakariastech/.gemini/antigravity-ide/brain/46ddf059-c542-4af1-8a30-e0605b309cce";
@@ -61,24 +61,24 @@ async function main() {
   const articleDoc = {
     _id: docId,
     _type: "staticGk",
-    title: "अंतर्राष्ट्रीय संगठन एवं उनके मुख्यालय: संपूर्ण सूची, ट्रिक्स व नोट्स | MPPSC & UPSC Notes",
-    titleEn: "International Organizations and Their Headquarters: Complete List, Memory Tricks & Notes | MPPSC & UPSC",
+    title: "अंतर्राष्ट्रीय संगठन एवं उनके मुख्यालय: संपूर्ण सूची, स्थापना वर्ष, अध्यक्ष, रिपोर्ट व ट्रिक्स | MPPSC & UPSC Notes",
+    titleEn: "International Organizations and Their Headquarters, Establishment Year, Current Chiefs & Reports List | MPPSC & UPSC",
     slug: { _type: "slug", current: slug },
     category: { _type: "reference", _ref: "cat-misc" }, // General Awareness Misc
     ca_date: "2026-07-29",
     publishedAt: new Date().toISOString(),
     featured: true,
-    readingTime: 8,
+    readingTime: 12,
     tags: [
       { _type: "reference", _ref: "tag-mppsc" },
       { _type: "reference", _ref: "tag-upsc" },
       { _type: "reference", _ref: "tag-prelims" },
       { _type: "reference", _ref: "tag-mains" },
     ],
-    excerpt: "अंतर्राष्ट्रीय संगठन (UN, WHO, WTO, UNESCO, IMF, World Bank, NATO, SAARC, ASEAN, IAEA) एवं उनके मुख्यालयों की संपूर्ण अद्यतन सूची, शहरवार ट्रिक्स, FAQs तथा MPPSC व UPSC परीक्षा हेतु उपयोगी प्रश्न।",
-    excerptEn: "Complete updated list of major International Organizations and their Headquarters (UN, WHO, WTO, UNESCO, IMF, World Bank, NATO, SAARC, ASEAN, IAEA), city-wise memory tricks, FAQs and MCQs for MPPSC & UPSC exams.",
-    seoTitle: "अंतर्राष्ट्रीय संगठन एवं उनके मुख्यालय | International Organizations and Headquarters | MPPSC & UPSC Notes",
-    seoDescription: "अंतर्राष्ट्रीय संगठन एवं उनके मुख्यालय की संपूर्ण सूची। UN, WHO, WTO, UNESCO, IMF, World Bank, NATO, SAARC, ASEAN, IAEA सहित सभी महत्वपूर्ण संगठन। MPPSC, UPSC, SSC एवं अन्य प्रतियोगी परीक्षाओं के लिए उपयोगी नोट्स।",
+    excerpt: "अंतर्राष्ट्रीय संगठन (UN, WHO, WTO, UNESCO, IMF, World Bank, NATO, SAARC, ASEAN, IAEA, ADB, NDB, SCO) एवं उनके मुख्यालयों, स्थापना वर्ष, वर्तमान अध्यक्ष 2026, प्रमुख रिपोर्ट तथा भारत के राष्ट्रीय संगठनों (ISRO, DRDO, RBI, SEBI, NABARD) की संपूर्ण सूची, ट्रिक्स, FAQs व MCQs। MPPSC & UPSC परीक्षा नोट्स।",
+    excerptEn: "Comprehensive master guide on International Organizations & Headquarters, establishment years, current chiefs 2026, member countries, major reports (WB, IMF, WEF, UNDP), Indian organizations (ISRO, DRDO, RBI, SEBI, NABARD), memory tricks, FAQs and MCQs for MPPSC & UPSC exams.",
+    seoTitle: "अंतर्राष्ट्रीय संगठन एवं उनके मुख्यालय | International Organizations & Headquarters | MPPSC & UPSC",
+    seoDescription: "अंतर्राष्ट्रीय संगठन एवं उनके मुख्यालय, स्थापना वर्ष, वर्तमान अध्यक्ष 2026 व जारी रिपोर्ट की संपूर्ण सूची। UN, WHO, WTO, UNESCO, IMF, World Bank, NATO, SAARC, ASEAN, IAEA, ISRO, DRDO नोट्स। MPPSC, UPSC, SSC हेतु ट्रिक्स व MCQs।",
     keywords: [
       "अंतर्राष्ट्रीय संगठन",
       "International Organizations",
@@ -93,13 +93,18 @@ async function main() {
       "SAARC Headquarters",
       "ASEAN Headquarters",
       "IAEA Headquarters",
+      "अंतर्राष्ट्रीय संगठन और उनके मुख्यालय pdf",
+      "अंतर्राष्ट्रीय संगठन और उनके मुख्यालय और स्थापना वर्ष",
+      "अंतर्राष्ट्रीय संगठन pdf",
+      "भारत के प्रमुख संगठन और उनके मुख्यालय",
+      "विश्व के प्रमुख संगठन और उनके अध्यक्ष 2026",
+      "world ke pramukh sangathan aur unke mukhyalay",
+      "pramukh sangathan aur unke mukhyalay pdf",
+      "international organizations and their reports upsc",
+      "international organizations and their member countries",
       "MPPSC Notes",
       "UPSC Notes",
-      "International Organizations List",
-      "International Organizations and Their Headquarters",
-      "International Organizations PDF",
-      "GK Notes",
-      "Current Affairs Notes"
+      "GK Notes"
     ],
     featuredImage: {
       _type: "image",
@@ -108,13 +113,14 @@ async function main() {
     },
 
     body: [
+      /* ── Intro ── */
       {
         _type: "block",
         style: "normal",
         children: [
           {
             _type: "span",
-            text: "अंतर्राष्ट्रीय संगठन (International Organizations) वैश्विक स्तर पर शांति, सुरक्षा, व्यापार, स्वास्थ्य, शिक्षा, मानवाधिकार, आर्थिक विकास तथा पर्यावरण संरक्षण जैसे महत्वपूर्ण क्षेत्रों में सहयोग स्थापित करने के लिए बनाए गए हैं। विभिन्न प्रतियोगी परीक्षाओं जैसे ",
+            text: "अंतर्राष्ट्रीय संगठन (International Organizations) वैश्विक स्तर पर शांति, सुरक्षा, व्यापार, स्वास्थ्य, शिक्षा, मानवाधिकार, आर्थिक विकास तथा पर्यावरण संरक्षण जैसे महत्वपूर्ण क्षेत्रों में सहयोग स्थापित करने के लिए बनाए गए संप्रभु राज्यों या अंतर-सरकारी निकायों का समूह हैं। विभिन्न प्रतियोगी परीक्षाओं जैसे ",
           },
           {
             _type: "span",
@@ -123,7 +129,7 @@ async function main() {
           },
           {
             _type: "span",
-            text: " तथा अन्य राज्य लोक सेवा आयोगों में इन संगठनों के मुख्यालय (Headquarters) से संबंधित प्रश्न नियमित रूप से पूछे जाते हैं। इसलिए इनका अध्ययन परीक्षा की दृष्टि से अत्यंत महत्वपूर्ण है।",
+            text: " तथा अन्य राज्य लोक सेवा आयोगों में इन संगठनों के मुख्यालय (Headquarters), स्थापना वर्ष, वर्तमान अध्यक्ष/प्रमुख (Current Chiefs 2026), सदस्य देशों की संख्या तथा जारी की जाने वाली प्रमुख रिपोर्टों (Reports) से संबंधित प्रश्न नियमित रूप से पूछे जाते हैं।",
           },
         ],
       },
@@ -133,16 +139,16 @@ async function main() {
         children: [
           {
             _type: "span",
-            text: "इस लेख में प्रमुख अंतर्राष्ट्रीय संगठनों एवं उनके मुख्यालय की अद्यतन सूची दी गई है, जिसे आप आसानी से याद कर सकते हैं।",
+            text: "इस लेख में विश्व के प्रमुख अंतर्राष्ट्रीय संगठनों एवं उनके मुख्यालयों की अद्यतन मास्टर सूची (Master List 2026), शहरवार याद रखने की आसान ट्रिक्स (Memory Tricks), अंतर्राष्ट्रीय संगठनों द्वारा जारी रिपोर्ट, भारत के प्रमुख राष्ट्रीय संगठन (ISRO, DRDO, RBI, SEBI, NABARD) तथा अभ्यास हेतु वस्तुनिष्ठ प्रश्न (MCQs) शामिल किए गए हैं।",
           },
         ],
       },
 
-      /* ── 1. Main List & Table ── */
+      /* ── 1. Comprehensive Master Table ── */
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "1. प्रमुख अंतर्राष्ट्रीय संगठन एवं उनके मुख्यालय (Complete List & Table)" }],
+        children: [{ _type: "span", text: "1. विश्व के प्रमुख अंतर्राष्ट्रीय संगठन, मुख्यालय, स्थापना वर्ष व अध्यक्ष (Master List 2026)" }],
       },
       {
         _type: "image",
@@ -152,43 +158,121 @@ async function main() {
       },
       {
         _type: "table",
-        caption: "प्रमुख अंतर्राष्ट्रीय संगठन एवं उनके मुख्यालय (International Organizations & Headquarters Table)",
-        headers: ["संगठन (Organization)", "मुख्यालय (Headquarters)"],
+        caption: "विश्व के प्रमुख अंतर्राष्ट्रीय संगठन, मुख्यालय, स्थापना वर्ष, अध्यक्ष व कुल सदस्य (Master Table 2026)",
+        headers: ["संगठन (Organization)", "मुख्यालय (Headquarters)", "स्थापना वर्ष (Year)", "वर्तमान अध्यक्ष / प्रमुख (2026)", "सदस्य (Members)"],
         rows: [
-          ["**संयुक्त राष्ट्र (UN)**", "न्यूयॉर्क (अमेरिका)"],
-          ["**संयुक्त राष्ट्र बाल आपात कोष (UNICEF)**", "न्यूयॉर्क (अमेरिका)"],
-          ["**संयुक्त राष्ट्र जनसंख्या कोष (UNFPA)**", "न्यूयॉर्क (अमेरिका)"],
-          ["**संयुक्त राष्ट्र व्यापार एवं विकास सम्मेलन (UNCTAD)**", "जेनेवा (स्विट्जरलैंड)"],
-          ["**विश्व स्वास्थ्य संगठन (WHO)**", "जेनेवा (स्विट्जरलैंड)"],
-          ["**अंतर्राष्ट्रीय श्रम संगठन (ILO)**", "जेनेवा (स्विट्जरलैंड)"],
-          ["**विश्व व्यापार संगठन (WTO)**", "जेनेवा (स्विट्जरलैंड)"],
-          ["**विश्व मौसम विज्ञान संगठन (WMO)**", "जेनेवा (स्विट्जरलैंड)"],
-          ["**विश्व बौद्धिक संपदा संगठन (WIPO)**", "जेनेवा (स्विट्जरलैंड)"],
-          ["**अंतर्राष्ट्रीय मानकीकरण संगठन (ISO)**", "जेनेवा (स्विट्जरलैंड)"],
-          ["**संयुक्त राष्ट्र शैक्षिक, वैज्ञानिक एवं सांस्कृतिक संगठन (UNESCO)**", "पेरिस (फ्रांस)"],
-          ["**एमनेस्टी इंटरनेशनल (Amnesty International)**", "लंदन (यूके)"],
-          ["**खाद्य एवं कृषि संगठन (FAO)**", "रोम (इटली)"],
-          ["**उत्तर अटलांटिक संधि संगठन (NATO)**", "ब्रुसेल्स (बेल्जियम)"],
-          ["**ट्रांसपेरेंसी इंटरनेशनल (Transparency International)**", "बर्लिन (जर्मनी)"],
-          ["**दक्षिण एशियाई क्षेत्रीय सहयोग संगठन (SAARC)**", "काठमांडू (नेपाल)"],
-          ["**दक्षिण-पूर्व एशियाई राष्ट्रों का संगठन (ASEAN)**", "जकार्ता (इंडोनेशिया)"],
-          ["**एशिया-प्रशांत आर्थिक सहयोग (APEC)**", "सिंगापुर (सचिवालय)"],
-          ["**विश्व आर्थिक मंच (WEF)**", "जेनेवा (स्विट्जरलैंड)"],
-          ["**संयुक्त राष्ट्र औद्योगिक विकास संगठन (UNIDO)**", "वियना (ऑस्ट्रिया)"],
-          ["**अंतर्राष्ट्रीय परमाणु ऊर्जा एजेंसी (IAEA)**", "वियना (ऑस्ट्रिया)"],
-          ["**पेट्रोलियम निर्यातक देशों का संगठन (OPEC)**", "वियना (ऑस्ट्रिया)"],
-          ["**अंतर्राष्ट्रीय मुद्रा कोष (IMF)**", "वॉशिंगटन डी.सी. (अमेरिका)"],
-          ["**विश्व बैंक (World Bank)**", "वॉशिंगटन डी.सी. (अमेरिका)"],
-          ["**अंतर्राष्ट्रीय न्यायालय (ICJ)**", "द हेग (नीदरलैंड)"],
-          ["**अंतर्राष्ट्रीय कृषि विकास निधि (IFAD)**", "रोम (इटली)"]
+          ["**संयुक्त राष्ट्र संघ (UN)**", "न्यूयॉर्क (अमेरिका)", "24 अक्टूबर 1945", "**एंटोनियो गुटेरेस (Antonio Guterres)**", "193"],
+          ["**विश्व स्वास्थ्य संगठन (WHO)**", "जेनेवा (स्विट्जरलैंड)", "7 अप्रैल 1948", "**डॉ. टेड्रोस एडहानॉम (Tedros Adhanom)**", "194"],
+          ["**विश्व व्यापार संगठन (WTO)**", "जेनेवा (स्विट्जरलैंड)", "1 जनवरी 1995", "**नगोजी ओकोंजो-इवेला (Ngozi Okonjo-Iweala)**", "164"],
+          ["**अंतर्राष्ट्रीय मुद्रा कोष (IMF)**", "वॉशिंगटन डी.सी. (अमेरिका)", "27 दिसंबर 1945", "**क्रिस्टालिना जॉर्जीवा (Kristalina Georgieva)**", "190"],
+          ["**विश्व बैंक (World Bank)**", "वॉशिंगटन डी.सी. (अमेरिका)", "जुलाई 1944 (ब्रेटन वुड्स)", "**अजय बंगा (Ajay Banga)**", "189"],
+          ["**यूनेस्को (UNESCO)**", "पेरिस (फ्रांस)", "16 नवंबर 1945", "**ऑड्रे अज़ोले (Audrey Azoulay)**", "194"],
+          ["**उत्तर अटलांटिक संधि संगठन (NATO)**", "ब्रुसेल्स (बेल्जियम)", "4 अप्रैल 1949", "**मार्क रुट्टे (Mark Rutte)**", "32"],
+          ["**अंतर्राष्ट्रीय परमाणु ऊर्जा एजेंसी (IAEA)**", "वियना (ऑस्ट्रिया)", "29 जुलाई 1957", "**राफेल मारियानो ग्रॉसी (Rafael Grossi)**", "178"],
+          ["**खाद्य एवं कृषि संगठन (FAO)**", "रोम (इटली)", "16 अक्टूबर 1945", "**क्यू डोंगयु (Qu Dongyu)**", "195"],
+          ["**अंतर्राष्ट्रीय न्यायालय (ICJ)**", "द हेग (नीदरलैंड)", "26 जून 1945", "**नवाफ सलाम (Nawaf Salam)**", "193 (UN)"],
+          ["**दक्षिण एशियाई क्षेत्रीय सहयोग संगठन (SAARC)**", "काठमांडू (नेपाल)", "8 दिसंबर 1985", "**गोलाम सरवर (Golam Sarwar)**", "8"],
+          ["**दक्षिण-पूर्व एशियाई राष्ट्रों का संगठन (ASEAN)**", "जकार्ता (इंडोनेशिया)", "8 अगस्त 1967", "**काओ किम होर्न (Kao Kim Hourn)**", "10"],
+          ["**अंतर्राष्ट्रीय श्रम संगठन (ILO)**", "जेनेवा (स्विट्जरलैंड)", "11 अप्रैल 1919", "**गिल्बर्ट एफ. होंगबो (Gilbert F. Houngbo)**", "187"],
+          ["**पेट्रोलियम निर्यातक देशों का संगठन (OPEC)**", "वियना (ऑस्ट्रिया)", "सितंबर 1960", "**हैथम अल घैस (Haitham Al Ghais)**", "12"],
+          ["**विश्व बौद्धिक संपदा संगठन (WIPO)**", "जेनेवा (स्विट्जरलैंड)", "14 जुलाई 1967", "**डैरेन टैंग (Daren Tang)**", "193"],
+          ["**एशियाई विकास बैंक (ADB)**", "मनीला (फिलिपींस)", "19 दिसंबर 1966", "**मात्सुगु असाकावा (Masatsugu Asakawa)**", "68"],
+          ["**न्यू डेवलपमेंट बैंक (NDB - BRICS)**", "शंघाई (चीन)", "15 जुलाई 2014", "**डिल्मा रूसेफ (Dilma Rousseff)**", "9"],
+          ["**एशियन इंफ्रास्ट्रक्चर इन्वेस्टमेंट बैंक (AIIB)**", "बीजिंग (चीन)", "16 जनवरी 2016", "**जिन लिकुन (Jin Liqun)**", "109"],
+          ["**शंघाई सहयोग संगठन (SCO)**", "बीजिंग (चीन)", "15 जून 2001", "**झांग मिंग (Zhang Ming)**", "10"],
+          ["**अंतर्राष्ट्रीय नागरिक उड्डयन संगठन (ICAO)**", "मॉन्ट्रियल (कनाडा)", "7 दिसंबर 1944", "**जुआन कार्लोस सालाजार**", "193"],
+          ["**अंतर्राष्ट्रीय समुद्री संगठन (IMO)**", "लंदन (यूके)", "17 मार्च 1948", "**आर्सेनियो डोमिंग्वेज**", "175"],
+          ["**अंतर्राष्ट्रीय मानकीकरण संगठन (ISO)**", "जेनेवा (स्विट्जरलैंड)", "23 फरवरी 1947", "**डॉ. सुंग ह्वान चो**", "170"],
+          ["**संयुक्त राष्ट्र पर्यावरण कार्यक्रम (UNEP)**", "नैरोबी (केन्या)", "5 जून 1972", "**इंगर एंडरसन (Inger Andersen)**", "193"],
+          ["**अंतर्राष्ट्रीय सौर गठबंधन (ISA)**", "गुरुग्राम (भारत)", "30 नवंबर 2015", "**डॉ. अजय माथुर (Dr. Ajay Mathur)**", "119+"],
+          ["**बिम्सटेक (BIMSTEC)**", "ढाका (बांग्लादेश)", "6 जून 1997", "**इन्द्र मणि पांडे (Indra Mani Pandey)**", "7"],
+          ["**एमनेस्टी इंटरनेशनल (Amnesty International)**", "लंदन (यूके)", "जुलाई 1961", "**एग्नेस कैलागार्ड**", "150+"],
+          ["**संयुक्त राष्ट्र बाल आपात कोष (UNICEF)**", "न्यूयॉर्क (अमेरिका)", "11 दिसंबर 1946", "**कैथरीन रसेल (Catherine Russell)**", "190"],
+          ["**संयुक्त राष्ट्र जनसंख्या कोष (UNFPA)**", "न्यूयॉर्क (अमेरिका)", "1969", "**नतालिया कानेम (Natalia Kanem)**", "150+"],
+          ["**संयुक्त राष्ट्र व्यापार एवं विकास सम्मेलन (UNCTAD)**", "जेनेवा (स्विट्जरलैंड)", "30 दिसंबर 1964", "**रेबेका ग्रिंस्पैन (Rebeca Grynspan)**", "195"],
+          ["**संयुक्त राष्ट्र औद्योगिक विकास संगठन (UNIDO)**", "वियना (ऑस्ट्रिया)", "17 नवंबर 1966", "**गेर्ड मुलर (Gerd Müller)**", "172"],
+          ["**विश्व मौसम विज्ञान संगठन (WMO)**", "जेनेवा (स्विट्जरलैंड)", "23 मार्च 1950", "**सेलेस्टे साउलो (Celeste Saulo)**", "193"],
+          ["**विश्व आर्थिक मंच (WEF)**", "जेनेवा (कलोजी, स्विट्जरलैंड)", "जनवरी 1971", "**क्लॉस श्वाब (Klaus Schwab)**", "गैर-सरकारी"],
+          ["**अंतर्राष्ट्रीय कृषि विकास निधि (IFAD)**", "रोम (इटली)", "15 दिसंबर 1977", "**अल्वारो लारियो (Alvaro Lario)**", "178"],
+          ["**ट्रांसपेरेंसी इंटरनेशनल (Transparency International)**", "बर्लिन (जर्मनी)", "मई 1993", "**फ्रैंकोइस वैलेरियन**", "100+"]
         ]
       },
 
-      /* ── 2. Memory Tricks ── */
+      /* ── 2. Reports Published by International Organizations (MPPSC & UPSC Special) ── */
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "2. परीक्षा की दृष्टि से महत्वपूर्ण शहरवार ट्रिक्स (City-wise Memory Tricks)" }],
+        children: [{ _type: "span", text: "2. अंतर्राष्ट्रीय संगठनों द्वारा जारी की जाने वाली प्रमुख रिपोर्ट्स (Reports List for MPPSC & UPSC)" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "MPPSC व UPSC प्रारम्भिक परीक्षा में प्रमुख अंतर्राष्ट्रीय संगठनों द्वारा प्रतिवर्ष जारी की जाने वाली सूचकांक व रिपोर्टों से संबंधित प्रश्न बार-बार पूछे जाते हैं:",
+          },
+        ],
+      },
+      {
+        _type: "table",
+        caption: "अंतर्राष्ट्रीय संगठन एवं उनके द्वारा प्रकाशित प्रमुख रिपोर्ट्स (Reports & Indexes Table)",
+        headers: ["अंतर्राष्ट्रीय संगठन (Organization)", "जारी की जाने वाली प्रमुख रिपोर्ट / सूचकांक (Key Reports & Indexes)"],
+        rows: [
+          ["**विश्व बैंक (World Bank)**", "• विश्व विकास रिपोर्ट (World Development Report)\n• ग्लोबल इकोनॉमिक प्रॉस्पेक्ट्स (Global Economic Prospects)"],
+          ["**अंतर्राष्ट्रीय मुद्रा कोष (IMF)**", "• वर्ल्ड इकोनॉमिक आउटलुक (World Economic Outlook - WEO)\n• ग्लोबल फाइनेंशियल स्टेबिलिटी रिपोर्ट (Global Financial Stability Report)"],
+          ["**विश्व आर्थिक मंच (WEF)**", "• ग्लोबल जेंडर गैप इंडेक्स (Global Gender Gap Report)\n• ग्लोबल कॉम्पिटिटिवनेस रिपोर्ट (Global Competitiveness Report)\n• ग्लोबल रिस्क रिपोर्ट (Global Risks Report)\n• एनर्जी ट्रांजिशन इंडेक्स (Energy Transition Index)"],
+          ["**संयुक्त राष्ट्र विकास कार्यक्रम (UNDP)**", "• मानव विकास सूचकांक (Human Development Index - HDI)\n• बहुआयामी गरीबी सूचकांक (Multidimensional Poverty Index - MPI)"],
+          ["**संयुक्त राष्ट्र पर्यावरण कार्यक्रम (UNEP)**", "• एमिशन गैप रिपोर्ट (Emissions Gap Report)\n• ग्लोबल एनवायरनमेंट आउटलुक (Global Environment Outlook)"],
+          ["**विश्व स्वास्थ्य संगठन (WHO)**", "• वर्ल्ड हेल्थ रिपोर्ट (World Health Report)\n• ग्लोबल ट्यूबरकुलोसिस (TB) रिपोर्ट"],
+          ["**विश्व बौद्धिक संपदा संगठन (WIPO)**", "• ग्लोबल इनोवेशन इंडेक्स (Global Innovation Index - GII)"],
+          ["**ट्रांसपेरेंसी इंटरनेशनल**", "• भ्रष्टाचार बोध सूचकांक (Corruption Perceptions Index - CPI)"],
+          ["**रिपोर्टर्स विदाउट बॉर्डर्स (RSF)**", "• विश्व प्रेस स्वतंत्रता सूचकांक (World Press Freedom Index)"],
+          ["**संयुक्त राष्ट्र सतत विकास समाधान नेटवर्क (SDSN)**", "• विश्व प्रसन्नता रिपोर्ट (World Happiness Report)"]
+        ]
+      },
+
+      /* ── 3. Major Indian Organizations & Headquarters ── */
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "3. भारत के प्रमुख राष्ट्रीय संगठन और उनके मुख्यालय (India's Key National Organizations & HQ)" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "प्रतियोगी परीक्षाओं में अंतर्राष्ट्रीय संगठनों के साथ-साथ भारत के प्रमुख संवैधानिक, विनियामक तथा अनुसंधान संगठनों के मुख्यालय भी पूछे जाते हैं:",
+          },
+        ],
+      },
+      {
+        _type: "table",
+        caption: "भारत के प्रमुख संगठन, मुख्यालय एवं स्थापना वर्ष (India National Organizations Table)",
+        headers: ["भारतीय संगठन (Organization)", "मुख्यालय (Headquarters)", "स्थापना वर्ष (Year)"],
+        rows: [
+          ["**भारतीय अंतरिक्ष अनुसंधान संगठन (ISRO)**", "बेंगलुरु (कर्नाटक)", "15 अगस्त 1969"],
+          ["**रक्षा अनुसंधान एवं विकास संगठन (DRDO)**", "नई दिल्ली", "1958"],
+          ["**भारतीय रिजर्व बैंक (RBI)**", "मुंबई (महाराष्ट्र)", "1 अप्रैल 1935 (कोलकाता ➔ मुंबई 1937)"],
+          ["**भारतीय प्रतिभूति एवं विनिमय बोर्ड (SEBI)**", "मुंबई (महाराष्ट्र)", "12 अप्रैल 1988 (अधिनियम 1992)"],
+          ["**राष्ट्रीय कृषि और ग्रामीण विकास बैंक (NABARD)**", "मुंबई (महाराष्ट्र)", "12 जुलाई 1982"],
+          ["**भारतीय लघु उद्योग विकास बैंक (SIDBI)**", "लखनऊ (उत्तर प्रदेश)", "2 अप्रैल 1990"],
+          ["**भाभा परमाणु अनुसंधान केंद्र (BARC)**", "ट्रॉम्बे, मुंबई (महाराष्ट्र)", "3 जनवरी 1954"],
+          ["**वैज्ञानिक एवं औद्योगिक अनुसंधान परिषद (CSIR)**", "नई दिल्ली", "26 सितंबर 1942"],
+          ["**नीति आयोग (NITI Aayog)**", "नई दिल्ली", "1 जनवरी 2015"],
+          ["**भारतीय जीवन बीमा निगम (LIC)**", "मुंबई (महाराष्ट्र)", "1 सितंबर 1956"],
+          ["**भारतीय बीमा विनियामक और विकास प्राधिकरण (IRDAI)**", "हैदराबाद (तेलंगाना)", "1999"],
+          ["**भारतीय दूरसंचार विनियामक प्राधिकरण (TRAI)**", "नई दिल्ली", "20 फरवरी 1997"]
+        ]
+      },
+
+      /* ── 4. Memory Tricks ── */
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "4. परीक्षा की दृष्टि से महत्वपूर्ण शहरवार ट्रिक्स (City-wise Memory Tricks)" }],
       },
       {
         _type: "image",
@@ -214,7 +298,7 @@ async function main() {
       {
         _type: "block",
         style: "normal",
-        children: [{ _type: "span", text: "💡 **ट्रिक**: \"जेनेवा = स्वास्थ्य + व्यापार + श्रम + मौसम + बौद्धिक संपदा\"" }],
+        children: [{ _type: "span", text: "💡 **ट्रिक**: \"जेनेवा = स्वास्थ्य (WHO) + व्यापार (WTO) + श्रम (ILO) + मौसम (WMO) + बौद्धिक संपदा (WIPO)\"" }],
       },
       {
         _type: "block",
@@ -224,7 +308,7 @@ async function main() {
       {
         _type: "block",
         style: "normal",
-        children: [{ _type: "span", text: "💡 **ट्रिक**: \"वियना = परमाणु + उद्योग + तेल\"" }],
+        children: [{ _type: "span", text: "💡 **ट्रिक**: \"वियना = परमाणु (IAEA) + उद्योग (UNIDO) + तेल (OPEC)\"" }],
       },
       {
         _type: "block",
@@ -234,7 +318,7 @@ async function main() {
       {
         _type: "block",
         style: "normal",
-        children: [{ _type: "span", text: "💡 **ट्रिक**: \"दुनिया का पैसा – वॉशिंगटन\"" }],
+        children: [{ _type: "span", text: "💡 **ट्रिक**: \"दुनिया का पैसा (वित्त) – वॉशिंगटन डी.सी.\"" }],
       },
       {
         _type: "block",
@@ -244,14 +328,14 @@ async function main() {
       {
         _type: "block",
         style: "normal",
-        children: [{ _type: "span", text: "💡 **ट्रिक**: \"कृषि और भोजन = रोम\"" }],
+        children: [{ _type: "span", text: "💡 **ट्रिक**: \"कृषि और भोजन = रोम (इटली)\"" }],
       },
 
-      /* ── 3. Quick Revision Notes ── */
+      /* ── 5. Quick Revision Notes ── */
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "3. MPPSC & UPSC परीक्षा हेतु Quick Revision Points" }],
+        children: [{ _type: "span", text: "5. MPPSC & UPSC परीक्षा हेतु High-Yield Revision Points" }],
       },
       {
         _type: "facts",
@@ -259,21 +343,21 @@ async function main() {
           { label: "न्यूयॉर्क मुख्यालय", value: "**UN, UNICEF, UNFPA**" },
           { label: "जेनेवा मुख्यालय", value: "**WHO, WTO, ILO, WMO, WIPO, ISO, UNCTAD, WEF**" },
           { label: "वियना मुख्यालय", value: "**IAEA, UNIDO, OPEC**" },
-          { label: "वॉशिंगटन डी.सी.", value: "**IMF, World Bank** (अंतर्राष्ट्रीय वित्तीय संस्थाएँ)" },
+          { label: "वॉशिंगटन डी.सी.", value: "**IMF, World Bank** (अंतर्राष्ट्रीय वित्तीय संस्थाएँ - ब्रेटन वुड्स जुड़वाँ)" },
           { label: "रोम मुख्यालय", value: "**FAO, IFAD** (खाद्य व कृषि)" },
           { label: "द हेग (नीदरलैंड)", value: "**अंतर्राष्ट्रीय न्यायालय (ICJ)**" },
           { label: "पेरिस (फ्रांस)", value: "**UNESCO**" },
           { label: "काठमांडू (नेपाल)", value: "**SAARC**" },
           { label: "जकार्ता (इंडोनेशिया)", value: "**ASEAN**" },
-          { label: "ब्रुसेल्स (बेल्जियम)", value: "**NATO**" },
+          { label: "गुरुग्राम (भारत)", value: "**अंतर्राष्ट्रीय सौर गठबंधन (ISA)**" },
         ]
       },
 
-      /* ── 4. Conclusion ── */
+      /* ── 6. Conclusion ── */
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "4. निष्कर्ष (Conclusion)" }],
+        children: [{ _type: "span", text: "6. निष्कर्ष (Conclusion)" }],
       },
       {
         _type: "block",
@@ -301,20 +385,20 @@ async function main() {
       {
         question: "संयुक्त राष्ट्र (UN) का मुख्यालय कहाँ स्थित है?",
         questionEn: "Where is the United Nations (UN) headquarters located?",
-        answer: "संयुक्त राष्ट्र (UN) का मुख्यालय न्यूयॉर्क (अमेरिका) में स्थित है।",
-        answerEn: "The headquarters of the United Nations (UN) is located in New York, USA."
+        answer: "संयुक्त राष्ट्र (UN) का मुख्यालय न्यूयॉर्क (अमेरिका) में स्थित है। इसकी स्थापना 24 अक्टूबर 1945 को हुई थी।",
+        answerEn: "The headquarters of the United Nations (UN) is located in New York, USA. It was established on October 24, 1945."
       },
       {
         question: "विश्व स्वास्थ्य संगठन (WHO) का मुख्यालय कहाँ है?",
         questionEn: "Where is the World Health Organization (WHO) headquarters located?",
-        answer: "विश्व स्वास्थ्य संगठन (WHO) का मुख्यालय जेनेवा, स्विट्जरलैंड में स्थित है।",
-        answerEn: "The headquarters of WHO is in Geneva, Switzerland."
+        answer: "विश्व स्वास्थ्य संगठन (WHO) का मुख्यालय जेनेवा, स्विट्जरलैंड में स्थित है। इसकी स्थापना 7 अप्रैल 1948 को हुई थी।",
+        answerEn: "The headquarters of WHO is in Geneva, Switzerland. It was established on April 7, 1948."
       },
       {
         question: "विश्व व्यापार संगठन (WTO) का मुख्यालय कहाँ स्थित है?",
         questionEn: "Where is the World Trade Organization (WTO) headquarters located?",
-        answer: "विश्व व्यापार संगठन (WTO) का मुख्यालय जेनेवा, स्विट्जरलैंड में स्थित है।",
-        answerEn: "The headquarters of WTO is located in Geneva, Switzerland."
+        answer: "विश्व व्यापार संगठन (WTO) का मुख्यालय जेनेवा, स्विट्जरलैंड में स्थित है। इसकी स्थापना 1 जनवरी 1995 को GATT के स्थान पर हुई थी।",
+        answerEn: "The headquarters of WTO is located in Geneva, Switzerland. Established on January 1, 1995."
       },
       {
         question: "UNESCO का मुख्यालय कहाँ है?",
@@ -323,28 +407,40 @@ async function main() {
         answerEn: "The headquarters of UNESCO is in Paris, France."
       },
       {
-        question: "IMF और विश्व बैंक का मुख्यालय कहाँ है?",
+        question: "IMF और विश्व बैंक का मुख्यालय कहाँ है और इन्हें क्या कहा जाता है?",
         questionEn: "Where are the headquarters of IMF and World Bank located?",
-        answer: "अंतर्राष्ट्रीय मुद्रा कोष (IMF) तथा विश्व बैंक (World Bank) दोनों का मुख्यालय वॉशिंगटन डी.सी., अमेरिका में स्थित है।",
-        answerEn: "The headquarters of both IMF and World Bank are located in Washington D.C., USA."
+        answer: "अंतर्राष्ट्रीय मुद्रा कोष (IMF) तथा विश्व बैंक (World Bank) दोनों का मुख्यालय वॉशिंगटन डी.सी., अमेरिका में स्थित है। इन दोनों को 1944 के सम्मेलन के कारण 'ब्रेटन वुड्स जुड़वाँ (Bretton Woods Twins)' कहा जाता है।",
+        answerEn: "The headquarters of both IMF and World Bank are located in Washington D.C., USA. They are known as Bretton Woods Twins."
       },
       {
         question: "NATO का मुख्यालय कहाँ स्थित है?",
         questionEn: "Where is NATO headquarters located?",
-        answer: "उत्तर अटलांटिक संधि संगठन (NATO) का मुख्यालय ब्रुसेल्स, बेल्जियम में स्थित है।",
-        answerEn: "The headquarters of NATO is located in Brussels, Belgium."
+        answer: "उत्तर अटलांटिक संधि संगठन (NATO) का मुख्यालय ब्रुसेल्स, बेल्जियम में स्थित है। वर्तमान में इसमें 32 सदस्य देश हैं।",
+        answerEn: "The headquarters of NATO is located in Brussels, Belgium. Currently it has 32 member countries."
       },
       {
         question: "SAARC का मुख्यालय कहाँ है?",
         questionEn: "Where is SAARC headquarters located?",
-        answer: "दक्षिण एशियाई क्षेत्रीय सहयोग संगठन (SAARC) का सचिवालय/मुख्यालय काठमांडू, नेपाल में स्थित है।",
-        answerEn: "The headquarters of SAARC is located in Kathmandu, Nepal."
+        answer: "दक्षिण एशियाई क्षेत्रीय सहयोग संगठन (SAARC) का सचिवालय/मुख्यालय काठमांडू, नेपाल में स्थित है। इसकी स्थापना 8 दिसंबर 1985 को हुई थी।",
+        answerEn: "The headquarters of SAARC is located in Kathmandu, Nepal. Established on December 8, 1985."
       },
       {
         question: "ASEAN का मुख्यालय कहाँ स्थित है?",
         questionEn: "Where is ASEAN headquarters located?",
         answer: "दक्षिण-पूर्व एशियाई राष्ट्रों के संगठन (ASEAN) का मुख्यालय जकार्ता, इंडोनेशिया में स्थित है।",
         answerEn: "The headquarters of ASEAN is located in Jakarta, Indonesia."
+      },
+      {
+        question: "अंतर्राष्ट्रीय सौर गठबंधन (ISA) का मुख्यालय कहाँ स्थित है?",
+        questionEn: "Where is International Solar Alliance (ISA) headquarters located?",
+        answer: "अंतर्राष्ट्रीय सौर गठबंधन (ISA) का मुख्यालय गुरुग्राम (हरियाणा, भारत) में स्थित है। यह भारत में स्थित पहला प्रमुख अंतर्राष्ट्रीय संगठन का मुख्यालय है।",
+        answerEn: "ISA headquarters is located in Gurugram, Haryana, India."
+      },
+      {
+        question: "भारत का ISRO और DRDO का मुख्यालय कहाँ स्थित है?",
+        questionEn: "Where are ISRO and DRDO headquarters located in India?",
+        answer: "ISRO का मुख्यालय बेंगलुरु (कर्नाटक) तथा DRDO का मुख्यालय नई दिल्ली में स्थित है।",
+        answerEn: "ISRO headquarters is in Bengaluru, Karnataka and DRDO headquarters is in New Delhi."
       }
     ],
 
@@ -405,13 +501,31 @@ async function main() {
         explanationEn: "NATO headquarters is situated in Brussels, Belgium."
       },
       {
-        question: "विश्व आर्थिक मंच (WEF) का मुख्यालय कहाँ स्थित है?",
-        questionEn: "Where is World Economic Forum (WEF) headquarters located?",
-        options: ["A. जेनेवा / कलोजी (स्विट्जरलैंड)", "B. वियना (ऑस्ट्रिया)", "C. न्यूयॉर्क (अमेरिका)", "D. लंदन (यूके)"],
-        optionsEn: ["A. Geneva / Cologny (Switzerland)", "B. Vienna (Austria)", "C. New York (USA)", "D. London (UK)"],
+        question: "विश्व आर्थिक मंच (WEF) द्वारा निम्न में से कौन सी रिपोर्ट प्रकाशित की जाती है?",
+        questionEn: "Which of the following reports is published by World Economic Forum (WEF)?",
+        options: ["A. ग्लोबल जेंडर गैप रिपोर्ट", "B. मानव विकास सूचकांक", "C. विश्व विकास रिपोर्ट", "D. वर्ल्ड इकोनॉमिक आउटलुक"],
+        optionsEn: ["A. Global Gender Gap Report", "B. Human Development Index", "C. World Development Report", "D. World Economic Outlook"],
         correctIndex: 0,
-        explanation: "विश्व आर्थिक मंच (WEF) का मुख्यालय जेनेवा (कलोजी), स्विट्जरलैंड में स्थित है।",
-        explanationEn: "WEF is headquartered in Cologny/Geneva, Switzerland."
+        explanation: "ग्लोबल जेंडर गैप रिपोर्ट व ग्लोबल कॉम्पिटिटिवनेस रिपोर्ट विश्व आर्थिक मंच (WEF) द्वारा जारी की जाती है।",
+        explanationEn: "Global Gender Gap Report is published by the World Economic Forum (WEF)."
+      },
+      {
+        question: "भारतीय लघु उद्योग विकास बैंक (SIDBI) का मुख्यालय कहाँ स्थित है?",
+        questionEn: "Where is the headquarters of Small Industries Development Bank of India (SIDBI) located?",
+        options: ["A. लखनऊ (उत्तर प्रदेश)", "B. मुंबई (महाराष्ट्र)", "C. नई दिल्ली", "D. कोलकाता"],
+        optionsEn: ["A. Lucknow (Uttar Pradesh)", "B. Mumbai (Maharashtra)", "C. New Delhi", "D. Kolkata"],
+        correctIndex: 0,
+        explanation: "SIDBI का मुख्यालय लखनऊ (उत्तर प्रदेश) में स्थित है।",
+        explanationEn: "The headquarters of SIDBI is located in Lucknow, Uttar Pradesh."
+      },
+      {
+        question: "अंतर्राष्ट्रीय सौर गठबंधन (ISA) का मुख्यालय किस देश में स्थित है?",
+        questionEn: "In which country is the headquarters of International Solar Alliance (ISA) located?",
+        options: ["A. भारत (गुरुग्राम)", "B. फ्रांस (पेरिस)", "C. अमेरिका (न्यूयॉर्क)", "D. जापान (टोक्यो)"],
+        optionsEn: ["A. India (Gurugram)", "B. France (Paris)", "C. USA (New York)", "D. Japan (Tokyo)"],
+        correctIndex: 0,
+        explanation: "ISA का मुख्यालय गुरुग्राम (हरियाणा, भारत) में स्थित है।",
+        explanationEn: "ISA headquarters is located in Gurugram, Haryana, India."
       },
       {
         question: "संयुक्त राष्ट्र शैक्षिक, वैज्ञानिक एवं सांस्कृतिक संगठन (UNESCO) का मुख्यालय कहाँ स्थित है?",
@@ -425,7 +539,7 @@ async function main() {
     ]
   };
 
-  console.log(`📝 Creating and publishing staticGk document ID "${articleDoc._id}" to Sanity CMS...`);
+  console.log(`📝 Syncing Ultimate SEO Master Article "${articleDoc._id}" to Sanity CMS...`);
   const res = await client.createOrReplace(articleDoc);
   console.log(`🎉 SUCCESS! Article uploaded & published in Sanity CMS. Document ID: ${res._id}`);
   console.log(`URL slug: ${res.slug.current}`);
