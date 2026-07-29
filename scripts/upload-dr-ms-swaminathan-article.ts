@@ -61,13 +61,17 @@ async function main() {
     filename: "ms_swaminathan_bharat_ratna_ceremony_droupadi_murmu.jpg",
   });
 
-  console.log("🏷️ Seeding Inspirational Icons tag into Sanity...");
+  console.log("📂 Seeding Inspirational Icons category into Sanity...");
   await client.createOrReplace({
-    _id: "tag-inspirational-icons",
-    _type: "tag",
+    _id: "cat-inspirational-icons",
+    _type: "category",
     slug: { _type: "slug", current: "inspirational-icons" },
-    name: "महत्त्वपूर्ण व्यक्तित्व",
-    nameEn: "Inspirational Icons",
+    title: "महत्त्वपूर्ण व्यक्तित्व",
+    titleEn: "Inspirational Icons",
+    description: "महान व्यक्तित्व, विचारकों, वैज्ञानिकों, स्वतंत्रता सेनानियों एवं राष्ट्र निर्माताओं के जीवनी व योगदान पर आधारित नोट्स।",
+    descriptionEn: "Notes and comprehensive biographies on inspirational leaders, scientists, freedom fighters, and nation builders.",
+    color: { hex: "#f59e0b" },
+    icon: "user-check",
   });
 
   const docId = "gk-dr-ms-swaminathan-green-revolution";
@@ -79,7 +83,7 @@ async function main() {
     title: "डॉ. एम. एस. स्वामीनाथन: भारत में हरित क्रांति के जनक, जीवनी, स्वामीनाथन आयोग MSP रिपोर्ट, पुरस्कार व योगदान | MPPSC & UPSC Notes",
     titleEn: "Dr. M.S. Swaminathan: Father of Green Revolution in India, Biography, MSP Report, Awards & NPP-2000 | MPPSC & UPSC Notes",
     slug: { _type: "slug", current: slug },
-    category: { _type: "reference", _ref: "cat-misc" },
+    category: { _type: "reference", _ref: "cat-inspirational-icons" },
     ca_date: "2026-07-29",
     publishedAt: new Date().toISOString(),
     featured: true,
