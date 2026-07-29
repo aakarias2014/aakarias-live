@@ -25,7 +25,7 @@ const client = createClient({
 });
 
 async function main() {
-  console.log("🚀 Starting upload for India Population Policy Article to Sanity CMS...");
+  console.log("🚀 Cleaning and Uploading Humanized India Population Policy Article to Sanity CMS...");
 
   const publicBlogDir = path.resolve(process.cwd(), "public/images/blog");
   const artifactDir = "/Users/aakariastech/.gemini/antigravity-ide/brain/46ddf059-c542-4af1-8a30-e0605b309cce";
@@ -44,7 +44,7 @@ async function main() {
   if (fs.existsSync(srcInfographic)) fs.copyFileSync(srcInfographic, destInfographic);
   if (fs.existsSync(srcYouth)) fs.copyFileSync(srcYouth, destYouth);
 
-  console.log("📸 Uploading generated images to Sanity CMS...");
+  console.log("📸 Uploading images to Sanity CMS...");
   const assetHealth = await client.assets.upload("image", fs.createReadStream(destHealth), {
     filename: "india_population_policy_family_welfare_healthcare.png",
   });
@@ -61,7 +61,7 @@ async function main() {
   const articleDoc = {
     _id: docId,
     _type: "staticGk",
-    title: "भारत की जनसंख्या नीति: विकास, राष्ट्रीय जनसंख्या नीति 2000 (NPP-2000), जनसंख्या नियंत्रण व मुख्य प्रावधान | MPPSC & UPSC Notes",
+    title: "भारत की जनसंख्या नीति: विकास, राष्ट्रीय जनसंख्या नीति 2000 (NPP-2000) एवं प्रमुख प्रावधान | MPPSC & UPSC Notes",
     titleEn: "Population Policy of India: Evolution, National Population Policy 2000 (NPP-2000), Control Initiatives & Key Provisions | MPPSC & UPSC",
     slug: { _type: "slug", current: slug },
     category: { _type: "reference", _ref: "cat-misc" }, // General Studies / Misc
@@ -75,9 +75,9 @@ async function main() {
       { _type: "reference", _ref: "tag-prelims" },
       { _type: "reference", _ref: "tag-mains" },
     ],
-    excerpt: "भारत की जनसंख्या नीति का विकास (1952 से 2000), पहली राष्ट्रीय जनसंख्या नीति 1976, राष्ट्रीय जनसंख्या नीति 2000 (NPP-2000) के मुख्य उद्देश्य, लक्ष्य (TFR 2.1, 2045 स्थिरता), RCH कार्यक्रम, जनसंख्या नियंत्रण पहल, ट्रिक्स, FAQs व MCQs। MPPSC व UPSC परीक्षा हेतु संपूर्ण नोट्स।",
+    excerpt: "भारत की जनसंख्या नीति का विकास (1952 से 2000), पहली राष्ट्रीय जनसंख्या नीति 1976, राष्ट्रीय जनसंख्या नीति 2000 (NPP-2000) के मुख्य उद्देश्य, लक्ष्य (TFR 2.1, 2045 स्थिरता), RCH कार्यक्रम, हालिया पहल, ट्रिक्स, FAQs व MCQs। MPPSC व UPSC परीक्षा हेतु संपूर्ण नोट्स।",
     excerptEn: "Comprehensive exam notes on Population Policy of India, 1952 Family Planning, 1976 Policy, National Population Policy 2000 (NPP-2000) targets (TFR 2.1, 2045 stabilization, IMR/MMR), RCH programme, recent control initiatives, memory tricks, FAQs and MCQs for MPPSC & UPSC.",
-    seoTitle: "भारत की जनसंख्या नीति | National Population Policy 2000 & Control Initiatives | MPPSC & UPSC",
+    seoTitle: "भारत की जनसंख्या नीति | National Population Policy 2000 | MPPSC & UPSC Notes",
     seoDescription: "भारत की जनसंख्या नीति (NPP-2000), पहली जनसंख्या नीति 1976, परिवार नियोजन कार्यक्रम 1952, TFR 2.1 लक्ष्य, RCH कार्यक्रम व जनसंख्या नियंत्रण पहलों के संपूर्ण नोट्स। MPPSC & UPSC परीक्षा हेतु ट्रिक्स, FAQs व MCQs।",
     keywords: [
       "भारत की जनसंख्या नीति",
@@ -109,7 +109,7 @@ async function main() {
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "1. चर्चा में क्यों? एवं जनसंख्या नीति का अर्थ (Context & Definition of Population Policy)" }],
+        children: [{ _type: "span", text: "1. चर्चा में क्यों? एवं जनसंख्या नीति का अर्थ" }],
       },
       {
         _type: "block",
@@ -131,11 +131,11 @@ async function main() {
           {
             _type: "span",
             marks: ["strong"],
-            text: "MPPSC (प्रारम्भिक व मुख्य परीक्षा Paper-1/2), UPSC (GS Paper-1/2)",
+            text: "MPPSC (प्रारम्भिक व मुख्य परीक्षा) तथा UPSC",
           },
           {
             _type: "span",
-            text: " तथा SSC में भारत की जनसंख्या नीतियों एवं राष्ट्रीय जनसंख्या नीति 2000 से संबंधित प्रश्न नियमित रूप से पूछे जाते हैं।",
+            text: " में भारत की जनसंख्या नीतियों एवं राष्ट्रीय जनसंख्या नीति 2000 से संबंधित प्रश्न नियमित रूप से पूछे जाते हैं।",
           },
         ],
       },
@@ -145,16 +145,7 @@ async function main() {
         children: [
           {
             _type: "span",
-            text: "📌 ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "जनसंख्या नीति क्या है? (What is Population Policy?): ",
-          },
-          {
-            _type: "span",
-            text: "जनसंख्या नीति वह सुव्यवस्थित सरकारी नीति है जिसके माध्यम से जनसंख्या वृद्धि दर को नियंत्रित व संतुलित करना, प्रजनन दर (TFR) में कमी लाना, मातृ एवं शिशु स्वास्थ्य में सुधार करना तथा देश के भौतिक संसाधनों और मानव जनसंख्या के मध्य सतत संतुलन स्थापित करना मुख्य लक्ष्य होता है।",
+            text: "📌 **जनसंख्या नीति का अर्थ**: जनसंख्या नीति वह सुव्यवस्थित सरकारी नीति है जिसके माध्यम से जनसंख्या वृद्धि दर को नियंत्रित व संतुलित करना, प्रजनन दर (TFR) में कमी लाना, मातृ एवं शिशु स्वास्थ्य में सुधार करना तथा देश के भौतिक संसाधनों और मानव जनसंख्या के मध्य सतत संतुलन स्थापित करना मुख्य लक्ष्य होता है।",
           },
         ],
       },
@@ -163,13 +154,13 @@ async function main() {
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "2. भारत में जनसंख्या नीति का ऐतिहासिक विकास (Evolution of Population Policy in India: 1952–2000)" }],
+        children: [{ _type: "span", text: "2. भारत में जनसंख्या नीति का ऐतिहासिक विकास (1952 से 2000 तक)" }],
       },
       {
         _type: "image",
         asset: { _type: "reference", _ref: assetInfographic._id },
         alt: "Evolution of India Population Policy Timeline 1952 to National Population Policy 2000 MPPSC UPSC Notes",
-        caption: "भारत में जनसंख्या नीति का ऐतिहासिक क्रम: 1952 के राष्ट्रीय परिवार नियोजन से 2000 की राष्ट्रीय जनसंख्या नीति (NPP-2000) तक का सफर",
+        caption: "भारत में जनसंख्या नीति का ऐतिहासिक क्रम: 1952 के राष्ट्रीय परिवार नियोजन से 2000 की राष्ट्रीय जनसंख्या नीति तक का सफर",
       },
       {
         _type: "block",
@@ -183,8 +174,8 @@ async function main() {
       },
       {
         _type: "table",
-        caption: "भारत में जनसंख्या नीति एवं परिवार कल्याण कार्यक्रमों का विकास क्रम (Timeline Table)",
-        headers: ["वर्ष (Year)", "महत्वपूर्ण पहल / नीति (Policy Initiative)", "मुख्य प्रावधान एवं विशेषताएँ (Key Features & Directives)"],
+        caption: "भारत में जनसंख्या नीति एवं परिवार कल्याण कार्यक्रमों का विकास क्रम",
+        headers: ["वर्ष", "महत्वपूर्ण पहल / नीति", "मुख्य प्रावधान एवं विशेषताएँ"],
         rows: [
           ["**1952**", "**राष्ट्रीय परिवार नियोजन कार्यक्रम**", "• **भारत विश्व का पहला देश बना** जिसने राष्ट्रीय स्तर पर परिवार नियोजन कार्यक्रम शुरू किया।\n• उद्देश्य: जनसंख्या वृद्धि को नियंत्रित करना एवं मातृ-शिशु स्वास्थ्य में सुधार।"],
           ["**1961–62**", "**परिवार कल्याण कार्यक्रम का विस्तार**", "• परिवार नियोजन कार्यक्रम का दायरा बढ़ाकर इसे व्यापक **परिवार कल्याण कार्यक्रम (Family Welfare Programme)** का स्वरूप दिया गया।"],
@@ -199,7 +190,7 @@ async function main() {
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "3. राष्ट्रीय जनसंख्या नीति, 2000 (NPP-2000): उद्देश्य व लक्ष्य (Exam Special)" }],
+        children: [{ _type: "span", text: "3. राष्ट्रीय जनसंख्या नीति, 2000 (NPP-2000): मुख्य उद्देश्य व लक्ष्य" }],
       },
       {
         _type: "block",
@@ -214,17 +205,17 @@ async function main() {
       {
         _type: "block",
         style: "normal",
-        children: [{ _type: "span", text: "• **1. तत्काल लक्ष्य (Immediate Target)**: प्रजनन स्वास्थ्य एवं बुनियादी स्वास्थ्य ढाँचे का विस्तार करना, स्वास्थ्य कार्यकर्ताओं की उपलब्धता बढ़ाना तथा गर्भनिरोधक साधनों की पहुँच सुनिश्चित करना।" }],
+        children: [{ _type: "span", text: "• **1. तत्काल लक्ष्य**: प्रजनन स्वास्थ्य एवं बुनियादी स्वास्थ्य ढाँचे का विस्तार करना, स्वास्थ्य कार्यकर्ताओं की उपलब्धता बढ़ाना तथा गर्भनिरोधक साधनों की पहुँच सुनिश्चित करना।" }],
       },
       {
         _type: "block",
         style: "normal",
-        children: [{ _type: "span", text: "• **2. मध्यमकालिक लक्ष्य (Medium Term Target)**: वर्ष 2010 तक कुल प्रजनन दर (TFR - Total Fertility Rate) को घटाकर **2.1 (प्रतिस्थापन स्तर / Replacement Level)** तक लाना।" }],
+        children: [{ _type: "span", text: "• **2. मध्यमकालिक लक्ष्य**: वर्ष 2010 तक कुल प्रजनन दर (TFR - Total Fertility Rate) को घटाकर **2.1 (प्रतिस्थापन स्तर / Replacement Level)** तक लाना।" }],
       },
       {
         _type: "block",
         style: "normal",
-        children: [{ _type: "span", text: "• **3. दीर्घकालिक लक्ष्य (Long Term Target)**: वर्ष **2045 तक** सतत आर्थिक विकास, सामाजिक प्रगति और पर्यावरण संरक्षण की आवश्यकताओं के अनुरूप जनसंख्या में स्थिरता (Population Stabilization) प्राप्त करना।" }],
+        children: [{ _type: "span", text: "• **3. दीर्घकालिक लक्ष्य**: वर्ष **2045 तक** सतत आर्थिक विकास, सामाजिक प्रगति और पर्यावरण संरक्षण की आवश्यकताओं के अनुरूप जनसंख्या में स्थिरता (Population Stabilization) प्राप्त करना।" }],
       },
 
       {
@@ -234,14 +225,14 @@ async function main() {
           {
             _type: "span",
             marks: ["strong"],
-            text: "NPP-2000 के प्रमुख सामाजिक-जनसांख्यिकी लक्ष्य (Socio-Demographic Goals):",
+            text: "NPP-2000 के प्रमुख सामाजिक-जनसांख्यिकी लक्ष्य:",
           },
         ],
       },
       {
         _type: "table",
-        caption: "राष्ट्रीय जनसंख्या नीति 2000 के प्रमुख सामाजिक व स्वास्थ्य लक्ष्य (NPP-2000 Targets Table)",
-        headers: ["क्षेत्र / पैरामीटर (Parameter)", "NPP-2000 द्वारा निर्धारित लक्ष्य (Target Goal)"],
+        caption: "राष्ट्रीय जनसंख्या नीति 2000 के प्रमुख सामाजिक व स्वास्थ्य लक्ष्य",
+        headers: ["क्षेत्र / पैरामीटर", "NPP-2000 द्वारा निर्धारित लक्ष्य"],
         rows: [
           ["**शिशु मृत्यु दर (IMR)**", "प्रति 1000 जीवित जन्मों पर शिशु मृत्यु दर को **30 से कम** करना।"],
           ["**मातृ मृत्यु दर (MMR)**", "प्रति 1 लाख जीवित जन्मों पर मातृ मृत्यु दर को **100 से कम** करना।"],
@@ -258,7 +249,7 @@ async function main() {
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "4. जनसंख्या नियंत्रण हेतु नवीनतम सरकारी पहल एवं जनसांख्यिकीय लाभांश (Recent Initiatives & Demographic Dividend)" }],
+        children: [{ _type: "span", text: "4. जनसंख्या नियंत्रण हेतु हालिया सरकारी पहल एवं जनसांख्यिकीय लाभांश" }],
       },
       {
         _type: "image",
@@ -279,7 +270,7 @@ async function main() {
       {
         _type: "block",
         style: "normal",
-        children: [{ _type: "span", text: "• **मिशन परिवार विकास (Mission Parivar Vikas)**: वर्ष 2016 में देश के 7 उच्च TFR वाले राज्यों (मध्य प्रदेश, उत्तर प्रदेश, बिहार, राजस्थान, झारखंड, छत्तीसगढ़ व असम) के 145 जिलों में परिवार नियोजन सेवाओं की पहुँच बढ़ाने के लिए शुरू किया गया।" }],
+        children: [{ _type: "span", text: "• **मिशन परिवार विकास**: वर्ष 2016 में देश के 7 उच्च TFR वाले राज्यों (मध्य प्रदेश, उत्तर प्रदेश, बिहार, राजस्थान, झारखंड, छत्तीसगढ़ व असम) के 145 जिलों में परिवार नियोजन सेवाओं की पहुँच बढ़ाने के लिए शुरू किया गया।" }],
       },
       {
         _type: "block",
@@ -296,7 +287,7 @@ async function main() {
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "5. परीक्षा हेतु महत्वपूर्ण तथ्य व याद रखने की ट्रिक (Quick Revision Tricks & Facts)" }],
+        children: [{ _type: "span", text: "5. परीक्षा हेतु महत्वपूर्ण तथ्य एवं स्मरणीय बिंदु" }],
       },
       {
         _type: "block",
@@ -304,12 +295,7 @@ async function main() {
         children: [
           {
             _type: "span",
-            marks: ["strong"],
-            text: "💡 याद रखने की सबसे आसान मेमोरी ट्रिक:\n",
-          },
-          {
-            _type: "span",
-            text: "\"52 में परिवार, 66 में विभाग, 76 में नीति, 97 में RCH, 2000 में नई जनसंख्या नीति।\"",
+            text: "💡 **स्मार्ट याद रखने की ट्रिक**: \"52 में परिवार, 66 में विभाग, 76 में नीति, 97 में RCH, 2000 में नई जनसंख्या नीति।\"",
           },
         ],
       },
@@ -329,7 +315,7 @@ async function main() {
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "6. संबंधित परीक्षा अध्ययन सामग्री एवं इंटरलिंक्ड नोट्स (Related Notes & Interlinking)" }],
+        children: [{ _type: "span", text: "6. संबंधित अध्ययन सामग्री एवं नोट्स" }],
       },
       {
         _type: "block",
@@ -347,11 +333,7 @@ async function main() {
         children: [
           {
             _type: "span",
-            text: "👉 ",
-          },
-          {
-            _type: "span",
-            text: "[अंतर्राष्ट्रीय संगठन एवं उनके मुख्यालय: संपूर्ण सूची, स्थापना वर्ष व रिपोर्ट्स](/general-awareness/international-organizations-and-their-headquarters-mppsc-upsc-notes)",
+            text: "👉 [अंतर्राष्ट्रीय संगठन एवं उनके मुख्यालय: संपूर्ण सूची, स्थापना वर्ष व रिपोर्ट्स](/general-awareness/international-organizations-and-their-headquarters-mppsc-upsc-notes)",
           },
         ],
       },
@@ -361,11 +343,7 @@ async function main() {
         children: [
           {
             _type: "span",
-            text: "👉 ",
-          },
-          {
-            _type: "span",
-            text: "[आपदा प्रबंधन (संशोधन) अधिनियम 2025: NCMC, UDMA धारा 41A व MPPSC Notes](/current-affairs/disaster-management-amendment-act-2025-mppsc-upsc-notes)",
+            text: "👉 [आपदा प्रबंधन (संशोधन) अधिनियम 2025: NCMC, UDMA धारा 41A व MPPSC Notes](/current-affairs/disaster-management-amendment-act-2025-mppsc-upsc-notes)",
           },
         ],
       },
@@ -375,11 +353,7 @@ async function main() {
         children: [
           {
             _type: "span",
-            text: "👉 ",
-          },
-          {
-            _type: "span",
-            text: "[आपदा प्रबंधन क्या है? NCERT सिद्धांत व मेन्स उत्तर लेखन नोट्स](/general-awareness/what-is-disaster-management-ncert-types-mppsc-notes)",
+            text: "👉 [आपदा प्रबंधन क्या है? NCERT सिद्धांत व मेन्स उत्तर लेखन नोट्स](/general-awareness/what-is-disaster-management-ncert-types-mppsc-notes)",
           },
         ],
       },
@@ -389,11 +363,7 @@ async function main() {
         children: [
           {
             _type: "span",
-            text: "👉 ",
-          },
-          {
-            _type: "span",
-            text: "[MPPSC 2026 नवीन पाठ्यक्रम, परीक्षा पैटर्न व संपूर्ण रणनीति](/mppsc/syllabus-2026)",
+            text: "👉 [MPPSC 2026 नवीन पाठ्यक्रम, परीक्षा पैटर्न व संपूर्ण रणनीति](/mppsc/syllabus-2026)",
           },
         ],
       },
@@ -403,11 +373,7 @@ async function main() {
         children: [
           {
             _type: "span",
-            text: "👉 ",
-          },
-          {
-            _type: "span",
-            text: "[Aakar IAS MPPSC ऑनलाइन एवं ऑफलाइन टेस्ट सीरीज जॉइन करें](/test-series)",
+            text: "👉 [Aakar IAS MPPSC ऑनलाइन एवं ऑफलाइन टेस्ट सीरीज जॉइन करें](/test-series)",
           },
         ],
       },
@@ -417,11 +383,7 @@ async function main() {
         children: [
           {
             _type: "span",
-            text: "👉 ",
-          },
-          {
-            _type: "span",
-            text: "[MPPSC एवं UPSC हस्तलिखित नोट्स PDF निःशुल्क डाउनलोड करें](/mppsc-notes)",
+            text: "👉 [MPPSC एवं UPSC हस्तलिखित नोट्स PDF निःशुल्क डाउनलोड करें](/mppsc-notes)",
           },
         ],
       },
@@ -430,7 +392,7 @@ async function main() {
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "7. निष्कर्ष (Conclusion)" }],
+        children: [{ _type: "span", text: "7. निष्कर्ष" }],
       },
       {
         _type: "block",
@@ -594,9 +556,9 @@ async function main() {
     ]
   };
 
-  console.log(`📝 Syncing Population Policy Article "${articleDoc._id}" to Sanity CMS...`);
+  console.log(`📝 Syncing Cleaned Population Policy Article "${articleDoc._id}" to Sanity CMS...`);
   const res = await client.createOrReplace(articleDoc);
-  console.log(`🎉 SUCCESS! Article uploaded & published in Sanity CMS. Document ID: ${res._id}`);
+  console.log(`🎉 SUCCESS! Cleaned Article uploaded & published in Sanity CMS. Document ID: ${res._id}`);
   console.log(`URL slug: ${res.slug.current}`);
 }
 
