@@ -25,7 +25,7 @@ const client = createClient({
 });
 
 async function main() {
-  console.log("🚀 Cleaning and Uploading Humanized International Organizations Article to Sanity CMS...");
+  console.log("🚀 Uploading Complete Bilingual (Hindi & English) International Organizations Article to Sanity CMS...");
 
   const publicBlogDir = path.resolve(process.cwd(), "public/images/blog");
   const artifactDir = "/Users/aakariastech/.gemini/antigravity-ide/brain/46ddf059-c542-4af1-8a30-e0605b309cce";
@@ -62,7 +62,7 @@ async function main() {
     _id: docId,
     _type: "staticGk",
     title: "अंतर्राष्ट्रीय संगठन एवं उनके मुख्यालय: संपूर्ण सूची, स्थापना वर्ष, वर्तमान अध्यक्ष, रिपोर्ट व ट्रिक्स | MPPSC & UPSC Notes",
-    titleEn: "International Organizations and Their Headquarters, Establishment Year, Current Chiefs & Reports List | MPPSC & UPSC",
+    titleEn: "International Organizations and Their Headquarters: Complete List, Establishment Year, Chiefs, Reports & Tricks | MPPSC & UPSC Notes",
     slug: { _type: "slug", current: slug },
     category: { _type: "reference", _ref: "cat-misc" }, // General Awareness Misc
     ca_date: "2026-07-29",
@@ -112,8 +112,8 @@ async function main() {
       alt: "United Nations Headquarters New York Member State Flags International Organizations MPPSC UPSC Notes",
     },
 
+    /* ─── HINDI BODY ─── */
     body: [
-      /* ── Intro ── */
       {
         _type: "block",
         style: "normal",
@@ -143,8 +143,6 @@ async function main() {
           },
         ],
       },
-
-      /* ── 1. Comprehensive Master Table ── */
       {
         _type: "block",
         style: "h3",
@@ -207,22 +205,10 @@ async function main() {
           },
         ],
       },
-
-      /* ── 2. Reports Published by International Organizations ── */
       {
         _type: "block",
         style: "h3",
         children: [{ _type: "span", text: "2. प्रमुख अंतर्राष्ट्रीय संगठनों द्वारा जारी की जाने वाली रिपोर्ट एवं सूचकांक" }],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "MPPSC व UPSC प्रारम्भिक परीक्षा में प्रमुख अंतर्राष्ट्रीय संगठनों द्वारा प्रतिवर्ष जारी की जाने वाली सूचकांक व रिपोर्टों से संबंधित प्रश्न बार-बार पूछे जाते हैं:",
-          },
-        ],
       },
       {
         _type: "table",
@@ -243,30 +229,8 @@ async function main() {
       },
       {
         _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "📌 **वैश्विक रैंकिंग संबंधित अन्य महत्वपूर्ण लेख**: उच्च शिक्षा व शोध क्षेत्र में वैश्विक सूचकांक हेतु पढ़ें: [QS World University Rankings 2027: भारतीय संस्थानों की स्थिति व रैंकिंग विश्लेषण](/current-affairs/qs-world-university-rankings-2027-india-iit-delhi-iisc-mppsc)।",
-          },
-        ],
-      },
-
-      /* ── 3. Major Indian Organizations & Headquarters ── */
-      {
-        _type: "block",
         style: "h3",
         children: [{ _type: "span", text: "3. भारत के प्रमुख राष्ट्रीय संगठन और उनके मुख्यालय" }],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "प्रतियोगी परीक्षाओं में अंतर्राष्ट्रीय संगठनों के साथ-साथ भारत के प्रमुख संवैधानिक, विनियामक तथा अनुसंधान संगठनों के मुख्यालय भी पूछे जाते हैं:",
-          },
-        ],
       },
       {
         _type: "table",
@@ -287,18 +251,6 @@ async function main() {
           ["**भारतीय दूरसंचार विनियामक प्राधिकरण (TRAI)**", "नई दिल्ली", "20 फरवरी 1997"]
         ]
       },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "⚡ **आपदा प्रबंधन व नए कानून संबंधी लेख**: भारत में आपदा प्रबंधन की सर्वोच्च संस्था (NDMA) एवं नवीन संशोधन कानून हेतु पढ़ें: [आपदा प्रबंधन (संशोधन) अधिनियम 2025: NCMC, UDMA धारा 41A व संपूर्ण नोट्स](/current-affairs/disaster-management-amendment-act-2025-mppsc-upsc-notes) तथा [आपदा प्रबंधन क्या है? NCERT सिद्धांत व MPPSC Mains नोट्स](/general-awareness/what-is-disaster-management-ncert-types-mppsc-notes)।",
-          },
-        ],
-      },
-
-      /* ── 4. Memory Tricks ── */
       {
         _type: "block",
         style: "h3",
@@ -360,8 +312,6 @@ async function main() {
         style: "normal",
         children: [{ _type: "span", text: "💡 **स्मार्ट ट्रिक**: \"कृषि और भोजन = रोम (इटली)\"" }],
       },
-
-      /* ── 5. Quick Revision Notes ── */
       {
         _type: "block",
         style: "h3",
@@ -382,22 +332,10 @@ async function main() {
           { label: "गुरुग्राम (भारत)", value: "**अंतर्राष्ट्रीय सौर गठबंधन (ISA)**" },
         ]
       },
-
-      /* ── 6. Dedicated Interlinking Section ── */
       {
         _type: "block",
         style: "h3",
         children: [{ _type: "span", text: "6. संबंधित अध्ययन सामग्री एवं नोट्स" }],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "MPPSC Prelims & Mains परीक्षा की बेहतर तैयारी के लिए Aakar IAS के इन महत्वपूर्ण लेखों व संसाधनों का अध्ययन करें:\n",
-          },
-        ],
       },
       {
         _type: "block",
@@ -441,48 +379,6 @@ async function main() {
       },
       {
         _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "👉 [QS World University Rankings 2027: भारतीय संस्थानों का प्रदर्शन](/current-affairs/qs-world-university-rankings-2027-india-iit-delhi-iisc-mppsc)",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "👉 [कॉमनवेल्थ गेम्स 2026: भारत के 12 पदक विजेताओं की संपूर्ण सूची](/current-affairs/commonwealth-games-2026-updates-india-medal-tally)",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "👉 [Aakar IAS MPPSC ऑनलाइन एवं ऑफलाइन टेस्ट सीरीज जॉइन करें](/test-series)",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "👉 [MPPSC एवं UPSC हस्तलिखित नोट्स PDF निःशुल्क डाउनलोड करें](/mppsc-notes)",
-          },
-        ],
-      },
-
-      /* ── 7. Conclusion ── */
-      {
-        _type: "block",
         style: "h3",
         children: [{ _type: "span", text: "7. निष्कर्ष" }],
       },
@@ -492,22 +388,285 @@ async function main() {
         children: [
           {
             _type: "span",
-            text: "अंतर्राष्ट्रीय संगठनों एवं उनके मुख्यालय से संबंधित प्रश्न लगभग हर वर्ष ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "MPPSC, UPSC, SSC, Banking, Railway, CDS",
-          },
-          {
-            _type: "span",
-            text: " तथा अन्य प्रतियोगी परीक्षाओं में पूछे जाते हैं। यदि आप मुख्यालयों को शहर के अनुसार समूह बनाकर याद करते हैं—जैसे जेनेवा, न्यूयॉर्क, वियना, रोम और वॉशिंगटन डी.सी.—तो इन्हें लंबे समय तक आसानी से स्मरण रखा जा सकता है। नियमित पुनरावृत्ति और वस्तुनिष्ठ प्रश्नों का अभ्यास इस विषय में अच्छे अंक प्राप्त करने की कुंजी है।",
+            text: "अंतर्राष्ट्रीय संगठनों एवं उनके मुख्यालय से संबंधित प्रश्न लगभग हर वर्ष MPPSC, UPSC, SSC, Banking, Railway, CDS तथा अन्य प्रतियोगी परीक्षाओं में पूछे जाते हैं। नियमित पुनरावृत्ति और वस्तुनिष्ठ प्रश्नों का अभ्यास इस विषय में अच्छे अंक प्राप्त करने की कुंजी है।",
           },
         ],
       },
     ],
 
-    /* ─── FAQS ─────────────────────────────────────────────── */
+    /* ─── ENGLISH BODY ─── */
+    bodyEn: [
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "International Organizations are intergovernmental bodies or associations of sovereign states formed to foster global cooperation in key domains such as peace, security, international trade, public health, education, human rights, economic development, and environmental protection. Questions related to their ",
+          },
+          {
+            _type: "span",
+            marks: ["strong"],
+            text: "Headquarters, Establishment Years, Current Chiefs (2026), Member Countries, and Annual Reports",
+          },
+          {
+            _type: "span",
+            text: " are frequently asked across major competitive exams including MPPSC, UPSC, SSC, Banking, Railway, CDS, and CAPF.",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "This comprehensive English notes guide covers the updated master list of global international organizations, city-wise memory tricks, major annual reports published by international bodies, key national organizations of India (ISRO, DRDO, RBI, SEBI, NABARD), collapsible FAQs, and practice MCQs. For complete exam strategy, visit: [MPPSC 2026 Complete Syllabus & Strategy](/en/mppsc/syllabus-2026).",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "1. World's Major International Organizations & Headquarters (Master List 2026)" }],
+      },
+      {
+        _type: "image",
+        asset: { _type: "reference", _ref: assetGeneva._id },
+        alt: "Geneva Switzerland International Organizations Hub WHO WTO ILO Headquarters MPPSC UPSC Notes",
+        caption: "Geneva (Switzerland): Major global hub housing WHO, WTO, and ILO Headquarters",
+      },
+      {
+        _type: "table",
+        caption: "Master Table of International Organizations, Headquarters, Formation Year, Current Chiefs & Member Countries",
+        headers: ["Organization", "Headquarters", "Formation Year", "Current Head / Director (2026)", "Member Countries"],
+        rows: [
+          ["**United Nations (UN)**", "New York (USA)", "24 Oct 1945", "**Antonio Guterres**", "193"],
+          ["**World Health Organization (WHO)**", "Geneva (Switzerland)", "7 Apr 1948", "**Dr. Tedros Adhanom**", "194"],
+          ["**World Trade Organization (WTO)**", "Geneva (Switzerland)", "1 Jan 1995", "**Ngozi Okonjo-Iweala**", "164"],
+          ["**International Monetary Fund (IMF)**", "Washington D.C. (USA)", "27 Dec 1945", "**Kristalina Georgieva**", "190"],
+          ["**World Bank Group**", "Washington D.C. (USA)", "July 1944 (Bretton Woods)", "**Ajay Banga**", "189"],
+          ["**UNESCO**", "Paris (France)", "16 Nov 1945", "**Audrey Azoulay**", "194"],
+          ["**North Atlantic Treaty Organization (NATO)**", "Brussels (Belgium)", "4 Apr 1949", "**Mark Rutte**", "32"],
+          ["**International Atomic Energy Agency (IAEA)**", "Vienna (Austria)", "29 July 1957", "**Rafael Mariano Grossi**", "178"],
+          ["**Food and Agriculture Organization (FAO)**", "Rome (Italy)", "16 Oct 1945", "**Qu Dongyu**", "195"],
+          ["**International Court of Justice (ICJ)**", "The Hague (Netherlands)", "26 June 1945", "**Nawaf Salam**", "193 (UN)"],
+          ["**SAARC**", "Kathmandu (Nepal)", "8 Dec 1985", "**Golam Sarwar**", "8"],
+          ["**ASEAN**", "Jakarta (Indonesia)", "8 Aug 1967", "**Kao Kim Hourn**", "10"],
+          ["**International Labour Organization (ILO)**", "Geneva (Switzerland)", "11 Apr 1919", "**Gilbert F. Houngbo**", "187"],
+          ["**OPEC**", "Vienna (Austria)", "Sept 1960", "**Haitham Al Ghais**", "12"],
+          ["**World Intellectual Property Org (WIPO)**", "Geneva (Switzerland)", "14 July 1967", "**Daren Tang**", "193"],
+          ["**Asian Development Bank (ADB)**", "Manila (Philippines)", "19 Dec 1966", "**Masatsugu Asakawa**", "68"],
+          ["**New Development Bank (NDB - BRICS)**", "Shanghai (China)", "15 July 2014", "**Dilma Rousseff**", "9"],
+          ["**Asian Infrastructure Investment Bank (AIIB)**", "Beijing (China)", "16 Jan 2016", "**Jin Liqun**", "109"],
+          ["**Shanghai Cooperation Organisation (SCO)**", "Beijing (China)", "15 June 2001", "**Zhang Ming**", "10"],
+          ["**International Civil Aviation Org (ICAO)**", "Montreal (Canada)", "7 Dec 1944", "**Juan Carlos Salazar**", "193"],
+          ["**International Maritime Organization (IMO)**", "London (UK)", "17 Mar 1948", "**Arsenio Dominguez**", "175"],
+          ["**International Org for Standardization (ISO)**", "Geneva (Switzerland)", "23 Feb 1947", "**Dr. Sung Hwan Cho**", "170"],
+          ["**United Nations Environment Programme (UNEP)**", "Nairobi (Kenya)", "5 June 1972", "**Inger Andersen**", "193"],
+          ["**International Solar Alliance (ISA)**", "Gurugram (India)", "30 Nov 2015", "**Dr. Ajay Mathur**", "119+"],
+          ["**BIMSTEC**", "Dhaka (Bangladesh)", "6 June 1997", "**Indra Mani Pandey**", "7"],
+          ["**Amnesty International**", "London (UK)", "July 1961", "**Agnes Callamard**", "150+"],
+          ["**UNICEF**", "New York (USA)", "11 Dec 1946", "**Catherine Russell**", "190"],
+          ["**UNFPA**", "New York (USA)", "1969", "**Natalia Kanem**", "150+"],
+          ["**UNCTAD**", "Geneva (Switzerland)", "30 Dec 1964", "**Rebeca Grynspan**", "195"],
+          ["**UNIDO**", "Vienna (Austria)", "17 Nov 1966", "**Gerd Müller**", "172"],
+          ["**World Meteorological Organization (WMO)**", "Geneva (Switzerland)", "23 Mar 1950", "**Celeste Saulo**", "193"],
+          ["**World Economic Forum (WEF)**", "Geneva (Cologny, Switzerland)", "Jan 1971", "**Klaus Schwab**", "NGO"],
+          ["**International Fund for Agricultural Dev (IFAD)**", "Rome (Italy)", "15 Dec 1977", "**Alvaro Lario**", "178"],
+          ["**Transparency International**", "Berlin (Germany)", "May 1993", "**Francois Valerian**", "100+"]
+        ]
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "2. Major Reports Published by International Organizations" }],
+      },
+      {
+        _type: "table",
+        caption: "International Organizations and Their Major Published Reports",
+        headers: ["Organization", "Key Reports & Indexes Published"],
+        rows: [
+          ["**World Bank**", "• World Development Report\n• Global Economic Prospects"],
+          ["**International Monetary Fund (IMF)**", "• World Economic Outlook (WEO)\n• Global Financial Stability Report"],
+          ["**World Economic Forum (WEF)**", "• Global Gender Gap Report\n• Global Competitiveness Report\n• Global Risks Report\n• Energy Transition Index"],
+          ["**United Nations Development Programme (UNDP)**", "• Human Development Index (HDI)\n• Multidimensional Poverty Index (MPI)"],
+          ["**United Nations Environment Programme (UNEP)**", "• Emissions Gap Report\n• Global Environment Outlook"],
+          ["**World Health Organization (WHO)**", "• World Health Report\n• Global Tuberculosis (TB) Report"],
+          ["**World Intellectual Property Org (WIPO)**", "• Global Innovation Index (GII)"],
+          ["**Transparency International**", "• Corruption Perceptions Index (CPI)"],
+          ["**Reporters Without Borders (RSF)**", "• World Press Freedom Index"],
+          ["**UN Sustainable Development Solutions Network (SDSN)**", "• World Happiness Report"]
+        ]
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "3. Major Indian Organizations & Their Headquarters" }],
+      },
+      {
+        _type: "table",
+        caption: "Key National Organizations of India, Headquarters & Formation Year",
+        headers: ["Indian Organization", "Headquarters", "Formation Year"],
+        rows: [
+          ["**ISRO (Indian Space Research Organisation)**", "Bengaluru (Karnataka)", "15 Aug 1969"],
+          ["**DRDO (Defence Research and Development Org)**", "New Delhi", "1958"],
+          ["**RBI (Reserve Bank of India)**", "Mumbai (Maharashtra)", "1 Apr 1935 (Kolkata -> Mumbai 1937)"],
+          ["**SEBI (Securities and Exchange Board of India)**", "Mumbai (Maharashtra)", "12 Apr 1988 (Act 1992)"],
+          ["**NABARD**", "Mumbai (Maharashtra)", "12 July 1982"],
+          ["**SIDBI**", "Lucknow (Uttar Pradesh)", "2 Apr 1990"],
+          ["**BARC (Bhabha Atomic Research Centre)**", "Trombay, Mumbai", "3 Jan 1954"],
+          ["**CSIR**", "New Delhi", "26 Sept 1942"],
+          ["**NITI Aayog**", "New Delhi", "1 Jan 2015"],
+          ["**LIC (Life Insurance Corporation of India)**", "Mumbai (Maharashtra)", "1 Sept 1956"],
+          ["**IRDAI**", "Hyderabad (Telangana)", "1999"],
+          ["**TRAI**", "New Delhi", "20 Feb 1997"]
+        ]
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "4. City-wise Memory Tricks" }],
+      },
+      {
+        _type: "image",
+        asset: { _type: "reference", _ref: assetIcj._id },
+        alt: "Peace Palace The Hague Netherlands Headquarters of International Court of Justice ICJ MPPSC UPSC Notes",
+        caption: "The Hague (Netherlands): Peace Palace - Historic Headquarters of the International Court of Justice (ICJ)",
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **1. New York Headquarters**: United Nations (UN), UNICEF, UNFPA." }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "💡 **Memory Trick**: \"UN Family in New York\"" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **2. Geneva Headquarters**: WHO, WTO, ILO, WMO, WIPO, ISO, UNCTAD, WEF." }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "💡 **Memory Trick**: \"Geneva = Health (WHO) + Trade (WTO) + Labour (ILO) + Weather (WMO) + Intellectual Property (WIPO)\"" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **3. Vienna Headquarters**: IAEA, UNIDO, OPEC." }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "💡 **Memory Trick**: \"Vienna = Atomic Energy (IAEA) + Industrial Dev (UNIDO) + Petroleum (OPEC)\"" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **4. Washington D.C. Headquarters**: IMF, World Bank." }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "💡 **Memory Trick**: \"Global Finance / Money = Washington D.C.\"" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **5. Rome Headquarters**: FAO, IFAD." }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "💡 **Memory Trick**: \"Agriculture & Food = Rome (Italy)\"" }],
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "5. High-Yield Revision Takeaways for MPPSC & UPSC" }],
+      },
+      {
+        _type: "facts",
+        items: [
+          { label: "New York HQ", value: "**UN, UNICEF, UNFPA**" },
+          { label: "Geneva HQ", value: "**WHO, WTO, ILO, WMO, WIPO, ISO, UNCTAD, WEF**" },
+          { label: "Vienna HQ", value: "**IAEA, UNIDO, OPEC**" },
+          { label: "Washington D.C.", value: "**IMF, World Bank** (Bretton Woods Twins)" },
+          { label: "Rome HQ", value: "**FAO, IFAD** (Food & Agriculture)" },
+          { label: "The Hague", value: "**International Court of Justice (ICJ)**" },
+          { label: "Paris", value: "**UNESCO**" },
+          { label: "Kathmandu", value: "**SAARC**" },
+          { label: "Jakarta", value: "**ASEAN**" },
+          { label: "Gurugram (India)", value: "**International Solar Alliance (ISA)**" },
+        ]
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "6. Related Study Material & Interlinked Notes" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "👉 [Population Policy of India: NPP-2000, TFR 2.1 & Control Initiatives](/en/general-awareness/population-policy-of-india-npp-2000-mppsc-upsc-notes)",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "👉 [Disaster Management (Amendment) Act 2025: UDMA Section 41A Notes](/en/current-affairs/disaster-management-amendment-act-2025-mppsc-upsc-notes)",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "👉 [What is Disaster Management? NCERT Concepts & MPPSC Notes](/en/general-awareness/what-is-disaster-management-ncert-types-mppsc-notes)",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "👉 [MPPSC 2026 Syllabus & Complete Strategy](/en/mppsc/syllabus-2026)",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "7. Conclusion" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "Questions on International Organizations and their headquarters appear regularly in MPPSC, UPSC, SSC, Banking, and Railway examinations. Remembering them through city clusters (Geneva, New York, Vienna, Rome, Washington D.C.) ensures long-term retention and high accuracy in competitive exams.",
+          },
+        ],
+      },
+    ],
+
+    /* ─── BILINGUAL FAQS ─── */
     faqs: [
       {
         question: "संयुक्त राष्ट्र (UN) का मुख्यालय कहाँ स्थित है?",
@@ -519,7 +678,7 @@ async function main() {
         question: "विश्व स्वास्थ्य संगठन (WHO) का मुख्यालय कहाँ है?",
         questionEn: "Where is the World Health Organization (WHO) headquarters located?",
         answer: "विश्व स्वास्थ्य संगठन (WHO) का मुख्यालय जेनेवा, स्विट्जरलैंड में स्थित है। इसकी स्थापना 7 अप्रैल 1948 को हुई थी।",
-        answerEn: "The headquarters of WHO is in Geneva, Switzerland. It was established on April 7, 1948."
+        answerEn: "The headquarters of WHO is located in Geneva, Switzerland. It was established on April 7, 1948."
       },
       {
         question: "विश्व व्यापार संगठन (WTO) का मुख्यालय कहाँ स्थित है?",
@@ -531,13 +690,13 @@ async function main() {
         question: "UNESCO का मुख्यालय कहाँ है?",
         questionEn: "Where is UNESCO headquarters located?",
         answer: "संयुक्त राष्ट्र शैक्षिक, वैज्ञानिक एवं सांस्कृतिक संगठन (UNESCO) का मुख्यालय पेरिस, फ्रांस में स्थित है।",
-        answerEn: "The headquarters of UNESCO is in Paris, France."
+        answerEn: "The headquarters of UNESCO is located in Paris, France."
       },
       {
         question: "IMF और विश्व बैंक का मुख्यालय कहाँ है और इन्हें क्या कहा जाता है?",
         questionEn: "Where are the headquarters of IMF and World Bank located?",
         answer: "अंतर्राष्ट्रीय मुद्रा कोष (IMF) तथा विश्व बैंक (World Bank) दोनों का मुख्यालय वॉशिंगटन डी.सी., अमेरिका में स्थित है। इन दोनों को 1944 के सम्मेलन के कारण 'ब्रेटन वुड्स जुड़वाँ (Bretton Woods Twins)' कहा जाता है।",
-        answerEn: "The headquarters of both IMF and World Bank are located in Washington D.C., USA. They are known as Bretton Woods Twins."
+        answerEn: "The headquarters of both IMF and World Bank are located in Washington D.C., USA. They are known as the Bretton Woods Twins."
       },
       {
         question: "NATO का मुख्यालय कहाँ स्थित है?",
@@ -561,7 +720,7 @@ async function main() {
         question: "अंतर्राष्ट्रीय सौर गठबंधन (ISA) का मुख्यालय कहाँ स्थित है?",
         questionEn: "Where is International Solar Alliance (ISA) headquarters located?",
         answer: "अंतर्राष्ट्रीय सौर गठबंधन (ISA) का मुख्यालय गुरुग्राम (हरियाणा, भारत) में स्थित है। यह भारत में स्थित पहला प्रमुख अंतर्राष्ट्रीय संगठन का मुख्यालय है।",
-        answerEn: "ISA headquarters is located in Gurugram, Haryana, India."
+        answerEn: "ISA headquarters is located in Gurugram, Haryana, India. It is the first major international organization headquartered in India."
       },
       {
         question: "भारत का ISRO और DRDO का मुख्यालय कहाँ स्थित है?",
@@ -571,7 +730,7 @@ async function main() {
       }
     ],
 
-    /* ─── MCQS ─────────────────────────────────────────────── */
+    /* ─── BILINGUAL MCQS ─── */
     mcqs: [
       {
         question: "अंतर्राष्ट्रीय न्यायालय (ICJ) का मुख्यालय कहाँ स्थित है?",
@@ -666,9 +825,9 @@ async function main() {
     ]
   };
 
-  console.log(`📝 Syncing Cleaned International Organizations Article "${articleDoc._id}" to Sanity CMS...`);
+  console.log(`📝 Syncing Fully Bilingual Article "${articleDoc._id}" to Sanity CMS...`);
   const res = await client.createOrReplace(articleDoc);
-  console.log(`🎉 SUCCESS! Cleaned Article uploaded & published in Sanity CMS. Document ID: ${res._id}`);
+  console.log(`🎉 SUCCESS! Fully Bilingual Article uploaded & published in Sanity CMS. Document ID: ${res._id}`);
   console.log(`URL slug: ${res.slug.current}`);
 }
 

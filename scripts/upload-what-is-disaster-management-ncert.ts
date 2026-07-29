@@ -25,44 +25,31 @@ const client = createClient({
 });
 
 async function main() {
-  console.log("🚀 Starting upload for NCERT Disaster Management Concept Article...");
+  console.log("🚀 Uploading Complete Bilingual (Hindi & English) NCERT Disaster Management Article to Sanity CMS...");
 
   const publicBlogDir = path.resolve(process.cwd(), "public/images/blog");
-  const artifactDir = "/Users/aakariastech/.gemini/antigravity-ide/brain/303f8097-7120-4c19-b5d4-05d0c10485d5";
-
   const destTypes = path.join(publicBlogDir, "ncert_disaster_management_concept_types.png");
-  const destNdma = path.join(publicBlogDir, "disaster_management_ndma_command_center.png");
-  const destSdrf = path.join(publicBlogDir, "sdrf_disaster_response_team_india.png");
 
   if (!fs.existsSync(publicBlogDir)) fs.mkdirSync(publicBlogDir, { recursive: true });
 
-  const srcTypes = path.join(artifactDir, "ncert_disaster_management_concept_types_1785161203791.png");
-  const srcNdma = path.join(artifactDir, "disaster_management_ndma_command_center_1785160211199.png");
-  const srcSdrf = path.join(artifactDir, "sdrf_disaster_response_team_india_1785160249431.png");
-
-  if (fs.existsSync(srcTypes)) fs.copyFileSync(srcTypes, destTypes);
-  if (fs.existsSync(srcNdma)) fs.copyFileSync(srcNdma, destNdma);
-  if (fs.existsSync(srcSdrf)) fs.copyFileSync(srcSdrf, destSdrf);
-
-  console.log("📸 Uploading images to Sanity...");
-  const assetTypes = await client.assets.upload("image", fs.createReadStream(destTypes), {
-    filename: "ncert_disaster_management_concept_types.png",
-  });
-  const assetNdma = await client.assets.upload("image", fs.createReadStream(destNdma), {
-    filename: "disaster_management_ndma_command_center.png",
-  });
-  const assetSdrf = await client.assets.upload("image", fs.createReadStream(destSdrf), {
-    filename: "sdrf_disaster_response_team_india.png",
-  });
-
   const docId = "gk-what-is-disaster-management-ncert";
   const slug = "what-is-disaster-management-ncert-types-mppsc-notes";
+
+  // Check if image exists in publicBlogDir
+  let assetTypesRef: string | undefined = undefined;
+  if (fs.existsSync(destTypes)) {
+    console.log("📸 Uploading image to Sanity...");
+    const assetTypes = await client.assets.upload("image", fs.createReadStream(destTypes), {
+      filename: "ncert_disaster_management_concept_types.png",
+    });
+    assetTypesRef = assetTypes._id;
+  }
 
   const articleDoc = {
     _id: docId,
     _type: "staticGk",
     title: "आपदा प्रबंधन क्या है? अर्थ, प्रकार, चरण, आवश्यकता एवं NCERT नोट्स | MPPSC & UPSC Notes",
-    titleEn: "What is Disaster Management: Concept, Types, Cycle, NCERT Notes & Key Facts | MPPSC & UPSC",
+    titleEn: "What is Disaster Management: Concept, Types, Cycle, Institutional Framework & NCERT Notes | MPPSC & UPSC Notes",
     slug: { _type: "slug", current: slug },
     category: { _type: "reference", _ref: "cat-disaster-management" },
     ca_date: "2026-07-27",
@@ -79,13 +66,33 @@ async function main() {
     excerptEn: "Comprehensive guide on Disaster Management based on NCERT material. Covers definition, natural vs manmade disasters, disaster management cycle, preparedness, emergency kit, and NDMA framework for MPPSC and UPSC exams.",
     seoTitle: "आपदा प्रबंधन क्या है? आपदा के प्रकार, चक्र व NCERT नोट्स | MPPSC & UPSC",
     seoDescription: "आपदा प्रबंधन (Disaster Management in Hindi): आपदा का अर्थ, प्राकृतिक व मानव निर्मित आपदाएँ (NCERT डेटा), 6 प्रमुख चरण, आपातकालीन किट, आवश्यकता एवं MPPSC Mains Paper 3 हेतु 8 MCQs व FAQs।",
-    featuredImage: {
-      _type: "image",
-      asset: { _type: "reference", _ref: assetTypes._id },
-      alt: "Disaster Management Concept Types Natural and Manmade Disasters NCERT Notes MPPSC",
-    },
+    keywords: [
+      "आपदा प्रबंधन क्या है",
+      "what is disaster management ncert",
+      "aapda prabandhan kya hai",
+      "disaster management notes mppsc",
+      "disaster management cycle",
+      "natural and manmade disasters",
+      "NDMA",
+      "SDRF",
+      "NDRF",
+      "MPPSC Mains GS Paper 3"
+    ],
+    ...(assetTypesRef ? {
+      featuredImage: {
+        _type: "image",
+        asset: { _type: "reference", _ref: assetTypesRef },
+        alt: "Disaster Management Concept Types Natural and Manmade Disasters NCERT Notes MPPSC",
+      }
+    } : {}),
 
+    /* ─── HINDI BODY ─── */
     body: [
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "1. आपदा एवं आपदा प्रबंधन की अवधारणा" }],
+      },
       {
         _type: "block",
         style: "normal",
@@ -101,335 +108,7 @@ async function main() {
           },
           {
             _type: "span",
-            text: " कहते हैं। ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "राष्ट्रीय शैक्षिक अनुसंधान और प्रशिक्षण परिषद (NCERT)",
-          },
-          {
-            _type: "span",
-            text: " के अनुसार, आपदा प्रबंधन आपदाओं से उत्पन्न जोखिम को कम करने, प्रभावित आबादी को तत्काल राहत पहुँचाने और पुनर्निर्माण की एक एकीकृत प्रक्रिया है। ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "MPPSC मुख्य परीक्षा (GS Paper 3 Unit 5 एवं GS Paper 4 Part B Unit 3)",
-          },
-          {
-            _type: "span",
-            text: " तथा UPSC (GS Paper 3) के लिए यह एक अति महत्वपूर्ण बुनियादी विषय है।",
-          },
-        ],
-      },
-      {
-        _type: "image",
-        asset: { _type: "reference", _ref: assetTypes._id },
-        alt: "Disaster Management Concept Types Emergency Warning Flood Rescue India",
-        caption: "प्राकृतिक आपदाओं के समय पूर्व चेतावनी प्रणाली एवं राहत बचाव कार्य (NCERT आधारित वर्गीकरण)",
-      },
-
-      // Subheading 1: आपदा की परिभाषा एवं अर्थ
-      {
-        _type: "block",
-        style: "h3",
-        children: [{ _type: "span", text: "1. आपदा क्या है? (What is a Disaster - NCERT Definition)" }],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "किसी समाज या समुदाय के कामकाज में होने वाला वह गंभीर व्यवधान जो व्यापक मानव, भौतिक, आर्थिक या पर्यावरणीय क्षति पहुँचाता है, आपदा कहलाता है। आपदा के मुख्य घटक निम्न हैं:",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "• ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "अनपेक्षित घटना: ",
-          },
-          {
-            _type: "span",
-            text: "यह अचानक या तीव्र गति से घटित होने वाली घटना है जो सामान्य जीवन चक्र को अस्त-व्यस्त कर देती है।",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "• ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "व्यापक जान-माल की हानि: ",
-          },
-          {
-            _type: "span",
-            text: "इसमें मानव जीवन, पशुधन, इमारतों, फसलों और बुनियादी ढाँचे का बड़ा नुकसान होता है।",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "• ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "स्थानीय क्षमताओं से परे: ",
-          },
-          {
-            _type: "span",
-            text: "आपदा की तीव्रता इतनी अधिक होती है कि प्रभावित समुदाय अपने संसाधनों से इसका मुकाबला नहीं कर पाता।",
-          },
-        ],
-      },
-
-      // Subheading 2: आपदाओं के प्रकार (NCERT वर्गीकरण)
-      {
-        _type: "block",
-        style: "h3",
-        children: [{ _type: "span", text: "2. आपदाओं के मुख्य प्रकार (Types of Disasters - NCERT Data)" }],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "NCERT पाठ्य सामग्री (भाग 1) के अनुसार आपदाओं को उत्पत्ति के आधार पर दो प्रमुख वर्गों में विभाजित किया जाता है:",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "• ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "(A) प्राकृतिक आपदाएँ (Natural Disasters): ",
-          },
-          {
-            _type: "span",
-            text: "पर्यावरण के असंतुलन या धरती के अंदर हलचल के कारण घटने वाली प्राकृतिक घटनाएँ जो जीवन और संपत्ति को हानि पहुँचाती हैं।",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "  — ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "भूकंप (Earthquake): ",
-          },
-          {
-            _type: "span",
-            text: "भूगर्भिक टेक्टोनिक प्लेटों की गति से अचानक आने वाला कंपन।",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "  — ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "बाढ़ (Floods) एवं अतिवृष्टि: ",
-          },
-          {
-            _type: "span",
-            text: "नदियों का जलस्तर बढ़ने से मैदानी क्षेत्रों का जलमग्न होना।",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "  — ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "सूखा (Drought): ",
-          },
-          {
-            _type: "span",
-            text: "दीर्घकाल तक वर्षा न होने से जल एवं खाद्यान्न की कमी।",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "  — ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "चक्रवात एवं तूफ़ान (Cyclones & Storms): ",
-          },
-          {
-            _type: "span",
-            text: "समुद्री तटीय क्षेत्रों में उच्च वेग की हवाएँ और बारिश।",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "  — ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "अन्य प्राकृतिक आपदाएँ: ",
-          },
-          {
-            _type: "span",
-            text: "सुनामी, बादल का फटना (Cloudburst), प्राकृतिक भूस्खलन (Landslides), शीत लहर, ताप लहर (Heat Wave), वनों में आग (Wildfires) तथा ज्वालामुखी फटना।",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "• ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "(B) मानव निर्मित आपदाएँ (Man-made Disasters): ",
-          },
-          {
-            _type: "span",
-            text: "मनुष्य की असावधानी, भूल, लापरवाही या सुरक्षा प्रणालियों के असफल होने से घटने वाली आपदाएँ।",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "  — ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "परिवहन दुर्घटनाएँ: ",
-          },
-          {
-            _type: "span",
-            text: "सड़क, रेल या वायु दुर्घटनाएँ।",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "  — ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "औद्योगिक व भीषण आग: ",
-          },
-          {
-            _type: "span",
-            text: "कारखानों या घनी बस्तियों में भीषण अग्निकांड।",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "  — ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "पर्यावरण व तकनीकी दुर्घटनाएँ: ",
-          },
-          {
-            _type: "span",
-            text: "धुंध व गंभीर वायु प्रदूषण, रासायनिक गैस रिसाव (जैसे भोपाल गैस त्रासदी), जैविक महामारी (Epidemic/Pandemic), बम विस्फोट और नाभिकीय (Nuclear) आपदाएँ।",
-          },
-        ],
-      },
-
-      // Subheading 3: आपदा प्रबंधन की प्रक्रिया एवं चरण
-      {
-        _type: "block",
-        style: "h3",
-        children: [{ _type: "span", text: "3. आपदा प्रबंधन की प्रक्रिया एवं चरण (Disaster Management Cycle)" }],
-      },
-      {
-        _type: "image",
-        asset: { _type: "reference", _ref: assetNdma._id },
-        alt: "Disaster Management Cycle Mitigation Preparedness Response Recovery NDMA India",
-        caption: "राष्ट्रीय आपदा प्रबंधन प्राधिकरण (NDMA) का आपदा प्रबंधन चक्र एवं संस्थागत तंत्र",
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "किसी आपदा से निपटने के लिए सरकारी एवं गैर-सरकारी संगठनों द्वारा की जाने वाली राहत व योजनाबद्ध व्यवस्था को ",
+            text: " कहा जाता है। ",
           },
           {
             _type: "span",
@@ -438,235 +117,80 @@ async function main() {
           },
           {
             _type: "span",
-            text: " कहते हैं। NCERT के अनुसार इसमें 6 मुख्य चरण शामिल हैं:",
+            text: " वह योजनाबद्ध प्रक्रिया है जिसके अंतर्गत आपदा के जोखिम को कम करने, आपदा पूर्व तैयारी करने, त्वरित राहत एवं बचाव कार्य संचालित करने तथा आपदा के बाद पुनर्वास व पुनर्निर्माण के प्रयास शामिल होते हैं।",
           },
         ],
       },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "• ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "1. आपदा के आने से पहले उससे निपटने की तैयारी (Preparedness): ",
-          },
-          {
-            _type: "span",
-            text: "पूर्व चेतावनी प्रणाली स्थापित करना, मॉक ड्रिल आयोजित करना तथा आपातकालीन योजना बनाना।",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "• ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "2. आपदा के खतरे की रोकथाम (Mitigation & Prevention): ",
-          },
-          {
-            _type: "span",
-            text: "आपदा रोधी इमारतों का निर्माण, तटबंध बनाना तथा जोखिम कम करना।",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "• ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "3. तत्काल सहायता एवं राहत (Emergency Relief & Rescue): ",
-          },
-          {
-            _type: "span",
-            text: "आपदा के समय फँसे पीड़ितों को बाहर निकालना, चिकित्सा और भोजन उपलब्ध कराना।",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "• ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "4. पुनर्निर्माण (Reconstruction): ",
-          },
-          {
-            _type: "span",
-            text: "आपदा में नष्ट हुई संपत्ति, सड़कों, पुलों और सार्वजनिक अवसंरचना का फिर से निर्माण करना।",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "• ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "5. पुनर्वास (Rehabilitation): ",
-          },
-          {
-            _type: "span",
-            text: "बेघर हुए लोगों, गाँवों और बस्तियों को दोबारा सुरक्षित स्थानों पर स्थायी रूप से बसाना।",
-          },
-        ],
-      },
-
-      // INTERLINKING SECTION
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "4. नवीनतम कानून: आपदा प्रबंधन (संशोधन) अधिनियम, 2025" }],
+        children: [{ _type: "span", text: "2. आपदाओं का वर्गीकरण: प्राकृतिक एवं मानव-निर्मित" }],
       },
       {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "भारत में 2005 के मूल आपदा कानून में संशोधन करके केंद्र सरकार ने ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "आपदा प्रबंधन (संशोधन) अधिनियम, 2025",
-          },
-          {
-            _type: "span",
-            text: " लागू किया है। इसके तहत शहरी आपदा प्रबंधन प्राधिकरण (UDMA - नई धारा 41A), NCMC व HLC को वैधानिक दर्जा और पोस्ट-डिजास्टर ऑडिट की शक्तियाँ दी गई हैं।\n👉 ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "विस्तृत नोट्स यहाँ पढ़ें: ",
-          },
-          {
-            _type: "span",
-            text: "आपदा प्रबंधन (संशोधन) अधिनियम, 2025: मुख्य प्रावधान, महत्व व चुनौतियाँ",
-          },
-        ],
+        _type: "table",
+        caption: "NCERT के अनुसार आपदाओं का विस्तृत वर्गीकरण",
+        headers: ["आपदा की श्रेणी", "उदाहरण एवं प्रमुख घटक"],
+        rows: [
+          ["**प्राकृतिक आपदाएँ (Natural Disasters)**", "• **भू-भौतिकी**: भूकंप, सुनामी, भूस्खलन, ज्वालामुखी विस्फोट।\n• **मौसम संबंधी**: चक्रवात, बवंडर, ओलावृष्टि, बादल फटना।\n• **जल-जलवायु संबंधी**: बाढ़, सूखा, लू (Heat Wave), शीत लहर।\n• **जैविक आपदाएँ**: महामारी (जैसे कोविड-19), टिड्डी दल का हमला।"],
+          ["**मानव-निर्मित आपदाएँ (Man-made Disasters)**", "• **औद्योगिक/रासायनिक**: जहरीली गैस का रिसाव (जैसे भोपाल गैस त्रासदी 1984), रासायनिक विस्फोट।\n• **परमाणु/नाभिकीय**: चेरनोबिल, फुकुशिमा परमाणु दुर्घटना।\n• **तकनीकी/परिवहन**: ट्रेन दुर्घटना, विमान दुर्घटना, पुल ढहना।\n• **सामाजिक-राजनीतिक**: दंगे, आतंकवाद, युद्ध, भगदड़।"]
+        ]
       },
-      {
-        _type: "image",
-        asset: { _type: "reference", _ref: assetSdrf._id },
-        alt: "SDRF Disaster Response Force Rescue Team in Action Flood Relief India",
-        caption: "राज्य आपदा प्रतिक्रिया बल (SDRF) द्वारा आपदा प्रभावित क्षेत्रों में त्वरित बचाव एवं सहायता कार्य",
-      },
-
-      // Subheading 5: पूर्व तैयारी के उपाय (Emergency Kit)
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "5. आपदा से निपटने की तैयारी कैसे करें? (NCERT Safety Guidelines)" }],
+        children: [{ _type: "span", text: "3. आपदा प्रबंधन चक्र (Disaster Management Cycle)" }],
       },
       {
         _type: "block",
         style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "• ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "आपात्कालीन किट तैयार रखें: ",
-          },
-          {
-            _type: "span",
-            text: "जरूरी कागजात, फर्स्ट एड किट, टॉर्च, रेडियो, सूखी खाद्य सामग्री और पीने का पानी सुरक्षित रखें।",
-          },
-        ],
+        children: [{ _type: "span", text: "• **1. आपदा पूर्व चरण (Pre-Disaster Phase)**: रोकथाम (Prevention), शमन (Mitigation), एवं पूर्व तैयारी (Preparedness)।" }]
       },
       {
         _type: "block",
         style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "• ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "एकत्रित होने का स्थान: ",
-          },
-          {
-            _type: "span",
-            text: "आपात स्थिति में परिवार के सदस्यों के अलग होने पर मिलने की जगह पहले से निश्चित करें।",
-          },
-        ],
+        children: [{ _type: "span", text: "• **2. आपदा के दौरान चरण (During-Disaster Phase)**: त्वरित प्रतिक्रिया (Response), खोज एवं बचाव कार्य (Search & Rescue), एवं प्राथमिक चिकित्सा।" }]
       },
       {
         _type: "block",
         style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "• ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "आधिकारिक चेतावनियों का पालन: ",
-          },
-          {
-            _type: "span",
-            text: "रेडियो, टीवी व आधिकारिक घोषणाओं का ध्यान रखें, अफवाहों पर ध्यान न दें।",
-          },
-        ],
+        children: [{ _type: "span", text: "• **3. आपदा पश्चात चरण (Post-Disaster Phase)**: राहत कार्य (Relief), पुनर्वास (Rehabilitation), एवं पुनर्निर्माण (Reconstruction - Build Back Better)।" }]
       },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "• ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "इमरजेंसी हेल्पलाइन नंबर: ",
-          },
-          {
-            _type: "span",
-            text: "राष्ट्रीय आपदा हेल्पलाइन 1070 तथा राज्य आपदा हेल्पलाइन 1077 अपने फोन में सेव रखें।",
-          },
-        ],
-      },
-
-      // Subheading 6: MPPSC Exam Points
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "MPPSC & UPSC परीक्षा उपयोगी महत्वपूर्ण तथ्य (Exam Takeaways)" }],
+        children: [{ _type: "span", text: "4. भारत में संस्थागत ढाँचा (Institutional Framework in India)" }],
+      },
+      {
+        _type: "table",
+        caption: "आपदा प्रबंधन अधिनियम 2005 के तहत भारत का त्रिस्तरीय ढाँचा",
+        headers: ["स्तर", "प्राधिकरण / संस्था", "अध्यक्ष / प्रमुख"],
+        rows: [
+          ["**राष्ट्रीय स्तर**", "राष्ट्रीय आपदा प्रबंधन प्राधिकरण (NDMA)", "प्रधानमंत्री (PM)"],
+          ["**राज्य स्तर**", "राज्य आपदा प्रबंधन प्राधिकरण (SDMA)", "मुख्यमंत्री (CM)"],
+          ["**जिला स्तर**", "जिला आपदा प्रबंधन प्राधिकरण (DDMA)", "जिला कलेक्टर / मैजिस्ट्रेट (DM)"],
+          ["**प्रतिक्रिया बल**", "राष्ट्रीय आपदा मोचन बल (NDRF)", "महानिदेशक (DG, NDRF)"]
+        ]
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "5. परीक्षा हेतु महत्वपूर्ण तथ्य एवं स्मरणीय बिंदु" }],
+      },
+      {
+        _type: "facts",
+        items: [
+          { label: "आपदा प्रबंधन अधिनियम", value: "**23 दिसंबर 2005** को लागू" },
+          { label: "NDMA अध्यक्ष", value: "**भारत के प्रधानमंत्री**" },
+          { label: "SDMA अध्यक्ष", value: "**संबंधित राज्य के मुख्यमंत्री**" },
+          { label: "DDMA अध्यक्ष", value: "**जिला कलेक्टर / मैजिस्ट्रेट**" },
+          { label: "NDRF स्थापना", value: "**2006 (12 बटालियन)**" },
+          { label: "नवीन संशोधन", value: "**आपदा प्रबंधन (संशोधन) अधिनियम 2025** (UDMA व NCMC को वैधानिक दर्जा)" }
+        ]
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "6. संबंधित अध्ययन सामग्री एवं नोट्स" }],
       },
       {
         _type: "block",
@@ -674,16 +198,7 @@ async function main() {
         children: [
           {
             _type: "span",
-            text: "• ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "MPPSC Mains GS Paper 3 (Unit 5): ",
-          },
-          {
-            _type: "span",
-            text: "आपदा की परिभाषा, प्राकृतिक एवं मानव निर्मित आपदाओं का वर्गीकरण, तथा आपदा प्रबंधन चक्र पर 7-अंक व 10-अंक का प्रश्न पूछा जाता है।",
+            text: "👉 [आपदा प्रबंधन (संशोधन) अधिनियम 2025: NCMC, UDMA धारा 41A व MPPSC Notes](/current-affairs/disaster-management-amendment-act-2025-mppsc-upsc-notes)",
           },
         ],
       },
@@ -693,16 +208,7 @@ async function main() {
         children: [
           {
             _type: "span",
-            text: "• ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "MPPSC Mains GS Paper 4 (Part B Unit 3): ",
-          },
-          {
-            _type: "span",
-            text: "आपदा प्रबंधन में लोक प्रशासन एवं नागरिक सुरक्षा की भूमिका पर केस स्टडी प्रश्न।",
+            text: "👉 [अंतर्राष्ट्रीय संगठन एवं उनके मुख्यालय: संपूर्ण सूची व रिपोर्ट्स](/general-awareness/international-organizations-and-their-headquarters-mppsc-upsc-notes)",
           },
         ],
       },
@@ -712,166 +218,247 @@ async function main() {
         children: [
           {
             _type: "span",
-            text: "• ",
+            text: "👉 [भारत की जनसंख्या नीति: NPP-2000, TFR 2.1 व नोट्स](/general-awareness/population-policy-of-india-npp-2000-mppsc-upsc-notes)",
           },
+        ],
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "7. निष्कर्ष" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
           {
             _type: "span",
-            marks: ["strong"],
-            text: "संस्थागत ढाँचा: ",
-          },
-          {
-            _type: "span",
-            text: "NDMA अध्यक्ष = प्रधानमंत्री | SDMA अध्यक्ष = मुख्यमंत्री | DDMA अध्यक्ष = जिलाधिकारी (DM/Collector)।",
+            text: "आपदा प्रबंधन एक सतत और एकीकृत प्रक्रिया है। MPPSC मुख्य परीक्षा GS Paper 3 एवं UPSC अभ्यर्थियों के लिए आपदा प्रबंधन के सिद्धांत, चक्र और संस्थागत ढाँचे को समझना उत्तर लेखन की दृष्टि से अति महत्वपूर्ण है।",
           },
         ],
       },
     ],
 
+    /* ─── ENGLISH BODY ─── */
+    bodyEn: [
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "1. Concept & Definition of Disaster Management" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "A disaster is a sudden, catastrophic event that severely disrupts the normal functioning of a community or society, causing widespread human, material, economic, or environmental losses that exceed the affected community's ability to cope using its own resources. ",
+          },
+          {
+            _type: "span",
+            marks: ["strong"],
+            text: "Disaster Management",
+          },
+          {
+            _type: "span",
+            text: " is a continuous, integrated process of planning, organizing, coordinating, and implementing measures necessary for risk reduction, emergency response, relief, and post-disaster rehabilitation.",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "2. Classification of Disasters: Natural vs. Man-made" }],
+      },
+      {
+        _type: "table",
+        caption: "Classification of Disasters based on NCERT Curriculum",
+        headers: ["Category of Disaster", "Examples & Sub-types"],
+        rows: [
+          ["**Natural Disasters**", "• **Geophysical**: Earthquakes, Tsunamis, Landslides, Volcanic Eruptions.\n• **Meteorological**: Cyclones, Tornadoes, Hailstorms, Cloudbursts.\n• **Hydrological/Climatic**: Floods, Droughts, Heat Waves, Cold Waves.\n• **Biological**: Pandemics (e.g., COVID-19), Locust Attacks."],
+          ["**Man-made Disasters**", "• **Industrial/Chemical**: Toxic gas leaks (e.g., Bhopal Gas Tragedy 1984), chemical explosions.\n• **Nuclear/Radiological**: Chernobyl, Fukushima nuclear disasters.\n• **Technical/Transport**: Major train accidents, plane crashes, structural collapses.\n• **Socio-Political**: Riots, terrorism, stampedes, armed conflict."]
+        ]
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "3. Disaster Management Cycle" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **1. Pre-Disaster Phase**: Prevention, Hazard Mitigation, and Community Preparedness." }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **2. During-Disaster Phase**: Immediate Emergency Response, Search & Rescue operations, and First Aid." }]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [{ _type: "span", text: "• **3. Post-Disaster Phase**: Relief Distribution, Rehabilitation, and Reconstruction (Build Back Better)." }]
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "4. Institutional Framework in India" }],
+      },
+      {
+        _type: "table",
+        caption: "Three-Tier Institutional Framework under Disaster Management Act 2005",
+        headers: ["Level", "Authority / Body", "Head / Chairperson"],
+        rows: [
+          ["**National Level**", "National Disaster Management Authority (NDMA)", "Prime Minister of India"],
+          ["**State Level**", "State Disaster Management Authority (SDMA)", "Chief Minister of State"],
+          ["**District Level**", "District Disaster Management Authority (DDMA)", "District Collector / Magistrate"],
+          ["**Response Force**", "National Disaster Response Force (NDRF)", "Director General (DG, NDRF)"]
+        ]
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "5. High-Yield Revision Takeaways for MPPSC & UPSC" }],
+      },
+      {
+        _type: "facts",
+        items: [
+          { label: "DM Act 2005 Enactment", value: "**23 December 2005**" },
+          { label: "NDMA Head", value: "**Prime Minister of India**" },
+          { label: "SDMA Head", value: "**Chief Minister** of respective State" },
+          { label: "DDMA Head", value: "**District Collector / DM**" },
+          { label: "NDRF Raised", value: "**2006 (12 Battalions)**" },
+          { label: "2025 Amendment", value: "**Disaster Management (Amendment) Act 2025** (Statutory status to NCMC & UDMA Section 41A)" }
+        ]
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "6. Related Study Material & Interlinked Notes" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "👉 [Disaster Management (Amendment) Act 2025: UDMA Section 41A Notes](/en/current-affairs/disaster-management-amendment-act-2025-mppsc-upsc-notes)",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "👉 [International Organizations & Headquarters List](/en/general-awareness/international-organizations-and-their-headquarters-mppsc-upsc-notes)",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "👉 [Population Policy of India: NPP-2000 Notes](/en/general-awareness/population-policy-of-india-npp-2000-mppsc-upsc-notes)",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "7. Conclusion" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "Disaster management is an essential subject for MPPSC Mains GS Paper 3 and UPSC CSE. A clear understanding of the disaster management cycle, natural vs man-made classification, and NDMA framework ensures high-scoring answer writing.",
+          },
+        ],
+      },
+    ],
+
+    /* ─── BILINGUAL FAQS ─── */
     faqs: [
       {
-        question: "आपदा प्रबंधन (Disaster Management) की सरल परिभाषा क्या है?",
-        answer:
-          "आपदा से निपटने के लिए आपदा-पीड़ित क्षेत्र में सरकारी एवं गैर-सरकारी संगठनों द्वारा की जाने वाली सहायता, शमन, राहत, पुनर्वास एवं बचाव की योजनाबद्ध व्यवस्था को आपदा प्रबंधन कहते हैं।",
+        question: "आपदा प्रबंधन अधिनियम किस वर्ष लागू किया गया था?",
+        questionEn: "In which year was the Disaster Management Act enacted in India?",
+        answer: "भारत में आपदा प्रबंधन अधिनियम 23 दिसंबर 2005 को लागू किया गया था।",
+        answerEn: "The Disaster Management Act was enacted in India on December 23, 2005."
       },
       {
-        question: "प्राकृतिक और मानव निर्मित आपदाओं में मुख्य अंतर क्या है?",
-        answer:
-          "प्राकृतिक आपदाएँ पर्यावरण असंतुलन या भूगर्भीय हलचलों (जैसे भूकंप, बाढ़, सुनामी) के कारण घटती हैं, जबकि मानव निर्मित आपदाएँ मनुष्य की असावधानी, लापरवाही या व्यवस्था की असफलता (जैसे कारखाने में आग, रासायनिक गैस रिसाव, सड़क दुर्घटना) के कारण होती हैं।",
+        question: "राष्ट्रीय आपदा प्रबंधन प्राधिकरण (NDMA) के अध्यक्ष कौन होते हैं?",
+        questionEn: "Who is the ex-officio Chairperson of NDMA?",
+        answer: "राष्ट्रीय आपदा प्रबंधन प्राधिकरण (NDMA) के पदेन अध्यक्ष भारत के प्रधानमंत्री होते हैं।",
+        answerEn: "The ex-officio Chairperson of NDMA is the Prime Minister of India."
       },
       {
-        question: "आपदा प्रबंधन चक्र (Disaster Management Cycle) के मुख्य चरण कौन से हैं?",
-        answer:
-          "इसके 6 प्रमुख चरण हैं: (1) आपदा पूर्व तैयारी, (2) रोकथाम व शमन, (3) पूर्व चेतावनी, (4) तत्काल राहत व बचाव, (5) पुनर्निर्माण, और (6) पुनर्वास।",
+        question: "जिला आपदा प्रबंधन प्राधिकरण (DDMA) का नेतृत्व कौन करता है?",
+        questionEn: "Who heads the District Disaster Management Authority (DDMA)?",
+        answer: "जिला स्तर पर DDMA का नेतृत्व जिला कलेक्टर / मैजिस्ट्रेट (DM) द्वारा किया जाता है।",
+        answerEn: "DDMA is headed by the District Collector / District Magistrate."
       },
       {
-        question: "NDMA का गठन किस अधिनियम के तहत हुआ था?",
-        answer:
-          "राष्ट्रीय आपदा प्रबंधन प्राधिकरण (NDMA) का औपचारिक गठन आपदा प्रबंधन अधिनियम, 2005 के तहत 27 सितंबर 2006 को किया गया था।",
-      },
-      {
-        question: "आपदा प्रबंधन (संशोधन) अधिनियम, 2025 में क्या नया जोड़ा गया है?",
-        answer:
-          "2025 संशोधन द्वारा शहरी आपदा प्रबंधन प्राधिकरण (UDMA - नई धारा 41A) का गठन, NCMC व HLC को वैधानिक दर्जा, और NDMA को पोस्ट-डिजास्टर ऑडिट का अधिकार दिया गया है।",
-      },
-      {
-        question: "MPPSC परीक्षा में आपदा प्रबंधन का क्या महत्व है?",
-        answer:
-          "MPPSC Mains GS Paper 3 की Unit 5 तथा GS Paper 4 Part B की Unit 3 में आपदा प्रबंधन का पूरा पाठ्यक्रम शामिल है।",
-      },
+        question: "आपदा प्रबंधन चक्र के मुख्य चरण कौन-कौन से हैं?",
+        questionEn: "What are the main phases of the Disaster Management Cycle?",
+        answer: "इसके तीन प्रमुख चरण हैं: आपदा पूर्व (रोकथाम, शमन, पूर्व तैयारी), आपदा के दौरान (त्वरित प्रतिक्रिया, खोज व बचाव), एवं आपदा पश्चात (राहत, पुनर्वास, पुनर्निर्माण)।",
+        answerEn: "The three main phases are Pre-disaster (prevention, mitigation, preparedness), During-disaster (response, search & rescue), and Post-disaster (relief, rehabilitation, reconstruction)."
+      }
     ],
 
+    /* ─── BILINGUAL MCQS ─── */
     mcqs: [
       {
-        question: "राष्ट्रीय आपदा प्रबंधन प्राधिकरण (NDMA) के पदेन अध्यक्ष कौन होते हैं?",
-        options: ["गृह मंत्री", "भारत के प्रधानमंत्री", "पर्यावरण मंत्री", "राष्ट्रपति"],
+        question: "राष्ट्रीय आपदा प्रबंधन प्राधिकरण (NDMA) की स्थापना किस अधिनियम के तहत की गई थी?",
+        questionEn: "Under which Act was the National Disaster Management Authority (NDMA) established?",
+        options: ["A. पर्यावरण संरक्षण अधिनियम 1986", "B. आपदा प्रबंधन अधिनियम 2005", "C. महामारी अधिनियम 1897", "D. राष्ट्रीय सुरक्षा अधिनियम 1980"],
+        optionsEn: ["A. Environment Protection Act 1986", "B. Disaster Management Act 2005", "C. Epidemic Diseases Act 1897", "D. National Security Act 1980"],
         correctIndex: 1,
-        explanation: "आपदा प्रबंधन अधिनियम 2005 के अनुसार NDMA के पदेन अध्यक्ष भारत के प्रधानमंत्री होते हैं।",
+        explanation: "NDMA की स्थापना आपदा प्रबंधन अधिनियम 2005 के तहत की गई थी।",
+        explanationEn: "NDMA was established under the Disaster Management Act, 2005."
       },
       {
-        question: "जिला आपदा प्रबंधन प्राधिकरण (DDMA) के अध्यक्ष कौन होते हैं?",
-        options: ["जिलाधिकारी / कलेक्टर", "जिला पंचायत अध्यक्ष", "स्थानीय विधायक", "पुलिस अधीक्षक"],
-        correctIndex: 0,
-        explanation: "जिला स्तर पर DDMA के पदेन अध्यक्ष जिलाधिकारी (District Magistrate / Collector) होते हैं।",
-      },
-      {
-        question: "निम्नलिखित में से कौन सी मानव निर्मित आपदा (Man-made Disaster) का उदाहरण है?",
-        options: ["सुनामी", "भोपाल गैस त्रासदी (रासायनिक रिसाव)", "बादल का फटना", "ज्वालामुखी विस्फोट"],
+        question: "आपदा प्रबंधन अधिनियम 2005 के अनुसार राज्य आपदा प्रबंधन प्राधिकरण (SDMA) के अध्यक्ष कौन होते हैं?",
+        questionEn: "Who is the Chairperson of the State Disaster Management Authority (SDMA)?",
+        options: ["A. राज्य के राज्यपाल", "B. राज्य के मुख्यमंत्री", "C. गृह मंत्री", "D. मुख्य सचिव"],
+        optionsEn: ["A. Governor of the State", "B. Chief Minister of the State", "C. Home Minister", "D. Chief Secretary"],
         correctIndex: 1,
-        explanation: "भोपाल गैस त्रासदी 1984 रासायनिक गैस रिसाव मानव निर्मित आपदा का उदाहरण है, जबकि सुनामी, बादल फटना और ज्वालामुखी प्राकृतिक आपदाएँ हैं।",
+        explanation: "राज्य स्तर पर SDMA के अध्यक्ष संबंधित राज्य के मुख्यमंत्री होते हैं।",
+        explanationEn: "The Chief Minister of the respective State is the Chairperson of SDMA."
       },
       {
-        question: "NCERT के अनुसार, आपदा प्रबंधन प्रक्रिया में इनमें से कौन सा चरण शामिल है?",
-        options: ["आपदा पूर्व तैयारी", "तत्काल राहत एवं बचाव", "पुनर्निर्माण एवं पुनर्वास", "उपर्युक्त सभी"],
-        correctIndex: 3,
-        explanation: "आपदा प्रबंधन में पूर्व तैयारी, त्वरित राहत-बचाव, पुनर्निर्माण और पुनर्वास सभी चरण शामिल हैं।",
+        question: "भोपाल गैस त्रासदी (1984) किस प्रकार की आपदा का उदाहरण है?",
+        questionEn: "The Bhopal Gas Tragedy (1984) is an example of which type of disaster?",
+        options: ["A. प्राकृतिक भू-भौतिकीय आपदा", "B. औद्योगिक व रासायनिक मानव-निर्मित आपदा", "C. जैविक आपदा", "D. मौसम संबंधी आपदा"],
+        optionsEn: ["A. Natural Geophysical Disaster", "B. Industrial & Chemical Man-made Disaster", "C. Biological Disaster", "D. Meteorological Disaster"],
+        correctIndex: 1,
+        explanation: "भोपाल गैस त्रासदी मिथाइल आइसोसाइनेट (MIC) गैस रिसाव के कारण हुई एक औद्योगिक व रासायनिक आपदा थी।",
+        explanationEn: "Bhopal Gas Tragedy was a major industrial chemical disaster caused by Methyl Isocyanate gas leak."
       },
       {
-        question: "आपदा आपातकालीन राष्ट्रीय हेल्पलाइन नंबर (National Disaster Helpline) कौन सा है?",
-        options: ["100", "108", "1070", "112"],
+        question: "राष्ट्रीय आपदा मोचन बल (NDRF) का गठन किस वर्ष किया गया था?",
+        questionEn: "In which year was the National Disaster Response Force (NDRF) constituted?",
+        options: ["A. 2001", "B. 2005", "C. 2006", "D. 2010"],
+        optionsEn: ["A. 2001", "B. 2005", "C. 2006", "D. 2010"],
         correctIndex: 2,
-        explanation: "भारत में राष्ट्रीय आपदा राहत हेल्पलाइन नंबर 1070 तथा राज्य स्तर पर 1077 है।",
-      },
-      {
-        question: "आपदा प्रबंधन (संशोधन) अधिनियम, 2025 के तहत किस स्तर पर UDMA गठित करने की व्यवस्था की गई है?",
-        options: ["ग्रामीण स्तर पर", "शहरी/राजधानी स्तर पर (धारा 41A)", "अंतर्राष्ट्रीय स्तर पर", "केवल ब्लॉक स्तर पर"],
-        correctIndex: 1,
-        explanation: "संशोधन अधिनियम 2025 में नई धारा 41A जोड़कर राजधानी और बड़े नगरों में शहरी आपदा प्रबंधन प्राधिकरण (UDMA) गठित करने का प्रावधान किया गया है।",
-      },
-      {
-        question: "आपदा जोखिम न्यूनीकरण के लिए अंतर्राष्ट्रीय फ्रेमवर्क कौन सा है?",
-        options: ["सेंडाई फ्रेमवर्क (Sendai Framework 2015-2030)", "पेरिस समझौता", "क्योटो प्रोटोकॉल", "मांट्रियल प्रोटोकॉल"],
-        correctIndex: 0,
-        explanation: "सेंडाई फ्रेमवर्क (Sendai Framework for Disaster Risk Reduction 2015-2030) आपदा जोखिम कम करने का वैश्विक खाका है।",
-      },
-      {
-        question: "MPPSC मुख्य परीक्षा के किस प्रश्नपत्र में आपदा प्रबंधन (Disaster Management) शामिल है?",
-        options: ["GS Paper 1 Unit 1", "GS Paper 2 Unit 3", "GS Paper 3 Unit 5 एवं GS Paper 4 Part B Unit 3", "Paper 6"],
-        correctIndex: 2,
-        explanation: "MPPSC Mains GS Paper 3 Unit 5 तथा GS Paper 4 Part B Unit 3 में आपदा प्रबंधन पूरा पाठ्यक्रम है।",
-      },
-    ],
+        explanation: "NDRF का गठन वर्ष 2006 में आपदा प्रबंधन अधिनियम 2005 के तहत किया गया था।",
+        explanationEn: "NDRF was constituted in 2006 under Section 44 of the Disaster Management Act, 2005."
+      }
+    ]
   };
 
-  console.log("📝 Creating Static GK document in Sanity...");
-  const resStatic = await client.createOrReplace(articleDoc);
-  console.log(`✅ Published Static GK document! ID: ${resStatic._id}`);
-
-  // Also create currentAffairs document version
-  const caDoc = {
-    ...articleDoc,
-    _id: "ca-what-is-disaster-management-ncert",
-    _type: "currentAffairs",
-    category: { _type: "reference", _ref: "cat-disaster-management" },
-    slug: { _type: "slug", current: slug },
-  };
-
-  console.log("📝 Creating Current Affairs document in Sanity...");
-  const resCa = await client.createOrReplace(caDoc);
-  console.log(`✅ Published Current Affairs document! ID: ${resCa._id}`);
-
-  // INTERLINKING: Update the 2025 Amendment Act article to link back to this concept article!
-  console.log("🔗 Updating Disaster Management Amendment Act 2025 article for reverse interlinking...");
-  const amendmentDoc: any = await client.getDocument("ca-disaster-management-amendment-act-2025");
-  if (amendmentDoc && amendmentDoc.body) {
-    const updatedBody = [
-      ...amendmentDoc.body,
-      {
-        _type: "block",
-        style: "h3",
-        children: [{ _type: "span", text: "आपदा प्रबंधन मूलभूत अवधारणा एवं NCERT नोट्स" }],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "आपदा प्रबंधन का मूल अर्थ, प्राकृतिक व मानव निर्मित आपदाओं का वर्गीकरण (NCERT डेटा) एवं आपदा प्रबंधन चक्र की विस्तृत जानकारी के लिए पढ़ें:\n👉 ",
-          },
-          {
-            _type: "span",
-            marks: ["strong"],
-            text: "आपदा प्रबंधन क्या है? अर्थ, प्रकार, चरण, आवश्यकता एवं NCERT नोट्स",
-          },
-        ],
-      },
-    ];
-    await client.patch("ca-disaster-management-amendment-act-2025").set({ body: updatedBody }).commit();
-    await client.patch("gk-disaster-management-amendment-act-2025").set({ body: updatedBody }).commit();
-    console.log("✅ Interlinking updated on Disaster Management Amendment Act 2025 articles!");
-  }
-
-  console.log("🌐 Triggering Vercel live cache revalidation...");
-  try {
-    const fetchRes = await fetch("https://www.aakarias.com/api/revalidate?secret=aakar-ias-revalidation-secret-key-2026&path=all");
-    const json = await fetchRes.json();
-    console.log("🔄 Revalidation output:", json);
-  } catch (err) {
-    console.warn("⚠️ Revalidation fetch failed:", err);
-  }
+  console.log(`📝 Syncing Fully Bilingual NCERT Disaster Management Article "${articleDoc._id}" to Sanity CMS...`);
+  const res = await client.createOrReplace(articleDoc);
+  console.log(`🎉 SUCCESS! Fully Bilingual Article uploaded & published in Sanity CMS. Document ID: ${res._id}`);
+  console.log(`URL slug: ${res.slug.current}`);
 }
 
 main().catch((err) => {
-  console.error("❌ Execution error:", err);
+  console.error("❌ Error uploading NCERT Disaster Management article:", err);
   process.exit(1);
 });
