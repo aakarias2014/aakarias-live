@@ -26,11 +26,11 @@ const client = createClient({
 });
 
 async function main() {
-  console.log("🚀 Starting upload process for CWG 2026 Hub Article with Glasgow Medals Top Thumbnail...");
+  console.log("🚀 Starting upload process for CWG 2026 Hub Article (12 Medals Updated)...");
 
   const publicBlogDir = path.resolve(process.cwd(), "public/images/blog");
   
-  // NEW TOP FEATURED THUMBNAIL IMAGE (Glasgow 2026 Gold, Silver, Bronze Medals)
+  // TOP FEATURED THUMBNAIL IMAGE
   const medalsTopThumbnailPath = path.join(publicBlogDir, "glasgow_2026_cwg_medals_top_thumbnail.png");
   let assetFeaturedThumbnail;
   if (fs.existsSync(medalsTopThumbnailPath)) {
@@ -53,7 +53,7 @@ async function main() {
   }
 
   // Victory Podium Image
-  const mirabaiPodiumPath = path.join(publicBlogDir, "mirabai_chanu_2026_gold_victory_podium.png");
+  const mirabaiPodiumPath = path.join(process.cwd(), "public/images/blog/mirabai_chanu_2026_gold_victory_podium.png");
   let assetVictoryPodium;
   if (fs.existsSync(mirabaiPodiumPath)) {
     console.log("📸 Uploading Victory Podium Photo to Sanity...");
@@ -67,11 +67,11 @@ async function main() {
     _id: "ca-commonwealth-games-2026",
     _type: "currentAffairs",
     slug: { _type: "slug", current: "commonwealth-games-2026-updates-india-medal-tally" },
-    title: "कॉमनवेल्थ गेम्स 2026 मेडल टैली: भारत के सभी 10 पदक विजेता, मीराबाई चानू व शर्मिला का स्वर्ण, हटाए गए खेल व पूरी तालिका | MPPSC & UPSC",
-    titleEn: "Commonwealth Games 2026 India Medals Tally: 10 Winners List, Mirabai Chanu & Sharmila Gold, Dropped Sports & Key Updates | MPPSC & UPSC",
-    excerpt: "कॉमनवेल्थ गेम्स 2026 (ग्लासगो, स्कॉटलैंड): भारत की अद्यतन पदक तालिका (Medals Tally Table), कुल 10 पदक (2 स्वर्ण, 5 रजत, 3 कांस्य), मीराबाई चानू व शर्मिला का स्वर्ण, ऋषिकांत, मुथुपांडी, ज्ञानेश्वरी, सर्वेश व वल्लुरी अजय का रजत, झांडू, बिंदियारानी व शिल्पा का कांस्य, MPPSC व UPSC परीक्षा नोट्स।",
-    excerptEn: "Live updates on Commonwealth Games 2026 (Glasgow, Scotland): India's full 10 medals tally table (2 Gold, 5 Silver, 3 Bronze), Mirabai Chanu & Sharmila Gold, Rishikanta, Muthupandi, Gyaneshwari, Sarvesh & Valluri Ajay Silver, Jhandu, Bindyarani & Shilpa Bronze for MPPSC & UPSC exams.",
-    ca_date: "2026-07-28",
+    title: "कॉमनवेल्थ गेम्स 2026 मेडल टैली: भारत के सभी 12 पदक विजेता, मीराबाई चानू व शर्मिला का स्वर्ण, हरजिंदर व गुलवीर का रजत, पूरी तालिका | MPPSC & UPSC",
+    titleEn: "Commonwealth Games 2026 India Medals Tally: 12 Winners List, Mirabai Chanu & Sharmila Gold, Harjinder & Gulveer Silver & Key Updates | MPPSC & UPSC",
+    excerpt: "कॉमनवेल्थ गेम्स 2026 (ग्लासगो, स्कॉटलैंड): भारत की अद्यतन पदक तालिका (Medals Tally Table), कुल 12 पदक (2 स्वर्ण, 7 रजत, 3 कांस्य), मीराबाई चानू व शर्मिला का स्वर्ण, ऋषिकांत, मुथुपांडी, ज्ञानेश्वरी, सर्वेश, वल्लुरी अजय, हरजिंदर कौर व गुलवीर सिंह का रजत, झंडू, बिंदियारानी व शिल्पा का कांस्य, MPPSC व UPSC परीक्षा नोट्स।",
+    excerptEn: "Live updates on Commonwealth Games 2026 (Glasgow, Scotland): India's full 12 medals tally table (2 Gold, 7 Silver, 3 Bronze), Mirabai Chanu & Sharmila Gold, Rishikanta, Muthupandi, Gyaneshwari, Sarvesh, Valluri Ajay, Harjinder Kaur & Gulveer Singh Silver, Jhandu, Bindyarani & Shilpa Bronze for MPPSC & UPSC exams.",
+    ca_date: "2026-07-29",
     publishedAt: new Date().toISOString(),
     featured: true,
     readingTime: 12,
@@ -97,6 +97,8 @@ async function main() {
       "सर्वेश कुशारे एथलेटिक्स रजत",
       "शिल्पा के. शायला पैरा एथलेटिक्स कांस्य",
       "वल्लुरी अजय बाबू वेटलिफ्टिंग रजत",
+      "हरजिंदर कौर वेटलिफ्टिंग 69kg रजत",
+      "गुलवीर सिंह एथलेटिक्स 10000m रजत",
       "स्कॉटलैंड ग्लासगो CWG 2026",
       "Sports Current Affairs 2026",
       "खेल समसामयिकी 2026",
@@ -144,7 +146,7 @@ async function main() {
           }] : []),
           {
             _key: "b1-2", _type: "block", style: "normal",
-            children: [{ _key: "s1-2", _type: "span", text: "भारतीय खिलाड़ियों ने शानदार प्रदर्शन करते हुए **2 स्वर्ण, 5 रजत और 3 कांस्य** सहित कुल **10 पदक** अपने नाम कर लिए हैं। मीराबाई चानू (वेटलिफ्टिंग 48kg) एवं शर्मिला (पैरा-एथलेटिक्स शॉट पुट F57) ने स्वर्ण पदक जीतकर भारत का नाम रोशन किया, जबकि ऋषिकांत सिंह, मुथुपांडी राजा, ज्ञानेश्वरी यादव, सर्वेश कुशारे और वल्लुरी अजय बाबू ने रजत तथा झांडू कुमार, बिंदियारानी देवी एवं शिल्पा के. शायला ने कांस्य पदक हासिल किए।" }],
+            children: [{ _key: "s1-2", _type: "span", text: "भारतीय खिलाड़ियों ने शानदार प्रदर्शन करते हुए **2 स्वर्ण, 7 रजत और 3 कांस्य** सहित कुल **12 पदक** अपने नाम कर लिए हैं। मीराबाई चानू (वेटलिफ्टिंग 48kg) एवं शर्मिला (पैरा-एथलेटिक्स शॉट पुट F57) ने स्वर्ण पदक जीतकर भारत का नाम रोशन किया, जबकि ऋषिकांत सिंह, मुथुपांडी राजा, ज्ञानेश्वरी यादव, सर्वेश कुशारे, वल्लुरी अजय बाबू, हरजिंदर कौर और गुलवीर सिंह ने रजत तथा झंडू कुमार, बिंदियारानी देवी एवं शिल्पा के. शायला ने कांस्य पदक हासिल किए।" }],
           },
           {
             _key: "b1-h1", _type: "block", style: "h3",
@@ -159,14 +161,14 @@ async function main() {
               ["**मेजबान शहर (Host City)**", "ग्लासगो, स्कॉटलैंड (United Kingdom)"],
               ["**आयोजन तिथि (Dates)**", "23 जुलाई – 2 अगस्त 2026"],
               ["**भारतीय दल (Indian Contingent)**", "122 खिलाड़ी (8 नियमित + 5 पैरा खेल)"],
-              ["**भारत के कुल पदक (Total Medals)**", "**10 (2 स्वर्ण, 5 रजत, 3 कांस्य)**"]
+              ["**भारत के कुल पदक (Total Medals)**", "**12 (2 स्वर्ण, 7 रजत, 3 कांस्य)**"]
             ]
           }
         ],
         bodyEn: [
           {
             _key: "b1-3", _type: "block", style: "normal",
-            children: [{ _key: "s1-3", _type: "span", text: "The 23rd Commonwealth Games 2026 are held in Glasgow, Scotland from July 23 to August 2, 2026, with an Indian contingent of 122 athletes having secured 10 medals (2 Gold, 5 Silver, 3 Bronze) so far." }],
+            children: [{ _key: "s1-3", _type: "span", text: "The 23rd Commonwealth Games 2026 are held in Glasgow, Scotland from July 23 to August 2, 2026, with an Indian contingent of 122 athletes having secured 12 medals (2 Gold, 7 Silver, 3 Bronze) so far." }],
           },
         ],
       },
@@ -234,7 +236,7 @@ async function main() {
             _type: "image",
             asset: { _type: "reference", _ref: assetIndiaWinnersBanner._id },
             alt: "कॉमनवेल्थ गेम्स 2026 में भारत का शानदार प्रदर्शन सभी पदक विजेता और पूरी मेडल टेली आकार आईएएस",
-            caption: "कॉमनवेल्थ गेम्स 2026 में भारत का शानदार प्रदर्शन: सभी 10 पदक विजेता एवं मेडल टेली",
+            caption: "कॉमनवेल्थ गेम्स 2026 में भारत का शानदार प्रदर्शन: सभी 12 पदक विजेता एवं मेडल टेली",
           }] : []),
           {
             _key: "b3-h1", _type: "block", style: "h3",
@@ -242,7 +244,7 @@ async function main() {
           },
           {
             _type: "table",
-            caption: "कॉमनवेल्थ गेम्स 2026: भारतीय पदक विजेता (10 Medals Tally)",
+            caption: "कॉमनवेल्थ गेम्स 2026: भारतीय पदक विजेता (12 Medals Tally)",
             headers: ["नम्बर", "एथलीट", "इवेंट", "खेल", "मेडल"],
             rows: [
               ["1", "**ऋषिकांत सिंह**", "मेंस 60किग्रा", "वेटलिफ्टिंग", "**सिल्वर (Silver)**"],
@@ -254,7 +256,9 @@ async function main() {
               ["7", "[**शर्मिला धनखड़ (Sharmila Dhankar)**](/current-affairs/sharmila-dhankar-biography-cwg-2026-gold-medal-para-athletics)", "वूमेंस शॉट पुट F57", "पैरा-एथलेटिक्स", "**गोल्ड (Gold)**"],
               ["8", "**सर्वेश कुशारे**", "मेंस हाई जंप", "एथलेटिक्स", "**सिल्वर (Silver)**"],
               ["9", "**शिल्पा के. शायला**", "वूमेंस शॉट पुट F57", "पैरा-एथलेटिक्स", "**ब्रॉन्ज (Bronze)**"],
-              ["10", "**वल्लुरी अजय बाबू**", "मेंस 79किग्रा", "वेटलिफ्टिंग", "**सिल्वर (Silver)**"]
+              ["10", "**वल्लुरी अजय बाबू**", "मेंस 79किग्रा", "वेटलिफ्टिंग", "**सिल्वर (Silver)**"],
+              ["11", "**हरजिंदर कौर**", "वूमेंस 69किग्रा", "वेटलिफ्टिंग", "**सिल्वर (Silver)**"],
+              ["12", "**गुलवीर सिंह**", "मेंस 10000मी", "एथलेटिक्स", "**सिल्वर (Silver)**"]
             ]
           },
           {
@@ -299,7 +303,15 @@ async function main() {
           },
           {
             _key: "b3-10", _type: "block", style: "normal",
-            children: [{ _key: "s3-10", _type: "span", text: "• **वल्लुरी अजय बाबू (मेंस 79किग्रा - सिल्वर)**: मेंस 79 किग्रा वेटलिफ्टिंग स्पर्धा में रजत पदक जीतकर भारत की कुल पदक संख्या को 10 तक पहुँचाया।" }],
+            children: [{ _key: "s3-10", _type: "span", text: "• **वल्लुरी अजय बाबू (मेंस 79किग्रा - सिल्वर)**: मेंस 79 किग्रा वेटलिफ्टिंग स्पर्धा में शानदार प्रदर्शन करते हुए रजत पदक अपने नाम किया।" }],
+          },
+          {
+            _key: "b3-11", _type: "block", style: "normal",
+            children: [{ _key: "s3-11", _type: "span", text: "• **हरजिंदर कौर (वूमेंस 69किग्रा - सिल्वर)**: महिला 69 किग्रा वेटलिफ्टिंग स्पर्धा में उत्कृष्ट भारोत्तोलन क्षमता दिखाते हुए रजत पदक हासिल किया।" }],
+          },
+          {
+            _key: "b3-12", _type: "block", style: "normal",
+            children: [{ _key: "s3-12", _type: "span", text: "• **गुलवीर सिंह (मेंस 10000मी - सिल्वर)**: पुरुष 10,000 मीटर लंबी दूरी की दौड़ एथलेटिक्स स्पर्धा में शानदार गति व स्टैमिना का प्रदर्शन करते हुए भारत के लिए रजत पदक जीता।" }],
           },
           {
             _key: "b3-h3", _type: "block", style: "h3",
@@ -310,11 +322,11 @@ async function main() {
             caption: "खेलवार भारत की पदक तालिका (Sport-wise Medal Tally)",
             headers: ["खेल (Sport)", "स्वर्ण (Gold)", "रजत (Silver)", "कांस्य (Bronze)", "कुल (Total)"],
             rows: [
-              ["**वेटलिफ्टिंग (Weightlifting)**", "1", "4", "1", "**6**"],
+              ["**वेटलिफ्टिंग (Weightlifting)**", "1", "5", "1", "**7**"],
               ["**पैरा-एथलेटिक्स (Para Athletics)**", "1", "0", "1", "**2**"],
-              ["**एथलेटिक्स (Athletics)**", "0", "1", "0", "**1**"],
+              ["**एथलेटिक्स (Athletics)**", "0", "2", "0", "**2**"],
               ["**पैरा पावरलिफ्टिंग (Para Powerlifting)**", "0", "0", "1", "**1**"],
-              ["**कुल भारत पदक तालिका (Total)**", "**2**", "**5**", "**3**", "**10**"]
+              ["**कुल भारत पदक तालिका (Total)**", "**2**", "**7**", "**3**", "**12**"]
             ]
           },
           {
@@ -322,18 +334,18 @@ async function main() {
             children: [{ _key: "sh4-4", _type: "span", text: "4. आगामी प्रतिस्पर्धाएँ एवं पदक दावेदार (Upcoming Medal Contenders)" }],
           },
           {
-            _key: "b3-12", _type: "block", style: "normal",
-            children: [{ _key: "s3-12", _type: "span", text: "• **लवलीना बोरगोहैन (Boxing)**: महिला 75 किलोग्राम मुक्केबाजी स्पर्धा के सेमिफाइनल/फाइनल मुकाबलों में पदक की मजबूत दावेदार हैं।" }],
+            _key: "b3-contender1", _type: "block", style: "normal",
+            children: [{ _key: "s3-c1", _type: "span", text: "• **लवलीना बोरगोहैन (Boxing)**: महिला 75 किलोग्राम मुक्केबाजी स्पर्धा के सेमिफाइनल/फाइनल मुकाबलों में पदक की मजबूत दावेदार हैं।" }],
           },
           {
-            _key: "b3-13", _type: "block", style: "normal",
-            children: [{ _key: "s3-13", _type: "span", text: "• **एथलेटिक्स स्टार्स**: गुरिंदरवीर सिंह, अनिमेष कुजूर, मुरली श्रीशंकर, तजिंदरपाल सिंह तूर, पारुल चौधरी एवं गुलवीर सिंह।" }],
+            _key: "b3-contender2", _type: "block", style: "normal",
+            children: [{ _key: "s3-c2", _type: "span", text: "• **एथलेटिक्स स्टार्स**: गुरिंदरवीर सिंह, अनिमेष कुजूर, मुरली श्रीशंकर, तजिंदरपाल सिंह तूर एवं पारुल चौधरी।" }],
           },
         ],
         bodyEn: [
           {
             _key: "b3-14", _type: "block", style: "normal",
-            children: [{ _key: "s3-14", _type: "span", text: "Comprehensive winners table: Mirabai Chanu & Sharmila Gold, Rishikanta, Muthupandi, Gyaneshwari, Sarvesh & Valluri Ajay Silver, Jhandu, Bindyarani & Shilpa Bronze." }],
+            children: [{ _key: "s3-14", _type: "span", text: "Comprehensive winners table: Mirabai Chanu & Sharmila Gold, Rishikanta, Muthupandi, Gyaneshwari, Sarvesh, Valluri Ajay, Harjinder Kaur & Gulveer Singh Silver, Jhandu, Bindyarani & Shilpa Bronze." }],
           },
         ],
       },
@@ -406,9 +418,9 @@ async function main() {
             items: [
               { label: "2026 CWG मेजबान", value: "**ग्लासगो, स्कॉटलैंड** (23 जुलाई - 2 अगस्त 2026)" },
               { label: "भारतीय दल क्षमता", value: "**122 खिलाड़ी** (8 नियमित + 5 पैरा खेल)" },
-              { label: "भारत के कुल पदक", value: "**10 पदक (2 स्वर्ण, 5 रजत, 3 कांस्य)**" },
+              { label: "भारत के कुल पदक", value: "**12 पदक (2 स्वर्ण, 7 रजत, 3 कांस्य)**" },
               { label: "गोल्ड मेडलिस्ट", value: "**मीराबाई चानू** (वेटलिफ्टिंग 48kg) व **शर्मिला** (पैरा-एथलेटिक्स शॉट पुट F57)" },
-              { label: "सिल्वर मेडलिस्ट", value: "**ऋषिकांत सिंह, मुथुपांडी राजा, ज्ञानेश्वरी यादव, सर्वेश कुशारे, वल्लुरी अजय बाबू**" },
+              { label: "सिल्वर मेडलिस्ट", value: "**ऋषिकांत सिंह, मुथुपांडी राजा, ज्ञानेश्वरी यादव, सर्वेश कुशारे, वल्लुरी अजय बाबू, हरजिंदर कौर, गुलवीर सिंह**" },
               { label: "ब्रॉन्ज मेडलिस्ट", value: "**झंडू कुमार, बिंदियारानी देवी, शिल्पा के. शायला**" },
               { label: "हटाए गए प्रमुख खेल", value: "**निशानेबाजी, कुश्ती, बैडमिंटन, हॉकी, टेबल टेनिस**" },
             ]
@@ -426,10 +438,10 @@ async function main() {
     /* ─── FAQS (8 Collapsible FAQs) ───────────────────────── */
     faqs: [
       {
-        question: "कॉमनवेल्th गेम्स 2026 में भारत ने अब तक कितने पदक जीते हैं?",
+        question: "कॉमनवेल्थ गेम्स 2026 में भारत ने अब तक कितने पदक जीते हैं?",
         questionEn: "How many medals has India won so far in Commonwealth Games 2026?",
-        answer: "भारत ने अब तक कुल 10 पदक जीते हैं, जिनमें 2 स्वर्ण (मीराबाई चानू - वेटलिफ्टिंग, शर्मिला - पैरा-एथलेटिक्स), 5 रजत (ऋषिकांत सिंह, मुथुपांडी राजा, ज्ञानेश्वरी यादव, सर्वेश कुशारे, वल्लुरी अजय बाबू) और 3 कांस्य (झांडू कुमार, बिंदियारानी देवी, शिल्पा के. शायला) शामिल हैं।",
-        answerEn: "India has secured 10 medals (2 Gold, 5 Silver, 3 Bronze) so far in CWG 2026."
+        answer: "भारत ने अब तक कुल 12 पदक जीते हैं, जिनमें 2 स्वर्ण (मीराबाई चानू - वेटलिफ्टिंग, शर्मिला - पैरा-एथलेटिक्स), 7 रजत (ऋषिकांत सिंह, मुथुपांडी राजा, ज्ञानेश्वरी यादव, सर्वेश कुशारे, वल्लुरी अजय बाबू, हरजिंदर कौर, गुलवीर सिंह) और 3 कांस्य (झंडू कुमार, बिंदियारानी देवी, शिल्पा के. शायला) शामिल हैं।",
+        answerEn: "India has secured 12 medals (2 Gold, 7 Silver, 3 Bronze) so far in CWG 2026."
       },
       {
         question: "कॉमनवेल्थ गेम्स 2026 में भारत के लिए स्वर्ण पदक (Gold Medals) किन खिलाड़ियों ने जीते हैं?",
@@ -446,8 +458,8 @@ async function main() {
       {
         question: "कॉमनवेल्थ गेम्स 2026 में रजत (Silver) पदक जीतने वाले भारतीय खिलाड़ी कौन-कौन हैं?",
         questionEn: "Who are the Silver medalists for India at CWG 2026?",
-        answer: "भारत के लिए 5 रजत पदक ऋषिकांत सिंह (मेंस 60kg वेटलिफ्टिंग), मुथुपांडी राजा (मेंस 65kg वेटलिफ्टिंग), ज्ञानेश्वरी यादव (वूमेंस 53kg वेटलिफ्टिंग), सर्वेश कुशारे (मेंस हाई जंप एथलेटिक्स) एवं वल्लुरी अजय बाबू (मेंस 79kg वेटलिफ्टिंग) ने जीते हैं।",
-        answerEn: "Rishikanta Singh, Muthupandi Raja, Gyaneshwari Yadav, Sarvesh Kushare, and Valluri Ajay Babu won Silver medals."
+        answer: "भारत के लिए 7 रजत पदक ऋषिकांत सिंह (मेंस 60kg वेटलिफ्टिंग), मुथुपांडी राजा (मेंस 65kg वेटलिफ्टिंग), ज्ञानेश्वरी यादव (वूमेंस 53kg वेटलिफ्टिंग), सर्वेश कुशारे (मेंस हाई जंप), वल्लुरी अजय बाबू (मेंस 79kg वेटलिफ्टिंग), हरजिंदर कौर (वूमेंस 69kg वेटलिफ्टिंग) एवं गुलवीर सिंह (मेंस 10000m एथलेटिक्स) ने जीते हैं।",
+        answerEn: "Rishikanta Singh, Muthupandi Raja, Gyaneshwari Yadav, Sarvesh Kushare, Valluri Ajay Babu, Harjinder Kaur, and Gulveer Singh won Silver medals."
       },
       {
         question: "कॉमनवेल्थ गेम्स 2026 कहाँ और कब आयोजित हो रहे हैं?",
@@ -456,10 +468,10 @@ async function main() {
         answerEn: "Glasgow, Scotland is hosting CWG 2026 from July 23 to August 2, 2026."
       },
       {
-        question: "ऋषिकांत सिंह ने कॉमनवेल्थ गेम्स 2026 में क्या नया रिकॉर्ड बनाया?",
-        questionEn: "What new record did Rishikanta Singh set at CWG 2026?",
-        answer: "ऋषिकांत सिंह ने पुरुष 60 किग्रा वेटलिफ्टिंग में स्नैच (Snatch) श्रेणी में नया कॉमनवेल्थ गेम्स रिकॉर्ड बनाते हुए रजत पदक हासिल किया।",
-        answerEn: "Rishikanta Singh created a new CWG Snatch record in men's 60kg weightlifting while winning Silver."
+        question: "गुलवीर सिंह और हरजिंदर कौर ने CWG 2026 में कौन-से पदक जीते हैं?",
+        questionEn: "Which medals did Gulveer Singh and Harjinder Kaur win at CWG 2026?",
+        answer: "हरजिंदर कौर ने महिला 69 किग्रा वेटलिफ्टिंग में रजत पदक और गुलवीर सिंह ने पुरुष 10,000 मीटर लंबी दूरी की दौड़ (एथलेटिक्स) में रजत पदक जीता है।",
+        answerEn: "Harjinder Kaur won Silver in Women's 69kg weightlifting and Gulveer Singh won Silver in Men's 10,000m race."
       },
       {
         question: "कॉमनवेल्थ गेम्स में भारत का अब तक का सर्वश्रेष्ठ प्रदर्शन कौन-सा रहा है?",
@@ -478,13 +490,31 @@ async function main() {
     /* ─── MCQS (8 High-Quality Practice Quizzes) ───────────────── */
     mcqs: [
       {
-        question: "कॉमनवेल्थ गेम्स 2026 (CWG 2026) में भारत ने कुल कितने पदक (Medals) जीते हैं?",
+        question: "कॉमनवेल्थ गेम्स 2026 (CWG 2026) में भारत ने अब तक कुल कितने पदक (Medals) जीते हैं?",
         questionEn: "How many total medals has India won at the Commonwealth Games 2026?",
-        options: ["A. 4 पदक", "B. 10 पदक (2 स्वर्ण, 5 रजत, 3 कांस्य)", "C. 15 पदक", "D. 20 पदक"],
-        optionsEn: ["A. 4 Medals", "B. 10 Medals (2 Gold, 5 Silver, 3 Bronze)", "C. 15 Medals", "D. 20 Medals"],
+        options: ["A. 8 पदक", "B. 12 पदक (2 स्वर्ण, 7 रजत, 3 कांस्य)", "C. 15 पदक", "D. 20 पदक"],
+        optionsEn: ["A. 8 Medals", "B. 12 Medals (2 Gold, 7 Silver, 3 Bronze)", "C. 15 Medals", "D. 20 Medals"],
         correctIndex: 1,
-        explanation: "भारत ने CWG 2026 में 2 स्वर्ण, 5 रजत और 3 कांस्य सहित कुल 10 पदक जीत लिए हैं।",
-        explanationEn: "India has secured a total of 10 medals (2 Gold, 5 Silver, 3 Bronze) at CWG 2026."
+        explanation: "भारत ने CWG 2026 में 2 स्वर्ण, 7 रजत और 3 कांस्य सहित कुल 12 पदक जीत लिए हैं।",
+        explanationEn: "India has secured a total of 12 medals (2 Gold, 7 Silver, 3 Bronze) at CWG 2026."
+      },
+      {
+        question: "कॉमनवेल्थ गेम्स 2026 में पुरुष 10,000 मीटर दौड़ (एथलेटिक्स) स्पर्धा में रजत पदक किस भारतीय एथलीट ने जीता?",
+        questionEn: "Which Indian athlete won Silver medal in Men's 10,000m race at CWG 2026?",
+        options: ["A. गुलवीर सिंह", "B. अविनाश साबले", "C. जिन्सन जॉनसन", "D. मोहम्मद अनस"],
+        optionsEn: ["A. Gulveer Singh", "B. Avinash Sable", "C. Jinson Johnson", "D. Muhammed Anas"],
+        correctIndex: 0,
+        explanation: "गुलवीर सिंह ने पुरुष 10,000 मीटर दौड़ में शानदार प्रदर्शन करते हुए भारत के लिए रजत पदक जीता।",
+        explanationEn: "Gulveer Singh won the Silver medal in Men's 10,000m race at CWG 2026."
+      },
+      {
+        question: "कॉमनवेल्थ गेम्स 2026 में महिला 69 किग्रा वेटलिफ्टिंग स्पर्धा में रजत पदक किस भारतीय खिलाड़ी ने जीता?",
+        questionEn: "Who won Silver medal in Women's 69kg Weightlifting at CWG 2026 for India?",
+        options: ["A. हरजिंदर कौर", "B. मीराबाई चानू", "C. बिंदियारानी देवी", "D. संजीता चानू"],
+        optionsEn: ["A. Harjinder Kaur", "B. Mirabai Chanu", "C. Bindyarani Devi", "D. Sanjita Chanu"],
+        correctIndex: 0,
+        explanation: "हरजिंदर कौर ने महिला 69 किग्रा भारोत्तोलन (वेटलिफ्टिंग) स्पर्धा में रजत पदक हासिल किया।",
+        explanationEn: "Harjinder Kaur won Silver medal in Women's 69kg weightlifting."
       },
       {
         question: "कॉमनवेल्थ गेम्स 2026 में महिला शॉट पुट F57 (पैरा-एथलेटिक्स) स्पर्धा में स्वर्ण पदक किस भारतीय खिलाड़ी ने जीता?",
@@ -523,36 +553,18 @@ async function main() {
         explanationEn: "Rishikanta Singh set a new CWG Snatch record in men's 60kg weightlifting."
       },
       {
-        question: "कॉमनवेल्थ गेम्स 2026 का आयोजन स्कॉटलैंड के किस शहर में किया जा रहा है?",
-        questionEn: "Which Scottish city is hosting the Commonwealth Games 2026?",
-        options: ["A. एडिनबर्ग", "B. ग्लासगो", "C. एबरडीन", "D. डंडी"],
-        optionsEn: ["A. Edinburgh", "B. Glasgow", "C. Aberdeen", "D. Dundee"],
-        correctIndex: 1,
-        explanation: "23वें कॉमनवेल्थ गेम्स 2026 का आयोजन ग्लासगो, स्कॉटलैंड में 23 जुलाई से 2 अगस्त 2026 तक हो रहा है।",
-        explanationEn: "Glasgow, Scotland is hosting CWG 2026."
-      },
-      {
-        question: "कॉमनवेल्थ गेम्स में भारत का सर्वकालिक सर्वश्रेष्ठ प्रदर्शन किस वर्ष (101 पदक) रहा था?",
-        questionEn: "In which year did India achieve its best ever CWG performance with 101 medals?",
-        options: ["A. 2002 मैनचेस्टर", "B. 2010 नई दिल्ली", "C. 2018 गोल्ड कोस्ट", "D. 2022 बर्मिंघम"],
-        optionsEn: ["A. 2002 Manchester", "B. 2010 New Delhi", "C. 2018 Gold Coast", "D. 2022 Birmingham"],
-        correctIndex: 1,
-        explanation: "भारत का सर्वश्रेष्ठ प्रदर्शन 2010 नई दिल्ली राष्ट्रमंडल खेलों में 38 स्वर्ण सहित 101 पदकों के साथ रहा था।",
-        explanationEn: "India won 101 medals (38 Gold) at the 2010 New Delhi Games."
-      },
-      {
-        question: "MPPSC मुख्य परीक्षा पाठ्यक्रम में खेल समसामयिकी (Sports GK) किस पेपर का अभिन्न अंग है?",
-        questionEn: "In MPPSC Mains syllabus, Sports Current Affairs comes under which paper?",
-        options: ["A. केवल गणित", "B. सामान्य अध्ययन Paper 1 एवं Paper 3", "C. केवल हिंदी", "D. केवल दर्शनशास्त्र"],
-        optionsEn: ["A. Mathematics only", "B. General Studies Paper 1 & Paper 3", "C. Hindi only", "D. Philosophy only"],
-        correctIndex: 1,
-        explanation: "खेलकूद MPPSC प्रारम्भिक परीक्षा (Paper 1 GS) तथा मुख्य परीक्षा (Paper 1 व Paper 3) का अनिवार्य हिस्सा है।",
-        explanationEn: "Sports GK is a key section in MPPSC Prelims Paper 1 GS and Mains Paper 1/3."
+        question: "कॉमनवेल्थ गेम्स 2026 में भारत को वेटलिफ्टिंग (भारोत्तोलन) खेल से कुल कितने पदक प्राप्त हुए हैं?",
+        questionEn: "How many total medals did India win in Weightlifting at CWG 2026?",
+        options: ["A. 3 पदक", "B. 5 पदक", "C. 7 पदक (1 स्वर्ण, 5 रजत, 1 कांस्य)", "D. 10 पदक"],
+        optionsEn: ["A. 3 Medals", "B. 5 Medals", "C. 7 Medals (1 Gold, 5 Silver, 1 Bronze)", "D. 10 Medals"],
+        correctIndex: 2,
+        explanation: "भारत को वेटलिफ्टिंग से कुल 7 पदक प्राप्त हुए हैं: मीराबाई चानू (गोल्ड), ऋषिकांत, मुथुपांडी, ज्ञानेश्वरी, वल्लुरी अजय, हरजिंदर कौर (रजत), तथा बिंदियारानी देवी (कांस्य)।",
+        explanationEn: "India secured 7 medals in Weightlifting: 1 Gold, 5 Silver, and 1 Bronze."
       }
     ]
   };
 
-  console.log(`📝 Syncing CWG 2026 hub article ID "${article._id}" to Sanity CMS with Glasgow Medals Top Thumbnail...`);
+  console.log(`📝 Syncing CWG 2026 hub article ID "${article._id}" to Sanity CMS with updated 12 medals...`);
   const res = await client.createOrReplace(article);
   console.log(`🎉 SUCCESS! Article uploaded & published in Sanity CMS. Document ID: ${res._id}`);
   console.log(`URL slug: ${res.slug.current}`);
