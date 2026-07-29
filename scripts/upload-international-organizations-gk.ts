@@ -25,7 +25,7 @@ const client = createClient({
 });
 
 async function main() {
-  console.log("🚀 Starting upload for Ultimate SEO Optimized International Organizations Article...");
+  console.log("🚀 Starting upload for Ultimate SEO Optimized & Interlinked International Organizations Article...");
 
   const publicBlogDir = path.resolve(process.cwd(), "public/images/blog");
   const artifactDir = "/Users/aakariastech/.gemini/antigravity-ide/brain/46ddf059-c542-4af1-8a30-e0605b309cce";
@@ -139,7 +139,15 @@ async function main() {
         children: [
           {
             _type: "span",
-            text: "इस लेख में विश्व के प्रमुख अंतर्राष्ट्रीय संगठनों एवं उनके मुख्यालयों की अद्यतन मास्टर सूची (Master List 2026), शहरवार याद रखने की आसान ट्रिक्स (Memory Tricks), अंतर्राष्ट्रीय संगठनों द्वारा जारी रिपोर्ट, भारत के प्रमुख राष्ट्रीय संगठन (ISRO, DRDO, RBI, SEBI, NABARD) तथा अभ्यास हेतु वस्तुनिष्ठ प्रश्न (MCQs) शामिल किए गए हैं।",
+            text: "इस लेख में विश्व के प्रमुख अंतर्राष्ट्रीय संगठनों एवं उनके मुख्यालयों की अद्यतन मास्टर सूची (Master List 2026), शहरवार याद रखने की आसान ट्रिक्स (Memory Tricks), अंतर्राष्ट्रीय संगठनों द्वारा जारी रिपोर्ट, भारत के प्रमुख राष्ट्रीय संगठन (ISRO, DRDO, RBI, SEBI, NABARD) तथा अभ्यास हेतु वस्तुनिष्ठ प्रश्न (MCQs) शामिल किए गए हैं। विस्तृत परीक्षा रणनीति के लिए देखें: ",
+          },
+          {
+            _type: "span",
+            text: "[MPPSC 2026 पाठ्यक्रम व सम्पूर्ण परीक्षा रणनीति](/mppsc/syllabus-2026)",
+          },
+          {
+            _type: "span",
+            text: "।",
           },
         ],
       },
@@ -186,7 +194,7 @@ async function main() {
           ["**संयुक्त राष्ट्र पर्यावरण कार्यक्रम (UNEP)**", "नैरोबी (केन्या)", "5 जून 1972", "**इंगर एंडरसन (Inger Andersen)**", "193"],
           ["**अंतर्राष्ट्रीय सौर गठबंधन (ISA)**", "गुरुग्राम (भारत)", "30 नवंबर 2015", "**डॉ. अजय माथुर (Dr. Ajay Mathur)**", "119+"],
           ["**बिम्सटेक (BIMSTEC)**", "ढाका (बांग्लादेश)", "6 जून 1997", "**इन्द्र मणि पांडे (Indra Mani Pandey)**", "7"],
-          ["**एमनेस्टी इंटरनेशनल (Amnesty International)**", "लंदन (यूके)", "जुलाई 1961", "**एग्नेस कैलागार्ड**", "150+"],
+          ["**एमनेष्टि इंटरनेशनल (Amnesty International)**", "लंदन (यूके)", "जुलाई 1961", "**एग्नेस कैलागार्ड**", "150+"],
           ["**संयुक्त राष्ट्र बाल आपात कोष (UNICEF)**", "न्यूयॉर्क (अमेरिका)", "11 दिसंबर 1946", "**कैथरीन रसेल (Catherine Russell)**", "190"],
           ["**संयुक्त राष्ट्र जनसंख्या कोष (UNFPA)**", "न्यूयॉर्क (अमेरिका)", "1969", "**नतालिया कानेम (Natalia Kanem)**", "150+"],
           ["**संयुक्त राष्ट्र व्यापार एवं विकास सम्मेलन (UNCTAD)**", "जेनेवा (स्विट्जरलैंड)", "30 दिसंबर 1964", "**रेबेका ग्रिंस्पैन (Rebeca Grynspan)**", "195"],
@@ -197,8 +205,26 @@ async function main() {
           ["**ट्रांसपेरेंसी इंटरनेशनल (Transparency International)**", "बर्लिन (जर्मनी)", "मई 1993", "**फ्रैंकोइस वैलेरियन**", "100+"]
         ]
       },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "💡 **अंतर्राष्ट्रीय संबंध एवं राजव्यवस्था नोट्स**: MPPSC मेन्स पेपर-2 हेतु अंतर्राष्ट्रीय संगठनों के वैधानिक ढाँचे व भूमिका का अध्ययन करने के लिए पढ़ें: ",
+          },
+          {
+            _type: "span",
+            text: "[भारतीय राजव्यवस्था एवं अंतर्राष्ट्रीय संबंध GS-2 नोट्स](/general-awareness?subject=polity)",
+          },
+          {
+            _type: "span",
+            text: "।",
+          },
+        ],
+      },
 
-      /* ── 2. Reports Published by International Organizations (MPPSC & UPSC Special) ── */
+      /* ── 2. Reports Published by International Organizations ── */
       {
         _type: "block",
         style: "h3",
@@ -230,6 +256,24 @@ async function main() {
           ["**रिपोर्टर्स विदाउट बॉर्डर्स (RSF)**", "• विश्व प्रेस स्वतंत्रता सूचकांक (World Press Freedom Index)"],
           ["**संयुक्त राष्ट्र सतत विकास समाधान नेटवर्क (SDSN)**", "• विश्व प्रसन्नता रिपोर्ट (World Happiness Report)"]
         ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "📌 **वैश्विक रैंकिंग संबंधित अन्य महत्वपूर्ण लेख**: उच्च शिक्षा व शोध क्षेत्र में वैश्विक सूचकांक हेतु पढ़ें: ",
+          },
+          {
+            _type: "span",
+            text: "[QS World University Rankings 2027: भारतीय संस्थानों की स्थिति व रैंकिंग विश्लेषण](/current-affairs/qs-world-university-rankings-2027-india-iit-delhi-iisc-mppsc)",
+          },
+          {
+            _type: "span",
+            text: "।",
+          },
+        ],
       },
 
       /* ── 3. Major Indian Organizations & Headquarters ── */
@@ -266,6 +310,32 @@ async function main() {
           ["**भारतीय बीमा विनियामक और विकास प्राधिकरण (IRDAI)**", "हैदराबाद (तेलंगाना)", "1999"],
           ["**भारतीय दूरसंचार विनियामक प्राधिकरण (TRAI)**", "नई दिल्ली", "20 फरवरी 1997"]
         ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "⚡ **राष्ट्रीय आपदा प्रबंधन प्राधिकरण (NDMA) व नए कानून संबंधी लेख**: भारत में आपदा प्रबंधन की सर्वोच्च संस्था (NDMA) एवं नवीन संशोधन कानून हेतु पढ़ें: ",
+          },
+          {
+            _type: "span",
+            text: "[आपदा प्रबंधन (संशोधन) अधिनियम 2025: NCMC, UDMA धारा 41A व संपूर्ण नोट्स](/current-affairs/disaster-management-amendment-act-2025-mppsc-upsc-notes)",
+          },
+          {
+            _type: "span",
+            text: " तथा ",
+          },
+          {
+            _type: "span",
+            text: "[आपदा प्रबंधन क्या है? NCERT सिद्धांत व MPPSC Mains नोट्स](/general-awareness/what-is-disaster-management-ncert-types-mppsc-notes)",
+          },
+          {
+            _type: "span",
+            text: "।",
+          },
+        ],
       },
 
       /* ── 4. Memory Tricks ── */
@@ -353,11 +423,126 @@ async function main() {
         ]
       },
 
-      /* ── 6. Conclusion ── */
+      /* ── 6. Dedicated Interlinking Section (संबंधित परीक्षा नोट्स व अध्ययन सामग्री) ── */
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "6. निष्कर्ष (Conclusion)" }],
+        children: [{ _type: "span", text: "6. संबंधित परीक्षा अध्ययन सामग्री एवं इंटरलिंक्ड नोट्स (Related Notes & Interlinking)" }],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "MPPSC Prelims & Mains परीक्षा की बेहतर तैयारी के लिए Aakar IAS के इन महत्वपूर्ण लेखों व संसाधनों का अध्ययन करें:\n",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "👉 ",
+          },
+          {
+            _type: "span",
+            text: "[MPPSC 2026 नवीन पाठ्यक्रम, परीक्षा पैटर्न व संपूर्ण रणनीति](/mppsc/syllabus-2026)",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "👉 ",
+          },
+          {
+            _type: "span",
+            text: "[आपदा प्रबंधन (संशोधन) अधिनियम 2025: UDMA धारा 41A व संपूर्ण नोट्स](/current-affairs/disaster-management-amendment-act-2025-mppsc-upsc-notes)",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "👉 ",
+          },
+          {
+            _type: "span",
+            text: "[आपदा प्रबंधन क्या है? NCERT सिद्धांत, प्रकार व मेन्स उत्तर लेखन नोट्स](/general-awareness/what-is-disaster-management-ncert-types-mppsc-notes)",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "👉 ",
+          },
+          {
+            _type: "span",
+            text: "[QS World University Rankings 2027: भारतीय संस्थानों का प्रदर्शन](/current-affairs/qs-world-university-rankings-2027-india-iit-delhi-iisc-mppsc)",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "👉 ",
+          },
+          {
+            _type: "span",
+            text: "[कॉमनवेल्थ गेम्स 2026: भारत के 12 पदक विजेताओं की संपूर्ण सूची](/current-affairs/commonwealth-games-2026-updates-india-medal-tally)",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "👉 ",
+          },
+          {
+            _type: "span",
+            text: "[Aakar IAS MPPSC ऑनलाइन एवं ऑफलाइन टेस्ट सीरीज जॉइन करें](/test-series)",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "👉 ",
+          },
+          {
+            _type: "span",
+            text: "[MPPSC एवं UPSC हस्तलिखित नोट्स PDF निःशुल्क डाउनलोड करें](/mppsc-notes)",
+          },
+        ],
+      },
+
+      /* ── 7. Conclusion ── */
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "7. निष्कर्ष (Conclusion)" }],
       },
       {
         _type: "block",
@@ -539,9 +724,9 @@ async function main() {
     ]
   };
 
-  console.log(`📝 Syncing Ultimate SEO Master Article "${articleDoc._id}" to Sanity CMS...`);
+  console.log(`📝 Syncing Interlinked Article "${articleDoc._id}" to Sanity CMS...`);
   const res = await client.createOrReplace(articleDoc);
-  console.log(`🎉 SUCCESS! Article uploaded & published in Sanity CMS. Document ID: ${res._id}`);
+  console.log(`🎉 SUCCESS! Article uploaded & published in Sanity CMS with rich Interlinking. Document ID: ${res._id}`);
   console.log(`URL slug: ${res.slug.current}`);
 }
 
