@@ -540,7 +540,7 @@ export class SanityRepository implements ContentRepository {
       query,
       params: { slug },
       revalidate: REVALIDATE,
-      tags: [`article:${slug}`],
+      tags: ["articles", "staticGk", "currentAffairs", `article:${slug}`],
     });
     if (!raw) return null;
 

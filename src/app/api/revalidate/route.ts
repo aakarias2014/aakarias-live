@@ -226,12 +226,18 @@ export async function GET(req: NextRequest) {
       revalidatePath(targetPath);
       revalidatePath(`/en${targetPath === "/" ? "" : targetPath}`);
     } else {
+      revalidatePath("/", "layout");
+      revalidatePath("/en", "layout");
       for (const p of allPaths) {
-        revalidatePath(p);
+        revalidatePath(p, "page");
+        revalidatePath(p, "layout");
       }
       for (const t of allTags) {
         (revalidateTag as any)(t);
       }
+      (revalidateTag as any)("articles");
+      (revalidateTag as any)("staticGk");
+      (revalidateTag as any)("currentAffairs");
     }
 
     return NextResponse.json({
