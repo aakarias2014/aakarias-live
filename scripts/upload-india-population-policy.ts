@@ -25,7 +25,35 @@ const client = createClient({
 });
 
 async function main() {
-  console.log("🚀 Uploading Complete Interlinked Population Policy Article to Sanity CMS...");
+  console.log("🚀 Uploading Complete Interlinked Population Policy Article with Real Images to Sanity CMS...");
+
+  const publicBlogDir = path.resolve(process.cwd(), "public/images/blog");
+  const artifactDir = "/Users/aakariastech/.gemini/antigravity-ide/brain/46ddf059-c542-4af1-8a30-e0605b309cce";
+
+  if (!fs.existsSync(publicBlogDir)) fs.mkdirSync(publicBlogDir, { recursive: true });
+
+  const destHealthcare = path.join(publicBlogDir, "india_population_policy_family_welfare_healthcare.png");
+  const destTargets = path.join(publicBlogDir, "national_population_policy_2000_targets_infographic.png");
+  const destDividend = path.join(publicBlogDir, "india_demographic_dividend_youth_development.png");
+
+  const srcHealthcare = path.join(artifactDir, "india_population_policy_family_welfare_healthcare_1785322121293.png");
+  const srcTargets = path.join(artifactDir, "national_population_policy_2000_targets_infographic_1785322137518.png");
+  const srcDividend = path.join(artifactDir, "india_demographic_dividend_youth_development_1785322150238.png");
+
+  if (fs.existsSync(srcHealthcare)) fs.copyFileSync(srcHealthcare, destHealthcare);
+  if (fs.existsSync(srcTargets)) fs.copyFileSync(srcTargets, destTargets);
+  if (fs.existsSync(srcDividend)) fs.copyFileSync(srcDividend, destDividend);
+
+  console.log("📸 Uploading Population Policy images to Sanity CMS...");
+  const assetHealthcare = await client.assets.upload("image", fs.createReadStream(destHealthcare), {
+    filename: "india_population_policy_family_welfare_healthcare.png",
+  });
+  const assetTargets = await client.assets.upload("image", fs.createReadStream(destTargets), {
+    filename: "national_population_policy_2000_targets_infographic.png",
+  });
+  const assetDividend = await client.assets.upload("image", fs.createReadStream(destDividend), {
+    filename: "india_demographic_dividend_youth_development.png",
+  });
 
   const docId = "gk-india-population-policy-notes";
   const slug = "population-policy-of-india-npp-2000-mppsc-upsc-notes";
@@ -67,6 +95,11 @@ async function main() {
       "MPPSC Notes",
       "UPSC Notes"
     ],
+    featuredImage: {
+      _type: "image",
+      asset: { _type: "reference", _ref: assetHealthcare._id },
+      alt: "India Population Policy Family Welfare Healthcare Clinic MPPSC UPSC Notes",
+    },
 
     /* ────────────── HINDI BODY ────────────── */
     body: [
@@ -74,6 +107,12 @@ async function main() {
         _type: "block",
         style: "h3",
         children: [{ _type: "span", text: "1. स्वतंत्रता पश्चात भारत में जनसंख्या नीति का ऐतिहासिक विकास (1952 से 2000)" }],
+      },
+      {
+        _type: "image",
+        asset: { _type: "reference", _ref: assetHealthcare._id },
+        alt: "India Population Policy Family Welfare Healthcare Centre MPPSC UPSC Notes",
+        caption: "भारत में परिवार कल्याण, प्राथमिक स्वास्थ्य केंद्र एवं महिला-बाल स्वास्थ्य जागरूकता कार्यक्रम",
       },
       {
         _type: "block",
@@ -133,6 +172,12 @@ async function main() {
         _type: "block",
         style: "h3",
         children: [{ _type: "span", text: "2. राष्ट्रीय जनसंख्या आयोग एवं राष्ट्रीय जनसंख्या स्थिरता कोष" }],
+      },
+      {
+        _type: "image",
+        asset: { _type: "reference", _ref: assetTargets._id },
+        alt: "National Population Policy 2000 Targets Infographic MPPSC UPSC Notes",
+        caption: "राष्ट्रीय जनसंख्या नीति 2000 (NPP-2000) के अल्पकालिक, मध्यकालिक एवं दीर्घकालिक लक्ष्य इन्फोग्राफिक",
       },
       {
         _type: "block",
@@ -261,11 +306,17 @@ async function main() {
         children: [{ _type: "span", text: "• **7. अवैध प्रवास (Illegal Migration)**: सीमावर्ती राज्यों में जनसंख्या का दबाव।" }]
       },
 
-      /* ── 5. Benefits ── */
+      /* ── 5. Benefits & Demographic Dividend ── */
       {
         _type: "block",
         style: "h3",
         children: [{ _type: "span", text: "5. जनसंख्या वृद्धि के सकारात्मक पहलू एवं जनसांख्यिकीय लाभांश" }],
+      },
+      {
+        _type: "image",
+        asset: { _type: "reference", _ref: assetDividend._id },
+        alt: "India Demographic Dividend Youth Development MPPSC UPSC Notes",
+        caption: "भारत का जनसांख्यिकीय लाभांश: युवा शक्ति, कौशल विकास एवं सतत आर्थिक प्रगति",
       },
       {
         _type: "block",
@@ -419,16 +470,6 @@ async function main() {
           },
         ],
       },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "👉 [MPPSC 2026 नवीन पाठ्यक्रम, परीक्षा पैटर्न व संपूर्ण रणनीति](/mppsc/syllabus-2026)",
-          },
-        ],
-      },
 
       /* ── 11. Conclusion ── */
       {
@@ -454,6 +495,12 @@ async function main() {
         _type: "block",
         style: "h3",
         children: [{ _type: "span", text: "1. Historical Evolution of Population Policy in India Post-Independence (1952 to 2000)" }],
+      },
+      {
+        _type: "image",
+        asset: { _type: "reference", _ref: assetHealthcare._id },
+        alt: "India Population Policy Family Welfare Healthcare Clinic MPPSC UPSC Notes",
+        caption: "Family welfare, maternal & child healthcare awareness initiative in India",
       },
       {
         _type: "block",
@@ -514,6 +561,12 @@ async function main() {
         children: [{ _type: "span", text: "2. National Commission on Population & Stabilization Fund" }],
       },
       {
+        _type: "image",
+        asset: { _type: "reference", _ref: assetTargets._id },
+        alt: "National Population Policy 2000 Targets Infographic MPPSC UPSC Notes",
+        caption: "Infographic on National Population Policy 2000 (NPP-2000) short-term and long-term targets",
+      },
+      {
         _type: "block",
         style: "normal",
         children: [{ _type: "span", text: "Established in May 2000 under the Prime Minister to review policy implementation and promote inter-sectoral coordination." }]
@@ -551,7 +604,19 @@ async function main() {
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "4. Related Study Material & Interlinked Notes" }],
+        children: [{ _type: "span", text: "4. Demographic Dividend & Youth Development" }],
+      },
+      {
+        _type: "image",
+        asset: { _type: "reference", _ref: assetDividend._id },
+        alt: "India Demographic Dividend Youth Development MPPSC UPSC Notes",
+        caption: "India's Demographic Dividend: Empowering youth through education and skill development",
+      },
+
+      {
+        _type: "block",
+        style: "h3",
+        children: [{ _type: "span", text: "5. Related Study Material & Interlinked Notes" }],
       },
       {
         _type: "block",
@@ -577,7 +642,7 @@ async function main() {
       {
         _type: "block",
         style: "h3",
-        children: [{ _type: "span", text: "5. Conclusion" }],
+        children: [{ _type: "span", text: "6. Conclusion" }],
       },
       {
         _type: "block",
@@ -636,12 +701,12 @@ async function main() {
     ]
   };
 
-  console.log(`📝 Syncing Interlinked Population Policy Article "${articleDoc._id}" to Sanity CMS...`);
+  console.log(`📝 Syncing Interlinked Population Policy Article with Real Images "${articleDoc._id}" to Sanity CMS...`);
   const res = await client.createOrReplace(articleDoc);
-  console.log(`🎉 SUCCESS! Interlinked Article uploaded & published in Sanity CMS. Document ID: ${res._id}`);
+  console.log(`🎉 SUCCESS! Population Policy article uploaded with images to Sanity CMS. Document ID: ${res._id}`);
 }
 
 main().catch((err) => {
-  console.error("❌ Error uploading Population Policy article:", err);
+  console.error("❌ Error uploading Population Policy article with images:", err);
   process.exit(1);
 });
