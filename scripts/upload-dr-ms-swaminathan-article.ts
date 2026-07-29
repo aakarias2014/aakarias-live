@@ -61,6 +61,15 @@ async function main() {
     filename: "ms_swaminathan_bharat_ratna_ceremony_droupadi_murmu.jpg",
   });
 
+  console.log("🏷️ Seeding Inspirational Icons tag into Sanity...");
+  await client.createOrReplace({
+    _id: "tag-inspirational-icons",
+    _type: "tag",
+    slug: { _type: "slug", current: "inspirational-icons" },
+    name: "महत्त्वपूर्ण व्यक्तित्व",
+    nameEn: "Inspirational Icons",
+  });
+
   const docId = "gk-dr-ms-swaminathan-green-revolution";
   const slug = "dr-ms-swaminathan-father-of-green-revolution-mppsc-upsc-notes";
 
@@ -80,6 +89,7 @@ async function main() {
       { _type: "reference", _ref: "tag-upsc" },
       { _type: "reference", _ref: "tag-prelims" },
       { _type: "reference", _ref: "tag-mains" },
+      { _type: "reference", _ref: "tag-inspirational-icons" },
     ],
     excerpt: "भारत में हरित क्रांति के जनक डॉ. एम.एस. स्वामीनाथन का जीवन परिचय, कल्याण सोना व सोनालिका गेहूँ किस्मों का विकास, स्वामीनाथन आयोग 50% MSP सिफारिश, सदाबहार क्रांति (Evergreen Revolution), राष्ट्रीय जनसंख्या नीति 2000 (NPP-2000) में भूमिका, भारत रत्न 2024, विश्व खाद्य पुरस्कार व मैंग्रोव संरक्षण। MPPSC व UPSC परीक्षा नोट्स।",
     excerptEn: "Comprehensive exam notes on Dr. M.S. Swaminathan (Father of Green Revolution in India), high-yielding wheat varieties (Kalyan Sona, Sonalika), Swaminathan Commission MSP 50% recommendation, Evergreen Revolution, NPP-2000 drafting, Bharat Ratna 2024, World Food Prize & Mangrove conservation.",

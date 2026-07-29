@@ -653,7 +653,7 @@ export class SanityRepository implements ContentRepository {
       `!(_id in path("drafts.**"))`,
       `defined(publishedAt)`,
     ];
-    if (query.category) filters.push(`category->slug.current == $category`);
+    if (query.category) filters.push(`(category->slug.current == $category || $category in tags[]->slug.current)`);
     if (query.tag) filters.push(`$tag in tags[]->slug.current`);
     // contentType maps to the Sanity _type for editorial/blog/weekly/monthly;
     // currentAffairs falls back to a generic listing.

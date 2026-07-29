@@ -21,7 +21,8 @@ import {
   Trophy,
   Layers,
   BookOpen,
-  ShieldAlert
+  ShieldAlert,
+  UserCheck
 } from "lucide-react";
 
 export const revalidate = 600;
@@ -49,6 +50,7 @@ const SUBJECTS = [
   { slug: "science-technology", title: "Science & Technology", titleEn: "Sci & Tech", Icon: Cpu },
   { slug: "mpgk", title: "MP GK", titleEn: "MP GK", Icon: MapPin },
   { slug: "sports", title: "Sports & Games", titleEn: "Sports & Games", Icon: Trophy },
+  { slug: "inspirational-icons", title: "Inspirational Icons", titleEn: "Inspirational Icons", Icon: UserCheck },
   { slug: "misc", title: "Miscellaneous", titleEn: "Miscellaneous", Icon: Layers },
 ];
 
