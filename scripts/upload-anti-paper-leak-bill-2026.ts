@@ -283,28 +283,7 @@ async function main() {
         ]),
       },
 
-      /* ── 5. Memory Trick 2-3-5-10 ────────────────────────────── */
-      {
-        _key: "sec-trick",
-        kind: "importance",
-        title: "याद रखने की आसान ट्रिक: \"2-3-5-10 नियम\"",
-        titleEn: "Memory Trick: The \"2-3-5-10 Rule\"",
-        body: createBlocks([
-          "### परीक्षा हेतु \"2-3-5-10 नियम\" (Trick to Remember)",
-          "परीक्षा में इस कानून के समयबद्ध नियमों को याद रखने की सबसे आसान ट्रिक:",
-          "• **2 माह** → जांच पूरी करने का लक्ष्य",
-          "• **3 माह** → चार्जशीट के बाद ट्रायल पूरा करने का लक्ष्य",
-          "• **5 वर्ष** → सामान्य पेपर लीक में न्यूनतम सजा",
-          "• **10 वर्ष** → अधिकतम कारावास की सजा"
-        ]),
-        bodyEn: createBlocks([
-          "### Memory Trick: The \"2-3-5-10 Rule\"",
-          "• **2 Months** → Investigation completion target",
-          "• **3 Months** → Trial completion target post-chargesheet",
-          "• **5 Years** → Minimum imprisonment for paper leak",
-          "• **10 Years** → Maximum imprisonment term"
-        ]),
-      },
+
 
       /* ── 6. MPPSC Mains Paper-2 Exam Analysis ────────────────── */
       {
