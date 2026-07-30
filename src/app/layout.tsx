@@ -13,6 +13,7 @@ import { InquiryPopup } from "@/components/layout/inquiry-popup";
 import { ScrollInquiryModalWrapper } from "@/components/layout/scroll-inquiry-modal-wrapper";
 import { OrganizationJsonLd } from "@/components/seo/json-ld";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
+import { MicrosoftClarity } from "@/components/analytics/microsoft-clarity";
 import { siteConfig } from "@/lib/site-config";
 import { WhatsAppTracker } from "@/components/layout/whatsapp-tracker";
 
@@ -111,6 +112,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-background text-foreground antialiased">
         <GoogleAnalytics />
+        <MicrosoftClarity />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
