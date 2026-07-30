@@ -66,11 +66,11 @@ async function main() {
   const article = {
     _id: "gk-73-74-constitutional-amendments-1992",
     _type: "staticGk",
-    slug: { _type: "slug", current: "73-74-constitutional-amendments-1992" },
-    title: "73वाँ एवं 74वाँ संविधान संशोधन अधिनियम, 1992: स्थानीय स्वशासन की नींव",
-    titleEn: "73rd and 74th Constitutional Amendment Acts, 1992: The Foundation of Local Self-Government",
-    excerpt: "73वें एवं 74वें संविधान संशोधन अधिनियमों ने भारत में क्रमशः पंचायती राज और नगरीय निकायों को संवैधानिक दर्जा प्रदान कर भारत में त्रिस्तरीय स्वशासन प्रणाली का सूत्रपात किया। यह विषय मुख्य परीक्षाओं तथा प्रारंभिक परीक्षाओं की दृष्टि से महत्वपूर्ण है।",
-    excerptEn: "The 73rd and 74th Constitutional Amendment Acts, 1992 institutionalized rural Panchayati Raj and urban municipalities in India, creating a decentralized three-tier democratic governance. Critical for civil services preparation.",
+    slug: { _type: "slug", current: "73rd-74th-constitutional-amendment-acts-panchayati-raj-mppsc-notes" },
+    title: "73वां व 74वां संविधान संशोधन अधिनियम (पंचायती राज व नगरीय निकाय) | 73rd & 74th Amendments MPPSC & UPSC Notes",
+    titleEn: "73rd and 74th Constitutional Amendment Acts, 1992 (Panchayati Raj & Municipalities): MPPSC & UPSC Notes PDF",
+    excerpt: "73वें एवं 74वें संविधान संशोधन अधिनियम (1992) का संपूर्ण विश्लेषण। पंचायती राज और नगरीय निकायों को संवैधानिक दर्जा, त्रिस्तरीय स्वशासन प्रणाली, 11वीं व 12वीं अनुसूची, MPPSC (इतिहास व राजव्यवस्था) एवं UPSC परीक्षा नोट्स।",
+    excerptEn: "The 73rd and 74th Constitutional Amendment Acts, 1992 institutionalized rural Panchayati Raj and urban municipalities in India, creating a decentralized three-tier democratic governance. Critical for MPPSC & UPSC civil services preparation.",
     ca_date: "2026-07-08",
     publishedAt: new Date().toISOString(),
     featured: true,
@@ -78,6 +78,7 @@ async function main() {
     keywords: [
       "73rd Amendment",
       "74th Amendment",
+      "73rd-74th constitutional amendment acts",
       "Panchayati Raj",
       "Local Self Government",
       "Urban Local Bodies",
@@ -87,14 +88,14 @@ async function main() {
       "74वाँ संविधान संशोधन",
       "पंचायती राज",
       "नगर निगम",
-      "UPSC Polity",
-      "MPPSC Polity"
+      "MPPSC Polity",
+      "UPSC Polity"
     ],
     category: { _type: "reference", _ref: "cat-polity" }, // Subject-wise: Polity
     author: { _type: "reference", _ref: "author-aakar" },
     tags: [
-      { _type: "reference", _ref: "tag-upsc" },
       { _type: "reference", _ref: "tag-mppsc" },
+      { _type: "reference", _ref: "tag-upsc" },
       { _type: "reference", _ref: "tag-prelims" },
       { _type: "reference", _ref: "tag-mains" },
     ],
