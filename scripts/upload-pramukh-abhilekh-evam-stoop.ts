@@ -90,10 +90,15 @@ async function main() {
   });
   console.log(`✔ Uploaded assets. Inscriptions: ${assetFeatured._id}, Stupa: ${assetStupa._id}`);
 
-  // Construct Article Document (staticGk / generalAwareness)
+  // Delete old document if type was generalAwareness
+  try {
+    await client.delete("sgk-bharat-ke-pramukh-abhilekh-evam-stoop");
+  } catch (e) {}
+
+  // Construct Article Document (staticGk)
   const article = {
     _id: "sgk-bharat-ke-pramukh-abhilekh-evam-stoop",
-    _type: "generalAwareness",
+    _type: "staticGk",
     slug: { _type: "slug", current: "bharat-ke-pramukh-abhilekh-evam-stoop-mppsc-upsc-notes" },
     title: "भारत के प्रमुख अभिलेख एवं स्तूप (Ancient Inscriptions & Stupas) | MPPSC & UPSC के लिए महत्वपूर्ण तथ्य, सूची, इतिहास व PDF",
     titleEn: "Major Inscriptions & Stupas of Ancient India: List, Ashokan Edicts, Eran, Junagadh & MPPSC / UPSC Notes PDF",
