@@ -67,6 +67,7 @@ const envSchema = z.object({
 
   // ─── Analytics ───────────────────────────────────────────────────────
   NEXT_PUBLIC_GA_ID: z.string().optional(),
+  NEXT_PUBLIC_GTM_ID: z.string().optional(),
   NEXT_PUBLIC_CLARITY_ID: z.string().optional(),
   NEXT_PUBLIC_SEARCH_CONSOLE_VERIFICATION: z.string().optional(),
 
@@ -104,6 +105,7 @@ function parseEnv(): Env {
     NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY: process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY,
     ALGOLIA_INDEX_NAME: process.env.ALGOLIA_INDEX_NAME,
     NEXT_PUBLIC_GA_ID: process.env.NEXT_PUBLIC_GA_ID,
+    NEXT_PUBLIC_GTM_ID: process.env.NEXT_PUBLIC_GTM_ID,
     NEXT_PUBLIC_CLARITY_ID: process.env.NEXT_PUBLIC_CLARITY_ID,
     NEXT_PUBLIC_SEARCH_CONSOLE_VERIFICATION: process.env.NEXT_PUBLIC_SEARCH_CONSOLE_VERIFICATION,
     NEXT_PUBLIC_ENABLE_STUDIO: process.env.NEXT_PUBLIC_ENABLE_STUDIO,
