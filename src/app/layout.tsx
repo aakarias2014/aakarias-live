@@ -9,13 +9,11 @@ import { TopAnnouncementBarWrapper } from "@/components/layout/top-announcement-
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { MobileBottomBar } from "@/components/layout/mobile-bottom-bar";
-import { InquiryPopup } from "@/components/layout/inquiry-popup";
-import { ScrollInquiryModalWrapper } from "@/components/layout/scroll-inquiry-modal-wrapper";
 import { OrganizationJsonLd } from "@/components/seo/json-ld";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { MicrosoftClarity } from "@/components/analytics/microsoft-clarity";
 import { siteConfig } from "@/lib/site-config";
-import { WhatsAppTracker } from "@/components/layout/whatsapp-tracker";
+import { ClientOverlays } from "@/components/layout/client-overlays";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -120,15 +118,13 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <LanguageProvider>
-            <WhatsAppTracker />
             <OrganizationJsonLd />
             <TopAnnouncementBarWrapper />
             <SiteHeader />
             <main className="flex-1 pb-16 lg:pb-0">{children}</main>
             <SiteFooter />
             <MobileBottomBar />
-            <InquiryPopup />
-            <ScrollInquiryModalWrapper />
+            <ClientOverlays />
           </LanguageProvider>
         </ThemeProvider>
       </body>
