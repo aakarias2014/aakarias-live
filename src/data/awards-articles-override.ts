@@ -396,182 +396,398 @@ export const bharatRatnaDedicatedArticleData = {
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "1. परिचय — भारत रत्न (Bharat Ratna)" }]
+      children: [
+        {
+          _type: "span",
+          text: "1. परिचय — भारत रत्न (Bharat Ratna)",
+          textEn: "1. Introduction — Bharat Ratna (India's Highest Civilian Award)",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "विश्व के सबसे बड़े लोकतंत्र भारत में अपने महानतम दूरदर्शी व्यक्तियों, नेताओं और योगदानकर्ताओं को देश के सर्वोच्च नागरिक पुरस्कार, **भारत रत्न** से सम्मानित किया जाता है। **1954 में स्थापित** यह पुरस्कार **\"मानव प्रयास के किसी भी क्षेत्र में सर्वोच्च कोटि की असाधारण सेवा\"** को मान्यता देता है। [भारत के 5 सर्वोच्च नागरिक पुरस्कारों की तुलनात्मक सूची हेतु यहाँ देखें](/general-awareness/highest-civilian-awards-padma-awards-mppsc-upsc-notes)।" }]
+      children: [
+        {
+          _type: "span",
+          text: "विश्व के सबसे बड़े लोकतंत्र भारत में अपने महानतम दूरदर्शी व्यक्तियों, नेताओं और योगदानकर्ताओं को देश के सर्वोच्च नागरिक पुरस्कार, **भारत रत्न** से सम्मानित किया जाता है। **1954 में स्थापित** यह पुरस्कार **\"मानव प्रयास के किसी भी क्षेत्र में सर्वोच्च कोटि की असाधारण सेवा\"** को मान्यता देता है। [भारत के 5 सर्वोच्च नागरिक पुरस्कारों की तुलनात्मक सूची हेतु यहाँ देखें](/general-awareness/highest-civilian-awards-padma-awards-mppsc-upsc-notes)।",
+          textEn: "In India, the world's largest democracy, visionary leaders and contributors are honored with the nation's highest civilian award, **Bharat Ratna**. Established in **1954**, this award recognizes **\"exceptional service/performance of the highest order in any field of human endeavour\"**. [Click here for comparison of 5 Highest Civilian Awards](/en/general-awareness/highest-civilian-awards-padma-awards-mppsc-upsc-notes).",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "स्वतंत्रता सेनानियों और राजनेताओं से लेकर संगीतकारों, वैज्ञानिकों और खिलाड़ियों तक, भारत रत्न प्राप्तकर्ताओं के व्यक्तित्व भारत के राष्ट्रीय जीवन की विविधता और समृद्धि को दर्शाते हैं। **2025 तक, यह पुरस्कार 53 हस्तियों को प्रदान किया जा चुका है**, जिनमें भारतीय और कुछ प्रतिष्ठित विदेशी नागरिक शामिल हैं।" }]
+      children: [
+        {
+          _type: "span",
+          text: "स्वतंत्रता सेनानियों और राजनेताओं से लेकर संगीतकारों, वैज्ञानिकों और खिलाड़ियों तक, भारत रत्न प्राप्तकर्ताओं के व्यक्तित्व भारत के राष्ट्रीय जीवन की विविधता और समृद्धि को दर्शाते हैं। **2025 तक, यह पुरस्कार 53 हस्तियों को प्रदान किया जा चुका है**, जिनमें भारतीय और कुछ प्रतिष्ठित विदेशी नागरिक शामिल हैं।",
+          textEn: "From freedom fighters and statesmen to musicians, scientists, and sports icons, the recipients reflect the diversity and richness of India's national life. As of **2026, a total of 53 personalities** have been conferred this honor, including eminent foreign nationals.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "2. भारत रत्न का इतिहास और विकास (History & Evolution)" }]
+      children: [
+        {
+          _type: "span",
+          text: "2. भारत रत्न का इतिहास और विकास (History & Evolution)",
+          textEn: "2. History & Evolution of Bharat Ratna",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **स्थापना वर्ष 1954**: भारत रत्न पुरस्कार की स्थापना **जनवरी 1954** में तत्कालीन राष्ट्रपति **डॉ. राजेंद्र प्रसाद** द्वारा की गई थी।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **स्थापना वर्ष 1954**: भारत रत्न पुरस्कार की स्थापना **जनवरी 1954** में तत्कालीन राष्ट्रपति **डॉ. राजेंद्र प्रसाद** द्वारा की गई थी।",
+          textEn: "• **Institution (1954)**: Established in **January 1954** by the then President of India, **Dr. Rajendra Prasad**.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **प्रारंभिक क्षेत्र दायरा**: प्रारंभ में, यह पुरस्कार केवल **कला, साहित्य, विज्ञान और सार्वजनिक सेवाओं** में उपलब्धियों तक ही सीमित था।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **प्रारंभिक क्षेत्र दायरा**: प्रारंभ में, यह पुरस्कार केवल **कला, साहित्य, विज्ञान और सार्वजनिक सेवाओं** में उपलब्धियों तक ही सीमित था।",
+          textEn: "• **Original Scope**: Initially limited to achievements in **Arts, Literature, Science, and Public Services**.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **2011 का संशोधन**: दिसंबर 2011 में, इसका दायरा बढ़ाकर इसमें **\"मानव प्रयास के किसी भी क्षेत्र\"** (Human Endeavour) को शामिल कर लिया गया, जिससे सचिन तेंदुलकर जैसे एथलीट भी इसके लिए पात्र हो गए।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **2011 का संशोधन**: दिसंबर 2011 में, इसका दायरा बढ़ाकर इसमें **\"मानव प्रयास के किसी भी क्षेत्र\"** (Human Endeavour) को शामिल कर लिया गया, जिससे सचिन तेंदुलकर जैसे एथलीट भी इसके लिए पात्र हो गए।",
+          textEn: "• **2011 Amendment**: In December 2011, eligibility was expanded to include **\"any field of human endeavour\"**, enabling athletes like Sachin Tendulkar to become eligible.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **मरणोपरांत प्रावधान (1955)**: मूल 1954 के प्रावधानों में मरणोपरांत पुरस्कार का नियम नहीं था, परंतु 1955 में संशोधन कर मरणोपरांत सम्मान की अनुमति दी गई। ऐसा पहला मामला **1966 में लाल बहादुर शास्त्री** का था।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **मरणोपरांत प्रावधान (1955)**: मूल 1954 के प्रावधानों में मरणोपरांत पुरस्कार का नियम नहीं था, परंतु 1955 में संशोधन कर मरणोपरांत सम्मान की अनुमति दी गई। ऐसा पहला मामला **1966 में लाल बहादुर शास्त्री** का था।",
+          textEn: "• **Posthumous Provision (1955)**: The original 1954 statutes did not allow posthumous awards. This was amended in January 1955. **Lal Bahadur Shastri (1966)** was the first posthumous recipient.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "3. भारत रत्न की सुविधाएं, अधिकार एवं पुरस्कार राशि (Benefits & Facilities)" }]
+      children: [
+        {
+          _type: "span",
+          text: "3. भारत रत्न की सुविधाएं, अधिकार एवं पुरस्कार राशि (Benefits & Facilities)",
+          textEn: "3. Benefits, Facilities & Prize Money of Bharat Ratna",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **पुरस्कार राशि (Prize Money)**: भारत रत्न पुरस्कार में **कोई नकद राशि (No Monetary Reward)** नहीं दी जाती है। राष्ट्रपति द्वारा हस्ताक्षरित सनद (प्रमाणपत्र) एवं पीपल के पत्ते के आकार का एक पदक दिया जाता है।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **पुरस्कार राशि (Prize Money)**: भारत रत्न पुरस्कार में **कोई नकद राशि (No Monetary Reward)** नहीं दी जाती है। राष्ट्रपति द्वारा हस्ताक्षरित सनद (प्रमाणपत्र) एवं पीपल के पत्ते के आकार का एक पदक दिया जाता है।",
+          textEn: "• **Monetary Reward**: Bharat Ratna carries **no cash reward (₹0)**. Recipients receive a Sanad (certificate) signed by the President and a medallion in the shape of a peepal leaf.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **वरीयता क्रम (Order of Precedence)**: प्राप्तकर्ताओं को भारतीय सरकार के वरीयता क्रम में **7वां स्थान (Rank 7A/7)** दिया जाता है, जो मुख्यमंत्रियों, पूर्व प्रधानमंत्रियों व योजना आयोग उपाध्यक्ष के समकक्ष है।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **वरीयता क्रम (Order of Precedence)**: प्राप्तकर्ताओं को भारतीय सरकार के वरीयता क्रम में **7वां स्थान (Rank 7A/7)** दिया जाता है, जो मुख्यमंत्रियों, पूर्व प्रधानमंत्रियों व योजना आयोग उपाध्यक्ष के समकक्ष है।",
+          textEn: "• **Order of Precedence**: Recipients hold **Rank 7A/7** in the Indian Order of Precedence, on par with Chief Ministers, former Prime Ministers, and Cabinet Ministers.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **यात्रा सुविधाएं (Travel Perks)**: भारत रत्न विजेताओं को जीवनभर एयर इंडिया की प्रथम श्रेणी (First Class Air Travel) में मुफ्त हवाई यात्रा और भारतीय रेलवे में एग्जीक्यूटिव क्लास में मुफ्त यात्रा की सुविधा मिलती है।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **यात्रा सुविधाएं (Travel Perks)**: भारत रत्न विजेताओं को जीवनभर एयर इंडिया की प्रथम श्रेणी (First Class Air Travel) में मुफ्त हवाई यात्रा और भारतीय रेलवे में एग्जीक्यूटिव क्लास में मुफ्त यात्रा की सुविधा मिलती है।",
+          textEn: "• **Travel Privileges**: Lifetime complimentary First Class air travel on Air India and Executive Class travel on Indian Railways.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **राजकीय अतिथि दर्जा (State Guest)**: देश के किसी भी राज्य में जाने पर उन्हें राज्य सरकार द्वारा **'राजकीय अतिथि' (State Guest)** का दर्जा और पूर्ण सुरक्षा (VIP/VVIP Security) प्रदान की जाती है।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **राजकीय अतिथि दर्जा (State Guest)**: देश के किसी भी राज्य में जाने पर उन्हें राज्य सरकार द्वारा **'राजकीय अतिथि' (State Guest)** का दर्जा और पूर्ण सुरक्षा (VIP/VVIP Security) प्रदान की जाती है।",
+          textEn: "• **State Guest Status**: Treated as a **State Guest** with full VIP/VVIP security when traveling to any Indian state.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **डिप्लोमैटिक पासपोर्ट (Diplomatic Passport)**: इन्हें भारतीय राजनयिक पासपोर्ट (Diplomatic Passport) प्राप्त करने का अधिकार होता है, जिससे विदेश यात्राओं के दौरान विशेष सुविधाएं प्राप्त होती हैं।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **डिप्लोमैटिक पासपोर्ट (Diplomatic Passport)**: इन्हें भारतीय राजनयिक पासपोर्ट (Diplomatic Passport) प्राप्त करने का अधिकार होता है, जिससे विदेश यात्राओं के दौरान विशेष सुविधाएं प्राप्त होती हैं।",
+          textEn: "• **Diplomatic Passport**: Entitled to hold an Indian Diplomatic Passport providing special privileges during international travel.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "4. भारत रत्न लेने से किसने मना किया? (Who Refused Bharat Ratna?)" }]
+      children: [
+        {
+          _type: "span",
+          text: "4. भारत रत्न लेने से किसने मना किया? (Who Refused Bharat Ratna?)",
+          textEn: "4. Who Refused to Accept the Bharat Ratna Award?",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "गूगल और प्रतियोगी परीक्षाओं में सबसे ज्यादा पूछा जाने वाला प्रश्न है कि **'भारत रत्न लेने से किसने मना किया?'**:" }]
+      children: [
+        {
+          _type: "span",
+          text: "गूगल और प्रतियोगी परीक्षाओं में सबसे ज्यादा पूछा जाने वाला प्रश्न है कि **'भारत रत्न लेने से किसने मना किया?'**:",
+          textEn: "A frequently asked question in competitive exams and Google search is **'Who refused to accept the Bharat Ratna?'**:",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **मौलाना अबुल कलाम आजाद**: स्वतंत्र भारत के प्रथम शिक्षा मंत्री मौलाना आजाद ने 1992 (मरणोपरांत) से पूर्व जीवित रहते हुए भारत रत्न लेने से यह कहकर **अस्वीकार (Refuse)** कर दिया था कि चयन समिति के सदस्यों को स्वयं यह पुरस्कार स्वीकार नहीं करना चाहिए। बाद में 1992 में उन्हें मरणोपरांत सम्मानित किया गया।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **मौलाना अबुल कलाम आजाद**: स्वतंत्र भारत के प्रथम शिक्षा मंत्री मौलाना आजाद ने 1992 (मरणोपरांत) से पूर्व जीवित रहते हुए भारत रत्न लेने से यह कहकर **अस्वीकार (Refuse)** कर दिया था कि चयन समिति के सदस्यों को स्वयं यह पुरस्कार स्वीकार नहीं करना चाहिए। बाद में 1992 में उन्हें मरणोपरांत सम्मानित किया गया।",
+          textEn: "• **Maulana Abul Kalam Azad**: India's first Education Minister initially refused the award stating that selection committee members shouldn't accept the honor themselves. He was later conferred the award posthumously in 1992.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **नेताजी सुभाष चंद्र बोस का विवाद (1992)**: 1992 में सरकार ने नेताजी को मरणोपरांत भारत रत्न देने की घोषणा की थी। परंतु उनके परिवार और प्रशंसकों द्वारा 'मरणोपरांत' शब्द पर आपत्ति दर्ज की गई क्योंकि उनकी मृत्यु प्रामाणिक रूप से सिद्ध नहीं थी। उच्चतम न्यायालय के हस्तक्षेप के बाद 1997 में यह पुरस्कार वापस ले लिया गया — यह भारत रत्न के इतिहास में एकमात्र रद्द (Withdrawn) मामला है।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **नेताजी सुभाष चंद्र बोस का विवाद (1992)**: 1992 में सरकार ने नेताजी को मरणोपरांत भारत रत्न देने की घोषणा की थी। परंतु उनके परिवार और प्रशंसकों द्वारा 'मरणोपरांत' शब्द पर आपत्ति दर्ज की गई क्योंकि उनकी मृत्यु प्रामाणिक रूप से सिद्ध नहीं थी। उच्चतम न्यायालय के हस्तक्षेप के बाद 1997 में यह पुरस्कार वापस ले लिया गया — यह भारत रत्न के इतिहास में एकमात्र रद्द (Withdrawn) मामला है।",
+          textEn: "• **Netaji Subhash Chandra Bose Controversy (1992)**: The 1992 posthumous announcement was opposed by his family as his death was not conclusively established. Following Supreme Court proceedings, the award press communique was withdrawn in 1997 — the sole withdrawn instance in history.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "5. नामांकरण, चयन प्रक्रिया व पात्रता नियम (Eligibility & Selection Rules)" }]
+      children: [
+        {
+          _type: "span",
+          text: "5. नामांकरण, चयन प्रक्रिया व पात्रता नियम (Eligibility & Selection Rules)",
+          textEn: "5. Nomination, Selection Process & Eligibility Rules",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **पात्रता नियम**: जाति, पद, व्यवसाय, धर्म या लिंग के भेदभाव के बिना 'मानव प्रयास के किसी भी क्षेत्र' में उत्कृष्ट कार्य करने वाला व्यक्ति इसके योग्य है।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **पात्रता नियम**: जाति, पद, व्यवसाय, धर्म या लिंग के भेदभाव के बिना 'मानव प्रयास के किसी भी क्षेत्र' में उत्कृष्ट कार्य करने वाला व्यक्ति इसके योग्य है।",
+          textEn: "• **Eligibility Criteria**: Open to any person without distinction of race, occupation, position, or sex for exceptional performance in any field.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **प्रधानमंत्री की सिफारिश**: सिफारिशें केवल **प्रधानमंत्री द्वारा राष्ट्रपति को प्रेषित** की जाती हैं। इसके लिए गृह मंत्रालय की किसी औपचारिक समिति की आवश्यकता नहीं होती।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **प्रधानमंत्री की सिफारिश**: सिफारिशें केवल **प्रधानमंत्री द्वारा राष्ट्रपति को प्रेषित** की जाती हैं। इसके लिए गृह मंत्रालय की किसी औपचारिक समिति की आवश्यकता नहीं होती।",
+          textEn: "• **Prime Minister's Recommendation**: Recommendations are made directly by the Prime Minister to the President of India without formal committee processes.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **वार्षिक सीमा**: एक वर्ष में अधिकतम **3 भारत रत्न** दिए जाने का नियम है (अपवाद: 1999 में 4 तथा 2024 में 5 लोगों को दिया गया)।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **वार्षिक सीमा**: एक वर्ष में अधिकतम **3 भारत रत्न** दिए जाने का नियम है (अपवाद: 1999 में 4 तथा 2024 में 5 लोगों को दिया गया)।",
+          textEn: "• **Annual Limit**: Maximum of **3 awards per calendar year** (exceptions: 4 awarded in 1999, and 5 awarded in 2024).",
+        }
+      ]
     },
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "5. भारत रत्न का महत्व, संवैधानिक पहलू एवं आलोचना" }]
+      children: [
+        {
+          _type: "span",
+          text: "6. भारत रत्न का महत्व, संवैधानिक पहलू एवं आलोचना",
+          textEn: "6. Significance, Constitutional Aspects & Article 18 Rulings",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **राष्ट्र की कृतज्ञता**: यह असाधारण व्यक्तियों के प्रति **राष्ट्र की कृतज्ञता को दर्शाता है**।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **राष्ट्र की कृतज्ञता**: यह असाधारण व्यक्तियों के प्रति **राष्ट्र की कृतज्ञता को दर्शाता है**।",
+          textEn: "• **National Gratitude**: Expresses the nation's gratitude to exceptional individuals.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **राष्ट्रीय एकता**: विभिन्न क्षेत्रों एवं प्रांतों की हस्तियों का सम्मान करके **राष्ट्रीय एकता को मजबूत करता है**।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **राष्ट्रीय एकता**: विभिन्न क्षेत्रों एवं प्रांतों की हस्तियों का सम्मान करके **राष्ट्रीय एकता को मजबूत करता है**।",
+          textEn: "• **National Unity**: Strengthens national unity by honoring luminaries from diverse regions and fields.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **प्रेरणा स्त्रोत**: यह युवा पीढ़ी को प्राप्तकर्ताओं से प्रेरणा लेने के लिए प्रोत्साहित करता है।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **प्रेरणा स्त्रोत**: यह युवा पीढ़ी को प्राप्तकर्ताओं से प्रेरणा लेने के लिए प्रोत्साहित करता है।",
+          textEn: "• **Source of Inspiration**: Serves as a role model and inspiration for future generations.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **संवैधानिक प्रावधान (अनुच्छेद 18)**: सर्वोच्च न्यायालय ने 'बालाजी राघवम बनाम भारत संघ (1996)' मामले में फैसला सुनाया कि भारत रत्न संविधान के अनुच्छेद 18(1) के तहत 'उपाधि' नहीं है। अतः प्राप्तकर्ता इसे अपने नाम के आगे या पीछे उपाधि के रूप में प्रयुक्त नहीं कर सकते।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **संवैधानिक प्रावधान (अनुच्छेद 18)**: सर्वोच्च न्यायालय ने 'बालाजी राघवम बनाम भारत संघ (1996)' मामले में फैसला सुनाया कि भारत रत्न संविधान के अनुच्छेद 18(1) के तहत 'उपाधि' नहीं है। अतः प्राप्तकर्ता इसे अपने नाम के आगे या पीछे उपाधि के रूप में प्रयुक्त नहीं कर सकते।",
+          textEn: "• **Constitutional Aspect (Article 18)**: In *Balaji Raghavan v. Union of India (1996)*, the Supreme Court held that National Awards are not 'titles' under Article 18(1). Recipients cannot use them as prefixes or suffixes to their names.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "6. भारत रत्न पुरस्कार के बारे में प्रमुख स्मरणीय तथ्य (Quick Facts for MPPSC)" }]
+      children: [
+        {
+          _type: "span",
+          text: "7. भारत रत्न पुरस्कार के बारे में प्रमुख स्मरणीय तथ्य (Quick Facts for MPPSC)",
+          textEn: "7. Key Exam Facts on Bharat Ratna (Quick Revision)",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **प्रथम प्राप्तकर्ता (1954)**: सी. राजगोपालाचारी, डॉ. एस. राधाकृष्णन, सी.वी. रमन।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **प्रथम प्राप्तकर्ता (1954)**: सी. राजगोपालाचारी, डॉ. एस. राधाकृष्णन, सी.वी. रमन।",
+          textEn: "• **First Recipients (1954)**: C. Rajagopalachari, Dr. S. Radhakrishnan, Dr. C.V. Raman.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **पहली महिला प्राप्तकर्ता**: श्रीमती इंदिरा गांधी (1971)।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **पहली महिला प्राप्तकर्ता**: श्रीमती इंदिरा गांधी (1971)।",
+          textEn: "• **First Female Recipient**: Indira Gandhi (1971).",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **प्रथम संगीतकार पुरस्कार विजेता**: एमएस सुब्बुलक्ष्मी (1998)।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **प्रथम संगीतकार पुरस्कार विजेता**: एमएस सुब्बुलक्ष्मी (1998)।",
+          textEn: "• **First Musician Recipient**: M.S. Subbulakshmi (1998).",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **सबसे कम उम्र के पुरस्कार विजेता**: सचिन तेंदुलकर (2014, 40 वर्ष की आयु में)।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **सबसे कम उम्र के पुरस्कार विजेता**: सचिन तेंदुलकर (2014, 40 वर्ष की आयु में)।",
+          textEn: "• **Youngest Recipient**: Sachin Tendulkar (2014, at age 40).",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **विदेशी प्राप्तकर्ता**: खान अब्दुल गफ्फार खान (1987 - पाकिस्तान) और नेल्सन मंडेला (1990 - दक्षिण अफ्रीका)।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **विदेशी प्राप्तकर्ता**: खान अब्दुल गफ्फार खान (1987 - पाकिस्तान) और नेल्सन मंडेला (1990 - दक्षिण अफ्रीका)।",
+          textEn: "• **Foreign Recipients**: Khan Abdul Ghaffar Khan (1987 - Pakistan) and Nelson Mandela (1990 - South Africa).",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **मरणोपरांत प्रथम विजेता**: लाल बहादुर शास्त्री (1966)।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **मरणोपरांत प्रथम विजेता**: लाल बहादुर शास्त्री (1966)।",
+          textEn: "• **First Posthumous Recipient**: Lal Bahadur Shastri (1966).",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **कुल लाभार्थियों की संख्या (1954-2025)**: 53 हस्तियां।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **कुल लाभार्थियों की संख्या (1954-2026)**: 53 हस्तियां।",
+          textEn: "• **Total Recipients (1954-2026)**: 53 Dignitaries.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "7. भारत रत्न पुरस्कार विजेताओं की संपूर्ण सूची (1954 – 2025)" }]
+      children: [
+        {
+          _type: "span",
+          text: "8. भारत रत्न पुरस्कार विजेताओं की संपूर्ण सूची (1954 – 2026)",
+          textEn: "8. Complete Chronological List of Bharat Ratna Recipients (1954 – 2026)",
+        }
+      ]
     },
     {
       _type: "block",
@@ -581,8 +797,10 @@ export const bharatRatnaDedicatedArticleData = {
     {
       _type: "table",
       table: {
-        caption: "भारत रत्न पुरस्कार विजेताओं की संपूर्ण सूची (1954 – 2025)",
+        caption: "भारत रत्न पुरस्कार विजेताओं की संपूर्ण सूची (1954 – 2026)",
+        captionEn: "Complete Chronological List of Bharat Ratna Awardees (1954 – 2026)",
         headers: ["क्रम", "वर्ष", "नाम", "क्षेत्र / योगदान", "विशेष टिप्पणी"],
+        headersEn: ["S.No.", "Year", "Name", "Field / Contribution", "Key Remarks"],
         rows: [
           ["1", "1954", "**सी. राजगोपालाचारी**", "राजनीति", "स्वतंत्र भारत के अंतिम गवर्नर-जनरल"],
           ["2", "1954", "**डॉ. सर्वपल्ली राधाकृष्णन**", "दर्शन / शिक्षा", "प्रथम उपराष्ट्रपति, दूसरे राष्ट्रपति (शिक्षक दिवस 5 सितंबर)"],

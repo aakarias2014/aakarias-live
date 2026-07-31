@@ -301,14 +301,17 @@ function mapCard(raw: any, locale: Locale): ArticleListItem {
  */
 function mapPortableTextToBlocks(
   blocks: Array<Record<string, unknown>> | undefined,
+  locale?: Locale,
 ): { blocks: ArticleBlock[]; toc: TOCItem[] } {
   const out: ArticleBlock[] = [];
   const toc: TOCItem[] = [];
   if (!Array.isArray(blocks)) return { blocks: out, toc };
 
+  const isEn = locale === "en";
+
   // Helper: extract text from children, preserving bold marks and markDefs links
   function extractText(
-    children: Array<{ text?: string; marks?: string[] }> | undefined,
+    children: Array<{ text?: string; textEn?: string; marks?: string[] }> | undefined,
     markDefs?: Array<Record<string, any>>
   ): string {
     const markMap = new Map<string, string>();
@@ -323,7 +326,7 @@ function mapPortableTextToBlocks(
     return (
       children
         ?.map((c) => {
-          const t = c.text ?? "";
+          const t = (isEn ? c.textEn : c.text) ?? c.text ?? c.textEn ?? "";
           if (!t) return "";
           const marks = c.marks ?? [];
           const isBold = marks.includes("strong");
@@ -438,10 +441,14 @@ function mapPortableTextToBlocks(
           rows = allRows.slice(1);
         }
 
+        if (isEn && rawTable.headersEn) headers = rawTable.headersEn;
+        if (isEn && rawTable.rowsEn) rows = rawTable.rowsEn;
+        const caption = (isEn ? rawTable.captionEn : rawTable.caption) || rawTable.caption || rawTable.captionEn || (b.caption as string);
+
         out.push({
           type: "table",
           table: {
-            caption: rawTable.caption || (b.caption as string),
+            caption,
             headers,
             rows,
           },
@@ -617,6 +624,7 @@ export class SanityRepository implements ContentRepository {
     );
     const { blocks, toc: bodyToc } = mapPortableTextToBlocks(
       raw.body as Array<Record<string, unknown>>,
+      locale,
     );
     if (blocks.length && !sections.some((s) => s.kind === "keyHighlights")) {
       sections.unshift({ id: "key-highlights", kind: "keyHighlights", title: "Key Highlights", blocks });
