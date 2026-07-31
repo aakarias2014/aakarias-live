@@ -697,8 +697,8 @@ export const bharatRatnaDedicatedArticleData = {
       children: [
         {
           _type: "span",
-          text: "• **संवैधानिक प्रावधान (अनुच्छेद 18)**: सर्वोच्च न्यायालय ने 'बालाजी राघवम बनाम भारत संघ (1996)' मामले में फैसला सुनाया कि भारत रत्न संविधान के अनुच्छेद 18(1) के तहत 'उपाधि' नहीं है। अतः प्राप्तकर्ता इसे अपने नाम के आगे या पीछे उपाधि के रूप में प्रयुक्त नहीं कर सकते।",
-          textEn: "• **Constitutional Aspect (Article 18)**: In *Balaji Raghavan v. Union of India (1996)*, the Supreme Court held that National Awards are not 'titles' under Article 18(1). Recipients cannot use them as prefixes or suffixes to their names.",
+          text: "• **संवैधानिक प्रावधान (अनुच्छेद 18)**: सर्वोच्च न्यायालय ने **'बालाजी राघवम बनाम भारत संघ (1996)' मामले में फैसला सुनाया कि भारत रत्न संविधान के अनुच्छेद 18(1) के तहत 'उपाधि' नहीं है**। अतः प्राप्तकर्ता इसे अपने नाम के आगे या पीछे उपाधि के रूप में प्रयुक्त नहीं कर सकते।",
+          textEn: "• **Constitutional Aspect (Article 18)**: The Supreme Court **in 'Balaji Raghavan v. Union of India (1996)' held that Bharat Ratna is not a 'title' under Article 18(1) of the Constitution**. Hence, recipients cannot use it as a prefix or suffix to their names.",
         }
       ]
     },
