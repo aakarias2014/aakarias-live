@@ -569,6 +569,20 @@ export class SanityRepository implements ContentRepository {
         ...dilipGavitArticleData,
       };
     }
+    if (slug === "highest-civilian-awards-padma-awards-mppsc-upsc-notes") {
+      const { civilianAwardsArticleData } = await import("@/data/awards-articles-override");
+      raw = {
+        ...(raw || {}),
+        ...civilianAwardsArticleData,
+      };
+    }
+    if (slug === "mp-state-awards-tansen-kalidas-kabir-samman-mppsc-notes") {
+      const { mpStateAwardsArticleData } = await import("@/data/awards-articles-override");
+      raw = {
+        ...(raw || {}),
+        ...mpStateAwardsArticleData,
+      };
+    }
     if (slug === "disaster-management-amendment-act-2025-mppsc-upsc-notes") {
       raw = {
         ...(raw || {}),
@@ -749,6 +763,19 @@ export class SanityRepository implements ContentRepository {
       }
       if (!items.some((it) => it.slug === cwgCard.slug)) {
         items.unshift(cwgCard);
+      }
+    }
+
+    if (!query.contentType || query.contentType === "staticGk" || query.tag === "awards") {
+      const { civilianAwardsArticleData, mpStateAwardsArticleData } = await import("@/data/awards-articles-override");
+      const civCard = mapCard(civilianAwardsArticleData as any, locale);
+      const mpCard = mapCard(mpStateAwardsArticleData as any, locale);
+
+      if (!items.some((it) => it.slug === civCard.slug)) {
+        items.unshift(civCard);
+      }
+      if (!items.some((it) => it.slug === mpCard.slug)) {
+        items.unshift(mpCard);
       }
     }
 
@@ -958,6 +985,20 @@ export class SanityRepository implements ContentRepository {
       { slug: string; type: string; updatedAt: string }[]
     >({ query: q, params: { contentType }, tags: ["articles"] });
 
+    if (!slugs.some((s) => s.slug === "highest-civilian-awards-padma-awards-mppsc-upsc-notes")) {
+      slugs.unshift({
+        slug: "highest-civilian-awards-padma-awards-mppsc-upsc-notes",
+        type: "staticGk",
+        updatedAt: "2026-07-31T10:00:00.000Z",
+      });
+    }
+    if (!slugs.some((s) => s.slug === "mp-state-awards-tansen-kalidas-kabir-samman-mppsc-notes")) {
+      slugs.unshift({
+        slug: "mp-state-awards-tansen-kalidas-kabir-samman-mppsc-notes",
+        type: "staticGk",
+        updatedAt: "2026-07-31T10:30:00.000Z",
+      });
+    }
     if (!slugs.some((s) => s.slug === "dilip-gavit-biography-cwg-2026-gold-medal-para-athletics")) {
       slugs.unshift({
         slug: "dilip-gavit-biography-cwg-2026-gold-medal-para-athletics",
