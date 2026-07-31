@@ -763,8 +763,8 @@ export const bharatRatnaDedicatedArticleData = {
       children: [
         {
           _type: "span",
-          text: "• **विदेशी प्राप्तकर्ता**: खान अब्दुल गफ्फार खान (1987 - पाकिस्तान) और नेल्सन मंडेला (1990 - दक्षिण अफ्रीका)।",
-          textEn: "• **Foreign Recipients**: Khan Abdul Ghaffar Khan (1987 - Pakistan) and Nelson Mandela (1990 - South Africa).",
+          text: "• **विदेशी प्राप्तकर्ता**: खान अब्दुल गफ्फार खान (1987 - पाकिस्तान) और नेल्सन मंडेला (1990 - दक्षिण अफ्रीका)। [मध्य प्रदेश के प्रमुख राजकीय सम्मान (तानसेन व कालिदास सम्मान) पढ़ने हेतु यहाँ क्लिक करें](/general-awareness/mp-state-awards-tansen-kalidas-kabir-samman-mppsc-notes)।",
+          textEn: "• **Foreign Recipients**: Khan Abdul Ghaffar Khan (1987 - Pakistan) and Nelson Mandela (1990 - South Africa). [Click here to read MP State Awards (Tansen & Kalidas Samman)](/en/general-awareness/mp-state-awards-tansen-kalidas-kabir-samman-mppsc-notes).",
         }
       ]
     },
@@ -774,8 +774,8 @@ export const bharatRatnaDedicatedArticleData = {
       children: [
         {
           _type: "span",
-          text: "• **मरणोपरांत प्रथम विजेता**: लाल बहादुर शास्त्री (1966)।",
-          textEn: "• **First Posthumous Recipient**: Lal Bahadur Shastri (1966).",
+          text: "• **मरणोपरांत प्रथम विजेता**: लाल बहादुर शास्त्री (1966)। [आपदा प्रबंधन (संशोधन) अधिनियम 2025 के मुख्य प्रावधान पढ़ने के लिए यहाँ देखें](/current-affairs/disaster-management-amendment-act-2025-mppsc-upsc-notes)।",
+          textEn: "• **First Posthumous Recipient**: Lal Bahadur Shastri (1966). [Click here for Disaster Management (Amendment) Act 2025 Study Notes](/en/current-affairs/disaster-management-amendment-act-2025-mppsc-upsc-notes).",
         }
       ]
     },
@@ -785,8 +785,8 @@ export const bharatRatnaDedicatedArticleData = {
       children: [
         {
           _type: "span",
-          text: "• **कुल लाभार्थियों की संख्या (1954-2026)**: 53 हस्तियां।",
-          textEn: "• **Total Recipients (1954-2026)**: 53 Dignitaries.",
+          text: "• **कुल लाभार्थियों की संख्या (1954-2026)**: 53 हस्तियां। [राष्ट्रमंडल खेल (CWG 2026) एवं भारतीय पदक विजेताओं के करंट अफेयर्स हेतु यहाँ जाएँ](/current-affairs/commonwealth-games-2026-updates-india-medal-tally)।",
+          textEn: "• **Total Recipients (1954-2026)**: 53 Dignitaries. [Read Commonwealth Games (CWG 2026) India Medal Tally Current Affairs](/en/current-affairs/commonwealth-games-2026-updates-india-medal-tally).",
         }
       ]
     },
