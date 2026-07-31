@@ -197,7 +197,7 @@ function parseAssetDimensions(ref: string | undefined): { width?: number; height
   return {};
 }
 
-function mapImage(img: (RawImage & { assetRef?: string; url?: string }) | string | undefined | null) {
+function mapImage(img?: RawImage | string, locale?: Locale) {
   const defaultImg = {
     url: "/default-cover.png",
     alt: "Aakar IAS",
@@ -209,12 +209,15 @@ function mapImage(img: (RawImage & { assetRef?: string; url?: string }) | string
 
   if (!img) return defaultImg;
 
+  const isEn = locale === "en";
   const directUrl = typeof img === "string" ? img : (img as any)?.url;
+  
   if (directUrl && typeof directUrl === "string" && directUrl.trim().length > 0) {
+    const caption = typeof img === "object" ? ((isEn ? (img as any)?.captionEn : (img as any)?.caption) || (img as any)?.caption || (img as any)?.captionEn) : undefined;
     return {
       url: directUrl,
       alt: (typeof img === "object" ? img?.alt : undefined) || "Aakar IAS",
-      caption: typeof img === "object" ? img?.caption : undefined,
+      caption,
       credit: typeof img === "object" ? img?.credit : undefined,
       width: 1200,
       height: 675,
@@ -227,10 +230,11 @@ function mapImage(img: (RawImage & { assetRef?: string; url?: string }) | string
   if (!url) {
     return defaultImg;
   }
+  const caption = (isEn ? (img as any)?.captionEn : (img as any)?.caption) || (img as any)?.caption || (img as any)?.captionEn;
   return {
     url,
     alt: (img as any)?.alt ?? "",
-    caption: (img as any)?.caption,
+    caption,
     credit: (img as any)?.credit,
     ...dims,
   };
@@ -426,7 +430,7 @@ function mapPortableTextToBlocks(
       }
     } else if (btype === "image") {
       flushList();
-      const img = mapImage(b as unknown as RawImage);
+      const img = mapImage(b as unknown as RawImage, locale);
       if (img) out.push({ type: "image", image: img });
     } else if (btype === "table") {
       flushList();

@@ -476,10 +476,16 @@ export const bharatRatnaDedicatedArticleData = {
       children: [
         {
           _type: "span",
-          text: "• **मरणोपरांत प्रावधान (1955)**: मूल 1954 के प्रावधानों में मरणोपरांत पुरस्कार का नियम नहीं था, परंतु 1955 में संशोधन कर मरणोपरांत सम्मान की अनुमति दी गई। ऐसा पहला मामला **1966 में लाल बहादुर शास्त्री** का था।",
           textEn: "• **Posthumous Provision (1955)**: The original 1954 statutes did not allow posthumous awards. This was amended in January 1955. **Lal Bahadur Shastri (1966)** was the first posthumous recipient.",
         }
       ]
+    },
+    {
+      _type: "image",
+      url: "/images/blog/peepal-leaf-bronze-medal.png",
+      alt: "Bharat Ratna Peepal Leaf Bronze Medallion Platinum Sun Emblem India Highest Honor MPPSC Notes",
+      caption: "भारत रत्न पदक — तांबे एवं प्लेटिनम से निर्मित पीपल के पत्ते के आकार का सर्वोच्च नागरिक सम्मान (Aakar IAS)",
+      captionEn: "Bharat Ratna Peepal Leaf Bronze Medallion with Platinum Sun Emblem (Aakar IAS Study Notes)",
     },
     {
       _type: "block",
@@ -630,10 +636,16 @@ export const bharatRatnaDedicatedArticleData = {
       children: [
         {
           _type: "span",
-          text: "• **वार्षिक सीमा**: एक वर्ष में अधिकतम **3 भारत रत्न** दिए जाने का नियम है (अपवाद: 1999 में 4 तथा 2024 में 5 लोगों को दिया गया)।",
           textEn: "• **Annual Limit**: Maximum of **3 awards per calendar year** (exceptions: 4 awarded in 1999, and 5 awarded in 2024).",
         }
       ]
+    },
+    {
+      _type: "image",
+      url: "/images/blog/rashtrapati-bhavan-durbar-hall.png",
+      alt: "Rashtrapati Bhavan Durbar Hall Bharat Ratna Ceremony Grand Hall New Delhi India MPPSC UPSC Notes",
+      caption: "राष्ट्रपति भवन का दरबार हॉल — जहाँ प्रतिवर्ष भारत के सर्वोच्च नागरिक पुरस्कार प्रदान किए जाते हैं (Aakar IAS)",
+      captionEn: "Durbar Hall of Rashtrapati Bhavan, New Delhi — Venue for National Awards Ceremonies (Aakar IAS)",
     },
     {
       _type: "block",
