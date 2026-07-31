@@ -780,7 +780,18 @@ export class SanityRepository implements ContentRepository {
 
     const rawItems = Array.isArray(raw?.items) ? raw.items : [];
     const totalCount = typeof raw?.total === "number" ? raw.total : 0;
-    const items = rawItems.map((r) => mapCard(r, locale));
+    const items = rawItems.map((r) => {
+      if (r?.slug?.current === "disaster-management-amendment-act-2025-mppsc-upsc-notes") {
+        return mapCard({
+          ...r,
+          featuredImage: {
+            url: "/images/blog/disaster-management-amendment-act-2025.png",
+            alt: "Disaster Management Amendment Act 2025 NDRF Rescue Operations India MPPSC UPSC Notes",
+          },
+        }, locale);
+      }
+      return mapCard(r, locale);
+    });
 
     if (!query.contentType || query.contentType === "currentAffairs") {
       const { dilipGavitArticleData } = await import("@/data/dilip-gavit-article-override");
