@@ -24,22 +24,22 @@ export async function ArticleHero({ article }: { article: Article }) {
   return (
     <header className="relative">
       {article.featuredImage ? (
-        <div className="relative aspect-[2/1] w-full overflow-hidden bg-secondary sm:aspect-[21/9]">
+        <div className="relative h-[280px] sm:h-[360px] md:h-[420px] w-full overflow-hidden bg-secondary">
           <Image
             src={article.featuredImage.url}
             alt={article.featuredImage.alt || article.title}
             fill
             priority
             sizes="100vw"
-            className="object-cover"
+            className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
         </div>
       ) : (
-        <div className="aspect-[21/9] w-full bg-gradient-to-br from-primary/5 via-muted to-accent/5" />
+        <div className="h-[200px] sm:h-[260px] w-full bg-gradient-to-br from-primary/5 via-muted to-accent/5" />
       )}
 
-      <div className="relative -mt-32 sm:-mt-40">
+      <div className="relative -mt-16 sm:-mt-24">
         <div className="mx-auto max-w-[var(--content-max)] px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4">
             <Breadcrumb
