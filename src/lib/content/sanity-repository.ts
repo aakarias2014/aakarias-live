@@ -159,27 +159,29 @@ function cardProjection(locale: Locale): string {
 function getSlug(slug: any): string {
   if (!slug) return "";
   if (typeof slug === "string") return slug;
-  return slug.current ?? "";
+  if (typeof slug === "object" && slug.current) return slug.current;
+  return "";
 }
 
 /* ─── Mapping helpers ────────────────────────────────────────────────── */
 
-function mapCategory(c: RawCategory | undefined | null, locale: Locale): Category | undefined {
+function mapCategory(c: any, locale: Locale): Category | undefined {
   if (!c) return undefined;
+  if (typeof c === "string") return { id: c, slug: c, title: c, titleEn: c, description: c, descriptionEn: c };
   return {
-    id: c._id,
-    slug: getSlug(c.slug),
-    title: (locale === "hi" ? c.title : c.titleEn) ?? c.title,
-    titleEn: c.titleEn,
+    id: c._id ?? "",
+    slug: getSlug(c.slug ?? c._id),
+    title: (locale === "hi" ? c.title : c.titleEn) ?? c.title ?? "",
+    titleEn: c.titleEn ?? c.title,
     description: (locale === "hi" ? c.description : c.descriptionEn) ?? c.description,
     descriptionEn: c.descriptionEn,
-    color: c.color?.hex,
-    icon: c.icon,
   };
 }
 
-function mapTag(t: RawTag): Tag {
-  return { id: t._id, slug: getSlug(t.slug), name: t.name };
+function mapTag(t: any): Tag {
+  if (!t) return { id: "", slug: "", name: "" };
+  if (typeof t === "string") return { id: t, slug: t, name: t };
+  return { id: t._id ?? "", slug: getSlug(t.slug ?? t._id), name: t.name ?? "" };
 }
 
 function parseAssetDimensions(ref: string | undefined): { width?: number; height?: number } {
@@ -195,27 +197,31 @@ function parseAssetDimensions(ref: string | undefined): { width?: number; height
   return {};
 }
 
-function mapImage(img: (RawImage & { assetRef?: string; url?: string }) | undefined | null) {
+function mapImage(img: (RawImage & { assetRef?: string; url?: string }) | string | undefined | null) {
   const defaultImg = {
     url: "/default-cover.png",
     alt: "Aakar IAS",
+    caption: undefined,
+    credit: undefined,
     width: 1200,
     height: 675,
   };
+
   if (!img) return defaultImg;
-  const directUrl = typeof img === "string" ? img : (img as any).url;
+
+  const directUrl = typeof img === "string" ? img : (img as any)?.url;
   if (directUrl && typeof directUrl === "string" && directUrl.trim().length > 0) {
     return {
       url: directUrl,
-      alt: img?.alt || "Aakar IAS",
-      caption: img?.caption,
-      credit: img?.credit,
+      alt: (typeof img === "object" ? img?.alt : undefined) || "Aakar IAS",
+      caption: typeof img === "object" ? img?.caption : undefined,
+      credit: typeof img === "object" ? img?.credit : undefined,
       width: 1200,
       height: 675,
     };
   }
 
-  const ref = img?.assetRef ?? img?.asset?._ref;
+  const ref = (img as any)?.assetRef ?? (img as any)?.asset?._ref;
   const url = imageUrl(ref, { width: 1600, quality: 80, format: "webp" });
   const dims = parseAssetDimensions(ref);
   if (!url) {
@@ -223,9 +229,9 @@ function mapImage(img: (RawImage & { assetRef?: string; url?: string }) | undefi
   }
   return {
     url,
-    alt: img?.alt ?? "",
-    caption: img?.caption,
-    credit: img?.credit,
+    alt: (img as any)?.alt ?? "",
+    caption: (img as any)?.caption,
+    credit: (img as any)?.credit,
     ...dims,
   };
 }
@@ -251,26 +257,27 @@ function articleHref(slug: string, _type: string, locale: Locale): string {
   return `${prefix}/${segment}/${slug}`;
 }
 
-function mapCard(raw: RawArticleCard & { date?: string; ca_date?: string }, locale: Locale): ArticleListItem {
+function mapCard(raw: any, locale: Locale): ArticleListItem {
+  if (!raw) return {} as any;
   const slug = getSlug(raw.slug);
   return {
-    id: raw._id,
+    id: raw._id ?? "",
     slug,
     title: raw.title ?? "Untitled",
     excerpt: raw.excerpt ?? "",
-    date: raw.date ?? raw.publishedAt,
+    date: raw.date ?? raw.publishedAt ?? "",
     ca_date: raw.ca_date,
     readingTime: raw.readingTime,
     featuredImage: mapImage(raw.featuredImage),
     category: mapCategory(raw.category, locale),
-    author: raw.author
+    author: (raw.author && typeof raw.author === "object" && raw.author.name)
       ? {
           name: raw.author.name,
           slug: getSlug(raw.author.slug),
           avatar: raw.author.avatar
             ? (typeof raw.author.avatar === "string"
               ? imageUrl(raw.author.avatar, { width: 300, height: 300, fit: "crop", quality: 90 })
-              : imageUrl(raw.author.avatar.asset?._ref, { width: 300, height: 300, fit: "crop", quality: 90 }))
+              : imageUrl(raw.author.avatar?.asset?._ref, { width: 300, height: 300, fit: "crop", quality: 90 }))
             : undefined,
         }
       : undefined,
@@ -576,6 +583,13 @@ export class SanityRepository implements ContentRepository {
         ...civilianAwardsArticleData,
       };
     }
+    if (slug === "bharat-ratna-awardees-list-mppsc-upsc-notes") {
+      const { bharatRatnaDedicatedArticleData } = await import("@/data/awards-articles-override");
+      raw = {
+        ...(raw || {}),
+        ...bharatRatnaDedicatedArticleData,
+      };
+    }
     if (slug === "mp-state-awards-tansen-kalidas-kabir-samman-mppsc-notes") {
       const { mpStateAwardsArticleData } = await import("@/data/awards-articles-override");
       raw = {
@@ -767,10 +781,14 @@ export class SanityRepository implements ContentRepository {
     }
 
     if (!query.contentType || query.contentType === "staticGk" || query.tag === "awards" || query.category) {
-      const { civilianAwardsArticleData, mpStateAwardsArticleData } = await import("@/data/awards-articles-override");
+      const { civilianAwardsArticleData, mpStateAwardsArticleData, bharatRatnaDedicatedArticleData } = await import("@/data/awards-articles-override");
       const civCard = mapCard(civilianAwardsArticleData as any, locale);
+      const ratnaCard = mapCard(bharatRatnaDedicatedArticleData as any, locale);
       const mpCard = mapCard(mpStateAwardsArticleData as any, locale);
 
+      if ((!query.category || query.category === "civilian-awards") && !items.some((it) => it.slug === ratnaCard.slug)) {
+        items.unshift(ratnaCard);
+      }
       if ((!query.category || query.category === "civilian-awards") && !items.some((it) => it.slug === civCard.slug)) {
         items.unshift(civCard);
       }
@@ -990,6 +1008,13 @@ export class SanityRepository implements ContentRepository {
         slug: "highest-civilian-awards-padma-awards-mppsc-upsc-notes",
         type: "staticGk",
         updatedAt: "2026-07-31T10:00:00.000Z",
+      });
+    }
+    if (!slugs.some((s) => s.slug === "bharat-ratna-awardees-list-mppsc-upsc-notes")) {
+      slugs.unshift({
+        slug: "bharat-ratna-awardees-list-mppsc-upsc-notes",
+        type: "staticGk",
+        updatedAt: "2026-07-31T11:00:00.000Z",
       });
     }
     if (!slugs.some((s) => s.slug === "mp-state-awards-tansen-kalidas-kabir-samman-mppsc-notes")) {

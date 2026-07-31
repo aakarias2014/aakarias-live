@@ -295,14 +295,14 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left border-collapse">
               {block.table.caption && (
-                <caption className="bg-primary/5 px-5 py-2.5 text-left text-xs font-bold text-primary border-b border-primary/15 tracking-wide">
+                <caption className="bg-primary/5 px-5 py-3 text-left text-sm font-bold text-primary border-b border-primary/15 tracking-wide">
                   {block.table.caption}
                 </caption>
               )}
               <thead>
                 <tr className="border-b border-primary/20 bg-primary/10">
                   {block.table.headers.map((h, i) => (
-                    <th key={i} className="px-4 py-3 font-bold text-foreground tracking-wide whitespace-nowrap text-xs uppercase">
+                    <th key={i} className={`px-4 py-3 font-bold text-foreground tracking-wide text-xs uppercase ${i < 2 ? "whitespace-nowrap" : ""}`}>
                       {renderFormattedText(h)}
                     </th>
                   ))}
@@ -312,7 +312,7 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
                 {block.table.rows.map((row, ri) => (
                   <tr key={ri} className="transition-colors hover:bg-primary/5 odd:bg-background even:bg-muted/20">
                     {row.map((cell, ci) => (
-                      <td key={ci} className="px-4 py-3 text-foreground/90 font-medium whitespace-nowrap">
+                      <td key={ci} className={`px-4 py-3 text-foreground/90 font-medium ${ci < 2 ? "whitespace-nowrap text-center" : ""}`}>
                         {renderFormattedText(cell)}
                       </td>
                     ))}

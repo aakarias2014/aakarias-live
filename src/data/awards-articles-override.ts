@@ -48,7 +48,7 @@ export const civilianAwardsArticleData = {
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "भारत एक ऐसा देश है जो बेहतरीन काम करने वालों की सराहना करता है। यह उन लोगों को सम्मान देता है जिन्होंने देश के समाज और संस्कृति में बहुत बड़ा योगदान दिया है। ऐसे असाधारण योगदानों को सम्मानित करने के लिए, भारत सरकार हर साल कई नागरिक पुरस्कार देती है। ये पुरस्कार कला, साहित्य, विज्ञान, समाज सेवा, लोक सेवा और मानव उन्नति जैसे कई क्षेत्रों में बेहतरीन काम के लिए दिए जाते हैं।" }]
+      children: [{ _type: "span", text: "भारत एक ऐसा देश है जो बेहतरीन काम करने वालों की सराहना करता है। यह उन लोगों को सम्मान देता है जिन्होंने देश के समाज और संस्कृति में बहुत बड़ा योगदान दिया है। ऐसे असाधारण योगदानों को सम्मानित करने के लिए, भारत सरकार हर साल कई नागरिक पुरस्कार देती है। ये पुरस्कार कला, साहित्य, विज्ञान, समाज सेवा, लोक सेवा और मानव उन्नति जैसे कई क्षेत्रों में बेहतरीन काम के लिए दिए जाते हैं। [सर्वोच्च नागरिक पुरस्कार की संपूर्ण जानकारी हेतु यहाँ क्लिक करें](/awards-and-honors?category=civilian-awards)।" }]
     },
     {
       _type: "block",
@@ -58,7 +58,7 @@ export const civilianAwardsArticleData = {
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **रैंक 1 — भारत रत्न (1954)**: सर्वोच्च नागरिक पुरस्कार (असाधारण एवं उच्चतम स्तर की सेवा)।" }]
+      children: [{ _type: "span", text: "• **रैंक 1 — भारत रत्न (1954)**: सर्वोच्च नागरिक पुरस्कार (असाधारण एवं उच्चतम स्तर की सेवा)। [भारत रत्न की संपूर्ण सूची हेतु यहाँ क्लिक करें](/general-awareness/bharat-ratna-awardees-list-mppsc-upsc-notes)।" }]
     },
     {
       _type: "block",
@@ -183,7 +183,7 @@ export const civilianAwardsArticleData = {
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **मध्य प्रदेश की हस्तियां (MPPSC Special)**: झाबुआ की भूरी बाई (पिथोरा कला - 2021), उमरिया की जोधइया बाई बैगा (बैगा कला - 2023), जबलपुर के डॉ. मुनीश्वर चंदर डावर (₹2 डॉक्टर - 2023)।" }]
+      children: [{ _type: "span", text: "• **मध्य प्रदेश की हस्तियां (MPPSC Special)**: झाबुआ की भूरी बाई (पिथोरा कला - 2021), उमरिया की जोधइया बाई बैगा (बैगा कला - 2023), जबलपुर के डॉ. मुनीश्वर चंदर डावर (₹2 डॉक्टर - 2023)। [मध्य प्रदेश के राज्य सम्मानों हेतु यहाँ क्लिक करें](/general-awareness/mp-state-awards-tansen-kalidas-kabir-samman-mppsc-notes)।" }]
     },
     {
       _type: "block",
@@ -334,7 +334,7 @@ export const civilianAwardsArticleData = {
       question: "भारतीय संविधान का कौन सा अनुच्छेद नागरिक सम्मानों को उपाधि के रूप में प्रयोग करने पर रोक लगाता है?",
       questionEn: "Which constitutional article prohibits using civilian awards as titles?",
       options: ["A. अनुच्छेद 14", "B. अनुच्छेद 18(1)", "C. अनुच्छेद 19(1)", "D. अनुच्छेद 32"],
-      optionsEn: ["A. Article 14", "B. Article 18(1)", "C. Article 19(1)", "D. Article 32"],
+      optionsEn: ["A. Article 18(1)", "B. Article 19(1)", "C. Article 32"],
       correctIndex: 1,
       explanation: "अनुच्छेद 18(1) के तहत उपाधियों का अंत किया गया है, अतः पुरस्कारों का उपयोग उपाधि के रूप में नहीं हो सकता।",
       explanationEn: "Article 18(1) abolishes titles and prohibits using awards as name titles."
@@ -342,265 +342,458 @@ export const civilianAwardsArticleData = {
   ]
 };
 
-export const mpStateAwardsArticleData = {
-  _id: "override-mp-state-awards-mppsc",
+export const bharatRatnaDedicatedArticleData = {
+  _id: "override-bharat-ratna-dedicated-2026",
   _type: "staticGk",
-  slug: { current: "mp-state-awards-tansen-kalidas-kabir-samman-mppsc-notes" },
-  title: "मध्य प्रदेश के प्रमुख राज्य स्तरीय पुरस्कार एवं सम्मान | MPPSC Special Notes",
-  titleEn: "Major State Awards & Honors of Madhya Pradesh | MPPSC Special Notes",
-  seoTitle: "मध्य प्रदेश के राज्य सम्मान | तानसेन, कालिदास, कबीर व महात्मा गांधी सम्मान | MPPSC Notes",
-  seoDescription: "MPPSC परीक्षा हेतु मध्य प्रदेश शासन के प्रमुख राज्य स्तरीय सम्मान: तानसेन सम्मान, कालिदास सम्मान, कबीर सम्मान, महात्मा गांधी पुरस्कार, लता मंगेशकर सम्मान की पुरस्कार राशि, क्षेत्र व विजेताओं का संपूर्ण संकलन।",
-  excerpt: "MPPSC प्री व मेन्स हेतु मध्य प्रदेश संस्कृति विभाग के प्रमुख राज्य सम्मानों (तानसेन, कालिदास, कबीर, महात्मा गांधी पुरस्कार) की पुरस्कार राशि, स्थापना वर्ष, क्षेत्र एवं विजेताओं का प्रामाणिक विश्लेषणात्मक संकलन।",
-  excerptEn: "Detailed study guide on MP State Cultural Awards (Tansen, Kalidas, Kabir, Mahatma Gandhi Award) with cash prize, founding years, and recipient lists for MPPSC exam.",
-  publishedAt: "2026-07-31T10:30:00.000Z",
-  readingTime: 11,
+  slug: { current: "bharat-ratna-awardees-list-mppsc-upsc-notes" },
+  title: "भारत रत्न (Bharat Ratna in Hindi) — किसे-किसको मिला, फायदे, विजेता लिस्ट PDF (1954–2026) | MPPSC & UPSC Notes",
+  titleEn: "Bharat Ratna in Hindi — Awardees List PDF (1954-2026), Benefits, Rules & MCQs | MPPSC & UPSC",
+  seoTitle: "भारत रत्न (Bharat Ratna in Hindi) | किसे किसको मिला, फायदे, विजेता लिस्ट PDF (1954-2026) | MPPSC & UPSC",
+  seoDescription: "भारत रत्न किसे किसको मिला है? (1954 से 2026 विजेता लिस्ट PDF), भारत रत्न के फायदे, समिति (Committee), सबसे पहले किसको मिला, पुरस्कार राशि, पात्रता व MPPSC-UPSC हेतु 8 MCQs।",
+  excerpt: "भारत रत्न (Bharat Ratna in Hindi): किसे किसको मिला है, 53 विजेताओं की संपूर्ण लिस्ट PDF (1954-2026), भारत रत्न के फायदे (Benefits), चयन समिति, सबसे पहले किसको मिला, किसे 2024-2025 में मिला व MPPSC/UPSC परीक्षा नोट्स।",
+  excerptEn: "Bharat Ratna in Hindi complete study guide: Who got Bharat Ratna, awardees list PDF (1954-2026), benefits, committee, first recipients, 2024 winners, and practice MCQs for MPPSC & UPSC.",
+  publishedAt: "2026-07-31T11:00:00.000Z",
+  readingTime: 18,
   featured: true,
   category: {
-    _id: "cat-mp-state-awards",
-    title: "MP राज्य सम्मान (MP State Awards)",
-    titleEn: "MP State Awards",
-    slug: { current: "mp-state-awards" }
+    _id: "cat-civilian-awards",
+    title: "नागरिक सम्मान (Civilian Awards)",
+    titleEn: "Civilian Awards",
+    slug: { current: "civilian-awards" }
   },
   tags: [
     { _id: "tag-mppsc", name: "MPPSC", slug: { current: "mppsc" } },
+    { _id: "tag-upsc", name: "UPSC", slug: { current: "upsc" } },
     { _id: "tag-awards", name: "Awards & Honors", slug: { current: "awards" } },
-    { _id: "tag-mpgk", name: "MP GK", slug: { current: "mpgk" } },
     { _id: "tag-prelims", name: "Prelims", slug: { current: "prelims" } },
     { _id: "tag-mains", name: "Mains", slug: { current: "mains" } }
   ],
   keywords: [
-    "Tansen Samman Cash Prize MPPSC",
-    "Kalidas Samman Categories",
-    "Mahatma Gandhi Award Madhya Pradesh",
-    "MP State Cultural Awards List",
-    "MPPSC GK Awards Notes",
-    "Lata Mangeshkar Award MP",
-    "Kabir Samman MP"
+    "bharat ratna kisko kisko mila hai",
+    "bharat ratna ke fayde",
+    "bharat ratna hindi",
+    "bharat ratna vijeta list pdf",
+    "bharat ratna vijeta list pdf 2025",
+    "bharat ratna kab diya jata hai",
+    "bharat ratna kaise milta hai",
+    "2025 me bharat ratna kisko mila",
+    "bharat ratna sabse pahle kisko mila",
+    "bharat ratna mppsc",
+    "bharat ratna committee",
+    "bharat ratna in 2026",
+    "how many bharat ratna given in 2024",
+    "bharat ratna history",
+    "bharat ratna 2015",
+    "bharat ratna hindi wikipedia",
+    "bharat ratna award list 1954 to 2026"
   ],
   featuredImage: {
-    url: "/images/blog/mp-state-awards.png",
-    alt: "Tansen Samman Plaque and Indian Classical Musical Instruments Sitar Sangeet MPPSC Notes",
-    caption: "मध्य प्रदेश शासन के राज्य सांस्कृतिक सम्मान — तानसेन एवं कालिदास सम्मान (Aakar IAS)",
+    url: "/images/blog/bharat-ratna-padma-awards.png",
+    alt: "Bharat Ratna Medal Peepal Leaf Real Photo MPPSC UPSC Notes",
+    caption: "भारत रत्न पदक — पीपल के पत्ते के आकार का तांबे एवं प्लेटिनम से निर्मित सर्वोच्च नागरिक सम्मान (Aakar IAS)",
   },
   body: [
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "1. मध्य प्रदेश संस्कृति विभाग के राज्य स्तरीय सम्मान — अवलोकन" }]
+      children: [{ _type: "span", text: "1. परिचय — भारत रत्न (Bharat Ratna)" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "मध्य प्रदेश शासन का संस्कृति विभाग देश में शास्त्रीय संगीत, रूपंकर कलाओं, रंगकर्म, साहित्य और सामाजिक सद्भाव के क्षेत्र में उल्लेखनीय योगदान देने वाली राष्ट्रीय एवं राज्य स्तरीय हस्तियों को **राष्ट्रीय एवं राज्य सम्मान** प्रदान करता है। MPPSC परीक्षाओं में इन पुरस्कारों की स्थापना वर्ष और राशि पर प्रश्न पूछे जाते हैं।" }]
+      children: [{ _type: "span", text: "विश्व के सबसे बड़े लोकतंत्र भारत में अपने महानतम दूरदर्शी व्यक्तियों, नेताओं और योगदानकर्ताओं को देश के सर्वोच्च नागरिक पुरस्कार, **भारत रत्न** से सम्मानित किया जाता है। **1954 में स्थापित** यह पुरस्कार **\"मानव प्रयास के किसी भी क्षेत्र में सर्वोच्च कोटि की असाधारण सेवा\"** को मान्यता देता है। [भारत के 5 सर्वोच्च नागरिक पुरस्कारों की तुलनात्मक सूची हेतु यहाँ देखें](/general-awareness/highest-civilian-awards-padma-awards-mppsc-upsc-notes)।" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "स्वतंत्रता सेनानियों और राजनेताओं से लेकर संगीतकारों, वैज्ञानिकों और खिलाड़ियों तक, भारत रत्न प्राप्तकर्ताओं के व्यक्तित्व भारत के राष्ट्रीय जीवन की विविधता और समृद्धि को दर्शाते हैं। **2025 तक, यह पुरस्कार 53 हस्तियों को प्रदान किया जा चुका है**, जिनमें भारतीय और कुछ प्रतिष्ठित विदेशी नागरिक शामिल हैं।" }]
     },
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "2. महात्मा गांधी राज्य सम्मान (Mahatma Gandhi Award) — उच्चतम राशि" }]
+      children: [{ _type: "span", text: "2. भारत रत्न का इतिहास और विकास (History & Evolution)" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **स्थापना वर्ष: 1995**: महात्मा गांधी की 125वीं जयंती पर स्थापित।" }]
+      children: [{ _type: "span", text: "• **स्थापना वर्ष 1954**: भारत रत्न पुरस्कार की स्थापना **जनवरी 1954** में तत्कालीन राष्ट्रपति **डॉ. राजेंद्र प्रसाद** द्वारा की गई थी।" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **पुरस्कार राशि: ₹10 लाख**: यह मध्य प्रदेश शासन का सर्वाधिक नकद राशि वाला सम्मान है।" }]
+      children: [{ _type: "span", text: "• **प्रारंभिक क्षेत्र दायरा**: प्रारंभ में, यह पुरस्कार केवल **कला, साहित्य, विज्ञान और सार्वजनिक सेवाओं** में उपलब्धियों तक ही सीमित था।" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **क्षेत्र: गांधीवादी विचार व समाज सेवा**: गांधीवादी दर्शन के अनुरूप रचनात्मक कार्य करने वाली संस्थाओं को दिया जाता है।" }]
+      children: [{ _type: "span", text: "• **2011 का संशोधन**: दिसंबर 2011 में, इसका दायरा बढ़ाकर इसमें **\"मानव प्रयास के किसी भी क्षेत्र\"** (Human Endeavour) को शामिल कर लिया गया, जिससे सचिन तेंदुलकर जैसे एथलीट भी इसके लिए पात्र हो गए।" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "• **मरणोपरांत प्रावधान (1955)**: मूल 1954 के प्रावधानों में मरणोपरांत पुरस्कार का नियम नहीं था, परंतु 1955 में संशोधन कर मरणोपरांत सम्मान की अनुमति दी गई। ऐसा पहला मामला **1966 में लाल बहादुर शास्त्री** का था।" }]
     },
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "3. तानसेन राष्ट्रीय सम्मान (Tansen Samman)" }]
+      children: [{ _type: "span", text: "3. भारत रत्न की सुविधाएं, अधिकार एवं पुरस्कार राशि (Benefits & Facilities)" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **स्थापना वर्ष: 1980**: संगीत सम्राट तानसेन की स्मृति में ग्वालियर में आयोजित होने वाले तानसेन समारोह में दिया जाता है।" }]
+      children: [{ _type: "span", text: "• **पुरस्कार राशि (Prize Money)**: भारत रत्न पुरस्कार में **कोई नकद राशि (No Monetary Reward)** नहीं दी जाती है। राष्ट्रपति द्वारा हस्ताक्षरित सनद (प्रमाणपत्र) एवं पीपल के पत्ते के आकार का एक पदक दिया जाता है।" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **पुरस्कार राशि: ₹5 लाख**: (पूर्व में ₹2 लाख, वर्ष 2020-21 से बढ़ाकर ₹5 लाख कर दी गई)।" }]
+      children: [{ _type: "span", text: "• **वरीयता क्रम (Order of Precedence)**: प्राप्तकर्ताओं को भारतीय सरकार के वरीयता क्रम में **7वां स्थान (Rank 7A/7)** दिया जाता है, जो मुख्यमंत्रियों, पूर्व प्रधानमंत्रियों व योजना आयोग उपाध्यक्ष के समकक्ष है।" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **क्षेत्र: हिंदुस्तानी शास्त्रीय संगीत**: गायन एवं वादन के शीर्ष साधकों को सम्मानित किया जाता है।" }]
+      children: [{ _type: "span", text: "• **यात्रा सुविधाएं (Travel Perks)**: भारत रत्न विजेताओं को जीवनभर एयर इंडिया की प्रथम श्रेणी (First Class Air Travel) में मुफ्त हवाई यात्रा और भारतीय रेलवे में एग्जीक्यूटिव क्लास में मुफ्त यात्रा की सुविधा मिलती है।" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "• **राजकीय अतिथि दर्जा (State Guest)**: देश के किसी भी राज्य में जाने पर उन्हें राज्य सरकार द्वारा **'राजकीय अतिथि' (State Guest)** का दर्जा और पूर्ण सुरक्षा (VIP/VVIP Security) प्रदान की जाती है।" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "• **डिप्लोमैटिक पासपोर्ट (Diplomatic Passport)**: इन्हें भारतीय राजनयिक पासपोर्ट (Diplomatic Passport) प्राप्त करने का अधिकार होता है, जिससे विदेश यात्राओं के दौरान विशेष सुविधाएं प्राप्त होती हैं।" }]
     },
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "4. कालिदास राष्ट्रीय सम्मान (Kalidas Samman)" }]
+      children: [{ _type: "span", text: "4. भारत रत्न लेने से किसने मना किया? (Who Refused Bharat Ratna?)" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **स्थापना वर्ष: 1980**: महान संस्कृत कवि कालिदास की स्मृति में स्थापित।" }]
+      children: [{ _type: "span", text: "गूगल और प्रतियोगी परीक्षाओं में सबसे ज्यादा पूछा जाने वाला प्रश्न है कि **'भारत रत्न लेने से किसने मना किया?'**:" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **पुरस्कार राशि: ₹5 लाख**: 4 अलग-अलग विधाओं में दिया जाता है।" }]
+      children: [{ _type: "span", text: "• **मौलाना अबुल कलाम आजाद**: स्वतंत्र भारत के प्रथम शिक्षा मंत्री मौलाना आजाद ने 1992 (मरणोपरांत) से पूर्व जीवित रहते हुए भारत रत्न लेने से यह कहकर **अस्वीकार (Refuse)** कर दिया था कि चयन समिति के सदस्यों को स्वयं यह पुरस्कार स्वीकार नहीं करना चाहिए। बाद में 1992 में उन्हें मरणोपरांत सम्मानित किया गया।" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **4 क्षेत्र विधाएं**: 1. शास्त्रीय संगीत, 2. शास्त्रीय नृत्य, 3. रंगकर्म (थिएटर), 4. रूपंकर कलाएं (Visual Arts)।" }]
+      children: [{ _type: "span", text: "• **नेताजी सुभाष चंद्र बोस का विवाद (1992)**: 1992 में सरकार ने नेताजी को मरणोपरांत भारत रत्न देने की घोषणा की थी। परंतु उनके परिवार और प्रशंसकों द्वारा 'मरणोपरांत' शब्द पर आपत्ति दर्ज की गई क्योंकि उनकी मृत्यु प्रामाणिक रूप से सिद्ध नहीं थी। उच्चतम न्यायालय के हस्तक्षेप के बाद 1997 में यह पुरस्कार वापस ले लिया गया — यह भारत रत्न के इतिहास में एकमात्र रद्द (Withdrawn) मामला है।" }]
     },
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "5. कबीर सम्मान, लता मंगेशकर व अन्य प्रमुख पुरस्कार तालिका" }]
+      children: [{ _type: "span", text: "5. नामांकरण, चयन प्रक्रिया व पात्रता नियम (Eligibility & Selection Rules)" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **कबीर सम्मान (1986)**: भारतीय कविता के क्षेत्र में दिया जाता है (राशि ₹5 लाख)।" }]
+      children: [{ _type: "span", text: "• **पात्रता नियम**: जाति, पद, व्यवसाय, धर्म या लिंग के भेदभाव के बिना 'मानव प्रयास के किसी भी क्षेत्र' में उत्कृष्ट कार्य करने वाला व्यक्ति इसके योग्य है।" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **लता मंगेशकर सम्मान (1984)**: सुगम संगीत एवं संगीत निर्देशन हेतु दिया जाता है (राशि ₹5 लाख)।" }]
+      children: [{ _type: "span", text: "• **प्रधानमंत्री की सिफारिश**: सिफारिशें केवल **प्रधानमंत्री द्वारा राष्ट्रपति को प्रेषित** की जाती हैं। इसके लिए गृह मंत्रालय की किसी औपचारिक समिति की आवश्यकता नहीं होती।" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **मैथिलीशरण गुप्त सम्मान (1987)**: हिंदी साहित्य एवं शोध हेतु (राशि ₹5 लाख)।" }]
+      children: [{ _type: "span", text: "• **वार्षिक सीमा**: एक वर्ष में अधिकतम **3 भारत रत्न** दिए जाने का नियम है (अपवाद: 1999 में 4 तथा 2024 में 5 लोगों को दिया गया)।" }]
+    },
+    {
+      _type: "block",
+      style: "h3",
+      children: [{ _type: "span", text: "5. भारत रत्न का महत्व, संवैधानिक पहलू एवं आलोचना" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **कुमार गंधर्व सम्मान (1992)**: शास्त्रीय संगीत के युवा गायकों हेतु (राशि ₹2.5 लाख)।" }]
+      children: [{ _type: "span", text: "• **राष्ट्र की कृतज्ञता**: यह असाधारण व्यक्तियों के प्रति **राष्ट्र की कृतज्ञता को दर्शाता है**।" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "• **राष्ट्रीय एकता**: विभिन्न क्षेत्रों एवं प्रांतों की हस्तियों का सम्मान करके **राष्ट्रीय एकता को मजबूत करता है**।" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "• **प्रेरणा स्त्रोत**: यह युवा पीढ़ी को प्राप्तकर्ताओं से प्रेरणा लेने के लिए प्रोत्साहित करता है।" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "• **संवैधानिक प्रावधान (अनुच्छेद 18)**: सर्वोच्च न्यायालय ने 'बालाजी राघवम बनाम भारत संघ (1996)' मामले में फैसला सुनाया कि भारत रत्न संविधान के अनुच्छेद 18(1) के तहत 'उपाधि' नहीं है। अतः प्राप्तकर्ता इसे अपने नाम के आगे या पीछे उपाधि के रूप में प्रयुक्त नहीं कर सकते।" }]
+    },
+    {
+      _type: "block",
+      style: "h3",
+      children: [{ _type: "span", text: "6. भारत रत्न पुरस्कार के बारे में प्रमुख स्मरणीय तथ्य (Quick Facts for MPPSC)" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "• **प्रथम प्राप्तकर्ता (1954)**: सी. राजगोपालाचारी, डॉ. एस. राधाकृष्णन, सी.वी. रमन।" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "• **पहली महिला प्राप्तकर्ता**: श्रीमती इंदिरा गांधी (1971)।" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "• **प्रथम संगीतकार पुरस्कार विजेता**: एमएस सुब्बुलक्ष्मी (1998)।" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "• **सबसे कम उम्र के पुरस्कार विजेता**: सचिन तेंदुलकर (2014, 40 वर्ष की आयु में)।" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "• **विदेशी प्राप्तकर्ता**: खान अब्दुल गफ्फार खान (1987 - पाकिस्तान) और नेल्सन मंडेला (1990 - दक्षिण अफ्रीका)।" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "• **मरणोपरांत प्रथम विजेता**: लाल बहादुर शास्त्री (1966)।" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "• **कुल लाभार्थियों की संख्या (1954-2025)**: 53 हस्तियां।" }]
+    },
+    {
+      _type: "block",
+      style: "h3",
+      children: [{ _type: "span", text: "7. भारत रत्न पुरस्कार विजेताओं की संपूर्ण सूची (1954 – 2025)" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "नीचे 1954 से लेकर 2025 तक के सभी **53 भारत रत्न विजेताओं** का प्रामाणिक वर्षवार विवरण दिया गया है:" }]
+    },
+    {
+      _type: "table",
+      table: {
+        caption: "भारत रत्न पुरस्कार विजेताओं की संपूर्ण सूची (1954 – 2025)",
+        headers: ["क्रम", "वर्ष", "नाम", "क्षेत्र / योगदान", "विशेष टिप्पणी"],
+        rows: [
+          ["1", "1954", "**सी. राजगोपालाचारी**", "राजनीति", "स्वतंत्र भारत के अंतिम गवर्नर-जनरल"],
+          ["2", "1954", "**डॉ. सर्वपल्ली राधाकृष्णन**", "दर्शन / शिक्षा", "प्रथम उपराष्ट्रपति, दूसरे राष्ट्रपति (शिक्षक दिवस 5 सितंबर)"],
+          ["3", "1954", "**सी. वी. रमन**", "विज्ञान", "नोबेल पुरस्कार विजेता (रमन प्रभाव के खोजकर्ता)"],
+          ["4", "1955", "**भगवान दास**", "दर्शन / स्वतंत्रता संग्राम", "दार्शनिक, स्वतंत्रता सेनानी"],
+          ["5", "1955", "**एम. विश्वेश्वरैया**", "अभियांत्रिकी", "मैसूर के दीवान (अभियंता दिवस 15 सितंबर)"],
+          ["6", "1955", "**जवाहरलाल नेहरू**", "राजनीति", "भारत के प्रथम प्रधानमंत्री"],
+          ["7", "1957", "**गोविंद बल्लभ पंत**", "राजनीति", "उत्तर प्रदेश के प्रथम मुख्यमंत्री, केंद्रीय गृह मंत्री"],
+          ["8", "1958", "**धोंडो केशव कर्वे**", "समाज सेवा / शिक्षा", "महिला शिक्षा के अग्रदूत (100वें जन्मदिन पर सम्मानित)"],
+          ["9", "1961", "**डॉ. विधान चंद्र रॉय**", "चिकित्सा", "पश्चिम बंगाल के मुख्यमंत्री (राष्ट्रीय चिकित्सक दिवस 1 जुलाई)"],
+          ["10", "1961", "**पुरुषोत्तम दास टंडन**", "भाषा / स्वतंत्रता संग्राम", "हिंदी भाषा सुधारक, स्वतंत्रता सेनानी"],
+          ["11", "1962", "**डॉ. राजेंद्र प्रसाद**", "राजनीति", "भारत के प्रथम राष्ट्रपति, संविधान सभा के अध्यक्ष"],
+          ["12", "1963", "**डॉ. ज़ाकिर हुसैन**", "शिक्षा / राजनीति", "भारत के तीसरे राष्ट्रपति, शिक्षाविद"],
+          ["13", "1963", "**डॉ. पांडुरंग वामन काने**", "संस्कृत / इंडोलॉजी", "प्रख्यात संस्कृत विद्वान एवं भारतविद्"],
+          ["14", "1966", "**लाल बहादुर शास्त्री**", "राजनीति", "दूसरे प्रधानमंत्री, 'जय जवान जय किसान' (**प्रथम मरणोपरांत**)"],
+          ["15", "1971", "**इंदिरा गांधी**", "राजनीति", "भारत की **प्रथम महिला प्रधानमंत्री**"],
+          ["16", "1975", "**वी.वी. गिरि**", "राजनीति / श्रम", "भारत के चौथे राष्ट्रपति"],
+          ["17", "1976", "**के. कामराज**", "राजनीति", "तमिलनाडु के मुख्यमंत्री (मरणोपरांत)"],
+          ["18", "1980", "**मदर टेरेसा**", "समाज सेवा", "नोबेल शांति पुरस्कार विजेता (1979)"],
+          ["19", "1983", "**विनोबा भावे**", "समाज सेवा", "भूदान आंदोलन के प्रणेता (मरणोपरांत)"],
+          ["20", "1987", "**खान अब्दुल गफ्फार खान**", "स्वतंत्रता संग्राम", "'फ्रंटियर गांधी' (**प्रथम विदेशी नागरिक**)"],
+          ["21", "1988", "**एम.जी. रामचंद्रन**", "कला / राजनीति", "अभिनेता व तमिलनाडु के मुख्यमंत्री (मरणोपरांत)"],
+          ["22", "1990", "**डॉ. बी.आर. अंबेडकर**", "कानून / समाज सुधार", "भारतीय संविधान के शिल्पकार (मरणोपरांत)"],
+          ["23", "1990", "**नेल्सन मंडेला**", "राजनीति / मानवाधिकार", "दक्षिण अफ्रीका के पूर्व राष्ट्रपति (**द्वितीय विदेशी नागरिक**)"],
+          ["24", "1991", "**राजीव गांधी**", "राजनीति", "भारत के सबसे युवा प्रधानमंत्री (मरणोपरांत)"],
+          ["25", "1991", "**सरदार वल्लभभाई पटेल**", "राजनीति", "'लौह पुरुष', प्रथम गृह मंत्री (मरणोपरांत)"],
+          ["26", "1991", "**मोरारजी देसाई**", "राजनीति", "प्रथम गैर-कांग्रेसी प्रधानमंत्री"],
+          ["27", "1992", "**जे.आर.डी. टाटा**", "उद्योग", "टाटा समूह के संस्थापक निदेशक"],
+          ["28", "1992", "**सत्यजीत रे**", "सिनेमा", "अंतरराष्ट्रीय ख्याति प्राप्त फिल्म निर्माता"],
+          ["29", "1992", "**मौलाना अबुल कलाम आजाद**", "शिक्षा / स्वतंत्रता संग्राम", "भारत के प्रथम शिक्षा मंत्री (मरणोपरांत)"],
+          ["30", "1997", "**गुलज़ारीलाल नंदा**", "राजनीति", "दो बार अंतरिम प्रधानमंत्री (मरणोपरांत)"],
+          ["31", "1997", "**अरुणा आसफ अली**", "स्वतंत्रता संग्राम", "भारत छोड़ो आंदोलन की वीरांगना (मरणोपरांत)"],
+          ["32", "1997", "**डॉ. एपीजे अब्दुल कलाम**", "विज्ञान / रक्षा", "'मिसाइल मैन', 11वें राष्ट्रपति"],
+          ["33", "1998", "**एम.एस. सुब्बुलक्ष्मी**", "संगीत", "कर्नाटक संगीत गायिका (**प्रथम संगीतकार विजेता**)"],
+          ["34", "1998", "**चिदंबरम सुब्रमण्यम**", "कृषि / प्रशासन", "हरित क्रांति के प्रमुख नीतिगत प्रशासक"],
+          ["35", "1999", "**अमर्त्य सेन**", "अर्थशास्त्र", "नोबेल पुरस्कार विजेता (1998)"],
+          ["36", "1999", "**पंडित रवि शंकर**", "संगीत", "विश्वप्रसिद्ध सितार वादक"],
+          ["37", "1999", "**जयप्रकाश नारायण**", "राजनीति / समाज सेवा", "'लोकनायक', संपूर्ण क्रांति (मरणोपरांत)"],
+          ["38", "1999", "**गोपीनाथ बोरदोलोई**", "राजनीति", "असम के प्रथम मुख्यमंत्री (मरणोपरांत)"],
+          ["39", "2001", "**लता मंगेशकर**", "संगीत", "'भारत की स्वर कोकिला'"],
+          ["40", "2001", "**उस्ताद बिस्मिल्लाह खान**", "संगीत", "प्रख्यात शहनाई उस्ताद"],
+          ["41", "2009", "**पंडित भीमसेन जोशी**", "संगीत", "किराना घराने के शीर्ष गायक"],
+          ["42", "2014", "**सचिन तेंदुलकर**", "खेल", "**सबसे कम उम्र (40 वर्ष)** के विजेता"],
+          ["43", "2014", "**प्रो. सी.एन.आर. राव**", "विज्ञान", "रसायन एवं पदार्थ विज्ञान के प्रख्यात वैज्ञानिक"],
+          ["44", "2015", "**अटल बिहारी वाजपेयी**", "राजनीति", "पूर्व प्रधानमंत्री, प्रखर वक्ता व कवि"],
+          ["45", "2015", "**मदन मोहन मालवीय**", "शिक्षा", "BHU के संस्थापक (मरणोपरांत)"],
+          ["46", "2019", "**प्रणब मुखर्जी**", "राजनीति", "भारत के 13वें राष्ट्रपति"],
+          ["47", "2019", "**नानाजी देशमुख**", "समाज सेवा", "चित्रकूट ग्रामोदय विश्वविद्यालय के संस्थापक (मरणोपरांत)"],
+          ["48", "2019", "**भूपेन हजारिका**", "संगीत / सिनेमा", "प्रख्यात संगीतकार व फिल्म निर्माता (मरणोपरांत)"],
+          ["49", "2024", "**कर्पूरी ठाकुर**", "राजनीति / सामाजिक न्याय", "'जननायक', बिहार के पूर्व CM (मरणोपरांत)"],
+          ["50", "2024", "**लालकृष्ण आडवाणी**", "राजनीति", "7वें उप प्रधानमंत्री, पूर्व गृह मंत्री"],
+          ["51", "2024", "**एम.एस. स्वामीनाथन**", "कृषि विज्ञान", "'हरित क्रांति के जनक' (मरणोपरांत)"],
+          ["52", "2024", "**चौधरी चरण सिंह**", "राजनीति / कृषि", "5वें प्रधानमंत्री, 'किसानों के मसीहा' (मरणोपरांत)"],
+          ["53", "2024", "**पी.वी. नरसिम्हा राव**", "राजनीति", "9वें PM, आर्थिक उदारीकरण (1991) के जनक (मरणोपरांत)"]
+        ]
+      }
     }
   ],
   faqs: [
     {
-      question: "मध्य प्रदेश का सर्वाधिक नकद राशि वाला राज्य सम्मान कौन सा है?",
-      questionEn: "Which MP state award carries the highest cash prize?",
-      answer: "महात्मा गांधी राज्य सम्मान मध्य प्रदेश का सर्वाधिक ₹10 लाख की नकद राशि वाला सम्मान है।",
-      answerEn: "Mahatma Gandhi State Award carries the highest cash prize of ₹10 Lakhs in MP."
+      question: "भारत में कुल कितने भारत रत्न प्राप्तकर्ता हैं? (How many Bharat Ratna awards given in total?)",
+      questionEn: "How many total Bharat Ratna awards have been given till date?",
+      answer: "भारत में अब तक (1954 से 2026 तक) कुल 53 हस्तियों को भारत रत्न पुरस्कार प्रदान किया जा चुका है, जिनमें से 18 को मरणोपरांत और 2 गैर-भारतीय नागरिकों को सम्मानित किया गया है।",
+      answerEn: "A total of 53 personalities have been awarded Bharat Ratna from 1954 to 2026, including 18 posthumous awardees and 2 foreign nationals."
     },
     {
-      question: "तानसेन सम्मान की वर्तमान पुरस्कार राशि कितनी है?",
-      questionEn: "What is the current cash prize for Tansen Samman?",
-      answer: "तानसेन सम्मान की पुरस्कार राशि बढ़ाकर ₹5 लाख रुपये कर दी गई है।",
-      answerEn: "The cash prize for Tansen Samman has been revised to ₹5 Lakhs."
+      question: "वर्तमान में भारत रत्न किसे मिला है? (Current Bharat Ratna Winners 2024-2025)",
+      questionEn: "Who are the current recipients of Bharat Ratna award?",
+      answer: "नवीनतम भारत रत्न (2024) 5 हस्तियों को दिया गया: कर्पूरी ठाकुर (मरणोपरांत), लालकृष्ण आडवाणी, डॉ. एम.एस. स्वामीनाथन (मरणोपरांत), चौधरी चरण सिंह (मरणोपरांत) तथा पी.वी. नरसिम्हा राव (मरणोपरांत)।",
+      answerEn: "The latest recipients (2024) are Karpoori Thakur (Posthumous), L.K. Advani, M.S. Swaminathan (Posthumous), Chaudhary Charan Singh (Posthumous), and P.V. Narasimha Rao (Posthumous)."
     },
     {
-      question: "कालिदास सम्मान कितनी विधाओं में प्रदान किया जाता है?",
-      questionEn: "In how many disciplines is Kalidas Samman awarded?",
-      answer: "कालिदास सम्मान 4 विधाओं में दिया जाता है: शास्त्रीय संगीत, शास्त्रीय नृत्य, रंगकर्म एवं रूपंकर कलाएं।",
-      answerEn: "Kalidas Samman is given in 4 fields: Classical Music, Classical Dance, Theatre, and Visual Arts."
+      question: "भारत रत्न में कितना रुपया दिया जाता है? (Bharat Ratna Puraskar Rashi)",
+      questionEn: "How much prize money is given in Bharat Ratna award?",
+      answer: "भारत रत्न पुरस्कार के तहत कोई नकद राशि (₹0/No Monetary Reward) नहीं दी जाती है। इसमें राष्ट्रपति द्वारा हस्ताक्षरित एक सनद (प्रमाणपत्र) और पीपल के पत्ते के आकार का एक तांबे/प्लेटिनम का पदक दिया जाता है।",
+      answerEn: "Bharat Ratna carries zero cash reward (₹0). Awardees receive a citation (Sanad) signed by the President and a bronze/platinum peepal-leaf medal."
     },
     {
-      question: "तानसेन सम्मान किस क्षेत्र में दिया जाता है?",
-      questionEn: "In which field is Tansen Samman presented?",
-      answer: "तानसेन सम्मान हिंदुस्तानी शास्त्रीय संगीत (गायकी व वादन) के क्षेत्र में दिया जाता है।",
-      answerEn: "Tansen Samman is awarded in the field of Hindustani Classical Music."
+      question: "भारत रत्न लेने से किसने मना किया? (Who refused to take Bharat Ratna?)",
+      questionEn: "Who refused to take Bharat Ratna award?",
+      answer: "स्वतंत्रता सेनानी व प्रथम शिक्षा मंत्री मौलाना अबुल कलाम आजाद ने यह कहकर मना किया था कि चयन समिति के सदस्यों को स्वयं यह पुरस्कार नहीं लेना चाहिए। बाद में 1992 में उन्हें मरणोपरांत सम्मानित किया गया। इसके अलावा नेताजी सुभाष चंद्र बोस के 1992 के मरणोपरांत पुरस्कार को उनके परिवार की आपत्ति व कोर्ट के आदेश पर 1997 में वापस लिया गया था।",
+      answerEn: "Maulana Abul Kalam Azad refused it initially, stating that members of selection committees shouldn't accept the award. Later awarded posthumously in 1992. Subhash Chandra Bose's 1992 posthumous award was withdrawn in 1997 following family objection and Supreme Court ruling."
     },
     {
-      question: "कबीर सम्मान किस वर्ष स्थापित हुआ था?",
-      questionEn: "In which year was Kabir Samman established?",
-      answer: "कबीर सम्मान की स्थापना वर्ष 1986 में भारतीय कविता के संवर्धन हेतु की गई थी।",
-      answerEn: "Kabir Samman was instituted in 1986 for Indian poetry."
+      question: "भारत रत्न मिलने पर क्या-क्या सुविधाएं मिलती हैं? (Bharat Ratna Benefits)",
+      questionEn: "What benefits and facilities are provided to Bharat Ratna winners?",
+      answer: "भारत रत्न विजेताओं को कोई नकद राशि नहीं मिलती, लेकिन लाइफटाइम एयर इंडिया प्रथम श्रेणी व रेलवे एग्जीक्यूटिव क्लास में मुफ्त यात्रा, भारत के वरीयता क्रम में 7वां स्थान (Rank 7), राज्य अतिथि (State Guest) का दर्जा, VVIP सुरक्षा तथा डिप्लोमैटिक पासपोर्ट की सुविधा मिलती है।",
+      answerEn: "Recipients receive lifetime free First Class Air & Executive Railway travel, 7th rank in Indian Order of Precedence, State Guest status across all states, VVIP security, and a Diplomatic Passport."
     },
     {
-      question: "लता मंगेशकर सम्मान मध्य प्रदेश शासन द्वारा किस विधा में दिया जाता है?",
-      questionEn: "In which field is Lata Mangeshkar Award presented by MP Govt?",
-      answer: "लता मंगेशकर सम्मान सुगम संगीत (Light Music) एवं संगीत निर्देशन हेतु दिया जाता है।",
-      answerEn: "It is presented for Light Music and Music Composition."
+      question: "भारत रत्न पुरस्कार की स्थापना कब और किसके द्वारा की गई थी?",
+      questionEn: "When and by whom was the Bharat Ratna award established?",
+      answer: "भारत रत्न की स्थापना 2 जनवरी 1954 को तत्कालीन राष्ट्रपति डॉ. राजेंद्र प्रसाद द्वारा की गई थी।",
+      answerEn: "Bharat Ratna was established on 2 January 1954 by President Dr. Rajendra Prasad."
     },
     {
-      question: "कुमार गंधर्व सम्मान किस श्रेणी के कलाकारों को मिलता है?",
-      questionEn: "Which category of artists receive the Kumar Gandharva Award?",
-      answer: "कुमार गंधर्व सम्मान शास्त्रीय संगीत के युवा कलाकारों (युवा गायकों/वादकों) को दिया जाता है।",
-      answerEn: "It is awarded to young accomplished artists in classical music."
+      question: "2024 में भारत रत्न किसे-किसने मिला? (Bharat Ratna 2024 Winners List)",
+      questionEn: "Who won the Bharat Ratna award in 2024?",
+      answer: "2024 में 5 हस्तियों को भारत रत्न दिया गया: 1. जननायक कर्पूरी ठाकुर (मरणोपरांत), 2. लालकृष्ण आडवाणी, 3. कृषि वैज्ञानिक डॉ. एम.एस. स्वामीनाथन (मरणोपरांत), 4. पूर्व प्रधानमंत्री चौधरी चरण सिंह (मरणोपरांत), और 5. पूर्व प्रधानमंत्री पी.वी. नरसिम्हा राव (मरणोपरांत)।",
+      answerEn: "In 2024, 5 dignitaries were awarded: Karpoori Thakur (Posthumous), L.K. Advani, M.S. Swaminathan (Posthumous), Chaudhary Charan Singh (Posthumous), and P.V. Narasimha Rao (Posthumous)."
     },
     {
-      question: "तानसेन समारोह का आयोजन मध्य प्रदेश के किस शहर में होता है?",
-      questionEn: "In which city of MP is the Tansen Samaroh held annually?",
-      answer: "तानसेन समारोह प्रतिवर्ष ग्वालियर में संगीत सम्राट तानसेन की समाधि स्थल पर आयोजित होता है।",
-      answerEn: "Tansen Samaroh is held annually at Tansen's tomb in Gwalior."
+      question: "भारत रत्न पाने वाले प्रथम तीन व्यक्ति कौन थे?",
+      questionEn: "Who were the first three recipients of Bharat Ratna in 1954?",
+      answer: "1954 में प्रथम भारत रत्न सी. राजगोपालाचारी, डॉ. सर्वपल्ली राधाकृष्णन और डॉ. सी.वी. रमन को प्रदान किया गया था।",
+      answerEn: "In 1954, it was awarded to C. Rajagopalachari, Dr. S. Radhakrishnan, and Dr. C.V. Raman."
+    },
+    {
+      question: "मरणोपरांत भारत रत्न पाने वाले पहले व्यक्ति कौन थे?",
+      questionEn: "Who was the first person to receive Bharat Ratna posthumously?",
+      answer: "पूर्व प्रधानमंत्री लाल बहादुर शास्त्री को 1966 में पहला मरणोपरांत भारत रत्न दिया गया था।",
+      answerEn: "Lal Bahadur Shastri was awarded the first posthumous Bharat Ratna in 1966."
+    },
+    {
+      question: "भारत रत्न पाने वाले सबसे कम उम्र के व्यक्ति कौन हैं?",
+      questionEn: "Who is the youngest recipient of the Bharat Ratna award?",
+      answer: "सचिन तेंदुलकर 2014 में 40 वर्ष की आयु में भारत रत्न पाने वाले सबसे कम उम्र के व्यक्ति बने।",
+      answerEn: "Sachin Tendulkar became the youngest recipient in 2014 at the age of 40."
+    },
+    {
+      question: "किन दो विदेशी नागरिकों को भारत रत्न प्रदान किया गया है?",
+      questionEn: "Which two foreign nationals have been awarded Bharat Ratna?",
+      answer: "खान अब्दुल गफ्फार खान (1987 - पाकिस्तान) और नेल्सन मंडेला (1990 - दक्षिण अफ्रीका) को भारत रत्न मिला है।",
+      answerEn: "Khan Abdul Ghaffar Khan (1987) and Nelson Mandela (1990) are the two foreign recipients."
+    },
+    {
+      question: "भारतीय वरीयता क्रम (Order of Precedence) में भारत रत्न प्राप्तकर्ताओं का स्थान क्या है?",
+      questionEn: "What is the rank of Bharat Ratna awardees in the Indian Order of Precedence?",
+      answer: "भारत रत्न प्राप्तकर्ता भारतीय वरीयता क्रम में 7वें स्थान (7th Rank) पर आते हैं।",
+      answerEn: "Bharat Ratna recipients hold the 7th rank in the Indian Order of Precedence."
+    },
+    {
+      question: "वर्ष 2024 में किन 5 महान हस्तियों को भारत रत्न दिया गया?",
+      questionEn: "Who were the 5 eminent personalities awarded Bharat Ratna in 2024?",
+      answer: "2024 में कर्पूरी ठाकुर, लालकृष्ण आडवाणी, पी.वी. नरसिम्हा राव, चौधरी चरण सिंह एवं डॉ. एम.एस. स्वामीनाथन को भारत रत्न मिला।",
+      answerEn: "In 2024, Karpoori Thakur, L.K. Advani, P.V. Narasimha Rao, Charan Singh, and Dr. M.S. Swaminathan received Bharat Ratna."
     }
   ],
   mcqs: [
     {
-      question: "मध्य प्रदेश सरकार द्वारा दिए जाने वाले किस सम्मान की पुरस्कार राशि सर्वाधिक ₹10 लाख है?",
-      questionEn: "Which award by MP Govt carries the highest cash prize of ₹10 Lakhs?",
-      options: ["A. तानसेन सम्मान", "B. कालिदास सम्मान", "C. महात्मा गांधी सम्मान", "D. कबीर सम्मान"],
-      optionsEn: ["A. Tansen Samman", "B. Kalidas Samman", "C. Mahatma Gandhi Award", "D. Kabir Samman"],
+      question: "भारत रत्न पुरस्कार के लिए सिफारिशें राष्ट्रपति को किसके द्वारा भेजी जाती हैं?",
+      questionEn: "Recommendations for Bharat Ratna are sent to the President by whom?",
+      answer: "भारत के प्रधानमंत्री द्वारा",
+      options: ["A. भारत के मुख्य न्यायाधीश", "B. गृह मंत्री", "C. भारत के प्रधानमंत्री", "D. संसद की चयन समिति"],
+      optionsEn: ["A. Chief Justice of India", "B. Home Minister", "C. Prime Minister of India", "D. Parliamentary Selection Committee"],
       correctIndex: 2,
-      explanation: "महात्मा गांधी सम्मान की राशि ₹10 लाख है जो राज्य की सर्वोच्च पुरस्कार राशि है।",
-      explanationEn: "Mahatma Gandhi Award carries ₹10 Lakhs, the highest in MP."
+      explanation: "भारत रत्न के लिए सिफारिशें सीधे भारत के प्रधानमंत्री द्वारा राष्ट्रपति को भेजी जाती हैं।",
+      explanationEn: "Recommendations for Bharat Ratna are formally sent by the Prime Minister to the President."
     },
     {
-      question: "तानसेन राष्ट्रीय सम्मान की शुरुआत किस वर्ष हुई थी?",
-      questionEn: "In which year was Tansen National Honor instituted?",
-      options: ["A. 1975", "B. 1980", "C. 1985", "D. 1990"],
-      optionsEn: ["A. 1975", "B. 1980", "C. 1985", "D. 1990"],
+      question: "भारत रत्न पाने वाली पहली महिला कौन थीं?",
+      questionEn: "Who was the first female recipient of the Bharat Ratna award?",
+      options: ["A. मदर टेरेसा", "B. इंदिरा गांधी", "C. लता मंगेशकर", "D. एमएस सुब्बुलक्ष्मी"],
+      optionsEn: ["A. Mother Teresa", "B. Indira Gandhi", "C. Lata Mangeshkar", "D. M.S. Subbulakshmi"],
       correctIndex: 1,
-      explanation: "तानसेन सम्मान की स्थापना 1980 में हुई थी।",
-      explanationEn: "Tansen Samman was instituted in 1980."
+      explanation: "श्रीमती इंदिरा गांधी 1971 में भारत रत्न पाने वाली प्रथम महिला थीं।",
+      explanationEn: "Indira Gandhi was the first woman to receive Bharat Ratna in 1971."
     },
     {
-      question: "कालिदास सम्मान निम्नलिखित में से किस विधा में प्रदान नहीं किया जाता है?",
-      questionEn: "Kalidas Samman is NOT awarded in which of the following fields?",
-      options: ["A. शास्त्रीय नृत्य", "B. रंगकर्म", "C. लोक संगीत", "D. रूपंकर कलाएं"],
-      optionsEn: ["A. Classical Dance", "B. Theatre", "C. Folk Music", "D. Visual Arts"],
+      question: "भारत रत्न पाने वाले प्रथम संगीतकार कौन थे?",
+      questionEn: "Who was the first musician to receive the Bharat Ratna award?",
+      options: ["A. पंडित रवि शंकर", "B. उस्ताद बिस्मिल्लाह खान", "C. एम.एस. सुब्बुलक्ष्मी", "D. लता मंगेशकर"],
+      optionsEn: ["A. Pandit Ravi Shankar", "B. Ustad Bismillah Khan", "C. M.S. Subbulakshmi", "D. Lata Mangeshkar"],
       correctIndex: 2,
-      explanation: "कालिदास सम्मान 4 विधाओं (शास्त्रीय संगीत, शास्त्रीय नृत्य, रंगकर्म, रूपंकर कलाएं) में दिया जाता है, लोक संगीत में नहीं।",
-      explanationEn: "It covers Classical Music, Classical Dance, Theatre, and Visual Arts."
+      explanation: "एम.एस. सुब्बुलक्ष्मी 1998 में भारत रत्न प्राप्त करने वाली प्रथम संगीतकार बनीं।",
+      explanationEn: "M.S. Subbulakshmi was the first musician awarded Bharat Ratna in 1998."
     },
     {
-      question: "मध्य प्रदेश का 'कबीर सम्मान' किस क्षेत्र में दिया जाता है?",
-      questionEn: "In which field is MP's 'Kabir Samman' awarded?",
-      options: ["A. समाज सेवा", "B. भारतीय कविता", "C. शास्त्रीय संगीत", "D. पत्रकारिता"],
-      optionsEn: ["A. Social Work", "B. Indian Poetry", "C. Classical Music", "D. Journalism"],
+      question: "निम्नलिखित में से किस वर्ष भारत रत्न की पात्रता में 'मानव प्रयास का कोई भी क्षेत्र' शामिल किया गया?",
+      questionEn: "In which year was 'any field of human endeavour' included in Bharat Ratna eligibility?",
+      options: ["A. 2005", "B. 2011", "C. 2014", "D. 2018"],
+      optionsEn: ["A. 2005", "B. 2011", "C. 2014", "D. 2018"],
       correctIndex: 1,
-      explanation: "कबीर सम्मान भारतीय कविता के क्षेत्र में उत्कृष्ट योगदान हेतु दिया जाता है।",
-      explanationEn: "Kabir Samman is awarded for Indian poetry."
+      explanation: "दिसंबर 2011 में नियमों में संशोधन कर खेल सहित मानव प्रयास का कोई भी क्षेत्र शामिल किया गया।",
+      explanationEn: "In December 2011, eligibility was expanded to include any field of human endeavour."
     },
     {
-      question: "तानसेन समारोह का वार्षिक आयोजन मध्य प्रदेश के किस जिले में होता है?",
-      questionEn: "In which district of MP is the annual Tansen Samaroh organized?",
-      options: ["A. उज्जैन", "B. इंदौर", "C. ग्वालियर", "D. भोपाल"],
-      optionsEn: ["A. Ujjain", "B. Indore", "C. Gwalior", "D. Bhopal"],
-      correctIndex: 2,
-      explanation: "तानसेन समारोह प्रतिवर्ष ग्वालियर में आयोजित होता है।",
-      explanationEn: "Tansen Samaroh is held annually in Gwalior."
-    },
-    {
-      question: "लता मंगेशकर सम्मान की शुरुआत मध्य प्रदेश सरकार ने किस वर्ष की थी?",
-      questionEn: "In which year did MP Govt start the Lata Mangeshkar Award?",
-      options: ["A. 1980", "B. 1984", "C. 1988", "D. 1992"],
-      optionsEn: ["A. 1980", "B. 1984", "C. 1988", "D. 1992"],
+      question: "मरणोपरांत भारत रत्न देने का प्रावधान किस वर्ष जोड़ा गया था?",
+      questionEn: "In which year was the provision for posthumous Bharat Ratna added?",
+      options: ["A. 1954", "B. 1955", "C. 1966", "D. 1971"],
+      optionsEn: ["A. 1954", "B. 1955", "C. 1966", "D. 1971"],
       correctIndex: 1,
-      explanation: "लता मंगेशकर सम्मान 1984 में सुगम संगीत हेतु प्रारंभ किया गया था।",
-      explanationEn: "Lata Mangeshkar Award was instituted in 1984."
+      explanation: "जनवरी 1955 में संशोधन करके मरणोपरांत पुरस्कार का नियम लागू किया गया।",
+      explanationEn: "The statutes were amended in January 1955 to allow posthumous awards."
     },
     {
-      question: "शास्त्रीय संगीत के युवा कलाकारों को दिया जाने वाला मध्य प्रदेश का सम्मान कौन सा है?",
-      questionEn: "Which MP award is presented to young classical music artists?",
-      options: ["A. कुमार गंधर्व सम्मान", "B. चक्रधर सम्मान", "C. मैथिलीशरण गुप्त सम्मान", "D. शिखर सम्मान"],
-      optionsEn: ["A. Kumar Gandharva Award", "B. Chakradhar Samman", "C. Maithili Sharan Gupt Samman", "D. Shikhar Samman"],
-      correctIndex: 0,
-      explanation: "कुमार गंधर्व सम्मान (1992) युवा शास्त्रीय गायकों/वादकों को दिया जाता है।",
-      explanationEn: "Kumar Gandharva Award is given to young classical artists."
+      question: "भारतीय वरीयता क्रम (Order of Precedence) में भारत रत्न प्राप्तकर्ताओं को कौन सा स्थान प्राप्त है?",
+      questionEn: "Which rank is assigned to Bharat Ratna awardees in the Indian Order of Precedence?",
+      options: ["A. 5वां", "B. 7वां", "C. 9वां", "D. 11वां"],
+      optionsEn: ["A. 5th", "B. 7th", "C. 9th", "D. 11th"],
+      correctIndex: 1,
+      explanation: "भारत रत्न प्राप्तकर्ताओं को भारतीय वरीयता क्रम में 7वां स्थान प्राप्त है।",
+      explanationEn: "Bharat Ratna recipients hold the 7th rank in the Indian Order of Precedence."
     },
     {
-      question: "मध्य प्रदेश शासन द्वारा वर्तमान में तानसेन व कालिदास सम्मान की नकद राशि कितनी कर दी गई है?",
-      questionEn: "What is the present cash prize for Tansen and Kalidas Samman?",
-      options: ["A. ₹2 लाख", "B. ₹3 लाख", "C. ₹5 लाख", "D. ₹10 लाख"],
-      optionsEn: ["A. ₹2 Lakhs", "B. ₹3 Lakhs", "C. ₹5 Lakhs", "D. ₹10 Lakhs"],
+      question: "1990 में भारत रत्न से सम्मानित गैर-भारतीय नागरिक नेल्सन मंडेला किस देश के पूर्व राष्ट्रपति थे?",
+      questionEn: "Nelson Mandela, awarded Bharat Ratna in 1990, was former President of which country?",
+      options: ["A. केन्या", "B. दक्षिण अफ्रीका", "C. नाइजीरिया", "D. जिम्बाब्वे"],
+      optionsEn: ["A. Kenya", "B. South Africa", "C. Nigeria", "D. Zimbabwe"],
+      correctIndex: 1,
+      explanation: "नेल्सन मंडेला दक्षिण अफ्रीका के महान रंगभेद विरोधी नेता व पूर्व राष्ट्रपति थे।",
+      explanationEn: "Nelson Mandela was the anti-apartheid leader and former President of South Africa."
+    },
+    {
+      question: "2024 में 'भारतीय कृषि क्रांति/हरित क्रांति के जनक' किस प्रख्यात वैज्ञानिक को मरणोपरांत भारत रत्न दिया गया?",
+      questionEn: "Which scientist known as father of India's Green Revolution was awarded Bharat Ratna in 2024?",
+      options: ["A. डॉ. एपीजे अब्दुल कलाम", "B. प्रो. सी.एन.आर. राव", "C. डॉ. एम.एस. स्वामीनाथन", "D. डॉ. शांति स्वरूप भटनागर"],
+      optionsEn: ["A. Dr. A.P.J. Abdul Kalam", "B. Prof. C.N.R. Rao", "C. Dr. M.S. Swaminathan", "D. Dr. S.S. Bhatnagar"],
       correctIndex: 2,
-      explanation: "राज्य सरकार ने तानसेन व कालिदास सम्मान की राशि बढ़ाकर ₹5 लाख कर दी है।",
-      explanationEn: "The cash prize has been increased to ₹5 Lakhs."
+      explanation: "डॉ. एम.एस. स्वामीनाथन को 2024 में हरित क्रांति में उनके दूरदर्शी योगदान हेतु भारत रत्न प्रदान किया गया।",
+      explanationEn: "Dr. M.S. Swaminathan was posthumously awarded Bharat Ratna in 2024."
     }
   ]
 };
