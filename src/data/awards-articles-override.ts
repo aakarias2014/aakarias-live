@@ -17,6 +17,11 @@ export const civilianAwardsArticleData = {
     titleEn: "Civilian Awards",
     slug: { current: "civilian-awards" }
   },
+  author: {
+    _id: "author-deepraj-sikarwar",
+    name: "Deepraj Sikarwar (Editorial Team)",
+    slug: { current: "deepraj-sikarwar" },
+  },
   tags: [
     { _id: "tag-mppsc", name: "MPPSC", slug: { current: "mppsc" } },
     { _id: "tag-upsc", name: "UPSC", slug: { current: "upsc" } },
@@ -360,6 +365,11 @@ export const bharatRatnaDedicatedArticleData = {
     title: "नागरिक सम्मान (Civilian Awards)",
     titleEn: "Civilian Awards",
     slug: { current: "civilian-awards" }
+  },
+  author: {
+    _id: "author-deepraj-sikarwar",
+    name: "Deepraj Sikarwar (Editorial Team)",
+    slug: { current: "deepraj-sikarwar" },
   },
   tags: [
     { _id: "tag-mppsc", name: "MPPSC", slug: { current: "mppsc" } },

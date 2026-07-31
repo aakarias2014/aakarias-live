@@ -283,11 +283,15 @@ function mapCard(raw: any, locale: Locale): ArticleListItem {
           slug: getSlug(raw.author.slug),
           avatar: raw.author.avatar
             ? (typeof raw.author.avatar === "string"
-              ? imageUrl(raw.author.avatar, { width: 300, height: 300, fit: "crop", quality: 90 })
+              ? (raw.author.avatar.startsWith("/") ? raw.author.avatar : imageUrl(raw.author.avatar, { width: 300, height: 300, fit: "crop", quality: 90 }))
               : imageUrl(raw.author.avatar?.asset?._ref, { width: 300, height: 300, fit: "crop", quality: 90 }))
             : undefined,
         }
-      : undefined,
+      : {
+          name: "Deepraj Sikarwar (Editorial Team)",
+          slug: "deepraj-sikarwar",
+          avatar: "/images/authors/deepraj-sikarwar.jpg",
+        },
     tags: raw.tags?.filter(Boolean).map(mapTag),
     locale,
     href: articleHref(slug, raw._type, locale),
