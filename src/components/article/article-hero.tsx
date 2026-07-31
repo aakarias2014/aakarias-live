@@ -22,47 +22,43 @@ export async function ArticleHero({ article }: { article: Article }) {
   const isBookmarked = await checkIsBookmarked(article.id);
 
   return (
-    <header className="relative">
-      {article.featuredImage ? (
-        <div className="relative h-[280px] sm:h-[360px] md:h-[420px] w-full overflow-hidden bg-secondary">
-          <Image
-            src={article.featuredImage.url}
-            alt={article.featuredImage.alt || article.title}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center"
+    <header className="relative pt-6">
+      <div className="mx-auto max-w-[var(--content-max)] px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center gap-4">
+          <Breadcrumb
+            items={[
+              { name: "Current Affairs", href: `/current-affairs` },
+              { name: article.category?.title ?? "Article" },
+            ]}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
-        </div>
-      ) : (
-        <div className="h-[200px] sm:h-[260px] w-full bg-gradient-to-br from-primary/5 via-muted to-accent/5" />
-      )}
-
-      <div className="relative -mt-16 sm:-mt-24">
-        <div className="mx-auto max-w-[var(--content-max)] px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4">
-            <Breadcrumb
-              items={[
-                { name: "Current Affairs", href: `/current-affairs` },
-                { name: article.category?.title ?? "Article" },
-              ]}
+          <div className="ml-auto flex items-center gap-3">
+            <BookmarkButton
+              articleId={article.id}
+              title={article.title}
+              slug={article.slug}
+              type={article.type || "currentAffairs"}
+              locale={article.locale}
+              initialIsBookmarked={isBookmarked}
+              isSignedIn={isSignedIn}
             />
-            <div className="ml-auto flex items-center gap-3">
-              <BookmarkButton
-                articleId={article.id}
-                title={article.title}
-                slug={article.slug}
-                type={article.type || "currentAffairs"}
-                locale={article.locale}
-                initialIsBookmarked={isBookmarked}
-                isSignedIn={isSignedIn}
-              />
-              <LanguageSwitcher />
-            </div>
+            <LanguageSwitcher />
           </div>
+        </div>
 
-          <div className="mt-6 max-w-4xl">
+        {article.featuredImage && (
+          <div className="mt-6 relative h-[260px] sm:h-[360px] md:h-[450px] w-full overflow-hidden rounded-2xl border border-border/50 shadow-md bg-secondary">
+            <Image
+              src={article.featuredImage.url}
+              alt={article.featuredImage.alt || article.title}
+              fill
+              priority
+              sizes="(max-width: 1200px) 100vw, 1200px"
+              className="object-cover object-center"
+            />
+          </div>
+        )}
+
+        <div className="mt-8 max-w-4xl">
             <div className="flex flex-wrap items-center gap-2">
               <CategoryBadge category={article.category} locale={article.locale} size="md" />
               {article.syllabus && article.syllabus.length > 0 && (
@@ -139,7 +135,6 @@ export async function ArticleHero({ article }: { article: Article }) {
             )}
           </div>
         </div>
-      </div>
     </header>
   );
 }
