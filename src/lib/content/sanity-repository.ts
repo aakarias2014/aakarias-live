@@ -196,7 +196,13 @@ function parseAssetDimensions(ref: string | undefined): { width?: number; height
 }
 
 function mapImage(img: (RawImage & { assetRef?: string; url?: string }) | undefined | null) {
-  if (!img) return null;
+  const defaultImg = {
+    url: "/default-cover.png",
+    alt: "Aakar IAS",
+    width: 1200,
+    height: 675,
+  };
+  if (!img) return defaultImg;
   const directUrl = typeof img === "string" ? img : (img as any).url;
   if (directUrl && typeof directUrl === "string" && directUrl.trim().length > 0) {
     return {
@@ -213,14 +219,7 @@ function mapImage(img: (RawImage & { assetRef?: string; url?: string }) | undefi
   const url = imageUrl(ref, { width: 1600, quality: 80, format: "webp" });
   const dims = parseAssetDimensions(ref);
   if (!url) {
-    return {
-      url: "/default-cover.png",
-      alt: img?.alt || "Aakar IAS",
-      caption: img?.caption,
-      credit: img?.credit,
-      width: 800,
-      height: 450,
-    };
+    return defaultImg;
   }
   return {
     url,
@@ -568,6 +567,15 @@ export class SanityRepository implements ContentRepository {
       raw = {
         ...(raw || {}),
         ...dilipGavitArticleData,
+      };
+    }
+    if (slug === "disaster-management-amendment-act-2025-mppsc-upsc-notes") {
+      raw = {
+        ...(raw || {}),
+        featuredImage: {
+          url: "/images/blog/disaster-management-amendment-act-2025.png",
+          alt: "Disaster Management Amendment Act 2025 NDRF Rescue Operations India MPPSC UPSC Notes",
+        },
       };
     }
     if (!raw) return null;
