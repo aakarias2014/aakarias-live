@@ -763,7 +763,9 @@ export class SanityRepository implements ContentRepository {
       tags: ["articles"],
     });
 
-    const items = raw.items.map((r) => mapCard(r, locale));
+    const rawItems = Array.isArray(raw?.items) ? raw.items : [];
+    const totalCount = typeof raw?.total === "number" ? raw.total : 0;
+    const items = rawItems.map((r) => mapCard(r, locale));
 
     if (!query.contentType || query.contentType === "currentAffairs") {
       const { dilipGavitArticleData } = await import("@/data/dilip-gavit-article-override");
@@ -786,13 +788,13 @@ export class SanityRepository implements ContentRepository {
       const ratnaCard = mapCard(bharatRatnaDedicatedArticleData as any, locale);
       const mpCard = mapCard(mpStateAwardsArticleData as any, locale);
 
-      if ((!query.category || query.category === "civilian-awards") && !items.some((it) => it.slug === ratnaCard.slug)) {
+      if (ratnaCard?.slug && (!query.category || query.category === "civilian-awards") && !items.some((it) => it?.slug === ratnaCard.slug)) {
         items.unshift(ratnaCard);
       }
-      if ((!query.category || query.category === "civilian-awards") && !items.some((it) => it.slug === civCard.slug)) {
+      if (civCard?.slug && (!query.category || query.category === "civilian-awards") && !items.some((it) => it?.slug === civCard.slug)) {
         items.unshift(civCard);
       }
-      if ((!query.category || query.category === "mp-state-awards") && !items.some((it) => it.slug === mpCard.slug)) {
+      if (mpCard?.slug && (!query.category || query.category === "mp-state-awards") && !items.some((it) => it?.slug === mpCard.slug)) {
         items.unshift(mpCard);
       }
     }
@@ -801,9 +803,9 @@ export class SanityRepository implements ContentRepository {
       items: items.slice(0, pageSize),
       page,
       pageSize,
-      total: raw.total + 2,
-      totalPages: Math.max(1, Math.ceil((raw.total + 2) / pageSize)),
-      hasMore: page * pageSize < raw.total + 2,
+      total: totalCount + 2,
+      totalPages: Math.max(1, Math.ceil((totalCount + 2) / pageSize)),
+      hasMore: page * pageSize < totalCount + 2,
     };
   }
 
