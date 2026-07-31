@@ -388,9 +388,9 @@ export const bharatRatnaDedicatedArticleData = {
     "bharat ratna award list 1954 to 2026"
   ],
   featuredImage: {
-    url: "/images/blog/bharat-ratna-padma-awards.png",
-    alt: "Bharat Ratna Medal Peepal Leaf Real Photo MPPSC UPSC Notes",
-    caption: "भारत रत्न पदक — पीपल के पत्ते के आकार का तांबे एवं प्लेटिनम से निर्मित सर्वोच्च नागरिक सम्मान (Aakar IAS)",
+    url: "/images/blog/bharat-ratna-medal-hd.png",
+    alt: "Official Bharat Ratna Medal Peepal Leaf Real Photo MPPSC UPSC Notes",
+    caption: "भारत रत्न पदक — पीपल के पत्ते के आकार का तांबे एवं प्लेटिनम से निर्मित देश का सर्वोच्च नागरिक सम्मान (Aakar IAS)",
   },
   body: [
     {

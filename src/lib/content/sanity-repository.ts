@@ -260,11 +260,14 @@ function articleHref(slug: string, _type: string, locale: Locale): string {
 function mapCard(raw: any, locale: Locale): ArticleListItem {
   if (!raw) return {} as any;
   const slug = getSlug(raw.slug);
+  const isEn = locale === "en";
+  const title = (isEn ? raw.titleEn : raw.title) ?? raw.title ?? raw.titleEn ?? "Untitled";
+  const excerpt = (isEn ? raw.excerptEn : raw.excerpt) ?? raw.excerpt ?? raw.excerptEn ?? "";
   return {
     id: raw._id ?? "",
     slug,
-    title: raw.title ?? "Untitled",
-    excerpt: raw.excerpt ?? "",
+    title,
+    excerpt,
     date: raw.date ?? raw.publishedAt ?? "",
     ca_date: raw.ca_date,
     readingTime: raw.readingTime,
@@ -636,7 +639,7 @@ export class SanityRepository implements ContentRepository {
           author: raw.author as RawAuthor | undefined,
           tags: raw.tags as RawTag[] | undefined,
           syllabus: raw.syllabus as string[] | undefined,
-          _type: "currentAffairs",
+          _type: raw._type || "staticGk",
         },
         locale,
       ),
