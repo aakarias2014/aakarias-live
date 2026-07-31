@@ -13,5 +13,5 @@ This version has breaking changes — APIs, conventions, and file structure may 
 # MPPSC Priority Rule
 - **MPPSC MUST ALWAYS be prioritized first** over UPSC across all articles, SEO titles, meta descriptions, excerpts, tags, exam points, FAQs, and MCQs (e.g. always use "MPPSC & UPSC", "MPPSC / UPSC", put `tag-mppsc` before `tag-upsc`, and target MPPSC exam syllabus explicitly).
 
-
-
+# Mandatory Default Author Rule
+- **Deepraj Sikarwar (Editorial Team)** MUST ALWAYS be set as the default author for all articles, static GK, current affairs, publications, overrides, and repository fallbacks across the application.
