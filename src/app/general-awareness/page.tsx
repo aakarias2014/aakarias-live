@@ -22,6 +22,7 @@ import {
   Layers,
   BookOpen,
   ShieldAlert,
+  Award,
   UserCheck
 } from "lucide-react";
 
@@ -51,6 +52,7 @@ const SUBJECTS = [
   { slug: "mpgk", title: "एमपी सामान्य ज्ञान", titleEn: "MP GK", Icon: MapPin },
   { slug: "sports", title: "खेल एवं खेलकूद", titleEn: "Sports & Games", Icon: Trophy },
   { slug: "inspirational-icons", title: "महत्त्वपूर्ण व्यक्तित्व", titleEn: "Inspirational Icons", Icon: UserCheck },
+  { slug: "awards-and-honors", title: "महत्वपूर्ण पुरस्कार एवं सम्मान", titleEn: "Awards & Honors", Icon: Award },
   { slug: "misc", title: "विविध", titleEn: "Miscellaneous", Icon: Layers },
 ];
 

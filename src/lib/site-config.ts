@@ -165,6 +165,7 @@ export const navigationConfig: MegaNavItem[] = [
       { title: "एमपी सामान्य ज्ञान", titleEn: "MP GK", href: "/general-awareness?subject=mpgk" },
       { title: "खेल एवं खेलकूद", titleEn: "Sports & Games", href: "/general-awareness?subject=sports" },
       { title: "महत्त्वपूर्ण व्यक्तित्व", titleEn: "Inspirational Icons", href: "/general-awareness?subject=inspirational-icons" },
+      { title: "महत्वपूर्ण पुरस्कार एवं सम्मान", titleEn: "Awards & Honors", href: "/awards-and-honors" },
       { title: "विविध", titleEn: "Miscellaneous", href: "/general-awareness?subject=misc" },
     ],
   },
