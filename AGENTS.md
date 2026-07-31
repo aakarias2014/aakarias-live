@@ -15,3 +15,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 # Mandatory Default Author Rule
 - **Deepraj Sikarwar (Editorial Team)** MUST ALWAYS be set as the default author for all articles, static GK, current affairs, publications, overrides, and repository fallbacks across the application.
+
+# Mandatory Bilingual Content Rule (Hindi & English)
+- **ALL ARTICLES MUST ALWAYS BE WRITTEN AND MAINTAINED BILINGUALLY IN BOTH HINDI AND ENGLISH**.
+- For every block, paragraph, heading, list item, table header, FAQ, and MCQ, provide complete Hindi (`text`, `title`, `excerpt`, `question`, `answer`, `explanation`) AND complete English (`textEn`, `titleEn`, `excerptEn`, `questionEn`, `answerEn`, `explanationEn`) translations so switching to `/en/...` routes renders full English text without falling back to Hindi.

@@ -48,177 +48,387 @@ export const civilianAwardsArticleData = {
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "1. भारत के 5 सर्वोच्च नागरिक पुरस्कार — परिचय एवं महत्व" }]
+      children: [
+        {
+          _type: "span",
+          text: "1. भारत के 5 सर्वोच्च नागरिक पुरस्कार — परिचय एवं महत्व",
+          textEn: "1. India's 5 Highest Civilian Awards — Overview & Significance",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "भारत एक ऐसा देश है जो बेहतरीन काम करने वालों की सराहना करता है। यह उन लोगों को सम्मान देता है जिन्होंने देश के समाज और संस्कृति में बहुत बड़ा योगदान दिया है। ऐसे असाधारण योगदानों को सम्मानित करने के लिए, भारत सरकार हर साल कई नागरिक पुरस्कार देती है। ये पुरस्कार कला, साहित्य, विज्ञान, समाज सेवा, लोक सेवा और मानव उन्नति जैसे कई क्षेत्रों में बेहतरीन काम के लिए दिए जाते हैं। [सर्वोच्च नागरिक पुरस्कार की संपूर्ण जानकारी हेतु यहाँ क्लिक करें](/awards-and-honors?category=civilian-awards)।" }]
+      children: [
+        {
+          _type: "span",
+          text: "भारत एक ऐसा देश है जो बेहतरीन काम करने वालों की सराहना करता है। यह उन लोगों को सम्मान देता है जिन्होंने देश के समाज और संस्कृति में बहुत बड़ा योगदान दिया है। ऐसे असाधारण योगदानों को सम्मानित करने के लिए, भारत सरकार हर साल कई नागरिक पुरस्कार देती है। ये पुरस्कार कला, साहित्य, विज्ञान, समाज सेवा, लोक सेवा और मानव उन्नति जैसे कई क्षेत्रों में बेहतरीन काम के लिए दिए जाते हैं। [सर्वोच्च नागरिक पुरस्कार की संपूर्ण जानकारी हेतु यहाँ क्लिक करें](/awards-and-honors?category=civilian-awards)।",
+          textEn: "India honors visionaries and luminaries who make exceptional contributions to society and national life. To recognize such service, the Government of India confers civilian awards annually across arts, literature, science, public service, and human endeavour. [Click here for Civilian Awards Category](/en/awards-and-honors?category=civilian-awards).",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "ये पुरस्कार सिर्फ सम्मान के मेडल नहीं हैं, बल्कि ये राष्ट्रीय प्रशंसा, सम्मान और गौरव का प्रतीक हैं। साथ ही, ये नागरिकों को दूसरों की सेवा करने के लिए प्रोत्साहित भी करते हैं। इन कई सम्मानों में से **पांच पुरस्कार भारत के सर्वोच्च नागरिक पुरस्कार** माने जाते हैं:" }]
+      children: [
+        {
+          _type: "span",
+          text: "ये पुरस्कार सिर्फ सम्मान के मेडल नहीं हैं, बल्कि ये राष्ट्रीय प्रशंसा, सम्मान और गौरव का प्रतीक हैं। साथ ही, ये नागरिकों को दूसरों की सेवा करने के लिए प्रोत्साहित भी करते हैं। इन कई सम्मानों में से **पांच पुरस्कार भारत के सर्वोच्च नागरिक पुरस्कार** माने जाते हैं:",
+          textEn: "These honors embody national gratitude and pride while inspiring citizens toward public service. Among these, **five honors are recognized as India's highest civilian awards**:",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **रैंक 1 — भारत रत्न (1954)**: सर्वोच्च नागरिक पुरस्कार (असाधारण एवं उच्चतम स्तर की सेवा)। [भारत रत्न की संपूर्ण सूची हेतु यहाँ क्लिक करें](/general-awareness/bharat-ratna-awardees-list-mppsc-upsc-notes)।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **रैंक 1 — भारत रत्न (1954)**: सर्वोच्च नागरिक पुरस्कार (असाधारण एवं उच्चतम स्तर की सेवा)। [भारत रत्न की संपूर्ण सूची हेतु यहाँ क्लिक करें](/general-awareness/bharat-ratna-awardees-list-mppsc-upsc-notes)।",
+          textEn: "• **Rank 1 — Bharat Ratna (1954)**: Highest Civilian Award (exceptional service of the highest order). [Click here for complete Bharat Ratna list](/en/general-awareness/bharat-ratna-awardees-list-mppsc-upsc-notes).",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **रैंक 2 — पद्म विभूषण (1954)**: दूसरा सबसे बड़ा नागरिक पुरस्कार (असाधारण और विशिष्ट सेवा)।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **रैंक 2 — पद्म विभूषण (1954)**: दूसरा सबसे बड़ा नागरिक पुरस्कार (असाधारण और विशिष्ट सेवा)।",
+          textEn: "• **Rank 2 — Padma Vibhushan (1954)**: Second-highest civilian award (exceptional and distinguished service).",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **रैंक 3 — पद्म भूषण (1954)**: तीसरा सबसे बड़ा नागरिक पुरस्कार (उच्च स्तर की विशिष्ट सेवा)।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **रैंक 3 — पद्म भूषण (1954)**: तीसरा सबसे बड़ा नागरिक पुरस्कार (उच्च स्तर की विशिष्ट सेवा)।",
+          textEn: "• **Rank 3 — Padma Bhushan (1954)**: Third-highest civilian award (distinguished service of high order).",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **रैंक 4 — पद्म श्री (1954)**: चौथा सबसे बड़ा नागरिक पुरस्कार (किसी भी क्षेत्र में विशिष्ट सेवा)।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **रैंक 4 — पद्म श्री (1954)**: चौथा सबसे बड़ा नागरिक पुरस्कार (किसी भी क्षेत्र में विशिष्ट सेवा)।",
+          textEn: "• **Rank 4 — Padma Shri (1954)**: Fourth-highest civilian award (distinguished service in any field).",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **रैंक 5 — गांधी शांति पुरस्कार (1995)**: महात्मा गांधी की 125वीं जयंती पर स्थापित अंतरराष्ट्रीय व राष्ट्रीय स्तर का सर्वोच्च शांति सम्मान।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **रैंक 5 — गांधी शांति पुरस्कार (1995)**: महात्मा गांधी की 125वीं जयंती पर स्थापित अंतरराष्ट्रीय व राष्ट्रीय स्तर का सर्वोच्च शांति सम्मान।",
+          textEn: "• **Rank 5 — Gandhi Peace Prize (1995)**: Instituted on Mahatma Gandhi's 125th birth anniversary for social, economic & political transformation through non-violence.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "2. भारत रत्न (Bharat Ratna) — देश का सर्वोच्च नागरिक सम्मान" }]
+      children: [
+        {
+          _type: "span",
+          text: "2. भारत रत्न (Bharat Ratna) — देश का सर्वोच्च नागरिक सम्मान",
+          textEn: "2. Bharat Ratna — India's Highest Civilian Honor",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "भारत रत्न, जिसे **1954 में शुरू** किया गया था, भारत का **सर्वोच्च नागरिक पुरस्कार** है। यह कला, साहित्य, विज्ञान, लोक सेवा और समाज सेवा जैसे किसी भी क्षेत्र में असाधारण और सर्वोच्च स्तर की सेवा के लिए दिया जाता है।" }]
+      children: [
+        {
+          _type: "span",
+          text: "भारत रत्न, जिसे **1954 में शुरू** किया गया था, भारत का **सर्वोच्च नागरिक पुरस्कार** है। यह कला, साहित्य, विज्ञान, लोक सेवा और समाज सेवा जैसे किसी भी क्षेत्र में असाधारण और सर्वोच्च स्तर की सेवा के लिए दिया जाता है।",
+          textEn: "Bharat Ratna, instituted in **1954**, is the **highest civilian award** of India, conferred for exceptional performance in any field of human endeavour.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **वैश्विक व राष्ट्रीय प्रभाव**: भारत रत्न उन कामों को भी मान्यता देता है जिनका राष्ट्रीय या विश्व स्तर पर स्थायी और बहुत बड़ा प्रभाव पड़ा हो।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **वैश्विक व राष्ट्रीय प्रभाव**: भारत रत्न उन कामों को भी मान्यता देता है जिनका राष्ट्रीय या विश्व स्तर पर स्थायी और बहुत बड़ा प्रभाव पड़ा हो।",
+          textEn: "• **Global & National Impact**: Recognizes achievements that leave a lasting impact on national and international development.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **पुरस्कार का स्वरूप**: पुरस्कार पाने वालों को भारत के राष्ट्रपति के हस्ताक्षर वाला एक प्रमाण पत्र और **पीपल के पत्ते के आकार का एक तांबे/प्लेटिनम मेडल** मिलता है जिसके अग्र भाग पर चमकता सूर्य व 'भारत रत्न' तथा पिछले भाग पर राष्ट्रीय प्रतीक अंकित होता है।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **पुरस्कार का स्वरूप**: पुरस्कार पाने वालों को भारत के राष्ट्रपति के हस्ताक्षर वाला एक प्रमाण पत्र और **पीपल के पत्ते के आकार का एक तांबे/प्लेटिनम मेडल** मिलता है जिसके अग्र भाग पर चमकता सूर्य व 'भारत रत्न' तथा पिछले भाग पर राष्ट्रीय प्रतीक अंकित होता है।",
+          textEn: "• **Award Format**: Recipients receive a Sanad (certificate) signed by the President and a **peepal-leaf shaped medallion** with a sun motif.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **प्रथम विजेता (1954)**: सी. राजगोपालाचारी, डॉ. सर्वपल्ली राधाकृष्णन और डॉ. सी.वी. रमन।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **प्रथम विजेता (1954)**: सी. राजगोपालाचारी, डॉ. सर्वपल्ली राधाकृष्णन और डॉ. सी.वी. रमन।",
+          textEn: "• **First Recipients (1954)**: C. Rajagopalachari, Dr. S. Radhakrishnan, and Dr. C.V. Raman.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **वर्ष 2024 के विजेता**: कर्पूरी ठाकुर (मरणोपरांत), लालकृष्ण आडवाणी, पी.वी. नरसिम्हा राव (मरणोपरांत), चौधरी चरण सिंह (मरणोपरांत) एवं डॉ. एम.एस. स्वामीनाथन (मरणोपरांत)।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **वर्ष 2024 के विजेता**: कर्पूरी ठाकुर (मरणोपरांत), लालकृष्ण आडवाणी, पी.वी. नरसिम्हा राव (मरणोपरांत), चौधरी चरण सिंह (मरणोपरांत) एवं डॉ. एम.एस. स्वामीनाथन (मरणोपरांत)।",
+          textEn: "• **2024 Recipients**: Karpoori Thakur (Posthumous), L.K. Advani, P.V. Narasimha Rao (Posthumous), Chaudhary Charan Singh (Posthumous), and Dr. M.S. Swaminathan (Posthumous).",
+        }
+      ]
     },
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "3. पद्म विभूषण (Padma Vibhushan) — दूसरा सबसे बड़ा नागरिक पुरस्कार" }]
+      children: [
+        {
+          _type: "span",
+          text: "3. पद्म विभूषण (Padma Vibhushan) — दूसरा सबसे बड़ा नागरिक पुरस्कार",
+          textEn: "3. Padma Vibhushan — Second Highest Civilian Award",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "पद्म विभूषण भारत का **दूसरा सबसे बड़ा नागरिक पुरस्कार** है। इसकी स्थापना **1954 में** हुई थी। यह **\"असाधारण और विशिष्ट सेवा\"** के लिए दिया जाता है।" }]
+      children: [
+        {
+          _type: "span",
+          text: "पद्म विभूषण भारत का **दूसरा सबसे बड़ा नागरिक पुरस्कार** है। इसकी स्थापना **1954 में** हुई थी। यह **\"असाधारण और विशिष्ट सेवा\"** के लिए दिया जाता है।",
+          textEn: "Padma Vibhushan is the **second-highest civilian award** of India, instituted in **1954** for **\"exceptional and distinguished service\"**.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **क्षेत्र दायरा**: यह कला, शिक्षा, साहित्य, समाज सेवा, विज्ञान, उद्योग, राजनीति और लोक सेवा जैसे कई क्षेत्रों में असाधारण सेवा को सम्मानित करने के लिए दिया जाता है।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **क्षेत्र दायरा**: यह कला, शिक्षा, साहित्य, समाज सेवा, विज्ञान, उद्योग, राजनीति और लोक सेवा जैसे कई क्षेत्रों में असाधारण सेवा को सम्मानित करने के लिए दिया जाता है।",
+          textEn: "• **Fields Covered**: Conferred across arts, education, literature, social work, science, industry, and public affairs.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **चयन व समारोह**: पुरस्कार पाने वालों का चुनाव भारत सरकार द्वारा गठित पद्म समिति करती है। उन्हें यह पुरस्कार राष्ट्रपति द्वारा गणतंत्र दिवस समारोह के दौरान राष्ट्रपति भवन में एक भव्य कार्यक्रम में दिया जाता है।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **चयन व समारोह**: पुरस्कार पाने वालों का चुनाव भारत सरकार द्वारा गठित पद्म समिति करती है। उन्हें यह पुरस्कार राष्ट्रपति द्वारा गणतंत्र दिवस समारोह के दौरान राष्ट्रपति भवन में एक भव्य कार्यक्रम में दिया जाता है।",
+          textEn: "• **Selection & Ceremony**: Recommended by the Padma Awards Committee and conferred by the President of India at Rashtrapati Bhavan.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **प्रथम विजेता (1954)**: सत्येंद्र नाथ बोस, नंदलाल बोस, डॉ. जाकिर हुसैन, बालसाहब गंगाधर खेर, जिग्मे दोरजी वांगचुक तथा वी.के. कृष्ण मेनन।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **प्रथम विजेता (1954)**: सत्येंद्र नाथ बोस, नंदलाल बोस, डॉ. जाकिर हुसैन, बालसाहब गंगाधर खेर, जिग्मे दोरजी वांगचुक तथा वी.के. कृष्ण मेनन।",
+          textEn: "• **First Recipients (1954)**: Satyendra Nath Bose, Nandalal Bose, Zakir Husain, B.G. Kher, Jigme Dorji Wangchuck, V.K. Krishna Menon.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "4. पद्म भूषण (Padma Bhushan) — तीसरा सबसे बड़ा नागरिक पुरस्कार" }]
+      children: [
+        {
+          _type: "span",
+          text: "4. पद्म भूषण (Padma Bhushan) — तीसरा सबसे बड़ा नागरिक पुरस्कार",
+          textEn: "4. Padma Bhushan — Third Highest Civilian Award",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "पद्म भूषण भारत का **तीसरा सबसे बड़ा नागरिक पुरस्कार** है। इसे भी **1954 में स्थापित** किया गया था। यह पुरस्कार **\"उच्च स्तर की विशिष्ट सेवा\"** के लिए दिया जाता है।" }]
+      children: [
+        {
+          _type: "span",
+          text: "पद्म भूषण भारत का **तीसरा सबसे बड़ा नागरिक पुरस्कार** है। इसे भी **1954 में स्थापित** किया गया था। यह पुरस्कार **\"उच्च स्तर की विशिष्ट सेवा\"** के लिए दिया जाता है।",
+          textEn: "Padma Bhushan is the **third-highest civilian award** of India, instituted in **1954** for **\"distinguished service of a high order\"**.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **विविध क्षेत्र**: इसमें चिकित्सा, कला, साहित्य, शिक्षा, लोक सेवा, विज्ञान और खेल जैसे कई क्षेत्र शामिल हैं।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **विविध क्षेत्र**: इसमें चिकित्सा, कला, साहित्य, शिक्षा, लोक सेवा, विज्ञान और खेल जैसे कई क्षेत्र शामिल हैं।",
+          textEn: "• **Fields**: Encompasses medicine, arts, literature, education, public service, science, and sports.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **राष्ट्रीय प्रेरणा**: पद्म भूषण पुरस्कार किसी व्यक्ति के योगदान के महत्व और उनकी राष्ट्रीय स्तर की उपलब्धियों पर जोर देता है, जो दूसरों को प्रेरणा देती हैं। पुरस्कार पाने वालों को राष्ट्रपति से एक प्रमाण पत्र और पदक मिलता है।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **राष्ट्रीय प्रेरणा**: पद्म भूषण पुरस्कार किसी व्यक्ति के योगदान के महत्व और उनकी राष्ट्रीय स्तर की उपलब्धियों पर जोर देता है, जो दूसरों को प्रेरणा देती हैं। पुरस्कार पाने वालों को राष्ट्रपति से एक प्रमाण पत्र और पदक मिलता है।",
+          textEn: "• **National Recognition**: Emphasizes national-level achievement and leadership in respective domains.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **प्रथम विजेता (1954)**: डॉ. होमी जहांगीर भाभा, डॉ. शांति स्वरूप भटनागर, एम.आई. गणपति, ज्ञान चंद्र घोष।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **प्रथम विजेता (1954)**: डॉ. होमी जहांगीर भाभा, डॉ. शांति स्वरूप भटनागर, एम.आई. गणपति, ज्ञान चंद्र घोष।",
+          textEn: "• **First Recipients (1954)**: Dr. Homi J. Bhabha, Dr. Shanti Swaroop Bhatnagar, M.I. Bharatan, G.C. Ghose.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "5. पद्म श्री (Padma Shri) — चौथा सबसे बड़ा नागरिक पुरस्कार" }]
+      children: [
+        {
+          _type: "span",
+          text: "5. पद्म श्री (Padma Shri) — चौथा सबसे बड़ा नागरिक पुरस्कार",
+          textEn: "5. Padma Shri — Fourth Highest Civilian Award",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "पद्म श्री भारत का **चौथा सबसे बड़ा नागरिक पुरस्कार** है, जिसे **1954 में स्थापित** किया गया था। यह किसी भी क्षेत्र में **\"विशिष्ट सेवा\"** के लिए दिया जाता है।" }]
+      children: [
+        {
+          _type: "span",
+          text: "पद्म श्री भारत का **चौथा सबसे बड़ा नागरिक पुरस्कार** है, जिसे **1954 में स्थापित** किया गया था। यह किसी भी क्षेत्र में **\"विशिष्ट सेवा\"** के लिए दिया जाता है।",
+          textEn: "Padma Shri is the **fourth-highest civilian award** of India, instituted in **1954** for **\"distinguished service\"** in any field.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **जमीनी स्तर व सार्वजनिक हस्तियों का समावेश**: इसकी खास बात यह है कि इसमें प्रसिद्ध सार्वजनिक हस्तियों और जमीनी स्तर (Grassroots) पर काम करने वाले लोगों, दोनों के योगदान को एक ही कैटेगरी में सम्मान मिलता है।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **जमीनी स्तर व सार्वजनिक हस्तियों का समावेश**: इसकी खास बात यह है कि इसमें प्रसिद्ध सार्वजनिक हस्तियों और जमीनी स्तर (Grassroots) पर काम करने वाले लोगों, दोनों के योगदान को एक ही कैटेगरी में सम्मान मिलता है।",
+          textEn: "• **Grassroots & Public Luminary Honors**: Conferred on both public icons and unsung grassroots heroes.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **व्यापक जन भागीदारी**: पुरस्कार पाने वालों में सामाजिक कार्यकर्ता, कलाकार, खिलाड़ी, किसान और शिक्षक जैसे कई लोग शामिल होते हैं। सभी पुरस्कारों में से, पद्म श्री सबसे ज्यादा लोगों को दिया जाता है।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **व्यापक जन भागीदारी**: पुरस्कार पाने वालों में सामाजिक कार्यकर्ता, कलाकार, खिलाड़ी, किसान और शिक्षक जैसे कई लोग शामिल होते हैं। सभी पुरस्कारों में से, पद्म श्री सबसे ज्यादा लोगों को दिया जाता है।",
+          textEn: "• **Diverse Categories**: Includes social workers, artists, sports personalities, farmers, and educators.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **मध्य प्रदेश की हस्तियां (MPPSC Special)**: झाबुआ की भूरी बाई (पिथोरा कला - 2021), उमरिया की जोधइया बाई बैगा (बैगा कला - 2023), जबलपुर के डॉ. मुनीश्वर चंदर डावर (₹2 डॉक्टर - 2023)। [मध्य प्रदेश के राज्य सम्मानों हेतु यहाँ क्लिक करें](/general-awareness/mp-state-awards-tansen-kalidas-kabir-samman-mppsc-notes)।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **मध्य प्रदेश की हस्तियां (MPPSC Special)**: झाबुआ की भूरी बाई (पिथोरा कला - 2021), उमरिया की जोधइया बाई बैगा (बैगा कला - 2023), जबलपुर के डॉ. मुनीश्वर चंदर डावर (₹2 डॉक्टर - 2023)। [मध्य प्रदेश के राज्य सम्मानों हेतु यहाँ क्लिक करें](/general-awareness/mp-state-awards-tansen-kalidas-kabir-samman-mppsc-notes)।",
+          textEn: "• **MPPSC Focus (Madhya Pradesh Recipients)**: Bhuri Bai of Jhabua (Pithora Art 2021), Jodhaiya Bai Baiga (Baiga Art 2023), Dr. M.C. Dawar of Jabalpur (₹2 Doctor 2023). [Click here for MP State Awards](/en/general-awareness/mp-state-awards-tansen-kalidas-kabir-samman-mppsc-notes).",
+        }
+      ]
     },
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "6. गांधी शांति पुरस्कार (Gandhi Peace Prize) — 5वां सर्वोच्च नागरिक सम्मान" }]
+      children: [
+        {
+          _type: "span",
+          text: "6. गांधी शांति पुरस्कार (Gandhi Peace Prize) — 5वां सर्वोच्च नागरिक सम्मान",
+          textEn: "6. Gandhi Peace Prize — 5th Highest Civilian Honor",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "गांधी शांति पुरस्कार पहली बार **1995 में महात्मा गांधी की 125वीं जयंती** के सम्मान में भारत सरकार द्वारा स्थापित किया गया था।" }]
+      children: [
+        {
+          _type: "span",
+          text: "गांधी शांति पुरस्कार पहली बार **1995 में महात्मा गांधी की 125वीं जयंती** के सम्मान में भारत सरकार द्वारा स्थापित किया गया था।",
+          textEn: "Gandhi Peace Prize was instituted in **1995 on the 125th birth anniversary of Mahatma Gandhi**.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **उद्देश्य एवं क्षेत्र**: यह पुरस्कार हर साल उन लोगों और संगठनों को दिया जाता है जिन्होंने गांधीजी के अहिंसा, शांति और मानवीय सेवा के दर्शन के अनुसार सामाजिक, आर्थिक और राजनीतिक बदलाव में योगदान दिया है।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **उद्देश्य एवं क्षेत्र**: यह पुरस्कार हर साल उन लोगों और संगठनों को दिया जाता है जिन्होंने गांधीजी के अहिंसा, शांति और मानवीय सेवा के दर्शन के अनुसार सामाजिक, आर्थिक और राजनीतिक बदलाव में योगदान दिया है।",
+          textEn: "• **Objective**: Conferred annually on individuals and institutions for social, economic, and political transformation through non-violence.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **अंतरराष्ट्रीय विशिष्टता**: गांधी शांति पुरस्कार अक्सर भारतीय लोगों के अलावा अंतरराष्ट्रीय हस्तियों और संस्थाओं को भी दिया जाता है। यही बात इसे पारंपरिक पद्म पुरस्कारों से अलग बनाती है।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **अंतरराष्ट्रीय विशिष्टता**: गांधी शांति पुरस्कार अक्सर भारतीय लोगों के अलावा अंतरराष्ट्रीय हस्तियों और संस्थाओं को भी दिया जाता है। यही बात इसे पारंपरिक पद्म पुरस्कारों से अलग बनाती है।",
+          textEn: "• **International Scope**: Open to individuals and organizations worldwide, regardless of nationality.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **पुरस्कार राशि व स्वरूप**: ₹1 करोड़ की नकद राशि, एक प्रशस्ति पत्र, एक पट्टिका और एक उत्कृष्ट हस्तशिल्प/हथकरघा वस्तु।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **पुरस्कार राशि व स्वरूप**: ₹1 करोड़ की नकद राशि, एक प्रशस्ति पत्र, एक पट्टिका और एक उत्कृष्ट हस्तशिल्प/हथकरघा वस्तु।",
+          textEn: "• **Prize Money**: ₹1 Crore cash reward, citation, plaque, and a traditional handicraft item.",
+        }
+      ]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **प्रमुख प्राप्तकर्ता**: जूलियस न्येरेरे (प्रथम विजेता 1995), नेल्सन मंडेला, ग्रामीण बैंक बांग्लादेश, भारतीय अंतरिक्ष अनुसंधान संगठन (ISRO), और गीता प्रेस गोरखपुर (2021)।" }]
+      children: [
+        {
+          _type: "span",
+          text: "• **प्रमुख प्राप्तकर्ता**: जूलियस न्येरेरे (प्रथम विजेता 1995), नेल्सन मंडेला, ग्रामीण बैंक बांग्लादेश, भारतीय अंतरिक्ष अनुसंधान संगठन (ISRO), और गीता प्रेस गोरखपुर (2021)।",
+          textEn: "• **Notable Recipients**: Julius Nyerere (First Recipient 1995), Nelson Mandela, Grameen Bank, ISRO, and Gita Press Gorakhpur (2021).",
+        }
+      ]
     }
   ],
   faqs: [
