@@ -797,7 +797,11 @@ export class SanityRepository implements ContentRepository {
       }
     }
 
-    if (!query.contentType || query.contentType === "staticGk" || query.tag === "awards" || query.category) {
+    const isStaticGkQuery = query.contentType === "staticGk";
+    const isAwardsCategory = query.category === "civilian-awards" || query.category === "mp-state-awards" || query.category === "awards";
+    const isAwardsTag = query.tag === "awards" || query.tag === "civilian-awards" || query.tag === "mppsc";
+
+    if (isStaticGkQuery || isAwardsCategory || isAwardsTag) {
       const { civilianAwardsArticleData, mpStateAwardsArticleData, bharatRatnaDedicatedArticleData } = await import("@/data/awards-articles-override");
       const civCard = mapCard(civilianAwardsArticleData as any, locale);
       const ratnaCard = mapCard(bharatRatnaDedicatedArticleData as any, locale);
@@ -809,7 +813,7 @@ export class SanityRepository implements ContentRepository {
       if (civCard?.slug && (!query.category || query.category === "civilian-awards") && !items.some((it) => it?.slug === civCard.slug)) {
         items.unshift(civCard);
       }
-      if (mpCard?.slug && (!query.category || query.category === "mp-state-awards") && !items.some((it) => it?.slug === mpCard.slug)) {
+      if (mpCard?.slug && (query.category === "mp-state-awards" || isStaticGkQuery) && !items.some((it) => it?.slug === mpCard.slug)) {
         items.unshift(mpCard);
       }
     }
