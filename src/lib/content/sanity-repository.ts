@@ -131,6 +131,7 @@ const authorProjection = `{
 
 const featuredImageProjection = `{
   "assetRef": asset._ref,
+  "url": coalesce(url, asset->url),
   alt, caption, credit
 }`;
 
@@ -197,7 +198,7 @@ function parseAssetDimensions(ref: string | undefined): { width?: number; height
 function mapImage(img: (RawImage & { assetRef?: string; url?: string }) | undefined | null) {
   if (!img) return null;
   const directUrl = typeof img === "string" ? img : (img as any).url;
-  if (directUrl && typeof directUrl === "string" && (directUrl.startsWith("/") || directUrl.startsWith("http"))) {
+  if (directUrl && typeof directUrl === "string" && directUrl.trim().length > 0) {
     return {
       url: directUrl,
       alt: img?.alt || "Aakar IAS",
