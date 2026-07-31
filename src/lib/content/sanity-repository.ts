@@ -194,7 +194,20 @@ function parseAssetDimensions(ref: string | undefined): { width?: number; height
   return {};
 }
 
-function mapImage(img: (RawImage & { assetRef?: string }) | undefined | null) {
+function mapImage(img: (RawImage & { assetRef?: string; url?: string }) | undefined | null) {
+  if (!img) return null;
+  const directUrl = typeof img === "string" ? img : (img as any).url;
+  if (directUrl && typeof directUrl === "string" && (directUrl.startsWith("/") || directUrl.startsWith("http"))) {
+    return {
+      url: directUrl,
+      alt: img?.alt || "Aakar IAS",
+      caption: img?.caption,
+      credit: img?.credit,
+      width: 1200,
+      height: 675,
+    };
+  }
+
   const ref = img?.assetRef ?? img?.asset?._ref;
   const url = imageUrl(ref, { width: 1600, quality: 80, format: "webp" });
   const dims = parseAssetDimensions(ref);
@@ -536,12 +549,26 @@ export class SanityRepository implements ContentRepository {
       ] | order(publishedAt desc) [0...3] ${cardProjection(locale)}
     }`;
 
-    const raw = await sanityFetch<Record<string, unknown> | null>({
+    let raw = await sanityFetch<Record<string, unknown> | null>({
       query,
       params: { slug },
       revalidate: REVALIDATE,
       tags: ["articles", "staticGk", "currentAffairs", `article:${slug}`],
     });
+    if (slug === "commonwealth-games-2026-updates-india-medal-tally") {
+      const { cwg2026ArticleData } = await import("@/data/cwg-2026-article-override");
+      raw = {
+        ...(raw || {}),
+        ...cwg2026ArticleData,
+      };
+    }
+    if (slug === "dilip-gavit-biography-cwg-2026-gold-medal-para-athletics") {
+      const { dilipGavitArticleData } = await import("@/data/dilip-gavit-article-override");
+      raw = {
+        ...(raw || {}),
+        ...dilipGavitArticleData,
+      };
+    }
     if (!raw) return null;
 
     const { sections, toc: sectionToc } = mapSections(
@@ -875,9 +902,18 @@ export class SanityRepository implements ContentRepository {
       "type": _type,
       "updatedAt": coalesce(updatedAt, publishedAt)
     } | order(updatedAt desc)`;
-    return sanityFetch<
+    const slugs = await sanityFetch<
       { slug: string; type: string; updatedAt: string }[]
     >({ query: q, params: { contentType }, tags: ["articles"] });
+
+    if (!slugs.some((s) => s.slug === "dilip-gavit-biography-cwg-2026-gold-medal-para-athletics")) {
+      slugs.unshift({
+        slug: "dilip-gavit-biography-cwg-2026-gold-medal-para-athletics",
+        type: "currentAffairs",
+        updatedAt: "2026-07-30T18:00:00.000Z",
+      });
+    }
+    return slugs;
   }
 
   async listMonthlyPdfs(

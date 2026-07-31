@@ -15,7 +15,7 @@ export const sanityClient = createClient({
   projectId,
   dataset,
   apiVersion: "2024-10-01",
-  useCdn: false, // Fresh reads directly from Sanity DB; Next.js handles ISR caching
+  useCdn: true, // Use Sanity CDN for cached fast edge reads
   perspective: "published",
   stega: {
     // Stegano encoding powers click-to-edit in Presentation (Phase 2).
