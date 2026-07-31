@@ -736,13 +736,29 @@ export class SanityRepository implements ContentRepository {
     });
 
     const items = raw.items.map((r) => mapCard(r, locale));
+
+    if (!query.contentType || query.contentType === "currentAffairs") {
+      const { dilipGavitArticleData } = await import("@/data/dilip-gavit-article-override");
+      const { cwg2026ArticleData } = await import("@/data/cwg-2026-article-override");
+
+      const dilipCard = mapCard(dilipGavitArticleData as any, locale);
+      const cwgCard = mapCard(cwg2026ArticleData as any, locale);
+
+      if (!items.some((it) => it.slug === dilipCard.slug)) {
+        items.unshift(dilipCard);
+      }
+      if (!items.some((it) => it.slug === cwgCard.slug)) {
+        items.unshift(cwgCard);
+      }
+    }
+
     return {
-      items,
+      items: items.slice(0, pageSize),
       page,
       pageSize,
-      total: raw.total,
-      totalPages: Math.max(1, Math.ceil(raw.total / pageSize)),
-      hasMore: page * pageSize < raw.total,
+      total: raw.total + 2,
+      totalPages: Math.max(1, Math.ceil((raw.total + 2) / pageSize)),
+      hasMore: page * pageSize < raw.total + 2,
     };
   }
 
@@ -771,7 +787,23 @@ export class SanityRepository implements ContentRepository {
       revalidate: REVALIDATE,
       tags: ["articles", "featured"],
     });
-    return raw.map((r) => mapCard(r, locale));
+    const items = raw.map((r) => mapCard(r, locale));
+
+    if (!contentType || contentType === "currentAffairs") {
+      const { dilipGavitArticleData } = await import("@/data/dilip-gavit-article-override");
+      const { cwg2026ArticleData } = await import("@/data/cwg-2026-article-override");
+
+      const dilipCard = mapCard(dilipGavitArticleData as any, locale);
+      const cwgCard = mapCard(cwg2026ArticleData as any, locale);
+
+      if (!items.some((it) => it.slug === dilipCard.slug)) {
+        items.unshift(dilipCard);
+      }
+      if (!items.some((it) => it.slug === cwgCard.slug)) {
+        items.unshift(cwgCard);
+      }
+    }
+    return items.slice(0, limit);
   }
 
   async getPopular(
@@ -804,12 +836,23 @@ export class SanityRepository implements ContentRepository {
     for (const r of raw) {
       const mapped = mapCard(r, locale);
       const key = mapped.title.trim().toLowerCase();
-      if (seen.has(key)) continue;
       seen.add(key);
       deduped.push(mapped);
       if (deduped.length >= limit) break;
     }
-    return deduped;
+
+    const { dilipGavitArticleData } = await import("@/data/dilip-gavit-article-override");
+    const { cwg2026ArticleData } = await import("@/data/cwg-2026-article-override");
+    const dilipCard = mapCard(dilipGavitArticleData as any, locale);
+    const cwgCard = mapCard(cwg2026ArticleData as any, locale);
+
+    if (!deduped.some((it) => it.slug === dilipCard.slug)) {
+      deduped.unshift(dilipCard);
+    }
+    if (!deduped.some((it) => it.slug === cwgCard.slug)) {
+      deduped.unshift(cwgCard);
+    }
+    return deduped.slice(0, limit);
   }
 
   async getFilters(locale: Locale): Promise<ListFilters> {

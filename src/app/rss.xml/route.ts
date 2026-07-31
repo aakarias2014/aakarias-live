@@ -6,8 +6,9 @@ import { siteConfig } from "@/lib/site-config";
  */
 export const revalidate = 3600;
 
-function escapeXml(unsafe: string): string {
-  return unsafe
+function escapeXml(unsafe: string | undefined | null): string {
+  if (!unsafe) return "";
+  return String(unsafe)
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
