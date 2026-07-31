@@ -2,14 +2,14 @@ export const civilianAwardsArticleData = {
   _id: "override-civilian-awards-padma-2026",
   _type: "staticGk",
   slug: { current: "highest-civilian-awards-padma-awards-mppsc-upsc-notes" },
-  title: "भारत के सर्वोच्च नागरिक सम्मान एवं पद्म पुरस्कार 2026 | MPPSC & UPSC Notes",
-  titleEn: "Highest Civilian Awards & Padma Awards of India 2026 | MPPSC & UPSC Notes",
-  seoTitle: "भारत के नागरिक सम्मान एवं पद्म पुरस्कार | Bharat Ratna & Padma Awards | MPPSC & UPSC",
-  seoDescription: "भारत रत्न, पद्म विभूषण, पद्म भूषण और पद्म श्री पुरस्कारों का संपूर्ण इतिहास, नियम, प्रथम विजेता, 2024-2026 की नवीनतम सूची एवं मध्य प्रदेश से सम्मानित प्रमुख हस्तियां। MPPSC & UPSC अध्ययन सामग्री व 8 अभ्यास MCQs।",
-  excerpt: "भारत के सर्वोच्च नागरिक सम्मान 'भारत रत्न' (1954) तथा पद्म विभूषण, पद्म भूषण एवं पद्म श्री पुरस्कारों के नियम, इतिहास, प्रथम प्राप्तकर्ता एवं मध्य प्रदेश से सम्मानित विभूतियों का संपूर्ण विश्लेषणात्मक संकलन।",
-  excerptEn: "Detailed study guide on India's Highest Civilian Awards: Bharat Ratna (1954) and Padma Vibhushan, Bhushan, Shri awards, eligibility, first recipients, MP recipients, and 8 practice MCQs.",
+  title: "भारत के 5 सर्वोच्च नागरिक पुरस्कार एवं सम्मान | MPPSC & UPSC Study Notes",
+  titleEn: "5 Highest Civilian Awards of India | MPPSC & UPSC Study Notes",
+  seoTitle: "भारत के 5 सर्वोच्च नागरिक पुरस्कार | Bharat Ratna, Padma & Gandhi Peace Prize | MPPSC & UPSC",
+  seoDescription: "भारत के 5 सबसे बड़े नागरिक पुरस्कार: भारत रत्न (1954), पद्म विभूषण, पद्म भूषण, पद्म श्री और गांधी शांति पुरस्कार (1995) का संपूर्ण इतिहास, नियम, प्रथम विजेता, 2024-2026 सूची व MPPSC & UPSC हेतु 8 अभ्यास MCQs।",
+  excerpt: "भारत के 5 सर्वोच्च नागरिक सम्मानों (भारत रत्न, पद्म विभूषण, पद्म भूषण, पद्म श्री एवं गांधी शांति पुरस्कार) का ऐतिहासिक पृष्ठभूमि, नियम, पुरस्कार स्वरूप, प्रथम विजेता तथा MPPSC व UPSC परीक्षा हेतु विश्लेषणात्मक संकलन।",
+  excerptEn: "Comprehensive study notes on India's 5 Highest Civilian Awards: Bharat Ratna, Padma Vibhushan, Padma Bhushan, Padma Shri, and Gandhi Peace Prize with historical context, eligibility, and 8 practice MCQs.",
   publishedAt: "2026-07-31T10:00:00.000Z",
-  readingTime: 12,
+  readingTime: 14,
   featured: true,
   category: {
     _id: "cat-civilian-awards",
@@ -25,273 +25,319 @@ export const civilianAwardsArticleData = {
     { _id: "tag-mains", name: "Mains", slug: { current: "mains" } }
   ],
   keywords: [
+    "Bharat ka sarvoch nagrik puraskar kya hai",
+    "5 Sarvoch Nagrik Puraskar List",
     "Bharat Ratna List PDF",
     "Padma Awards 2026 Recipients",
-    "Padma Vibhushan List",
-    "Padma Shri Awardees Madhya Pradesh",
-    "Highest Civilian Award India",
+    "Gandhi Peace Prize List",
+    "Padma Vibhushan Padma Bhushan Padma Shri",
     "MPPSC General Studies Awards Notes",
     "UPSC Awards Notes"
   ],
   featuredImage: {
     url: "/images/blog/bharat-ratna-padma-awards.png",
     alt: "Bharat Ratna Medal Peepal Leaf and Padma Vibhushan Medal Real Photo MPPSC UPSC Notes",
-    caption: "भारत रत्न एवं पद्म पुरस्कार पदक — भारत के सर्वोच्च नागरिक सम्मान (Aakar IAS)",
+    caption: "भारत के सर्वोच्च नागरिक सम्मान — भारत रत्न, पद्म पुरस्कार एवं गांधी शांति पुरस्कार (Aakar IAS)",
   },
   body: [
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "1. भारत में नागरिक सम्मानों का परिचय एवं ऐतिहासिक पृष्ठभूमि" }]
+      children: [{ _type: "span", text: "1. भारत के 5 सर्वोच्च नागरिक पुरस्कार — परिचय एवं महत्व" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "भारत सरकार द्वारा नागरिकों को कला, साहित्य, विज्ञान, सार्वजनिक सेवा और मानव प्रयास के किसी भी क्षेत्र में असाधारण एवं उत्कृष्ट सेवा के लिए **नागरिक सम्मान** प्रदान किए जाते हैं। इन पुरस्कारों की स्थापना **2 जनवरी 1954** को भारत के प्रथम राष्ट्रपति **डॉ. राजेंद्र प्रसाद** द्वारा की गई थी।" }]
+      children: [{ _type: "span", text: "भारत एक ऐसा देश है जो बेहतरीन काम करने वालों की सराहना करता है। यह उन लोगों को सम्मान देता है जिन्होंने देश के समाज और संस्कृति में बहुत बड़ा योगदान दिया है। ऐसे असाधारण योगदानों को सम्मानित करने के लिए, भारत सरकार हर साल कई नागरिक पुरस्कार देती है। ये पुरस्कार कला, साहित्य, विज्ञान, समाज सेवा, लोक सेवा और मानव उन्नति जैसे कई क्षेत्रों में बेहतरीन काम के लिए दिए जाते हैं।" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **स्थापना वर्ष: 1954**: नागरिक पुरस्कारों की शुरुआत 1954 में की गई।" }]
+      children: [{ _type: "span", text: "ये पुरस्कार सिर्फ सम्मान के मेडल नहीं हैं, बल्कि ये राष्ट्रीय प्रशंसा, सम्मान और गौरव का प्रतीक हैं। साथ ही, ये नागरिकों को दूसरों की सेवा करने के लिए प्रोत्साहित भी करते हैं। इन कई सम्मानों में से **पांच पुरस्कार भारत के सर्वोच्च नागरिक पुरस्कार** माने जाते हैं:" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **नागरिक सम्मान पदानुक्रम: 4 श्रेणियां**: 1. भारत रत्न (सर्वोच्च सम्मान), 2. पद्म विभूषण (द्वितीय), 3. पद्म भूषण (तृतीय), 4. पद्म श्री (चतुर्थ)।" }]
+      children: [{ _type: "span", text: "• **रैंक 1 — भारत रत्न (1954)**: सर्वोच्च नागरिक पुरस्कार (असाधारण एवं उच्चतम स्तर की सेवा)।" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **अनुच्छेद 18 से संबंध: उपाधियों का अंत**: भारतीय संविधान के अनुच्छेद 18(1) के अनुसार ये पुरस्कार 'उपाधियां' (Titles) नहीं हैं, अतः प्राप्तकर्ता इनका उपयोग नाम के उपसर्ग या प्रत्यय के रूप में नहीं कर सकते।" }]
+      children: [{ _type: "span", text: "• **रैंक 2 — पद्म विभूषण (1954)**: दूसरा सबसे बड़ा नागरिक पुरस्कार (असाधारण और विशिष्ट सेवा)।" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "• **रैंक 3 — पद्म भूषण (1954)**: तीसरा सबसे बड़ा नागरिक पुरस्कार (उच्च स्तर की विशिष्ट सेवा)।" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "• **रैंक 4 — पद्म श्री (1954)**: चौथा सबसे बड़ा नागरिक पुरस्कार (किसी भी क्षेत्र में विशिष्ट सेवा)।" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "• **रैंक 5 — गांधी शांति पुरस्कार (1995)**: महात्मा गांधी की 125वीं जयंती पर स्थापित अंतरराष्ट्रीय व राष्ट्रीय स्तर का सर्वोच्च शांति सम्मान।" }]
     },
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "2. भारत रत्न (Bharat Ratna) — सर्वोच्च नागरिक सम्मान" }]
+      children: [{ _type: "span", text: "2. भारत रत्न (Bharat Ratna) — देश का सर्वोच्च नागरिक सम्मान" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "भारत रत्न देश का सर्वोच्च नागरिक सम्मान है। यह किसी भी क्षेत्र में उच्चतम स्तर की असाधारण सेवा या प्रदर्शन के लिए दिया जाता है। वर्ष 2013 में खेल क्षेत्र को भी इसमें सम्मिलित किया गया था।" }]
+      children: [{ _type: "span", text: "भारत रत्न, जिसे **1954 में शुरू** किया गया था, भारत का **सर्वोच्च नागरिक पुरस्कार** है। यह कला, साहित्य, विज्ञान, लोक सेवा और समाज सेवा जैसे किसी भी क्षेत्र में असाधारण और सर्वोच्च स्तर की सेवा के लिए दिया जाता है।" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **पदक की बनावट: पीपल का पत्ता**: पदक का आकार पीपल के पत्ते जैसा होता है, जो तांबे का बना होता है जिस पर प्लेटिनम से चमकता सूर्य अंकित होता है।" }]
+      children: [{ _type: "span", text: "• **वैश्विक व राष्ट्रीय प्रभाव**: भारत रत्न उन कामों को भी मान्यता देता है जिनका राष्ट्रीय या विश्व स्तर पर स्थायी और बहुत बड़ा प्रभाव पड़ा हो।" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **देवनागरी लिपि: भारत रत्न**: सूर्य के नीचे देवनागरी लिपि में 'भारत रत्न' अंकित रहता है तथा इसके पिछले भाग पर सत्यमेव जयते सहित राष्ट्रीय प्रतीक अंकित है।" }]
+      children: [{ _type: "span", text: "• **पुरस्कार का स्वरूप**: पुरस्कार पाने वालों को भारत के राष्ट्रपति के हस्ताक्षर वाला एक प्रमाण पत्र और **पीपल के पत्ते के आकार का एक तांबे/प्लेटिनम मेडल** मिलता है जिसके अग्र भाग पर चमकता सूर्य व 'भारत रत्न' तथा पिछले भाग पर राष्ट्रीय प्रतीक अंकित होता है।" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **प्रथम प्राप्तकर्ता (1954): 3 महान विभूतियां**: चक्रवर्ती राजगोपालाचारी, डॉ. सर्वपल्ली राधाकृष्णन और डॉ. चंद्रशेखर वेंकट रमन।" }]
+      children: [{ _type: "span", text: "• **प्रथम विजेता (1954)**: सी. राजगोपालाचारी, डॉ. सर्वपल्ली राधाकृष्णन और डॉ. सी.वी. रमन।" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **प्रथम मरणोपरांत विजेता (1966): लाल बहादुर शास्त्री**: लाल बहादुर शास्त्री भारत रत्न मरणोपरांत प्राप्त करने वाले पहले व्यक्ति थे।" }]
-    },
-    {
-      _type: "block",
-      style: "normal",
-      children: [{ _type: "span", text: "• **विदेशी प्राप्तकर्ता: 2 गैर-भारतीय**: खान अब्दुल गफ्फार खान (1987 - पाकिस्तान) एवं नेल्सन मंडेला (1990 - दक्षिण अफ्रीका)। मदर टेरेसा (1980) को प्राकृतिक नागरिक बनने के बाद दिया गया।" }]
-    },
-    {
-      _type: "block",
-      style: "normal",
-      children: [{ _type: "span", text: "• **वर्ष 2024 के भारत रत्न विजेता (5 हस्तियां)**: कर्पूरी ठाकुर (मरणोपरांत), लालकृष्ण आडवाणी, पी.वी. नरसिम्हा राव (मरणोपरांत), चौधरी चरण सिंह (मरणोपरांत) एवं डॉ. एम.एस. स्वामीनाथन (मरणोपरांत)।" }]
+      children: [{ _type: "span", text: "• **वर्ष 2024 के विजेता**: कर्पूरी ठाकुर (मरणोपरांत), लालकृष्ण आडवाणी, पी.वी. नरसिम्हा राव (मरणोपरांत), चौधरी चरण सिंह (मरणोपरांत) एवं डॉ. एम.एस. स्वामीनाथन (मरणोपरांत)।" }]
     },
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "3. पद्म पुरस्कार (Padma Awards) — विभूषण, भूषण एवं श्री" }]
+      children: [{ _type: "span", text: "3. पद्म विभूषण (Padma Vibhushan) — दूसरा सबसे बड़ा नागरिक पुरस्कार" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "पद्म पुरस्कार प्रतिवर्ष **गणतंत्र दिवस (26 जनवरी)** की पूर्व संध्या पर घोषित किए जाते हैं और राष्ट्रपति भवन में राष्ट्रपति द्वारा प्रदान किए जाते हैं।" }]
+      children: [{ _type: "span", text: "पद्म विभूषण भारत का **दूसरा सबसे बड़ा नागरिक पुरस्कार** है। इसकी स्थापना **1954 में** हुई थी। यह **\"असाधारण और विशिष्ट सेवा\"** के लिए दिया जाता है।" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **पद्म विभूषण: असाधारण एवं विशिष्ट सेवा**: भारत का दूसरा सर्वोच्च नागरिक पुरस्कार।" }]
+      children: [{ _type: "span", text: "• **क्षेत्र दायरा**: यह कला, शिक्षा, साहित्य, समाज सेवा, विज्ञान, उद्योग, राजनीति और लोक सेवा जैसे कई क्षेत्रों में असाधारण सेवा को सम्मानित करने के लिए दिया जाता है।" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **पद्म भूषण: उच्च क्रम की विशिष्ट सेवा**: भारत का तीसरा सर्वोच्च नागरिक पुरस्कार।" }]
+      children: [{ _type: "span", text: "• **चयन व समारोह**: पुरस्कार पाने वालों का चुनाव भारत सरकार द्वारा गठित पद्म समिति करती है। उन्हें यह पुरस्कार राष्ट्रपति द्वारा गणतंत्र दिवस समारोह के दौरान राष्ट्रपति भवन में एक भव्य कार्यक्रम में दिया जाता है।" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **पद्म श्री: प्रतिष्ठित सेवा**: भारत का चौथा सर्वोच्च नागरिक पुरस्कार।" }]
-    },
-    {
-      _type: "block",
-      style: "normal",
-      children: [{ _type: "span", text: "• **पद्म पुरस्कार समिति: नेतृत्व**: प्रधानमंत्री द्वारा प्रतिवर्ष गठित समिति जिसके अध्यक्ष **कैबिनेट सचिव** होते हैं।" }]
+      children: [{ _type: "span", text: "• **प्रथम विजेता (1954)**: सत्येंद्र नाथ बोस, नंदलाल बोस, डॉ. जाकिर हुसैन, बालसाहब गंगाधर खेर, जिग्मे दोरजी वांगचुक तथा वी.के. कृष्ण मेनन।" }]
     },
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "4. मध्य प्रदेश से संबंधित प्रमुख पद्म पुरस्कार विजेता (MPPSC स्पेशल)" }]
+      children: [{ _type: "span", text: "4. पद्म भूषण (Padma Bhushan) — तीसरा सबसे बड़ा नागरिक पुरस्कार" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "MPPSC परीक्षा की दृष्टि से मध्य प्रदेश की हस्तियों को प्राप्त पद्म पुरस्कार अत्यंत महत्वपूर्ण हैं:" }]
+      children: [{ _type: "span", text: "पद्म भूषण भारत का **तीसरा सबसे बड़ा नागरिक पुरस्कार** है। इसे भी **1954 में स्थापित** किया गया था। यह पुरस्कार **\"उच्च स्तर की विशिष्ट सेवा\"** के लिए दिया जाता है।" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **भूरी बाई (झाबुआ): पिथोरा चित्रकला**: 2021 में पद्म श्री से सम्मानित जनजातीय चित्रकार।" }]
+      children: [{ _type: "span", text: "• **विविध क्षेत्र**: इसमें चिकित्सा, कला, साहित्य, शिक्षा, लोक सेवा, विज्ञान और खेल जैसे कई क्षेत्र शामिल हैं।" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **कपिल तिवारी (सागर): लोक संस्कृति एवं साहित्य**: 2021 में पद्म श्री से सम्मानित लोक कला मर्मज्ञ।" }]
+      children: [{ _type: "span", text: "• **राष्ट्रीय प्रेरणा**: पद्म भूषण पुरस्कार किसी व्यक्ति के योगदान के महत्व और उनकी राष्ट्रीय स्तर की उपलब्धियों पर जोर देता है, जो दूसरों को प्रेरणा देती हैं। पुरस्कार पाने वालों को राष्ट्रपति से एक प्रमाण पत्र और पदक मिलता है।" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **डॉ. मुनीश्वर चंदर डावर (जबलपुर): ₹2 डॉक्टर**: 2023 में पद्म श्री से सम्मानित प्रसिद्ध चिकित्सक।" }]
+      children: [{ _type: "span", text: "• **प्रथम विजेता (1954)**: डॉ. होमी जहांगीर भाभा, डॉ. शांति स्वरूप भटनागर, एम.आई. गणपति, ज्ञान चंद्र घोष।" }]
+    },
+    {
+      _type: "block",
+      style: "h3",
+      children: [{ _type: "span", text: "5. पद्म श्री (Padma Shri) — चौथा सबसे बड़ा नागरिक पुरस्कार" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **जोधइया बाई बैगा (उमरिया): बैगा चित्रकला**: 2023 में पद्म श्री से सम्मानित जनजातीय बैगा कलाकार।" }]
+      children: [{ _type: "span", text: "पद्म श्री भारत का **चौथा सबसे बड़ा नागरिक पुरस्कार** है, जिसे **1954 में स्थापित** किया गया था। यह किसी भी क्षेत्र में **\"विशिष्ट सेवा\"** के लिए दिया जाता है।" }]
     },
     {
       _type: "block",
       style: "normal",
-      children: [{ _type: "span", text: "• **भगवती लाल राजपुरोहित (उज्जैन): साहित्य एवं शिक्षा**: 2024 में पद्म श्री सम्मान।" }]
+      children: [{ _type: "span", text: "• **जमीनी स्तर व सार्वजनिक हस्तियों का समावेश**: इसकी खास बात यह है कि इसमें प्रसिद्ध सार्वजनिक हस्तियों और जमीनी स्तर (Grassroots) पर काम करने वाले लोगों, दोनों के योगदान को एक ही कैटेगरी में सम्मान मिलता है।" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "• **व्यापक जन भागीदारी**: पुरस्कार पाने वालों में सामाजिक कार्यकर्ता, कलाकार, खिलाड़ी, किसान और शिक्षक जैसे कई लोग शामिल होते हैं। सभी पुरस्कारों में से, पद्म श्री सबसे ज्यादा लोगों को दिया जाता है।" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "• **मध्य प्रदेश की हस्तियां (MPPSC Special)**: झाबुआ की भूरी बाई (पिथोरा कला - 2021), उमरिया की जोधइया बाई बैगा (बैगा कला - 2023), जबलपुर के डॉ. मुनीश्वर चंदर डावर (₹2 डॉक्टर - 2023)।" }]
+    },
+    {
+      _type: "block",
+      style: "h3",
+      children: [{ _type: "span", text: "6. गांधी शांति पुरस्कार (Gandhi Peace Prize) — 5वां सर्वोच्च नागरिक सम्मान" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "गांधी शांति पुरस्कार पहली बार **1995 में महात्मा गांधी की 125वीं जयंती** के सम्मान में भारत सरकार द्वारा स्थापित किया गया था।" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "• **उद्देश्य एवं क्षेत्र**: यह पुरस्कार हर साल उन लोगों और संगठनों को दिया जाता है जिन्होंने गांधीजी के अहिंसा, शांति और मानवीय सेवा के दर्शन के अनुसार सामाजिक, आर्थिक और राजनीतिक बदलाव में योगदान दिया है।" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "• **अंतरराष्ट्रीय विशिष्टता**: गांधी शांति पुरस्कार अक्सर भारतीय लोगों के अलावा अंतरराष्ट्रीय हस्तियों और संस्थाओं को भी दिया जाता है। यही बात इसे पारंपरिक पद्म पुरस्कारों से अलग बनाती है।" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "• **पुरस्कार राशि व स्वरूप**: ₹1 करोड़ की नकद राशि, एक प्रशस्ति पत्र, एक पट्टिका और एक उत्कृष्ट हस्तशिल्प/हथकरघा वस्तु।" }]
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [{ _type: "span", text: "• **प्रमुख प्राप्तकर्ता**: जूलियस न्येरेरे (प्रथम विजेता 1995), नेल्सन मंडेला, ग्रामीण बैंक बांग्लादेश, भारतीय अंतरिक्ष अनुसंधान संगठन (ISRO), और गीता प्रेस गोरखपुर (2021)।" }]
     }
   ],
   faqs: [
     {
-      question: "भारत रत्न पुरस्कार की शुरुआत किस वर्ष हुई थी?",
-      questionEn: "In which year was the Bharat Ratna award instituted?",
-      answer: "भारत रत्न पुरस्कार की शुरुआत 2 जनवरी 1954 को भारत के प्रथम राष्ट्रपति डॉ. राजेंद्र प्रसाद द्वारा की गई थी।",
-      answerEn: "Bharat Ratna was instituted on 2 January 1954 by India's first President Dr. Rajendra Prasad."
+      question: "भारत के 5 सर्वोच्च नागरिक पुरस्कार कौन-कौन से हैं?",
+      questionEn: "What are the 5 highest civilian awards of India?",
+      answer: "भारत के 5 सर्वोच्च नागरिक पुरस्कार हैं: 1. भारत रत्न (सर्वोच्च), 2. पद्म विभूषण, 3. पद्म भूषण, 4. पद्म श्री (सभी 1954) और 5. गांधी शांति पुरस्कार (1995)।",
+      answerEn: "India's 5 highest civilian awards are: 1. Bharat Ratna, 2. Padma Vibhushan, 3. Padma Bhushan, 4. Padma Shri, and 5. Gandhi Peace Prize."
     },
     {
-      question: "1954 में प्रथम भारत रत्न किन तीन व्यक्तियों को प्रदान किया गया था?",
-      questionEn: "Who were the three first recipients of Bharat Ratna in 1954?",
-      answer: "1954 में प्रथम भारत रत्न चक्रवर्ती राजगोपालाचारी, डॉ. सर्वपल्ली राधाकृष्णन और डॉ. सी.वी. रमन को दिया गया था।",
-      answerEn: "In 1954, it was awarded to C. Rajagopalachari, Dr. Sarvepalli Radhakrishnan, and Dr. C.V. Raman."
+      question: "गांधी शांति पुरस्कार की शुरुआत किस वर्ष हुई थी?",
+      questionEn: "In which year was the Gandhi Peace Prize instituted?",
+      answer: "गांधी शांति पुरस्कार की स्थापना 1995 में महात्मा गांधी की 125वीं जयंती के अवसर पर की गई थी।",
+      answerEn: "Gandhi Peace Prize was instituted in 1995 on the 125th birth anniversary of Mahatma Gandhi."
     },
     {
-      question: "भारत रत्न प्राप्त करने वाले पहले विदेशी कौन थे?",
-      questionEn: "Who was the first foreign recipient of Bharat Ratna?",
-      answer: "खान अब्दुल गफ्फार खान (सीमांत गांधी) 1987 में भारत रत्न पाने वाले पहले गैर-भारतीय नागरिक थे।",
-      answerEn: "Khan Abdul Ghaffar Khan (Frontier Gandhi) was the first non-Indian recipient in 1987."
+      question: "गांधी शांति पुरस्कार की नकद राशि कितनी है?",
+      questionEn: "What is the cash prize for Gandhi Peace Prize?",
+      answer: "गांधी शांति पुरस्कार के तहत ₹1 करोड़ की नकद राशि, प्रशस्ति पत्र एवं पट्टिका प्रदान की जाती है।",
+      answerEn: "Gandhi Peace Prize carries a monetary reward of ₹1 Crore along with a citation and plaque."
     },
     {
-      question: "क्या पद्म पुरस्कारों में कोई नकद राशि दी जाती है?",
-      questionEn: "Is any cash reward given with Padma Awards?",
-      answer: "नहीं, भारत रत्न एवं पद्म पुरस्कारों में केवल पदक एवं प्रशस्ति पत्र प्रदान किया जाता है, कोई नकद राशि नहीं दी जाती।",
-      answerEn: "No, Bharat Ratna and Padma Awards carry a citation and medallion but no monetary grant."
+      question: "पद्म पुरस्कारों की स्थापना किस वर्ष की गई थी?",
+      questionEn: "In which year were the Padma Awards instituted?",
+      answer: "पद्म पुरस्कारों (विभूषण, भूषण, श्री) तथा भारत रत्न की स्थापना 2 जनवरी 1954 को हुई थी।",
+      answerEn: "Padma Awards and Bharat Ratna were instituted on 2 January 1954."
     },
     {
-      question: "पद्म पुरस्कार समिति का नेतृत्व कौन करता है?",
-      questionEn: "Who heads the Padma Awards Committee?",
-      answer: "पद्म पुरस्कार समिति की अध्यक्षता भारत के कैबिनेट सचिव (Cabinet Secretary) करते हैं।",
-      answerEn: "The Padma Awards Committee is headed by the Cabinet Secretary of India."
+      question: "पद्म विभूषण और पद्म भूषण में मुख्य अंतर क्या है?",
+      questionEn: "What is the main difference between Padma Vibhushan and Padma Bhushan?",
+      answer: "पद्म विभूषण 'असाधारण एवं विशिष्ट सेवा' (द्वितीय सर्वोच्च) हेतु दिया जाता है, जबकि पद्म भूषण 'उच्च स्तर की विशिष्ट सेवा' (तृतीय सर्वोच्च) हेतु दिया जाता है।",
+      answerEn: "Padma Vibhushan is for exceptional service (2nd highest), whereas Padma Bhushan is for distinguished service of high order (3rd highest)."
     },
     {
-      question: "वर्ष 2024 में भारत रत्न से सम्मानित हस्तियों के नाम क्या हैं?",
-      questionEn: "Who were awarded Bharat Ratna in 2024?",
-      answer: "2024 में कर्पूरी ठाकुर, लालकृष्ण आडवाणी, पी.वी. नरसिम्हा राव, चौधरी चरण सिंह एवं डॉ. एम.एस. स्वामीनाथन को भारत रत्न प्रदान किया गया।",
-      answerEn: "In 2024, Karpoori Thakur, L.K. Advani, P.V. Narasimha Rao, Charan Singh, and Dr. M.S. Swaminathan received Bharat Ratna."
+      question: "कौन सा नागरिक पुरस्कार अंतरराष्ट्रीय व्यक्तियों और संस्थाओं को भी दिया जाता है?",
+      questionEn: "Which civilian award is open to international individuals and institutions?",
+      answer: "गांधी शांति पुरस्कार तथा भारत रत्न गैर-भारतीय नागरिकों एवं संस्थाओं को भी प्रदान किए जा सकते हैं (जैसे नेल्सन मंडेला व ISRO)।",
+      answerEn: "Gandhi Peace Prize and Bharat Ratna are open to non-Indian citizens and organizations."
     },
     {
-      question: "मध्य प्रदेश की भूरी बाई को किस क्षेत्र के लिए पद्म श्री मिला था?",
-      questionEn: "For which art form was Bhuri Bai of MP awarded Padma Shri?",
-      answer: "झाबुआ की भूरी बाई को पारंपरिक पिथोरा चित्रकला में उत्कृष्ट योगदान हेतु 2021 में पद्म श्री से सम्मानित किया गया था।",
-      answerEn: "Bhuri Bai of Jhabua was awarded Padma Shri in 2021 for Pithora tribal painting."
+      question: "झाबुआ की भूरी बाई को किस पद्म पुरस्कार से सम्मानित किया गया है?",
+      questionEn: "Which Padma award was presented to Bhuri Bai of Jhabua?",
+      answer: "झाबुआ की भील चित्रकार भूरी बाई को 2021 में चौथे सर्वोच्च नागरिक सम्मान 'पद्म श्री' से सम्मानित किया गया था।",
+      answerEn: "Bhuri Bai was awarded Padma Shri (4th highest civilian honor) in 2021."
     },
     {
-      question: "भारतीय संविधान का कौन सा अनुच्छेद पुरस्कारों को उपाधि मानने से रोकता है?",
-      questionEn: "Which constitutional article regulates titles and awards?",
-      answer: "अनुच्छेद 18(1) के तहत भारत रत्न व पद्म पुरस्कार 'उपाधि' नहीं माने जाते, अतः इनका प्रयोग नाम के आगे-पीछे नहीं किया जा सकता।",
-      answerEn: "Under Article 18(1), these awards are not titles and cannot be used as prefixes or suffixes to names."
+      question: "क्या नागरिक पुरस्कारों का उपयोग नाम के उपसर्ग के रूप में किया जा सकता है?",
+      questionEn: "Can civilian awards be used as prefixes to names?",
+      answer: "नहीं, संविधान के अनुच्छेद 18(1) के अनुसार नागरिक सम्मान उपाधियां नहीं हैं, अतः नाम के साथ इनका उपयोग प्रतिबंधित है।",
+      answerEn: "No, under Article 18(1) of the Indian Constitution, these awards are not titles and cannot be used as prefixes."
     }
   ],
   mcqs: [
     {
-      question: "भारत रत्न पुरस्कार की स्थापना किस वर्ष की गई थी?",
-      questionEn: "In which year was the Bharat Ratna award instituted?",
-      options: ["A. 1950", "B. 1952", "C. 1954", "D. 1956"],
-      optionsEn: ["A. 1950", "B. 1952", "C. 1954", "D. 1956"],
+      question: "भारत का पांचवां सबसे बड़ा नागरिक/शांति सम्मान कौन सा है जिसकी स्थापना 1995 में हुई थी?",
+      questionEn: "Which is the 5th highest civilian/peace honor of India established in 1995?",
+      options: ["A. जवाहरलाल नेहरू पुरस्कार", "B. गांधी शांति पुरस्कार", "C. इंदिरा गांधी शांति पुरस्कार", "D. राष्ट्रीय कबीर सम्मान"],
+      optionsEn: ["A. Jawaharlal Nehru Award", "B. Gandhi Peace Prize", "C. Indira Gandhi Peace Prize", "D. National Kabir Samman"],
+      correctIndex: 1,
+      explanation: "गांधी शांति पुरस्कार 1995 में महात्मा गांधी की 125वीं जयंती पर स्थापित 5वां प्रमुख नागरिक/शांति सम्मान है।",
+      explanationEn: "Gandhi Peace Prize was instituted in 1995 on Gandhi's 125th birth anniversary."
+    },
+    {
+      question: "गांधी शांति पुरस्कार की नकद पुरस्कार राशि कितनी है?",
+      questionEn: "What is the monetary reward for the Gandhi Peace Prize?",
+      options: ["A. ₹25 लाख", "B. ₹50 लाख", "C. ₹1 करोड़", "D. ₹2 करोड़"],
+      optionsEn: ["A. ₹25 Lakhs", "B. ₹50 Lakhs", "C. ₹1 Crore", "D. ₹2 Crores"],
       correctIndex: 2,
-      explanation: "भारत रत्न की स्थापना 2 जनवरी 1954 को हुई थी।",
-      explanationEn: "Bharat Ratna was instituted on 2 January 1954."
+      explanation: "गांधी शांति पुरस्कार में ₹1 करोड़ की नकद राशि व प्रशस्ति पत्र दिया जाता है।",
+      explanationEn: "Gandhi Peace Prize carries ₹1 Crore cash reward."
     },
     {
-      question: "निम्नलिखित में से कौन 1954 में प्रथम भारत रत्न प्राप्तकर्ताओं में शामिल नहीं थे?",
-      questionEn: "Who among the following was NOT a recipient of the first Bharat Ratna in 1954?",
-      options: ["A. सी. राजगोपालाचारी", "B. जवाहरलाल नेहरू", "C. डॉ. एस. राधाकृष्णन", "D. डॉ. सी.वी. रमन"],
-      optionsEn: ["A. C. Rajagopalachari", "B. Jawaharlal Nehru", "C. Dr. S. Radhakrishnan", "D. Dr. C.V. Raman"],
-      correctIndex: 1,
-      explanation: "1954 में केवल राजगोपालाचारी, राधाकृष्णन और सी.वी. रमन को भारत रत्न मिला था। नेहरू जी को 1955 में मिला।",
-      explanationEn: "Jawaharlal Nehru received Bharat Ratna in 1955."
-    },
-    {
-      question: "प्रथम मरणोपरांत भारत रत्न से किसे सम्मानित किया गया था?",
-      questionEn: "Who was the first recipient to be awarded Bharat Ratna posthumously?",
-      options: ["A. सरदार पटेल", "B. लाल बहादुर शास्त्री", "C. डॉ. बी.आर. अंबेडकर", "D. के. कामराज"],
-      optionsEn: ["A. Sardar Patel", "B. Lal Bahadur Shastri", "C. Dr. B.R. Ambedkar", "D. K. Kamaraj"],
-      correctIndex: 1,
-      explanation: "लाल बहादुर शास्त्री को 1966 में पहला मरणोपरांत भारत रत्न दिया गया था।",
-      explanationEn: "Lal Bahadur Shastri was awarded the first posthumous Bharat Ratna in 1966."
-    },
-    {
-      question: "भारत रत्न पाने वाले प्रथम गैर-भारतीय नागरिक कौन थे?",
-      questionEn: "Who was the first non-Indian citizen to receive Bharat Ratna?",
-      options: ["A. नेल्सन मंडेला", "B. मदर टेरेसा", "C. खान अब्दुल गफ्फार खान", "D. मार्टिन लूथर किंग"],
-      optionsEn: ["A. Nelson Mandela", "B. Mother Teresa", "C. Khan Abdul Ghaffar Khan", "D. Martin Luther King"],
+      question: "भारत के 4 प्रमुख पद्म पुरस्कार एवं भारत रत्न किस वर्ष शुरू किए गए थे?",
+      questionEn: "In which year were Bharat Ratna and the 3 Padma awards instituted?",
+      options: ["A. 1947", "B. 1950", "C. 1954", "D. 1962"],
+      optionsEn: ["A. 1947", "B. 1950", "C. 1954", "D. 1962"],
       correctIndex: 2,
-      explanation: "खान अब्दुल गफ्फार खान (सीमांत गांधी) को 1987 में पहला विदेशी भारत रत्न मिला था।",
-      explanationEn: "Khan Abdul Ghaffar Khan received Bharat Ratna in 1987."
+      explanation: "भारत रत्न, पद्म विभूषण, पद्म भूषण और पद्म श्री सभी की स्थापना 1954 में हुई थी।",
+      explanationEn: "Bharat Ratna and Padma awards were instituted in 1954."
     },
     {
-      question: "पद्म पुरस्कार समिति के अध्यक्ष कौन होते हैं?",
-      questionEn: "Who chairs the Padma Awards Selection Committee?",
-      options: ["A. भारत के प्रधानमंत्री", "B. भारत के गृह मंत्री", "C. भारत के कैबिनेट सचिव", "D. राष्ट्रपति के सचिव"],
-      optionsEn: ["A. Prime Minister of India", "B. Home Minister of India", "C. Cabinet Secretary of India", "D. Secretary to President"],
-      correctIndex: 2,
-      explanation: "पद्म पुरस्कार समिति का नेतृत्व भारत के कैबिनेट सचिव करते हैं।",
-      explanationEn: "The committee is chaired by the Cabinet Secretary of India."
-    },
-    {
-      question: "झाबुआ की भूरी बाई को किस लोक कला हेतु पद्म श्री दिया गया था?",
-      questionEn: "For which art form was Bhuri Bai of Jhabua awarded Padma Shri?",
-      options: ["A. मंडाना कला", "B. पिथोरा चित्रकला", "C. गोंड चित्रकला", "D. ढोकरा शिल्प"],
-      optionsEn: ["A. Mandana Art", "B. Pithora Painting", "C. Gond Painting", "D. Dhokra Craft"],
+      question: "भारत का दूसरा सबसे बड़ा नागरिक पुरस्कार कौन सा है?",
+      questionEn: "Which is the second-highest civilian award in India?",
+      options: ["A. भारत रत्न", "B. पद्म विभूषण", "C. पद्म भूषण", "D. पद्म श्री"],
+      optionsEn: ["A. Bharat Ratna", "B. Padma Vibhushan", "C. Padma Bhushan", "D. Padma Shri"],
       correctIndex: 1,
-      explanation: "भूरी बाई को पारंपरिक भील पिथोरा चित्रकला के लिए 2021 में पद्म श्री मिला।",
-      explanationEn: "Bhuri Bai was awarded Padma Shri in 2021 for Pithora tribal painting."
+      explanation: "पद्म विभूषण 'असाधारण और विशिष्ट सेवा' के लिए दिया जाने वाला दूसरा सबसे बड़ा नागरिक सम्मान है।",
+      explanationEn: "Padma Vibhushan is the 2nd highest civilian award."
     },
     {
-      question: "भारत रत्न पदक किस वृक्ष के पत्ते के आकार का होता है?",
-      questionEn: "The Bharat Ratna medallion is designed in the shape of which tree's leaf?",
-      options: ["A. बरगद", "B. पीपल", "C. नीम", "D. अशोक"],
-      optionsEn: ["A. Banyan", "B. Peepal", "C. Neem", "D. Ashok"],
-      correctIndex: 1,
-      explanation: "भारत रत्न पदक तांबे का बना होता है और पीपल के पत्ते के आकार का होता है।",
-      explanationEn: "The medallion is designed in the shape of a Peepal leaf."
+      question: "पद्म श्री पुरस्कार किस प्रकार की सेवा के लिए प्रदान किया जाता है?",
+      questionEn: "Padma Shri award is presented for which type of service?",
+      options: ["A. असाधारण एवं उच्चतम सेवा", "B. असाधारण और विशिष्ट सेवा", "C. उच्च स्तर की विशिष्ट सेवा", "D. किसी भी क्षेत्र में विशिष्ट सेवा"],
+      optionsEn: ["A. Exceptional service of highest order", "B. Exceptional and distinguished service", "C. Distinguished service of high order", "D. Distinguished service in any field"],
+      correctIndex: 3,
+      explanation: "पद्म श्री किसी भी क्षेत्र में 'विशिष्ट सेवा' (Distinguished service) हेतु दिया जाने वाला चौथा नागरिक पुरस्कार है।",
+      explanationEn: "Padma Shri is awarded for distinguished service in any field."
     },
     {
-      question: "किस वर्ष भारत रत्न के दायरे में 'खेल' को शामिल किया गया था?",
-      questionEn: "In which year was 'sports' included under the purview of Bharat Ratna?",
-      options: ["A. 2011", "B. 2013", "C. 2014", "D. 2016"],
-      optionsEn: ["A. 2011", "B. 2013", "C. 2014", "D. 2016"],
+      question: "गांधी शांति पुरस्कार के प्रथम प्राप्तकर्ता (1995) कौन थे?",
+      questionEn: "Who was the first recipient of the Gandhi Peace Prize in 1995?",
+      options: ["A. नेल्सन मंडेला", "B. जूलियस न्येरेरे", "C. बाबा आमटे", "D. जॉन ह्यूम"],
+      optionsEn: ["A. Nelson Mandela", "B. Julius Nyerere", "C. Baba Amte", "D. John Hume"],
       correctIndex: 1,
-      explanation: "दिसंबर 2013 में पात्रता नियमों में संशोधन कर 'खेल' को शामिल किया गया, जिसके बाद 2014 में सचिन तेंदुलकर को मिला।",
-      explanationEn: "Eligibility criteria was amended in 2013 to include sports, leading to Sachin Tendulkar's 2014 award."
+      explanation: "तंजानिया के प्रथम राष्ट्रपति जूलियस न्येरेरे 1995 में गांधी शांति पुरस्कार पाने वाले प्रथम व्यक्ति थे।",
+      explanationEn: "Julius Nyerere of Tanzania was the first recipient in 1995."
+    },
+    {
+      question: "जबलपुर के डॉ. मुनीश्वर चंदर डावर को 2023 में किस नागरिक सम्मान से सम्मानित किया गया था?",
+      questionEn: "Dr. Munishwar Chander Dawar of Jabalpur was awarded which honor in 2023?",
+      options: ["A. भारत रत्न", "B. पद्म विभूषण", "C. पद्म भूषण", "D. पद्म श्री"],
+      optionsEn: ["A. Bharat Ratna", "B. Padma Vibhushan", "C. Padma Bhushan", "D. Padma Shri"],
+      correctIndex: 3,
+      explanation: "₹2 में गरीबों का इलाज करने वाले जबलपुर के डॉ. डावर को 2023 में पद्म श्री मिला।",
+      explanationEn: "Dr. Dawar was awarded Padma Shri in 2023 for affordable healthcare."
+    },
+    {
+      question: "भारतीय संविधान का कौन सा अनुच्छेद नागरिक सम्मानों को उपाधि के रूप में प्रयोग करने पर रोक लगाता है?",
+      questionEn: "Which constitutional article prohibits using civilian awards as titles?",
+      options: ["A. अनुच्छेद 14", "B. अनुच्छेद 18(1)", "C. अनुच्छेद 19(1)", "D. अनुच्छेद 32"],
+      optionsEn: ["A. Article 14", "B. Article 18(1)", "C. Article 19(1)", "D. Article 32"],
+      correctIndex: 1,
+      explanation: "अनुच्छेद 18(1) के तहत उपाधियों का अंत किया गया है, अतः पुरस्कारों का उपयोग उपाधि के रूप में नहीं हो सकता।",
+      explanationEn: "Article 18(1) abolishes titles and prohibits using awards as name titles."
     }
   ]
 };

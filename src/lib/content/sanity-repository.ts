@@ -766,15 +766,15 @@ export class SanityRepository implements ContentRepository {
       }
     }
 
-    if (!query.contentType || query.contentType === "staticGk" || query.tag === "awards") {
+    if (!query.contentType || query.contentType === "staticGk" || query.tag === "awards" || query.category) {
       const { civilianAwardsArticleData, mpStateAwardsArticleData } = await import("@/data/awards-articles-override");
       const civCard = mapCard(civilianAwardsArticleData as any, locale);
       const mpCard = mapCard(mpStateAwardsArticleData as any, locale);
 
-      if (!items.some((it) => it.slug === civCard.slug)) {
+      if ((!query.category || query.category === "civilian-awards") && !items.some((it) => it.slug === civCard.slug)) {
         items.unshift(civCard);
       }
-      if (!items.some((it) => it.slug === mpCard.slug)) {
+      if ((!query.category || query.category === "mp-state-awards") && !items.some((it) => it.slug === mpCard.slug)) {
         items.unshift(mpCard);
       }
     }
