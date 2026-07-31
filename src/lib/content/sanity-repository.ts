@@ -184,6 +184,26 @@ function mapTag(t: any): Tag {
   return { id: t._id ?? "", slug: getSlug(t.slug ?? t._id), name: t.name ?? "" };
 }
 
+function mapMCQs(mcqs: any[] | undefined, locale: Locale): Article["mcqs"] {
+  if (!Array.isArray(mcqs)) return undefined;
+  const isEn = locale === "en";
+  return mcqs.map((m) => ({
+    question: (isEn ? m.questionEn : m.question) ?? m.question ?? m.questionEn ?? "",
+    options: (isEn ? m.optionsEn : m.options) ?? m.options ?? m.optionsEn ?? [],
+    correctIndex: typeof m.correctIndex === "number" ? m.correctIndex : 0,
+    explanation: (isEn ? m.explanationEn : m.explanation) ?? m.explanation ?? m.explanationEn,
+  }));
+}
+
+function mapFAQs(faqs: any[] | undefined, locale: Locale): Article["faqs"] {
+  if (!Array.isArray(faqs)) return undefined;
+  const isEn = locale === "en";
+  return faqs.map((f) => ({
+    question: (isEn ? f.questionEn : f.question) ?? f.question ?? f.questionEn ?? "",
+    answer: (isEn ? f.answerEn : f.answer) ?? f.answer ?? f.answerEn ?? "",
+  }));
+}
+
 function parseAssetDimensions(ref: string | undefined): { width?: number; height?: number } {
   if (!ref) return {};
   const match = ref.match(/-([0-9]+)x([0-9]+)-/);
@@ -711,8 +731,8 @@ export class SanityRepository implements ContentRepository {
       ...baseCard,
       sections,
       tableOfContents: [...sectionToc, ...bodyToc],
-      mcqs: raw.mcqs as Article["mcqs"],
-      faqs: raw.faqs as Article["faqs"],
+      mcqs: mapMCQs(raw.mcqs as any[], locale),
+      faqs: mapFAQs(raw.faqs as any[], locale),
       sources: raw.sources as Article["sources"],
       keywords: raw.keywords as string[] | undefined,
       related,
