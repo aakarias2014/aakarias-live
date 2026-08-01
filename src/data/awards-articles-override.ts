@@ -696,6 +696,7 @@ export const bharatRatnaDedicatedArticleData = {
       children: [
         {
           _type: "span",
+          text: "• **मरणोपरांत प्रावधान (1955)**: मूल 1954 के प्रावधानों में मरणोपरांत पुरस्कार देने की अनुमति नहीं थी। जनवरी 1955 में संशोधन करके मरणोपरांत पुरस्कार जोड़ने का प्रावधान किया गया। **लाल बहादुर शास्त्री (1966)** मरणोपरांत भारत रत्न प्राप्त करने वाले पहले व्यक्ति थे।",
           textEn: "• **Posthumous Provision (1955)**: The original 1954 statutes did not allow posthumous awards. This was amended in January 1955. **Lal Bahadur Shastri (1966)** was the first posthumous recipient.",
         }
       ]
