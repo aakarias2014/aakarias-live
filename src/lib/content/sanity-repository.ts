@@ -287,6 +287,30 @@ function mapCard(raw: any, locale: Locale): ArticleListItem {
   const isEn = locale === "en";
   const title = (isEn ? raw.titleEn : raw.title) ?? raw.title ?? raw.titleEn ?? "Untitled";
   const excerpt = (isEn ? raw.excerptEn : raw.excerpt) ?? raw.excerpt ?? raw.excerptEn ?? "";
+
+  let rawImage = raw.featuredImage;
+  if (slug === "harsh-singh-biography-cwg-2026-gold-medal-judo") {
+    rawImage = {
+      url: "/images/blog/harsh_singh_cwg_2026_flag.jpg",
+      alt: "हर्ष सिंह तिरंगे के साथ कॉमनवेल्थ गेम्स 2026 जूडो स्वर्ण पदक का जश्न मनाते हुए (Harsh Singh holding Indian Flag CWG 2026 Gold Medal)",
+    };
+  } else if (slug === "neeraj-chopra-javelin-records-cwg-2026-silver-medal-biography") {
+    rawImage = {
+      url: "/images/blog/neeraj_chopra_roar_olympic_celebration.png",
+      alt: "नीरज चोपड़ा टोक्यो ओलंपिक में स्वर्ण पदक जीत का जश्न मनाते हुए (Neeraj Chopra Olympic Gold Medal Celebration)",
+    };
+  } else if (slug === "asmita-dey-biography-cwg-2026-gold-medal-judo") {
+    rawImage = {
+      url: "/images/blog/asmita_dey_cwg_2026_gold_flag_celebration.png",
+      alt: "अस्मिता डे कॉमनवेल्थ गेम्स 2026 में स्वर्ण पदक जीतकर तिरंगे के साथ जश्न मनाते हुए (Asmita Dey Gold Medal CWG 2026)",
+    };
+  } else if (slug === "disaster-management-amendment-act-2025-mppsc-upsc-notes") {
+    rawImage = {
+      url: "/images/blog/disaster-management-amendment-act-2025.png",
+      alt: "Disaster Management Amendment Act 2025 NDRF Rescue Operations India MPPSC UPSC Notes",
+    };
+  }
+
   return {
     id: raw._id ?? "",
     slug,
@@ -295,7 +319,7 @@ function mapCard(raw: any, locale: Locale): ArticleListItem {
     date: raw.date ?? raw.publishedAt ?? "",
     ca_date: raw.ca_date,
     readingTime: raw.readingTime,
-    featuredImage: mapImage(raw.featuredImage),
+    featuredImage: mapImage(rawImage),
     category: mapCategory(raw.category, locale),
     author: (raw.author && typeof raw.author === "object" && raw.author.name)
       ? {
