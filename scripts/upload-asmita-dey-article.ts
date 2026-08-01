@@ -409,7 +409,7 @@ async function main() {
             children: [{
               _key: "s4-1",
               _type: "span",
-              text: "ग्लासगो कॉमनवेल्th गेम्स 2026 में भारत के स्वर्ण पदक विजेताओं की विस्तृत गाथा पढ़ने के लिए हमारे विशेष आलेखों पर जाएँ:",
+              text: "ग्लासगो कॉमनवेल्थ गेम्स 2026 में भारत के स्वर्ण पदक विजेताओं की विस्तृत गाथा पढ़ने के लिए हमारे विशेष आलेखों पर जाएँ:",
               textEn: "Explore detailed biography profiles of India's CWG 2026 Gold Medal winners across different sports disciplines:"
             }],
           },

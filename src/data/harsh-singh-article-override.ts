@@ -4,7 +4,7 @@ export const harshSinghArticleData = {
   slug: { _type: "slug", current: "harsh-singh-biography-cwg-2026-gold-medal-judo" },
   title: "हर्ष सिंह (Harsh Singh): कौन हैं जूडो गोल्ड मेडलिस्ट? जीवनी, उम्र, 41 सेकंड में पलटा मैच, ऑस्ट्रेलियन ओलंपियन को हराकर CWG इतिहास का पहला पुरुष स्वर्ण व नोट्स | MPPSC & UPSC",
   titleEn: "Who is Harsh Singh? Biography, Age, Defeated Australian Olympian Joshua Katz, CWG 2026 1st Male Judo Gold Medal & Notes | MPPSC & UPSC",
-  excerpt: "कौन हैं हर्ष सिंह (Harsh Singh)? दिल्ली के 23 वर्षीय जूडोका जिन्होंने कॉमनवेल्th गेम्स 2026 (ग्लासगो) में पुरुषों की 60kg जूडो स्पर्धा के फाइनल में मैच खत्म होने से 41 सेकंड पहले स्पेशल दांव से ऑस्ट्रेलियाई ओलंपियन जोशुआ कात्ज़ को हराकर भारत को राष्ट्रमंडल खेलों का पहला पुरुष जूडो स्वर्ण पदक दिलाया, अस्मिता के साथ डबल गोल्ड, IJF सर्किट करियर व MPPSC/UPSC परीक्षा उपयोगी नोट्स।",
+  excerpt: "कौन हैं हर्ष सिंह (Harsh Singh)? दिल्ली के 23 वर्षीय जूडोका जिन्होंने कॉमनवेल्थ गेम्स 2026 (ग्लासगो) में पुरुषों की 60kg जूडो स्पर्धा के फाइनल में मैच खत्म होने से 41 सेकंड पहले स्पेशल दांव से ऑस्ट्रेलियाई ओलंपियन जोशुआ कात्ज़ को हराकर भारत को राष्ट्रमंडल खेलों का पहला पुरुष जूडो स्वर्ण पदक दिलाया, अस्मिता के साथ डबल गोल्ड, IJF सर्किट करियर व MPPSC/UPSC परीक्षा उपयोगी नोट्स।",
   excerptEn: "Who is Harsh Singh? Inspiring biography of Delhi's 23-year-old Judoka who created history at Glasgow CWG 2026 by winning India's FIRST EVER Male Gold Medal in Judo (60kg category), defeating Australian Olympian Joshua Katz with a decisive throw 41 seconds before the bout ended, IJF circuit journey, and MPPSC/UPSC study notes.",
   ca_date: "2026-08-01",
   publishedAt: "2026-08-01T08:35:00.000Z",
