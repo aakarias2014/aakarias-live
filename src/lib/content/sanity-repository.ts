@@ -217,7 +217,7 @@ function parseAssetDimensions(ref: string | undefined): { width?: number; height
   return {};
 }
 
-function mapImage(img?: RawImage | string, locale?: Locale) {
+function mapImage(img?: RawImage | string | any, locale?: Locale) {
   const defaultImg = {
     url: "/default-cover.png",
     alt: "Aakar IAS",
@@ -488,8 +488,8 @@ function mapPortableTextToBlocks(
       out.push({
         type: "facts",
         items: items.map((it: any) => ({
-          label: it.label || it.title || "",
-          value: it.value || it.description || "",
+          label: (isEn ? (it.labelEn || it.titleEn) : undefined) || it.label || it.title || it.labelEn || it.titleEn || "",
+          value: (isEn ? (it.valueEn || it.descriptionEn) : undefined) || it.value || it.description || it.valueEn || it.descriptionEn || "",
         })),
       });
     }
@@ -527,6 +527,7 @@ function mapSections(
     const body = s[bodyField] ?? s.body;
     const { blocks, toc: subToc } = mapPortableTextToBlocks(
       body as Array<Record<string, unknown>>,
+      locale,
     );
     const id = slugify(title);
     toc.push({ id, text: title, level: 2 });
@@ -607,6 +608,27 @@ export class SanityRepository implements ContentRepository {
         ...cwg2026ArticleData,
       };
     }
+    if (slug === "asmita-dey-biography-cwg-2026-gold-medal-judo") {
+      const { asmitaDeyArticleData } = await import("@/data/asmita-dey-article-override");
+      raw = {
+        ...(raw || {}),
+        ...asmitaDeyArticleData,
+      };
+    }
+    if (slug === "harsh-singh-biography-cwg-2026-gold-medal-judo") {
+      const { harshSinghArticleData } = await import("@/data/harsh-singh-article-override");
+      raw = {
+        ...(raw || {}),
+        ...harshSinghArticleData,
+      };
+    }
+    if (slug === "neeraj-chopra-javelin-records-cwg-2026-silver-medal-biography") {
+      const { neerajChopraArticleData } = await import("@/data/neeraj-chopra-article-override");
+      raw = {
+        ...(raw || {}),
+        ...neerajChopraArticleData,
+      };
+    }
     if (slug === "dilip-gavit-biography-cwg-2026-gold-medal-para-athletics") {
       const { dilipGavitArticleData } = await import("@/data/dilip-gavit-article-override");
       raw = {
@@ -629,10 +651,10 @@ export class SanityRepository implements ContentRepository {
       };
     }
     if (slug === "mp-state-awards-tansen-kalidas-kabir-samman-mppsc-notes") {
-      const { mpStateAwardsArticleData } = await import("@/data/awards-articles-override");
+      const { civilianAwardsArticleData } = await import("@/data/awards-articles-override");
       raw = {
         ...(raw || {}),
-        ...mpStateAwardsArticleData,
+        ...civilianAwardsArticleData,
       };
     }
     if (slug === "disaster-management-amendment-act-2025-mppsc-upsc-notes") {
@@ -818,12 +840,27 @@ export class SanityRepository implements ContentRepository {
     });
 
     if (!query.contentType || query.contentType === "currentAffairs") {
+      const { neerajChopraArticleData } = await import("@/data/neeraj-chopra-article-override");
+      const { harshSinghArticleData } = await import("@/data/harsh-singh-article-override");
+      const { asmitaDeyArticleData } = await import("@/data/asmita-dey-article-override");
       const { dilipGavitArticleData } = await import("@/data/dilip-gavit-article-override");
       const { cwg2026ArticleData } = await import("@/data/cwg-2026-article-override");
 
+      const neerajCard = mapCard(neerajChopraArticleData as any, locale);
+      const harshCard = mapCard(harshSinghArticleData as any, locale);
+      const asmitaCard = mapCard(asmitaDeyArticleData as any, locale);
       const dilipCard = mapCard(dilipGavitArticleData as any, locale);
       const cwgCard = mapCard(cwg2026ArticleData as any, locale);
 
+      if (!items.some((it) => it.slug === neerajCard.slug)) {
+        items.unshift(neerajCard);
+      }
+      if (!items.some((it) => it.slug === harshCard.slug)) {
+        items.unshift(harshCard);
+      }
+      if (!items.some((it) => it.slug === asmitaCard.slug)) {
+        items.unshift(asmitaCard);
+      }
       if (!items.some((it) => it.slug === dilipCard.slug)) {
         items.unshift(dilipCard);
       }
@@ -837,19 +874,15 @@ export class SanityRepository implements ContentRepository {
     const isAwardsTag = query.tag === "awards" || query.tag === "civilian-awards" || query.tag === "mppsc";
 
     if (isStaticGkQuery || isAwardsCategory || isAwardsTag) {
-      const { civilianAwardsArticleData, mpStateAwardsArticleData, bharatRatnaDedicatedArticleData } = await import("@/data/awards-articles-override");
+      const { civilianAwardsArticleData, bharatRatnaDedicatedArticleData } = await import("@/data/awards-articles-override");
       const civCard = mapCard(civilianAwardsArticleData as any, locale);
       const ratnaCard = mapCard(bharatRatnaDedicatedArticleData as any, locale);
-      const mpCard = mapCard(mpStateAwardsArticleData as any, locale);
 
       if (ratnaCard?.slug && (!query.category || query.category === "civilian-awards") && !items.some((it) => it?.slug === ratnaCard.slug)) {
         items.unshift(ratnaCard);
       }
       if (civCard?.slug && (!query.category || query.category === "civilian-awards") && !items.some((it) => it?.slug === civCard.slug)) {
         items.unshift(civCard);
-      }
-      if (mpCard?.slug && (query.category === "mp-state-awards" || isStaticGkQuery) && !items.some((it) => it?.slug === mpCard.slug)) {
-        items.unshift(mpCard);
       }
     }
 
@@ -891,12 +924,27 @@ export class SanityRepository implements ContentRepository {
     const items = raw.map((r) => mapCard(r, locale));
 
     if (!contentType || contentType === "currentAffairs") {
+      const { neerajChopraArticleData } = await import("@/data/neeraj-chopra-article-override");
+      const { harshSinghArticleData } = await import("@/data/harsh-singh-article-override");
+      const { asmitaDeyArticleData } = await import("@/data/asmita-dey-article-override");
       const { dilipGavitArticleData } = await import("@/data/dilip-gavit-article-override");
       const { cwg2026ArticleData } = await import("@/data/cwg-2026-article-override");
 
+      const neerajCard = mapCard(neerajChopraArticleData as any, locale);
+      const harshCard = mapCard(harshSinghArticleData as any, locale);
+      const asmitaCard = mapCard(asmitaDeyArticleData as any, locale);
       const dilipCard = mapCard(dilipGavitArticleData as any, locale);
       const cwgCard = mapCard(cwg2026ArticleData as any, locale);
 
+      if (!items.some((it) => it.slug === neerajCard.slug)) {
+        items.unshift(neerajCard);
+      }
+      if (!items.some((it) => it.slug === harshCard.slug)) {
+        items.unshift(harshCard);
+      }
+      if (!items.some((it) => it.slug === asmitaCard.slug)) {
+        items.unshift(asmitaCard);
+      }
       if (!items.some((it) => it.slug === dilipCard.slug)) {
         items.unshift(dilipCard);
       }
@@ -942,11 +990,27 @@ export class SanityRepository implements ContentRepository {
       if (deduped.length >= limit) break;
     }
 
+    const { neerajChopraArticleData } = await import("@/data/neeraj-chopra-article-override");
+    const { harshSinghArticleData } = await import("@/data/harsh-singh-article-override");
+    const { asmitaDeyArticleData } = await import("@/data/asmita-dey-article-override");
     const { dilipGavitArticleData } = await import("@/data/dilip-gavit-article-override");
     const { cwg2026ArticleData } = await import("@/data/cwg-2026-article-override");
+
+    const neerajCard = mapCard(neerajChopraArticleData as any, locale);
+    const harshCard = mapCard(harshSinghArticleData as any, locale);
+    const asmitaCard = mapCard(asmitaDeyArticleData as any, locale);
     const dilipCard = mapCard(dilipGavitArticleData as any, locale);
     const cwgCard = mapCard(cwg2026ArticleData as any, locale);
 
+    if (!deduped.some((it) => it.slug === neerajCard.slug)) {
+      deduped.unshift(neerajCard);
+    }
+    if (!deduped.some((it) => it.slug === harshCard.slug)) {
+      deduped.unshift(harshCard);
+    }
+    if (!deduped.some((it) => it.slug === asmitaCard.slug)) {
+      deduped.unshift(asmitaCard);
+    }
     if (!deduped.some((it) => it.slug === dilipCard.slug)) {
       deduped.unshift(dilipCard);
     }
@@ -1078,6 +1142,27 @@ export class SanityRepository implements ContentRepository {
         slug: "mp-state-awards-tansen-kalidas-kabir-samman-mppsc-notes",
         type: "staticGk",
         updatedAt: "2026-07-31T10:30:00.000Z",
+      });
+    }
+    if (!slugs.some((s) => s.slug === "asmita-dey-biography-cwg-2026-gold-medal-judo")) {
+      slugs.unshift({
+        slug: "asmita-dey-biography-cwg-2026-gold-medal-judo",
+        type: "currentAffairs",
+        updatedAt: "2026-08-01T08:30:00.000Z",
+      });
+    }
+    if (!slugs.some((s) => s.slug === "harsh-singh-biography-cwg-2026-gold-medal-judo")) {
+      slugs.unshift({
+        slug: "harsh-singh-biography-cwg-2026-gold-medal-judo",
+        type: "currentAffairs",
+        updatedAt: "2026-08-01T08:35:00.000Z",
+      });
+    }
+    if (!slugs.some((s) => s.slug === "neeraj-chopra-javelin-records-cwg-2026-silver-medal-biography")) {
+      slugs.unshift({
+        slug: "neeraj-chopra-javelin-records-cwg-2026-silver-medal-biography",
+        type: "currentAffairs",
+        updatedAt: "2026-08-01T08:45:00.000Z",
       });
     }
     if (!slugs.some((s) => s.slug === "dilip-gavit-biography-cwg-2026-gold-medal-para-athletics")) {

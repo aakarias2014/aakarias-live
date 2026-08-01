@@ -109,7 +109,7 @@ async function main() {
       {
         _key: "sec-why-in-news",
         kind: "whyInNews",
-        title: "कॉमनवेल्th गेम्स 2026: 9 लोकप्रिय खेल बाहर क्यों किए गए?",
+        title: "कॉमनवेल्थ गेम्स 2026: 9 लोकप्रिय खेल बाहर क्यों किए गए?",
         titleEn: "CWG 2026 Dropped Sports Overview",
         body: [
           {
