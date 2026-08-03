@@ -56,7 +56,7 @@ import type { Locale } from "@/lib/i18n/locales";
 import { defaultLocale, localePrefix } from "@/lib/i18n/locales";
 import type { SearchHit } from "@/lib/search/algolia";
 
-const REVALIDATE = 3600; // 1h ISR default
+const REVALIDATE = 60; // 60s ISR default for fast Sanity CMS updates
 
 /** Sanity document types that carry article-like content (body, author, etc.). */
 const ARTICLE_TYPES = ["currentAffairs", "article", "editorial", "blog", "weekly", "monthly", "staticGk"];
@@ -288,32 +288,34 @@ function mapCard(raw: any, locale: Locale): ArticleListItem {
   const title = (isEn ? raw.titleEn : raw.title) ?? raw.title ?? raw.titleEn ?? "Untitled";
   const excerpt = (isEn ? raw.excerptEn : raw.excerpt) ?? raw.excerpt ?? raw.excerptEn ?? "";
 
-  let rawImage = raw.featuredImage;
-  if (slug === "harsh-singh-biography-cwg-2026-gold-medal-judo") {
-    rawImage = {
-      url: "/images/blog/harsh_singh_cwg_2026_flag.jpg",
-      alt: "हर्ष सिंह तिरंगे के साथ कॉमनवेल्थ गेम्स 2026 जूडो स्वर्ण पदक का जश्न मनाते हुए (Harsh Singh holding Indian Flag CWG 2026 Gold Medal)",
-    };
-  } else if (slug === "neeraj-chopra-javelin-records-cwg-2026-silver-medal-biography") {
-    rawImage = {
-      url: "/images/blog/neeraj_chopra_roar_olympic_celebration.png",
-      alt: "नीरज चोपड़ा टोक्यो ओलंपिक में स्वर्ण पदक जीत का जश्न मनाते हुए (Neeraj Chopra Olympic Gold Medal Celebration)",
-    };
-  } else if (slug === "asmita-dey-biography-cwg-2026-gold-medal-judo") {
-    rawImage = {
-      url: "/images/blog/asmita_dey_cwg_2026_gold_flag_celebration.png",
-      alt: "अस्मिता डे कॉमनवेल्थ गेम्स 2026 में स्वर्ण पदक जीतकर तिरंगे के साथ जश्न मनाते हुए (Asmita Dey Gold Medal CWG 2026)",
-    };
-  } else if (slug === "preeti-pawar-biography-cwg-2026-gold-medal-boxing") {
-    rawImage = {
-      url: "/images/blog/preeti_pawar_cwg_2026_gold_victory.png",
-      alt: "प्रीति पवार कॉमनवेल्थ गेम्स 2026 मुक्केबाजी स्वर्ण पदक जीत - Preeti Pawar CWG 2026 Gold Medal",
-    };
-  } else if (slug === "disaster-management-amendment-act-2025-mppsc-upsc-notes") {
-    rawImage = {
-      url: "/images/blog/disaster-management-amendment-act-2025.png",
-      alt: "Disaster Management Amendment Act 2025 NDRF Rescue Operations India MPPSC UPSC Notes",
-    };
+  let rawImage = raw.featuredImage || raw.mainImage;
+  if (!rawImage) {
+    if (slug === "harsh-singh-biography-cwg-2026-gold-medal-judo") {
+      rawImage = {
+        url: "/images/blog/harsh_singh_cwg_2026_flag.jpg",
+        alt: "हर्ष सिंह तिरंगे के साथ कॉमनवेल्थ गेम्स 2026 जूडो स्वर्ण पदक का जश्न मनाते हुए (Harsh Singh holding Indian Flag CWG 2026 Gold Medal)",
+      };
+    } else if (slug === "neeraj-chopra-javelin-records-cwg-2026-silver-medal-biography") {
+      rawImage = {
+        url: "/images/blog/neeraj_chopra_roar_olympic_celebration.png",
+        alt: "नीरज चोपड़ा टोक्यो ओलंपिक में स्वर्ण पदक जीत का जश्न मनाते हुए (Neeraj Chopra Olympic Gold Medal Celebration)",
+      };
+    } else if (slug === "asmita-dey-biography-cwg-2026-gold-medal-judo") {
+      rawImage = {
+        url: "/images/blog/asmita_dey_cwg_2026_gold_flag_celebration.png",
+        alt: "अस्मिता डे कॉमनवेल्थ गेम्स 2026 में स्वर्ण पदक जीतकर तिरंगे के साथ जश्न मनाते हुए (Asmita Dey Gold Medal CWG 2026)",
+      };
+    } else if (slug === "preeti-pawar-biography-cwg-2026-gold-medal-boxing") {
+      rawImage = {
+        url: "/images/blog/preeti_pawar_cwg_2026_gold_victory.png",
+        alt: "प्रीति पवार कॉमनवेल्थ गेम्स 2026 मुक्केबाजी स्वर्ण पदक जीत - Preeti Pawar CWG 2026 Gold Medal",
+      };
+    } else if (slug === "disaster-management-amendment-act-2025-mppsc-upsc-notes") {
+      rawImage = {
+        url: "/images/blog/disaster-management-amendment-act-2025.png",
+        alt: "Disaster Management Amendment Act 2025 NDRF Rescue Operations India MPPSC UPSC Notes",
+      };
+    }
   }
 
   return {
@@ -630,122 +632,83 @@ export class SanityRepository implements ContentRepository {
       revalidate: REVALIDATE,
       tags: ["articles", "staticGk", "currentAffairs", `article:${slug}`],
     });
+    const mergeWithOverride = (overrideData: Record<string, unknown>) => {
+      if (!raw) return overrideData;
+      return {
+        ...overrideData,
+        ...raw,
+        featuredImage: raw.featuredImage || raw.mainImage || overrideData.featuredImage,
+      };
+    };
+
     if (slug === "commonwealth-games-2026-updates-india-medal-tally") {
       const { cwg2026ArticleData } = await import("@/data/cwg-2026-article-override");
-      raw = {
-        ...(raw || {}),
-        ...cwg2026ArticleData,
-      };
+      raw = mergeWithOverride(cwg2026ArticleData);
     }
     if (slug === "asmita-dey-biography-cwg-2026-gold-medal-judo") {
       const { asmitaDeyArticleData } = await import("@/data/asmita-dey-article-override");
-      raw = {
-        ...(raw || {}),
-        ...asmitaDeyArticleData,
-      };
+      raw = mergeWithOverride(asmitaDeyArticleData);
     }
     if (slug === "preeti-pawar-biography-cwg-2026-gold-medal-boxing") {
       const { preetiPawarArticleData } = await import("@/data/preeti-pawar-article-override");
-      raw = {
-        ...(raw || {}),
-        ...preetiPawarArticleData,
-      };
+      raw = mergeWithOverride(preetiPawarArticleData);
     }
     if (slug === "jaismine-lamboria-biography-world-boxing-championship-cwg-2026-gold-medal") {
       const { jaismineLamboriaArticleData } = await import("@/data/jaismine-lamboria-article-override");
-      raw = {
-        ...(raw || {}),
-        ...jaismineLamboriaArticleData,
-      };
+      raw = mergeWithOverride(jaismineLamboriaArticleData);
     }
     if (slug === "soman-rana-biography-cwg-2026-gold-medal-para-shot-put") {
       const { somanRanaArticleData } = await import("@/data/soman-rana-article-override");
-      raw = {
-        ...(raw || {}),
-        ...somanRanaArticleData,
-      };
+      raw = mergeWithOverride(somanRanaArticleData);
     }
     if (slug === "sakshi-choudhary-biography-cwg-2026-gold-medal-boxing") {
       const { sakshiChoudharyArticleData } = await import("@/data/sakshi-choudhary-article-override");
-      raw = {
-        ...(raw || {}),
-        ...sakshiChoudharyArticleData,
-      };
+      raw = mergeWithOverride(sakshiChoudharyArticleData);
     }
     if (slug === "priya-ghanghas-biography-cwg-2026-gold-medal-boxing") {
       const { priyaGhanghasArticleData } = await import("@/data/priya-ghanghas-article-override");
-      raw = {
-        ...(raw || {}),
-        ...priyaGhanghasArticleData,
-      };
+      raw = mergeWithOverride(priyaGhanghasArticleData);
     }
     if (slug === "arundhati-choudhary-biography-cwg-2026-gold-medal-boxing") {
       const { arundhatiChoudharyArticleData } = await import("@/data/arundhati-choudhary-article-override");
-      raw = {
-        ...(raw || {}),
-        ...arundhatiChoudharyArticleData,
-      };
+      raw = mergeWithOverride(arundhatiChoudharyArticleData);
     }
     if (slug === "sachin-siwach-biography-cwg-2026-gold-medal-boxing") {
       const { sachinSiwachArticleData } = await import("@/data/sachin-siwach-article-override");
-      raw = {
-        ...(raw || {}),
-        ...sachinSiwachArticleData,
-      };
+      raw = mergeWithOverride(sachinSiwachArticleData);
     }
     if (slug === "ankush-panghal-biography-cwg-2026-gold-medal-boxing") {
       const { ankushPanghalArticleData } = await import("@/data/ankush-panghal-article-override");
-      raw = {
-        ...(raw || {}),
-        ...ankushPanghalArticleData,
-      };
+      raw = mergeWithOverride(ankushPanghalArticleData);
     }
     if (slug === "harsh-singh-biography-cwg-2026-gold-medal-judo") {
       const { harshSinghArticleData } = await import("@/data/harsh-singh-article-override");
-      raw = {
-        ...(raw || {}),
-        ...harshSinghArticleData,
-      };
+      raw = mergeWithOverride(harshSinghArticleData);
     }
     if (slug === "neeraj-chopra-javelin-records-cwg-2026-silver-medal-biography") {
       const { neerajChopraArticleData } = await import("@/data/neeraj-chopra-article-override");
-      raw = {
-        ...(raw || {}),
-        ...neerajChopraArticleData,
-      };
+      raw = mergeWithOverride(neerajChopraArticleData);
     }
     if (slug === "dilip-gavit-biography-cwg-2026-gold-medal-para-athletics") {
       const { dilipGavitArticleData } = await import("@/data/dilip-gavit-article-override");
-      raw = {
-        ...(raw || {}),
-        ...dilipGavitArticleData,
-      };
+      raw = mergeWithOverride(dilipGavitArticleData);
     }
     if (slug === "highest-civilian-awards-padma-awards-mppsc-upsc-notes") {
       const { civilianAwardsArticleData } = await import("@/data/awards-articles-override");
-      raw = {
-        ...(raw || {}),
-        ...civilianAwardsArticleData,
-      };
+      raw = mergeWithOverride(civilianAwardsArticleData);
     }
     if (slug === "bharat-ratna-awardees-list-mppsc-upsc-notes") {
       const { bharatRatnaDedicatedArticleData } = await import("@/data/awards-articles-override");
-      raw = {
-        ...(raw || {}),
-        ...bharatRatnaDedicatedArticleData,
-      };
+      raw = mergeWithOverride(bharatRatnaDedicatedArticleData);
     }
     if (slug === "mp-state-awards-tansen-kalidas-kabir-samman-mppsc-notes") {
       const { civilianAwardsArticleData } = await import("@/data/awards-articles-override");
-      raw = {
-        ...(raw || {}),
-        ...civilianAwardsArticleData,
-      };
+      raw = mergeWithOverride(civilianAwardsArticleData);
     }
     if (slug === "disaster-management-amendment-act-2025-mppsc-upsc-notes") {
       raw = {
         ...(raw || {}),
-        featuredImage: {
+        featuredImage: raw?.featuredImage || raw?.mainImage || {
           url: "/images/blog/disaster-management-amendment-act-2025.png",
           alt: "Disaster Management Amendment Act 2025 NDRF Rescue Operations India MPPSC UPSC Notes",
         },

@@ -52,8 +52,8 @@ export const cwg2026ArticleData = {
   ],
   syllabus: ["Sports-GK", "MPPSC Paper-1 Unit-5", "MPPSC Paper-3", "Prelims-GS"],
   featuredImage: {
-    url: "/images/blog/cwg_2026_5_gold_medals_thumbnail.jpg",
-    alt: "39 पदक भारत का शानदार प्रदर्शन! कॉमनवेल्थ गेम्स 2026: भारतीय खिलाड़ियों का ऐतिहासिक जलवा - 13 स्वर्ण, 17 रजत, 9 कांस्य",
+    url: "/images/blog/cwg_2026_india_medals_tally_banner.png",
+    alt: "13 स्वर्ण भारत का शानदार प्रदर्शन! कॉमनवेल्थ गेम्स 2026: भारतीय खिलाड़ियों का ऐतिहासिक जलवा - 13 स्वर्ण, 17 रजत, 9 कांस्य",
     altEn: "39 Medals Historic Performance India at Commonwealth Games 2026 - 13 Gold, 17 Silver, 9 Bronze Medals Tally",
     caption: "कॉमनवेल्थ गेम्स 2026: भारत की अद्यतन मेडल टैली - कुल 39 पदक (13 स्वर्ण, 17 रजत, 9 कांस्य)",
     captionEn: "Commonwealth Games 2026: India's Updated Medals Tally - Total 39 Medals (13 Gold, 17 Silver, 9 Bronze)"
