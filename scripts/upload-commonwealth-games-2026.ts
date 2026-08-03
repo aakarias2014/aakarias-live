@@ -61,8 +61,26 @@ async function main() {
     }
   }
 
+  // Replace inline body image asset with Sanity reference if uploaded
+  const sections = (cwg2026ArticleData.sections || []).map((sec: any) => {
+    if (sec.body && Array.isArray(sec.body)) {
+      const body = sec.body.map((b: any) => {
+        if (b._type === "image" && assetTallyBanner) {
+          return {
+            ...b,
+            asset: { _type: "reference", _ref: assetTallyBanner._id },
+          };
+        }
+        return b;
+      });
+      return { ...sec, body };
+    }
+    return sec;
+  });
+
   const article = {
     ...cwg2026ArticleData,
+    sections,
     category: { _type: "reference", _ref: "cat-sports" },
     author: { _type: "reference", _ref: "author-aakar" },
     tags: [
@@ -72,10 +90,10 @@ async function main() {
       { _type: "reference", _ref: "tag-prelims" },
       { _type: "reference", _ref: "tag-mains" },
     ],
-    ...(assetThumb ? {
+    ...(assetTallyBanner ? {
       featuredImage: {
         _type: "image",
-        asset: { _type: "reference", _ref: assetThumb._id },
+        asset: { _type: "reference", _ref: assetTallyBanner._id },
         alt: cwg2026ArticleData.featuredImage.alt,
         caption: cwg2026ArticleData.featuredImage.caption,
       }

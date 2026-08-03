@@ -654,8 +654,9 @@ export class SanityRepository implements ContentRepository {
     if (slug === "commonwealth-games-2026-updates-india-medal-tally") {
       const { cwg2026ArticleData } = await import("@/data/cwg-2026-article-override");
       raw = mergeWithOverride(cwg2026ArticleData);
-      // Force correct banner — Sanity may have a different image
+      // Force correct banner and sections — Sanity may have older inline body images
       raw.featuredImage = cwg2026ArticleData.featuredImage;
+      raw.sections = cwg2026ArticleData.sections;
     }
     if (slug === "asmita-dey-biography-cwg-2026-gold-medal-judo") {
       const { asmitaDeyArticleData } = await import("@/data/asmita-dey-article-override");
