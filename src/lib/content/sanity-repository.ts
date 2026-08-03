@@ -289,6 +289,16 @@ function mapCard(raw: any, locale: Locale): ArticleListItem {
   const excerpt = (isEn ? raw.excerptEn : raw.excerpt) ?? raw.excerpt ?? raw.excerptEn ?? "";
 
   let rawImage = raw.featuredImage || raw.mainImage;
+
+  // Forced thumbnail overrides — these always use the specified banner regardless of Sanity image
+  if (slug === "commonwealth-games-2026-updates-india-medal-tally") {
+    rawImage = {
+      url: "/images/blog/cwg_2026_india_medals_tally_banner.png",
+      alt: "कॉमनवेल्थ गेम्स 2026 मेडल टैली: भारत के 39 पदक - 13 स्वर्ण, 17 रजत, 9 कांस्य | CWG 2026 India Medal Tally",
+    };
+  }
+
+  // Fallback overrides — only if Sanity has no image
   if (!rawImage) {
     if (slug === "harsh-singh-biography-cwg-2026-gold-medal-judo") {
       rawImage = {
@@ -644,6 +654,8 @@ export class SanityRepository implements ContentRepository {
     if (slug === "commonwealth-games-2026-updates-india-medal-tally") {
       const { cwg2026ArticleData } = await import("@/data/cwg-2026-article-override");
       raw = mergeWithOverride(cwg2026ArticleData);
+      // Force correct banner — Sanity may have a different image
+      raw.featuredImage = cwg2026ArticleData.featuredImage;
     }
     if (slug === "asmita-dey-biography-cwg-2026-gold-medal-judo") {
       const { asmitaDeyArticleData } = await import("@/data/asmita-dey-article-override");
