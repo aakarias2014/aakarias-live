@@ -2,58 +2,61 @@ export const cwg2026ArticleData = {
   _id: "ca-commonwealth-games-2026",
   _type: "currentAffairs",
   slug: { _type: "slug", current: "commonwealth-games-2026-updates-india-medal-tally" },
-  title: "कॉमनवेल्थ गेम्स 2026 मेडल टैली (CWG 2026 Live Medal Table): भारत के 23 पदक विजेता (5 स्वर्ण, 12 रजत, 6 कांस्य), नीरज चोपड़ा, जूडो व पूरी लिस्ट | MPPSC & UPSC",
-  titleEn: "Commonwealth Games 2026 India Medals Tally & Winners List: 23 Medals (5 Gold, 12 Silver, 6 Bronze), Neeraj Chopra, Day 9 Live Standings | MPPSC & UPSC",
-  excerpt: "कॉमनवेल्थ गेम्स 2026 (Glasgow CWG 2026) मेडल टैली लाइव: भारत ने 5 स्वर्ण, 12 रजत और 6 कांस्य सहित कुल 23 पदक जीत लिए हैं (10वां स्थान)। अस्मिता डे व हर्ष सिंह (जूडो गोल्ड), नीरज चोपड़ा व यामिनी मौर्या (रजत), तेजस्विन शंकर व यश वीर सिंह (कांस्य)। देखें भारतीय विजेताओं की पूरी लिस्ट, अपडेटेड मेडल तालिका व MPPSC/UPSC नोट्स।",
-  excerptEn: "Glasgow Commonwealth Games 2026 India Medals Tally & Full Winners List: India standings after Day 9 with 23 medals (5 Gold, 12 Silver, 6 Bronze). Asmita Dey & Harsh Singh (Judo Gold), Neeraj Chopra & Yamini Mourya (Silver), Tejaswin Shankar & Yash Veer Singh (Bronze). Complete medal table, schedule & MPPSC/UPSC study notes.",
-  ca_date: "2026-08-01",
-  publishedAt: "2026-08-01T07:45:00.000Z",
+  title: "कॉमनवेल्थ गेम्स 2026 मेडल टैली (CWG 2026 Live Medal Table): भारत के 39 पदक विजेता (13 स्वर्ण, 17 रजत, 9 कांस्य), मुक्केबाजी, जूडो, एथलेटिक्स व पूरी लिस्ट | MPPSC & UPSC",
+  titleEn: "Commonwealth Games 2026 India Medals Tally & Winners List: 39 Medals (13 Gold, 17 Silver, 9 Bronze), Boxing, Judo, Athletics Standings | MPPSC & UPSC",
+  excerpt: "कॉमनवेल्थ गेम्स 2026 (Glasgow CWG 2026) मेडल टैली अद्यतन: भारत ने 13 स्वर्ण, 17 रजत और 9 कांस्य सहित कुल 39 पदक जीत लिए हैं। मुक्केबाजी में 7 स्वर्ण सहित 10 पदक, एथलेटिक्स में 10 पदक, भारोत्तोलन में 8 पदक, पैरा एथलेटिक्स में 6 पदक और जूडो में 3 पदक। देखें भारतीय विजेताओं की पूरी लिस्ट, खेलवार मेडल तालिका व MPPSC/UPSC नोट्स।",
+  excerptEn: "Glasgow Commonwealth Games 2026 India Medals Tally & Full Winners List: India updated standings with 39 medals (13 Gold, 17 Silver, 9 Bronze). Boxing led with 7 Gold (10 Medals), Athletics 10 medals, Weightlifting 8 medals, Para Athletics 6 medals & Judo 3 medals. Complete medal table & MPPSC/UPSC study notes.",
+  ca_date: "2026-08-03",
+  publishedAt: "2026-08-03T10:00:00.000Z",
   featured: true,
-  readingTime: 14,
+  readingTime: 18,
+  author: {
+    _id: "author-deepraj-sikarwar",
+    name: "Deepraj Sikarwar (Editorial Team)",
+    slug: { current: "deepraj-sikarwar" },
+  },
+  tags: [
+    { _id: "tag-mppsc", name: "MPPSC", slug: { current: "mppsc" } },
+    { _id: "tag-upsc", name: "UPSC", slug: { current: "upsc" } },
+    { _id: "tag-cwg", name: "CWG 2026", slug: { current: "cwg-2026" } },
+    { _id: "tag-sports", name: "Sports GK", slug: { current: "sports-gk" } },
+  ],
   keywords: [
     "Commonwealth Games 2026",
     "कॉमनवेल्थ गेम्स 2026",
     "glasgow commonwealth games 2026 medal tally",
     "Commonwealth Games 2026 India Medals Tally",
-    "Commonwealth games 2026 neeraj",
-    "Commonwealth games 2026 javelin gold medal",
-    "Commonwealth games 2026 medal tally time",
-    "Commonwealth games 2026 medal tally results",
+    "Commonwealth games 2026 boxing gold medals",
     "Commonwealth games 2026 medal tally live",
     "Glasgow commonwealth games 2026 medal tally",
-    "Glasgow Commonwealth Games medals",
-    "Glasgow 2026 news",
-    "India wins six medals on day nine of Commonwealth Games 2026",
-    "CWG 2026 Day 9 Medal Table",
-    "India 10th with 5 Gold",
+    "CWG 2026 39 Medals India",
+    "India 13 Gold medals CWG 2026",
     "Commonwealth Games 2026 India medals tally and winners list",
-    "CWG 2026 Medal Race Update",
-    "Who won the silver medal in the Commonwealth Games 2026",
-    "How many medals were won by India in the Commonwealth Games",
-    "कॉमनवेल्थ गेम्स 2026 में भारत ने कितने पदक जीते हैं",
-    "राष्ट्रमंडल खेलों 2026 में भारत की मेडल तालिका",
+    "Sakshi Choudhary Boxing Gold CWG 2026",
+    "Preeti Pawar Boxing Gold CWG 2026",
+    "Jaismine Lamboria Boxing Gold",
+    "Priya Ghanghas Boxing Gold",
+    "Arundhati Choudhary Boxing Gold",
+    "Sachin Siwach Boxing Gold",
+    "Ankush Panghal Boxing Gold",
+    "Soman Rana Para Athletics Gold",
+    "Shubham Juyal Para Athletics Silver",
+    "Unnati Sharma Judo Bronze",
+    "Lovlina Borgohain Boxing Silver",
     "Asmita Dey Judo Gold Medal CWG 2026",
     "Harsh Singh Judo Gold Medal CWG 2026",
-    "Yamini Mourya Judo Silver Medal",
     "Neeraj Chopra Javelin Throw Silver CWG 2026",
-    "Tejaswin Shankar Decathlon Bronze CWG 2026",
-    "Yash Veer Singh Javelin Throw Bronze CWG 2026",
     "Mirabai Chanu Gold Medal CWG 2026",
-    "Lovepreet Singh Weightlifting Silver",
-    "Seema Kaliramna Discus Throw Bronze",
-    "CWG 2026 Medal Winners List PDF",
-    "CWG 2026 dropped sports list",
-    "कॉमनवेल्थ गेम्स 2026 से हटाए गए खेल",
     "MPPSC Current Affairs 2026 Sports Notes",
     "UPSC Sports Current Affairs 2026"
   ],
   syllabus: ["Sports-GK", "MPPSC Paper-1 Unit-5", "MPPSC Paper-3", "Prelims-GS"],
   featuredImage: {
     url: "/images/blog/cwg_2026_5_gold_medals_thumbnail.jpg",
-    alt: "5 स्वर्ण भारत का शानदार प्रदर्शन! कॉमनवेल्थ गेम्स 2026: भारतीय खिलाड़ियों का ऐतिहासिक जलवा - मीराबाई चानू, शर्मिला धनखड़, दिलीप गावित, अस्मिता डे और हर्ष सिंह",
-    altEn: "5 Gold Medals Historic Performance India at Commonwealth Games 2026 - Mirabai Chanu, Sharmila Dhankar, Dilip Gavit, Asmita Dey, Harsh Singh",
-    caption: "कॉमनवेल्थ गेम्स 2026: भारत के 5 स्वर्ण पदक विजेता एथलीटों का ऐतिहासिक जलवा (मीराबाई चानू, शर्मिला धनखड़, दिलीप गावित, अस्मिता डे एवं हर्ष सिंह)",
-    captionEn: "Commonwealth Games 2026: India's 5 Gold Medal Winners - Mirabai Chanu, Sharmila Dhankar, Dilip Gavit, Asmita Dey & Harsh Singh"
+    alt: "39 पदक भारत का शानदार प्रदर्शन! कॉमनवेल्थ गेम्स 2026: भारतीय खिलाड़ियों का ऐतिहासिक जलवा - 13 स्वर्ण, 17 रजत, 9 कांस्य",
+    altEn: "39 Medals Historic Performance India at Commonwealth Games 2026 - 13 Gold, 17 Silver, 9 Bronze Medals Tally",
+    caption: "कॉमनवेल्थ गेम्स 2026: भारत की अद्यतन मेडल टैली - कुल 39 पदक (13 स्वर्ण, 17 रजत, 9 कांस्य)",
+    captionEn: "Commonwealth Games 2026: India's Updated Medals Tally - Total 39 Medals (13 Gold, 17 Silver, 9 Bronze)"
   },
 
   sections: [
@@ -68,10 +71,10 @@ export const cwg2026ArticleData = {
           _key: "b1-img-gold-banner",
           _type: "image",
           url: "/images/blog/cwg_2026_5_gold_medals_thumbnail.jpg",
-          alt: "5 स्वर्ण भारत का शानदार प्रदर्शन! कॉमनवेल्थ गेम्स 2026: भारतीय खिलाड़ियों का ऐतिहासिक जलवा - मीराबाई चानू, शर्मिला धनखड़, दिलीप गावित, अस्मिता डे और हर्ष सिंह",
-          altEn: "5 Gold Medals Historic Performance India at Commonwealth Games 2026 - Mirabai Chanu, Sharmila Dhankar, Dilip Gavit, Asmita Dey, Harsh Singh",
-          caption: "कॉमनवेल्थ गेम्स 2026: भारत के 5 स्वर्ण पदक विजेता एथलीटों का ऐतिहासिक जलवा (मीराबाई चानू, शर्मिला धनखड़, दिलीप गावित, अस्मिता डे एवं हर्ष सिंह)",
-          captionEn: "Commonwealth Games 2026: India's 5 Gold Medal Winners - Mirabai Chanu, Sharmila Dhankar, Dilip Gavit, Asmita Dey & Harsh Singh"
+          alt: "39 पदक भारत का शानदार प्रदर्शन! कॉमनवेल्थ गेम्स 2026: भारतीय खिलाड़ियों का ऐतिहासिक जलवा - 13 स्वर्ण, 17 रजत, 9 कांस्य",
+          altEn: "39 Medals Historic Performance India at Commonwealth Games 2026 - 13 Gold, 17 Silver, 9 Bronze Medals Tally",
+          caption: "कॉमनवेल्थ गेम्स 2026: भारत की अद्यतन मेडल टैली - कुल 39 पदक (13 स्वर्ण, 17 रजत, 9 कांस्य)",
+          captionEn: "Commonwealth Games 2026: India's Updated Medals Tally - Total 39 Medals (13 Gold, 17 Silver, 9 Bronze)"
         },
         {
           _key: "b1-1", _type: "block", style: "normal",
@@ -87,8 +90,8 @@ export const cwg2026ArticleData = {
           children: [{
             _key: "s1-2",
             _type: "span",
-            text: "भारतीय खिलाड़ियों ने लगातार शानदार प्रदर्शन करते हुए **5 स्वर्ण, 12 रजत और 6 कांस्य** सहित कुल **23 पदक (23 Medals Tally)** अपने नाम कर लिए हैं। अस्मिता डे (जूडो -48 किग्रा) और हर्ष सिंह (जूडो -60 किग्रा) ने स्वर्ण पदक जीतकर भारत की स्वर्ण पदकों की संख्या 5 कर दी है। इसके अलावा यामिनी मौर्या (जूडो -57किग्रा) और नीरज चोपड़ा (मेंस जैवलिन थ्रो) ने रजत पदक तथा तेजस्विन शंकर (डेकॉथ्लॉन) व यश वीर सिंह (जैवलिन थ्रो) ने कांस्य पदक जीतकर भारत की पदक तालिका को 23 तक पहुँचा दिया है।",
-            textEn: "Indian athletes have delivered a spectacular performance, accumulating a total of **23 medals (5 Gold, 12 Silver, and 6 Bronze)** in the official standings. Asmita Dey (Judo -48kg) and Harsh Singh (Judo -60kg) won Gold medals to boost India's gold count to 5. Additionally, Yamini Mourya (Judo -57kg) and Neeraj Chopra (Men's Javelin Throw) claimed Silver medals, while Tejaswin Shankar (Decathlon) and Yash Veer Singh (Javelin Throw) secured Bronze medals to elevate India's total medal tally to 23."
+            text: "भारतीय खिलाड़ियों ने धमाकेदार प्रदर्शन करते हुए **13 स्वर्ण, 17 रजत और 9 कांस्य** सहित कुल **39 पदक (39 Medals Tally)** अपने नाम कर लिए हैं। भारतीय मुक्केबाजों ने रिंग में स्वर्णिम इतिहास रचते हुए **7 स्वर्ण पदक ([प्रीति पवार (Preeti Pawar)](/current-affairs/preeti-pawar-biography-cwg-2026-gold-medal-boxing), साक्षी चौधरी, जैस्मिन लैम्बोरिया, प्रिया घंघास, अरुंधति चौधरी, सचिन सिवाच, अंकुश पंघाल)** और 3 रजत पदक सहित अकेले बॉक्सिंग में 10 पदक हासिल किए। इसके अतिरिक्त पैरा एथलेटिक्स में सोमन राणा ने स्वर्ण व शुभम जुयाल ने रजत, जूडो में उन्नति शर्मा ने कांस्य, तथा एथलेटिक्स में प्रवीण चित्रवेल ने रजत व सेल्वा प्रभु व गुलवीर सिंह ने कांस्य पदक जीतकर भारत की मेडल तालिका को 39 तक पहुँचा दिया है।",
+            textEn: "Indian athletes delivered a sensational performance, accumulating a total of **39 medals (13 Gold, 17 Silver, and 9 Bronze)** in the official standings. Indian boxers created history in the ring by claiming **7 Gold Medals ([Preeti Pawar](/en/current-affairs/preeti-pawar-biography-cwg-2026-gold-medal-boxing), Sakshi Choudhary, Jaismine Lamboria, Priya Ghanghas, Arundhati Choudhary, Sachin Siwach, Ankush Panghal)** and 3 Silver medals, contributing 10 medals from boxing alone. Furthermore, Soman Rana won Gold & Shubham Juyal won Silver in Para Athletics, Unnati Sharma won Bronze in Judo, while Praveen Chithravel won Silver and Selva Prabhu & Gulveer Singh won Bronze in Athletics, elevating India's tally to 39."
           }],
         },
         {
@@ -111,35 +114,35 @@ export const cwg2026ArticleData = {
             ["**मेजबान शहर (Host City)**", "ग्लासगो, स्कॉटलैंड (United Kingdom)"],
             ["**आयोजन तिथि (Dates)**", "23 जुलाई – 2 अगस्त 2026"],
             ["**भारतीय दल (Indian Contingent)**", "122 खिलाड़ी (8 नियमित + 5 पैरा खेल)"],
-            ["**भारत के कुल पदक (Total Medals)**", "**23 (5 स्वर्ण, 12 रजत, 6 कांस्य)**"],
-            ["**मेडल टैली स्थिति (Medal Rank)**", "**10वां स्थान** (ऑस्ट्रेलिया शीर्ष पर)"]
+            ["**भारत के कुल पदक (Total Medals)**", "**39 (13 स्वर्ण, 17 रजत, 9 कांस्य)**"],
+            ["**सर्वाधिक पदक वाला खेल (Top Sport)**", "**मुक्केबाजी (10 पदक: 7 स्वर्ण, 3 रजत)** एवं **एथलेटिक्स (10 पदक: 5 रजत, 5 कांस्य)**"]
           ],
           rowsEn: [
             ["**Event**", "Commonwealth Games 2026 (23rd Edition)"],
             ["**Host City**", "Glasgow, Scotland (United Kingdom)"],
             ["**Event Dates**", "July 23 – August 2, 2026"],
             ["**Indian Contingent**", "122 Athletes (8 Regular + 5 Para Sports)"],
-            ["**India Total Medals**", "**23 (5 Gold, 12 Silver, 6 Bronze)**"],
-            ["**Medal Rank**", "**10th Rank** (Australia leads the tally)"]
+            ["**India Total Medals**", "**39 (13 Gold, 17 Silver, 9 Bronze)**"],
+            ["**Top Performing Sport**", "**Boxing (10 Medals: 7 Gold, 3 Silver)** & **Athletics (10 Medals: 5 Silver, 5 Bronze)**"]
           ]
         }
       ],
     },
 
-    /* ── 2. CWG 2026 Day 8 & Day 9 Schedule (Neeraj Chopra & Key Bouts) ─ */
+    /* ── 2. CWG 2026 Boxing & Athletics Surge Schedule ───────────────── */
     {
       _key: "sec-day8-day9-schedule",
       kind: "analysis",
-      title: "CWG 2026 Day 8 & Day 9 लाइव शेड्यूल: नीरज चोपड़ा एवं प्रमुख भारतीय मुकाबले",
-      titleEn: "CWG 2026 Day 8 & Day 9 Live Schedule & Neeraj Chopra Action",
+      title: "CWG 2026: मुक्केबाजी एवं एथलेटिक्स में भारत का स्वर्णिम धमाका (Boxing & Athletics Domination)",
+      titleEn: "CWG 2026: Indian Boxing & Athletics Historic Medal Surge",
       body: [
         {
           _key: "b-day-h1", _type: "block", style: "h3",
           children: [{
             _key: "sh-d1",
             _type: "span",
-            text: "1. 9वें दिन के ऐतिहासिक परिणाम: जूडो में 2 स्वर्ण, नीरज का रजत व 6 पदकों की बौछार",
-            textEn: "1. Day 9 Historic Results: 2 Gold in Judo, Neeraj Silver & 6 Medals Rush"
+            text: "1. मुक्केबाजी (Boxing): 7 स्वर्ण एवं 3 रजत पदकों के साथ ऐतिहासिक रिकॉर्ड",
+            textEn: "1. Boxing: Unprecedented Record of 7 Gold and 3 Silver Medals"
           }],
         },
         {
@@ -147,8 +150,8 @@ export const cwg2026ArticleData = {
           children: [{
             _key: "s-d1",
             _type: "span",
-            text: "• **अस्मिता डे एवं हर्ष सिंह (जूडो गोल्ड)**: महिला -48 किग्रा में अस्मिता डे ने तथा पुरुष -60 किग्रा में हर्ष सिंह ने स्वर्ण पदक जीतकर इतिहास रचा।",
-            textEn: "• **Asmita Dey & Harsh Singh (Judo Gold)**: Asmita Dey won Gold in Women's -48kg and Harsh Singh claimed Gold in Men's -60kg Judo event."
+            text: "• **महिला मुक्केबाज़ों का दबदबा (5 स्वर्ण + 1 रजत)**: साक्षी चौधरी (51kg), [**प्रीति पवार (Preeti Pawar)**](/current-affairs/preeti-pawar-biography-cwg-2026-gold-medal-boxing) (54kg), जैस्मिन लैम्बोरिया (57kg), प्रिया घंघास (60kg), एवं अरुंधति चौधरी (70kg) ने रिंग में अद्वितीय प्रदर्शन करते हुए 5 स्वर्ण पदक जीते। ओलंपिक पदक विजेता लवलीना बोरगोहेन (75kg) ने रजत पदक प्राप्त किया।",
+            textEn: "• **Women Boxers Domination (5 Gold + 1 Silver)**: Sakshi Choudhary (51kg), [**Preeti Pawar**](/en/current-affairs/preeti-pawar-biography-cwg-2026-gold-medal-boxing) (54kg), Jaismine Lamboria (57kg), Priya Ghanghas (60kg), and Arundhati Choudhary (70kg) won 5 Gold medals. Olympic medalist Lovlina Borgohain (75kg) won Silver."
           }],
         },
         {
@@ -156,8 +159,17 @@ export const cwg2026ArticleData = {
           children: [{
             _key: "s-d2",
             _type: "span",
-            text: "• **नीरज चोपड़ा एवं यामिनी मौर्या (रजत पदक)**: ओलंपिक चैंपियन नीरज चोपड़ा ने भाला फेंक (जैवलिन थ्रो) में रजत पदक तथा यामिनी मौर्या ने जूडो -57 किग्रा में रजत पदक हासिल किया।",
-            textEn: "• **Neeraj Chopra & Yamini Mourya (Silver Medals)**: Olympic champion Neeraj Chopra bagged Silver in Men's Javelin Throw, and Yamini Mourya won Silver in Women's -57kg Judo."
+            text: "• **पुरुष मुक्केबाज़ों का प्रदर्शन (2 स्वर्ण + 2 रजत)**: सचिन सिवाच (60kg) एवं अंकुश पंघाल (80kg) ने पुरुष वर्ग में भारत को 2 स्वर्ण पदक दिलाए। जादुमणि सिंह (55kg) तथा नरेन्द्र बेरवाल (+90kg) ने शानदार रजत पदक हासिल किए।",
+            textEn: "• **Men Boxers Surge (2 Gold + 2 Silver)**: Sachin Siwach (60kg) and Ankush Panghal (80kg) bagged 2 Gold medals. Jadumani Singh (55kg) and Narendra Berwal (+90kg) secured Silver medals."
+          }],
+        },
+        {
+          _key: "b-day-h2", _type: "block", style: "h3",
+          children: [{
+            _key: "sh-d2",
+            _type: "span",
+            text: "2. एथलेटिक्स व पैरा एथलेटिक्स: ट्रिपल जंप, शॉट पुट व 5000मी में पदक",
+            textEn: "2. Athletics & Para Athletics: Triple Jump, Shot Put & 5000m Medals"
           }],
         },
         {
@@ -165,8 +177,8 @@ export const cwg2026ArticleData = {
           children: [{
             _key: "s-d3",
             _type: "span",
-            text: "• **तेजस्विन शंकर व यश वीर सिंह (कांस्य पदक)**: तेजस्विन शंकर ने डेकॉथ्लॉन में ऐतिहासिक कांस्य पदक तथा यश वीर सिंह ने भाला फेंक स्पर्धा में कांस्य पदक हासिल किया।",
-            textEn: "• **Tejaswin Shankar & Yash Veer Singh (Bronze Medals)**: Tejaswin Shankar won a historic Bronze in Decathlon, and Yash Veer Singh claimed Bronze in Men's Javelin Throw."
+            text: "• **पैरा एथलेटिक्स शॉट पुट F57 (1 Gold + 1 Silver)**: सोमन राणा ने पुरुषों की शॉट पुट F57 में स्वर्ण पदक तथा शुभम जुयाल ने रजत पदक हासिल कर भारत को 1-2 स्वर्णिम फिनिश दिलाई।",
+            textEn: "• **Para Athletics Shot Put F57 (1 Gold + 1 Silver)**: Soman Rana won Gold and Shubham Juyal secured Silver in Men's Shot Put F57 for a historic 1-2 finish."
           }],
         },
         {
@@ -174,8 +186,8 @@ export const cwg2026ArticleData = {
           children: [{
             _key: "s-d4",
             _type: "span",
-            text: "• **लवप्रीत सिंह व सीमा कालीरामना**: लवप्रीत सिंह (वेटलिफ्टिंग +110kg) ने रजत तथा सीमा कालीरामना (महिला डिस्कस थ्रो) ने कांस्य पदक जीतकर भारत की तालिका को मजबूत किया।",
-            textEn: "• **Lovepreet Singh & Seema Kaliramna**: Lovepreet Singh (+110kg Weightlifting) won Silver and Seema Kaliramna (Women's Discus Throw) secured Bronze."
+            text: "• **ट्रिपल जंप व 5000मी (2 Silver + 2 Bronze)**: प्रवीण चित्रवेल ने मेंस ट्रिपल जंप में रजत तथा सेल्वा प्रभु ने कांस्य पदक जीता। वहीं गुलवीर सिंह ने 10000m के रजत के बाद 5000m स्पर्धा में कांस्य पदक जीतकर डबल मेडल हासिल किया।",
+            textEn: "• **Triple Jump & 5000m (2 Silver + 2 Bronze)**: Praveen Chithravel won Silver & Selva Prabhu claimed Bronze in Men's Triple Jump. Gulveer Singh added a 5000m Bronze to his 10,000m Silver."
           }],
         }
       ],
@@ -276,32 +288,32 @@ export const cwg2026ArticleData = {
     {
       _key: "sec-winners-table-details",
       kind: "keyHighlights",
-      title: "कॉमनवेल्थ गेम्स 2026: भारतीय पदक विजेता (Medal Winners Table)",
-      titleEn: "CWG 2026 India Medal Winners List & Table",
+      title: "कॉमनवेल्थ गेम्स 2026: भारत के सभी 39 पदक विजेता (Medal Winners Table)",
+      titleEn: "CWG 2026 India Medal Winners Full List & Table (39 Medals)",
       body: [
         {
           _key: "b4-img-tally-banner",
           _type: "image",
           url: "/images/blog/cwg_2026_india_medals_tally_banner.png",
-          alt: "कॉमनवेल्थ गेम्स 2026 स्कॉटलैंड ग्लासगो सिल्वर, गोल्ड और कांस्य मेडल - भारत की पदक तालिका (India Medals Tally)",
-          altEn: "Glasgow 2026 Commonwealth Games Silver Gold Bronze Medals India Medal Tally Table",
-          caption: "कॉमनवेल्थ गेम्स 2026 (ग्लासगो, स्कॉटलैंड): भारत की अद्यतन मेडल टैली एवं आधिकारिक पदक तालिका (5 स्वर्ण, 12 रजत, 6 कांस्य)",
-          captionEn: "Commonwealth Games 2026 (Glasgow, Scotland): India's Updated Medals Tally & Standings (5 Gold, 12 Silver, 6 Bronze)"
+          alt: "कॉमनवेल्th गेम्स 2026 स्कॉटलैंड ग्लासगो मेडल टैली - भारत के 39 पदक विजेता (13 स्वर्ण, 17 रजत, 9 कांस्य)",
+          altEn: "Glasgow 2026 Commonwealth Games India Medal Tally Table 39 Medals (13 Gold, 17 Silver, 9 Bronze)",
+          caption: "कॉमनवेल्थ गेम्स 2026 (ग्लासगो, स्कॉटलैंड): भारत की अद्यतन मेडल टैली एवं आधिकारिक पदक तालिका (13 स्वर्ण, 17 रजत, 9 कांस्य)",
+          captionEn: "Commonwealth Games 2026 (Glasgow, Scotland): India's Updated Medals Tally & Standings (13 Gold, 17 Silver, 9 Bronze)"
         },
         {
           _key: "b3-h1", _type: "block", style: "h3",
           children: [{
             _key: "sh3-1",
             _type: "span",
-            text: "1. पदक विजेताओं की आधिकारिक तालिका (23 Medal Winners List)",
-            textEn: "1. Official List of All 23 Indian Medal Winners"
+            text: "1. पदक विजेताओं की आधिकारिक सम्पूर्ण तालिका (39 Medal Winners List)",
+            textEn: "1. Official Full List of All 39 Indian Medal Winners"
           }],
         },
         {
           _type: "table",
-          caption: "कॉमनवेल्थ गेम्स 2026: भारतीय पदक विजेता (23 Medals Tally)",
-          captionEn: "Commonwealth Games 2026: Indian Medal Winners (23 Medals Tally)",
-          headers: ["नम्बर", "एथलीट", "इवेंट", "खेल", "मेडल"],
+          caption: "कॉमनवेल्थ गेम्स 2026: भारतीय पदक विजेता (39 Medals Tally)",
+          captionEn: "Commonwealth Games 2026: Indian Medal Winners (39 Medals Tally)",
+          headers: ["नम्बर", "एथलीट", "इवेंट / श्रेणी", "खेल", "मेडल"],
           headersEn: ["S.No.", "Athlete", "Event / Category", "Sport Discipline", "Medal"],
           rows: [
             ["1", "**ऋषिकांत सिंह**", "मेंस 60किग्रा", "वेटलिफ्टिंग", "**सिल्वर (Silver)**"],
@@ -326,7 +338,23 @@ export const cwg2026ArticleData = {
             ["20", "**यामिनी मौर्या**", "वूमेंस -57 किग्रा", "जूडो", "**सिल्वर (Silver)**"],
             ["21", "**तेजस्विन शंकर**", "मेंस डेकॉथ्लॉन", "एथलेटिक्स", "**ब्रॉन्ज (Bronze)**"],
             ["22", "[**नीरज चोपड़ा (Neeraj Chopra)**](/current-affairs/neeraj-chopra-javelin-records-cwg-2026-silver-medal-biography)", "मेंस जैवलिन थ्रो", "एथलेटिक्स", "**सिल्वर (Silver)**"],
-            ["23", "**यश वीर सिंह**", "मेंस जैवलिन थ्रो", "एथलेटिक्स", "**ब्रॉन्ज (Bronze)**"]
+            ["23", "**यश वीर सिंह**", "मेंस जैवलिन थ्रो", "एथलेटिक्स", "**ब्रॉन्ज (Bronze)**"],
+            ["24", "[**प्रीति पवार (Preeti Pawar)**](/current-affairs/preeti-pawar-biography-cwg-2026-gold-medal-boxing)", "वूमेंस 54 किग्रा", "बॉक्सिंग", "**गोल्ड (Gold)**"],
+            ["25", "**प्रवीण चित्रवेल**", "मेंस ट्रिपल जंप", "एथलेटिक्स", "**सिल्वर (Silver)**"],
+            ["26", "**सेल्वा प्रभु**", "मेंस ट्रिपल जंप", "एथलेटिक्स", "**ब्रॉन्ज (Bronze)**"],
+            ["27", "[**जैस्मिन लैम्बोरिया (Jaismine Lamboria)**](/current-affairs/jaismine-lamboria-biography-world-boxing-championship-cwg-2026-gold-medal)", "वूमेंस 57 किग्रा", "बॉक्सिंग", "**गोल्ड (Gold)**"],
+            ["28", "**जादुमणि सिंह**", "मेंस 55 किग्रा", "बॉक्सिंग", "**सिल्वर (Silver)**"],
+            ["29", "**शुभम जुयाल**", "मेंस शॉट पुट F57", "पैरा एथलेटिक्स", "**सिल्वर (Silver)**"],
+            ["30", "[**सोमन राणा (Soman Rana)**](/current-affairs/soman-rana-biography-cwg-2026-gold-medal-para-shot-put)", "मेंस शॉट पुट F57", "पैरा एथलेटिक्स", "**गोल्ड (Gold)**"],
+            ["31", "**उन्नति शर्मा**", "वूमेंस -63किग्रा", "जूड़ो", "**ब्रॉन्ज (Bronze)**"],
+            ["32", "[**साक्षी चौधरी (Sakshi Choudhary)**](/current-affairs/sakshi-choudhary-biography-cwg-2026-gold-medal-boxing)", "वूमेंस 51किग्रा", "बॉक्सिंग", "**गोल्ड (Gold)**"],
+            ["33", "[**प्रिया घंघास (Priya Ghanghas)**](/current-affairs/priya-ghanghas-biography-cwg-2026-gold-medal-boxing)", "वूमेंस 60किग्रा", "बॉक्सिंग", "**गोल्ड (Gold)**"],
+            ["34", "[**अरुंधति चौधरी (Arundhati Choudhary)**](/current-affairs/arundhati-choudhary-biography-cwg-2026-gold-medal-boxing)", "वूमेंस 70किग्रा", "बॉक्सिंग", "**गोल्ड (Gold)**"],
+            ["35", "**लवलीना बोरगोहेन**", "वूमेंस 75किग्रा", "बॉक्सिंग", "**सिल्वर (Silver)**"],
+            ["36", "[**सचिन सिवाच (Sachin Siwach)**](/current-affairs/sachin-siwach-biography-cwg-2026-gold-medal-boxing)", "मेंस 60किग्रा", "बॉक्सिंग", "**गोल्ड (Gold)**"],
+            ["37", "[**अंकुश पंघाल (Ankush Panghal)**](/current-affairs/ankush-panghal-biography-cwg-2026-gold-medal-boxing)", "मेंस 80किग्रा", "बॉक्सिंग", "**गोल्ड (Gold)**"],
+            ["38", "**नरेन्द्र बेरवाल**", "मेंस +90किग्रा", "बॉक्सिंग", "**सिल्वर (Silver)**"],
+            ["39", "**गुलवीर सिंह**", "मेंस 5000 मीटर", "एथलेटिक्स", "**ब्रॉन्ज (Bronze)**"]
           ],
           rowsEn: [
             ["1", "**Rishikanta Singh**", "Men's 60kg", "Weightlifting", "**Silver**"],
@@ -351,7 +379,23 @@ export const cwg2026ArticleData = {
             ["20", "**Yamini Mourya**", "Women's -57kg", "Judo", "**Silver**"],
             ["21", "**Tejaswin Shankar**", "Men's Decathlon", "Athletics", "**Bronze**"],
             ["22", "[**Neeraj Chopra**](/en/current-affairs/neeraj-chopra-javelin-records-cwg-2026-silver-medal-biography)", "Men's Javelin Throw", "Athletics", "**Silver**"],
-            ["23", "**Yash Veer Singh**", "Men's Javelin Throw", "Athletics", "**Bronze**"]
+            ["23", "**Yash Veer Singh**", "Men's Javelin Throw", "Athletics", "**Bronze**"],
+            ["24", "[**Preeti Pawar**](/en/current-affairs/preeti-pawar-biography-cwg-2026-gold-medal-boxing)", "Women's 54kg", "Boxing", "**Gold**"],
+            ["25", "**Praveen Chithravel**", "Men's Triple Jump", "Athletics", "**Silver**"],
+            ["26", "**Selva Prabhu**", "Men's Triple Jump", "Athletics", "**Bronze**"],
+            ["27", "[**Jaismine Lamboria**](/en/current-affairs/jaismine-lamboria-biography-world-boxing-championship-cwg-2026-gold-medal)", "Women's 57kg", "Boxing", "**Gold**"],
+            ["28", "**Jadumani Singh**", "Men's 55kg", "Boxing", "**Silver**"],
+            ["29", "**Shubham Juyal**", "Men's Shot Put F57", "Para Athletics", "**Silver**"],
+            ["30", "[**Soman Rana**](/en/current-affairs/soman-rana-biography-cwg-2026-gold-medal-para-shot-put)", "Men's Shot Put F57", "Para Athletics", "**Gold**"],
+            ["31", "**Unnati Sharma**", "Women's -63kg", "Judo", "**Bronze**"],
+            ["32", "[**Sakshi Choudhary**](/en/current-affairs/sakshi-choudhary-biography-cwg-2026-gold-medal-boxing)", "Women's 51kg", "Boxing", "**Gold**"],
+            ["33", "[**Priya Ghanghas**](/en/current-affairs/priya-ghanghas-biography-cwg-2026-gold-medal-boxing)", "Women's 60kg", "Boxing", "**Gold**"],
+            ["34", "[**Arundhati Choudhary**](/en/current-affairs/arundhati-choudhary-biography-cwg-2026-gold-medal-boxing)", "Women's 70kg", "Boxing", "**Gold**"],
+            ["35", "**Lovlina Borgohain**", "Women's 75kg", "Boxing", "**Silver**"],
+            ["36", "[**Sachin Siwach**](/en/current-affairs/sachin-siwach-biography-cwg-2026-gold-medal-boxing)", "Men's 60kg", "Boxing", "**Gold**"],
+            ["37", "[**Ankush Panghal**](/en/current-affairs/ankush-panghal-biography-cwg-2026-gold-medal-boxing)", "Men's 80kg", "Boxing", "**Gold**"],
+            ["38", "**Narendra Berwal**", "Men's +90kg", "Boxing", "**Silver**"],
+            ["39", "**Gulveer Singh**", "Men's 5000m", "Athletics", "**Bronze**"]
           ]
         },
         {
@@ -365,25 +409,27 @@ export const cwg2026ArticleData = {
         },
         {
           _type: "table",
-          caption: "खेलवार भारत की पदक तालिका (Sport-wise Medal Tally)",
-          captionEn: "Sport-wise Breakdown of India's Medals Tally",
-          headers: ["खेल (Sport)", "स्वर्ण (Gold)", "रजत (Silver)", "कांस्य (Bronze)", "कुल (Total)"],
+          caption: "कॉमनवेल्थ गेम्स 2026: खेल अनुसार भारत के पदक",
+          captionEn: "Commonwealth Games 2026: Sport-wise Medals Breakdown of India",
+          headers: ["खेल (Sport)", "गोल्ड (Gold)", "सिल्वर (Silver)", "ब्रॉन्ज (Bronze)", "कुल (Total)"],
           headersEn: ["Sport Discipline", "Gold", "Silver", "Bronze", "Total"],
           rows: [
+            ["**एथलेटिक्स (Athletics)**", "0", "5", "5", "**10**"],
+            ["**पैरा एथलेटिक्स (Para Athletics)**", "3", "2", "1", "**6**"],
+            ["**जूड़ो (Judo)**", "2", "1", "1", "**3**"],
             ["**वेटलिफ्टिंग (Weightlifting)**", "1", "6", "1", "**8**"],
-            ["**जूडो (Judo)**", "2", "1", "0", "**3**"],
-            ["**एथलेटिक्स (Athletics)**", "0", "4", "3", "**7**"],
-            ["**पैरा-एथलेटिक्स (Para Athletics)**", "2", "1", "1", "**4**"],
             ["**पैरा पावरलिफ्टिंग (Para Powerlifting)**", "0", "0", "1", "**1**"],
-            ["**कुल भारत पदक तालिका (Total)**", "**5**", "**12**", "**6**", "**23**"]
+            ["**बॉक्सिंग (Boxing)**", "7", "3", "0", "**10**"],
+            ["**कुल (TOTAL)**", "**13**", "**17**", "**9**", "**39**"]
           ],
           rowsEn: [
+            ["**Athletics**", "0", "5", "5", "**10**"],
+            ["**Para Athletics**", "3", "2", "1", "**6**"],
+            ["**Judo**", "2", "1", "1", "**3**"],
             ["**Weightlifting**", "1", "6", "1", "**8**"],
-            ["**Judo**", "2", "1", "0", "**3**"],
-            ["**Athletics**", "0", "4", "3", "**7**"],
-            ["**Para Athletics**", "2", "1", "1", "**4**"],
             ["**Para Powerlifting**", "0", "0", "1", "**1**"],
-            ["**Total Medals**", "**5**", "**12**", "**6**", "**23**"]
+            ["**Boxing**", "7", "3", "0", "**10**"],
+            ["**Total Medals**", "**13**", "**17**", "**9**", "**39**"]
           ]
         }
       ],
@@ -474,10 +520,10 @@ export const cwg2026ArticleData = {
           items: [
             { label: "2026 CWG मेजबान", labelEn: "2026 Host City", value: "**ग्लासगो, स्कॉटलैंड** (23 जुलाई - 2 अगस्त 2026)", valueEn: "**Glasgow, Scotland** (July 23 - Aug 2, 2026)" },
             { label: "भारतीय दल क्षमता", labelEn: "Indian Contingent", value: "**122 खिलाड़ी** (8 नियमित + 5 पैरा खेल)", valueEn: "**122 Athletes** (8 Regular + 5 Para Sports)" },
-            { label: "भारत के कुल पदक", labelEn: "India Total Medals", value: "**23 पदक (5 स्वर्ण, 12 रजत, 6 कांस्य)**", valueEn: "**23 Medals (5 Gold, 12 Silver, 6 Bronze)**" },
-            { label: "स्वर्ण पदक विजेता (5)", labelEn: "Gold Medalists (5)", value: "**मीराबाई चानू, शर्मिला, दिलीप गावित, अस्मिता डे, हर्ष सिंह**", valueEn: "**Mirabai Chanu, Sharmila, Dilip Gavit, Asmita Dey, Harsh Singh**" },
-            { label: "रजत पदक विजेता (12)", labelEn: "Silver Medalists (12)", value: "**ऋषिकांत, मुथुपांडी, ज्ञानेश्वरी, सर्वेश, वल्लुरी, हरजिंदर, गुलवीर, श्रीशंकर, बासिल, लवप्रीत, यामिनी, नीरज चोपड़ा**", valueEn: "**Rishikanta, Muthupandi, Gyaneshwari, Sarvesh, Valluri, Harjinder, Gulveer, Sreeshankar, Basil, Lovepreet, Yamini, Neeraj**" },
-            { label: "कांस्य पदक विजेता (6)", labelEn: "Bronze Medalists (6)", value: "**झंडू कुमार, बिंदियारानी, शिल्पा, सीमा कालीरामना, तेजस्विन शंकर, यश वीर सिंह**", valueEn: "**Jhandu Kumar, Bindyarani, Shilpa, Seema Kaliramna, Tejaswin, Yash Veer**" },
+            { label: "भारत के कुल पदक", labelEn: "India Total Medals", value: "**39 पदक (13 स्वर्ण, 17 रजत, 9 कांस्य)**", valueEn: "**39 Medals (13 Gold, 17 Silver, 9 Bronze)**" },
+            { label: "स्वर्ण पदक विजेता (13)", labelEn: "Gold Medalists (13)", value: "**मीराबाई चानू, शर्मिला धनखड़, दिलीप गावित, अस्मिता डे, हर्ष सिंह, प्रीति पवार, जैस्मिन लैम्बोरिया, सोमन राणा, साक्षी चौधरी, प्रिया घंघास, अरुंधति चौधरी, सचिन सिवाच, अंकुश पंघाल**", valueEn: "**Mirabai Chanu, Sharmila Dhankar, Dilip Gavit, Asmita Dey, Harsh Singh, Preeti Pawar, Jaismine Lamboria, Soman Rana, Sakshi Choudhary, Priya Ghanghas, Arundhati Choudhary, Sachin Siwach, Ankush Panghal**" },
+            { label: "रजत पदक विजेता (17)", labelEn: "Silver Medalists (17)", value: "**ऋषिकांत, मुथुपांडी, ज्ञानेश्वरी, सर्वेश, वल्लुरी, हरजिंदर, गुलवीर (10k), श्रीशंकर, बासिल, लवप्रीत, यामिनी, नीरज चोपड़ा, प्रवीण चित्रवेल, जादुमणि सिंह, शुभम जुयाल, लवलीना बोरगोहेन, नरेन्द्र बेरवाल**", valueEn: "**Rishikanta, Muthupandi, Gyaneshwari, Sarvesh, Valluri, Harjinder, Gulveer (10k), Sreeshankar, Basil, Lovepreet, Yamini, Neeraj, Praveen Chithravel, Jadumani Singh, Shubham Juyal, Lovlina, Narendra Berwal**" },
+            { label: "कांस्य पदक विजेता (9)", labelEn: "Bronze Medalists (9)", value: "**झंडू कुमार, बिंदियारानी, शिल्पा, सीमा कालीरामना, तेजस्विन, यश वीर सिंह, सेल्वा प्रभु, उन्नति शर्मा, गुलवीर सिंह (5k)**", valueEn: "**Jhandu Kumar, Bindyarani, Shilpa, Seema Kaliramna, Tejaswin, Yash Veer, Selva Prabhu, Unnati Sharma, Gulveer (5k)**" },
           ]
         }
       ],
@@ -487,34 +533,34 @@ export const cwg2026ArticleData = {
   /* ─── FAQS (8 Collapsible FAQs addressing Google PAA) ─────── */
   faqs: [
     {
-      question: "कॉमनवेल्थ गेम्स 2026 में भारत ने अब तक कुल कितने पदक जीते हैं?",
-      questionEn: "How many medals has India won in the Commonwealth Games 2026 so far?",
-      answer: "भारत ने कॉमनवेल्थ गेम्स 2026 (ग्लासगो) में अब तक कुल 23 पदक जीते हैं, जिनमें 5 स्वर्ण (मीराबाई चानू, शर्मिला, दिलीप गावित, अस्मिता डे, हर्ष सिंह), 12 रजत (नीरज चोपड़ा, यामिनी मौर्या, लवप्रीत आदि) और 6 कांस्य (तेजस्विन शंकर, यश वीर सिंह आदि) शामिल हैं।",
-      answerEn: "India has won a total of 23 medals (5 Gold, 12 Silver, 6 Bronze) at the Commonwealth Games 2026 in Glasgow so far, holding the 10th rank."
+      question: "कॉमनवेल्थ गेम्स 2026 में भारत ने कुल कितने पदक जीते हैं?",
+      questionEn: "How many total medals has India won in the Commonwealth Games 2026?",
+      answer: "भारत ने कॉमनवेल्थ गेम्स 2026 (ग्लासगो) में कुल 39 पदक जीते हैं, जिनमें 13 स्वर्ण, 17 रजत और 9 कांस्य पदक शामिल हैं। मुक्केबाजी दल ने सर्वाधिक 7 स्वर्ण सहित 10 पदक तथा एथलेटिक्स दल ने 10 पदक दिलाए।",
+      answerEn: "India won a total of 39 medals (13 Gold, 17 Silver, 9 Bronze) at the Glasgow Commonwealth Games 2026. Boxing led with 7 Gold (10 medals), alongside Athletics (10 medals), Weightlifting (8 medals), Para Athletics (6 medals), and Judo (3 medals)."
     },
     {
-      question: "राष्ट्र मंडल खेलों 2026 में जूडो खेल में भारत ने कौन-से पदक जीते हैं?",
+      question: "राष्ट्रमंडल खेलों 2026 में मुक्केबाजी (Boxing) में भारत ने कितने स्वर्ण पदक जीते?",
+      questionEn: "How many Gold medals did India win in Boxing at CWG 2026?",
+      answer: "भारत ने मुक्केबाजी (Boxing) में रिकॉर्ड 7 स्वर्ण पदक जीते हैं: प्रीति पवार (54kg), जैस्मिन लैम्बोरिया (57kg), साक्षी चौधरी (51kg), प्रिया घंघास (60kg), अरुंधति चौधरी (70kg), सचिन सिवाच (60kg) और अंकुश पंघाल (80kg)।",
+      answerEn: "India bagged a record 7 Gold medals in Boxing: Preeti Pawar (54kg), Jaismine Lamboria (57kg), Sakshi Choudhary (51kg), Priya Ghanghas (60kg), Arundhati Choudhary (70kg), Sachin Siwach (60kg), and Ankush Panghal (80kg)."
+    },
+    {
+      question: "कॉमनवेल्थ गेम्स 2026 में खेलवार भारत की पदक तालिका (Sport-wise Medal Tally) क्या है?",
+      questionEn: "What is India's sport-wise medal breakdown at CWG 2026?",
+      answer: "खेलवार तालिका: एथलेटिक्स (10: 0G, 5S, 5B), मुक्केबाजी (10: 7G, 3S, 0B), वेटलिफ्टिंग (8: 1G, 6S, 1B), पैरा एथलेटिक्स (6: 3G, 2S, 1B), जूडो (3: 2G, 1S, 1B), तथा पैरा पावरलिफ्टिंग (1: 0G, 0S, 1B)। कुल = 39 पदक।",
+      answerEn: "Sport-wise Tally: Athletics (10: 0G, 5S, 5B), Boxing (10: 7G, 3S, 0B), Weightlifting (8: 1G, 6S, 1B), Para Athletics (6: 3G, 2S, 1B), Judo (3: 2G, 1S, 1B), and Para Powerlifting (1: 0G, 0S, 1B). Total = 39 Medals."
+    },
+    {
+      question: "कॉमनवेल्थ गेम्स 2026 में पैरा एथलेटिक्स shot put F57 में स्वर्ण व रजत किसने जीता?",
+      questionEn: "Who won Gold and Silver in Para Athletics Men's Shot Put F57 at CWG 2026?",
+      answer: "पुरुष shot put F57 पैरा एथलेटिक्स में भारत के सोमन राणा ने स्वर्ण पदक (Gold) तथा शुभम जुयाल ने रजत पदक (Silver) जीतकर 1-2 स्वर्णिम सफलता हासिल की।",
+      answerEn: "In Men's Shot Put F57 Para Athletics, Soman Rana secured Gold while Shubham Juyal won Silver for India."
+    },
+    {
+      question: "कॉमनवेल्थ गेम्स 2026 में जूडो खेल में भारत ने कौन-से पदक जीते हैं?",
       questionEn: "Which medals did India win in Judo at Commonwealth Games 2026?",
-      answer: "जूडो में अस्मिता डे (महिला -48 किग्रा) तथा हर्ष सिंह (पुरुष -60 किग्रा) ने स्वर्ण पदक (Gold) तथा यामिनी मौर्या (महिला -57 किग्रा) ने रजत पदक (Silver) जीता।",
-      answerEn: "In Judo, Asmita Dey (Women's -48kg) and Harsh Singh (Men's -60kg) won Gold medals, while Yamini Mourya (Women's -57kg) won Silver medal."
-    },
-    {
-      question: "कॉमनवेल्थ गेम्स 2026 में भाला फेंक (Javelin Throw - नीरज चोपड़ा) स्पर्धा का परिणाम क्या रहा?",
-      questionEn: "What was the result of Neeraj Chopra in Men's Javelin Throw at CWG 2026?",
-      answer: "ओलंपिक चैंपियन नीरज चोपड़ा ने पुरुष भाला फेंक स्पर्धा में रजत पदक (Silver) तथा भारत के ही यश वीर सिंह ने कांस्य पदक (Bronze) अपने नाम किया।",
-      answerEn: "Olympic champion Neeraj Chopra won the Silver medal in Men's Javelin Throw, while fellow Indian Yash Veer Singh secured the Bronze medal."
-    },
-    {
-      question: "कॉमनवेल्थ गेम्स 2026 Day 9 में भारत को कितने पदक प्राप्त हुए?",
-      questionEn: "How many medals did India win on Day 9 of Commonwealth Games 2026?",
-      answer: "9वें दिन भारत ने 6 पदक जीते: अस्मिता डे व हर्ष सिंह का स्वर्ण, नीरज चोपड़ा व यामिनी मौर्या का रजत, तथा तेजस्विन शंकर व यश वीर सिंह का कांस्य पदक।",
-      answerEn: "On Day 9, India delivered a historic 6-medal surge: 2 Gold (Asmita Dey & Harsh Singh), 2 Silver (Neeraj Chopra & Yamini Mourya), and 2 Bronze (Tejaswin Shankar & Yash Veer Singh)."
-    },
-    {
-      question: "कॉमनवेल्थ गेम्स 2026 में 100m T47 पैरा एथलेटिक्स में स्वर्ण व रजत पदक किसने जीते?",
-      questionEn: "Who won Gold and Silver in Men's 100m T47 Para Athletics at CWG 2026?",
-      answer: "पुरुष 100 मीटर T47 पैरा एथलेटिक्स में दिलीप गावित ने 10.71 सेकंड के गेम्स रिकॉर्ड के साथ स्वर्ण पदक (Gold) तथा मोहम्मद बासिल ने 10.89 सेकंड के साथ रजत पदक (Silver) जीता।",
-      answerEn: "Dilip Gavit won Gold with a Games Record of 10.71s in Men's 100m T47, and Mohammad Basil secured Silver with 10.89s, giving India a 1-2 finish."
+      answer: "जूडो में भारत ने कुल 3 पदक हासिल किए: अस्मिता डे (महिला -48kg) व हर्ष सिंह (पुरुष -60kg) का स्वर्ण पदक, यामिनी मौर्या (महिला -57kg) का रजत पदक, तथा उन्नति शर्मा (महिला -63kg) का कांस्य पदक।",
+      answerEn: "In Judo, India won 3 medals: Gold by Asmita Dey (-48kg) & Harsh Singh (-60kg), Silver by Yamini Mourya (-57kg), and Bronze by Unnati Sharma (-63kg)."
     },
     {
       question: "कॉमनवेल्थ गेम्स 2026 से किन 5 प्रमुख खेलों को बाहर (Dropped Sports) किया गया है?",
@@ -539,58 +585,58 @@ export const cwg2026ArticleData = {
   /* ─── MCQS (EXACTLY 8 High-Quality Practice Quizzes) ───────────────── */
   mcqs: [
     {
-      question: "कॉमनवेल्थ गेम्स 2026 (CWG 2026) में भारत ने अब तक कुल कितने पदक (Medals) जीते हैं?",
-      questionEn: "How many total medals has India won at the Commonwealth Games 2026 so far?",
-      options: ["A. 17 पदक", "B. 20 पदक", "C. 23 पदक (5 स्वर्ण, 12 रजत, 6 कांस्य)", "D. 25 पदक"],
-      optionsEn: ["A. 17 Medals", "B. 20 Medals", "C. 23 Medals (5 Gold, 12 Silver, 6 Bronze)", "D. 25 Medals"],
+      question: "कॉमनवेल्थ गेम्स 2026 (CWG 2026) में भारत ने कुल कितने पदक (Medals) जीते हैं?",
+      questionEn: "How many total medals has India won at the Commonwealth Games 2026?",
+      options: ["A. 23 पदक", "B. 30 पदक", "C. 39 पदक (13 स्वर्ण, 17 रजत, 9 कांस्य)", "D. 45 पदक"],
+      optionsEn: ["A. 23 Medals", "B. 30 Medals", "C. 39 Medals (13 Gold, 17 Silver, 9 Bronze)", "D. 45 Medals"],
       correctIndex: 2,
-      explanation: "भारत ने CWG 2026 में 5 स्वर्ण, 12 रजत और 6 कांस्य सहित कुल 23 पदक जीत लिए हैं।",
-      explanationEn: "India has won a total of 23 medals (5 Gold, 12 Silver, 6 Bronze) at the Glasgow Commonwealth Games 2026."
+      explanation: "भारत ने CWG 2026 में 13 स्वर्ण, 17 रजत और 9 कांस्य सहित कुल 39 पदक अपने नाम किए।",
+      explanationEn: "India won a total of 39 medals (13 Gold, 17 Silver, 9 Bronze) at the Glasgow Commonwealth Games 2026."
     },
     {
-      question: "कॉमनवेल्थ गेम्स 2026 में पुरुष भाला फेंक (Javelin Throw) स्पर्धा में रजत पदक किस भारतीय खिलाड़ी ने जीता?",
-      questionEn: "Which Indian athlete won the Silver medal in Men's Javelin Throw at CWG 2026?",
-      options: ["A. नीरज चोपड़ा", "B. किशोर जेना", "C. यश वीर सिंह", "D. सुमित अंतिल"],
-      optionsEn: ["A. Neeraj Chopra", "B. Kishore Jena", "C. Yash Veer Singh", "D. Sumit Antil"],
-      correctIndex: 0,
-      explanation: "नीरज चोपड़ा ने पुरुष भाला फेंक स्पर्धा में रजत पदक तथा यश वीर सिंह ने कांस्य पदक हासिल किया।",
-      explanationEn: "Neeraj Chopra won the Silver medal in Men's Javelin Throw, while Yash Veer Singh won the Bronze medal."
+      question: "कॉमनवेल्थ गेम्स 2026 में भारत ने मुक्केबाजी (Boxing) खेल में कुल कितने स्वर्ण पदक (Gold Medals) जीते?",
+      questionEn: "How many Gold Medals did India win in Boxing at CWG 2026?",
+      options: ["A. 3 स्वर्ण पदक", "B. 5 स्वर्ण पदक", "C. 7 स्वर्ण पदक", "D. 9 स्वर्ण पदक"],
+      optionsEn: ["A. 3 Gold Medals", "B. 5 Gold Medals", "C. 7 Gold Medals", "D. 9 Gold Medals"],
+      correctIndex: 2,
+      explanation: "भारतीय मुक्केबाजों ने शानदार प्रदर्शन करते हुए रिकॉर्ड 7 स्वर्ण पदक (और 3 रजत सहित कुल 10 पदक) जीते।",
+      explanationEn: "Indian boxers achieved a stellar performance, winning 7 Gold medals (and 3 Silver, total 10 medals)."
     },
     {
-      question: "कॉमनवेल्थ गेम्स 2026 में महिला -48 किग्रा जूडो स्पर्धा में स्वर्ण पदक किस भारतीय एथलीट ने जीता?",
-      questionEn: "Which Indian athlete won the Gold medal in Women's -48kg Judo at CWG 2026?",
-      options: ["A. अस्मिता डे", "B. यामिनी मौर्या", "C. शुशीला देवी", "D. तूलिका मान"],
-      optionsEn: ["A. Asmita Dey", "B. Yamini Mourya", "C. Shushila Devi", "D. Tulika Maan"],
+      question: "कॉमनवेल्th गेम्स 2026 में पुरुष शॉट पुट F57 (पैरा एथलेटिक्स) में स्वर्ण पदक किस भारतीय खिलाड़ी ने जीता?",
+      questionEn: "Which Indian athlete won the Gold medal in Men's Shot Put F57 Para Athletics at CWG 2026?",
+      options: ["A. सोमन राणा", "B. शुभम जुयाल", "C. दिलीप गावित", "D. सर्वेश कुशारे"],
+      optionsEn: ["A. Soman Rana", "B. Shubham Juyal", "C. Dilip Gavit", "D. Sarvesh Kushare"],
       correctIndex: 0,
-      explanation: "अस्मिता डे ने महिला -48 किग्रा जूडो स्पर्धा में भारत के लिए ऐतिहासिक स्वर्ण पदक जीता।",
-      explanationEn: "Asmita Dey won a historic Gold medal for India in the Women's -48kg Judo competition."
+      explanation: "सोमन राणा ने पुरुष शॉट पुट F57 में स्वर्ण पदक तथा शुभम जुयाल ने रजत पदक हासिल किया।",
+      explanationEn: "Soman Rana won Gold and Shubham Juyal won Silver in Men's Shot Put F57 Para Athletics."
     },
     {
-      question: "कॉमनवेल्थ गेम्स 2026 में पुरुष डेकॉथ्लॉन (Decathlon) स्पर्धा में कांस्य पदक किस एथलीट ने हासिल किया?",
-      questionEn: "Which athlete won the Bronze medal in Men's Decathlon at CWG 2026?",
-      options: ["A. तेजस्विन शंकर", "B. सर्वेश कुशारे", "C. श्रीशंकर", "D. अविनाश साबले"],
-      optionsEn: ["A. Tejaswin Shankar", "B. Sarvesh Kushare", "C. Sreeshankar", "D. Avinash Sable"],
+      question: "कॉमनवेल्थ गेम्स 2026 में महिला 51किग्रा मुक्केबाजी स्पर्धा में स्वर्ण पदक किसने हासिल किया?",
+      questionEn: "Who won the Gold medal in Women's 51kg Boxing at CWG 2026?",
+      options: ["A. साक्षी चौधरी", "B. प्रीति पवार", "C. लवलीना बोरगोहेन", "D. जैस्मिन लैम्बोरिया"],
+      optionsEn: ["A. Sakshi Choudhary", "B. Preeti Pawar", "C. Lovlina Borgohain", "D. Jaismine Lamboria"],
       correctIndex: 0,
-      explanation: "तेजस्विन शंकर ने पुरुष डेकॉथ्लॉन स्पर्धा में भारत के लिए कांस्य पदक जीतकर इतिहास रचा।",
-      explanationEn: "Tejaswin Shankar scripted history by winning the Bronze medal in Men's Decathlon."
+      explanation: "साक्षी चौधरी ने महिला 51 किग्रा मुक्केबाजी स्पर्धा में भारत के लिए स्वर्ण पदक हासिल किया।",
+      explanationEn: "Sakshi Choudhary won Gold in Women's 51kg Boxing at CWG 2026."
     },
     {
-      question: "कॉमनवेल्थ गेम्स 2026 में पुरुष 100 मीटर T47 (पैरा एथलेटिक्स) स्पर्धा में स्वर्ण पदक किस भारतीय खिलाड़ी ने जीता?",
-      questionEn: "Who won the Gold medal in Men's 100m T47 Para Athletics at CWG 2026?",
-      options: ["A. दिलीप गावित", "B. मोहम्मद बासिल", "C. सुमित अंतिल", "D. निशाद कुमार"],
-      optionsEn: ["A. Dilip Gavit", "B. Mohammad Basil", "C. Sumit Antil", "D. Nishad Kumar"],
+      question: "कॉमनवेल्थ गेम्स 2026 में पुरुष ट्रिपल जंप (Triple Jump) स्पर्धा में भारत के लिए रजत पदक किसने जीता?",
+      questionEn: "Who won the Silver medal for India in Men's Triple Jump at CWG 2026?",
+      options: ["A. प्रवीण चित्रवेल", "B. सेल्वा प्रभु", "C. मुरली श्रीशंकर", "D. तेजस्विन शंकर"],
+      optionsEn: ["A. Praveen Chithravel", "B. Selva Prabhu", "C. Murali Sreeshankar", "D. Tejaswin Shankar"],
       correctIndex: 0,
-      explanation: "दिलीप गावित ने पुरुष 100 मीटर T47 पैरा एथलेटिक्स में 10.71s गेम्स रिकॉर्ड के साथ स्वर्ण पदक जीता।",
-      explanationEn: "Dilip Gavit won the Gold medal in Men's 100m T47 with a new Games Record of 10.71 seconds."
+      explanation: "प्रवीण चित्रवेल ने पुरुष ट्रिपल जंप में रजत पदक तथा सेल्वा प्रभु ने कांस्य पदक हासिल किया।",
+      explanationEn: "Praveen Chithravel won Silver and Selva Prabhu won Bronze in Men's Triple Jump."
     },
     {
-      question: "कॉमनवेल्थ गेम्स 2026 में पुरुष -60 किग्रा जूडो स्पर्धा में भारत के लिए स्वर्ण पदक किसने जीता?",
-      questionEn: "Who won the Gold medal for India in Men's -60kg Judo at CWG 2026?",
-      options: ["A. हर्ष सिंह", "B. विजय कुमार", "C. जसलीन सिंह", "D. अवतार सिंह"],
-      optionsEn: ["A. Harsh Singh", "B. Vijay Kumar", "C. Jasleen Singh", "D. Avtar Singh"],
+      question: "कॉमनवेल्थ गेम्स 2026 में महिला -63 किग्रा जूडो स्पर्धा में कांस्य पदक किस भारतीय खिलाड़ी ने जीता?",
+      questionEn: "Which Indian athlete won the Bronze medal in Women's -63kg Judo at CWG 2026?",
+      options: ["A. उन्नति शर्मा", "B. अस्मिता डे", "C. यामिनी मौर्या", "D. तूलिका मान"],
+      optionsEn: ["A. Unnati Sharma", "B. Asmita Dey", "C. Yamini Mourya", "D. Tulika Maan"],
       correctIndex: 0,
-      explanation: "हर्ष सिंह ने पुरुष -60 किग्रा जूडो स्पर्धा में स्वर्ण पदक जीतकर भारत की स्वर्ण पदकों की संख्या 5 तक पहुँचायी।",
-      explanationEn: "Harsh Singh won Gold in Men's -60kg Judo to take India's gold tally to 5."
+      explanation: "उन्नति शर्मा ने महिला -63 किग्रा जूडो स्पर्धा में कांस्य पदक जीतकर भारत की जूडो पदक तालिका 3 तक पहुँचाई।",
+      explanationEn: "Unnati Sharma won Bronze in Women's -63kg Judo to take India's Judo tally to 3 medals."
     },
     {
       question: "ग्लासगो राष्ट्रमंडल खेल 2026 से किस प्रमुख खेल को बाहर (Dropped) कर दिया गया है?",
@@ -602,13 +648,13 @@ export const cwg2026ArticleData = {
       explanationEn: "Shooting, Wrestling, Badminton, Hockey, and Table Tennis have been excluded from 2026 Games."
     },
     {
-      question: "कॉमनवेल्थ गेम्स 2026 में भारत को वेटलिफ्टिंग (भारोत्तोलन) खेल से कुल कितने पदक प्राप्त हुए हैं?",
-      questionEn: "How many total medals did India win in Weightlifting at CWG 2026?",
-      options: ["A. 5 पदक", "B. 7 पदक", "C. 8 पदक (1 स्वर्ण, 6 रजत, 1 कांस्य)", "D. 10 पदक"],
-      optionsEn: ["A. 5 Medals", "B. 7 Medals", "C. 8 Medals (1 Gold, 6 Silver, 1 Bronze)", "D. 10 Medals"],
+      question: "कॉमनवेल्थ गेम्स 2026 में एथलेटिक्स (Athletics - नियमित) में भारत ने कुल कितने पदक जीते?",
+      questionEn: "How many total medals did India win in regular Athletics at CWG 2026?",
+      options: ["A. 5 पदक", "B. 8 पदक", "C. 10 पदक (0 स्वर्ण, 5 रजत, 5 कांस्य)", "D. 12 पदक"],
+      optionsEn: ["A. 5 Medals", "B. 8 Medals", "C. 10 Medals (0 Gold, 5 Silver, 5 Bronze)", "D. 12 Medals"],
       correctIndex: 2,
-      explanation: "भारत को वेटलिफ्टिंग से कुल 8 पदक (1 स्वर्ण, 6 रजत, 1 कांस्य) प्राप्त हुए हैं।",
-      explanationEn: "India won 8 total medals in Weightlifting (1 Gold, 6 Silver, 1 Bronze)."
+      explanation: "भारत ने नियमित एथलेटिक्स में 5 रजत और 5 कांस्य सहित कुल 10 पदक हासिल किए।",
+      explanationEn: "India won 10 total medals in regular Athletics (5 Silver and 5 Bronze)."
     }
   ]
 };

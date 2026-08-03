@@ -304,6 +304,11 @@ function mapCard(raw: any, locale: Locale): ArticleListItem {
       url: "/images/blog/asmita_dey_cwg_2026_gold_flag_celebration.png",
       alt: "अस्मिता डे कॉमनवेल्थ गेम्स 2026 में स्वर्ण पदक जीतकर तिरंगे के साथ जश्न मनाते हुए (Asmita Dey Gold Medal CWG 2026)",
     };
+  } else if (slug === "preeti-pawar-biography-cwg-2026-gold-medal-boxing") {
+    rawImage = {
+      url: "/images/blog/preeti_pawar_cwg_2026_gold_victory.png",
+      alt: "प्रीति पवार कॉमनवेल्थ गेम्स 2026 मुक्केबाजी स्वर्ण पदक जीत - Preeti Pawar CWG 2026 Gold Medal",
+    };
   } else if (slug === "disaster-management-amendment-act-2025-mppsc-upsc-notes") {
     rawImage = {
       url: "/images/blog/disaster-management-amendment-act-2025.png",
@@ -639,6 +644,62 @@ export class SanityRepository implements ContentRepository {
         ...asmitaDeyArticleData,
       };
     }
+    if (slug === "preeti-pawar-biography-cwg-2026-gold-medal-boxing") {
+      const { preetiPawarArticleData } = await import("@/data/preeti-pawar-article-override");
+      raw = {
+        ...(raw || {}),
+        ...preetiPawarArticleData,
+      };
+    }
+    if (slug === "jaismine-lamboria-biography-world-boxing-championship-cwg-2026-gold-medal") {
+      const { jaismineLamboriaArticleData } = await import("@/data/jaismine-lamboria-article-override");
+      raw = {
+        ...(raw || {}),
+        ...jaismineLamboriaArticleData,
+      };
+    }
+    if (slug === "soman-rana-biography-cwg-2026-gold-medal-para-shot-put") {
+      const { somanRanaArticleData } = await import("@/data/soman-rana-article-override");
+      raw = {
+        ...(raw || {}),
+        ...somanRanaArticleData,
+      };
+    }
+    if (slug === "sakshi-choudhary-biography-cwg-2026-gold-medal-boxing") {
+      const { sakshiChoudharyArticleData } = await import("@/data/sakshi-choudhary-article-override");
+      raw = {
+        ...(raw || {}),
+        ...sakshiChoudharyArticleData,
+      };
+    }
+    if (slug === "priya-ghanghas-biography-cwg-2026-gold-medal-boxing") {
+      const { priyaGhanghasArticleData } = await import("@/data/priya-ghanghas-article-override");
+      raw = {
+        ...(raw || {}),
+        ...priyaGhanghasArticleData,
+      };
+    }
+    if (slug === "arundhati-choudhary-biography-cwg-2026-gold-medal-boxing") {
+      const { arundhatiChoudharyArticleData } = await import("@/data/arundhati-choudhary-article-override");
+      raw = {
+        ...(raw || {}),
+        ...arundhatiChoudharyArticleData,
+      };
+    }
+    if (slug === "sachin-siwach-biography-cwg-2026-gold-medal-boxing") {
+      const { sachinSiwachArticleData } = await import("@/data/sachin-siwach-article-override");
+      raw = {
+        ...(raw || {}),
+        ...sachinSiwachArticleData,
+      };
+    }
+    if (slug === "ankush-panghal-biography-cwg-2026-gold-medal-boxing") {
+      const { ankushPanghalArticleData } = await import("@/data/ankush-panghal-article-override");
+      raw = {
+        ...(raw || {}),
+        ...ankushPanghalArticleData,
+      };
+    }
     if (slug === "harsh-singh-biography-cwg-2026-gold-medal-judo") {
       const { harshSinghArticleData } = await import("@/data/harsh-singh-article-override");
       raw = {
@@ -864,18 +925,58 @@ export class SanityRepository implements ContentRepository {
     });
 
     if (!query.contentType || query.contentType === "currentAffairs") {
+      const { preetiPawarArticleData } = await import("@/data/preeti-pawar-article-override");
+      const { jaismineLamboriaArticleData } = await import("@/data/jaismine-lamboria-article-override");
+      const { sakshiChoudharyArticleData } = await import("@/data/sakshi-choudhary-article-override");
+      const { priyaGhanghasArticleData } = await import("@/data/priya-ghanghas-article-override");
+      const { arundhatiChoudharyArticleData } = await import("@/data/arundhati-choudhary-article-override");
+      const { sachinSiwachArticleData } = await import("@/data/sachin-siwach-article-override");
+      const { ankushPanghalArticleData } = await import("@/data/ankush-panghal-article-override");
+      const { somanRanaArticleData } = await import("@/data/soman-rana-article-override");
       const { neerajChopraArticleData } = await import("@/data/neeraj-chopra-article-override");
       const { harshSinghArticleData } = await import("@/data/harsh-singh-article-override");
       const { asmitaDeyArticleData } = await import("@/data/asmita-dey-article-override");
       const { dilipGavitArticleData } = await import("@/data/dilip-gavit-article-override");
       const { cwg2026ArticleData } = await import("@/data/cwg-2026-article-override");
 
+      const preetiCard = mapCard(preetiPawarArticleData as any, locale);
+      const jaismineCard = mapCard(jaismineLamboriaArticleData as any, locale);
+      const sakshiCard = mapCard(sakshiChoudharyArticleData as any, locale);
+      const priyaCard = mapCard(priyaGhanghasArticleData as any, locale);
+      const arundhatiCard = mapCard(arundhatiChoudharyArticleData as any, locale);
+      const sachinCard = mapCard(sachinSiwachArticleData as any, locale);
+      const ankushCard = mapCard(ankushPanghalArticleData as any, locale);
+      const somanCard = mapCard(somanRanaArticleData as any, locale);
       const neerajCard = mapCard(neerajChopraArticleData as any, locale);
       const harshCard = mapCard(harshSinghArticleData as any, locale);
       const asmitaCard = mapCard(asmitaDeyArticleData as any, locale);
       const dilipCard = mapCard(dilipGavitArticleData as any, locale);
       const cwgCard = mapCard(cwg2026ArticleData as any, locale);
 
+      if (!items.some((it) => it.slug === ankushCard.slug)) {
+        items.unshift(ankushCard);
+      }
+      if (!items.some((it) => it.slug === sachinCard.slug)) {
+        items.unshift(sachinCard);
+      }
+      if (!items.some((it) => it.slug === arundhatiCard.slug)) {
+        items.unshift(arundhatiCard);
+      }
+      if (!items.some((it) => it.slug === priyaCard.slug)) {
+        items.unshift(priyaCard);
+      }
+      if (!items.some((it) => it.slug === sakshiCard.slug)) {
+        items.unshift(sakshiCard);
+      }
+      if (!items.some((it) => it.slug === somanCard.slug)) {
+        items.unshift(somanCard);
+      }
+      if (!items.some((it) => it.slug === jaismineCard.slug)) {
+        items.unshift(jaismineCard);
+      }
+      if (!items.some((it) => it.slug === preetiCard.slug)) {
+        items.unshift(preetiCard);
+      }
       if (!items.some((it) => it.slug === neerajCard.slug)) {
         items.unshift(neerajCard);
       }
@@ -948,18 +1049,33 @@ export class SanityRepository implements ContentRepository {
     const items = raw.map((r) => mapCard(r, locale));
 
     if (!contentType || contentType === "currentAffairs") {
+      const { preetiPawarArticleData } = await import("@/data/preeti-pawar-article-override");
+      const { jaismineLamboriaArticleData } = await import("@/data/jaismine-lamboria-article-override");
+      const { somanRanaArticleData } = await import("@/data/soman-rana-article-override");
       const { neerajChopraArticleData } = await import("@/data/neeraj-chopra-article-override");
       const { harshSinghArticleData } = await import("@/data/harsh-singh-article-override");
       const { asmitaDeyArticleData } = await import("@/data/asmita-dey-article-override");
       const { dilipGavitArticleData } = await import("@/data/dilip-gavit-article-override");
       const { cwg2026ArticleData } = await import("@/data/cwg-2026-article-override");
 
+      const preetiCard = mapCard(preetiPawarArticleData as any, locale);
+      const jaismineCard = mapCard(jaismineLamboriaArticleData as any, locale);
+      const somanCard = mapCard(somanRanaArticleData as any, locale);
       const neerajCard = mapCard(neerajChopraArticleData as any, locale);
       const harshCard = mapCard(harshSinghArticleData as any, locale);
       const asmitaCard = mapCard(asmitaDeyArticleData as any, locale);
       const dilipCard = mapCard(dilipGavitArticleData as any, locale);
       const cwgCard = mapCard(cwg2026ArticleData as any, locale);
 
+      if (!items.some((it) => it.slug === somanCard.slug)) {
+        items.unshift(somanCard);
+      }
+      if (!items.some((it) => it.slug === jaismineCard.slug)) {
+        items.unshift(jaismineCard);
+      }
+      if (!items.some((it) => it.slug === preetiCard.slug)) {
+        items.unshift(preetiCard);
+      }
       if (!items.some((it) => it.slug === neerajCard.slug)) {
         items.unshift(neerajCard);
       }
@@ -1014,18 +1130,30 @@ export class SanityRepository implements ContentRepository {
       if (deduped.length >= limit) break;
     }
 
+    const { preetiPawarArticleData } = await import("@/data/preeti-pawar-article-override");
+    const { jaismineLamboriaArticleData } = await import("@/data/jaismine-lamboria-article-override");
+    const { somanRanaArticleData } = await import("@/data/soman-rana-article-override");
     const { neerajChopraArticleData } = await import("@/data/neeraj-chopra-article-override");
     const { harshSinghArticleData } = await import("@/data/harsh-singh-article-override");
     const { asmitaDeyArticleData } = await import("@/data/asmita-dey-article-override");
     const { dilipGavitArticleData } = await import("@/data/dilip-gavit-article-override");
     const { cwg2026ArticleData } = await import("@/data/cwg-2026-article-override");
 
+    const preetiCard = mapCard(preetiPawarArticleData as any, locale);
+    const jaismineCard = mapCard(jaismineLamboriaArticleData as any, locale);
+    const somanCard = mapCard(somanRanaArticleData as any, locale);
     const neerajCard = mapCard(neerajChopraArticleData as any, locale);
     const harshCard = mapCard(harshSinghArticleData as any, locale);
     const asmitaCard = mapCard(asmitaDeyArticleData as any, locale);
     const dilipCard = mapCard(dilipGavitArticleData as any, locale);
     const cwgCard = mapCard(cwg2026ArticleData as any, locale);
 
+    if (!deduped.some((it) => it.slug === somanCard.slug)) {
+      deduped.unshift(somanCard);
+    }
+    if (!deduped.some((it) => it.slug === preetiCard.slug)) {
+      deduped.unshift(preetiCard);
+    }
     if (!deduped.some((it) => it.slug === neerajCard.slug)) {
       deduped.unshift(neerajCard);
     }
@@ -1166,6 +1294,62 @@ export class SanityRepository implements ContentRepository {
         slug: "mp-state-awards-tansen-kalidas-kabir-samman-mppsc-notes",
         type: "staticGk",
         updatedAt: "2026-07-31T10:30:00.000Z",
+      });
+    }
+    if (!slugs.some((s) => s.slug === "sakshi-choudhary-biography-cwg-2026-gold-medal-boxing")) {
+      slugs.unshift({
+        slug: "sakshi-choudhary-biography-cwg-2026-gold-medal-boxing",
+        type: "currentAffairs",
+        updatedAt: "2026-08-03T13:30:00.000Z",
+      });
+    }
+    if (!slugs.some((s) => s.slug === "priya-ghanghas-biography-cwg-2026-gold-medal-boxing")) {
+      slugs.unshift({
+        slug: "priya-ghanghas-biography-cwg-2026-gold-medal-boxing",
+        type: "currentAffairs",
+        updatedAt: "2026-08-03T13:40:00.000Z",
+      });
+    }
+    if (!slugs.some((s) => s.slug === "arundhati-choudhary-biography-cwg-2026-gold-medal-boxing")) {
+      slugs.unshift({
+        slug: "arundhati-choudhary-biography-cwg-2026-gold-medal-boxing",
+        type: "currentAffairs",
+        updatedAt: "2026-08-03T13:45:00.000Z",
+      });
+    }
+    if (!slugs.some((s) => s.slug === "sachin-siwach-biography-cwg-2026-gold-medal-boxing")) {
+      slugs.unshift({
+        slug: "sachin-siwach-biography-cwg-2026-gold-medal-boxing",
+        type: "currentAffairs",
+        updatedAt: "2026-08-03T13:50:00.000Z",
+      });
+    }
+    if (!slugs.some((s) => s.slug === "ankush-panghal-biography-cwg-2026-gold-medal-boxing")) {
+      slugs.unshift({
+        slug: "ankush-panghal-biography-cwg-2026-gold-medal-boxing",
+        type: "currentAffairs",
+        updatedAt: "2026-08-03T13:55:00.000Z",
+      });
+    }
+    if (!slugs.some((s) => s.slug === "soman-rana-biography-cwg-2026-gold-medal-para-shot-put")) {
+      slugs.unshift({
+        slug: "soman-rana-biography-cwg-2026-gold-medal-para-shot-put",
+        type: "currentAffairs",
+        updatedAt: "2026-08-03T13:00:00.000Z",
+      });
+    }
+    if (!slugs.some((s) => s.slug === "jaismine-lamboria-biography-world-boxing-championship-cwg-2026-gold-medal")) {
+      slugs.unshift({
+        slug: "jaismine-lamboria-biography-world-boxing-championship-cwg-2026-gold-medal",
+        type: "currentAffairs",
+        updatedAt: "2026-08-03T12:00:00.000Z",
+      });
+    }
+    if (!slugs.some((s) => s.slug === "preeti-pawar-biography-cwg-2026-gold-medal-boxing")) {
+      slugs.unshift({
+        slug: "preeti-pawar-biography-cwg-2026-gold-medal-boxing",
+        type: "currentAffairs",
+        updatedAt: "2026-08-03T11:00:00.000Z",
       });
     }
     if (!slugs.some((s) => s.slug === "asmita-dey-biography-cwg-2026-gold-medal-judo")) {
