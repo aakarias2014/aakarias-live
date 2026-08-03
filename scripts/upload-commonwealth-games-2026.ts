@@ -96,6 +96,12 @@ async function main() {
         asset: { _type: "reference", _ref: assetTallyBanner._id },
         alt: cwg2026ArticleData.featuredImage.alt,
         caption: cwg2026ArticleData.featuredImage.caption,
+      },
+      mainImage: {
+        _type: "image",
+        asset: { _type: "reference", _ref: assetTallyBanner._id },
+        alt: cwg2026ArticleData.featuredImage.alt,
+        caption: cwg2026ArticleData.featuredImage.caption,
       }
     } : {}),
   };
