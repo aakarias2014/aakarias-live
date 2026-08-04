@@ -321,6 +321,11 @@ function mapCard(raw: any, locale: Locale): ArticleListItem {
         url: "/images/blog/disaster-management-amendment-act-2025.png",
         alt: "Disaster Management Amendment Act 2025 NDRF Rescue Operations India MPPSC UPSC Notes",
       };
+    } else if (slug.includes("ramsar")) {
+      rawImage = {
+        url: "/images/blog/ramsar_sites_india_2026_banner.png",
+        alt: "भारत में रामसर स्थल 2026: राज्यवार सूची, कुल 101 स्थल, 101वाँ स्थल ग्लाव झील, मानदंड, मोंट्रेक्स रिकॉर्ड व नवीनतम विवरण | Ramsar Sites in India 2026",
+      };
     }
   }
 
@@ -620,16 +625,16 @@ export class SanityRepository implements ContentRepository {
         _type in [${ARTICLE_TYPES.map((t) => `"${t}"`).join(",")}] &&
         _id != ^._id &&
         count(tags[_ref in ^.tags[]._ref]) > 0
-      ] | order(publishedAt desc) [0...3] ${cardProjection(locale)},
+      ] | order(publishedAt desc) [0...10] ${cardProjection(locale)},
       "relatedCategory": *[
         _type in [${ARTICLE_TYPES.map((t) => `"${t}"`).join(",")}] &&
         _id != ^._id &&
         category._ref == ^.category._ref
-      ] | order(publishedAt desc) [0...3] ${cardProjection(locale)},
+      ] | order(publishedAt desc) [0...10] ${cardProjection(locale)},
       "latestArticles": *[
         _type in [${ARTICLE_TYPES.map((t) => `"${t}"`).join(",")}] &&
         _id != ^._id
-      ] | order(publishedAt desc) [0...3] ${cardProjection(locale)}
+      ] | order(publishedAt desc) [0...10] ${cardProjection(locale)}
     }`;
 
     let raw = await sanityFetch<Record<string, unknown> | null>({
@@ -720,6 +725,16 @@ export class SanityRepository implements ContentRepository {
         },
       };
     }
+    if (slug.includes("ramsar")) {
+      raw = {
+        ...(raw || {}),
+        featuredImage: {
+          url: "/images/blog/ramsar_sites_india_2026_banner.png",
+          alt: "भारत में रामसर स्थल 2026: राज्यवार सूची, कुल 101 स्थल, 101वाँ स्थल ग्लाव झील | Ramsar Sites in India 2026",
+          caption: "भारत में रामसर स्थल 2026 (101वाँ स्थल: ग्लाव झील, अरुणाचल प्रदेश)",
+        },
+      };
+    }
     if (!raw) return null;
 
     const { sections, toc: sectionToc } = mapSections(
@@ -762,24 +777,35 @@ export class SanityRepository implements ContentRepository {
     const rawRelatedCategory = ((raw.relatedCategory as RawArticleCard[]) ?? []).map((r) => mapCard(r, locale));
     const rawLatest = ((raw.latestArticles as RawArticleCard[]) ?? []).map((r) => mapCard(r, locale));
 
-    const combined = [...rawRelatedTags];
-    const seenIds = new Set(combined.map((item) => item.id));
+    const getSlugStr = (val: any): string => {
+      if (typeof val === "string") return val;
+      if (val && typeof val === "object" && typeof val.current === "string") return val.current;
+      return "";
+    };
 
-    for (const item of rawRelatedCategory) {
-      if (combined.length >= 3) break;
-      if (!seenIds.has(item.id)) {
-        seenIds.add(item.id);
-        combined.push(item);
-      }
-    }
+    const currentTitleKey = ((raw.title as string) || "").trim().toLowerCase();
+    const currentSlugKey = getSlugStr(raw.slug).trim().toLowerCase();
 
-    for (const item of rawLatest) {
-      if (combined.length >= 3) break;
-      if (!seenIds.has(item.id)) {
-        seenIds.add(item.id);
-        combined.push(item);
+    const seenKeys = new Set<string>([currentTitleKey, currentSlugKey]);
+    const combined: ArticleListItem[] = [];
+
+    const addIfUnique = (itemsList: ArticleListItem[]) => {
+      for (const item of itemsList) {
+        if (combined.length >= 3) break;
+        if (!item || !item.title) continue;
+        const titleKey = (typeof item.title === "string" ? item.title : "").trim().toLowerCase();
+        const slugKey = getSlugStr(item.slug).trim().toLowerCase();
+        if (!seenKeys.has(titleKey) && (!slugKey || !seenKeys.has(slugKey))) {
+          seenKeys.add(titleKey);
+          if (slugKey) seenKeys.add(slugKey);
+          combined.push(item);
+        }
       }
-    }
+    };
+
+    addIfUnique(rawRelatedTags);
+    addIfUnique(rawRelatedCategory);
+    addIfUnique(rawLatest);
 
     const related = combined.slice(0, 3);
 
@@ -880,7 +906,7 @@ export class SanityRepository implements ContentRepository {
 
     const rawItems = Array.isArray(raw?.items) ? raw.items : [];
     const totalCount = typeof raw?.total === "number" ? raw.total : 0;
-    const items = rawItems.map((r) => {
+    let items = rawItems.map((r) => {
       if (r?.slug?.current === "disaster-management-amendment-act-2025-mppsc-upsc-notes") {
         return mapCard({
           ...r,
@@ -960,6 +986,12 @@ export class SanityRepository implements ContentRepository {
       }
       if (!items.some((it) => it.slug === cwgCard.slug)) {
         items.unshift(cwgCard);
+      }
+
+      // Prioritize latest Ramsar Sites article at top position if present in page 1
+      const ramsarItem = items.find((it) => it.slug?.includes("ramsar"));
+      if (ramsarItem) {
+        items = [ramsarItem, ...items.filter((it) => it.slug !== ramsarItem.slug)];
       }
     }
 
@@ -1059,6 +1091,12 @@ export class SanityRepository implements ContentRepository {
       }
       if (!items.some((it) => it.slug === cwgCard.slug)) {
         items.unshift(cwgCard);
+      }
+
+      // Prioritize latest Ramsar Sites article at top position if present
+      const ramsarItem = items.find((it) => it.slug?.includes("ramsar"));
+      if (ramsarItem) {
+        return [ramsarItem, ...items.filter((it) => it.slug !== ramsarItem.slug)].slice(0, limit);
       }
     }
     return items.slice(0, limit);
