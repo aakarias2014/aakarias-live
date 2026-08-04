@@ -948,45 +948,33 @@ export class SanityRepository implements ContentRepository {
       const dilipCard = mapCard(dilipGavitArticleData as any, locale);
       const cwgCard = mapCard(cwg2026ArticleData as any, locale);
 
-      if (!items.some((it) => it.slug === ankushCard.slug)) {
-        items.unshift(ankushCard);
-      }
-      if (!items.some((it) => it.slug === sachinCard.slug)) {
-        items.unshift(sachinCard);
-      }
-      if (!items.some((it) => it.slug === arundhatiCard.slug)) {
-        items.unshift(arundhatiCard);
-      }
-      if (!items.some((it) => it.slug === priyaCard.slug)) {
-        items.unshift(priyaCard);
-      }
-      if (!items.some((it) => it.slug === sakshiCard.slug)) {
-        items.unshift(sakshiCard);
-      }
-      if (!items.some((it) => it.slug === somanCard.slug)) {
-        items.unshift(somanCard);
-      }
-      if (!items.some((it) => it.slug === jaismineCard.slug)) {
-        items.unshift(jaismineCard);
-      }
-      if (!items.some((it) => it.slug === preetiCard.slug)) {
-        items.unshift(preetiCard);
-      }
-      if (!items.some((it) => it.slug === neerajCard.slug)) {
-        items.unshift(neerajCard);
-      }
-      if (!items.some((it) => it.slug === harshCard.slug)) {
-        items.unshift(harshCard);
-      }
-      if (!items.some((it) => it.slug === asmitaCard.slug)) {
-        items.unshift(asmitaCard);
-      }
-      if (!items.some((it) => it.slug === dilipCard.slug)) {
-        items.unshift(dilipCard);
-      }
-      if (!items.some((it) => it.slug === cwgCard.slug)) {
-        items.unshift(cwgCard);
-      }
+      const matchesDateFilter = (card: ArticleListItem) => {
+        const cardDate = (card.ca_date || card.date || "").split("T")[0];
+        if (query.date) return cardDate === query.date;
+        if (query.startDate && cardDate < query.startDate) return false;
+        if (query.endDate && cardDate > query.endDate) return false;
+        return true;
+      };
+
+      const addOverrideCard = (card: ArticleListItem) => {
+        if (matchesDateFilter(card) && !items.some((it) => it.slug === card.slug)) {
+          items.unshift(card);
+        }
+      };
+
+      addOverrideCard(ankushCard);
+      addOverrideCard(sachinCard);
+      addOverrideCard(arundhatiCard);
+      addOverrideCard(priyaCard);
+      addOverrideCard(sakshiCard);
+      addOverrideCard(somanCard);
+      addOverrideCard(jaismineCard);
+      addOverrideCard(preetiCard);
+      addOverrideCard(neerajCard);
+      addOverrideCard(harshCard);
+      addOverrideCard(asmitaCard);
+      addOverrideCard(dilipCard);
+      addOverrideCard(cwgCard);
 
       // Prioritize latest Ramsar Sites article at top position if present in page 1
       const ramsarItem = items.find((it) => it.slug?.includes("ramsar"));
@@ -1012,13 +1000,25 @@ export class SanityRepository implements ContentRepository {
       }
     }
 
+    // Deduplicate items by title to prevent duplicate cards for alias documents
+    const seenTitles = new Set<string>();
+    const dedupedItems: ArticleListItem[] = [];
+    for (const item of items) {
+      if (!item || !item.title) continue;
+      const titleKey = item.title.trim().toLowerCase();
+      if (!seenTitles.has(titleKey)) {
+        seenTitles.add(titleKey);
+        dedupedItems.push(item);
+      }
+    }
+
     return {
-      items: items.slice(0, pageSize),
+      items: dedupedItems.slice(0, pageSize),
       page,
       pageSize,
-      total: totalCount + 2,
-      totalPages: Math.max(1, Math.ceil((totalCount + 2) / pageSize)),
-      hasMore: page * pageSize < totalCount + 2,
+      total: dedupedItems.length,
+      totalPages: Math.max(1, Math.ceil(dedupedItems.length / pageSize)),
+      hasMore: page * pageSize < dedupedItems.length,
     };
   }
 
