@@ -2049,6 +2049,7 @@ export class SanityRepository implements ContentRepository {
       titleEn,
       descHi,
       descEn,
+      "rawImage": image,
       "image": image.asset->url,
       medium,
       orderIndex
@@ -2057,6 +2058,7 @@ export class SanityRepository implements ContentRepository {
     const results = await sanityFetch<any[]>({ query, revalidate: REVALIDATE, tags: ["faculties"] });
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (results || []).map((r: any) => {
+      const croppedImage = imageUrl(r.rawImage, { width: 800, quality: 90 });
       if (r.nameEn?.includes("Ankit") || r.nameHi?.includes("अंकित")) {
         return {
           id: r.id,
@@ -2066,7 +2068,7 @@ export class SanityRepository implements ContentRepository {
           titleEn: "HOD - Test Series, HOD - Interview Programme | Faculty",
           descHi: "एमपीपीएससी (MPPSC) एवं यूपीएससी (UPSC) अभ्यर्थियों को मार्गदर्शन देने का 8+ वर्षों का अनुभव। वे सामान्य अध्ययन (संस्कृति, जनजातियाँ, समाज), उत्तर लेखन (Answer Writing), प्रशासनिक अनुवाद एवं साक्षात्कार मार्गदर्शन में विशेषज्ञ हैं। अपनी अवधारणा-आधारित शिक्षण शैली और व्यावहारिक दृष्टिकोण के लिए जाने जाने वाले, वे सिविल सेवा परीक्षा में छात्रों की सफलता के लिए समर्पित हैं।",
           descEn: "Civil Services mentor with 8+ years of experience in guiding MPPSC and UPSC aspirants. He specializes in General Studies (culture, tribes, society), Answer Writing, Administrative Translation, and Interview Guidance. Known for his concept-based teaching and practical approach, he is dedicated to helping students achieve success in the Civil Services Examination.",
-          image: "/images/faculty/ankit_kumar_chaturvedi.png",
+          image: croppedImage || r.image || "/images/faculty/ankit_kumar_chaturvedi.png",
           medium: r.medium || "hindi",
           orderIndex: r.orderIndex || 6,
         };
@@ -2079,7 +2081,7 @@ export class SanityRepository implements ContentRepository {
         titleEn: r.titleEn || "",
         descHi: r.descHi || "",
         descEn: r.descEn || "",
-        image: r.image || "",
+        image: croppedImage || r.image || "",
         medium: r.medium || "hindi",
         orderIndex: r.orderIndex || 0,
       };
