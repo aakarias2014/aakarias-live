@@ -100,7 +100,7 @@ export async function getLatestDateWithContentAction(): Promise<string | null> {
 export async function getDailyQuizzesAction(locale: Locale): Promise<any[]> {
   const { sanityClient } = await import("@/lib/sanity/client");
   
-  const query = `*[_type == "currentAffairs" && defined(mcqs) && count(mcqs) > 0] | order(coalesce(ca_date, string::split(publishedAt, "T")[0]) desc, publishedAt desc) [0...20] {
+  const query = `*[_type == "currentAffairs" && defined(mcqs) && count(mcqs) > 0] | order(coalesce(ca_date, string::split(publishedAt, "T")[0]) desc, publishedAt desc) [0...50] {
     "id": _id,
     "slug": slug.current,
     "titleHi": title,
@@ -123,7 +123,17 @@ export async function getDailyQuizzesAction(locale: Locale): Promise<any[]> {
 
   try {
     const results = await sanityClient.fetch(query);
-    return results || [];
+    if (!Array.isArray(results)) return [];
+    const seenTitles = new Set<string>();
+    const deduped: any[] = [];
+    for (const item of results) {
+      const titleKey = (item.titleHi || item.titleEn || "").trim().toLowerCase();
+      if (titleKey && !seenTitles.has(titleKey)) {
+        seenTitles.add(titleKey);
+        deduped.push(item);
+      }
+    }
+    return deduped;
   } catch (error) {
     console.error("Error fetching daily quizzes from Sanity:", error);
     return [];
@@ -199,7 +209,17 @@ export async function getAllArticleQuizzesAction(locale: Locale): Promise<any[]>
 
   try {
     const results = await sanityClient.fetch(query);
-    return results || [];
+    if (!Array.isArray(results)) return [];
+    const seenTitles = new Set<string>();
+    const deduped: any[] = [];
+    for (const item of results) {
+      const titleKey = (item.title || "").trim().toLowerCase();
+      if (titleKey && !seenTitles.has(titleKey)) {
+        seenTitles.add(titleKey);
+        deduped.push(item);
+      }
+    }
+    return deduped;
   } catch (error) {
     console.error("Error fetching all article quizzes from Sanity:", error);
     return [];
