@@ -336,11 +336,11 @@ export default function EnMppscMainsSyllabusPage() {
 
             <h3>Part (B) Geography (150 Marks)</h3>
             <ul>
-              <li><strong>Unit I:</strong> Physical Features & Climate of India (Himalayas, Peninsular Plateau, El-Nino, La-Nina, IOD, Climate Change).</li>
-              <li><strong>Unit II:</strong> Agriculture & Water Resources (Millets, Irrigation, Green Revolution, Rainwater Harvesting, Interlinking Rivers).</li>
-              <li><strong>Unit III:</strong> Natural Resources & Industries (Forest, Minerals, Energy Crisis, Iron & Steel, Food Processing).</li>
-              <li><strong>Unit IV:</strong> Disasters & Advanced Techniques (Earthquake, Tsunami, Floods, Pollution Control, Remote Sensing, GIS, GPS).</li>
-              <li><strong>Unit V:</strong> Geography of Madhya Pradesh (Physiographic Divisions, Rivers, Soils, Forests, Minerals, Industries, Demography).</li>
+              <li><strong>Unit I: Physical Geography of India</strong> — Major Physiographic Features: Mountains, Plateaus, Plains, Rivers, Water Divides (Great Water Divide of India), Lakes & Glaciers; Physiographic Divisions (Himalayas, Northern Plains, Peninsular Plateau, Coastal Plains, Islands); Climate & Indian Monsoon System, Cyclones (Tropical & Temperate), El-Nino, La-Nina & IOD Effects.</li>
+              <li><strong>Unit II: Agriculture & Water Resources</strong> — Major Crops, Farming Systems, Millets (Shree Anna), Green Revolution, Irrigation Methods, Water Resource Management, Rainwater Harvesting & Interlinking of Rivers.</li>
+              <li><strong>Unit III: Natural Resources & Industries</strong> — Forests, Mineral & Energy Resources (Coal, Petroleum, Solar, Wind, Biomass); Major Industrial Regions of India, Iron & Steel, Textile, Cement, Food Processing, MSME & Cottage Industries.</li>
+              <li><strong>Unit IV: Disasters & Advanced Techniques</strong> — Natural & Man-made Disasters (Earthquakes, Tsunamis, Floods, Droughts, Landslides, Cyclones); Disaster Management Policies, Pollution Control, Remote Sensing, GIS & GPS Applications.</li>
+              <li><strong>Unit V: Geography of Madhya Pradesh</strong> — Physiographic Divisions (Malwa Plateau, Vindhyachal, Satpura, Narmada-Son Valley, Bundelkhand, Rewa-Panna, Baghelkhand); Rivers, Drainage Systems, Climate, Seasons, Soil Types, Forests, Minerals, Industries & Demography of MP.</li>
             </ul>
 
             <hr />

@@ -265,6 +265,9 @@ function articleHref(slug: string, _type: string, locale: Locale): string {
   if (_type === "onlineCourse") {
     return `${prefix}/online-courses/${slug}`;
   }
+  if (slug.includes("mppsc-mains-geography") || slug.includes("bharat-ka-bhautik-bhugol") || slug.startsWith("mppsc-notes-") || slug.includes("mppsc-notes")) {
+    return `${prefix}/mppsc-notes/${slug}`;
+  }
   // Map Sanity _type to route segment.
   const segment =
     _type === "editorial"

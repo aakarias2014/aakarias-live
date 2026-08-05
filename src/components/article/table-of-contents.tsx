@@ -37,7 +37,7 @@ export function TableOfContents({ items }: { items: TOCItem[] }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (items.length === 0) return null;
+  if (!Array.isArray(items) || items.length === 0) return null;
 
   return (
     <nav

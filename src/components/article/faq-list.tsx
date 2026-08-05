@@ -4,6 +4,8 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 import type { FAQ } from "@/lib/content/types";
 
 export function FaqList({ faqs, locale = "hi" }: { faqs: FAQ[]; locale?: string }) {
+  if (!Array.isArray(faqs) || faqs.length === 0) return null;
+
   const isHi = locale === "hi";
   return (
     <div>

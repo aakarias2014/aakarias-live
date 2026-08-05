@@ -93,6 +93,21 @@ const nextConfig: NextConfig = {
         destination: "/current-affairs/ramsar-sites-in-india",
         permanent: true,
       },
+      {
+        source: "/general-awareness/mppsc-mains-geography-paper-1-part-b-unit-1-notes",
+        destination: "/mppsc-notes/bharat-ka-bhautik-bhugol-mppsc-mains-unit-1-notes",
+        permanent: true,
+      },
+      {
+        source: "/mppsc-notes/mppsc-mains-geography-paper-1-part-b-unit-1-notes",
+        destination: "/mppsc-notes/bharat-ka-bhautik-bhugol-mppsc-mains-unit-1-notes",
+        permanent: true,
+      },
+      {
+        source: "/general-awareness/water-divides-in-india-mppsc-notes",
+        destination: "/mppsc-notes/water-divides-in-india-mppsc-notes",
+        permanent: true,
+      },
     ];
   },
 };

@@ -287,9 +287,10 @@ export function quizJsonLd(input: QuizJsonLdInput): JsonLd {
     name: input.name,
     description: input.description,
     url: input.url,
-    mainEntity: input.questions.map((q) => {
-      const correctOption = q.options[q.correctIndex] || "";
-      const suggestedAnswers = q.options.map((opt) => ({
+    mainEntity: (input.questions || []).map((q) => {
+      const options = q.options || [];
+      const correctOption = options[q.correctIndex] || "";
+      const suggestedAnswers = options.map((opt) => ({
         "@type": "Answer",
         text: opt,
       }));

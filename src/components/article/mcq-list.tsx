@@ -52,6 +52,8 @@ export function McqList({
     });
   };
 
+  if (!Array.isArray(mcqs) || mcqs.length === 0) return null;
+
   return (
     <div className="space-y-6">
       <h2 className="flex items-center gap-2 text-xl font-bold text-foreground">
@@ -151,7 +153,7 @@ function McqCard({
       </p>
 
       <div className="mt-4 space-y-2">
-        {mcq.options.map((opt, i) => {
+        {(mcq.options || []).map((opt, i) => {
           const isCorrect = i === mcq.correctIndex;
           const isSelected = i === selected;
 

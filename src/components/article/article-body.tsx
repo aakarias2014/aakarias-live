@@ -16,7 +16,7 @@ import Image from "next/image";
 export function ArticleBody({ article, ads }: { article: Article; ads?: AdConfig[] }) {
   return (
     <div className="prose-aakar">
-      {article.sections.map((section) => (
+      {(article.sections || []).map((section) => (
         <ArticleSectionBlock key={section.id} section={section} />
       ))}
 
@@ -61,7 +61,7 @@ export function ArticleBody({ article, ads }: { article: Article; ads?: AdConfig
             {article.locale === "hi" ? "टैग:" : "Tags:"}
           </span>
           <div className="flex flex-wrap gap-2">
-            {article.tags.map((tag) => {
+            {(article.tags || []).map((tag) => {
               const tagHref = article.locale === "hi" ? `/tag/${tag.slug}` : `/en/tag/${tag.slug}`;
               return (
                 <Link
@@ -142,7 +142,7 @@ function ArticleSectionBlock({ section }: { section: ArticleSection }) {
       </div>
 
       <div className="space-y-1">
-        {section.blocks.map((block, i) => (
+        {(section.blocks || []).map((block, i) => (
           <BlockRenderer key={`${section.kind}-block-${i}`} block={block} />
         ))}
       </div>

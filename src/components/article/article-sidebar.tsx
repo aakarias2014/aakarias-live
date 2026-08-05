@@ -54,7 +54,7 @@ export async function ArticleSidebar({ related, recent, locale, monthlyPdfHref, 
       </div>
 
       {/* Related Articles */}
-      {related.length > 0 && (
+      {Array.isArray(related) && related.length > 0 && (
         <div className="rounded-2xl border border-border bg-card p-5 shadow-soft">
           <div className="flex items-center gap-2 mb-5">
             <BookOpen className="h-4 w-4 text-primary shrink-0" />
