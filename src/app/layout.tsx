@@ -113,8 +113,8 @@ export default function RootLayout({
         <MicrosoftClarity />
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <LanguageProvider>

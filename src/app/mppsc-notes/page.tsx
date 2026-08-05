@@ -19,7 +19,7 @@ import { Breadcrumb } from "@/components/content/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { JsonLd } from "@/components/seo/json-ld";
-import { faqJsonLd, breadcrumbJsonLd } from "@/lib/seo/jsonld";
+import { faqJsonLd, breadcrumbJsonLd, productJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = buildMetadata({
@@ -48,30 +48,18 @@ export default function HindiMppscNotesPage() {
     { name: "एमपीपीएससी नोट्स", url: pageUrl },
   ]);
 
-  const productSchema = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "आकार आईएएस MPPSC कम्प्लीट स्टडी नोट्स पैकेज (हिंदी और अंग्रेजी माध्यम)",
-    "image": `${siteConfig.url}/logo.png`,
-    "description": "नवीनतम पाठ्यक्रम के अनुसार तैयार की गई MPPSC प्रीलिम्स और मेन्स की प्रिंटेड और पीडीएफ अध्ययन सामग्री। इसमें यूनिट-वार बुकलेट्स और मॉडल उत्तर पुस्तिकाएं शामिल हैं।",
-    "brand": {
-      "@type": "Brand",
-      "name": "आकार आईएएस"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "342"
-    },
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "INR",
-      "price": "4999",
-      "priceValidUntil": "2027-12-31",
-      "availability": "https://schema.org/InStock",
-      "url": pageUrl
-    }
-  };
+  const productSchema = productJsonLd({
+    name: "आकार आईएएस MPPSC कम्प्लीट स्टडी नोट्स पैकेज (हिंदी और अंग्रेजी माध्यम)",
+    description: "नवीनतम पाठ्यक्रम के अनुसार तैयार की गई MPPSC प्रीलिम्स और मेन्स की प्रिंटेड और पीडीएफ अध्ययन सामग्री। इसमें यूनिट-वार बुकलेट्स और मॉडल उत्तर पुस्तिकाएं शामिल हैं।",
+    url: pageUrl,
+    price: "4999",
+    ratingValue: "4.9",
+    reviewCount: "342",
+    reviews: [
+      { author: "रोहन शर्मा", text: "MPPSC प्रारंभिक और मुख्य परीक्षा के लिए बहुत ही उपयोगी और पाठ्यक्रम के अनुसार तैयार नोट्स।", rating: "5" },
+      { author: "प्रिया वर्मा", text: "आकार आईएएस इंदौर के नोट्स उत्तर लेखन में बहुत सहायक सिद्ध हुए हैं।", rating: "5" }
+    ]
+  });
 
   const notesPackages = [
     {

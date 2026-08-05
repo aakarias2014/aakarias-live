@@ -321,6 +321,11 @@ function mapCard(raw: any, locale: Locale): ArticleListItem {
         url: "/images/blog/disaster-management-amendment-act-2025.png",
         alt: "Disaster Management Amendment Act 2025 NDRF Rescue Operations India MPPSC UPSC Notes",
       };
+    } else if (slug === "yamini-maurya-biography-cwg-2026-silver-medal-judo") {
+      rawImage = {
+        url: "/images/blog/yamini_maurya_cwg_2026_silver_banner.png",
+        alt: "मध्यप्रदेश की बेटी यामिनी मौर्य ने रचा इतिहास! कॉमनवेल्थ गेम्स 2026 जूडो 57kg में जीता रजत पदक - सागर जिले, मध्यप्रदेश",
+      };
     } else if (slug.includes("ramsar")) {
       rawImage = {
         url: "/images/blog/ramsar_sites_india_2026_banner.png",
@@ -472,17 +477,26 @@ function mapPortableTextToBlocks(
       const text = extractText(children, markDefs);
 
       if (blockStyle === "normal") {
-        const { isBullet, isOrdered, cleanText } = parseBulletItem(text);
-        if (isBullet) {
-          // If switching from ordered to unordered or vice versa, flush first
-          if (pendingListItems.length > 0 && pendingOrdered !== isOrdered) {
+        const rawSubLines = text.includes("•") || text.includes("\n")
+          ? text
+              .split(/(?:\r?\n|(?<=\S)\s+(?=•\s*))/g)
+              .map((l) => l.trim())
+              .filter(Boolean)
+          : [text];
+
+        for (const line of rawSubLines) {
+          const { isBullet, isOrdered, cleanText } = parseBulletItem(line);
+          if (isBullet) {
+            // If switching from ordered to unordered or vice versa, flush first
+            if (pendingListItems.length > 0 && pendingOrdered !== isOrdered) {
+              flushList();
+            }
+            pendingOrdered = isOrdered;
+            pendingListItems.push(autoBoldTitle(cleanText));
+          } else {
             flushList();
+            out.push({ type: "paragraph", text: line });
           }
-          pendingOrdered = isOrdered;
-          pendingListItems.push(autoBoldTitle(cleanText));
-        } else {
-          flushList();
-          out.push({ type: "paragraph", text });
         }
       } else if (blockStyle === "h2" || blockStyle === "h3") {
         flushList();
@@ -646,8 +660,8 @@ export class SanityRepository implements ContentRepository {
     const mergeWithOverride = (overrideData: Record<string, unknown>) => {
       if (!raw) return overrideData;
       return {
-        ...overrideData,
         ...raw,
+        ...overrideData,
         featuredImage: raw.featuredImage || raw.mainImage || overrideData.featuredImage,
       };
     };
@@ -655,6 +669,10 @@ export class SanityRepository implements ContentRepository {
     if (slug === "commonwealth-games-2026-updates-india-medal-tally") {
       const { cwg2026ArticleData } = await import("@/data/cwg-2026-article-override");
       raw = mergeWithOverride(cwg2026ArticleData);
+    }
+    if (slug === "yamini-maurya-biography-cwg-2026-silver-medal-judo") {
+      const { yaminiMauryaArticleData } = await import("@/data/yamini-maurya-article-override");
+      raw = mergeWithOverride(yaminiMauryaArticleData);
     }
     if (slug === "asmita-dey-biography-cwg-2026-gold-medal-judo") {
       const { asmitaDeyArticleData } = await import("@/data/asmita-dey-article-override");
@@ -933,6 +951,7 @@ export class SanityRepository implements ContentRepository {
       const { asmitaDeyArticleData } = await import("@/data/asmita-dey-article-override");
       const { dilipGavitArticleData } = await import("@/data/dilip-gavit-article-override");
       const { cwg2026ArticleData } = await import("@/data/cwg-2026-article-override");
+      const { yaminiMauryaArticleData } = await import("@/data/yamini-maurya-article-override");
 
       const preetiCard = mapCard(preetiPawarArticleData as any, locale);
       const jaismineCard = mapCard(jaismineLamboriaArticleData as any, locale);
@@ -947,6 +966,7 @@ export class SanityRepository implements ContentRepository {
       const asmitaCard = mapCard(asmitaDeyArticleData as any, locale);
       const dilipCard = mapCard(dilipGavitArticleData as any, locale);
       const cwgCard = mapCard(cwg2026ArticleData as any, locale);
+      const yaminiCard = mapCard(yaminiMauryaArticleData as any, locale);
 
       const matchesDateFilter = (card: ArticleListItem) => {
         const cardDate = (card.ca_date || card.date || "").split("T")[0];
@@ -975,6 +995,7 @@ export class SanityRepository implements ContentRepository {
       addOverrideCard(asmitaCard);
       addOverrideCard(dilipCard);
       addOverrideCard(cwgCard);
+      addOverrideCard(yaminiCard);
 
       // Prioritize latest Ramsar Sites article at top position if present in page 1
       const ramsarItem = items.find((it) => it.slug?.includes("ramsar"));
@@ -1336,6 +1357,13 @@ export class SanityRepository implements ContentRepository {
         slug: "ankush-panghal-biography-cwg-2026-gold-medal-boxing",
         type: "currentAffairs",
         updatedAt: "2026-08-03T13:55:00.000Z",
+      });
+    }
+    if (!slugs.some((s) => s.slug === "yamini-maurya-biography-cwg-2026-silver-medal-judo")) {
+      slugs.unshift({
+        slug: "yamini-maurya-biography-cwg-2026-silver-medal-judo",
+        type: "currentAffairs",
+        updatedAt: "2026-08-04T12:00:00.000Z",
       });
     }
     if (!slugs.some((s) => s.slug === "soman-rana-biography-cwg-2026-gold-medal-para-shot-put")) {

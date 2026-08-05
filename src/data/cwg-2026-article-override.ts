@@ -132,7 +132,7 @@ export const cwg2026ArticleData = {
     /* ── 2. CWG 2026 Boxing & Athletics Surge Schedule ───────────────── */
     {
       _key: "sec-day8-day9-schedule",
-      kind: "analysis",
+      kind: "keyAspects",
       title: "CWG 2026: मुक्केबाजी एवं एथलेटिक्स में भारत का स्वर्णिम धमाका (Boxing & Athletics Domination)",
       titleEn: "CWG 2026: Indian Boxing & Athletics Historic Medal Surge",
       body: [
@@ -335,7 +335,7 @@ export const cwg2026ArticleData = {
             ["17", "**सीमा कालीरामना**", "वूमेंस डिस्कस थ्रो", "एथलेटिक्स", "**ब्रॉन्ज (Bronze)**"],
             ["18", "[**अस्मिता डे (Asmita Dey)**](/current-affairs/asmita-dey-biography-cwg-2026-gold-medal-judo)", "वूमेंस -48 किग्रा", "जूडो", "**गोल्ड (Gold)**"],
             ["19", "[**हर्ष सिंह (Harsh Singh)**](/current-affairs/harsh-singh-biography-cwg-2026-gold-medal-judo)", "मेंस -60 किग्रा", "जूडो", "**गोल्ड (Gold)**"],
-            ["20", "**यामिनी मौर्या**", "वूमेंस -57 किग्रा", "जूडो", "**सिल्वर (Silver)**"],
+            ["20", "[**यामिनी मौर्य (Yamini Maurya)**](/current-affairs/yamini-maurya-biography-cwg-2026-silver-medal-judo)", "वूमेंस -57 किग्रा", "जूडो", "**सिल्वर (Silver)**"],
             ["21", "**तेजस्विन शंकर**", "मेंस डेकॉथ्लॉन", "एथलेटिक्स", "**ब्रॉन्ज (Bronze)**"],
             ["22", "[**नीरज चोपड़ा (Neeraj Chopra)**](/current-affairs/neeraj-chopra-javelin-records-cwg-2026-silver-medal-biography)", "मेंस जैवलिन थ्रो", "एथलेटिक्स", "**सिल्वर (Silver)**"],
             ["23", "**यश वीर सिंह**", "मेंस जैवलिन थ्रो", "एथलेटिक्स", "**ब्रॉन्ज (Bronze)**"],
@@ -376,7 +376,7 @@ export const cwg2026ArticleData = {
             ["17", "**Seema Kaliramna**", "Women's Discus Throw", "Athletics", "**Bronze**"],
             ["18", "[**Asmita Dey**](/en/current-affairs/asmita-dey-biography-cwg-2026-gold-medal-judo)", "Women's -48kg", "Judo", "**Gold**"],
             ["19", "[**Harsh Singh**](/en/current-affairs/harsh-singh-biography-cwg-2026-gold-medal-judo)", "Men's -60kg", "Judo", "**Gold**"],
-            ["20", "**Yamini Mourya**", "Women's -57kg", "Judo", "**Silver**"],
+            ["20", "[**Yamini Maurya**](/en/current-affairs/yamini-maurya-biography-cwg-2026-silver-medal-judo)", "Women's -57kg", "Judo", "**Silver**"],
             ["21", "**Tejaswin Shankar**", "Men's Decathlon", "Athletics", "**Bronze**"],
             ["22", "[**Neeraj Chopra**](/en/current-affairs/neeraj-chopra-javelin-records-cwg-2026-silver-medal-biography)", "Men's Javelin Throw", "Athletics", "**Silver**"],
             ["23", "**Yash Veer Singh**", "Men's Javelin Throw", "Athletics", "**Bronze**"],
@@ -438,7 +438,7 @@ export const cwg2026ArticleData = {
     /* ── 5. History & Milestone Achievements ──────────────────── */
     {
       _key: "sec-cwg-history",
-      kind: "analysis",
+      kind: "keyAspects",
       title: "कॉमनवेल्थ गेम्स में भारत का इतिहास एवं सर्वश्रेष्ठ प्रदर्शन",
       titleEn: "India's CWG History & All-Time Best Performance",
       body: [
@@ -511,7 +511,7 @@ export const cwg2026ArticleData = {
     /* ── 6. Quick Revision Study Notes (STYLIZED FACTS GRID) ──── */
     {
       _key: "sec-revision-notes",
-      kind: "wayForward",
+      kind: "factsAtAGlance",
       title: "MPPSC & UPSC परीक्षा हेतु Quick Revision Study Notes",
       titleEn: "MPPSC & UPSC Sports Revision Notes",
       body: [

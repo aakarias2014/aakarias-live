@@ -12,8 +12,11 @@ const nextConfig: NextConfig = {
   },
 
   images: {
-    unoptimized: true,
+    unoptimized: false,
     formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 31536000,
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     // Allow images from Sanity CDN and Google User Content.
     remotePatterns: [
       {
@@ -56,7 +59,7 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  // 301 Redirects to enforce single domain version (www -> non-www)
+  // 301 Redirects to enforce single domain version (www -> non-www) & path consolidations
   async redirects() {
     return [
       {
@@ -68,6 +71,26 @@ const nextConfig: NextConfig = {
           },
         ],
         destination: "https://aakarias.com/:path*",
+        permanent: true,
+      },
+      {
+        source: "/ramsar-sites-in-india",
+        destination: "/current-affairs/ramsar-sites-in-india",
+        permanent: true,
+      },
+      {
+        source: "/ramsar-site-in-india",
+        destination: "/current-affairs/ramsar-sites-in-india",
+        permanent: true,
+      },
+      {
+        source: "/current-affairs/ramsar-sites-in-india-2026",
+        destination: "/current-affairs/ramsar-sites-in-india",
+        permanent: true,
+      },
+      {
+        source: "/general-awareness/ramsar-sites-in-india",
+        destination: "/current-affairs/ramsar-sites-in-india",
         permanent: true,
       },
     ];

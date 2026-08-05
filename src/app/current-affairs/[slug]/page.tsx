@@ -68,7 +68,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const baseMeta = buildMetadata({
     title: seoTitle,
     description: seoDesc,
-    path: article.href,
+    path: `/current-affairs/${slug}`,
     image: article.featuredImage?.url,
     type: "article",
     publishedTime: article.date,

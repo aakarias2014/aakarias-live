@@ -52,7 +52,7 @@ export async function ArticleHero({ article }: { article: Article }) {
               alt={article.featuredImage.alt || article.title}
               fill
               priority
-              sizes="(max-width: 1200px) 100vw, 1200px"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1200px"
               className="object-cover object-center"
             />
           </div>

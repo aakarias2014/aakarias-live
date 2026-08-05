@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return buildMetadata({
     title: seoTitle,
     description: seoDesc,
-    path: article.href,
+    path: `/general-awareness/${slug}`,
     image: article.featuredImage?.url,
     type: "article",
     publishedTime: article.date,

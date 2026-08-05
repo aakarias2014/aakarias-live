@@ -43,7 +43,8 @@ export function buildMetadata({
   locale = "hi",
   articleType = "article",
 }: BuildMetadataInput = {}): Metadata {
-  const url = `${siteConfig.url}${path === "/" ? "" : path}`;
+  const normalizedPath = path === "/" ? "" : (path.startsWith("/") ? path : `/${path}`).replace(/\/+$/, "");
+  const url = `${siteConfig.url}${normalizedPath}`;
   
   // Format title without duplicating brand name if already present
   const fullTitle = title 

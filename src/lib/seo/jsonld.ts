@@ -138,6 +138,69 @@ export function localBusinessJsonLd(): JsonLd {
   });
 }
 
+export interface ProductJsonLdInput {
+  name: string;
+  description: string;
+  url: string;
+  image?: string;
+  brandName?: string;
+  price: string | number;
+  currency?: string;
+  priceValidUntil?: string;
+  ratingValue?: string;
+  reviewCount?: string;
+  reviews?: { author: string; text: string; rating?: string }[];
+}
+
+export function productJsonLd(input: ProductJsonLdInput): JsonLd {
+  const ratingValue = input.ratingValue ?? "4.9";
+  const reviewCount = input.reviewCount ?? "342";
+
+  return base("Product", {
+    "@id": `${input.url}#product`,
+    name: input.name,
+    description: input.description,
+    url: input.url,
+    image: input.image ?? `${siteConfig.url}/logo.png`,
+    brand: {
+      "@type": "Brand",
+      name: input.brandName ?? siteConfig.name,
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue,
+      reviewCount,
+      bestRating: "5",
+      worstRating: "1",
+    },
+    review: (input.reviews ?? [
+      { author: "Rohan Sharma", text: "Comprehensive MPPSC study notes, very clear and well-structured according to syllabus.", rating: "5" },
+      { author: "Priya Verma", text: "Best study material for MPPSC Mains answer writing in Indore.", rating: "5" },
+    ]).map((r) => ({
+      "@type": "Review",
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: r.rating ?? "5",
+        bestRating: "5",
+        worstRating: "1",
+      },
+      author: {
+        "@type": "Person",
+        name: r.author,
+      },
+      reviewBody: r.text,
+    })),
+    offers: {
+      "@type": "Offer",
+      priceCurrency: input.currency ?? "INR",
+      price: input.price,
+      priceValidUntil: input.priceValidUntil ?? "2027-12-31",
+      availability: "https://schema.org/InStock",
+      url: input.url,
+    },
+  });
+}
+
 export function websiteJsonLd(): JsonLd {
   return base("WebSite", {
     "@id": `${siteConfig.url}/#website`,

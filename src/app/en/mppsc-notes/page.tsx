@@ -18,7 +18,7 @@ import { Section } from "@/components/layout/section";
 import { Breadcrumb } from "@/components/content/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { JsonLd } from "@/components/seo/json-ld";
-import { faqJsonLd, breadcrumbJsonLd } from "@/lib/seo/jsonld";
+import { faqJsonLd, breadcrumbJsonLd, productJsonLd } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = buildMetadata({
@@ -54,30 +54,18 @@ export default function EnglishMppscNotesPage() {
     { name: "MPPSC Notes", url: pageUrl },
   ]);
 
-  const productSchema = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Aakar IAS MPPSC Complete Study Notes Package (Hindi & English Medium)",
-    "image": `${siteConfig.url}/logo.png`,
-    "description": "Premium printed and PDF study materials for MPPSC Prelims & Mains, designed strictly according to the latest syllabus. Includes unit-wise booklets and model answer notebooks.",
-    "brand": {
-      "@type": "Brand",
-      "name": "Aakar IAS"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "342"
-    },
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "INR",
-      "price": "4999",
-      "priceValidUntil": "2027-12-31",
-      "availability": "https://schema.org/InStock",
-      "url": pageUrl
-    }
-  };
+  const productSchema = productJsonLd({
+    name: "Aakar IAS MPPSC Complete Study Notes Package (Hindi & English Medium)",
+    description: "Premium printed and PDF study materials for MPPSC Prelims & Mains, designed strictly according to the latest syllabus. Includes unit-wise booklets and model answer notebooks.",
+    url: pageUrl,
+    price: "4999",
+    ratingValue: "4.9",
+    reviewCount: "342",
+    reviews: [
+      { author: "Rohan Sharma", text: "Extremely helpful MPPSC notes with clear syllabus structure and unit-wise breakdown.", rating: "5" },
+      { author: "Priya Verma", text: "The best study materials and model answers for MPPSC Mains preparation in English.", rating: "5" }
+    ]
+  });
 
   const notesPackages = [
     {

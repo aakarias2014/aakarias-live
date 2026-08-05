@@ -152,41 +152,89 @@ function ArticleSectionBlock({ section }: { section: ArticleSection }) {
 
 /* ─── Internal: Block renderer ──────────────────────────────────────── */
 
+/**
+ * Parse markdown links [text](url) inside a text fragment.
+ * Returns an array of ReactNode (plain strings + Link elements).
+ */
+function renderLinks(text: string, keyOffset: number): React.ReactNode[] {
+  if (!text.includes("[")) return [text];
+
+  const result: React.ReactNode[] = [];
+  const linkRegex = /\[([^\]]*)\]\(([^)]+)\)/g;
+  let lastIndex = 0;
+  let key = keyOffset;
+  let match: RegExpExecArray | null;
+
+  while ((match = linkRegex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      result.push(text.slice(lastIndex, match.index));
+    }
+    const linkText = match[1].replace(/\*\*/g, "");
+    const linkUrl = match[2];
+    result.push(
+      <Link
+        key={`lnk-${key++}`}
+        href={linkUrl}
+        className="text-primary font-extrabold underline decoration-primary/60 underline-offset-4 hover:decoration-primary hover:text-primary/80 transition-colors cursor-pointer"
+      >
+        {linkText}
+      </Link>,
+    );
+    lastIndex = match.index + match[0].length;
+  }
+
+  if (lastIndex < text.length) {
+    result.push(text.slice(lastIndex));
+  }
+
+  return result;
+}
+
+/**
+ * Render markdown-formatted text supporting **bold** and [links](url),
+ * including links nested inside bold blocks.
+ */
 function renderFormattedText(text: string) {
   if (!text) return "";
   if (!text.includes("**") && !text.includes("[")) return text;
 
-  const parts = text.split(/(\*\*.*?\*\*|\[.*?\]\(.*?\))/g);
-  return parts.map((part, index) => {
+  // If no bold markers, just parse links
+  if (!text.includes("**")) {
+    return renderLinks(text, 0);
+  }
+
+  const elements: React.ReactNode[] = [];
+  let key = 0;
+
+  // Split by bold markers — captures the **…** groups
+  const parts = text.split(/(\*\*[\s\S]*?\*\*)/g);
+
+  for (const part of parts) {
+    if (!part) continue;
+
     if (part.startsWith("**") && part.endsWith("**")) {
-      return (
-        <strong
-          key={index}
-          className="font-bold text-foreground"
-        >
-          {part.slice(2, -2)}
-        </strong>
+      const inner = part.slice(2, -2);
+      // Recursively process links inside the bold block
+      elements.push(
+        <strong key={`b-${key}`} className="font-bold text-foreground">
+          {inner.includes("[") ? renderLinks(inner, key * 100) : inner}
+        </strong>,
       );
+    } else {
+      // Non-bold segment — parse links
+      if (part.includes("[")) {
+        const linkNodes = renderLinks(part, key * 100);
+        for (const node of linkNodes) {
+          elements.push(node);
+        }
+      } else {
+        elements.push(part);
+      }
     }
-    
-    // Check if it is a markdown link: [Text](URL)
-    const linkMatch = part.match(/^\[(.*?)\]\((.*?)\)$/);
-    if (linkMatch) {
-      const linkText = linkMatch[1].replace(/\*\*/g, "");
-      const linkUrl = linkMatch[2];
-      return (
-        <Link
-          key={index}
-          href={linkUrl}
-          className="text-primary font-extrabold underline decoration-primary/60 underline-offset-4 hover:decoration-primary hover:text-primary/80 transition-colors cursor-pointer"
-        >
-          {linkText}
-        </Link>
-      );
-    }
-    
-    return part;
-  });
+    key++;
+  }
+
+  return elements;
 }
 
 function BlockRenderer({ block }: { block: ArticleBlock }) {
@@ -240,18 +288,22 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
 
     case "list":
       return block.ordered ? (
-        <ol className="space-y-3">
+        <ol className="my-6 space-y-3 pl-1">
           {block.items.map((item, i) => (
-            <li key={i} className="leading-[1.85] text-foreground/85">
-              {renderFormattedText(item)}
+            <li key={i} className="flex items-start gap-3 text-base leading-relaxed text-foreground/90">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary mt-0.5">
+                {i + 1}
+              </span>
+              <div className="flex-1 min-w-0">{renderFormattedText(item)}</div>
             </li>
           ))}
         </ol>
       ) : (
-        <ul className="space-y-3">
+        <ul className="my-6 space-y-3.5 pl-1">
           {block.items.map((item, i) => (
-            <li key={i} className="leading-[1.85] text-foreground/85">
-              {renderFormattedText(item)}
+            <li key={i} className="flex items-start gap-3 text-base leading-relaxed text-foreground/90">
+              <span className="h-2 w-2 rounded-full bg-primary shrink-0 mt-2.5 shadow-sm" />
+              <div className="flex-1 min-w-0">{renderFormattedText(item)}</div>
             </li>
           ))}
         </ul>
