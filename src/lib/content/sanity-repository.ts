@@ -131,7 +131,7 @@ const authorProjection = `{
 
 const featuredImageProjection = `{
   "assetRef": asset._ref,
-  "url": coalesce(url, asset->url),
+  "url": coalesce(asset->url, url),
   alt, caption, credit
 }`;
 
