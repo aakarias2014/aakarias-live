@@ -98,13 +98,6 @@ export function localBusinessJsonLd(): JsonLd {
       longitude: 75.8596,
     },
     hasMap: "https://maps.google.com/?q=Aakar+IAS+Indore",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.7",
-      reviewCount: "280",
-      bestRating: "5",
-      worstRating: "1",
-    },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "MPPSC & UPSC Coaching Courses",
