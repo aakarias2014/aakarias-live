@@ -19,7 +19,7 @@ export const sanityClient = createClient({
   perspective: "published",
   stega: {
     // Stegano encoding powers click-to-edit in Presentation (Phase 2).
-    enabled: process.env.NEXT_PUBLIC_VERCEL_ENV === "preview",
+    enabled: process.env.NODE_ENV === "development",
     studioUrl: env().NEXT_PUBLIC_SANITY_STUDIO_URL ?? "/studio",
   },
 });
