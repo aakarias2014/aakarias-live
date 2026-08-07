@@ -57,7 +57,7 @@ async function main() {
         },
         {
           _type: "span",
-          text: " में आपदा प्रबंधन पर सीधे प्रश्न पूछे जाते हैं। इस विस्तृत लेख में आपदा की परिभाषा, प्रकार, 4 मुख्य घटक, 6 चरण, मध्य प्रदेश का संदर्भ (DMI भोपाल), सुदूर संवेदन (Remote Sensing/GIS) की भूमिका एवं MPPSC 3, 5 व 11 अंकों के मॉडल उत्तरों का पूरा समावेश है।",
+          text: " में आपदा प्रबंधन पर सीधे प्रश्न पूछे जाते हैं। इस विस्तृत लेख में आपदा की परिभाषा, प्रकार, 4 मुख्य घटक, 6 चरण, मध्य प्रदेश का संदर्भ (DMI भोपाल), सुदूर संवेदन (Remote Sensing/GIS) की भूमिका एवं MPPSC 2, 7 व 10 अंकों के मॉडल उत्तरों का पूरा समावेश है।",
         },
       ],
     },
@@ -386,14 +386,14 @@ async function main() {
     {
       _type: "block",
       style: "h3",
-      children: [{ _type: "span", text: "MPPSC Mains मॉडल उत्तर प्रारूप (3, 5 एवं 11 अंकीय प्रश्न)" }],
+      children: [{ _type: "span", text: "MPPSC Mains मॉडल उत्तर प्रारूप (2, 7 एवं 10 अंकीय प्रश्न)" }],
     },
     {
       _type: "block",
       style: "normal",
       children: [
         { _type: "span", text: "📌 " },
-        { _type: "span", marks: ["strong"], text: "3-Marker: NDMA (राष्ट्रीय आपदा प्रबंधन प्राधिकरण)" },
+        { _type: "span", marks: ["strong"], text: "2-Marker: NDMA (राष्ट्रीय आपदा प्रबंधन प्राधिकरण)" },
       ],
     },
     {
@@ -408,7 +408,7 @@ async function main() {
       style: "normal",
       children: [
         { _type: "span", text: "📌 " },
-        { _type: "span", marks: ["strong"], text: "5-Marker: आपदा प्रबंधन चक्र के प्रमुख चरणों को समझाइए।" },
+        { _type: "span", marks: ["strong"], text: "7-Marker: आपदा प्रबंधन चक्र के प्रमुख चरणों को समझाइए।" },
       ],
     },
     {
