@@ -11,7 +11,6 @@ const client = createClient({
 async function main() {
   const userAssetId = "image-d6527974c61b4ee8ad3d66c6c0fb2e3fb2bbd557-1024x682-jpg";
 
-  // SEO Optimized Title prioritizing MPPSC over UPSC & incorporating high-volume search variants (सोहगौरा / सौहगरा, Mahasthan)
   const title = "सोहगौरा ताम्रपत्र अभिलेख एवं महास्थान प्रस्तर लेख: मौर्यकालीन अकाल राहत व आपदा प्रबंधन के प्रथम साक्ष्य | MPPSC & UPSC Notes";
   const titleEn = "Sohgaura Copper Plate & Mahasthan Inscription: Archaeological Evidences of Mauryan Famine Relief & Disaster Management | MPPSC & UPSC Notes";
 
@@ -42,6 +41,13 @@ async function main() {
     "Chandragupta Maurya Koshthagara"
   ];
 
+  // Internal Links URLs
+  const disasterActUrl = "/current-affairs/disaster-management-amendment-act-2025-mppsc-upsc-notes";
+  const mainsSyllabusUrl = "/mppsc/mains-syllabus";
+  const geographyNotesUrl = "/mppsc-notes/bharat-ka-bhautik-bhugol-mppsc-mains-unit-1-notes";
+  const ramsarUrl = "/current-affairs/ramsar-sites-in-india-2026-complete-list-mppsc-notes";
+  const answerWritingUrl = "/mppsc-mains-answer-writing";
+
   const bodyHi = [
     {
       _type: "block",
@@ -51,6 +57,14 @@ async function main() {
           _type: "span",
           text: "प्राचीन भारतीय इतिहास, पुरालेखशास्त्र (Epigraphy) तथा प्रतियोगी परीक्षाओं (MPPSC & UPSC) के दृष्टिकोण से **सोहगौरा ताम्रपत्र अभिलेख (Sohgaura Copper Plate Inscription)** और **महास्थान प्रस्तर लेख (Mahasthan Stone Inscription)** अत्यंत महत्त्वपूर्ण पुरातात्विक साक्ष्य हैं। इन्हें प्राचीन भारत में **आपदा प्रबंधन (Disaster Management)**, **राजकीय अन्नागार (Koshthagara)**, **अकाल राहत कार्य (Famine Relief)** तथा **कल्याणकारी राज्य (Welfare State)** की अवधारणा का सबसे पहला प्रामाणिक अभिलेख माना जाता है। MPPSC राज्य सेवा मुख्य परीक्षा (प्रश्नपत्र 1 - इतिहास व संस्कृति) तथा UPSC सिविल सेवा परीक्षा में इनसे बार-बार प्रश्न पूछे जाते हैं।",
         },
+      ],
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [
+        { _type: "span", text: "🔗 " },
+        { _type: "span", text: `[आधुनिक भारत में आपदा प्रबंधन की नीतियाँ पढ़ें: आपदा प्रबंधन (संशोधन) अधिनियम 2025: मुख्य प्रावधान, UDMA धारा 41A व MPPSC/UPSC नोट्स](${disasterActUrl})` },
       ],
     },
     {
@@ -101,6 +115,14 @@ async function main() {
     },
     {
       _type: "block",
+      style: "normal",
+      children: [
+        { _type: "span", text: "📌 " },
+        { _type: "span", text: `[MPPSC Mains Unit-1 नोट्स पढ़ें: भारत का भौतिक भूगोल: पर्वत, पठार, मैदान व जल-विभाजक](${geographyNotesUrl})` },
+      ],
+    },
+    {
+      _type: "block",
       style: "h3",
       children: [{ _type: "span", text: "3. महास्थान प्रस्तर लेख: स्थान, पुण्ड्रनगर व अकाल राहत (Mahasthan Inscription in Hindi)" }],
     },
@@ -127,6 +149,14 @@ async function main() {
           _type: "span",
           text: "• **प्राप्ति स्थल**: सोहगौरा (गोरखपुर, उत्तर प्रदेश) | महास्थान (बोगरा, बांग्लादेश / पुण्ड्रनगर)\n• **अभिलेख स्वरूप**: ताम्रपत्र (Copper Plate) | प्रस्तर पट्टिका (Stone Inscription)\n• **संबंधित नदी**: राप्ती नदी | करतोया नदी\n• **जारीकर्ता अधिकारी**: श्रावस्ती के महामात्र | पुण्ड्रनगर के महामात्र\n• **मुख्य प्रावधान**: 2 कोष्ठागारों की स्थापना व आपातकालीन अनाज संचयन | धान वितरण, गंडक सिक्कों की आर्थिक सहायता व ऋण वापसी\n• **ऐतिहासिक महत्त्व**: भारत का प्रथम ताम्रपत्र लेख व आपदा प्रबंधन साक्ष्य | उत्तर बंगाल (पुण्ड्रवर्धन) में मौर्य साम्राज्य का प्रत्यक्ष साक्ष्य",
         },
+      ],
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [
+        { _type: "span", text: "🌿 " },
+        { _type: "span", text: `[पर्यावरण व आर्द्रभूमि संरक्षण पढ़ें: भारत में रामसर स्थल 2026: 101 रामसर स्थल व मध्य प्रदेश के 5 स्थल](${ramsarUrl})` },
       ],
     },
     {
@@ -177,6 +207,14 @@ async function main() {
           _type: "span",
           text: "• **प्रश्न 3 (10 अंक): 'मौर्य काल में कल्याणकारी राज्य एवं आपदा प्रबंधन की अवधारणा विद्यमान थी।' सोहगौरा ताम्रपत्र एवं महास्थान प्रस्तर लेख के विशेष संदर्भ में विश्लेषणात्मक मूल्यांकन कीजिए।**\n  *उत्तर संरचना*: प्रस्तावना ➔ सोहगौरा ताम्रपत्र (स्थान, 2 कोष्ठागार, अनाज सुरक्षा) ➔ महास्थान प्रस्तर लेख (पुण्ड्रवर्धन अकाल, धान व गंडक सिक्कों का वितरण, ऋण वापसी शर्त) ➔ कौटिल्य के अर्थशास्त्र की अकाल नीति से तुलना ➔ कल्याणकारी राज्य (Welfare State) का पुरातात्विक साक्ष्य ➔ निष्कर्ष।",
         },
+      ],
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [
+        { _type: "span", text: "📚 " },
+        { _type: "span", text: `[MPPSC परीक्षा गाइडलाइंस: MPPSC Mains Syllabus 2026 PDF Download](${mainsSyllabusUrl}) | [MPPSC Mains Answer Writing Strategy & Toppers Copies](${answerWritingUrl})` },
       ],
     },
   ];
@@ -259,7 +297,6 @@ async function main() {
     },
   ];
 
-  // High-Intent PAA (People Also Ask) FAQs matching exact Google searches
   const faqs = [
     {
       question: "सोहगौरा अभिलेख कहाँ स्थित है? (Where is Sohgaura Inscription located?)",
@@ -286,7 +323,7 @@ async function main() {
       answerEn: "It features a four-pillared two-storeyed granary (Koshthagara), a sacred tree in railing, and a crescent on a three-arched mountain symbol."
     },
     {
-      question: "महास्थान प्रस्तर लेख में अकाल राहत हेतु किस सिक्का का उल्लेख है?",
+      question: "महास्थान लेख में किस सिक्के का उल्लेख अकाल राहत ऋण के रूप में हुआ है?",
       questionEn: "Which coin is mentioned in the Mahasthan inscription for famine relief?",
       answer: "महास्थान अभिलेख में 'गंडक' (Gandaka) नामक प्राचीन सिक्के का उल्लेख अकाल पीड़ित प्रजा को आपातकालीन आर्थिक सहायता व ऋण के रूप में देने हेतु हुआ है, जिसे सुभिक्ष आने पर वापस लौटाना था।",
       answerEn: "The Mahasthan record mentions 'Gandaka' coins distributed as emergency state credit to famine-affected citizens, refundable once normal conditions returned."
@@ -375,9 +412,9 @@ async function main() {
     }
   };
 
-  console.log("Updating article directly in Sanity CMS with ultra SEO keywords & FAQs...");
+  console.log("Updating article in Sanity CMS with internal interlinking...");
   const res = await client.createOrReplace(doc);
-  console.log(`Successfully updated document in Sanity! Document ID: ${res._id}`);
+  console.log(`Successfully updated document with internal links! Document ID: ${res._id}`);
 }
 
 main().catch(console.error);
