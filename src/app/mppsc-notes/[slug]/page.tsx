@@ -26,9 +26,7 @@ interface Props {
 export async function generateStaticParams() {
   const repo = await getContentRepository();
   const slugs = await repo.getAllSlugs("hi", "staticGk");
-  return slugs
-    .filter((s) => s.slug === "bharat-ka-bhautik-bhugol-mppsc-mains-unit-1-notes" || s.slug === "water-divides-in-india-mppsc-notes")
-    .map((s) => ({ slug: s.slug }));
+  return slugs.map((s) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
