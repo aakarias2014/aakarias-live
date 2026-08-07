@@ -3,7 +3,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import { getContentRepository } from "@/lib/content/content-repository";
 import { FacultyClient } from "@/components/content/faculty-client";
 
-export const revalidate = 60; // Revalidate from Sanity every 60 seconds
+export const revalidate = 3600; // 1h ISR fallback — Sanity webhook handles instant updates
 
 export const metadata: Metadata = buildMetadata({
   title: "Our Mentors & Faculty Members | Aakar IAS",

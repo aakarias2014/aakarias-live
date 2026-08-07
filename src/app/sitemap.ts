@@ -3,6 +3,9 @@ import { getContentRepository } from "@/lib/content/content-repository";
 import { siteConfig } from "@/lib/site-config";
 import { getAllTopperCopies } from "@/lib/toppers-data";
 
+/** Cache sitemap for 24 hours — content changes are picked up on next regen */
+export const revalidate = 86400;
+
 /**
  * Dynamic sitemap. Includes static pages + all articles per locale.
  * Hindi (default) keeps clean URLs; English mirrors under /en/.

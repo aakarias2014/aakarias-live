@@ -56,7 +56,7 @@ import type { Locale } from "@/lib/i18n/locales";
 import { defaultLocale, localePrefix } from "@/lib/i18n/locales";
 import type { SearchHit } from "@/lib/search/algolia";
 
-const REVALIDATE = 60; // 60s ISR default for fast Sanity CMS updates
+const REVALIDATE = 3600; // 1h ISR background fallback — on-demand revalidation via Sanity webhook handles instant updates
 
 /** Sanity document types that carry article-like content (body, author, etc.). */
 const ARTICLE_TYPES = ["currentAffairs", "article", "editorial", "blog", "weekly", "monthly", "staticGk"];
@@ -1586,12 +1586,22 @@ export class SanityRepository implements ContentRepository {
     const isHi = locale === "hi";
     const q = `*[_type == "notification"] | order(date desc) [0...$limit] {
       _id,
+      "slug": slug.current,
       "title": ${isHi ? "coalesce(title, titleEn)" : "coalesce(titleEn, title)"},
+      "titleEn": titleEn,
       exam,
       date,
       status,
       url,
-      description
+      officialPdfUrl,
+      applyOnlineUrl,
+      "totalPosts": ${isHi ? "coalesce(totalPosts, totalPostsEn)" : "coalesce(totalPostsEn, totalPosts)"},
+      "ageLimit": ${isHi ? "coalesce(ageLimit, ageLimitEn)" : "coalesce(ageLimitEn, ageLimit)"},
+      "qualification": ${isHi ? "coalesce(qualification, qualificationEn)" : "coalesce(qualificationEn, qualification)"},
+      startDate,
+      endDate,
+      "examDate": ${isHi ? "coalesce(examDate, examDateEn)" : "coalesce(examDateEn, examDate)"},
+      "description": ${isHi ? "coalesce(description, descriptionEn)" : "coalesce(descriptionEn, description)"}
     }`;
 
     const raw = await sanityFetch<any[]>({
@@ -1603,25 +1613,58 @@ export class SanityRepository implements ContentRepository {
 
     return raw.map((r) => ({
       id: r._id,
+      slug: r.slug || r._id,
       title: r.title,
+      titleEn: r.titleEn,
       exam: r.exam || "Other",
       date: r.date || new Date().toISOString(),
       status: r.status || "upcoming",
       url: r.url || undefined,
+      officialPdfUrl: r.officialPdfUrl || undefined,
+      applyOnlineUrl: r.applyOnlineUrl || undefined,
+      totalPosts: r.totalPosts || undefined,
+      ageLimit: r.ageLimit || undefined,
+      qualification: r.qualification || undefined,
+      startDate: r.startDate || undefined,
+      endDate: r.endDate || undefined,
+      examDate: r.examDate || undefined,
       description: r.description || undefined,
     }));
   }
 
   async getNotification(id: string, locale: Locale): Promise<ExamNotification | null> {
     const isHi = locale === "hi";
-    const q = `*[_type == "notification" && _id == $id][0] {
+    const q = `*[_type == "notification" && (_id == $id || slug.current == $id)][0] {
       _id,
+      "slug": slug.current,
       "title": ${isHi ? "coalesce(title, titleEn)" : "coalesce(titleEn, title)"},
+      "titleEn": titleEn,
       exam,
       date,
       status,
       url,
-      description
+      officialPdfUrl,
+      applyOnlineUrl,
+      "totalPosts": ${isHi ? "coalesce(totalPosts, totalPostsEn)" : "coalesce(totalPostsEn, totalPosts)"},
+      "ageLimit": ${isHi ? "coalesce(ageLimit, ageLimitEn)" : "coalesce(ageLimitEn, ageLimit)"},
+      "qualification": ${isHi ? "coalesce(qualification, qualificationEn)" : "coalesce(qualificationEn, qualification)"},
+      startDate,
+      endDate,
+      "examDate": ${isHi ? "coalesce(examDate, examDateEn)" : "coalesce(examDateEn, examDate)"},
+      "description": ${isHi ? "coalesce(description, descriptionEn)" : "coalesce(descriptionEn, description)"},
+      "body": ${isHi ? "coalesce(body, bodyEn)" : "coalesce(bodyEn, body)"},
+      "suggestedCourse": suggestedCourse->{
+        _id,
+        "slug": slug.current,
+        "title": ${isHi ? "coalesce(title, titleEn)" : "coalesce(titleEn, title)"},
+        "description": ${isHi ? "coalesce(description, descriptionEn)" : "coalesce(descriptionEn, description)"},
+        price,
+        originalPrice,
+        badgeHi,
+        badgeEn
+      },
+      mcqs,
+      faqs
     }`;
 
     const r = await sanityFetch<any>({
@@ -1633,14 +1676,43 @@ export class SanityRepository implements ContentRepository {
 
     if (!r) return null;
 
+    let bodyBlocks: ArticleBlock[] = [];
+    if (r.body) {
+      const parsed = mapPortableTextToBlocks(r.body, locale);
+      bodyBlocks = parsed.blocks;
+    }
+
     return {
       id: r._id,
+      slug: r.slug || r._id,
       title: r.title,
+      titleEn: r.titleEn,
       exam: r.exam || "Other",
       date: r.date || new Date().toISOString(),
       status: r.status || "upcoming",
       url: r.url || undefined,
+      officialPdfUrl: r.officialPdfUrl || undefined,
+      applyOnlineUrl: r.applyOnlineUrl || undefined,
+      totalPosts: r.totalPosts || undefined,
+      ageLimit: r.ageLimit || undefined,
+      qualification: r.qualification || undefined,
+      startDate: r.startDate || undefined,
+      endDate: r.endDate || undefined,
+      examDate: r.examDate || undefined,
       description: r.description || undefined,
+      body: bodyBlocks,
+      suggestedCourse: r.suggestedCourse ? {
+        id: r.suggestedCourse._id,
+        slug: r.suggestedCourse.slug,
+        title: r.suggestedCourse.title,
+        description: r.suggestedCourse.description,
+        price: r.suggestedCourse.price,
+        originalPrice: r.suggestedCourse.originalPrice,
+        badgeHi: r.suggestedCourse.badgeHi,
+        badgeEn: r.suggestedCourse.badgeEn,
+      } : undefined,
+      mcqs: mapMCQs(r.mcqs || [], locale),
+      faqs: mapFAQs(r.faqs || [], locale),
     };
   }
 

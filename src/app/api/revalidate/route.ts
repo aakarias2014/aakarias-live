@@ -89,9 +89,14 @@ export async function POST(req: NextRequest) {
     if (slugString) {
       pathsToRevalidate.push(`/${segment}/${slugString}`);
       pathsToRevalidate.push(`/en/${segment}/${slugString}`);
-      // Also invalidate cross-linked routes for staticGk / currentAffairs
-      pathsToRevalidate.push(`/general-awareness/${slugString}`);
-      pathsToRevalidate.push(`/current-affairs/${slugString}`);
+      // Cross-link only for types that share slugs between routes
+      if (_type === "staticGk" || _type === "static-gk") {
+        pathsToRevalidate.push(`/current-affairs/${slugString}`);
+        pathsToRevalidate.push(`/en/current-affairs/${slugString}`);
+      } else if (_type === "currentAffairs" || _type === "current-affairs") {
+        pathsToRevalidate.push(`/general-awareness/${slugString}`);
+        pathsToRevalidate.push(`/en/general-awareness/${slugString}`);
+      }
     }
   }
 
@@ -124,10 +129,13 @@ export async function POST(req: NextRequest) {
       blog: "articles",
     };
 
-    const targetTag = tagMap[_type] || "articles";
+    const targetTag = tagMap[_type];
     if (targetTag) {
       (revalidateTag as any)(targetTag);
-      (revalidateTag as any)("articles");
+      // Only revalidate "articles" tag when the type actually maps to articles
+      if (targetTag !== "articles" && ["currentAffairs", "staticGk", "editorial", "blog"].includes(_type)) {
+        (revalidateTag as any)("articles");
+      }
       console.log(`[ISR] Revalidated cache tag: ${targetTag}`);
     }
 
@@ -226,11 +234,11 @@ export async function GET(req: NextRequest) {
       revalidatePath(targetPath);
       revalidatePath(`/en${targetPath === "/" ? "" : targetPath}`);
     } else {
+      // Use layout mode on root to cascade, then page mode for specific paths
       revalidatePath("/", "layout");
       revalidatePath("/en", "layout");
       for (const p of allPaths) {
         revalidatePath(p, "page");
-        revalidatePath(p, "layout");
       }
       for (const t of allTags) {
         (revalidateTag as any)(t);

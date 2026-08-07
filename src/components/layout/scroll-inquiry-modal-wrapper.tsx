@@ -45,7 +45,7 @@ export async function ScrollInquiryModalWrapper() {
         offerCourses,
         isActive
       }`,
-      revalidate: process.env.NODE_ENV === "development" ? 0 : 60,
+      revalidate: process.env.NODE_ENV === "development" ? 0 : 3600,
       tags: ["popupBanner"],
     });
 

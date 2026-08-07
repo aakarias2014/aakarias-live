@@ -26,7 +26,7 @@ import { DownloadAppSection } from "@/components/sections/download-app-section";
 import { Countdown } from "@/components/content/countdown";
 import { NoticeTicker } from "@/components/layout/notice-ticker";
 
-export const revalidate = 60; // 60s fast ISR for live Sanity updates
+export const revalidate = 3600; // 1h ISR fallback — Sanity webhook handles instant updates
 
 export const metadata = buildMetadata({
   title: "Aakar IAS | Best MPPSC Coaching in Indore | MPPSC Online Coaching, टेस्ट सीरीज़, नोट्स व करेंट अफेयर्स",
@@ -313,62 +313,7 @@ export default async function HomePage() {
       <Section className="bg-muted/10 border-t border-b border-border/40 py-12 md:py-16">
         <Container size="wide">
           <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
-            {/* Left: Exam Notifications */}
-            <div className="lg:col-span-6 space-y-6">
-              <div className="flex items-center justify-between border-b border-border/60 pb-4">
-                <h3 className="text-xl font-bold text-primary flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-                  Aakar IAS Update
-                </h3>
-                <Button variant="ghost" size="sm" className="text-primary hover:text-primary/80 font-bold p-0 gap-1 hover:bg-transparent" asChild>
-                  <Link href="/notifications">सभी परीक्षा सूचनाएं देखें <ArrowRight className="h-4 w-4" /></Link>
-                </Button>
-              </div>
-
-              {notifications && notifications.length > 0 ? (
-                <div className="space-y-4">
-                  {notifications.slice(0, 3).map((n) => (
-                    <Card key={n.id} className="p-5 border border-border/70 hover:shadow-soft-lg transition-all duration-300">
-                      <div className="flex flex-col gap-2">
-                        <div className="flex items-center justify-between gap-2">
-                          <span className={`inline-block px-2 py-0.5 rounded text-[10px] font-extrabold uppercase border ${
-                            n.status === "out"
-                              ? "bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20"
-                              : n.status === "upcoming"
-                                ? "bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/20"
-                                : "bg-destructive/10 text-destructive border-destructive/20"
-                          }`}>
-                            {n.status === "out" ? "आवेदन जारी" : n.status === "upcoming" ? "आगामी" : "समाप्त"}
-                          </span>
-                          {n.date && (
-                            <span className="text-[11px] text-muted-foreground flex items-center gap-1">
-                              <Calendar className="h-3.5 w-3.5 text-primary" />
-                              {formatDate(n.date, "hi")}
-                            </span>
-                          )}
-                        </div>
-                        <h4 className="text-sm font-bold text-foreground line-clamp-2 leading-relaxed">
-                          <Link href={`/notifications/${n.id}`} className="hover:text-primary transition-colors">
-                            {n.title}
-                          </Link>
-                        </h4>
-                        <div className="pt-2">
-                          <Button size="sm" variant="outline" className="rounded-full h-8 text-[11px] font-bold border-border/80 hover:border-primary/30 hover:bg-primary/5 text-muted-foreground hover:text-primary gap-1" asChild>
-                            <Link href={`/notifications/${n.id}`}>
-                              विवरण देखें <ArrowRight className="h-3.5 w-3.5" />
-                            </Link>
-                          </Button>
-                        </div>
-                      </div>
-                    </Card>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-sm text-muted-foreground">कोई नवीनतम सूचना उपलब्ध नहीं है।</p>
-              )}
-            </div>
-
-            {/* Right: Exam Calendar */}
+            {/* Left: Exam Countdown & Calendar */}
             <div className="lg:col-span-6 space-y-6">
               <div className="flex items-center justify-between border-b border-border/60 pb-4">
                 <h3 className="text-xl font-bold text-primary flex items-center gap-2">
@@ -419,6 +364,61 @@ export default async function HomePage() {
                   })}
                 </div>
               </div>
+            </div>
+
+            {/* Right: Latest Job Notification Cards */}
+            <div className="lg:col-span-6 space-y-6">
+              <div className="flex items-center justify-between border-b border-border/60 pb-4">
+                <h3 className="text-xl font-bold text-primary flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+                  नवीन वैकेंसी व परीक्षा भर्ती
+                </h3>
+                <Button variant="ghost" size="sm" className="text-primary hover:text-primary/80 font-bold p-0 gap-1 hover:bg-transparent" asChild>
+                  <Link href="/notifications">सभी परीक्षा सूचनाएं देखें <ArrowRight className="h-4 w-4" /></Link>
+                </Button>
+              </div>
+
+              {notifications && notifications.length > 0 ? (
+                <div className="space-y-4">
+                  {notifications.slice(0, 3).map((n) => (
+                    <Card key={n.id} className="p-5 border border-border/70 hover:shadow-soft-lg transition-all duration-300">
+                      <div className="flex flex-col gap-2">
+                        <div className="flex items-center justify-between gap-2">
+                          <span className={`inline-block px-2 py-0.5 rounded text-[10px] font-extrabold uppercase border ${
+                            n.status === "out"
+                              ? "bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20"
+                              : n.status === "upcoming"
+                                ? "bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/20"
+                                : "bg-destructive/10 text-destructive border-destructive/20"
+                          }`}>
+                            {n.status === "out" ? "आवेदन जारी" : n.status === "upcoming" ? "आगामी" : "समाप्त"}
+                          </span>
+                          {n.date && (
+                            <span className="text-[11px] text-muted-foreground flex items-center gap-1">
+                              <Calendar className="h-3.5 w-3.5 text-primary" />
+                              {formatDate(n.date, "hi")}
+                            </span>
+                          )}
+                        </div>
+                        <h4 className="text-sm font-bold text-foreground line-clamp-2 leading-relaxed">
+                          <Link href={`/notifications/${n.id}`} className="hover:text-primary transition-colors">
+                            {n.title}
+                          </Link>
+                        </h4>
+                        <div className="pt-2">
+                          <Button size="sm" variant="outline" className="rounded-full h-8 text-[11px] font-bold border-border/80 hover:border-primary/30 hover:bg-primary/5 text-muted-foreground hover:text-primary gap-1" asChild>
+                            <Link href={`/notifications/${n.id}`}>
+                              विवरण देखें <ArrowRight className="h-3.5 w-3.5" />
+                            </Link>
+                          </Button>
+                        </div>
+                      </div>
+                    </Card>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-sm text-muted-foreground">कोई नवीनतम सूचना उपलब्ध नहीं है।</p>
+              )}
             </div>
           </div>
         </Container>

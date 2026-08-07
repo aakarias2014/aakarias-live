@@ -26,7 +26,7 @@ import { DownloadAppSection } from "@/components/sections/download-app-section";
 import { Countdown } from "@/components/content/countdown";
 import { NoticeTicker } from "@/components/layout/notice-ticker";
 
-export const revalidate = 60; // 60s fast ISR for live Sanity updates
+export const revalidate = 3600; // 1h ISR fallback — Sanity webhook handles instant updates
 
 export const metadata = buildMetadata({
   title: "Aakar IAS | Best MPPSC & UPSC Coaching in Indore | Mains Test Series & Notes",
@@ -314,15 +314,68 @@ export default async function EnglishHomePage() {
       <Section className="bg-muted/10 border-t border-b border-border/40 py-12 md:py-16">
         <Container size="wide">
           <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
-            {/* Left: Exam Notifications */}
+            {/* Left: Exam Countdown & Calendar */}
             <div className="lg:col-span-6 space-y-6">
               <div className="flex items-center justify-between border-b border-border/60 pb-4">
                 <h3 className="text-xl font-bold text-primary flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-                  Aakar IAS Update
+                  Exams Notification
                 </h3>
                 <Button variant="ghost" size="sm" className="text-primary hover:text-primary/80 font-bold p-0 gap-1 hover:bg-transparent" asChild>
-                  <Link href="/en/notifications">All Exam Notifications <ArrowRight className="h-4 w-4" /></Link>
+                  <Link href="/en/calendar">Full Calendar <ArrowRight className="h-4 w-4" /></Link>
+                </Button>
+              </div>
+
+              <div className="space-y-4">
+                {/* Countdown Card */}
+                {primaryExam && (
+                  <Countdown
+                    targetDate={countdownDate}
+                    title={countdownTitle}
+                    locale="en"
+                  />
+                )}
+
+                {/* Exam Dates Grid */}
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {displayPreviewExams.map((exam) => {
+                    const statusLabels = {
+                      upcoming: "Upcoming Exam",
+                      ongoing: "Active Exam",
+                      completed: "Completed"
+                    };
+                    const statusColors = {
+                      upcoming: "bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/20",
+                      ongoing: "bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20",
+                      completed: "bg-muted text-muted-foreground border-border"
+                    };
+                    return (
+                      <Card key={exam.id} className="p-4 border border-border/70 flex flex-col justify-between hover:shadow-soft transition-all duration-300">
+                        <div>
+                          <span className={`text-[9px] font-extrabold uppercase px-2 py-0.5 rounded border ${statusColors[exam.status] || statusColors.upcoming}`}>
+                            {statusLabels[exam.status] || "Exam"}
+                          </span>
+                          <h4 className="text-xs font-bold text-foreground mt-2.5 leading-snug">{exam.name}</h4>
+                        </div>
+                        <p className="text-sm font-extrabold text-primary mt-3 flex items-center gap-1.5">
+                          <CalendarDays className="h-4 w-4" /> {exam.dateText}
+                        </p>
+                      </Card>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Latest Job Notification Cards */}
+            <div className="lg:col-span-6 space-y-6">
+              <div className="flex items-center justify-between border-b border-border/60 pb-4">
+                <h3 className="text-xl font-bold text-primary flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+                  Latest Govt Job Notifications
+                </h3>
+                <Button variant="ghost" size="sm" className="text-primary hover:text-primary/80 font-bold p-0 gap-1 hover:bg-transparent" asChild>
+                  <Link href="/en/notifications">All Notifications <ArrowRight className="h-4 w-4" /></Link>
                 </Button>
               </div>
 
@@ -367,59 +420,6 @@ export default async function EnglishHomePage() {
               ) : (
                 <p className="text-sm text-muted-foreground">No recent notifications available.</p>
               )}
-            </div>
-
-            {/* Right: Exam Calendar */}
-            <div className="lg:col-span-6 space-y-6">
-              <div className="flex items-center justify-between border-b border-border/60 pb-4">
-                <h3 className="text-xl font-bold text-primary flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-                  Exams Notification
-                </h3>
-                <Button variant="ghost" size="sm" className="text-primary hover:text-primary/80 font-bold p-0 gap-1 hover:bg-transparent" asChild>
-                  <Link href="/en/calendar">Full Calendar <ArrowRight className="h-4 w-4" /></Link>
-                </Button>
-              </div>
-
-              <div className="space-y-4">
-                {/* Countdown Card */}
-                {primaryExam && (
-                  <Countdown
-                    targetDate={countdownDate}
-                    title={countdownTitle}
-                    locale="en"
-                  />
-                )}
-
-                {/* Exam Dates Grid */}
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {displayPreviewExams.map((exam) => {
-                    const statusLabels = {
-                      upcoming: "Upcoming Exam",
-                      ongoing: "Ongoing Exam",
-                      completed: "Completed Exam"
-                    };
-                    const statusColors = {
-                      upcoming: "bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/20",
-                      ongoing: "bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20",
-                      completed: "bg-muted text-muted-foreground border-border"
-                    };
-                    return (
-                      <Card key={exam.id} className="p-4 border border-border/70 flex flex-col justify-between hover:shadow-soft transition-all duration-300">
-                        <div>
-                          <span className={`text-[9px] font-extrabold uppercase px-2 py-0.5 rounded border ${statusColors[exam.status] || statusColors.upcoming}`}>
-                            {statusLabels[exam.status] || "Exam"}
-                          </span>
-                          <h4 className="text-xs font-bold text-foreground mt-2.5 leading-snug">{exam.name}</h4>
-                        </div>
-                        <p className="text-sm font-extrabold text-primary mt-3 flex items-center gap-1.5">
-                          <CalendarDays className="h-4 w-4" /> {exam.dateText}
-                        </p>
-                      </Card>
-                    );
-                  })}
-                </div>
-              </div>
             </div>
           </div>
         </Container>
