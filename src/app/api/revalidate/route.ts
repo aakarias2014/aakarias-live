@@ -105,6 +105,10 @@ export async function POST(req: NextRequest) {
     pathsToRevalidate.push("/en/calendar");
   }
 
+  // Always revalidate important-days listing
+  pathsToRevalidate.push("/important-days");
+  pathsToRevalidate.push("/en/important-days");
+
   // Trigger on-demand revalidation for all matching paths & cache tags
   try {
     for (const path of pathsToRevalidate) {
@@ -188,6 +192,8 @@ export async function GET(req: NextRequest) {
     "/en/current-affairs",
     "/general-awareness",
     "/en/general-awareness",
+    "/important-days",
+    "/en/important-days",
     "/general-awareness/disaster-management-amendment-act-2025-mppsc-upsc-notes",
     "/current-affairs/disaster-management-amendment-act-2025-mppsc-upsc-notes",
     "/general-awareness/what-is-disaster-management-ncert-types-mppsc-notes",

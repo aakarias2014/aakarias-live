@@ -603,7 +603,7 @@ export class SanityRepository implements ContentRepository {
     const isHi = locale === "hi";
     const query = `*[
       _type in [${ARTICLE_TYPES.map((t) => `"${t}"`).join(",")}] &&
-      slug.current == $slug &&
+      (slug.current == $slug || $slug match slug.current + "*") &&
       !(_id in path("drafts.**"))
     ] | order(_updatedAt desc)[0]{
       _id,
