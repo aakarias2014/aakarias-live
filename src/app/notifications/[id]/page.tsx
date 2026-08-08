@@ -15,6 +15,7 @@ import { siteConfig } from "@/lib/site-config";
 import { VacancyHighlightsTable } from "@/components/vacancy/vacancy-highlights-table";
 import { CourseRecommendationCard } from "@/components/vacancy/course-recommendation-card";
 import { VacancyRulebookOverview } from "@/components/vacancy/vacancy-rulebook-overview";
+import { VacancyVideoEmbed } from "@/components/vacancy/vacancy-video-embed";
 import { ArticleBody } from "@/components/article/article-body";
 import { ShareWidget } from "@/components/article/share-widget";
 import Link from "next/link";
@@ -231,6 +232,15 @@ export default async function NotificationDetailPage({ params }: PageProps) {
 
               {/* Quick Job Highlights Table */}
               <VacancyHighlightsTable notification={n} locale="hi" />
+
+              {/* YouTube Video Analysis & Masterclass */}
+              {(n.youtubeUrl || n.slug?.includes("patwari") || n.id?.includes("patwari")) && (
+                <VacancyVideoEmbed
+                  videoUrl={n.youtubeUrl || "https://youtu.be/CWBcJ86R2kc"}
+                  title={n.title}
+                  locale="hi"
+                />
+              )}
 
               {/* Rich Visual Rulebook Overview for Patwari / ESB / Major Vacancies */}
               {(n.slug?.includes("patwari") || n.exam?.includes("ESB") || n.exam?.includes("VYAPAM") || n.exam?.includes("MPPSC")) ? (

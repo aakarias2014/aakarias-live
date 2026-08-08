@@ -607,6 +607,7 @@ export const notification: SchemaTypeDefinition = defineType({
     defineField({ name: "url", type: "url", title: "Official URL / Website" }),
     defineField({ name: "officialPdfUrl", type: "url", title: "Official PDF Notification Link" }),
     defineField({ name: "applyOnlineUrl", type: "url", title: "Apply Online Link" }),
+    defineField({ name: "youtubeUrl", type: "url", title: "YouTube Analysis Video Link" }),
     defineField({ name: "totalPosts", type: "string", title: "Total Posts (e.g. 800+ Posts / 800+ पद)" }),
     defineField({ name: "ageLimit", type: "string", title: "Age Limit (e.g. 21-40 Years / 21 से 40 वर्ष)" }),
     defineField({ name: "qualification", type: "string", title: "Qualification (e.g. Graduate / स्नातक)" }),

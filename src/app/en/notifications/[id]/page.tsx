@@ -12,6 +12,7 @@ import { formatDate } from "@/lib/seo/metadata";
 import { VacancyHighlightsTable } from "@/components/vacancy/vacancy-highlights-table";
 import { CourseRecommendationCard } from "@/components/vacancy/course-recommendation-card";
 import { VacancyRulebookOverview } from "@/components/vacancy/vacancy-rulebook-overview";
+import { VacancyVideoEmbed } from "@/components/vacancy/vacancy-video-embed";
 import { siteConfig } from "@/lib/site-config";
 import Link from "next/link";
 import Image from "next/image";
@@ -154,6 +155,16 @@ export default async function EnglishNotificationDetailPage({ params }: PageProp
               )}
 
               <VacancyHighlightsTable notification={n} locale="en" />
+
+              {/* YouTube Video Analysis & Masterclass */}
+              {(n.youtubeUrl || n.slug?.includes("patwari") || n.id?.includes("patwari")) && (
+                <VacancyVideoEmbed
+                  videoUrl={n.youtubeUrl || "https://youtu.be/CWBcJ86R2kc"}
+                  title={n.titleEn || n.title}
+                  locale="en"
+                />
+              )}
+
               <VacancyRulebookOverview locale="en" />
 
               {/* Ending Action Box - PDF & Online Application Links */}

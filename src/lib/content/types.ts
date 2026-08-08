@@ -154,6 +154,7 @@ export interface ExamNotification {
   url?: string;
   officialPdfUrl?: string;
   applyOnlineUrl?: string;
+  youtubeUrl?: string;
   totalPosts?: string;
   ageLimit?: string;
   qualification?: string;
