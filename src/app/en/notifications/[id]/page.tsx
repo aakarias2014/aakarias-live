@@ -28,11 +28,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const n = await repo.getNotification(id, "en");
   if (!n) return {};
 
-  const ogImageUrl = n.featuredImage?.url || (
-    n.slug?.includes("patwari") || id.includes("patwari")
-      ? `${siteConfig.url}/images/notifications/mp-patwari-group-2-subgroup-4-bharti-2026-thumbnail.jpg`
-      : undefined
-  );
+  const ogImageUrl = (n.slug?.includes("patwari") || id.includes("patwari"))
+    ? `${siteConfig.url}/images/notifications/mp-patwari-group-2-subgroup-4-bharti-2026-thumbnail.jpg`
+    : n.featuredImage?.url;
 
   return buildMetadata({
     title: `${n.title} — Official Notification & Rulebook Details`,

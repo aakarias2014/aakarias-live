@@ -37,11 +37,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = `${n.title} Notification 2026: Total Posts, Age Limit & Apply Online`;
   const description = n.description?.slice(0, 160) || `${n.title} की आधिकारिक भर्ती अधिसूचना, कुल पदसंख्या, आयु सीमा, शैक्षणिक योग्यता व अंतिम तिथि की संपूर्ण जानकारी।`;
 
-  const ogImageUrl = n.featuredImage?.url || (
-    n.slug?.includes("patwari") || id.includes("patwari")
-      ? `${siteConfig.url}/images/notifications/mp-patwari-group-2-subgroup-4-bharti-2026-thumbnail.jpg`
-      : undefined
-  );
+  const ogImageUrl = (n.slug?.includes("patwari") || id.includes("patwari"))
+    ? `${siteConfig.url}/images/notifications/mp-patwari-group-2-subgroup-4-bharti-2026-thumbnail.jpg`
+    : n.featuredImage?.url;
 
   return buildMetadata({
     title,

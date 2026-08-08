@@ -81,7 +81,16 @@ export function buildMetadata({
       description,
       url,
       siteName: siteConfig.name,
-      images: [{ url: ogImage, width: 1200, height: 630, alt: title ?? siteConfig.name }],
+      images: [
+        {
+          url: ogImage,
+          secureUrl: ogImage,
+          width: 1200,
+          height: 630,
+          alt: title ?? siteConfig.name,
+          type: "image/jpeg",
+        },
+      ],
       locale: locale === "en" ? "en_IN" : "hi_IN",
       alternateLocale: locale === "en" ? ["hi_IN"] : ["en_IN"],
       type,
