@@ -44,6 +44,8 @@ export default async function EnglishNotificationDetailPage({ params }: PageProp
     notFound();
   }
 
+  const pageUrl = `${siteConfig.url}/en/notifications/${n.slug || n.id}`;
+
   const getStatusColor = (status: string) => {
     switch (status) {
       case "out":
