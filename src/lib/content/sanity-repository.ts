@@ -1000,11 +1000,8 @@ export class SanityRepository implements ContentRepository {
       addOverrideCard(cwgCard);
       addOverrideCard(yaminiCard);
 
-      // Prioritize latest Ramsar Sites article at top position if present in page 1
-      const ramsarItem = items.find((it) => it.slug?.includes("ramsar"));
-      if (ramsarItem) {
-        items = [ramsarItem, ...items.filter((it) => it.slug !== ramsarItem.slug)];
-      }
+      // Sort items by publishedAt/date descending so the newest article (e.g. National Handloom Day) ranks first
+      items.sort((a, b) => new Date(b.publishedAt || b.date || b.ca_date || 0).getTime() - new Date(a.publishedAt || a.date || a.ca_date || 0).getTime());
     }
 
     const isStaticGkQuery = query.contentType === "staticGk";
@@ -1117,11 +1114,8 @@ export class SanityRepository implements ContentRepository {
         items.unshift(cwgCard);
       }
 
-      // Prioritize latest Ramsar Sites article at top position if present
-      const ramsarItem = items.find((it) => it.slug?.includes("ramsar"));
-      if (ramsarItem) {
-        return [ramsarItem, ...items.filter((it) => it.slug !== ramsarItem.slug)].slice(0, limit);
-      }
+      // Sort items by date descending so the newest featured article (e.g. National Handloom Day) ranks first
+      items.sort((a, b) => new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime());
     }
     return items.slice(0, limit);
   }
