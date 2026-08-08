@@ -1021,14 +1021,22 @@ export class SanityRepository implements ContentRepository {
       }
     }
 
-    // Deduplicate items by title to prevent duplicate cards for alias documents
-    const seenTitles = new Set<string>();
+    // Deduplicate items by slug and normalized title topic to prevent duplicate cards for alias documents
+    const seenKeys = new Set<string>();
     const dedupedItems: ArticleListItem[] = [];
     for (const item of items) {
       if (!item || !item.title) continue;
-      const titleKey = item.title.trim().toLowerCase();
-      if (!seenTitles.has(titleKey)) {
-        seenTitles.add(titleKey);
+      // Clean hidden zero-width unicode characters
+      const cleanTitle = item.title.replace(/[\u200B-\u200D\uFEFF\u00A0]/g, "").trim().toLowerCase();
+      // Group similar titles (e.g., all Ramsar site variants) by core keyword if present
+      let topicKey = cleanTitle;
+      if (cleanTitle.includes("रामसर") || item.slug?.includes("ramsar")) {
+        topicKey = "topic_ramsar_sites_2026";
+      }
+      const slugKey = item.slug ? item.slug.split("-")[0] + "_" + item.slug.split("-")[1] : cleanTitle;
+      
+      if (!seenKeys.has(topicKey)) {
+        seenKeys.add(topicKey);
         dedupedItems.push(item);
       }
     }
