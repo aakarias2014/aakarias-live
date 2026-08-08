@@ -108,6 +108,10 @@ export default function RootLayout({
       suppressHydrationWarning
       className={cn(inter.variable, notoDevanagari.variable, "h-full")}
     >
+      <head>
+        <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cdn.sanity.io" />
+      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground antialiased">
         <GoogleAnalytics />
         <MicrosoftClarity />

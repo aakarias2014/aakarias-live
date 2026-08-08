@@ -10,14 +10,21 @@ export function useReadingProgress(): number {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    let ticking = false;
+
     function onScroll() {
-      const el = document.documentElement;
-      const scrollTop = el.scrollTop || document.body.scrollTop;
-      const scrollHeight = el.scrollHeight - el.clientHeight;
-      setProgress(scrollHeight > 0 ? Math.min((scrollTop / scrollHeight) * 100, 100) : 0);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const el = document.documentElement;
+          const scrollTop = el.scrollTop || document.body.scrollTop;
+          const scrollHeight = el.scrollHeight - el.clientHeight;
+          setProgress(scrollHeight > 0 ? Math.min((scrollTop / scrollHeight) * 100, 100) : 0);
+          ticking = false;
+        });
+        ticking = true;
+      }
     }
 
-    // Use passive listener for scroll perf
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);

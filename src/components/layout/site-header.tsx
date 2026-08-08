@@ -49,7 +49,7 @@ export function SiteHeader() {
             <div className="flex items-center gap-3.5 text-muted-foreground font-semibold">
               <Link href={getHref("/notifications")} className="hover:text-primary transition-colors flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-                Aakar IAS Update
+                {locale === "hi" ? "नवीनतम वेकेंसी व परीक्षा भर्ती (New Vacancies)" : "New Vacancies & Exams"}
               </Link>
               <span className="text-border/60">|</span>
               <Link href={getHref("/calendar")} className="hover:text-primary transition-colors">

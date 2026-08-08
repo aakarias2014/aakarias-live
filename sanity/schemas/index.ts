@@ -595,16 +595,67 @@ export const monthlyPdf: SchemaTypeDefinition = defineType({
 
 export const notification: SchemaTypeDefinition = defineType({
   name: "notification",
-  title: "Exam Notification",
+  title: "Exam Notification / Vacancy",
   type: "document",
   fields: [
+    defineField({ name: "slug", title: "Slug", type: "slug", options: { source: "title" } }),
     defineField({ name: "title", type: "string", validation: (r) => r.required() }),
     defineField({ name: "titleEn", type: "string" }),
-    defineField({ name: "exam", type: "string", options: { list: ["UPSC", "MPPSC", "Other"] } }),
+    defineField({ name: "exam", type: "string", options: { list: ["MPPSC", "ESB/VYAPAM", "Teaching Exam", "UPSC", "SSC", "Banking", "Railway", "Other Govt. Exam"] } }),
     defineField({ name: "date", type: "datetime" }),
-    defineField({ name: "status", type: "string", options: { list: ["upcoming", "out", "closed"] } }),
-    defineField({ name: "url", type: "url" }),
-    defineField({ name: "description", type: "text" }),
+    defineField({ name: "status", type: "string", options: { list: ["upcoming", "out", "closing-soon", "closed"] } }),
+    defineField({ name: "url", type: "url", title: "Official URL / Website" }),
+    defineField({ name: "officialPdfUrl", type: "url", title: "Official PDF Notification Link" }),
+    defineField({ name: "applyOnlineUrl", type: "url", title: "Apply Online Link" }),
+    defineField({ name: "totalPosts", type: "string", title: "Total Posts (e.g. 800+ Posts / 800+ पद)" }),
+    defineField({ name: "ageLimit", type: "string", title: "Age Limit (e.g. 21-40 Years / 21 से 40 वर्ष)" }),
+    defineField({ name: "qualification", type: "string", title: "Qualification (e.g. Graduate / स्नातक)" }),
+    defineField({ name: "startDate", type: "date", title: "Apply Start Date" }),
+    defineField({ name: "endDate", type: "date", title: "Apply End Date" }),
+    defineField({ name: "examDate", type: "string", title: "Exam Date / Expected Month" }),
+    defineField({ name: "description", type: "text", title: "Short Summary" }),
+    ...localePortableTextField("body", "Body (HI)", "Body (EN)"),
+    defineField({
+      name: "suggestedCourse",
+      title: "Recommended Course / Test Series",
+      type: "reference",
+      to: [{ type: "onlineCourse" }],
+    }),
+    defineField({
+      name: "mcqs",
+      title: "MCQs",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            { name: "question", type: "string", title: "Question (HI)" },
+            { name: "questionEn", type: "string", title: "Question (EN)" },
+            { name: "options", type: "array", of: [{ type: "string" }], title: "Options (HI)" },
+            { name: "optionsEn", type: "array", of: [{ type: "string" }], title: "Options (EN)" },
+            { name: "correctIndex", type: "number", title: "Correct Index" },
+            { name: "explanation", type: "text", title: "Explanation (HI)" },
+            { name: "explanationEn", type: "text", title: "Explanation (EN)" },
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: "faqs",
+      title: "FAQs",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            { name: "question", type: "string", title: "Question (HI)" },
+            { name: "questionEn", type: "string", title: "Question (EN)" },
+            { name: "answer", type: "text", title: "Answer (HI)" },
+            { name: "answerEn", type: "text", title: "Answer (EN)" },
+          ],
+        },
+      ],
+    }),
   ],
   preview: { select: { title: "title", subtitle: "exam" } },
 });

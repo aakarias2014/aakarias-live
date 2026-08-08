@@ -15,10 +15,18 @@ import Image from "next/image";
  */
 export function ArticleBody({ article, ads }: { article: Article; ads?: AdConfig[] }) {
   return (
-    <div className="prose-aakar">
-      {(article.sections || []).map((section) => (
-        <ArticleSectionBlock key={section.id} section={section} />
+    <div className="prose-aakar space-y-6">
+      {(article.sections || []).map((section, idx) => (
+        <ArticleSectionBlock key={section.id || `sec-${idx}`} section={section} />
       ))}
+
+      {article.body && article.body.length > 0 && (
+        <div className="space-y-4 my-6">
+          {article.body.map((block, i) => (
+            <BlockRenderer key={`body-blk-${i}`} block={block} />
+          ))}
+        </div>
+      )}
 
       {/* Next Related Article Link (और पढ़ें) */}
       {article.nextArticle && (

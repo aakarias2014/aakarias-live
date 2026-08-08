@@ -145,12 +145,36 @@ export interface MonthlyPDF {
 
 export interface ExamNotification {
   id: string;
+  slug?: string;
   title: string;
-  exam: "UPSC" | "MPPSC" | "Other";
+  titleEn?: string;
+  exam: "UPSC" | "MPPSC" | "MPSI" | "MP Police" | "Other" | string;
   date: string; // ISO
-  status: "upcoming" | "out" | "closed";
+  status: "upcoming" | "out" | "closing-soon" | "closed" | string;
   url?: string;
+  officialPdfUrl?: string;
+  applyOnlineUrl?: string;
+  totalPosts?: string;
+  ageLimit?: string;
+  qualification?: string;
+  startDate?: string;
+  endDate?: string;
+  examDate?: string;
   description?: string;
+  body?: ArticleBlock[];
+  sections?: ArticleSection[];
+  suggestedCourse?: {
+    id: string;
+    slug: string;
+    title: string;
+    description?: string;
+    price?: number;
+    originalPrice?: number;
+    badgeHi?: string;
+    badgeEn?: string;
+  };
+  mcqs?: MCQ[];
+  faqs?: FAQ[];
 }
 
 export interface ExamCalendar {

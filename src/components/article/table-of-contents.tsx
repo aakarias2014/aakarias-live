@@ -13,23 +13,31 @@ export function TableOfContents({ items }: { items: TOCItem[] }) {
   const [activeId, setActiveId] = useState<string | null>(null);
 
   useEffect(() => {
+    let ticking = false;
+
     function onScroll() {
-      const headingEls = Array.from(
-        document.querySelectorAll<HTMLElement>(
-          ".prose-aakar h2[id], .prose-aakar h3[id], .article-section[id]",
-        ),
-      );
-      if (!headingEls.length) return;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const headingEls = Array.from(
+            document.querySelectorAll<HTMLElement>(
+              ".prose-aakar h2[id], .prose-aakar h3[id], .article-section[id]",
+            ),
+          );
+          if (headingEls.length) {
+            const threshold = window.innerHeight / 3;
+            let current: string | null = null;
 
-      const threshold = window.innerHeight / 3;
-      let current: string | null = null;
-
-      for (const el of headingEls) {
-        if (el.getBoundingClientRect().top <= threshold) {
-          current = el.id;
-        } else break;
+            for (const el of headingEls) {
+              if (el.getBoundingClientRect().top <= threshold) {
+                current = el.id;
+              } else break;
+            }
+            setActiveId(current ?? headingEls[0]?.id ?? null);
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
-      setActiveId(current ?? headingEls[0]?.id ?? null);
     }
 
     window.addEventListener("scroll", onScroll, { passive: true });

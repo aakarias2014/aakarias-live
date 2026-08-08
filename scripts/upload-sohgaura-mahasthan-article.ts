@@ -1,6 +1,4 @@
 import { createClient } from "@sanity/client";
-import * as fs from "fs";
-import * as path from "path";
 
 const client = createClient({
   projectId: "pnc4agic",
@@ -10,22 +8,8 @@ const client = createClient({
   useCdn: false,
 });
 
-async function uploadImageAsset(filePath: string, filename: string) {
-  console.log(`Uploading image asset: ${filename}...`);
-  const buffer = fs.readFileSync(filePath);
-  const asset = await client.assets.upload("image", buffer, { filename });
-  console.log(`Uploaded ${filename} -> Asset ID: ${asset._id}`);
-  return asset._id;
-}
-
 async function main() {
-  const userImage = "/Users/aakariastech/.gemini/antigravity-ide/brain/fd002156-0235-4d33-bbaa-cf0087ecdf67/media__1786101495018.jpg";
-  const mahasthanImage = "/Users/aakariastech/.gemini/antigravity-ide/brain/fd002156-0235-4d33-bbaa-cf0087ecdf67/mahasthan_inscription_bogra_1786101630575.png";
-  const granaryImage = "/Users/aakariastech/.gemini/antigravity-ide/brain/fd002156-0235-4d33-bbaa-cf0087ecdf67/mauryan_state_granary_famine_relief_1786101642210.png";
-
-  const userAssetId = await uploadImageAsset(userImage, "sohgaura_copper_plate_artefact.jpg");
-  const mahasthanAssetId = await uploadImageAsset(mahasthanImage, "mahasthan_inscription_bogra.png");
-  const granaryAssetId = await uploadImageAsset(granaryImage, "mauryan_state_granary_famine_relief.png");
+  const userAssetId = "image-d6527974c61b4ee8ad3d66c6c0fb2e3fb2bbd557-1024x682-jpg";
 
   const title = "सौहगरा ताम्रपत्र लेख एवं महास्थान प्रस्तर लेख: मौर्यकालीन आपदा प्रबंधन व अकाल राहत के प्रथम पुरातात्विक साक्ष्य | MPPSC & UPSC Notes";
   const titleEn = "Sohgaura Copper Plate & Mahasthan Inscription: Archaeological Evidences of Mauryan Famine Relief & Disaster Management | MPPSC & UPSC Notes";
@@ -103,12 +87,6 @@ async function main() {
       ],
     },
     {
-      _type: "image",
-      asset: { _type: "reference", _ref: granaryAssetId },
-      alt: "मौर्यकालीन राजकीय कोष्ठागार व अकाल राहत वितरण (Mauryan State Granary Famine Relief Distribution)",
-      caption: "चित्र 2: मौर्य काल में महामात्रों (अधिकारियों) द्वारा राजकीय कोष्ठागार से आपातकालीन स्थिति में प्रजा को अनाज वितरण की कलात्मक पुनर्रचना।"
-    },
-    {
       _type: "block",
       style: "h3",
       children: [{ _type: "span", text: "3. महास्थान प्रस्तर लेख (Mahasthan Stone Inscription)" }],
@@ -132,12 +110,6 @@ async function main() {
           text: "• **स्थान (Location)**: वर्तमान बांग्लादेश के **बोगरा (Bogra)** जिले में करतोया नदी के तट पर स्थित **'महास्थान' (Mahasthangarh)** से प्राप्त। प्राचीन काल में इसे **पुण्ड्रवर्धन (Pundravardhana)** या **पुण्ड्रनगर (Pundranagar)** कहा जाता था।\n• **काल (Period)**: मौर्यकालीन (चंद्रगुप्त मौर्य का काल, 3rd Century BCE)।\n• **लिपि व भाषा**: ब्राह्मी लिपि एवं प्राकृत भाषा।\n• **मुख्य विषय (Core Subject)**: इसमें उल्लेख है कि पुण्ड्रनगर (महास्थान) में भीषण अकाल (सूखा) पड़ा था। सम्राट द्वारा पुण्ड्रनगर के महामात्र (प्रांतीय गवर्नर/अधिकारी) को आदेश जारी किया गया कि अकाल से प्रभावित जनता को राजकीय अन्नागारों से धान (अनाज) बांटा जाए तथा **'गंडक' (Gandaka)** नामक प्राचीन सिक्कों के रूप में आर्थिक सहायता/ऋण प्रदान किया जाए।\n• **ऋण वापसी की शर्त (Credit/Loan Policy)**: लेख में स्पष्ट उल्लेख है कि 'जैसे ही सुभिक्ष (अच्छे दिन) वापस आएं और अकाल समाप्त हो जाए, जनता को वह अनाज तथा गंडक (सिक्के) राजकीय कोष में वापस लौटाने होंगे।'\n• **महत्व**: यह प्राचीन भारत की प्रथम दर्ज 'आपदा राहत ऋण एवं पुनर्भुगतान नीति' (Disaster Relief Credit & Repayment Policy) है।",
         },
       ],
-    },
-    {
-      _type: "image",
-      asset: { _type: "reference", _ref: mahasthanAssetId },
-      alt: "महास्थान ब्राह्मी प्रस्तर लेख (Mahasthan Brahmi Stone Inscription Artefact)",
-      caption: "चित्र 3: महास्थान प्रस्तर लेख (बोगरा, बांग्लादेश) — पुण्ड्रवर्धन में अकाल राहत, धान वितरण व गंडक सिक्कों की ऋण नीति का ब्राह्मी अभिलेख।"
     },
     {
       _type: "block",
@@ -318,7 +290,7 @@ async function main() {
       children: [
         {
           _type: "span",
-          text: "• **Question 3 (10 Marks): 'The concept of a Welfare State and Disaster Management existed during the Mauryan Period.' Critically analyze with reference to Sohgaura and Mahasthan inscriptions.**\n  *Answer Structure*: Introduction ➔ Sohgaura Copper Plate (gorakhpur, 2 granaries, reserved grain) ➔ Mahasthan Inscription (Pundranagar famine, paddy distribution, Gandaka coin loans, repayment clause) ➔ Alignment with Kautilya's Arthashastra ➔ Proof of Welfare State Model ➔ Conclusion.",
+          text: "• **Question 3 (10 Marks): 'The concept of a Welfare State and Disaster Management existed during the Mauryan Period.' Critically analyze with reference to Sohgaura and Mahasthan inscriptions.**\n  *Answer Structure*: Introduction ➔ Sohgaura Copper Plate (Gorakhpur, 2 granaries, reserved grain) ➔ Mahasthan Inscription (Pundranagar famine, paddy distribution, Gandaka coin loans, repayment clause) ➔ Alignment with Kautilya's Arthashastra ➔ Proof of Welfare State Model ➔ Conclusion.",
         },
       ],
     },
