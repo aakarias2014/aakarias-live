@@ -13,6 +13,7 @@ import { VacancyHighlightsTable } from "@/components/vacancy/vacancy-highlights-
 import { CourseRecommendationCard } from "@/components/vacancy/course-recommendation-card";
 import { VacancyRulebookOverview } from "@/components/vacancy/vacancy-rulebook-overview";
 import { VacancyVideoEmbed } from "@/components/vacancy/vacancy-video-embed";
+import { ShareDropdown } from "@/components/article/share-dropdown";
 import { siteConfig } from "@/lib/site-config";
 import Link from "next/link";
 import Image from "next/image";
@@ -100,6 +101,7 @@ export default async function EnglishNotificationDetailPage({ params }: PageProp
                   {n.totalPosts}
                 </span>
               )}
+              <ShareDropdown title={n.titleEn || n.title} url={pageUrl} locale="en" />
             </div>
 
             <h1 className="text-balance text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-foreground leading-snug">
@@ -112,7 +114,7 @@ export default async function EnglishNotificationDetailPage({ params }: PageProp
               </p>
             )}
 
-            <div className="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full max-w-2xl">
+            <div className="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full max-w-3xl">
               {n.officialPdfUrl && (
                 <Button className="w-full sm:w-auto rounded-full bg-primary hover:bg-primary/95 text-white font-bold gap-2 px-5 py-3.5 h-auto text-xs sm:text-sm shadow-md text-center whitespace-normal leading-normal" asChild>
                   <a href={n.officialPdfUrl} target="_blank" rel="noopener noreferrer">
@@ -128,6 +130,8 @@ export default async function EnglishNotificationDetailPage({ params }: PageProp
                   </a>
                 </Button>
               )}
+
+              <ShareDropdown title={n.titleEn || n.title} url={pageUrl} locale="en" className="w-full sm:w-auto" />
             </div>
           </div>
         </Container>

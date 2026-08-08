@@ -18,6 +18,7 @@ import { VacancyRulebookOverview } from "@/components/vacancy/vacancy-rulebook-o
 import { VacancyVideoEmbed } from "@/components/vacancy/vacancy-video-embed";
 import { ArticleBody } from "@/components/article/article-body";
 import { ShareWidget } from "@/components/article/share-widget";
+import { ShareDropdown } from "@/components/article/share-dropdown";
 import Link from "next/link";
 import Image from "next/image";
 export const dynamic = "force-dynamic";
@@ -168,6 +169,7 @@ export default async function NotificationDetailPage({ params }: PageProps) {
                   {n.totalPosts}
                 </span>
               )}
+              <ShareDropdown title={n.title} url={pageUrl} locale="hi" />
             </div>
 
             <h1 className="text-balance text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-foreground leading-snug">
@@ -181,7 +183,7 @@ export default async function NotificationDetailPage({ params }: PageProps) {
             )}
 
             {/* Direct Action Buttons */}
-            <div className="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full max-w-2xl">
+            <div className="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full max-w-3xl">
               {n.officialPdfUrl && (
                 <Button className="w-full sm:w-auto rounded-full bg-primary hover:bg-primary/95 text-white font-bold gap-2 px-5 py-3.5 h-auto text-xs sm:text-sm shadow-md text-center whitespace-normal leading-normal" asChild>
                   <a href={n.officialPdfUrl} target="_blank" rel="noopener noreferrer">
@@ -203,6 +205,8 @@ export default async function NotificationDetailPage({ params }: PageProps) {
                   WhatsApp Alert Join
                 </a>
               </Button>
+
+              <ShareDropdown title={n.title} url={pageUrl} locale="hi" className="w-full sm:w-auto" />
             </div>
           </div>
         </Container>
