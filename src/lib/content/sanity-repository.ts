@@ -940,7 +940,7 @@ export class SanityRepository implements ContentRepository {
       return mapCard(r, locale);
     });
 
-    if (!query.contentType || query.contentType === "currentAffairs") {
+    if ((!query.contentType || query.contentType === "currentAffairs") && !query.tag && !query.category) {
       const { preetiPawarArticleData } = await import("@/data/preeti-pawar-article-override");
       const { jaismineLamboriaArticleData } = await import("@/data/jaismine-lamboria-article-override");
       const { sakshiChoudharyArticleData } = await import("@/data/sakshi-choudhary-article-override");

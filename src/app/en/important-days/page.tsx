@@ -49,22 +49,27 @@ export default async function EnglishImportantDaysPage({ searchParams }: Props) 
   const activeMonth = params.month || "all";
   const activeYear = params.year || "2026";
 
+  let startDate: string | undefined = undefined;
+  let endDate: string | undefined = undefined;
+
+  if (activeMonth !== "all") {
+    const monthNum = activeMonth.padStart(2, "0");
+    startDate = `${activeYear}-${monthNum}-01`;
+    const daysInMonth = new Date(Number(activeYear), Number(activeMonth), 0).getDate();
+    endDate = `${activeYear}-${monthNum}-${String(daysInMonth).padStart(2, "0")}`;
+  }
+
   // Fetch articles with tag 'important-days'
   const result = await repo.listArticles({
     locale: "en",
     tag: "important-days",
+    startDate,
+    endDate,
     page,
     pageSize: 12,
   });
 
-  let filteredItems = result.items;
-  if (activeMonth !== "all") {
-    filteredItems = result.items.filter((item) => {
-      if (!item.date) return false;
-      const monthPart = item.date.split("-")[1];
-      return monthPart === activeMonth;
-    });
-  }
+  const filteredItems = result.items;
 
   const pageUrl = `${siteConfig.url}/en/important-days`;
   const breadcrumb = breadcrumbJsonLd([
