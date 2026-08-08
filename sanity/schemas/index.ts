@@ -615,6 +615,7 @@ export const notification: SchemaTypeDefinition = defineType({
     defineField({ name: "endDate", type: "date", title: "Apply End Date" }),
     defineField({ name: "examDate", type: "string", title: "Exam Date / Expected Month" }),
     defineField({ name: "description", type: "text", title: "Short Summary" }),
+    defineField({ name: "featuredImage", type: "image", options: { hotspot: true }, title: "Featured Image / Thumbnail Banner" }),
     ...localePortableTextField("body", "Body (HI)", "Body (EN)"),
     defineField({
       name: "suggestedCourse",

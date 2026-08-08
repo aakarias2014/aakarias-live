@@ -1653,6 +1653,7 @@ export class SanityRepository implements ContentRepository {
       endDate,
       "examDate": ${isHi ? "coalesce(examDate, examDateEn)" : "coalesce(examDateEn, examDate)"},
       "description": ${isHi ? "coalesce(description, descriptionEn)" : "coalesce(descriptionEn, description)"},
+      "featuredImage": coalesce(featuredImage, mainImage) ${featuredImageProjection},
       "body": ${isHi ? "coalesce(body, bodyEn)" : "coalesce(bodyEn, body)"},
       "suggestedCourse": suggestedCourse->{
         _id,
@@ -1702,6 +1703,7 @@ export class SanityRepository implements ContentRepository {
       endDate: r.endDate || undefined,
       examDate: r.examDate || undefined,
       description: r.description || undefined,
+      featuredImage: mapImage(r.featuredImage, locale),
       body: bodyBlocks,
       suggestedCourse: r.suggestedCourse ? {
         id: r.suggestedCourse._id,

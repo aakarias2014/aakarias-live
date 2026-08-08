@@ -37,10 +37,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = `${n.title} Notification 2026: Total Posts, Age Limit & Apply Online`;
   const description = n.description?.slice(0, 160) || `${n.title} की आधिकारिक भर्ती अधिसूचना, कुल पदसंख्या, आयु सीमा, शैक्षणिक योग्यता व अंतिम तिथि की संपूर्ण जानकारी।`;
 
+  const ogImageUrl = n.featuredImage?.url || (
+    n.slug?.includes("patwari") || id.includes("patwari")
+      ? `${siteConfig.url}/images/notifications/mp-patwari-group-2-subgroup-4-bharti-2026-thumbnail.jpg`
+      : undefined
+  );
+
   return buildMetadata({
     title,
     description,
     path: `/notifications/${id}`,
+    image: ogImageUrl,
     keywords: [
       n.title,
       `${n.exam} Vacancy 2026`,
@@ -218,18 +225,18 @@ export default async function NotificationDetailPage({ params }: PageProps) {
             {/* Left Content Column */}
             <main className="lg:col-span-8 space-y-8 min-w-0">
               {/* Official Article Thumbnail Banner with ALT Tag */}
-              {(n.slug?.includes("patwari") || n.id?.includes("patwari")) && (
+              {(n.featuredImage || n.slug?.includes("patwari") || n.id?.includes("patwari")) && (
                 <figure className="overflow-hidden rounded-3xl border border-sky-300 dark:border-sky-800 bg-card shadow-soft-lg">
                   <Image
-                    src="/images/notifications/mp-patwari-group-2-subgroup-4-bharti-2026-thumbnail.jpg"
-                    alt="MP Group 2 Sub Group 4, MP Patwari 2026 Vacancy Out 2306 Posts Official Notification Rulebook"
+                    src={n.featuredImage?.url || "/images/notifications/mp-patwari-group-2-subgroup-4-bharti-2026-thumbnail.jpg"}
+                    alt={n.featuredImage?.alt || "MP Group 2 Sub Group 4, MP Patwari 2026 Vacancy Out 2306 Posts Official Notification Rulebook"}
                     width={1200}
                     height={675}
                     className="w-full h-auto object-cover"
                     priority
                   />
                   <figcaption className="p-3 text-center text-xs text-muted-foreground bg-muted/30 border-t border-border/40 font-semibold">
-                    मध्य प्रदेश समूह-02 उपसमूह-04 एवं पटवारी भर्ती परीक्षा 2026 - 2306 पद आधिकारिक रूलबुक व भर्ती बैनर
+                    {n.featuredImage?.caption || "मध्य प्रदेश समूह-02 उपसमूह-04 एवं पटवारी भर्ती परीक्षा 2026 - 2306 पद आधिकारिक रूलबुक व भर्ती बैनर"}
                   </figcaption>
                 </figure>
               )}

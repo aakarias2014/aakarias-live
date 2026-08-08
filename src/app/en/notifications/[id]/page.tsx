@@ -28,10 +28,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const n = await repo.getNotification(id, "en");
   if (!n) return {};
 
+  const ogImageUrl = n.featuredImage?.url || (
+    n.slug?.includes("patwari") || id.includes("patwari")
+      ? `${siteConfig.url}/images/notifications/mp-patwari-group-2-subgroup-4-bharti-2026-thumbnail.jpg`
+      : undefined
+  );
+
   return buildMetadata({
     title: `${n.title} — Official Notification & Rulebook Details`,
     description: n.description?.slice(0, 160) || n.title,
     path: `/en/notifications/${id}`,
+    image: ogImageUrl,
   });
 }
 
@@ -144,18 +151,18 @@ export default async function EnglishNotificationDetailPage({ params }: PageProp
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
             <main className="lg:col-span-8 space-y-8 min-w-0">
               {/* Official Article Thumbnail Banner with ALT Tag */}
-              {(n.slug?.includes("patwari") || n.id?.includes("patwari")) && (
+              {(n.featuredImage || n.slug?.includes("patwari") || n.id?.includes("patwari")) && (
                 <figure className="overflow-hidden rounded-3xl border border-sky-300 dark:border-sky-800 bg-card shadow-soft-lg">
                   <Image
-                    src="/images/notifications/mp-patwari-group-2-subgroup-4-bharti-2026-thumbnail.jpg"
-                    alt="MP Group 2 Sub Group 4, MP Patwari 2026 Vacancy Out 2306 Posts Official Notification Rulebook"
+                    src={n.featuredImage?.url || "/images/notifications/mp-patwari-group-2-subgroup-4-bharti-2026-thumbnail.jpg"}
+                    alt={n.featuredImage?.alt || "MP Group 2 Sub Group 4, MP Patwari 2026 Vacancy Out 2306 Posts Official Notification Rulebook"}
                     width={1200}
                     height={675}
                     className="w-full h-auto object-cover"
                     priority
                   />
                   <figcaption className="p-3 text-center text-xs text-muted-foreground bg-muted/30 border-t border-border/40 font-semibold">
-                    MP Group 2 Sub Group 4 & MP Patwari Recruitment 2026 - 2306 Posts Official Rulebook Banner
+                    {n.featuredImage?.caption || "MP Group 2 Sub Group 4 & MP Patwari Recruitment 2026 - 2306 Posts Official Rulebook Banner"}
                   </figcaption>
                 </figure>
               )}

@@ -162,6 +162,7 @@ export interface ExamNotification {
   endDate?: string;
   examDate?: string;
   description?: string;
+  featuredImage?: ArticleImage;
   body?: ArticleBlock[];
   sections?: ArticleSection[];
   suggestedCourse?: {
