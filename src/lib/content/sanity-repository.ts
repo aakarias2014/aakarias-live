@@ -762,10 +762,12 @@ export class SanityRepository implements ContentRepository {
       raw.sections as Array<Record<string, unknown>>,
       locale,
     );
-    const { blocks, toc: bodyToc } = mapPortableTextToBlocks(
-      raw.body as Array<Record<string, unknown>>,
-      locale,
-    );
+    const { blocks, toc: bodyToc } = sections.length > 0
+      ? { blocks: [], toc: [] }
+      : mapPortableTextToBlocks(
+          raw.body as Array<Record<string, unknown>>,
+          locale,
+        );
     if (blocks.length && !sections.some((s) => s.kind === "keyHighlights")) {
       sections.unshift({ id: "key-highlights", kind: "keyHighlights", title: "Key Highlights", blocks });
     }
