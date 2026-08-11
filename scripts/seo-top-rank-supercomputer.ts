@@ -109,8 +109,8 @@ async function main() {
   const paaDirectSectionHi = {
     _key: "sec-paa-direct-answers",
     kind: "whyInNews",
-    title: "गूगल त्वरित उत्तर: भारत में सुपरकंप्यूटर (Google & AI Search Direct Answers)",
-    titleEn: "Google PAA & AI Search Snippets: Supercomputing in India",
+    title: "भारत में सुपरकंप्यूटर: मुख्य बिंदु एवं प्रश्नोत्तर (Key Facts)",
+    titleEn: "Supercomputers in India: Key Facts & Overview",
     body: [
       ...createBlocks([
         "### 1. वर्तमान में भारत का सबसे तेज सुपर कंप्यूटर कौन सा है?",
