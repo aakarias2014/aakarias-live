@@ -149,7 +149,7 @@ function ArticleSectionBlock({ section }: { section: ArticleSection }) {
         <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary/40 via-primary/15 to-transparent" />
       </div>
 
-      <div className="space-y-1">
+      <div className="space-y-4">
         {(section.blocks || []).map((block, i) => (
           <BlockRenderer key={`${section.kind}-block-${i}`} block={block} />
         ))}
@@ -278,7 +278,7 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
       }
 
       return (
-        <p className="text-foreground/85 leading-[1.95]">
+        <p className="text-foreground/85 leading-[1.85] text-base sm:text-[17px] my-3">
           {renderFormattedText(block.text)}
         </p>
       );
@@ -288,7 +288,7 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
       return (
         <h3
           id={block.id}
-          className="mt-10 mb-4 text-lg font-bold text-foreground border-l-4 border-primary/40 pl-4"
+          className="mt-8 mb-4 text-lg sm:text-xl font-extrabold tracking-tight text-foreground border-l-4 border-primary pl-3.5 py-0.5 bg-primary/5 rounded-r-lg"
         >
           {block.text}
         </h3>
@@ -296,10 +296,10 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
 
     case "list":
       return block.ordered ? (
-        <ol className="my-6 space-y-3 pl-1">
+        <ol className="my-5 space-y-3 pl-1 sm:pl-2">
           {block.items.map((item, i) => (
-            <li key={i} className="flex items-start gap-3 text-base leading-relaxed text-foreground/90">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary mt-0.5">
+            <li key={i} className="flex items-start gap-3 text-base sm:text-[16.5px] leading-[1.8] text-foreground/90">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary mt-0.5 shadow-sm">
                 {i + 1}
               </span>
               <div className="flex-1 min-w-0">{renderFormattedText(item)}</div>
@@ -307,9 +307,9 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
           ))}
         </ol>
       ) : (
-        <ul className="my-6 space-y-3.5 pl-1">
+        <ul className="my-5 space-y-3 pl-1 sm:pl-2">
           {block.items.map((item, i) => (
-            <li key={i} className="flex items-start gap-3 text-base leading-relaxed text-foreground/90">
+            <li key={i} className="flex items-start gap-3 text-base sm:text-[16.5px] leading-[1.8] text-foreground/90">
               <span className="h-2 w-2 rounded-full bg-primary shrink-0 mt-2.5 shadow-sm" />
               <div className="flex-1 min-w-0">{renderFormattedText(item)}</div>
             </li>

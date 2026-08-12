@@ -427,15 +427,21 @@ function mapPortableTextToBlocks(
     );
   }
 
-  // Helper: detect if text starts with a bullet or numbered prefix
-  function parseBulletItem(text: string): { isBullet: boolean; isOrdered: boolean; cleanText: string } {
-    // Detect • prefix
-    if (text.startsWith("• ") || text.startsWith("•")) {
-      const clean = text.replace(/^•\s*/, "").trim();
+  // Helper: detect if text starts with a bullet, hyphen, dash, or numbered prefix
+  function parseBulletItem(rawText: string): { isBullet: boolean; isOrdered: boolean; cleanText: string } {
+    const text = rawText.trimStart();
+    // Detect • or * prefix
+    if (text.startsWith("•") || text.startsWith("*")) {
+      const clean = text.replace(/^[•*]\s*/, "").trim();
       return { isBullet: true, isOrdered: false, cleanText: clean };
     }
-    // Detect numbered prefix like "1. " "2. "
-    const numMatch = text.match(/^(\d+)\.\s+(.+)/);
+    // Detect - or – or — prefix
+    if (text.startsWith("- ") || text.startsWith("– ") || text.startsWith("— ") || /^[-–—]\s+/.test(text)) {
+      const clean = text.replace(/^[-–—]\s*/, "").trim();
+      return { isBullet: true, isOrdered: false, cleanText: clean };
+    }
+    // Detect numbered prefix like "1. ", "2. ", "1) ", "2) "
+    const numMatch = text.match(/^(\d+)[.\)]\s+(.+)/);
     if (numMatch) {
       return { isBullet: true, isOrdered: true, cleanText: numMatch[2] };
     }
@@ -480,9 +486,9 @@ function mapPortableTextToBlocks(
       const text = extractText(children, markDefs);
 
       if (blockStyle === "normal") {
-        const rawSubLines = text.includes("•") || text.includes("\n")
+        const rawSubLines = text.includes("•") || text.includes("\n") || text.includes("- ") || text.includes("– ")
           ? text
-              .split(/(?:\r?\n|(?<=\S)\s+(?=•\s*))/g)
+              .split(/(?:\r?\n|(?<=\S)\s+(?=[•\-–—]\s*))/g)
               .map((l) => l.trim())
               .filter(Boolean)
           : [text];
