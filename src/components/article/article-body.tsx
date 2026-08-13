@@ -9,6 +9,8 @@ import { Download, FileText, Tag as TagIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
+import { MobileTableOfContents } from "@/components/article/table-of-contents";
+
 /**
  * Renders the full article body: structured sections (Why In News,
  * Background, Key Highlights, …) + inline blocks.
@@ -16,6 +18,9 @@ import Image from "next/image";
 export function ArticleBody({ article, ads }: { article: Article; ads?: AdConfig[] }) {
   return (
     <div className="prose-aakar space-y-6">
+      {article.tableOfContents && article.tableOfContents.length > 0 && (
+        <MobileTableOfContents items={article.tableOfContents} locale={article.locale} />
+      )}
       {(article.sections || []).map((section, idx) => (
         <ArticleSectionBlock key={section.id || `sec-${idx}`} section={section} />
       ))}
@@ -229,14 +234,15 @@ function renderFormattedText(text: string) {
         </strong>,
       );
     } else {
-      // Non-bold segment — parse links
-      if (part.includes("[")) {
-        const linkNodes = renderLinks(part, key * 100);
+      // Non-bold segment — clean any stray unclosed single or double asterisks
+      const cleanedPart = part.replace(/\*\*/g, "").replace(/(^|\s)\*(\S)/g, "$1$2");
+      if (cleanedPart.includes("[")) {
+        const linkNodes = renderLinks(cleanedPart, key * 100);
         for (const node of linkNodes) {
           elements.push(node);
         }
       } else {
-        elements.push(part);
+        elements.push(cleanedPart);
       }
     }
     key++;

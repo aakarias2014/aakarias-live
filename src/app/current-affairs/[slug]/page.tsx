@@ -226,7 +226,7 @@ export default async function ArticlePage({ params }: Props) {
 
           {/* Desktop left sidebar: TOC */}
           {article.tableOfContents.length > 0 && (
-            <aside className="hidden w-64 shrink-0 xl:block order-first">
+            <aside className="hidden w-64 shrink-0 lg:block order-first">
               <TableOfContents items={article.tableOfContents} />
             </aside>
           )}

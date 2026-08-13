@@ -430,8 +430,8 @@ function mapPortableTextToBlocks(
   // Helper: detect if text starts with a bullet, hyphen, dash, or numbered prefix
   function parseBulletItem(rawText: string): { isBullet: boolean; isOrdered: boolean; cleanText: string } {
     const text = rawText.trimStart();
-    // Detect • or * prefix
-    if (text.startsWith("•") || text.startsWith("*")) {
+    // Detect • or * prefix (excluding double asterisk ** bold tags)
+    if (text.startsWith("•") || (text.startsWith("*") && !text.startsWith("**"))) {
       const clean = text.replace(/^[•*]\s*/, "").trim();
       return { isBullet: true, isOrdered: false, cleanText: clean };
     }
@@ -494,17 +494,26 @@ function mapPortableTextToBlocks(
           : [text];
 
         for (const line of rawSubLines) {
-          const { isBullet, isOrdered, cleanText } = parseBulletItem(line);
-          if (isBullet) {
-            // If switching from ordered to unordered or vice versa, flush first
-            if (pendingListItems.length > 0 && pendingOrdered !== isOrdered) {
-              flushList();
-            }
-            pendingOrdered = isOrdered;
-            pendingListItems.push(autoBoldTitle(cleanText));
-          } else {
+          if (line.startsWith("### ") || line.startsWith("## ")) {
             flushList();
-            out.push({ type: "paragraph", text: line });
+            const level = line.startsWith("## ") ? 2 : 3;
+            const plainText = line.replace(/^#{2,3}\s+/, "").replace(/\*\*/g, "").trim();
+            const id = slugify(plainText);
+            out.push({ type: "heading", level, text: plainText, id });
+            toc.push({ id, text: plainText, level });
+          } else {
+            const { isBullet, isOrdered, cleanText } = parseBulletItem(line);
+            if (isBullet) {
+              // If switching from ordered to unordered or vice versa, flush first
+              if (pendingListItems.length > 0 && pendingOrdered !== isOrdered) {
+                flushList();
+              }
+              pendingOrdered = isOrdered;
+              pendingListItems.push(autoBoldTitle(cleanText));
+            } else {
+              flushList();
+              out.push({ type: "paragraph", text: line });
+            }
           }
         }
       } else if (blockStyle === "h2" || blockStyle === "h3") {
@@ -858,10 +867,19 @@ export class SanityRepository implements ContentRepository {
       };
     }
 
+    let finalToc = [...sectionToc, ...bodyToc];
+    if (finalToc.length === 0 && sections.length > 0) {
+      finalToc = sections.map((sec) => ({
+        id: sec.id || slugify(sec.title),
+        text: sec.title,
+        level: 2,
+      }));
+    }
+
     return {
       ...baseCard,
       sections,
-      tableOfContents: [...sectionToc, ...bodyToc],
+      tableOfContents: finalToc,
       mcqs: mapMCQs(raw.mcqs as any[], locale),
       faqs: mapFAQs(raw.faqs as any[], locale),
       sources: raw.sources as Article["sources"],

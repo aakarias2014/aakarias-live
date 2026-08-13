@@ -3,6 +3,11 @@
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import type { FAQ } from "@/lib/content/types";
 
+function cleanFaqText(text: string) {
+  if (!text) return "";
+  return text.replace(/\*\*/g, "").replace(/(^|\s)\*(\S)/g, "$1$2").trim();
+}
+
 export function FaqList({ faqs, locale = "hi" }: { faqs: FAQ[]; locale?: string }) {
   if (!Array.isArray(faqs) || faqs.length === 0) return null;
 
@@ -20,10 +25,10 @@ export function FaqList({ faqs, locale = "hi" }: { faqs: FAQ[]; locale?: string 
             className="rounded-xl border border-border bg-card px-4 shadow-soft"
           >
             <AccordionTrigger className="text-left text-sm font-semibold text-foreground hover:no-underline">
-              {faq.question}
+              {cleanFaqText(faq.question)}
             </AccordionTrigger>
-            <AccordionContent className="text-sm text-muted-foreground">
-              {faq.answer}
+            <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
+              {cleanFaqText(faq.answer)}
             </AccordionContent>
           </AccordionItem>
         ))}
