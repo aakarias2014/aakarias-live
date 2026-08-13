@@ -15,7 +15,8 @@ export const sanityClient = createClient({
   projectId,
   dataset,
   apiVersion: "2024-10-01",
-  useCdn: true, // Use Sanity CDN for cached fast edge reads
+  useCdn: false, // Set to false to bypass Sanity API CDN quota limit (402 plan_limit_reached)
+  token: env().SANITY_API_READ_TOKEN,
   perspective: "published",
   stega: {
     // Stegano encoding powers click-to-edit in Presentation (Phase 2).
