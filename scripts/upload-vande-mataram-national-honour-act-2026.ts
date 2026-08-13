@@ -313,6 +313,46 @@ async function main() {
         ],
       },
 
+      /* ── 4. Complete Lyrics (Sanskrit & English Translation) ─── */
+      {
+        _key: "sec-full-lyrics",
+        kind: "keyHighlights",
+        title: "'वंदे मातरम्' के संपूर्ण मूल लिरिक्स (संस्कृत) एवं श्री अरविंद घोष का अंग्रेजी अनुवाद",
+        titleEn: "Complete Lyrics of Vande Mataram in Sanskrit & English Translation by Sri Aurobindo",
+        body: [
+          ...createBlocks([
+            "बंकिमचंद्र चट्टोपाध्याय द्वारा वर्ष 1875 में रचित 'वंदे मातरम्' के सभी 6 पदों का मूल संस्कृत पाठ तथा 1909 में श्री अरविंद घोष द्वारा किया गया सम्पूर्ण अंग्रेजी अनुवाद नीचे दिया गया है:",
+            "### 'वंदे मातरम्' मूल संस्कृत लिरिक्स (Complete Sanskrit Lyrics)",
+            "**[प्रथम पद - आधिकारिक राष्ट्रीय गीत (Stanza 1 - Official National Song)]**",
+            "वन्दे मातरम्।\nसुजलां सुफलां मलयजशीतलाम्\nशस्यश्यामलां मातरम्। वन्दे मातरम्।",
+            "**[द्वितीय पद (Stanza 2)]**",
+            "शुभ्रज्योत्स्नापुलकितयामिनीम्\nफुल्लकुसुमितद्रुमदलशोभिनीम्\nसुहासिनीं सुमधुर भाषिणीम्\nसुखदां वरदां मातरम्। वन्दे मातरम्।",
+            "**[तृतीय पद (Stanza 3)]**",
+            "कोटि-कोटि-कण्ठ-कल-कल-निनाद-कराले\nकोटि-कोटि-भुजैर्धृत-खरकरवाले\nअबला केन मा एतो भले।\nबहुबलधारिणीं नमामि तारिणीम्\nरिपुदलवारिणीं मातरम्। वन्दे मातरम्।",
+            "**[चतुर्थ पद (Stanza 4)]**",
+            "तुमि विद्या तुमि धर्म\nतुमि हृदि तुमि मर्म\nत्वं हि प्राणाः शरीरे।\nबाहुते तुमि मा शक्ति,\nहृदये तुमि मा भक्ति,\nतोमारइ प्रतिमा गड़ि मन्दिरे-मन्दिरे। वन्दे मातरम्।",
+            "**[पंचम पद (Stanza 5)]**",
+            "त्वं हि दुर्गा दशप्रहरणधारिणी\nकमला कमलदलविहारिणी\nवाणी विद्यादायिनी, नमामि त्वाम्\nनमामि कमलां अमलां अतुलाम्\nसुजलां सुफलां मातरम्। वन्दे मातरम्।",
+            "**[षष्ठ पद (Stanza 6)]**",
+            "श्यामलां सरलां सुस्मितां भूषिताम्\nधरणीं भरणीं मातरम्। वन्दे मातरम्।",
+            "### श्री अरविंद घोष द्वारा सम्पूर्ण अंग्रेजी अनुवाद (Sri Aurobindo English Translation - 1909)",
+            "• **Stanza 1 & 2**: 'Mother, I bow to thee! / Rich with thy hurrying streams, / Bright with thy orchard gleams, / Cool with thy winds of delight, / Dark fields waving on the might, / Mother free. / Glory of moonlight dreams, / Over thy branches and lordly streams, / Clad in thy blossoming trees, / Mother, giver of ease, / Laughing low and sweet! / Mother I kiss thy feet, / Speaker sweet and low! / Mother, to thee I bow.'",
+            "• **Stanza 3 & 4**: 'Who hath said thou art weak in thy lands, / When the swords flash out in seventy million hands / And seventy million voices roar / Thy dreadful name from shore to shore? / With many strengths who art mighty and stored, / To thee I call, Mother and Lord! / Thou who savest, arise and save! / To her I cry who can lead the brave, / Mother, to thee I bow. / Thou art wisdom, thou art law, / Thou art heart, our soul, our breath / Thou the love divine, the awe / In our hearts that conquers death.'",
+            "• **Stanza 5 & 6**: 'Thine the strength that arms the hand, / Thine the beauty, thine the grace, / That transforms our mortal band / To the immortal spirit's place. / Thou art Durga, Lady and Queen, / With her ten paper weapons bright, / Kamala, love-enamoured, unseen, / Dwell in lotus flowers of light! / Thou art Vani, giver of wisdom, / Pure, unspotted, without peer! / Mother, to thee I bow.'"
+          ])
+        ],
+        bodyEn: [
+          ...createBlocks([
+            "### Complete Sanskrit Lyrics of Vande Mataram",
+            "• **Stanza 1 (Official National Song)**: Vande Mataram! / Sujalam suphalam malayaja shitalam / Shasya shyamalam mataram. Vande Mataram!",
+            "• **Stanza 2**: Shubhra jyotsna pulakita yaminim / Phulla kusumita drumadala shobhinim / Suhasinim sumadhura bhashinim / Sukhadam varadam mataram. Vande Mataram!",
+            "• **Stanzas 3 to 6**: Koti Koti kantha kala kala ninada karale / Koti Koti bhujairdhrita kharakaravale / Kena ma eto bhale... Tumi vidya tumi dharma / Tumi hridi tumi marma / Tvam hi pranah sharire... Tvam hi Durga dashapraharanadharini / Kamala kamaladalaviharini / Vani vidyadayini, namami tvam... Shyamalam saralam susmitam bhushitam / Dharanim bharanim mataram. Vande Mataram!",
+            "### Sri Aurobindo's Complete 1909 English Translation",
+            "Mother, I bow to thee! / Rich with thy hurrying streams, / Bright with thy orchard gleams, / Cool with thy winds of delight... Thou art Durga, Lady and Queen / Kamala, love-enamoured, unseen / Thou art Vani, giver of wisdom / Pure, unspotted, without peer! / Mother, to thee I bow."
+          ])
+        ],
+      },
+
       /* ── 4. Freedom Struggle & 1896 Congress Session ──────────── */
       {
         _key: "sec-freedom-struggle",
