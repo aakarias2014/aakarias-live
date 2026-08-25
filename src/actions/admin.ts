@@ -3,7 +3,7 @@
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { isAdmin } from "./auth";
 import { revalidatePath, updateTag } from "next/cache";
-import { createClient } from "@sanity/client";
+import { sanityWriteClient } from "@/lib/sanity/client";
 import { env } from "@/lib/env";
 import { TestSchedule, Topper } from "@/lib/content/types";
 
@@ -218,25 +218,9 @@ export async function getStaticPagesList() {
   }
 }
 
-// Helper to get write-capable Sanity client
+// Helper to get write-capable Sanity client (uses shared sanityWriteClient)
 function getSanityWriteClient() {
-  const {
-    NEXT_PUBLIC_SANITY_PROJECT_ID: projectId,
-    NEXT_PUBLIC_SANITY_DATASET: dataset,
-    SANITY_API_WRITE_TOKEN: token,
-  } = env();
-
-  if (!projectId || !dataset || !token) {
-    throw new Error("Missing Sanity variables for writing.");
-  }
-
-  return createClient({
-    projectId,
-    dataset,
-    token,
-    apiVersion: "2024-10-01",
-    useCdn: false,
-  });
+  return sanityWriteClient;
 }
 
 /**
