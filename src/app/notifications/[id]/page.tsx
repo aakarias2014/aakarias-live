@@ -15,6 +15,8 @@ import { siteConfig } from "@/lib/site-config";
 import { VacancyHighlightsTable } from "@/components/vacancy/vacancy-highlights-table";
 import { CourseRecommendationCard } from "@/components/vacancy/course-recommendation-card";
 import { VacancyRulebookOverview } from "@/components/vacancy/vacancy-rulebook-overview";
+import { MpsiRulebookOverview } from "@/components/vacancy/mpsi-rulebook-overview";
+import { MpsiPaidCourseBanner } from "@/components/vacancy/mpsi-paid-course-banner";
 import { VacancyVideoEmbed } from "@/components/vacancy/vacancy-video-embed";
 import { ArticleBody } from "@/components/article/article-body";
 import { ShareWidget } from "@/components/article/share-widget";
@@ -251,9 +253,34 @@ export default async function NotificationDetailPage({ params }: PageProps) {
                 />
               )}
 
-              {/* Rich Visual Rulebook Overview for Patwari / ESB / Major Vacancies */}
-              {(n.slug?.includes("patwari") || n.exam?.includes("ESB") || n.exam?.includes("VYAPAM") || n.exam?.includes("MPPSC")) ? (
+              {/* Rich Visual Rulebook Overview for Patwari, MPSI or Dynamic Article Body */}
+              {n.slug?.includes("patwari") ? (
                 <VacancyRulebookOverview locale="hi" />
+              ) : (n.slug?.includes("mpsi") || n.id?.includes("mpsi")) ? (
+                <div className="space-y-8">
+                  <MpsiRulebookOverview locale="hi" />
+                  {((n.mcqs && n.mcqs.length > 0) || (n.faqs && n.faqs.length > 0)) && (
+                    <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
+                      <ArticleBody
+                        article={{
+                          id: n.id,
+                          slug: n.slug || n.id,
+                          title: n.title,
+                          excerpt: n.description || "",
+                          date: n.date,
+                          readingTime: 5,
+                          locale: "hi",
+                          href: `/notifications/${n.slug || n.id}`,
+                          type: "article",
+                          sections: [],
+                          body: [],
+                          mcqs: n.mcqs || [],
+                          faqs: n.faqs || [],
+                        } as any}
+                      />
+                    </div>
+                  )}
+                </div>
               ) : (
                 n.body && n.body.length > 0 && (
                   <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
@@ -264,7 +291,7 @@ export default async function NotificationDetailPage({ params }: PageProps) {
                         title: n.title,
                         excerpt: n.description || "",
                         date: n.date,
-                        readingTime: 3,
+                        readingTime: 5,
                         locale: "hi",
                         href: `/notifications/${n.slug || n.id}`,
                         type: "article",
@@ -281,7 +308,7 @@ export default async function NotificationDetailPage({ params }: PageProps) {
               {/* Ending Action Box - PDF & Online Application Links */}
               <div className="rounded-3xl border border-primary/30 bg-primary/5 p-6 sm:p-8 space-y-4 shadow-soft">
                 <h4 className="font-extrabold text-foreground text-lg border-b border-border/60 pb-3">
-                  MPESB पटवारी भर्ती 2026 महत्वपूर्ण डायरेक्ट लिंक्स (Official Links)
+                  {n.title} महत्वपूर्ण डायरेक्ट लिंक्स (Official Links)
                 </h4>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   आधिकारिक नियमपुस्तिका (Rulebook PDF) डाउनलोड करें अथवा MP Online कियोस्क/पोर्टल के माध्यम से सीधे फॉर्म भरें:
@@ -305,17 +332,25 @@ export default async function NotificationDetailPage({ params }: PageProps) {
               </div>
 
               {/* Course Cross Promotion Card */}
-              <CourseRecommendationCard
-                course={n.suggestedCourse}
-                examCategory={n.exam}
-                locale="hi"
-              />
+              {(n.slug?.includes("mpsi") || n.id?.includes("mpsi")) ? (
+                <MpsiPaidCourseBanner variant="full" locale="hi" />
+              ) : (
+                <CourseRecommendationCard
+                  course={n.suggestedCourse}
+                  examCategory={n.exam}
+                  locale="hi"
+                />
+              )}
 
               <ShareWidget title={n.title} url={pageUrl} />
             </main>
 
             {/* Right Sidebar */}
             <aside className="lg:col-span-4 space-y-6">
+              {/* Right Sidebar MPSI Paid Course Card */}
+              {(n.slug?.includes("mpsi") || n.id?.includes("mpsi")) && (
+                <MpsiPaidCourseBanner variant="sidebar" locale="hi" />
+              )}
               {/* WhatsApp Alert Card */}
               <div className="rounded-3xl border border-emerald-500/30 bg-emerald-500/10 p-6 shadow-soft space-y-4">
                 <div className="flex items-center gap-3">

@@ -12,7 +12,10 @@ import { formatDate } from "@/lib/seo/metadata";
 import { VacancyHighlightsTable } from "@/components/vacancy/vacancy-highlights-table";
 import { CourseRecommendationCard } from "@/components/vacancy/course-recommendation-card";
 import { VacancyRulebookOverview } from "@/components/vacancy/vacancy-rulebook-overview";
+import { MpsiRulebookOverview } from "@/components/vacancy/mpsi-rulebook-overview";
+import { MpsiPaidCourseBanner } from "@/components/vacancy/mpsi-paid-course-banner";
 import { VacancyVideoEmbed } from "@/components/vacancy/vacancy-video-embed";
+import { ArticleBody } from "@/components/article/article-body";
 import { ShareDropdown } from "@/components/article/share-dropdown";
 import { siteConfig } from "@/lib/site-config";
 import Link from "next/link";
@@ -28,19 +31,29 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const n = await repo.getNotification(id, "en");
   if (!n) return {};
 
+  const title = `${n.titleEn || n.title} Notification 2026: Total Posts, Age Limit & Apply Online`;
+  const description = n.description?.slice(0, 160) || `Official notification details, total vacancies, age limit, eligibility, and direct apply link for ${n.titleEn || n.title}.`;
+
   const ogImageUrl = (n.slug?.includes("patwari") || id.includes("patwari"))
     ? `${siteConfig.url}/images/notifications/mp-patwari-group-2-subgroup-4-bharti-2026-thumbnail.jpg`
     : n.featuredImage?.url;
 
   return buildMetadata({
-    title: `${n.title} — Official Notification & Rulebook Details`,
-    description: n.description?.slice(0, 160) || n.title,
+    title,
+    description,
     path: `/en/notifications/${id}`,
     image: ogImageUrl,
+    keywords: [
+      n.titleEn || n.title,
+      `${n.exam} Vacancy 2026`,
+      "Job Notification PDF",
+      "Sarkari Result Notification",
+      "Apply Online Link"
+    ],
   });
 }
 
-export default async function EnglishNotificationDetailPage({ params }: PageProps) {
+export default async function EnNotificationDetailPage({ params }: PageProps) {
   const { id } = await params;
   const repo = await getContentRepository();
   const n = await repo.getNotification(id, "en");
@@ -49,33 +62,22 @@ export default async function EnglishNotificationDetailPage({ params }: PageProp
     notFound();
   }
 
-  const pageUrl = `${siteConfig.url}/en/notifications/${n.slug || n.id}`;
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case "out":
         return "bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20";
       case "upcoming":
         return "bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/20";
+      case "closing-soon":
+        return "bg-red-500/10 text-red-700 dark:text-red-400 border-red-500/20";
       case "closed":
-        return "bg-destructive/10 text-destructive border-destructive/20";
+        return "bg-muted text-muted-foreground border-border";
       default:
         return "bg-muted text-muted-foreground";
     }
   };
 
-  const getStatusLabel = (status: string) => {
-    switch (status) {
-      case "out":
-        return "Active (Apply Now)";
-      case "upcoming":
-        return "Upcoming";
-      case "closed":
-        return "Closed";
-      default:
-        return status;
-    }
-  };
+  const pageUrl = `${siteConfig.url}/en/notifications/${n.slug || n.id}`;
 
   return (
     <>
@@ -84,7 +86,7 @@ export default async function EnglishNotificationDetailPage({ params }: PageProp
           <Breadcrumb
             items={[
               { name: "Exam Notifications", href: "/en/notifications" },
-              { name: n.title },
+              { name: n.titleEn || n.title },
             ]}
           />
           <div className="mt-4 flex items-center gap-2">
@@ -100,8 +102,8 @@ export default async function EnglishNotificationDetailPage({ params }: PageProp
               <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20 font-bold px-3 py-1 text-xs">
                 {n.exam}
               </Badge>
-              <Badge variant="outline" className={`${getStatusColor(n.status)} font-semibold px-3 py-1 text-xs`}>
-                {getStatusLabel(n.status)}
+              <Badge variant="outline" className={`${getStatusColor(n.status)} font-semibold px-3 py-1 text-xs uppercase`}>
+                {n.status}
               </Badge>
               {n.totalPosts && (
                 <span className="rounded-full bg-accent/15 px-3 py-0.5 text-xs font-extrabold text-accent-foreground border border-accent/20">
@@ -112,7 +114,7 @@ export default async function EnglishNotificationDetailPage({ params }: PageProp
             </div>
 
             <h1 className="text-balance text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-foreground leading-snug">
-              {n.title}
+              {n.titleEn || n.title}
             </h1>
 
             {n.description && (
@@ -121,6 +123,7 @@ export default async function EnglishNotificationDetailPage({ params }: PageProp
               </p>
             )}
 
+            {/* Direct Action Buttons */}
             <div className="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full max-w-3xl">
               {n.officialPdfUrl && (
                 <Button className="w-full sm:w-auto rounded-full bg-primary hover:bg-primary/95 text-white font-bold gap-2 px-5 py-3.5 h-auto text-xs sm:text-sm shadow-md text-center whitespace-normal leading-normal" asChild>
@@ -138,6 +141,12 @@ export default async function EnglishNotificationDetailPage({ params }: PageProp
                 </Button>
               )}
 
+              <Button variant="outline" className="w-full sm:w-auto rounded-full font-bold border-emerald-500/40 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/10 gap-1.5 px-5 py-3.5 h-auto text-xs sm:text-sm text-center whitespace-normal leading-normal" asChild>
+                <a href={siteConfig.links.whatsapp} target="_blank" rel="noopener noreferrer">
+                  WhatsApp Alert Join
+                </a>
+              </Button>
+
               <ShareDropdown title={n.titleEn || n.title} url={pageUrl} locale="en" className="w-full sm:w-auto" />
             </div>
           </div>
@@ -148,7 +157,6 @@ export default async function EnglishNotificationDetailPage({ params }: PageProp
         <Container size="wide">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
             <main className="lg:col-span-8 space-y-8 min-w-0">
-              {/* Official Article Thumbnail Banner with ALT Tag */}
               {(n.featuredImage || n.slug?.includes("patwari") || n.id?.includes("patwari")) && (
                 <figure className="overflow-hidden rounded-3xl border border-sky-300 dark:border-sky-800 bg-card shadow-soft-lg">
                   <Image
@@ -167,7 +175,6 @@ export default async function EnglishNotificationDetailPage({ params }: PageProp
 
               <VacancyHighlightsTable notification={n} locale="en" />
 
-              {/* YouTube Video Analysis & Masterclass */}
               {(n.youtubeUrl || n.slug?.includes("patwari") || n.id?.includes("patwari")) && (
                 <VacancyVideoEmbed
                   videoUrl={n.youtubeUrl || "https://youtu.be/CWBcJ86R2kc"}
@@ -176,12 +183,60 @@ export default async function EnglishNotificationDetailPage({ params }: PageProp
                 />
               )}
 
-              <VacancyRulebookOverview locale="en" />
+              {n.slug?.includes("patwari") ? (
+                <VacancyRulebookOverview locale="en" />
+              ) : (n.slug?.includes("mpsi") || n.id?.includes("mpsi")) ? (
+                <div className="space-y-8">
+                  <MpsiRulebookOverview locale="en" />
+                  {((n.mcqs && n.mcqs.length > 0) || (n.faqs && n.faqs.length > 0)) && (
+                    <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
+                      <ArticleBody
+                        article={{
+                          id: n.id,
+                          slug: n.slug || n.id,
+                          title: n.titleEn || n.title,
+                          excerpt: n.description || "",
+                          date: n.date,
+                          readingTime: 5,
+                          locale: "en",
+                          href: `/en/notifications/${n.slug || n.id}`,
+                          type: "article",
+                          sections: [],
+                          body: [],
+                          mcqs: n.mcqs || [],
+                          faqs: n.faqs || [],
+                        } as any}
+                      />
+                    </div>
+                  )}
+                </div>
+              ) : (
+                n.body && n.body.length > 0 && (
+                  <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
+                    <ArticleBody
+                      article={{
+                        id: n.id,
+                        slug: n.slug || n.id,
+                        title: n.titleEn || n.title,
+                        excerpt: n.description || "",
+                        date: n.date,
+                        readingTime: 5,
+                        locale: "en",
+                        href: `/en/notifications/${n.slug || n.id}`,
+                        type: "article",
+                        sections: n.sections || [],
+                        body: n.body || [],
+                        mcqs: n.mcqs || [],
+                        faqs: n.faqs || [],
+                      } as any}
+                    />
+                  </div>
+                )
+              )}
 
-              {/* Ending Action Box - PDF & Online Application Links */}
               <div className="rounded-3xl border border-primary/30 bg-primary/5 p-6 sm:p-8 space-y-4 shadow-soft">
                 <h4 className="font-extrabold text-foreground text-lg border-b border-border/60 pb-3">
-                  MPESB Patwari Recruitment 2026 Official Links
+                  {n.titleEn || n.title} Official Links
                 </h4>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Download official Rulebook PDF or apply directly via MP Online Application Portal:
@@ -204,10 +259,17 @@ export default async function EnglishNotificationDetailPage({ params }: PageProp
                 </div>
               </div>
 
-              <CourseRecommendationCard course={n.suggestedCourse} examCategory={n.exam} locale="en" />
+              {(n.slug?.includes("mpsi") || n.id?.includes("mpsi")) ? (
+                <MpsiPaidCourseBanner variant="full" locale="en" />
+              ) : (
+                <CourseRecommendationCard course={n.suggestedCourse} examCategory={n.exam} locale="en" />
+              )}
             </main>
 
             <aside className="lg:col-span-4 space-y-6">
+              {(n.slug?.includes("mpsi") || n.id?.includes("mpsi")) && (
+                <MpsiPaidCourseBanner variant="sidebar" locale="en" />
+              )}
               <div className="rounded-3xl border border-emerald-500/30 bg-emerald-500/10 p-6 shadow-soft space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500 text-white font-bold text-lg shadow-sm">
