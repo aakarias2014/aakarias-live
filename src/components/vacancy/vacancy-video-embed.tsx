@@ -96,8 +96,8 @@ export function VacancyVideoEmbed({
               priority
               unoptimized
             />
-            {/* Dark Overlay Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20 group-hover:bg-black/40 transition-all duration-300" />
+            {/* Light hover overlay */}
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300" />
 
             {/* Central Play Button */}
             <div className="absolute inset-0 flex items-center justify-center">
@@ -105,21 +105,6 @@ export function VacancyVideoEmbed({
                 <span className="absolute -inset-2 animate-ping rounded-full bg-red-600/40 opacity-75" />
                 <Play className="h-7 w-7 sm:h-9 sm:w-9 fill-current ml-1" />
               </div>
-            </div>
-
-            {/* Video Bottom Overlay Info */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
-              <span className="inline-block rounded-full bg-red-600/90 backdrop-blur-md px-2.5 py-0.5 text-[11px] font-extrabold text-white uppercase mb-1.5 shadow">
-                {isHi ? "रूलबुक एवं परीक्षा रणनीति" : "Rulebook & Strategy Video"}
-              </span>
-              <h4 className="text-sm sm:text-lg font-bold text-white leading-snug line-clamp-2 drop-shadow-sm">
-                {videoTitle}
-              </h4>
-              <p className="mt-1 text-xs text-white/80 line-clamp-1 font-medium">
-                {isHi
-                  ? "▶️ वीडियो चालू करने के लिए प्ले बटन दबाएं • आकार आईएएस इंदौर"
-                  : "▶️ Click play button to start video • Aakar IAS Indore"}
-              </p>
             </div>
           </div>
         )}
