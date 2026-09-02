@@ -31,25 +31,45 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const n = await repo.getNotification(id, "en");
   if (!n) return {};
 
-  const title = `${n.titleEn || n.title} Notification 2026: Total Posts, Age Limit & Apply Online`;
-  const description = n.description?.slice(0, 160) || `Official notification details, total vacancies, age limit, eligibility, and direct apply link for ${n.titleEn || n.title}.`;
+  const isMpsi = id.includes("mpsi") || n.slug?.includes("mpsi");
 
-  const ogImageUrl = (n.slug?.includes("patwari") || id.includes("patwari"))
+  const title = isMpsi
+    ? "MPSI Vacancy 2026 Out (507 Posts): MP Police Sub Inspector Notification, Syllabus PDF, Age Limit & Online Form"
+    : `${n.titleEn || n.title} Notification 2026: Total Posts, Age Limit & Apply Online`;
+
+  const description = isMpsi
+    ? "MP Police MPSI Recruitment 2026: Notification out for 507 posts (Sub-Inspector & Subedar). Check MP SI syllabus in Hindi/English PDF, age limit, selection process, salary Level 9 & apply online link."
+    : n.description?.slice(0, 160) || `Official notification details, total vacancies, age limit, eligibility, and direct apply link for ${n.titleEn || n.title}.`;
+
+  const ogImageUrl = isMpsi
+    ? `${siteConfig.url}/images/notifications/mpsi-recruitment-2026-thumbnail.png`
+    : (n.slug?.includes("patwari") || id.includes("patwari"))
     ? `${siteConfig.url}/images/notifications/mp-patwari-group-2-subgroup-4-bharti-2026-thumbnail.jpg`
     : n.featuredImage?.url;
+
+  const keywords = [
+    "mpsi vacancy 2026",
+    "mpsi 2026 vacancy",
+    "mpsi notification 2026",
+    "mp si syllabus 2026",
+    "mp si syllabus 2026 pdf download",
+    "mp si syllabus in english",
+    "mp si syllabus 2026 in english",
+    "mpsi grade pay",
+    "mpsi exam date 2026",
+    "mp si cut off 2026",
+    "mpesb subedar recruitment 2026",
+    "mp police si age limit",
+    n.titleEn || n.title,
+    `${n.exam} Vacancy 2026`,
+  ];
 
   return buildMetadata({
     title,
     description,
     path: `/en/notifications/${id}`,
     image: ogImageUrl,
-    keywords: [
-      n.titleEn || n.title,
-      `${n.exam} Vacancy 2026`,
-      "Job Notification PDF",
-      "Sarkari Result Notification",
-      "Apply Online Link"
-    ],
+    keywords,
   });
 }
 
@@ -78,9 +98,98 @@ export default async function EnNotificationDetailPage({ params }: PageProps) {
   };
 
   const pageUrl = `${siteConfig.url}/en/notifications/${n.slug || n.id}`;
+  const breadcrumb = breadcrumbJsonLd([
+    { name: "Home", url: siteConfig.url },
+    { name: "Exam Notifications", url: `${siteConfig.url}/en/notifications` },
+    { name: n.titleEn || n.title, url: pageUrl },
+  ]);
+
+  const jobPostingSchema = {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    title: n.titleEn || n.title,
+    description: n.description || n.title,
+    datePosted: n.date || "2026-09-01",
+    validThrough: n.endDate
+      ? (n.endDate.includes("T") ? n.endDate : `${n.endDate}T23:59:59Z`)
+      : "2026-09-23T23:59:59Z",
+    employmentType: "FULL_TIME",
+    hiringOrganization: {
+      "@type": "Organization",
+      name: "Madhya Pradesh Employees Selection Board (MPESB) / MP Police HQ Bhopal",
+      sameAs: "https://esb.mp.gov.in",
+      logo: `${siteConfig.url}/logo.png`
+    },
+    jobLocation: {
+      "@type": "Place",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Bhopal",
+        addressRegion: "Madhya Pradesh",
+        addressCountry: "IN"
+      }
+    },
+    baseSalary: {
+      "@type": "MonetaryAmount",
+      currency: "INR",
+      value: {
+        "@type": "QuantitativeValue",
+        minValue: 36200,
+        maxValue: 114800,
+        unitText: "MONTH"
+      }
+    }
+  };
+
+  const newsArticleSchema = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: n.titleEn || n.title,
+    description: n.description || n.title,
+    image: [n.featuredImage?.url || `${siteConfig.url}/images/notifications/mpsi-recruitment-2026-thumbnail.png`],
+    datePublished: n.date || "2026-09-01T00:00:00Z",
+    dateModified: "2026-09-02T00:00:00Z",
+    author: {
+      "@type": "Person",
+      name: "Deepraj Sikarwar (Editorial Team)",
+      jobTitle: "Chief Editor & MPPSC/MPSI Exam Expert",
+      worksFor: {
+        "@type": "Organization",
+        name: "Aakar IAS",
+        url: siteConfig.url
+      }
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Aakar IAS",
+      url: siteConfig.url,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteConfig.url}/logo.png`
+      }
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": pageUrl
+    }
+  };
+
+  const schemas: any[] = [breadcrumb, jobPostingSchema, newsArticleSchema];
+
+  if (n.faqs && n.faqs.length > 0) {
+    schemas.push(
+      faqJsonLd(
+        n.faqs.map((f) => ({
+          question: f.questionEn || f.question,
+          answer: f.answerEn || f.answer,
+        }))
+      )
+    );
+  }
 
   return (
     <>
+      <JsonLd data={jsonLdGraph(schemas)} />
       <Section className="pb-0 pt-8 bg-muted/20 border-b border-border/50">
         <Container size="wide">
           <Breadcrumb

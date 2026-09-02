@@ -36,25 +36,46 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const n = await repo.getNotification(id, "hi");
   if (!n) return {};
 
-  const title = `${n.title} Notification 2026: Total Posts, Age Limit & Apply Online`;
-  const description = n.description?.slice(0, 160) || `${n.title} की आधिकारिक भर्ती अधिसूचना, कुल पदसंख्या, आयु सीमा, शैक्षणिक योग्यता व अंतिम तिथि की संपूर्ण जानकारी।`;
+  const isMpsi = id.includes("mpsi") || n.slug?.includes("mpsi");
 
-  const ogImageUrl = (n.slug?.includes("patwari") || id.includes("patwari"))
+  const title = isMpsi
+    ? "MPSI Vacancy 2026 Notification Out (507 Posts): MP Police Sub Inspector Syllabus, Age Limit & Apply Online"
+    : `${n.title} Notification 2026: Total Posts, Age Limit & Apply Online`;
+
+  const description = isMpsi
+    ? "MP Police MPSI भर्ती 2026: 507 पद (उप निरीक्षक व सूबेदार) हेतु MPESB आधिकारिक अधिसूचना जारी। देखें MP SI Syllabus in Hindi PDF download, आयु सीमा, परीक्षा तिथि 28 Oct 2026, चयन प्रक्रिया व सैलरी।"
+    : n.description?.slice(0, 160) || `${n.title} की आधिकारिक भर्ती अधिसूचना, कुल पदसंख्या, आयु सीमा, शैक्षणिक योग्यता व अंतिम तिथि की संपूर्ण जानकारी।`;
+
+  const ogImageUrl = isMpsi
+    ? `${siteConfig.url}/images/notifications/mpsi-recruitment-2026-thumbnail.png`
+    : (n.slug?.includes("patwari") || id.includes("patwari"))
     ? `${siteConfig.url}/images/notifications/mp-patwari-group-2-subgroup-4-bharti-2026-thumbnail.jpg`
     : n.featuredImage?.url;
+
+  const keywords = [
+    "mpsi vacancy 2026",
+    "mpsi 2026 vacancy",
+    "mpsi notification 2026",
+    "mp si syllabus 2026",
+    "mp si syllabus 2026 pdf download",
+    "mp si syllabus in hindi pdf",
+    "mp si syllabus 2026 in hindi",
+    "mp si syllabus in english",
+    "mpsi grade pay",
+    "mpsi exam date 2026",
+    "mp si cut off 2026",
+    "mpesb subedar recruitment 2026",
+    "mp police si age limit",
+    n.title,
+    `${n.exam} Vacancy 2026`,
+  ];
 
   return buildMetadata({
     title,
     description,
     path: `/notifications/${id}`,
     image: ogImageUrl,
-    keywords: [
-      n.title,
-      `${n.exam} Vacancy 2026`,
-      "Job Notification PDF",
-      "Sarkari Result Notification",
-      "Apply Online Link"
-    ],
+    keywords,
   });
 }
 
@@ -110,29 +131,73 @@ export default async function NotificationDetailPage({ params }: PageProps) {
     "@type": "JobPosting",
     title: n.title,
     description: n.description || n.title,
-    datePosted: n.date,
+    datePosted: n.date || "2026-09-01",
     validThrough: n.endDate
       ? (n.endDate.includes("T") ? n.endDate : `${n.endDate}T23:59:59Z`)
-      : undefined,
+      : "2026-09-23T23:59:59Z",
     employmentType: "FULL_TIME",
     hiringOrganization: {
       "@type": "Organization",
-      name: n.exam || "Government Service Commission",
-      sameAs: siteConfig.url,
+      name: "Madhya Pradesh Employees Selection Board (MPESB) / MP Police HQ Bhopal",
+      sameAs: "https://esb.mp.gov.in",
       logo: `${siteConfig.url}/logo.png`
     },
     jobLocation: {
       "@type": "Place",
       address: {
         "@type": "PostalAddress",
-        addressLocality: "Indore",
+        addressLocality: "Bhopal",
         addressRegion: "Madhya Pradesh",
         addressCountry: "IN"
+      }
+    },
+    baseSalary: {
+      "@type": "MonetaryAmount",
+      currency: "INR",
+      value: {
+        "@type": "QuantitativeValue",
+        minValue: 36200,
+        maxValue: 114800,
+        unitText: "MONTH"
       }
     }
   };
 
-  const schemas: any[] = [breadcrumb, jobPostingSchema];
+  // Mandatory Author Article JSON-LD Schema for AI Models (ChatGPT, Gemini, Perplexity, Claude)
+  const newsArticleSchema = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: n.title,
+    description: n.description || n.title,
+    image: [n.featuredImage?.url || `${siteConfig.url}/images/notifications/mpsi-recruitment-2026-thumbnail.png`],
+    datePublished: n.date || "2026-09-01T00:00:00Z",
+    dateModified: "2026-09-02T00:00:00Z",
+    author: {
+      "@type": "Person",
+      name: "Deepraj Sikarwar (Editorial Team)",
+      jobTitle: "Chief Editor & MPPSC/MPSI Exam Expert",
+      worksFor: {
+        "@type": "Organization",
+        name: "Aakar IAS",
+        url: siteConfig.url
+      }
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Aakar IAS",
+      url: siteConfig.url,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteConfig.url}/logo.png`
+      }
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": pageUrl
+    }
+  };
+
+  const schemas: any[] = [breadcrumb, jobPostingSchema, newsArticleSchema];
 
   if (n.faqs && n.faqs.length > 0) {
     schemas.push(
