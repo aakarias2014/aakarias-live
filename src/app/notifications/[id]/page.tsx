@@ -325,7 +325,7 @@ export default async function NotificationDetailPage({ params }: PageProps) {
               ) : (n.slug?.includes("mpsi") || n.id?.includes("mpsi")) ? (
                 <div className="space-y-8">
                   <MpsiRulebookOverview locale="hi" />
-                  {((n.mcqs && n.mcqs.length > 0) || (n.faqs && n.faqs.length > 0)) && (
+                  {(n.faqs && n.faqs.length > 0) && (
                     <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
                       <ArticleBody
                         article={{
@@ -340,7 +340,7 @@ export default async function NotificationDetailPage({ params }: PageProps) {
                           type: "article",
                           sections: [],
                           body: [],
-                          mcqs: n.mcqs || [],
+                          mcqs: [],
                           faqs: n.faqs || [],
                         } as any}
                       />
@@ -363,7 +363,7 @@ export default async function NotificationDetailPage({ params }: PageProps) {
                         type: "article",
                         sections: n.sections || [],
                         body: n.body || [],
-                        mcqs: n.mcqs || [],
+                        mcqs: [],
                         faqs: n.faqs || [],
                       } as any}
                     />

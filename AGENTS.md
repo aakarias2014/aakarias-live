@@ -23,7 +23,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 # Locked Vacancy Notification UI & SEO Standard Rule
 - **ALL FUTURE RECRUITMENT VACANCY NOTIFICATIONS MUST STRICTLY ADHERE TO THIS LOCKED UI & SEO FORMAT**:
   1. **Rulebook Overview UI Component**: Use structured table cards in website brand colors (`#6ac7f2`/`#20698f`) covering all key sections (Job Overview, Important Dates, Vacancy Breakdown, Qualifications, Age Limits, Application Fees, Selection Process, Detailed Syllabus Tables, Physical PET Standards, Pay Matrix Salary, Exam Centers, Documents).
-  2. **No Duplicate Body Content**: Pass `body: []` to `ArticleBody` when rendering a dedicated Rulebook Overview component so body text blocks are not duplicated, while keeping interactive MCQs & FAQs.
+  2. **No Duplicate Body Content**: Pass `body: []` and `mcqs: []` to `ArticleBody` when rendering a dedicated Rulebook Overview component so body text blocks and unnecessary MCQ practice sections are omitted, while preserving 10 collapsible FAQs.
   3. **Target Course Promotion**: Include dedicated Paid Course Banners in **Right Sidebar (`variant="sidebar"`)** and at **Bottom of Main Content (`variant="full"`)**.
   4. **Right Sidebar Layout Sequence**:
      - Top: Target Course Banner (`variant="sidebar"`)
