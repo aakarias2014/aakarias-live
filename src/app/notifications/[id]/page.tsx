@@ -19,6 +19,7 @@ import { MpsiRulebookOverview } from "@/components/vacancy/mpsi-rulebook-overvie
 import { MpsiPaidCourseBanner } from "@/components/vacancy/mpsi-paid-course-banner";
 import { VacancyVideoEmbed } from "@/components/vacancy/vacancy-video-embed";
 import { ArticleBody } from "@/components/article/article-body";
+import { ArticleAdRotator } from "@/components/article/article-ad-rotator";
 import { ShareWidget } from "@/components/article/share-widget";
 import { ShareDropdown } from "@/components/article/share-dropdown";
 import Link from "next/link";
@@ -455,6 +456,9 @@ export default async function NotificationDetailPage({ params }: PageProps) {
                   </Link>
                 </div>
               </div>
+
+              {/* Sponsored Ad Rotator Card at the bottom of Right Sidebar */}
+              <ArticleAdRotator locale="hi" />
             </aside>
           </div>
         </Container>
