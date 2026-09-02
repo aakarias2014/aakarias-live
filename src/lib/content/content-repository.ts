@@ -39,10 +39,12 @@ import type {
   NcertBook,
   HomeNotice,
 } from "@/lib/content/types";
-import type { Locale } from "@/lib/i18n/locales";
-import type { SearchHit } from "@/lib/search/algolia";
+import type { AdConfig } from "@/data/ads";
 
 export interface ContentRepository {
+  /** Fetch sponsored ads dynamically from Sanity CMS. */
+  listAds(): Promise<AdConfig[]>;
+
   /** Fetch active homepage notices. */
   getHomeNotices(locale: Locale): Promise<HomeNotice[]>;
   getArticle(slug: string, locale: Locale): Promise<Article | null>;

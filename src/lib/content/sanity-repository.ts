@@ -55,6 +55,7 @@ import type {
 import type { Locale } from "@/lib/i18n/locales";
 import { defaultLocale, localePrefix } from "@/lib/i18n/locales";
 import type { SearchHit } from "@/lib/search/algolia";
+import type { AdConfig } from "@/data/ads";
 
 const REVALIDATE = 3600; // 1h ISR background fallback — on-demand revalidation via Sanity webhook handles instant updates
 
@@ -2618,5 +2619,40 @@ export class SanityRepository implements ContentRepository {
       tags: ["offlinePageConfig"],
     });
     return result?.brochureUrl || null;
+  }
+
+  async listAds(): Promise<AdConfig[]> {
+    const query = `*[_type == "ad" && !(_id in path("drafts.**"))] | order(_createdAt asc) {
+      _id,
+      titleHi,
+      titleEn,
+      subtitleHi,
+      subtitleEn,
+      ctaHi,
+      ctaEn,
+      href,
+      hrefEn,
+      "image": image.asset->url
+    }`;
+    const raw = await sanityFetch<any[]>({
+      query,
+      revalidate: 60, // short 60s ISR cache for instant dynamic admin updates
+      tags: ["ad"],
+    });
+
+    if (!raw || raw.length === 0) return [];
+
+    return raw.map((r) => ({
+      id: r._id,
+      image: r.image || "/images/ads/app-download.png",
+      titleHi: r.titleHi || "",
+      titleEn: r.titleEn || "",
+      subtitleHi: r.subtitleHi || "",
+      subtitleEn: r.subtitleEn || "",
+      ctaHi: r.ctaHi || "अभी देखें →",
+      ctaEn: r.ctaEn || "Learn More →",
+      href: r.href || "/",
+      hrefEn: r.hrefEn || r.href || "/",
+    }));
   }
 }

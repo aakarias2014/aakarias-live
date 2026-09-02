@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { ArticleAdCard } from "@/components/article/article-ad-card";
 import { ADS } from "@/data/ads";
 import type { AdConfig } from "@/data/ads";
+import { getSanityAdsAction } from "@/actions/ads";
 
 interface ArticleAdRotatorProps {
   locale?: string;
@@ -19,7 +20,23 @@ export function ArticleAdRotator({
   interval = 8000,
   ads,
 }: ArticleAdRotatorProps) {
-  const finalAds = ads && ads.length > 0 ? ads : ADS;
+  const [adList, setAdList] = useState<AdConfig[]>(ads && ads.length > 0 ? ads : ADS);
+
+  // Fetch dynamic ads from Sanity CMS if ads prop is not explicitly passed
+  useEffect(() => {
+    if (ads && ads.length > 0) return;
+    let isMounted = true;
+    getSanityAdsAction().then((sanityAds) => {
+      if (isMounted && sanityAds && sanityAds.length > 0) {
+        setAdList(sanityAds);
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, [ads]);
+
+  const finalAds = adList && adList.length > 0 ? adList : ADS;
 
   // Start at -1 to avoid SSR/hydration mismatch; picks random index after mount
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -33,8 +50,7 @@ export function ArticleAdRotator({
         setActiveIndex(Math.floor(Math.random() * len));
       });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [finalAds.length]);
 
   const goTo = useCallback(
     (index: number) => {
