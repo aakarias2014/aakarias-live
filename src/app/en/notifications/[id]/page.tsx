@@ -9,6 +9,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CalendarDays, ArrowLeft, ExternalLink, Download, FileText } from "lucide-react";
 import { formatDate } from "@/lib/seo/metadata";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbJsonLd, faqJsonLd, quizJsonLd, jsonLdGraph } from "@/lib/seo/jsonld";
 import { VacancyHighlightsTable } from "@/components/vacancy/vacancy-highlights-table";
 import { CourseRecommendationCard } from "@/components/vacancy/course-recommendation-card";
 import { VacancyRulebookOverview } from "@/components/vacancy/vacancy-rulebook-overview";
