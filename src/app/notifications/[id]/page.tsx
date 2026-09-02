@@ -7,7 +7,7 @@ import { Section } from "@/components/layout/section";
 import { Breadcrumb } from "@/components/content/breadcrumb";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { CalendarDays, ArrowLeft, ExternalLink, Download, Share2, HelpCircle } from "lucide-react";
+import { CalendarDays, ArrowLeft, ExternalLink, Download, Share2, HelpCircle, FileText } from "lucide-react";
 import { formatDate } from "@/lib/seo/metadata";
 import { JsonLd } from "@/components/seo/json-ld";
 import { breadcrumbJsonLd, faqJsonLd, quizJsonLd, jsonLdGraph } from "@/lib/seo/jsonld";
@@ -256,7 +256,7 @@ export default async function NotificationDetailPage({ params }: PageProps) {
             )}
 
             {/* Direct Action Buttons */}
-            <div className="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full max-w-3xl">
+            <div className="pt-3 flex flex-wrap items-center gap-3 w-full max-w-4xl">
               {n.officialPdfUrl && (
                 <Button className="w-full sm:w-auto rounded-full bg-primary hover:bg-primary/95 text-white font-bold gap-2 px-5 py-3.5 h-auto text-xs sm:text-sm shadow-md text-center whitespace-normal leading-normal" asChild>
                   <a href={n.officialPdfUrl} target="_blank" rel="noopener noreferrer">
@@ -264,6 +264,12 @@ export default async function NotificationDetailPage({ params }: PageProps) {
                   </a>
                 </Button>
               )}
+
+              <Button className="w-full sm:w-auto rounded-full bg-amber-600 hover:bg-amber-700 text-white font-bold gap-2 px-5 py-3.5 h-auto text-xs sm:text-sm shadow-md text-center whitespace-normal leading-normal" asChild>
+                <a href="https://drive.google.com/file/d/1Db_HqaZzTvqSN5NQa-BEthIh1dv4un6J/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                  <FileText className="h-4 w-4 shrink-0" /> Download Syllabus PDF
+                </a>
+              </Button>
 
               {n.applyOnlineUrl && (
                 <Button variant="outline" className="w-full sm:w-auto rounded-full font-bold gap-2 px-5 py-3.5 h-auto text-xs sm:text-sm border-primary/40 text-primary hover:bg-primary/10 text-center whitespace-normal leading-normal" asChild>
@@ -377,9 +383,9 @@ export default async function NotificationDetailPage({ params }: PageProps) {
                   {n.title} महत्वपूर्ण डायरेक्ट लिंक्स (Official Links)
                 </h4>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  आधिकारिक नियमपुस्तिका (Rulebook PDF) डाउनलोड करें अथवा MP Online कियोस्क/पोर्टल के माध्यम से सीधे फॉर्म भरें:
+                  आधिकारिक नियमपुस्तिका (Rulebook PDF) तथा विस्तृत परीक्षा पाठ्यक्रम (Syllabus PDF) डाउनलोड करें अथवा MP Online कियोस्क/पोर्टल के माध्यम से सीधे फॉर्म भरें:
                 </p>
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1 w-full">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1 w-full flex-wrap">
                   {n.officialPdfUrl && (
                     <Button className="w-full sm:w-auto rounded-full bg-primary hover:bg-primary/95 text-white font-bold gap-2 px-5 py-3.5 h-auto text-xs sm:text-sm shadow-md text-center whitespace-normal leading-normal" asChild>
                       <a href={n.officialPdfUrl} target="_blank" rel="noopener noreferrer">
@@ -387,6 +393,11 @@ export default async function NotificationDetailPage({ params }: PageProps) {
                       </a>
                     </Button>
                   )}
+                  <Button className="w-full sm:w-auto rounded-full bg-amber-600 hover:bg-amber-700 text-white font-bold gap-2 px-5 py-3.5 h-auto text-xs sm:text-sm shadow-md text-center whitespace-normal leading-normal" asChild>
+                    <a href="https://drive.google.com/file/d/1Db_HqaZzTvqSN5NQa-BEthIh1dv4un6J/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                      <FileText className="h-4 w-4 shrink-0" /> Download MPSI Syllabus PDF
+                    </a>
+                  </Button>
                   {n.applyOnlineUrl && (
                     <Button variant="outline" className="w-full sm:w-auto rounded-full font-bold gap-2 px-5 py-3.5 h-auto text-xs sm:text-sm border-primary/40 text-primary hover:bg-primary/10 text-center whitespace-normal leading-normal" asChild>
                       <a href={n.applyOnlineUrl} target="_blank" rel="noopener noreferrer">

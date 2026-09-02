@@ -1,4 +1,6 @@
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Download, FileText } from "lucide-react";
 
 export function MpsiRulebookOverview({ locale = "hi" }: { locale?: string }) {
   const isHi = locale === "hi";
@@ -374,9 +376,17 @@ export function MpsiRulebookOverview({ locale = "hi" }: { locale?: string }) {
 
       {/* 8. Detailed Written Syllabus (विस्तृत पाठ्यक्रम) */}
       <section className="space-y-4">
-        <h3 className="text-lg font-bold text-foreground border-b border-border pb-2">
-          {isHi ? "8. विस्तृत परीक्षा पाठ्यक्रम (Detailed Exam Syllabus)" : "8. Detailed Examination Syllabus"}
-        </h3>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-border pb-2">
+          <h3 className="text-lg font-bold text-foreground">
+            {isHi ? "8. विस्तृत परीक्षा पाठ्यक्रम (Detailed Exam Syllabus)" : "8. Detailed Examination Syllabus"}
+          </h3>
+          <Button className="rounded-full bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs gap-2 px-4 py-2 h-auto shrink-0 shadow-sm" asChild>
+            <a href="https://drive.google.com/file/d/1Db_HqaZzTvqSN5NQa-BEthIh1dv4un6J/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+              <Download className="h-3.5 w-3.5" />
+              {isHi ? "डाउनलोड विस्तृत सिलेबस PDF" : "Download Detailed Syllabus PDF"}
+            </a>
+          </Button>
+        </div>
 
         {/* Prelims Syllabus Card */}
         <div className="rounded-xl border border-sky-300 dark:border-sky-800 bg-card overflow-hidden shadow-soft">
