@@ -19,3 +19,20 @@ This version has breaking changes — APIs, conventions, and file structure may 
 # Mandatory Bilingual Content Rule (Hindi & English)
 - **ALL ARTICLES MUST ALWAYS BE WRITTEN AND MAINTAINED BILINGUALLY IN BOTH HINDI AND ENGLISH**.
 - For every block, paragraph, heading, list item, table header, FAQ, and MCQ, provide complete Hindi (`text`, `title`, `excerpt`, `question`, `answer`, `explanation`) AND complete English (`textEn`, `titleEn`, `excerptEn`, `questionEn`, `answerEn`, `explanationEn`) translations so switching to `/en/...` routes renders full English text without falling back to Hindi.
+
+# Locked Vacancy Notification UI & SEO Standard Rule
+- **ALL FUTURE RECRUITMENT VACANCY NOTIFICATIONS MUST STRICTLY ADHERE TO THIS LOCKED UI & SEO FORMAT**:
+  1. **Rulebook Overview UI Component**: Use structured table cards in website brand colors (`#6ac7f2`/`#20698f`) covering all key sections (Job Overview, Important Dates, Vacancy Breakdown, Qualifications, Age Limits, Application Fees, Selection Process, Detailed Syllabus Tables, Physical PET Standards, Pay Matrix Salary, Exam Centers, Documents).
+  2. **No Duplicate Body Content**: Pass `body: []` to `ArticleBody` when rendering a dedicated Rulebook Overview component so body text blocks are not duplicated, while keeping interactive MCQs & FAQs.
+  3. **Target Course Promotion**: Include dedicated Paid Course Banners in **Right Sidebar (`variant="sidebar"`)** and at **Bottom of Main Content (`variant="full"`)**.
+  4. **Right Sidebar Layout Sequence**:
+     - Top: Target Course Banner (`variant="sidebar"`)
+     - Middle: WhatsApp Job Alert Card (`bg-emerald-500/10`)
+     - Middle: Aakar IAS Coaching Batches Card
+     - Bottom: Dynamic `ArticleAdRotator` Card (Sponsored Ads)
+  5. **SEO & GEO (AI Search Engine Optimization)**:
+     - Target high-intent Google search keywords in title & meta tags.
+     - Include `JobPosting` schema (hiring org, location, baseSalary Level 9, validThrough).
+     - Include `FAQPage` schema with 10 high-value FAQs in both Hindi & English.
+     - Include `NewsArticle` schema with default author **Deepraj Sikarwar (Editorial Team)**.
+

@@ -27,3 +27,12 @@ All future articles written or updated in this repository (e.g. for `staticGk`, 
 ## 7. Real Image Integration
 - Generate 3-4 highly realistic, context-appropriate images using the `generate_image` tool.
 - Upload them to Sanity as assets and embed them as `_type: "image"` blocks with appropriate `alt` and `caption` tags directly inside the body sections.
+
+## 8. Locked Vacancy Notification UI & SEO Standard
+- All future vacancy notifications created or updated MUST strictly follow the locked MPSI 2026 UI structure:
+  - Structured Rulebook Overview with brand tables (`#6ac7f2`/`#20698f`)
+  - No duplicate body text (pass `body: []` to `ArticleBody` when overview component is active)
+  - Course banners in Right Sidebar & Bottom of main column
+  - Right Sidebar sequence: Target Course -> WhatsApp Alert -> Coaching Batches -> Sponsored Ad Rotator
+  - Full SEO & GEO Schema Graph (`JobPosting`, `FAQPage` 10 FAQs, `NewsArticle` by Deepraj Sikarwar)
+
