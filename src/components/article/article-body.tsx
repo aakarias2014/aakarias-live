@@ -50,8 +50,8 @@ export function ArticleBody({ article, ads }: { article: Article; ads?: AdConfig
         </div>
       )}
 
-      {/* Inline promotional ad — mobile only (desktop sidebar shows the ad card) */}
-      <div className="mt-10 lg:hidden">
+      {/* Inline promotional ad — visible on both desktop and mobile */}
+      <div className="mt-10">
         <ArticleAdRotator locale={article.locale} ads={ads} className="max-w-sm mx-auto" />
       </div>
 
