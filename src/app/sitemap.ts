@@ -13,11 +13,32 @@ export const revalidate = 86400;
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const repo = await getContentRepository();
 
-  const [hiSlugs, enSlugs, tags, uniqueDates] = await Promise.all([
+  const [
+    hiSlugs,
+    enSlugs,
+    tags,
+    uniqueDates,
+    hiNotifications,
+    enNotifications,
+    hiMonthlyPdfs,
+    enMonthlyPdfs,
+    hiPublications,
+    enPublications,
+    hiOnlineCourses,
+    enOnlineCourses,
+  ] = await Promise.all([
     repo.getAllSlugs("hi"),
     repo.getAllSlugs("en"),
     repo.listAllTags(),
     repo.getAllDatesWithContent(),
+    repo.listNotifications("hi"),
+    repo.listNotifications("en"),
+    repo.listMonthlyPdfs("hi"),
+    repo.listMonthlyPdfs("en"),
+    repo.listPublications("hi"),
+    repo.listPublications("en"),
+    repo.listOnlineCourses("hi"),
+    repo.listOnlineCourses("en"),
   ]);
 
   const staticPages: MetadataRoute.Sitemap = [
@@ -154,17 +175,99 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   };
 
   const articlePages: MetadataRoute.Sitemap = [
-    ...hiSlugs.map((s) => ({
-      url: `${siteConfig.url}/${getPathSegment(s.type)}/${s.slug}`,
-      lastModified: new Date(s.updatedAt),
-      changeFrequency: "weekly" as const,
-      priority: s.type === "editorial" ? 0.85 : 0.8,
+    ...hiSlugs.flatMap((s) => {
+      const items = [
+        {
+          url: `${siteConfig.url}/${getPathSegment(s.type)}/${s.slug}`,
+          lastModified: new Date(s.updatedAt),
+          changeFrequency: "weekly" as const,
+          priority: s.type === "editorial" ? 0.85 : 0.8,
+        },
+      ];
+      if (s.type === "staticGk") {
+        items.push({
+          url: `${siteConfig.url}/mppsc-notes/${s.slug}`,
+          lastModified: new Date(s.updatedAt),
+          changeFrequency: "weekly" as const,
+          priority: 0.85,
+        });
+      }
+      return items;
+    }),
+    ...enSlugs.flatMap((s) => {
+      const items = [
+        {
+          url: `${siteConfig.url}/en/${getPathSegment(s.type)}/${s.slug}`,
+          lastModified: new Date(s.updatedAt),
+          changeFrequency: "weekly" as const,
+          priority: s.type === "editorial" ? 0.75 : 0.7,
+        },
+      ];
+      if (s.type === "staticGk") {
+        items.push({
+          url: `${siteConfig.url}/en/mppsc-notes/${s.slug}`,
+          lastModified: new Date(s.updatedAt),
+          changeFrequency: "weekly" as const,
+          priority: 0.75,
+        });
+      }
+      return items;
+    }),
+  ];
+
+  const notificationPages: MetadataRoute.Sitemap = [
+    ...hiNotifications.map((n) => ({
+      url: `${siteConfig.url}/notifications/${n.slug || n.id}`,
+      lastModified: new Date(n.date),
+      changeFrequency: "daily" as const,
+      priority: 0.9,
     })),
-    ...enSlugs.map((s) => ({
-      url: `${siteConfig.url}/en/${getPathSegment(s.type)}/${s.slug}`,
-      lastModified: new Date(s.updatedAt),
+    ...enNotifications.map((n) => ({
+      url: `${siteConfig.url}/en/notifications/${n.slug || n.id}`,
+      lastModified: new Date(n.date),
+      changeFrequency: "daily" as const,
+      priority: 0.85,
+    })),
+  ];
+
+  const monthlyPdfPages: MetadataRoute.Sitemap = [
+    ...hiMonthlyPdfs.map((p) => ({
+      url: `${siteConfig.url}/monthly-pdf/${p.slug}`,
+      lastModified: new Date(p.publishedAt),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+    ...enMonthlyPdfs.map((p) => ({
+      url: `${siteConfig.url}/en/monthly-pdf/${p.slug}`,
+      lastModified: new Date(p.publishedAt),
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+    })),
+  ];
+
+  const publicationPages: MetadataRoute.Sitemap = [
+    ...hiPublications.map((p) => ({
+      url: `${siteConfig.url}/publications/${p.slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+    ...enPublications.map((p) => ({
+      url: `${siteConfig.url}/en/publications/${p.slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+    })),
+  ];
+
+  const onlineCoursePages: MetadataRoute.Sitemap = [
+    ...hiOnlineCourses.map((c) => ({
+      url: `${siteConfig.url}/online-courses/${c.slug}`,
       changeFrequency: "weekly" as const,
-      priority: s.type === "editorial" ? 0.75 : 0.7,
+      priority: 0.9,
+    })),
+    ...enOnlineCourses.map((c) => ({
+      url: `${siteConfig.url}/en/online-courses/${c.slug}`,
+      changeFrequency: "weekly" as const,
+      priority: 0.85,
     })),
   ];
 
@@ -208,6 +311,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]);
 
-  return [...staticPages, ...articlePages, ...tagPages, ...datePages];
+  return [
+    ...staticPages,
+    ...notificationPages,
+    ...articlePages,
+    ...monthlyPdfPages,
+    ...publicationPages,
+    ...onlineCoursePages,
+    ...topperCopyPages,
+    ...tagPages,
+    ...datePages,
+  ];
 }
 

@@ -35,4 +35,7 @@ All future articles written or updated in this repository (e.g. for `staticGk`, 
   - Course banners in Right Sidebar & Bottom of main column
   - Right Sidebar sequence: Target Course -> WhatsApp Alert -> Coaching Batches -> Sponsored Ad Rotator
   - Full SEO & GEO Schema Graph (`JobPosting`, `FAQPage` 10 FAQs, `NewsArticle` by Deepraj Sikarwar)
-
+## 9. Mandatory Sitemap & SEO Indexing Rule
+- **ALL Dynamic Pages MUST be in `sitemap.ts`**: Every single dynamic content type (Current Affairs, Static GK, Notifications, Monthly PDFs, Publications, Online Courses, Topper Copies, Tag Pages, Date Pages) in both Hindi (`/`) and English (`/en/`) MUST be fetched and generated dynamically in `src/app/sitemap.ts`.
+- **Metadata Language Alignment**: When generating metadata via `buildMetadata`, always explicitly specify `locale: "en"` for `/en/` routes so OpenGraph and hreflang tags match the route language.
+- **Dynamic Headers**: Ensure canonical URLs and hreflang links are always clean and valid so Googlebot can crawl and index all content seamlessly.

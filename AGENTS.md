@@ -36,3 +36,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
      - Include `FAQPage` schema with 10 high-value FAQs in both Hindi & English.
      - Include `NewsArticle` schema with default author **Deepraj Sikarwar (Editorial Team)**.
 
+# Mandatory Sitemap & Full SEO Indexing Rule
+- **EVERY SINGLE CONTENT TYPE MUST BE IN `sitemap.ts`**: Whenever creating or updating any new dynamic content type (Current Affairs, Static GK, Notifications, Monthly PDFs, Publications, Online Courses, Topper Copies, Tag Pages, Date Pages, MPPSC Notes), ensure it is fetched and included in `src/app/sitemap.ts` for both Hindi (`/`) and English (`/en/`) routes.
+- **Language Metadata Alignment**: Always pass `locale: "en"` to `buildMetadata` on all `/en/` routes so `og:locale` and hreflang alternates are strictly aligned.
+- **Immediate Indexing Safeguard**: Never omit dynamic content from `sitemap.ts` or leave missing canonical/hreflang tags so Googlebot can immediately discover and index all new posts.

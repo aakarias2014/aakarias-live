@@ -73,6 +73,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     path: `/en/notifications/${id}`,
     image: ogImageUrl,
     keywords,
+    locale: "en",
   });
 }
 
