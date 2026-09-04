@@ -74,7 +74,7 @@ export async function ArticleHero({ article }: { article: Article }) {
               )}
             </div>
 
-            <h1 className="mt-2.5 sm:mt-4 text-balance text-[17px] sm:text-2xl md:text-3xl lg:text-4xl font-extrabold leading-[1.35] sm:leading-tight tracking-tight text-foreground">
+            <h1 className="mt-2.5 sm:mt-4 text-[17px] sm:text-2xl md:text-3xl lg:text-4xl font-extrabold leading-[1.35] sm:leading-tight tracking-tight text-foreground w-full break-words">
               {article.title}
             </h1>
 

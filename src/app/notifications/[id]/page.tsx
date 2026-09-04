@@ -245,7 +245,7 @@ export default async function NotificationDetailPage({ params }: PageProps) {
               <ShareDropdown title={n.title} url={pageUrl} locale="hi" />
             </div>
 
-            <h1 className="text-balance text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-foreground leading-snug">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-foreground leading-snug w-full break-words">
               {n.title}
             </h1>
 
