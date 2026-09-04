@@ -69,7 +69,8 @@ export function localizedHref(pathname: string, targetLocale: Locale): string {
  */
 export function buildAlternates(localeNeutralPath: string): Record<string, string> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://aakarias.com";
-  const path = localeNeutralPath === "/" ? "" : localeNeutralPath;
+  const cleanPathStr = localeNeutralPath.split("?")[0];
+  const path = cleanPathStr === "/" ? "" : cleanPathStr;
   return {
     "hi-IN": `${baseUrl}${path || "/"}`,
     "en-IN": `${baseUrl}/en${path}`,

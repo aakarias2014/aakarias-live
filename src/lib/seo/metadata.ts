@@ -43,7 +43,9 @@ export function buildMetadata({
   locale = "hi",
   articleType = "article",
 }: BuildMetadataInput = {}): Metadata {
-  const normalizedPath = path === "/" ? "" : (path.startsWith("/") ? path : `/${path}`).replace(/\/+$/, "");
+  // Strip query parameters from canonical URL path to consolidate dynamic URL variations
+  const cleanPath = path.split("?")[0];
+  const normalizedPath = cleanPath === "/" ? "" : (cleanPath.startsWith("/") ? cleanPath : `/${cleanPath}`).replace(/\/+$/, "");
   const url = `${siteConfig.url}${normalizedPath}`;
   
   // Format title without duplicating brand name if already present

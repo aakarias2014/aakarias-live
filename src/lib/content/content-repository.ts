@@ -41,6 +41,7 @@ import type {
 } from "@/lib/content/types";
 import type { Locale } from "@/lib/i18n/locales";
 import type { AdConfig } from "@/data/ads";
+import type { SearchHit } from "@/lib/search/algolia";
 
 export interface ContentRepository {
   /** Fetch sponsored ads dynamically from Sanity CMS. */
