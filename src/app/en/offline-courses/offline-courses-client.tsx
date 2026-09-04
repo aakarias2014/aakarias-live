@@ -436,8 +436,8 @@ export function OfflineCoursesClient({ faculties, offlineBatches, brochureUrl }:
     setIsEnquiryModalOpen(true);
   };
 
-  const displayHindiMentors = faculties && faculties.filter(f => f.medium === "hindi").length > 0
-    ? faculties.filter(f => f.medium === "hindi").map(f => ({
+  const displayHindiMentors = faculties && faculties.filter(f => String(f.medium || "").toLowerCase().includes("hindi")).length > 0
+    ? faculties.filter(f => String(f.medium || "").toLowerCase().includes("hindi")).map(f => ({
         name: f.nameEn || f.nameHi,
         title: f.titleEn || f.titleHi,
         desc: f.descEn || f.descHi,
@@ -445,8 +445,8 @@ export function OfflineCoursesClient({ faculties, offlineBatches, brochureUrl }:
       }))
     : facultiesHindi;
 
-  const displayEnglishMentors = faculties && faculties.filter(f => f.medium === "english").length > 0
-    ? faculties.filter(f => f.medium === "english").map(f => ({
+  const displayEnglishMentors = faculties && faculties.filter(f => String(f.medium || "").toLowerCase().includes("english")).length > 0
+    ? faculties.filter(f => String(f.medium || "").toLowerCase().includes("english")).map(f => ({
         name: f.nameEn || f.nameHi,
         title: f.titleEn || f.titleHi,
         desc: f.descEn || f.descHi,

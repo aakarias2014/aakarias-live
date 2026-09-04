@@ -174,7 +174,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
     course.title.toLowerCase().includes("english");
 
   const rawFaculties = faculties && faculties.length > 0
-    ? faculties.filter((f) => f.medium === (isEnglishMedium ? "english" : "hindi"))
+    ? faculties.filter((f) => String(f.medium || "").toLowerCase().includes(isEnglishMedium ? "english" : "hindi"))
     : [
         {
           id: "f1",

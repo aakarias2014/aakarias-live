@@ -99,8 +99,8 @@ interface OnlineCoursesClientProps {
 }
 
 export function OnlineCoursesClient({ faculties, onlineCourses, brochureUrl, ads }: OnlineCoursesClientProps) {
-  const displayHindiMentors = faculties && faculties.filter(f => f.medium === "hindi").length > 0
-    ? faculties.filter(f => f.medium === "hindi").map(f => ({
+  const displayHindiMentors = faculties && faculties.filter(f => String(f.medium || "").toLowerCase().includes("hindi")).length > 0
+    ? faculties.filter(f => String(f.medium || "").toLowerCase().includes("hindi")).map(f => ({
         name: f.nameEn || f.nameHi,
         title: f.titleEn || f.titleHi,
         desc: f.descEn || f.descHi,
@@ -108,8 +108,8 @@ export function OnlineCoursesClient({ faculties, onlineCourses, brochureUrl, ads
       }))
     : mentors;
 
-  const displayEnglishMentors = faculties && faculties.filter(f => f.medium === "english").length > 0
-    ? faculties.filter(f => f.medium === "english").map(f => ({
+  const displayEnglishMentors = faculties && faculties.filter(f => String(f.medium || "").toLowerCase().includes("english")).length > 0
+    ? faculties.filter(f => String(f.medium || "").toLowerCase().includes("english")).map(f => ({
         name: f.nameEn || f.nameHi,
         title: f.titleEn || f.titleHi,
         desc: f.descEn || f.descHi,

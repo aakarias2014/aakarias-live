@@ -182,7 +182,7 @@ export default async function EnCourseDetailPage({ params }: PageProps) {
     );
 
   const rawFaculties = faculties && faculties.length > 0
-    ? faculties.filter((f) => f.medium === (isHindiMedium ? "hindi" : "english"))
+    ? faculties.filter((f) => String(f.medium || "").toLowerCase().includes(isHindiMedium ? "hindi" : "english"))
     : (isHindiMedium 
         ? [
             {

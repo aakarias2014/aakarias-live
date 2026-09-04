@@ -38,7 +38,6 @@ import type {
   AboutPageConfig,
   NcertBook,
   HomeNotice,
-  SearchHit,
 } from "@/lib/content/types";
 import type { Locale } from "@/lib/i18n/locales";
 import type { AdConfig } from "@/data/ads";
