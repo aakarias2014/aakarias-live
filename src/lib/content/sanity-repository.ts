@@ -487,9 +487,9 @@ function mapPortableTextToBlocks(
       const text = extractText(children, markDefs);
 
       if (blockStyle === "normal") {
-        const rawSubLines = text.includes("•") || text.includes("\n") || text.includes("- ") || text.includes("– ")
+        const rawSubLines = text.includes("•") || text.includes("\n")
           ? text
-              .split(/(?:\r?\n|(?<=\S)\s+(?=[•\-–—]\s*))/g)
+              .split(/(?:\r?\n|(?<=\S)\s+(?=•\s*))/g)
               .map((l) => l.trim())
               .filter(Boolean)
           : [text];
