@@ -82,22 +82,27 @@ export function MobileBottomBar() {
 
   return (
     <>
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 h-16 bg-background/95 backdrop-blur-xl border-t border-border/60 pb-safe shadow-[0_-4px_12px_rgba(0,0,0,0.03)] dark:shadow-[0_-4px_12px_rgba(0,0,0,0.2)]">
-        <nav className="grid h-full grid-cols-5" aria-label="Mobile bottom navigation">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 h-16 bg-background/95 backdrop-blur-2xl border-t border-border/50 pb-safe shadow-[0_-4px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
+        <nav className="grid h-full grid-cols-5 px-1" aria-label="Mobile bottom navigation">
           {navItems.map((item, index) => {
             const Icon = item.icon;
             const content = (
-              <span className="flex flex-col items-center justify-center h-full gap-0.5 text-center transition-all duration-150">
+              <span
+                className={cn(
+                  "flex flex-col items-center justify-center h-[52px] w-full gap-0.5 text-center transition-all duration-200 rounded-xl",
+                  item.active ? "bg-primary/10 text-primary font-bold" : "text-muted-foreground hover:text-foreground"
+                )}
+              >
                 <Icon
                   className={cn(
-                    "h-[20px] w-[20px] transition-transform duration-200",
-                    item.active ? "text-primary scale-110" : "text-muted-foreground"
+                    "h-[21px] w-[21px] stroke-[2.2] transition-transform duration-200",
+                    item.active ? "text-primary scale-110" : "text-muted-foreground/85"
                   )}
                 />
                 <span
                   className={cn(
-                    "text-[9px] font-semibold tracking-wide truncate max-w-full px-0.5",
-                    item.active ? "text-primary font-bold" : "text-muted-foreground"
+                    "text-[10px] tracking-tight truncate max-w-full px-0.5 leading-none",
+                    item.active ? "text-primary font-extrabold" : "text-muted-foreground font-medium"
                   )}
                 >
                   {item.label}
@@ -110,7 +115,7 @@ export function MobileBottomBar() {
                 <button
                   key={index}
                   onClick={item.onClick}
-                  className="flex flex-col items-center justify-center w-full h-full hover:bg-muted/10 active:bg-muted/20 transition-colors"
+                  className="flex items-center justify-center w-full h-full active:scale-95 transition-transform duration-150 select-none"
                 >
                   {content}
                 </button>
@@ -122,7 +127,7 @@ export function MobileBottomBar() {
                 key={index}
                 href={item.href || "#"}
                 onClick={item.onClick}
-                className="flex flex-col items-center justify-center w-full h-full hover:bg-muted/10 active:bg-muted/20 transition-colors"
+                className="flex items-center justify-center w-full h-full active:scale-95 transition-transform duration-150 select-none"
               >
                 {content}
               </Link>

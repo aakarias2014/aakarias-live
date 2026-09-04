@@ -13,13 +13,13 @@ import { cn } from "@/lib/utils";
 export function ArticleCard({ article, className }: { article: ArticleListItem; className?: string }) {
   return (
     <motion.div
-      whileHover={{ y: -6, scale: 1.01 }}
+      whileHover={{ y: -4, scale: 1.01 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className={cn("h-full", className)}
     >
       <Card
         className={cn(
-          "group relative flex h-full flex-col overflow-hidden rounded-2xl border-border/60 bg-card p-0 transition-all duration-300 hover:shadow-soft-lg"
+          "app-card group relative flex h-full flex-col overflow-hidden rounded-2xl border-border/70 bg-card p-0 transition-all duration-300 active:scale-[0.985] hover:shadow-soft-lg"
         )}
       >
         <Link href={article.href} className="absolute inset-0 z-10" aria-label={article.title} />
@@ -29,40 +29,40 @@ export function ArticleCard({ article, className }: { article: ArticleListItem; 
               src={article.featuredImage.url}
               alt={article.featuredImage.alt || article.title}
               fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
         ) : (
           <div className="aspect-[16/10] w-full bg-gradient-to-br from-primary/10 via-muted to-accent/10" />
         )}
-        <div className="flex flex-1 flex-col gap-3 p-5">
-          <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-1 flex-col gap-1.5 sm:gap-3 p-2.5 sm:p-5">
+          <div className="flex flex-wrap items-center gap-1 sm:gap-2">
             <CategoryBadge category={article.category} locale={article.locale} />
             {article.syllabus && article.syllabus.length > 0 && (
-              article.syllabus.map((syl) => (
+              article.syllabus.slice(0, 2).map((syl) => (
                 <span
                   key={syl}
-                  className="rounded-full bg-accent/15 px-2.5 py-0.5 text-[10px] font-bold text-accent-foreground uppercase tracking-wide border border-accent/10"
+                  className="rounded-full bg-accent/15 px-2 py-0.5 text-[9px] sm:text-[10px] font-bold text-accent-foreground uppercase tracking-wide border border-accent/10"
                 >
                   {syl}
                 </span>
               ))
             )}
           </div>
-          <h3 className="text-balance text-lg font-bold leading-snug tracking-tight text-foreground transition-colors group-hover:text-primary">
+          <h3 className="text-xs sm:text-base font-extrabold leading-snug tracking-tight text-foreground transition-colors group-hover:text-primary line-clamp-2">
             {article.title}
           </h3>
-          <p className="line-clamp-2 text-sm text-muted-foreground">{article.excerpt}</p>
-          <div className="mt-auto flex items-center gap-4 pt-2 text-xs text-muted-foreground">
-            <span className="inline-flex items-center gap-1.5">
-              <CalendarDays className="h-3.5 w-3.5" />
+          <p className="line-clamp-2 text-[10px] sm:text-sm text-muted-foreground leading-relaxed">{article.excerpt}</p>
+          <div className="mt-auto flex flex-wrap items-center gap-1.5 sm:gap-4 pt-1 sm:pt-2 text-[9.5px] sm:text-xs text-muted-foreground">
+            <span className="inline-flex items-center gap-1">
+              <CalendarDays className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
               {formatDate(article.date, article.locale)}
             </span>
             {article.readingTime ? (
-              <span className="inline-flex items-center gap-1.5">
-                <Clock className="h-3.5 w-3.5" />
-                {article.readingTime} min read
+              <span className="inline-flex items-center gap-1">
+                <Clock className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                {article.readingTime}m
               </span>
             ) : null}
           </div>

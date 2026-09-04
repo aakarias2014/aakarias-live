@@ -99,31 +99,38 @@ export default async function CurrentAffairsPortalPage() {
   const latestMonthlyPdf = pdfs.find((p) => p.pdfType === "monthly") || pdfs[0];
   const latestDate = latestDateResult || new Date().toISOString().split("T")[0];
 
+  // Pick the newest article between featured and latest items so top hero always displays latest content
+  const heroArticle = (latest.items.length > 0 && featured.length > 0)
+    ? (new Date(latest.items[0].date) >= new Date(featured[0].date) ? latest.items[0] : featured[0])
+    : (latest.items[0] || featured[0]);
+
+  const latestGridItems = latest.items.filter((item) => item.id !== heroArticle?.id);
+
   return (
     <>
       {/* ─── Hero ──────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-secondary text-secondary-foreground py-16 sm:py-24">
+      <section className="relative overflow-hidden bg-secondary text-secondary-foreground py-8 sm:py-20">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--primary)_0%,_transparent_50%)] opacity-20" />
         <Container size="wide" className="relative">
           <AnimatedSection variant="scale-in" duration={0.8} className="mx-auto max-w-3xl text-center">
-            <h1 className="text-balance text-4xl font-extrabold tracking-tight text-white sm:text-5xl font-devanagari">
+            <h1 className="text-balance text-2xl sm:text-5xl font-extrabold tracking-tight text-white font-devanagari">
               समसामयिकी (Current Affairs) पोर्टल
             </h1>
-            <p className="mt-5 text-pretty text-lg text-white/75 sm:text-xl font-devanagari">
+            <p className="mt-2.5 text-xs sm:text-xl text-white/75 font-devanagari max-w-2xl mx-auto">
               UPSC, MPPSC और अन्य राज्य लोक सेवा आयोग परीक्षाओं के लिए दैनिक, साप्ताहिक और मासिक करेंट अफेयर्स विश्लेषण।
             </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <Button size="lg" asChild className="rounded-full">
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+              <Button size="sm" asChild className="rounded-full text-xs font-extrabold sm:text-base sm:px-6">
                 <Link href={`/current-affairs/${latestDate}`}>
-                  पढ़ना शुरू करें <ArrowRight className="ml-1.5 h-4 w-4" />
+                  पढ़ना शुरू करें <ArrowRight className="ml-1 h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild className="rounded-full border-white/20 text-white bg-transparent hover:bg-white/10 hover:text-white">
+              <Button size="sm" variant="outline" asChild className="rounded-full border-white/20 text-white bg-transparent hover:bg-white/10 text-xs font-extrabold sm:text-base">
                 <Link href="/current-affairs/quiz">
-                  करेंट अफेयर्स क्विज़ <Brain className="ml-1.5 h-4 w-4 text-white" />
+                  करेंट अफेयर्स क्विज़ <Brain className="ml-1 h-3.5 w-3.5 sm:h-4 sm:w-4 text-white" />
                 </Link>
               </Button>
-              <Button variant="outline" size="lg" asChild className="rounded-full border-white/20 text-white bg-transparent hover:bg-white/10 hover:text-white">
+              <Button size="sm" variant="outline" asChild className="rounded-full border-white/20 text-white bg-transparent hover:bg-white/10 text-xs font-extrabold sm:text-base">
                 <Link href="/monthly-pdf">मासिक पत्रिका (PDFs)</Link>
               </Button>
             </div>
@@ -132,11 +139,11 @@ export default async function CurrentAffairsPortalPage() {
       </section>
 
       {/* ─── Featured Article ────────────────────────────────────────── */}
-      {featured.length > 0 && (
+      {heroArticle && (
         <Section className="-mt-8 pt-0">
           <AnimatedSection variant="fade-up" duration={0.6}>
             <div className="grid gap-6 lg:grid-cols-2">
-              <FeaturedArticleCard article={featured[0]} className="lg:col-span-2" />
+              <FeaturedArticleCard article={heroArticle} className="lg:col-span-2" />
             </div>
           </AnimatedSection>
         </Section>
@@ -161,8 +168,8 @@ export default async function CurrentAffairsPortalPage() {
           </div>
         }
       >
-        <AnimatedSection variant="stagger-container" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {latest.items.map((a, i) => (
+        <AnimatedSection variant="stagger-container" className="grid gap-3 sm:gap-6 grid-cols-2 lg:grid-cols-3">
+          {latestGridItems.map((a, i) => (
             <AnimatedSection key={a.id || `latest-${i}`} variant="stagger-item">
               <ArticleCard article={a} />
             </AnimatedSection>
@@ -204,7 +211,7 @@ export default async function CurrentAffairsPortalPage() {
             </Button>
           }
         >
-          <AnimatedSection variant="stagger-container" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <AnimatedSection variant="stagger-container" className="grid gap-3 sm:gap-6 grid-cols-2 lg:grid-cols-3">
             {weekly.items.map((a, i) => (
               <AnimatedSection key={a.id || `weekly-${i}`} variant="stagger-item">
                 <ArticleCard article={a} />
@@ -227,7 +234,7 @@ export default async function CurrentAffairsPortalPage() {
             </Button>
           }
         >
-          <AnimatedSection variant="stagger-container" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <AnimatedSection variant="stagger-container" className="grid gap-3 sm:gap-6 grid-cols-2 lg:grid-cols-3">
             {monthly.items.map((a, i) => (
               <AnimatedSection key={a.id || `monthly-${i}`} variant="stagger-item">
                 <ArticleCard article={a} />
@@ -250,7 +257,7 @@ export default async function CurrentAffairsPortalPage() {
             </Button>
           }
         >
-          <AnimatedSection variant="stagger-container" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <AnimatedSection variant="stagger-container" className="grid gap-3 sm:gap-6 grid-cols-2 lg:grid-cols-3">
             {mpCurrentAffairs.items.map((a, i) => (
               <AnimatedSection key={a.id || `mp-ca-${i}`} variant="stagger-item">
                 <ArticleCard article={a} />
@@ -274,7 +281,7 @@ export default async function CurrentAffairsPortalPage() {
             </Button>
           }
         >
-          <AnimatedSection variant="stagger-container" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <AnimatedSection variant="stagger-container" className="grid gap-3 sm:gap-6 grid-cols-2 lg:grid-cols-3">
             {sportsCurrentAffairs.items.map((a, i) => (
               <AnimatedSection key={a.id || `sports-ca-${i}`} variant="stagger-item">
                 <ArticleCard article={a} />
@@ -346,7 +353,7 @@ export default async function CurrentAffairsPortalPage() {
           </Button>
         }
       >
-        <AnimatedSection variant="stagger-container" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <AnimatedSection variant="stagger-container" className="grid gap-3 sm:gap-6 grid-cols-2 lg:grid-cols-3">
           {popular.map((a, i) => (
             <AnimatedSection key={a.id || `popular-${i}`} variant="stagger-item">
               <ArticleCard article={a} />
@@ -369,7 +376,7 @@ export default async function CurrentAffairsPortalPage() {
             </Button>
           }
         >
-          <AnimatedSection variant="stagger-container" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <AnimatedSection variant="stagger-container" className="grid gap-3 sm:gap-6 grid-cols-2 lg:grid-cols-3">
             {editorials.items.map((a, i) => (
               <AnimatedSection key={a.id || `editorial-${i}`} variant="stagger-item">
                 <ArticleCard article={a} />

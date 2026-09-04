@@ -19,7 +19,7 @@ export function FeaturedArticleCard({
   return (
     <article
       className={cn(
-        "group relative isolate flex min-h-[22rem] flex-col justify-end overflow-hidden rounded-3xl bg-secondary text-secondary-foreground shadow-soft-lg",
+        "group relative isolate flex min-h-[16rem] sm:min-h-[22rem] flex-col justify-end overflow-hidden rounded-2xl sm:rounded-3xl bg-secondary text-secondary-foreground shadow-soft-lg",
         className,
       )}
     >
@@ -34,31 +34,33 @@ export function FeaturedArticleCard({
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
       ) : null}
-      <div className="absolute inset-0 bg-gradient-to-t from-secondary/95 via-secondary/60 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent" />
 
-      <div className="relative z-[5] flex flex-col gap-3 p-6 sm:p-8">
+      <div className="relative z-[5] flex flex-col gap-2 p-3.5 sm:p-8">
         <CategoryBadge
           category={article.category}
           locale={article.locale}
-          className="text-accent hover:text-accent/80"
+          className="text-accent hover:text-accent/80 text-[10px] sm:text-xs"
         />
-        <h2 className="max-w-2xl text-balance text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl">
+        <h2 className="max-w-2xl text-balance text-sm sm:text-2xl font-extrabold leading-snug tracking-tight text-white line-clamp-2 sm:line-clamp-3">
           {article.title}
         </h2>
-        <p className="line-clamp-2 max-w-xl text-sm text-white/80 sm:text-base">{article.excerpt}</p>
-        <div className="mt-2 flex flex-wrap items-center gap-4 text-xs text-white/70">
+        {article.excerpt ? (
+          <p className="hidden sm:line-clamp-2 max-w-xl text-xs sm:text-sm text-white/80">{article.excerpt}</p>
+        ) : null}
+        <div className="mt-1 flex flex-wrap items-center gap-3 text-[10px] sm:text-xs text-white/75">
           <span className="inline-flex items-center gap-1.5">
-            <CalendarDays className="h-3.5 w-3.5" />
+            <CalendarDays className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary" />
             {formatDate(article.date, article.locale)}
           </span>
           {article.readingTime ? (
             <span className="inline-flex items-center gap-1.5">
-              <Clock className="h-3.5 w-3.5" />
+              <Clock className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
               {article.readingTime} min read
             </span>
           ) : null}
-          <span className="ml-auto inline-flex items-center gap-1 font-semibold text-white transition-transform group-hover:translate-x-1">
-            Read article <ArrowRight className="h-4 w-4" />
+          <span className="ml-auto inline-flex items-center gap-1 font-extrabold text-white transition-transform group-hover:translate-x-1">
+            {article.locale === "en" ? "Read" : "पढ़ें"} <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
           </span>
         </div>
       </div>

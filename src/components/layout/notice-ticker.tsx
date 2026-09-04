@@ -30,33 +30,33 @@ export function NoticeTicker({ notices, label }: NoticeTickerProps) {
   const link = currentNotice.noticeLink;
 
   return (
-    <div className="bg-primary/5 border-b border-border/40 py-2.5 md:py-3.5 overflow-hidden">
-      <Container size="wide" className="flex flex-col items-center md:flex-row md:items-center md:justify-start gap-2 md:gap-3">
-        <span className="md:shrink-0 rounded-full bg-primary/10 border border-primary/20 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary">
+    <div className="bg-primary/5 border-b border-border/40 py-2 sm:py-2.5 overflow-hidden">
+      <Container size="wide" className="flex items-center gap-2 md:gap-3">
+        <span className="shrink-0 rounded-full bg-primary/10 border border-primary/20 px-2 py-0.5 text-[9.5px] sm:text-[10px] font-extrabold uppercase tracking-wider text-primary">
           {label}
         </span>
-        <div className="flex-1 min-w-0 overflow-hidden relative flex items-center justify-center md:justify-start w-full">
+        <div className="flex-1 min-w-0 overflow-hidden relative flex items-center w-full">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
-              initial={{ y: 15, opacity: 0 }}
+              initial={{ y: 12, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -15, opacity: 0 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
+              exit={{ y: -12, opacity: 0 }}
+              transition={{ duration: 0.35, ease: "easeInOut" }}
               className="w-full py-0.5"
             >
               {link ? (
                 <Link
                   href={link}
-                  className="text-sm font-semibold text-foreground hover:text-primary transition-colors flex items-center justify-center md:justify-start py-0.5 w-full gap-1"
+                  className="text-xs sm:text-sm font-bold text-foreground hover:text-primary transition-colors flex items-center py-0.5 w-full gap-1"
                 >
-                  <span className="whitespace-normal md:truncate leading-normal md:leading-relaxed text-center md:text-left">
+                  <span className="truncate leading-tight text-left">
                     {text}
                   </span>
-                  <ChevronRight className="inline-block h-4 w-4 shrink-0" />
+                  <ChevronRight className="inline-block h-3.5 w-3.5 shrink-0 text-primary" />
                 </Link>
               ) : (
-                <p className="text-sm font-semibold text-foreground whitespace-normal md:truncate leading-normal md:leading-relaxed py-0.5 w-full text-center md:text-left">
+                <p className="text-xs sm:text-sm font-bold text-foreground truncate leading-tight py-0.5 w-full text-left">
                   {text}
                 </p>
               )}

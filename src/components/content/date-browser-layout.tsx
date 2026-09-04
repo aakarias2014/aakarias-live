@@ -404,7 +404,7 @@ export function DateBrowserLayout({
             {/* Articles Rendering Area */}
             {loading ? (
               // Loading Skeleton - No layout shift (CLS)
-              <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+              <div className="grid gap-3 sm:gap-6 grid-cols-2 xl:grid-cols-3">
                 {Array.from({ length: 6 }).map((_, idx) => (
                   <div key={idx} className="flex flex-col gap-3 rounded-2xl border p-4 bg-card">
                     <Skeleton className="aspect-[16/10] w-full rounded-xl bg-muted" />
@@ -416,7 +416,7 @@ export function DateBrowserLayout({
               </div>
             ) : articles.length > 0 ? (
               // Grid of articles
-              <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+              <div className="grid gap-3 sm:gap-6 grid-cols-2 xl:grid-cols-3">
                 {articles.map((a) => (
                   <ArticleCard key={a.id} article={a} />
                 ))}

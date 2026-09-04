@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { BookOpen, MessageSquare, Star } from "lucide-react";
+import { BookOpen, ShoppingBag } from "lucide-react";
 import type { Publication } from "@/lib/content/types";
+import { getBaseBookReviews, formatViewCount } from "@/lib/views";
 
 interface BookCardProps {
   pub: Publication;
@@ -12,130 +13,134 @@ interface BookCardProps {
 
 export function BookCard({ pub, locale }: BookCardProps) {
   const isHi = locale === "hi";
-  
+
   // Calculate discount percentage if original price is available
   const hasDiscount = !!(pub.originalPrice && pub.price && pub.originalPrice > pub.price);
   const discountPercent = hasDiscount
     ? Math.round(((pub.originalPrice! - pub.price!) / pub.originalPrice!) * 100)
     : 0;
 
-  // WhatsApp chat message link
+  // WhatsApp purchase link as fallback if buyLink is not provided
   const whatsappMessage = isHi
-    ? `नमस्ते आकार IAS, मैं यह पुस्तक खरीदना चाहता हूँ: ${pub.title} (मूल्य: ₹${pub.price || "संपर्क करें"})`
-    : `Hello Aakar IAS, I want to purchase this book: ${pub.title} (Price: ₹${pub.price || "Contact Us"})`;
-  const whatsappUrl = `https://wa.me/919713300123?text=${encodeURIComponent(whatsappMessage)}`;
+    ? `नमस्ते आकार IAS, मैं यह पुस्तक ऑर्डर करना चाहता हूँ: ${pub.title} (मूल्य: ₹${pub.price || "संपर्क करें"})`
+    : `Hello Aakar IAS, I want to order this book: ${pub.title} (Price: ₹${pub.price || "Contact Us"})`;
+  const defaultBuyUrl = `https://wa.me/919713300123?text=${encodeURIComponent(whatsappMessage)}`;
+  const orderUrl = pub.buyLink || defaultBuyUrl;
 
   const detailLink = isHi ? `/publications/${pub.slug}` : `/en/publications/${pub.slug}`;
 
-  // Check badge type for color theme
-  const badgeText = pub.badge;
-  const isBestselling = badgeText?.toLowerCase() === "bestselling";
-  const isTrending = badgeText?.toLowerCase() === "trending";
+  // Reviews count (~1000+ randomized base)
+  const reviewsCount = pub.reviewsCount || getBaseBookReviews(pub.slug || pub.id);
+  const ratingValue = pub.rating || 4.8;
 
   return (
-    <div className="group flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card shadow-soft hover:shadow-soft-lg hover:-translate-y-1 transition-all duration-300 relative min-h-[380px]">
-      
-      {/* 1. Ribbon Status Badge */}
-      {badgeText && (
-        <div 
-          className={`absolute top-3 left-3 z-10 text-[9px] font-black px-2.5 py-1 rounded-md uppercase tracking-wider text-white shadow-sm ${
-            isBestselling 
-              ? "bg-purple-600" 
-              : isTrending 
-                ? "bg-emerald-600" 
-                : "bg-primary"
-          }`}
+    <div className="group border border-border/80 bg-card rounded-2xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between h-full">
+      {/* Top Main Section: Left Cover Image + Right Details */}
+      <div className="flex gap-3.5 sm:gap-4 items-start">
+        {/* Left: Book Cover Image (Fixed width 100px - 135px container) */}
+        <Link
+          href={detailLink}
+          className="relative shrink-0 w-[100px] xs:w-[115px] sm:w-[135px] aspect-[3/4] rounded-xl overflow-hidden bg-muted/30 border border-border/60 shadow-sm block group-hover:shadow transition-shadow"
         >
-          {badgeText}
-        </div>
-      )}
-
-      {/* 2. Cover Image Container */}
-      <div className="relative aspect-[3/4] rounded-t-3xl overflow-hidden bg-muted/20 flex items-center justify-center p-6 border-b border-border/40">
-        <Link href={detailLink} className={`relative w-[70%] sm:w-[75%] aspect-[3/4] shadow-2xl rounded-sm overflow-hidden transform group-hover:scale-[1.03] group-hover:-rotate-1 transition-transform duration-500 block ${pub.soldOut ? "opacity-50 grayscale-[30%]" : ""}`}>
           {pub.coverImage ? (
             <Image
               src={pub.coverImage}
               alt={pub.title}
               fill
-              sizes="(max-width: 640px) 150px, 200px"
-              className="object-contain p-1"
+              sizes="135px"
+              className="object-contain p-1 group-hover:scale-105 transition-transform duration-300"
             />
           ) : (
             <div className="flex h-full w-full items-center justify-center bg-primary/10 text-primary">
-              <BookOpen className="h-10 w-10" />
+              <BookOpen className="h-8 w-8" />
+            </div>
+          )}
+
+          {pub.soldOut && (
+            <div className="absolute inset-0 bg-background/80 backdrop-blur-xs flex items-center justify-center p-1 text-center">
+              <span className="text-[9px] font-black text-destructive uppercase tracking-wider bg-destructive/10 px-1.5 py-0.5 rounded border border-destructive/20">
+                {isHi ? "आउट ऑफ़ स्टॉक" : "SOLD OUT"}
+              </span>
             </div>
           )}
         </Link>
 
-        {/* Floating WhatsApp ADD Button / SOLD OUT indicator */}
-        {!pub.soldOut ? (
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute bottom-3 right-3 z-10 bg-white border border-[#7c3aed]/20 text-[#7c3aed] hover:bg-[#7c3aed]/5 rounded-xl px-4 py-2 text-xs font-black shadow-md hover:shadow-lg transition-all flex items-center gap-1"
-          >
-            ADD
-          </a>
-        ) : (
-          <div className="absolute bottom-3 right-3 z-10 bg-red-600 text-white rounded-xl px-3 py-1.5 text-[9px] font-black shadow-md uppercase tracking-wider">
-            {isHi ? "आउट ऑफ़ स्टॉक" : "SOLD OUT"}
+        {/* Right: Book Meta & Info */}
+        <div className="flex-1 min-w-0 space-y-1.5">
+          {/* Edition / Tag / Badge */}
+          <div className="flex flex-wrap items-center gap-1.5">
+            <span className="text-[10px] text-muted-foreground font-medium">
+              {pub.medium || (isHi ? "हिंदी / English" : "Hindi / English")}
+            </span>
+            <span className="text-muted-foreground/40 text-[10px]">•</span>
+            <span className="text-[10px] text-muted-foreground font-semibold">
+              {pub.edition || "Latest Edition"}
+            </span>
           </div>
-        )}
-      </div>
 
-      {/* 3. Product Info Section */}
-      <div className="p-5 flex flex-col gap-2.5 flex-grow justify-between">
-        
-        {/* Edition & Title */}
-        <div className="space-y-2">
-          {/* Edition Tag */}
-          <span className="inline-block bg-blue-50 text-blue-600 border border-blue-100 rounded-lg px-2 py-0.5 text-[9px] font-black uppercase tracking-wide">
-            {pub.edition || "2026 Edition"}
-          </span>
-          
-          <Link href={detailLink} className="hover:text-primary transition-colors block">
-            <h3 className="font-extrabold text-foreground text-sm line-clamp-2 min-h-[2.5rem] leading-snug">
+          {/* Title */}
+          <Link href={detailLink} className="block group-hover:text-primary transition-colors">
+            <h3 className="font-extrabold text-foreground text-xs sm:text-sm leading-snug line-clamp-2">
               {pub.title}
             </h3>
           </Link>
-          
+
+          {/* Description / Subtitle */}
           {pub.description && (
-            <p className="text-xs text-muted-foreground line-clamp-2 min-h-[2rem]">
+            <p className="text-[11px] text-muted-foreground line-clamp-2 leading-tight">
               {pub.description}
             </p>
           )}
-        </div>
 
-        {/* Price & Rating Row */}
-        <div className="pt-2 border-t border-border/50 flex items-end justify-between">
-          <div className="space-y-0.5">
-            <div className="flex items-center gap-2">
-              <span className="text-base font-black text-foreground">
-                {pub.price ? `₹${pub.price.toLocaleString()}` : "Free"}
-              </span>
-              {hasDiscount && (
-                <span className="text-[10px] font-black text-emerald-600">
-                  ({discountPercent}% OFF)
-                </span>
-              )}
-            </div>
+          {/* Rating & 1000+ Reviews Count */}
+          <div className="flex items-center gap-1 text-[11px] font-bold text-foreground">
+            <span className="text-amber-500 font-bold">★</span>
+            <span>{ratingValue}</span>
+            <span className="text-muted-foreground font-semibold text-[10px]">
+              ({formatViewCount(reviewsCount)}+ reviews)
+            </span>
+          </div>
+
+          {/* Pricing Row */}
+          <div className="pt-1 flex flex-wrap items-baseline gap-1.5">
+            <span className="text-sm sm:text-base font-black text-foreground">
+              ₹{pub.price ? pub.price.toLocaleString() : "349"}
+            </span>
             {hasDiscount && (
-              <span className="text-xs text-muted-foreground line-through block leading-none">
-                ₹{pub.originalPrice?.toLocaleString()}
-              </span>
+              <>
+                <span className="text-[11px] text-muted-foreground line-through">
+                  ₹{pub.originalPrice?.toLocaleString()}
+                </span>
+                <span className="text-[10px] font-extrabold text-emerald-600 dark:text-emerald-400">
+                  ({discountPercent}% off)
+                </span>
+              </>
             )}
           </div>
-
-          {/* Green Star Rating Badge */}
-          <div className="flex items-center gap-0.5 bg-emerald-600 text-white px-2 py-0.5 rounded text-[10px] font-black shadow-sm shrink-0">
-            ★ {pub.rating || 4.4}
-          </div>
         </div>
-
       </div>
 
+      {/* Bottom Button (Brand Red Primary Action Button) */}
+      <div className="mt-3 pt-2.5 border-t border-border/50">
+        {!pub.soldOut ? (
+          <a
+            href={orderUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full h-9.5 bg-primary hover:bg-primary/95 text-primary-foreground font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all shadow-md shadow-primary/20 active:scale-[0.985] cursor-pointer"
+          >
+            <ShoppingBag className="h-3.5 w-3.5 shrink-0" />
+            <span>{isHi ? "अभी ऑर्डर करें (Order Now)" : "Order Now"}</span>
+          </a>
+        ) : (
+          <button
+            disabled
+            className="w-full h-9.5 bg-muted text-muted-foreground font-bold rounded-xl text-xs flex items-center justify-center cursor-not-allowed"
+          >
+            {isHi ? "आउट ऑफ़ स्टॉक" : "Out of Stock"}
+          </button>
+        )}
+      </div>
     </div>
   );
 }

@@ -93,7 +93,7 @@ export function BatchesShowcase({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.3 }}
-                className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+                className="grid gap-3 sm:gap-6 grid-cols-2 lg:grid-cols-3"
               >
                 {onlineCourses.slice(0, 3).map((course) => {
                   const title = isHi ? course.titleHi : course.titleEn;
@@ -104,7 +104,7 @@ export function BatchesShowcase({
                   return (
                     <div
                       key={course.id}
-                      className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft hover:shadow-soft-lg transition-all duration-300"
+                      className="group flex flex-col overflow-hidden rounded-2xl sm:rounded-3xl border border-border bg-card shadow-soft hover:shadow-soft-lg transition-all duration-300"
                     >
                       {/* Image */}
                       <div className="relative aspect-video w-full overflow-hidden bg-muted">
@@ -123,17 +123,17 @@ export function BatchesShowcase({
                         )}
                         {/* Status / Offer Badge */}
                         {course.isOfferActive ? (
-                          <span className="absolute top-4 left-4 inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 px-3 py-1 text-[10px] font-extrabold text-white uppercase tracking-wider shadow-md animate-pulse">
-                            <span>{isHi ? (course.offerBadgeHi || "🌧️ मानसून ऑफर") : (course.offerBadgeEn || "🌧️ Monsoon Offer")}</span>
+                          <span className="absolute top-2 left-2 inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 px-2 py-0.5 text-[9px] font-extrabold text-white uppercase tracking-wider shadow-md animate-pulse max-w-[65%] truncate">
+                            <span className="truncate">{isHi ? (course.offerBadgeHi || "🌧️ मानसून ऑफर") : (course.offerBadgeEn || "🌧️ Monsoon Offer")}</span>
                           </span>
                         ) : badge ? (
-                          <span className="absolute top-4 left-4 inline-block rounded-full bg-accent px-2.5 py-0.5 text-[10px] font-bold text-accent-foreground uppercase tracking-wider shadow-sm">
+                          <span className="absolute top-2 left-2 inline-block rounded-full bg-accent px-2 py-0.5 text-[9px] font-bold text-accent-foreground uppercase tracking-wider shadow-sm max-w-[65%] truncate">
                             {badge}
                           </span>
                         ) : null}
 
                         {course.isLive && (
-                          <span className="absolute top-4 right-4 inline-flex items-center gap-1.5 rounded-full bg-red-600 px-2.5 py-0.5 text-[10px] font-bold text-white uppercase tracking-wider shadow-sm animate-pulse">
+                          <span className="absolute top-2 right-2 inline-flex items-center gap-1 rounded-full bg-red-600 px-2 py-0.5 text-[9px] font-bold text-white uppercase tracking-wider shadow-sm animate-pulse shrink-0">
                             <span className="h-1.5 w-1.5 rounded-full bg-white" />
                             Live
                           </span>
@@ -141,57 +141,55 @@ export function BatchesShowcase({
                       </div>
 
                       {/* Content */}
-                      <div className="flex flex-col flex-1 p-6 gap-4">
-                        <div className="space-y-2 flex-1">
-                          <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
+                      <div className="flex flex-col flex-1 p-3 sm:p-6 gap-2.5 sm:gap-4">
+                        <div className="space-y-1 sm:space-y-2 flex-1">
+                          <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-primary">
                             {course.category}
                           </span>
-                          <h3 className="text-lg font-extrabold leading-snug text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                          <h3 className="text-xs sm:text-lg font-extrabold leading-snug text-foreground group-hover:text-primary transition-colors line-clamp-2">
                             {title}
                           </h3>
                           {mentor && (
-                            <p className="text-xs text-muted-foreground">
+                            <p className="text-[10px] sm:text-xs text-muted-foreground truncate">
                               {isHi ? "मेंटर:" : "Mentor:"} <span className="font-semibold text-foreground">{mentor}</span>
                             </p>
                           )}
                         </div>
 
                         {/* Details */}
-                        <div className="flex items-center justify-between text-xs text-muted-foreground border-y border-border/40 py-3">
+                        <div className="flex items-center justify-between text-[10px] sm:text-xs text-muted-foreground border-y border-border/40 py-1.5 sm:py-3">
                           {duration && (
                             <span className="flex items-center gap-1">
-                              <Clock className="h-3.5 w-3.5 text-primary" />
-                              {duration}
+                              <Clock className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary shrink-0" />
+                              <span className="truncate">{duration}</span>
                             </span>
                           )}
                           {course.rating && (
-                            <span className="flex items-center gap-1 text-amber-500 font-bold">
-                              <Star className="h-3.5 w-3.5 fill-amber-500 text-amber-500" />
+                            <span className="flex items-center gap-1 text-amber-500 font-bold shrink-0">
+                              <Star className="h-3 w-3 sm:h-3.5 sm:w-3.5 fill-amber-500 text-amber-500" />
                               {course.rating}
                             </span>
                           )}
                         </div>
 
                         {/* Price & CTA */}
-                        <div className="flex items-center justify-between mt-2">
-                          <div className="flex flex-col">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-1 sm:mt-2">
+                          <div className="flex flex-wrap items-baseline gap-1.5">
+                            <span className="text-sm sm:text-lg font-extrabold text-foreground">
+                              ₹{course.price}
+                            </span>
                             {course.originalPrice && (
-                              <span className="text-xs text-muted-foreground line-through">
+                              <span className="text-[10px] sm:text-xs text-muted-foreground line-through">
                                 ₹{course.originalPrice}
                               </span>
                             )}
-                            <div className="flex items-center gap-1.5">
-                              <span className="text-lg font-extrabold text-foreground">
-                                ₹{course.price}
+                            {course.isOfferActive && (
+                              <span className="text-[8px] sm:text-[10px] font-extrabold text-emerald-600 bg-emerald-500/10 px-1 py-0.5 rounded border border-emerald-500/20">
+                                {isHi ? "स्पेशल ऑफर" : "SPECIAL OFFER"}
                               </span>
-                              {course.isOfferActive && (
-                                <span className="text-[10px] font-extrabold text-emerald-600 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">
-                                  {isHi ? "स्पेशल ऑफर" : "SPECIAL OFFER"}
-                                </span>
-                              )}
-                            </div>
+                            )}
                           </div>
-                          <Button size="sm" className="rounded-xl font-bold bg-primary text-white hover:bg-primary/95" asChild>
+                          <Button size="sm" className="w-full sm:w-auto rounded-xl text-xs py-1.5 font-bold bg-primary text-white hover:bg-primary/95 flex items-center justify-center" asChild>
                             <Link href={isHi ? `/online-courses/${course.slug}` : `/en/online-courses/${course.slug}`}>
                               {isHi ? "कोर्स देखें" : "View Course"}
                               <ArrowRight className="ml-1 h-3.5 w-3.5" />
@@ -210,7 +208,7 @@ export function BatchesShowcase({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.3 }}
-                className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+                className="grid gap-3 sm:gap-6 grid-cols-2 lg:grid-cols-3"
               >
                 {offlineBatches.slice(0, 3).map((batch) => {
                   const title = isHi ? batch.titleHi : batch.titleEn;
@@ -221,51 +219,51 @@ export function BatchesShowcase({
                   return (
                     <div
                       key={batch.id}
-                      className="group flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-soft hover:shadow-soft-lg transition-all duration-300 min-h-[280px]"
+                      className="group flex flex-col justify-between overflow-hidden rounded-2xl sm:rounded-3xl border border-border bg-card p-3.5 sm:p-6 shadow-soft hover:shadow-soft-lg transition-all duration-300 min-h-[220px] sm:min-h-[280px]"
                     >
-                      <div className="space-y-4">
-                        <div className="flex items-center justify-between">
-                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-[10px] font-bold uppercase tracking-wider">
-                            <Award className="h-3 w-3" />
+                      <div className="space-y-2.5 sm:space-y-4">
+                        <div className="flex items-center justify-between gap-1 flex-wrap">
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">
+                            <Award className="h-3 w-3 shrink-0" />
                             {batch.medium} Medium
                           </span>
                           {badge && (
-                            <span className="inline-block rounded-full bg-accent px-2.5 py-0.5 text-[10px] font-bold text-accent-foreground uppercase tracking-wider">
+                            <span className="inline-block rounded-full bg-accent px-2 py-0.5 text-[9px] sm:text-[10px] font-bold text-accent-foreground uppercase tracking-wider truncate max-w-[50%]">
                               {badge}
                             </span>
                           )}
                         </div>
 
-                        <h3 className="text-lg font-extrabold leading-snug text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                        <h3 className="text-xs sm:text-lg font-extrabold leading-snug text-foreground group-hover:text-primary transition-colors line-clamp-2">
                           {title}
                         </h3>
 
                         {/* Batch Details */}
-                        <div className="grid grid-cols-2 gap-3 text-xs text-muted-foreground bg-muted/20 rounded-2xl p-4">
-                          <div className="space-y-1">
-                            <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/80">
+                        <div className="grid grid-cols-2 gap-1.5 sm:gap-3 text-[10px] sm:text-xs text-muted-foreground bg-muted/20 rounded-xl sm:rounded-2xl p-2.5 sm:p-4">
+                          <div className="space-y-0.5 sm:space-y-1">
+                            <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-muted-foreground/80 block truncate">
                               {isHi ? "प्रारंभ तिथि" : "Start Date"}
                             </span>
-                            <p className="font-bold text-foreground flex items-center gap-1.5">
-                              <Calendar className="h-3.5 w-3.5 text-primary shrink-0" />
-                              {date}
+                            <p className="font-bold text-foreground flex items-center gap-1 truncate">
+                              <Calendar className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary shrink-0" />
+                              <span className="truncate">{date}</span>
                             </p>
                           </div>
-                          <div className="space-y-1">
-                            <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/80">
+                          <div className="space-y-0.5 sm:space-y-1">
+                            <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-muted-foreground/80 block truncate">
                               {isHi ? "समय (सत्र)" : "Timing"}
                             </span>
-                            <p className="font-bold text-foreground flex items-center gap-1.5">
-                              <Clock className="h-3.5 w-3.5 text-primary shrink-0" />
-                              {time}
+                            <p className="font-bold text-foreground flex items-center gap-1 truncate">
+                              <Clock className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary shrink-0" />
+                              <span className="truncate">{time}</span>
                             </p>
                           </div>
                         </div>
 
                         {/* Progress Bar (seats occupancy) */}
                         {batch.seatsFillPercent && (
-                          <div className="space-y-1.5">
-                            <div className="flex justify-between text-[10px] font-bold text-muted-foreground">
+                          <div className="space-y-1">
+                            <div className="flex justify-between text-[9px] sm:text-[10px] font-bold text-muted-foreground">
                               <span>{isHi ? "प्रवेश सीमा" : "Seat Occupancy"}</span>
                               <span className="text-primary">{batch.seatsFillPercent}% {isHi ? "पूर्ण" : "Filled"}</span>
                             </div>
@@ -279,11 +277,11 @@ export function BatchesShowcase({
                         )}
                       </div>
 
-                      <div className="mt-6 pt-4 border-t border-border/40">
-                        <Button className="w-full rounded-xl font-bold bg-primary text-white hover:bg-primary/95" asChild>
+                      <div className="mt-3 sm:mt-6 pt-2.5 sm:pt-4 border-t border-border/40">
+                        <Button className="w-full rounded-xl text-xs font-bold bg-primary text-white hover:bg-primary/95 py-1.5 sm:py-2" asChild>
                           <Link href={isHi ? "/offline-courses" : "/en/offline-courses"}>
-                            {isHi ? "सीट सुरक्षित करें / पूछताछ" : "Reserve Seat / Inquire"}
-                            <ArrowRight className="ml-1.5 h-4 w-4" />
+                            {isHi ? "पूछताछ करें" : "Inquire"}
+                            <ArrowRight className="ml-1 h-3.5 w-3.5" />
                           </Link>
                         </Button>
                       </div>
@@ -298,63 +296,49 @@ export function BatchesShowcase({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.3 }}
-                className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+                className="grid gap-3 sm:gap-6 grid-cols-2 lg:grid-cols-3"
               >
                 {(testSeries || []).slice(0, 3).map((item) => {
                   const badge = isHi ? item.badgeHi || item.badge : item.badgeEn || item.badge;
                   return (
                     <div
                       key={item.id}
-                      className="group flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-soft hover:shadow-soft-lg transition-all duration-300 min-h-[280px]"
+                      className="group flex flex-col justify-between overflow-hidden rounded-2xl sm:rounded-3xl border border-border bg-card p-3.5 sm:p-6 shadow-soft hover:shadow-soft-lg transition-all duration-300 min-h-[220px] sm:min-h-[280px]"
                     >
-                      <div className="space-y-4">
-                        <div className="flex items-center justify-between">
-                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-[10px] font-bold uppercase tracking-wider">
-                            <Award className="h-3 w-3" />
+                      <div className="space-y-2.5 sm:space-y-4">
+                        <div className="flex items-center justify-between gap-1 flex-wrap">
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">
+                            <Award className="h-3 w-3 shrink-0" />
                             {isHi ? "टेस्ट सीरीज" : "Test Series"}
                           </span>
                           {badge && (
-                            <span className="inline-block rounded-full bg-accent px-2.5 py-0.5 text-[10px] font-bold text-accent-foreground uppercase tracking-wider">
+                            <span className="inline-block rounded-full bg-accent px-2 py-0.5 text-[9px] sm:text-[10px] font-bold text-accent-foreground uppercase tracking-wider truncate max-w-[50%]">
                               {badge}
                             </span>
                           )}
                         </div>
 
-                        <h3 className="text-lg font-extrabold leading-snug text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                        <h3 className="text-xs sm:text-lg font-extrabold leading-snug text-foreground group-hover:text-primary transition-colors line-clamp-2">
                           {item.title}
                         </h3>
 
                         {item.description && (
-                          <p className="text-xs text-muted-foreground line-clamp-3">
+                          <p className="text-[11px] sm:text-xs text-muted-foreground line-clamp-2 sm:line-clamp-3">
                             {item.description}
                           </p>
                         )}
-
-                        {item.features && item.features.length > 0 && (
-                          <ul className="space-y-1.5 text-xs text-muted-foreground mt-2">
-                            {item.features.slice(0, 2).map((feat, fIdx) => {
-                              const cleanFeat = feat.replace(/\*\*/g, "");
-                              return (
-                                <li key={fIdx} className="flex items-center gap-1.5 font-devanagari">
-                                  <span className="h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
-                                  {cleanFeat}
-                                </li>
-                              );
-                            })}
-                          </ul>
-                        )}
                       </div>
 
-                      <div className="mt-6 pt-4 border-t border-border/40 flex items-center justify-between">
+                      <div className="mt-3 sm:mt-6 pt-2.5 sm:pt-4 border-t border-border/40 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                         <div>
                           {item.originalPrice && (
-                            <span className="text-[10px] text-muted-foreground line-through block">₹{item.originalPrice.toLocaleString()}</span>
+                            <span className="text-[9px] sm:text-[10px] text-muted-foreground line-through block">₹{item.originalPrice.toLocaleString()}</span>
                           )}
-                          <span className="text-base font-extrabold text-foreground">
+                          <span className="text-sm sm:text-base font-extrabold text-foreground">
                             {item.price ? `₹${item.price.toLocaleString()}` : "Free"}
                           </span>
                         </div>
-                        <Button size="sm" className="rounded-xl font-bold bg-primary text-white hover:bg-primary/95" asChild>
+                        <Button size="sm" className="w-full sm:w-auto rounded-xl text-xs py-1.5 font-bold bg-primary text-white hover:bg-primary/95 flex items-center justify-center" asChild>
                           <Link href={isHi ? "/test-series" : "/en/test-series"}>
                             {isHi ? "टेस्ट देखें" : "View Test"}
                             <ArrowRight className="ml-1 h-3.5 w-3.5" />

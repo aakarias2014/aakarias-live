@@ -237,7 +237,7 @@ export function OnlineCoursesClient({ faculties, onlineCourses, brochureUrl, ads
                     <p className="text-muted-foreground font-medium">No courses found. Try adjusting your search.</p>
                   </div>
                 ) : (
-                  <div className="grid gap-6 sm:grid-cols-2">
+                  <div className="grid gap-3 sm:gap-6 grid-cols-2">
                     {filteredCourses.map((course) => (
                       <Link key={course.id} href={`/en/online-courses/${course.slug}`} className="block">
                         <Card
@@ -253,29 +253,29 @@ export function OnlineCoursesClient({ faculties, onlineCourses, brochureUrl, ads
                                 unoptimized
                               />
                               {course.badge && (
-                                <span className="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold px-2.5 py-1 rounded-md shadow-sm">
+                                <span className="absolute top-2 left-2 bg-primary text-white text-[9px] font-bold px-2 py-0.5 rounded-md shadow-sm max-w-[65%] truncate">
                                   {course.badge}
                                 </span>
                               )}
                               {course.isLive && (
-                                <span className="absolute top-4 right-4 bg-red-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-md shadow-sm animate-pulse flex items-center gap-1.5">
+                                <span className="absolute top-2 right-2 bg-red-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-md shadow-sm animate-pulse flex items-center gap-1 shrink-0">
                                   <span className="h-1.5 w-1.5 bg-white rounded-full"></span> LIVE
                                 </span>
                               )}
                             </div>
 
-                            <div className="p-6 space-y-4">
+                            <div className="p-3 sm:p-6 space-y-2.5 sm:space-y-4">
                               <div className="flex items-center gap-2">
-                                <span className="text-[11px] font-bold uppercase tracking-wider text-primary">
+                                <span className="text-[9px] sm:text-[11px] font-bold uppercase tracking-wider text-primary truncate">
                                   {course.category.toUpperCase()} Program
                                 </span>
                               </div>
-                              <h3 className="text-lg font-bold text-foreground leading-snug group-hover:text-primary transition-colors">
+                              <h3 className="text-xs sm:text-lg font-bold text-foreground leading-snug group-hover:text-primary transition-colors line-clamp-2">
                                 {course.title}
                               </h3>
 
                               {/* Mentor details */}
-                              <div className="flex items-center gap-3 border-t border-border/40 pt-4">
+                              <div className="hidden sm:flex items-center gap-3 border-t border-border/40 pt-4">
                                 <div className="relative h-9 w-9 rounded-full overflow-hidden shrink-0">
                                   <Image
                                     src={course.mentorImage}
@@ -285,22 +285,22 @@ export function OnlineCoursesClient({ faculties, onlineCourses, brochureUrl, ads
                                     unoptimized
                                   />
                                 </div>
-                                <div>
-                                  <p className="text-xs font-bold text-foreground leading-none">{course.mentorName}</p>
-                                  <p className="text-[10px] text-muted-foreground mt-1">{course.mentorTitle}</p>
+                                <div className="truncate">
+                                  <p className="text-xs font-bold text-foreground leading-none truncate">{course.mentorName}</p>
+                                  <p className="text-[10px] text-muted-foreground mt-1 truncate">{course.mentorTitle}</p>
                                 </div>
                               </div>
                             </div>
                           </div>
 
-                          <div className="p-6 bg-muted/10 border-t border-border/30 flex items-center justify-between">
-                            <div>
-                              <span className="text-lg font-extrabold text-primary">{course.price}</span>
-                              <span className="text-xs text-muted-foreground line-through ml-2">
+                          <div className="p-3 sm:p-6 bg-muted/10 border-t border-border/30 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
+                            <div className="flex items-baseline gap-1.5">
+                              <span className="text-sm sm:text-lg font-extrabold text-primary">{course.price}</span>
+                              <span className="text-[10px] sm:text-xs text-muted-foreground line-through">
                                 {course.originalPrice}
                               </span>
                             </div>
-                            <span className="inline-flex items-center gap-1 text-xs font-bold text-primary">
+                            <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-bold text-primary">
                               View Details <ArrowRight className="h-3.5 w-3.5" />
                             </span>
                           </div>

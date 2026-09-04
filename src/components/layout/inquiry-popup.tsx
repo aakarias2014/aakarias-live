@@ -192,7 +192,7 @@ export function InquiryPopup() {
             // Desktop
             "lg:bottom-6 lg:right-6 lg:px-6 lg:py-4 lg:rounded-2xl",
             // Mobile (floating above bottom navigation bar)
-            "bottom-20 right-4 px-4 py-3 rounded-full text-xs"
+            "bottom-[74px] right-3 px-3 py-2 rounded-full text-[10px] font-extrabold shadow-xl bg-red-600 hover:bg-red-700 text-white active:scale-95 transition-all duration-200"
           )}
           aria-label="Open Inquiry Form"
         >

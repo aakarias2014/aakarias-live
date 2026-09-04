@@ -194,7 +194,7 @@ export default async function AwardsAndHonorsPage({ searchParams }: Props) {
               </p>
             </div>
 
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-3 sm:gap-6 grid-cols-2 lg:grid-cols-3">
               {AWARD_CATEGORIES.map((cat) => {
                 const IconComponent = ICON_MAP[cat.iconName] || Award;
                 return (
@@ -263,7 +263,7 @@ export default async function AwardsAndHonorsPage({ searchParams }: Props) {
 
           {result.items.length > 0 ? (
             <>
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-3 sm:gap-6 grid-cols-2 lg:grid-cols-3">
                 {result.items.map((a) => (
                   <ArticleCard key={a.id} article={a} />
                 ))}

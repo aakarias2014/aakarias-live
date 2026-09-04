@@ -114,7 +114,7 @@ export function TagPillarWorkspace({ tag, articles, locale }: TagPillarWorkspace
         {filteredArticles.length > 0 ? (
           <motion.div
             layout
-            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            className="grid gap-3 sm:gap-6 grid-cols-2 lg:grid-cols-3"
           >
             {filteredArticles.map((article) => (
               <motion.div

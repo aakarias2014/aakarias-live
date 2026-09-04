@@ -25,6 +25,7 @@ import { BatchesShowcase } from "@/components/sections/batches-showcase";
 import { DownloadAppSection } from "@/components/sections/download-app-section";
 import { Countdown } from "@/components/content/countdown";
 import { NoticeTicker } from "@/components/layout/notice-ticker";
+import { ChannelAvatar } from "@/components/ui/channel-avatar";
 
 export const revalidate = 3600; // 1h ISR fallback — Sanity webhook handles instant updates
 
@@ -168,33 +169,33 @@ export default async function HomePage() {
   const staticChannels = [
     {
       nameHi: "Aakar IAS",
-      subscribersHi: "136k सब्सक्राइबर्स",
+      subscribersHi: "142k सब्सक्राइबर्स",
       url: "https://www.youtube.com/@AakarIAS",
-      avatar: youtubeStats.avatarUrl || null,
+      avatar: "/images/aakar-ias-logo.png",
     },
     {
       nameHi: "Aakar IAS English",
-      subscribersHi: "1.68k सब्सक्राइबर्स",
+      subscribersHi: "2k सब्सक्राइबर्स",
       url: "https://www.youtube.com/@AakarIASEnglish",
-      avatar: youtubeStats.avatarUrl || null,
+      avatar: "/images/aakar-ias-logo.png",
     },
     {
       nameHi: "अतीत गाथा – Atharv Tiwari",
-      subscribersHi: "4.17k सब्सक्राइबर्स",
+      subscribersHi: "5.2k सब्सक्राइबर्स",
       url: "https://www.youtube.com/@AteetGathabyAtharvTiwari",
       avatar: "/images/directors/atharv.png",
     },
     {
-      nameHi: "Aakar Education",
-      subscribersHi: "1.61k सब्सक्राइबर्स",
+      nameHi: "Aakar Govt Exam",
+      subscribersHi: "3100 सब्सक्राइबर्स",
       url: "https://www.youtube.com/@AakarEducation-q3c",
-      avatar: youtubeStats.avatarUrl || null,
+      avatar: "/images/aakar-govt-exam-logo.png",
     },
     {
       nameHi: "Aakar- UGC NET & AP",
-      subscribersHi: "30 सब्सक्राइबर्स",
+      subscribersHi: "500 सब्सक्राइबर्स",
       url: "https://www.youtube.com/@AakarUGCNETAP",
-      avatar: youtubeStats.avatarUrl || null,
+      avatar: "/images/aakar-ias-logo.png",
     },
   ];
 
@@ -203,7 +204,7 @@ export default async function HomePage() {
         nameHi: ch.title,
         subscribersHi: ch.subscribers,
         url: ch.url,
-        avatar: ch.avatarUrl || youtubeStats.avatarUrl || null,
+        avatar: ch.avatarUrl || "/images/aakar-ias-logo.png",
       }))
     : staticChannels;
 
@@ -252,57 +253,57 @@ export default async function HomePage() {
       <NoticeTicker notices={notices} label="नवीनतम सूचना (Notice)" />
 
       {/* ─── Quick Nav Icons Grid ──────────────────────────────────────── */}
-      <Section className="py-12 md:py-16">
-        <Container size="wide">
-          <AnimatedSection variant="stagger-container" className="grid gap-5 grid-cols-2 md:grid-cols-5">
+      <Section className="py-6 sm:py-12 md:py-16">
+        <Container size="wide" className="px-3 sm:px-6">
+          <AnimatedSection variant="stagger-container" className="grid gap-3 sm:gap-5 grid-cols-2 md:grid-cols-5">
             {/* Quick Link 1 */}
             <AnimatedSection variant="stagger-item">
-              <Link href="/online-courses" className="group block rounded-3xl border border-border bg-card p-6 text-center hover:border-primary/30 hover:shadow-soft transition-all duration-300">
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform">
-                  <Monitor className="h-5 w-5" />
+              <Link href="/online-courses" className="app-card group block rounded-2xl sm:rounded-3xl border border-border/80 bg-card p-3.5 sm:p-6 text-center hover:border-primary/40 hover:shadow-soft transition-all duration-300">
+                <div className="mx-auto flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform">
+                  <Monitor className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
-                <h3 className="mt-4 text-sm font-extrabold text-foreground font-devanagari">ऑनलाइन कोर्सेज</h3>
-                <p className="mt-1 text-[11px] text-muted-foreground line-clamp-1 font-devanagari">लाइव और रिकॉर्डेड कक्षाएं</p>
+                <h3 className="mt-2.5 sm:mt-4 text-xs sm:text-sm font-extrabold text-foreground font-devanagari">ऑनलाइन कोर्सेज</h3>
+                <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-[11px] text-muted-foreground line-clamp-1 font-devanagari">लाइव और रिकॉर्डेड कक्षाएं</p>
               </Link>
             </AnimatedSection>
             {/* Quick Link 2 */}
             <AnimatedSection variant="stagger-item">
-              <Link href="/offline-courses" className="group block rounded-3xl border border-border bg-card p-6 text-center hover:border-primary/30 hover:shadow-soft transition-all duration-300">
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform">
-                  <Users className="h-5 w-5" />
+              <Link href="/offline-courses" className="app-card group block rounded-2xl sm:rounded-3xl border border-border/80 bg-card p-3.5 sm:p-6 text-center hover:border-primary/40 hover:shadow-soft transition-all duration-300">
+                <div className="mx-auto flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform">
+                  <Users className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
-                <h3 className="mt-4 text-sm font-extrabold text-foreground font-devanagari">ऑफलाइन कक्षाएं</h3>
-                <p className="mt-1 text-[11px] text-muted-foreground line-clamp-1 font-devanagari">इंदौर हेड ऑफिस सेंटर</p>
+                <h3 className="mt-2.5 sm:mt-4 text-xs sm:text-sm font-extrabold text-foreground font-devanagari">ऑफलाइन कक्षाएं</h3>
+                <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-[11px] text-muted-foreground line-clamp-1 font-devanagari">इंदौर हेड ऑफिस सेंटर</p>
               </Link>
             </AnimatedSection>
             {/* Quick Link 3 */}
             <AnimatedSection variant="stagger-item">
-              <Link href="/test-series" className="group block rounded-3xl border border-border bg-card p-6 text-center hover:border-primary/30 hover:shadow-soft transition-all duration-300">
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform">
-                  <FileText className="h-5 w-5" />
+              <Link href="/test-series" className="app-card group block rounded-2xl sm:rounded-3xl border border-border/80 bg-card p-3.5 sm:p-6 text-center hover:border-primary/40 hover:shadow-soft transition-all duration-300">
+                <div className="mx-auto flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform">
+                  <FileText className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
-                <h3 className="mt-4 text-sm font-extrabold text-foreground font-devanagari">मॉक टेस्ट सीरीज</h3>
-                <p className="mt-1 text-[11px] text-muted-foreground line-clamp-1 font-devanagari">परीक्षा पैटर्न मॉक टेस्ट</p>
+                <h3 className="mt-2.5 sm:mt-4 text-xs sm:text-sm font-extrabold text-foreground font-devanagari">मॉक टेस्ट सीरीज</h3>
+                <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-[11px] text-muted-foreground line-clamp-1 font-devanagari">परीक्षा पैटर्न मॉक टेस्ट</p>
               </Link>
             </AnimatedSection>
             {/* Quick Link 4 */}
             <AnimatedSection variant="stagger-item">
-              <Link href="/daily-quiz" className="group block rounded-3xl border border-border bg-card p-6 text-center hover:border-primary/30 hover:shadow-soft transition-all duration-300">
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform">
-                  <Brain className="h-5 w-5" />
+              <Link href="/daily-quiz" className="app-card group block rounded-2xl sm:rounded-3xl border border-border/80 bg-card p-3.5 sm:p-6 text-center hover:border-primary/40 hover:shadow-soft transition-all duration-300">
+                <div className="mx-auto flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform">
+                  <Brain className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
-                <h3 className="mt-4 text-sm font-extrabold text-foreground font-devanagari">डेली अभ्यास क्विज़</h3>
-                <p className="mt-1 text-[11px] text-muted-foreground line-clamp-1 font-devanagari">स्व-मूल्यांकन हेतु क्विज़</p>
+                <h3 className="mt-2.5 sm:mt-4 text-xs sm:text-sm font-extrabold text-foreground font-devanagari">डेली अभ्यास क्विज़</h3>
+                <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-[11px] text-muted-foreground line-clamp-1 font-devanagari">स्व-मूल्यांकन हेतु क्विज़</p>
               </Link>
             </AnimatedSection>
             {/* Quick Link 5 */}
             <AnimatedSection variant="stagger-item" className="col-span-2 md:col-span-1">
-              <Link href="/monthly-pdf" className="group block rounded-3xl border border-border bg-card p-6 text-center hover:border-primary/30 hover:shadow-soft transition-all duration-300">
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform">
-                  <Download className="h-5 w-5" />
+              <Link href="/monthly-pdf" className="app-card group block rounded-2xl sm:rounded-3xl border border-border/80 bg-card p-3.5 sm:p-6 text-center hover:border-primary/40 hover:shadow-soft transition-all duration-300">
+                <div className="mx-auto flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform">
+                  <Download className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
-                <h3 className="mt-4 text-sm font-extrabold text-foreground font-devanagari">फ्री पीडीएफ डाउनलोड</h3>
-                <p className="mt-1 text-[11px] text-muted-foreground line-clamp-1 font-devanagari">मासिक पत्रिका और नोट्स</p>
+                <h3 className="mt-2.5 sm:mt-4 text-xs sm:text-sm font-extrabold text-foreground font-devanagari">फ्री पीडीएफ डाउनलोड</h3>
+                <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-[11px] text-muted-foreground line-clamp-1 font-devanagari">मासिक पत्रिका और नोट्स</p>
               </Link>
             </AnimatedSection>
           </AnimatedSection>
@@ -428,19 +429,19 @@ export default async function HomePage() {
       <BatchesShowcase onlineCourses={onlineCourses} offlineBatches={offlineBatches} testSeries={testSeries} locale="hi" />
 
       {/* ─── About Us Legacy Showcase ─────────────────────────────────── */}
-      <Section className="bg-gradient-to-b from-card to-background py-16 md:py-24 border-t border-border/40">
+      <Section className="bg-gradient-to-b from-card to-background py-8 sm:py-16 md:py-24 border-t border-border/40">
         <Container size="wide">
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+          <div className="grid gap-6 sm:gap-12 lg:grid-cols-12 lg:items-center">
             {/* Left Text Column */}
             <AnimatedSection variant="slide-in" className="lg:col-span-7 space-y-6">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
                 <Award className="h-3.5 w-3.5" />
                 आकार IAS — एक परिचय
               </span>
-              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground font-devanagari leading-tight">
+              <h2 className="text-lg sm:text-2xl md:text-4xl font-extrabold tracking-tight text-foreground font-devanagari leading-snug">
                 सिविल सेवा परीक्षाओं के लिए मध्य प्रदेश का सबसे विश्वसनीय संस्थान
               </h2>
-              <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-devanagari">
+              <p className="text-xs sm:text-base text-muted-foreground leading-relaxed font-devanagari">
                 विगत 15+ वर्षों से आकार IAS (Aakar IAS) मध्य प्रदेश में UPSC और MPPSC की तैयारी कर रहे अभ्यर्थियों के लिए सफलता का पर्याय रहा है। वरिष्ठ शिक्षकों के कुशल मार्गदर्शन में, हमारा उद्देश्य केवल पाठ्यक्रम पूरा कराना नहीं बल्कि प्रशासनिक दृष्टिकोण और उत्कृष्ट उत्तर लेखन कौशल विकसित करना है।
               </p>
               <div className="grid gap-4 sm:grid-cols-2 pt-2">
@@ -510,12 +511,12 @@ export default async function HomePage() {
         description="सिविल सेवा परीक्षा के अनुकूल दैनिक करेंट अफेयर्स और विश्लेषण।"
         action={
           <div className="flex flex-wrap items-center gap-3">
-            <Button variant="outline" className="rounded-full" asChild>
+            <Button variant="outline" className="rounded-full text-xs font-bold" asChild>
               <Link href="/current-affairs/quiz">
                 करेंट अफेयर्स क्विज़ <Brain className="ml-1.5 h-4 w-4 text-primary" />
               </Link>
             </Button>
-            <Button variant="outline" className="rounded-full" asChild>
+            <Button variant="outline" className="rounded-full text-xs font-bold" asChild>
               <Link href="/current-affairs">
                 करेंट अफेयर्स पोर्टल पर जाएं <ArrowRight className="ml-1.5 h-4 w-4" />
               </Link>
@@ -523,7 +524,7 @@ export default async function HomePage() {
           </div>
         }
       >
-        <AnimatedSection variant="stagger-container" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <AnimatedSection variant="stagger-container" className="grid gap-3 sm:gap-6 grid-cols-2 lg:grid-cols-3">
           {latestArticles.items.map((article, i) => (
             <AnimatedSection key={article.id || `latest-${i}`} variant="stagger-item">
               <ArticleCard article={article} />
@@ -539,7 +540,7 @@ export default async function HomePage() {
           description="दैनिक समसामयिकी के महत्वपूर्ण प्रश्नों पर आधारित अभ्यास क्विज़ हल करें।"
           className="bg-muted/10 border-t border-border/40"
           action={
-            <Button variant="outline" className="rounded-full" asChild>
+            <Button variant="outline" className="rounded-full text-xs font-bold" asChild>
               <Link href="/current-affairs/quiz">
                 सभी क्विज़ देखें <ArrowRight className="ml-1.5 h-4 w-4" />
               </Link>
@@ -559,14 +560,14 @@ export default async function HomePage() {
           description="इतिहास, भूगोल, राजव्यवस्था और विज्ञान जैसे विषयों के महत्वपूर्ण अध्ययन तथ्य।"
           className="bg-muted/10 border-t border-border/40"
           action={
-            <Button variant="outline" className="rounded-full" asChild>
+            <Button variant="outline" className="rounded-full text-xs font-bold" asChild>
               <Link href="/general-awareness">
                 सामान्य अध्ययन पोर्टल पर जाएं <ArrowRight className="ml-1.5 h-4 w-4" />
               </Link>
             </Button>
           }
         >
-          <AnimatedSection variant="stagger-container" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <AnimatedSection variant="stagger-container" className="grid gap-3 sm:gap-6 grid-cols-2 lg:grid-cols-3">
             {latestStaticGk.items.map((article, i) => (
               <AnimatedSection key={article.id || `static-gk-${i}`} variant="stagger-item">
                 <ArticleCard article={article} />
@@ -590,7 +591,7 @@ export default async function HomePage() {
             </Button>
           }
         >
-          <AnimatedSection variant="stagger-container" className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <AnimatedSection variant="stagger-container" className="grid gap-3 sm:gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {pdfs.map((pdf) => (
               <AnimatedSection key={pdf.id} variant="stagger-item">
                 <PdfCard pdf={pdf} locale="hi" />
@@ -606,15 +607,8 @@ export default async function HomePage() {
           title="हमारे प्रमुख प्रकाशन (Our Publications)"
           description="सिविल सेवा परीक्षाओं के उत्कृष्ट अध्ययन हेतु आकार IAS द्वारा विशेष रूप से तैयार की गई पुस्तकें।"
           className="bg-muted/10 border-t border-border/40"
-          action={
-            <Button variant="ghost" asChild>
-              <Link href="/publications">
-                सभी पुस्तकें देखें <ArrowRight className="ml-1 h-4 w-4" />
-              </Link>
-            </Button>
-          }
         >
-          <AnimatedSection variant="stagger-container" className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <AnimatedSection variant="stagger-container" className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2">
             {publications.slice(0, 4).map((pub) => (
               <AnimatedSection
                 key={pub.id}
@@ -624,6 +618,13 @@ export default async function HomePage() {
               </AnimatedSection>
             ))}
           </AnimatedSection>
+          <div className="text-center mt-6 sm:mt-10">
+            <Button size="lg" className="rounded-full bg-primary hover:bg-primary/95 text-white font-extrabold shadow-md hover:shadow-lg px-8 py-3 transition-all hover:scale-105" asChild>
+              <Link href="/publications">
+                सभी पुस्तकें देखें <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
         </Section>
       )}
 
@@ -635,38 +636,38 @@ export default async function HomePage() {
           className="bg-muted/10 border-t border-border/40"
         >
           <Container size="wide">
-            <AnimatedSection variant="stagger-container" className="grid gap-6 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+            <AnimatedSection variant="stagger-container" className="grid gap-3 sm:gap-6 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
               {toppers.slice(0, 4).map((topper) => (
                 <AnimatedSection
                   key={topper.id}
                   variant="stagger-item"
-                  className="group rounded-3xl border border-border bg-card p-3.5 sm:p-5 text-center shadow-soft hover:shadow-soft-lg transition-all duration-300 flex flex-col items-center justify-between"
+                  className="group rounded-2xl sm:rounded-3xl border border-border bg-card p-3 sm:p-5 text-center shadow-soft hover:shadow-soft-lg transition-all duration-300 flex flex-col items-center justify-between"
                 >
-                  <div className="relative mx-auto h-20 w-20 xs:h-24 xs:w-24 sm:h-32 sm:w-32 lg:h-36 lg:w-36 shrink-0 overflow-hidden rounded-full border-2 sm:border-4 border-primary/20 bg-muted">
+                  <div className="relative mx-auto h-16 w-16 xs:h-20 xs:w-20 sm:h-28 sm:w-28 lg:h-32 lg:w-32 shrink-0 overflow-hidden rounded-full border-2 sm:border-4 border-primary/20 bg-muted">
                     {topper.avatar ? (
                       <Image
                         src={topper.avatar}
                         alt={`Aakar IAS सफल अभ्यर्थी ${topper.name} - ${topper.exam} Rank ${topper.rank}`}
                         fill
-                        sizes="144px"
+                        sizes="128px"
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     ) : (
                       <div className="flex h-full w-full items-center justify-center text-primary-foreground bg-primary/20">
-                        <Trophy className="h-10 w-10 text-primary" />
+                        <Trophy className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />
                       </div>
                     )}
                   </div>
-                  <h3 className="mt-4 text-base font-extrabold text-foreground">{topper.name}</h3>
-                  <p className="text-xs font-bold text-primary tracking-wide uppercase mt-1">
+                  <h3 className="mt-2 sm:mt-4 text-xs sm:text-base font-extrabold text-foreground">{topper.name}</h3>
+                  <p className="text-[10px] sm:text-xs font-bold text-primary tracking-wide uppercase mt-0.5 sm:mt-1">
                     Rank {topper.rank}
                   </p>
                   {topper.post && (
-                    <p className="text-[11px] font-semibold text-muted-foreground mt-0.5">
+                    <p className="text-[9px] sm:text-[11px] font-semibold text-muted-foreground mt-0.5 truncate max-w-full">
                       {topper.post}
                     </p>
                   )}
-                  <p className="text-[10px] text-muted-foreground mt-0.5">
+                  <p className="text-[9px] sm:text-[10px] text-muted-foreground mt-0.5 truncate max-w-full">
                     {topper.exam} ({topper.year})
                   </p>
                 </AnimatedSection>
@@ -691,7 +692,7 @@ export default async function HomePage() {
           className="bg-background border-t border-border/40"
         >
           <Container size="wide">
-            <AnimatedSection variant="stagger-container" className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <AnimatedSection variant="stagger-container" className="grid gap-3 sm:gap-6 grid-cols-2 lg:grid-cols-4">
               {faculties.slice(0, 4).map((faculty) => {
                 const name = faculty.nameHi || faculty.nameEn;
                 const title = faculty.titleHi || faculty.titleEn;
@@ -704,36 +705,36 @@ export default async function HomePage() {
                   <AnimatedSection
                     key={faculty.id}
                     variant="stagger-item"
-                    className="relative group border border-border/60 rounded-3xl bg-card p-5 text-center shadow-soft hover:shadow-soft-lg hover:border-primary/20 transition-all duration-300 flex flex-col justify-between"
+                    className="relative group border border-border/60 rounded-2xl sm:rounded-3xl bg-card p-3 sm:p-5 text-center shadow-soft hover:shadow-soft-lg hover:border-primary/20 transition-all duration-300 flex flex-col justify-between"
                   >
-                    <div className="space-y-4">
+                    <div className="space-y-2 sm:space-y-4">
                       {isDirector && (
-                        <span className="absolute top-4 right-4 bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase text-primary tracking-wider z-10">
+                        <span className="absolute top-2 right-2 bg-primary/10 border border-primary/20 px-1.5 py-0.5 rounded-full text-[8px] sm:text-[9px] font-extrabold uppercase text-primary tracking-wider z-10">
                           निदेशक
                         </span>
                       )}
-                      <div className="relative mx-auto h-20 w-20 xs:h-24 xs:w-24 sm:h-32 sm:w-32 lg:h-36 lg:w-36 shrink-0 overflow-hidden rounded-full border-2 sm:border-4 border-primary/20 bg-muted">
+                      <div className="relative mx-auto h-16 w-16 xs:h-20 xs:w-20 sm:h-28 sm:w-28 lg:h-32 lg:w-32 shrink-0 overflow-hidden rounded-full border-2 sm:border-4 border-primary/20 bg-muted">
                         {faculty.image ? (
                           <Image
                             src={faculty.image}
                             alt={`Aakar IAS शिक्षक ${name} - ${title}`}
                             fill
-                            sizes="144px"
+                            sizes="128px"
                             className="object-cover transition-transform duration-500 group-hover:scale-105"
                           />
                         ) : (
                           <div className="flex h-full w-full items-center justify-center text-primary-foreground bg-primary/20">
-                            <GraduationCap className="h-10 w-10 text-primary" />
+                            <GraduationCap className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />
                           </div>
                         )}
                       </div>
                       <div>
-                        <h3 className="text-base font-extrabold text-foreground group-hover:text-primary transition-colors">{name}</h3>
-                        <p className="text-xs font-bold text-primary tracking-wide uppercase mt-1">
+                        <h3 className="text-xs sm:text-base font-extrabold text-foreground group-hover:text-primary transition-colors">{name}</h3>
+                        <p className="text-[10px] sm:text-xs font-bold text-primary tracking-wide uppercase mt-0.5 sm:mt-1 truncate">
                           {title}
                         </p>
                         {desc && (
-                          <p className="text-[11px] text-muted-foreground mt-2 line-clamp-3 leading-relaxed">
+                          <p className="text-[10px] sm:text-[11px] text-muted-foreground mt-1 line-clamp-2 leading-relaxed">
                             {desc}
                           </p>
                         )}
@@ -793,7 +794,7 @@ export default async function HomePage() {
                 <p className="text-xs text-muted-foreground mt-1 font-devanagari">विषयवार तैयारी के लिए सबसे हालिया वीडियो कक्षाएं</p>
               </div>
 
-              <AnimatedSection variant="stagger-container" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <AnimatedSection variant="stagger-container" className="grid gap-3 sm:gap-6 grid-cols-2 lg:grid-cols-3">
                 {youtubeVideos.map((video) => (
                   <AnimatedSection key={video.id} variant="stagger-item">
                     <Link href={`/media-center?tab=home&v=${video.id}`} className="group block cursor-pointer">
@@ -845,7 +846,7 @@ export default async function HomePage() {
                 <p className="text-xs text-muted-foreground mt-1 font-devanagari">छात्रों द्वारा सबसे अधिक पसंद की जाने वाली वीडियो कक्षाएं</p>
               </div>
 
-              <AnimatedSection variant="stagger-container" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <AnimatedSection variant="stagger-container" className="grid gap-3 sm:gap-6 grid-cols-2 lg:grid-cols-3">
                 {youtubePopularVideos.map((video) => (
                   <AnimatedSection key={video.id} variant="stagger-item">
                     <Link href={`/media-center?tab=home&v=${video.id}`} className="group block cursor-pointer">
@@ -898,37 +899,27 @@ export default async function HomePage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 justify-center">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-6 justify-center">
               {channels.map((ch, idx) => (
-                <div key={idx} className="flex flex-col items-center text-center p-5 rounded-2xl bg-card border border-border/65 hover:border-primary/20 hover:shadow-soft transition-all duration-300">
-                  {/* Circular Avatar */}
-                  <div className="relative h-20 w-20 sm:h-24 sm:w-24 overflow-hidden rounded-full border border-border bg-muted flex items-center justify-center">
-                    {ch.avatar ? (
-                      <Image
-                        src={ch.avatar}
-                        alt={ch.nameHi}
-                        fill
-                        sizes="96px"
-                        className="object-cover"
-                      />
-                    ) : (
-                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/15 text-primary">
-                        <span className="text-xl sm:text-2xl font-black" style={{ fontFamily: "var(--font-devanagari)" }}>आ</span>
-                      </div>
-                    )}
+                <div key={idx} className="flex flex-col items-center justify-between text-center p-3.5 sm:p-5 rounded-2xl bg-card border border-border/60 hover:border-red-500/30 hover:shadow-soft transition-all duration-300">
+                  {/* Circular Avatar with Fallback */}
+                  <ChannelAvatar src={ch.avatar} alt={ch.nameHi} />
+
+                  {/* Title & Stats */}
+                  <div className="mt-3 space-y-1">
+                    <h4 className="text-xs sm:text-sm font-extrabold text-foreground leading-tight line-clamp-2 font-devanagari">
+                      {ch.nameHi}
+                    </h4>
+                    <p className="text-[10px] sm:text-xs font-semibold text-muted-foreground font-devanagari">
+                      {ch.subscribersHi}
+                    </p>
                   </div>
-                  {/* Title */}
-                  <h4 className="mt-4 text-xs sm:text-sm font-extrabold text-foreground leading-snug line-clamp-2 h-10 flex items-center justify-center font-devanagari">
-                    {ch.nameHi}
-                  </h4>
-                  {/* Subscriber count */}
-                  <p className="text-[10px] sm:text-xs text-muted-foreground mt-1 font-devanagari">
-                    {ch.subscribersHi}
-                  </p>
-                  {/* Subscribe Button */}
-                  <Button size="xs" variant="outline" className="mt-4 rounded-full text-[10px] font-bold uppercase tracking-wider px-4" asChild>
+
+                  {/* Highlighted Red Subscribe Button */}
+                  <Button size="xs" className="mt-3 w-full sm:w-auto rounded-full bg-red-600 hover:bg-red-700 text-white font-extrabold text-[10px] tracking-wider px-3.5 py-1 shadow-sm gap-1" asChild>
                     <a href={ch.url} target="_blank" rel="noopener noreferrer">
-                      Subscribe
+                      <Play className="h-3 w-3 fill-current shrink-0" />
+                      SUBSCRIBE
                     </a>
                   </Button>
                 </div>

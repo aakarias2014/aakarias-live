@@ -193,7 +193,7 @@ export default async function PublicationsPage() {
                   <div className="flex items-center justify-between mb-6">
                     <h2 className="text-2xl font-extrabold text-foreground">नवीनतम पुस्तकें (Latest Releases)</h2>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                     {publications.slice(2).map((pub) => (
                       <BookCard key={pub.id} pub={pub} locale="hi" />
                     ))}
