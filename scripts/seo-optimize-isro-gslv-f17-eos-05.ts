@@ -181,7 +181,7 @@ async function main() {
 
         "### क्रायोजेनिक इंजन (CUS-15) कैसे काम करता है?",
         "क्रायोजेनिक तकनीक अंतरिक्ष विज्ञान की सबसे जटिल तकनीकों में से एक है:",
-        "• **अत्यधिक कम तापमान (Extreme Low Temperature)**: क्रायोजेनिक इंजन में ईंधन के रूप में **तरल हाइड्रोजन ($LH_2$) को $-253^\circ\text{C}$** पर और ऑक्सीडाइजर के रूप में **तरल ऑक्सीजन ($LOX$) को $-183^\circ\text{C}$** पर संग्रहित किया जाता है।",
+        "• **अत्यधिक कम तापमान (Extreme Low Temperature)**: क्रायोजेनिक इंजन में ईंधन के रूप में **तरल हाइड्रोजन (LH₂) को -253°C** पर और ऑक्सीडाइजर के रूप में **तरल ऑक्सीजन (LOX) को -183°C** पर संग्रहित किया जाता है।",
         "• **उच्च विशिष्ट आवेग (High Specific Impulse)**: यह ठोस या सामान्य तरल इंजन की तुलना में प्रति किलोग्राम ईंधन पर अत्यधिक ऊर्जा और थ्रस्ट (Thrust) उत्पन्न करता है, जिससे भारी उपग्रहों को 36,000 किमी दूर GEO कक्षा तक पहुँचाना संभव होता है।",
 
         "### MPPSC Mains GS Paper-3 मॉडल उत्तर (Sample 150-Word Answer)",
@@ -259,7 +259,7 @@ async function main() {
 
         "### How Does a Cryogenic Engine (CUS-15) Function?",
         "Cryogenic technology is among the most sophisticated domains in aerospace engineering:",
-        "• **Super-Cold Storage**: The engine burns **Liquid Hydrogen ($LH_2$) stored at $-253^\circ\text{C}$** as fuel and **Liquid Oxygen ($LOX$) stored at $-183^\circ\text{C}$** as oxidizer.",
+        "• **Super-Cold Storage**: The engine burns **Liquid Hydrogen (LH₂) stored at -253°C** as fuel and **Liquid Oxygen (LOX) stored at -183°C** as oxidizer.",
         "• **High Specific Impulse**: Provides maximum thrust per unit mass of propellant, enabling heavy satellites to reach high altitude orbits (36,000 km GEO).",
 
         "### MPPSC Mains GS-3 Model Answer Capsule",
@@ -308,8 +308,8 @@ async function main() {
       {
         question: "क्रायोजेनिक इंजन (CUS-15) कैसे काम करता है?",
         questionEn: "How does the Cryogenic Upper Stage (CUS-15) engine work?",
-        answer: "क्रायोजेनिक इंजन अत्यंत कम तापमान पर काम करता है। इसमें तरल हाइड्रोजन ($-253^\circ\text{C}$) ईंधन के रूप में और तरल ऑक्सीजन ($-183^\circ\text{C}$) ऑक्सीडाइजर के रूप में प्रयोग होता है, जो भारी उपग्रहों को गहरी कक्षा (GEO) में पहुँचाने के लिए उच्च थ्रस्ट प्रदान करता है।",
-        answerEn: "Cryogenic engines operate at extreme sub-zero temperatures using Liquid Hydrogen ($-253^\circ\text{C}$) as fuel and Liquid Oxygen ($-183^\circ\text{C}$) as oxidizer, generating maximum thrust for high-altitude orbit insertion."
+        answer: "क्रायोजेनिक इंजन अत्यंत कम तापमान पर काम करता है। इसमें तरल हाइड्रोजन (-253°C) ईंधन के रूप में और तरल ऑक्सीजन (-183°C) ऑक्सीडाइजर के रूप में प्रयोग होता है, जो भारी उपग्रहों को गहरी कक्षा (GEO) में पहुँचाने के लिए उच्च थ्रस्ट प्रदान करता है।",
+        answerEn: "Cryogenic engines operate at extreme sub-zero temperatures using Liquid Hydrogen (-253°C) as fuel and Liquid Oxygen (-183°C) as oxidizer, generating maximum thrust for high-altitude orbit insertion."
       },
       {
         question: "प्रधानमंत्री नरेंद्र मोदी (PM Modi) ने ISRO की इस सफलता पर क्या कहा?",
