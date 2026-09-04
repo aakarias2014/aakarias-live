@@ -16,5 +16,5 @@ export function Container({
 }) {
   const max =
     size === "narrow" ? "max-w-3xl" : size === "wide" ? "max-w-[90rem]" : "max-w-[var(--content-max)]";
-  return <Component className={cn("mx-auto w-full px-4 sm:px-6 lg:px-8", max, className)}>{children}</Component>;
+  return <Component className={cn("mx-auto w-full px-3.5 sm:px-6 lg:px-8", max, className)}>{children}</Component>;
 }

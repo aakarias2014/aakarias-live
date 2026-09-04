@@ -185,25 +185,25 @@
 /* Long-form reading typography (article body) */
 @layer components {
   .prose-aakar {
-    @apply text-[1.1rem] leading-[1.95] text-foreground/90 tracking-[0.01em];
+    @apply text-[15px] sm:text-base md:text-[1.05rem] leading-[1.75] sm:leading-[1.85] text-foreground/90 tracking-[0.01em];
   }
   .prose-aakar h2 {
-    @apply mt-14 mb-5 text-2xl font-bold tracking-tight text-foreground scroll-mt-24;
+    @apply mt-8 sm:mt-12 mb-4 text-xl sm:text-2xl font-bold tracking-tight text-foreground scroll-mt-24;
   }
   .prose-aakar h3 {
-    @apply mt-10 mb-4 text-xl font-semibold tracking-tight text-foreground scroll-mt-24;
+    @apply mt-6 sm:mt-10 mb-3 text-lg sm:text-xl font-semibold tracking-tight text-foreground scroll-mt-24;
   }
   .prose-aakar p {
-    @apply mb-6;
+    @apply mb-4 sm:mb-6;
   }
   .prose-aakar ul {
-    @apply mb-6 ml-6 list-disc space-y-3 marker:text-primary;
+    @apply mb-5 sm:mb-6 ml-1 sm:ml-5 list-disc space-y-2.5 sm:space-y-3 marker:text-primary;
   }
   .prose-aakar ol {
-    @apply mb-6 ml-6 list-decimal space-y-3 marker:text-primary marker:font-semibold;
+    @apply mb-5 sm:mb-6 ml-1 sm:ml-5 list-decimal space-y-2.5 sm:space-y-3 marker:text-primary marker:font-semibold;
   }
   .prose-aakar li {
-    @apply leading-[1.85] pl-1;
+    @apply leading-[1.75] sm:leading-[1.85] pl-0.5;
   }
   .prose-aakar a {
     @apply font-medium text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary;
@@ -212,7 +212,7 @@
     @apply font-bold text-foreground;
   }
   .prose-aakar blockquote {
-    @apply my-8 border-l-4 border-primary pl-6 py-4 italic text-muted-foreground rounded-r-lg bg-primary/5;
+    @apply my-6 sm:my-8 border-l-4 border-primary pl-4 sm:pl-6 py-3 sm:py-4 italic text-muted-foreground rounded-r-lg bg-primary/5;
   }
   .prose-aakar blockquote p {
     @apply mb-0 text-primary/90 font-medium not-italic;
@@ -243,28 +243,17 @@
     background-color: color-mix(in oklch, var(--muted) 30%, transparent);
   }
   .prose-aakar h4 {
-    margin-top: 2rem;
+    margin-top: 1.75rem;
     margin-bottom: 0.75rem;
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+    font-size: 1.05rem;
+    line-height: 1.6rem;
     font-weight: 700;
     color: var(--foreground);
   }
   .prose-aakar hr {
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     border-color: var(--border);
-  }
-  /* Drop-cap on first paragraph of article body */
-  .prose-aakar > .article-section:first-child p:first-of-type::first-letter,
-  .prose-aakar > p:first-of-type::first-letter {
-    float: left;
-    font-size: 3.5rem;
-    line-height: 1;
-    font-weight: 700;
-    color: var(--primary);
-    margin-right: 0.15em;
-    margin-top: 0.05em;
   }
 
   /* ─── Article section spacing & dividers ─── */

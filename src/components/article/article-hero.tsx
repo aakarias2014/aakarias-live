@@ -74,11 +74,11 @@ export async function ArticleHero({ article }: { article: Article }) {
               )}
             </div>
 
-            <h1 className="mt-4 text-balance text-3xl font-extrabold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl">
+            <h1 className="mt-3 sm:mt-4 text-balance text-xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-snug sm:leading-tight tracking-tight text-foreground">
               {article.title}
             </h1>
 
-            <p className="mt-4 max-w-2xl text-pretty text-lg text-muted-foreground">
+            <p className="mt-2.5 sm:mt-4 max-w-2xl text-pretty text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
               {article.excerpt}
             </p>
 
