@@ -679,8 +679,12 @@ export class SanityRepository implements ContentRepository {
     const mergeWithOverride = (overrideData: Record<string, unknown>) => {
       if (!raw) return overrideData;
       return {
-        ...raw,
         ...overrideData,
+        ...raw,
+        body: (Array.isArray(raw.body) && raw.body.length > 0) ? raw.body : overrideData.body,
+        bodyEn: (Array.isArray(raw.bodyEn) && raw.bodyEn.length > 0) ? raw.bodyEn : overrideData.bodyEn,
+        faqs: (Array.isArray(raw.faqs) && raw.faqs.length > 0) ? raw.faqs : overrideData.faqs,
+        mcqs: (Array.isArray(raw.mcqs) && raw.mcqs.length > 0) ? raw.mcqs : overrideData.mcqs,
         featuredImage: raw.featuredImage || raw.mainImage || overrideData.featuredImage,
       };
     };
