@@ -147,7 +147,7 @@ function ArticleSectionBlock({ section }: { section: ArticleSection }) {
             <Icon className="h-[18px] w-[18px] text-primary" />
           </span>
         )}
-        <h2 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-foreground m-0">
+        <h2 className="text-[15px] sm:text-xl md:text-2xl font-bold tracking-tight text-foreground m-0">
           {section.title}
         </h2>
         {/* Gradient underline */}
@@ -265,7 +265,7 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
         return (
           <div
             className={cn(
-              "my-4 sm:my-6 rounded-2xl p-3.5 sm:p-5 border transition-all shadow-soft-xs",
+              "my-3 sm:my-6 rounded-xl sm:rounded-2xl p-3 sm:p-5 border transition-all shadow-soft-xs",
               isWarning
                 ? "bg-amber-500/10 border-amber-500/30 text-amber-950 dark:text-amber-100"
                 : isTip
@@ -273,9 +273,9 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
                 : "bg-muted/40 border-border text-foreground"
             )}
           >
-            <div className="flex gap-2.5 sm:gap-3 items-start">
-              <span className="text-lg sm:text-xl shrink-0 mt-0.5 select-none">{firstTwo}</span>
-              <div className="text-[14.5px] sm:text-base leading-relaxed font-medium text-foreground/90">
+            <div className="flex gap-2 sm:gap-3 items-start">
+              <span className="text-base sm:text-xl shrink-0 mt-0.5 select-none">{firstTwo}</span>
+              <div className="text-[13.5px] sm:text-base leading-relaxed font-medium text-foreground/90">
                 {renderFormattedText(text.slice(2).trim())}
               </div>
             </div>
@@ -284,7 +284,7 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
       }
 
       return (
-        <p className="text-foreground/85 leading-[1.75] sm:leading-[1.85] text-[15px] sm:text-base md:text-[17px] my-3">
+        <p className="text-foreground/85 leading-[1.65] sm:leading-[1.85] text-[14px] sm:text-base md:text-[17px] my-2 sm:my-3">
           {renderFormattedText(block.text)}
         </p>
       );
@@ -294,7 +294,7 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
       return (
         <h3
           id={block.id}
-          className="mt-6 sm:mt-8 mb-3 sm:mb-4 text-base sm:text-lg md:text-xl font-extrabold tracking-tight text-foreground border-l-4 border-primary pl-3 py-1 bg-primary/5 rounded-r-md"
+          className="mt-4 sm:mt-8 mb-2 sm:mb-4 text-[14.5px] sm:text-lg md:text-xl font-bold tracking-tight text-foreground border-l-3 sm:border-l-4 border-primary pl-2.5 sm:pl-3 py-0.5 sm:py-1 bg-primary/5 rounded-r-md"
         >
           {block.text}
         </h3>
@@ -302,10 +302,10 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
 
     case "list":
       return block.ordered ? (
-        <ol className="my-4 sm:my-5 space-y-2.5 sm:space-y-3 pl-0 sm:pl-1">
+        <ol className="my-3 sm:my-5 space-y-2 sm:space-y-3 pl-0 sm:pl-1">
           {block.items.map((item, i) => (
-            <li key={i} className="flex items-start gap-2.5 sm:gap-3 text-[14.5px] sm:text-base md:text-[16.5px] leading-[1.75] sm:leading-[1.8] text-foreground/90">
-              <span className="flex h-5.5 w-5.5 sm:h-6 sm:w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary mt-0.5 shadow-sm">
+            <li key={i} className="flex items-start gap-2 sm:gap-3 text-[13.5px] sm:text-base md:text-[16.5px] leading-[1.6] sm:leading-[1.8] text-foreground/90">
+              <span className="flex h-5 w-5 sm:h-6 sm:w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[11px] sm:text-xs font-bold text-primary mt-0.5 shadow-sm">
                 {i + 1}
               </span>
               <div className="flex-1 min-w-0">{renderFormattedText(item)}</div>
@@ -313,10 +313,10 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
           ))}
         </ol>
       ) : (
-        <ul className="my-4 sm:my-5 space-y-2.5 sm:space-y-3 pl-0 sm:pl-1">
+        <ul className="my-3 sm:my-5 space-y-2 sm:space-y-3 pl-0 sm:pl-1">
           {block.items.map((item, i) => (
-            <li key={i} className="flex items-start gap-2.5 sm:gap-3 text-[14.5px] sm:text-base md:text-[16.5px] leading-[1.75] sm:leading-[1.8] text-foreground/90">
-              <span className="h-2 w-2 rounded-full bg-primary shrink-0 mt-2 sm:mt-2.5 shadow-sm" />
+            <li key={i} className="flex items-start gap-2 sm:gap-3 text-[13.5px] sm:text-base md:text-[16.5px] leading-[1.6] sm:leading-[1.8] text-foreground/90">
+              <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-primary shrink-0 mt-2 sm:mt-2.5 shadow-sm" />
               <div className="flex-1 min-w-0">{renderFormattedText(item)}</div>
             </li>
           ))}

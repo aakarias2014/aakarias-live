@@ -22,8 +22,8 @@ export async function ArticleHero({ article }: { article: Article }) {
   const isBookmarked = await checkIsBookmarked(article.id);
 
   return (
-    <header className="relative pt-6">
-      <div className="mx-auto max-w-[var(--content-max)] px-4 sm:px-6 lg:px-8">
+    <header className="relative pt-3 sm:pt-6">
+      <div className="mx-auto max-w-[var(--content-max)] px-3 sm:px-6 lg:px-8">
         <div className="flex items-center gap-4">
           <Breadcrumb
             items={[
@@ -46,7 +46,7 @@ export async function ArticleHero({ article }: { article: Article }) {
         </div>
 
         {article.featuredImage && (
-          <div className="mt-6 relative h-[260px] sm:h-[360px] md:h-[450px] w-full overflow-hidden rounded-2xl border border-border/50 shadow-md bg-secondary">
+          <div className="mt-4 sm:mt-6 relative h-[200px] sm:h-[360px] md:h-[450px] w-full overflow-hidden rounded-xl sm:rounded-2xl border border-border/50 shadow-sm sm:shadow-md bg-secondary">
             <Image
               src={article.featuredImage.url}
               alt={article.featuredImage.alt || article.title}
@@ -59,14 +59,14 @@ export async function ArticleHero({ article }: { article: Article }) {
           </div>
         )}
 
-        <div className="mt-8 max-w-4xl">
-            <div className="flex flex-wrap items-center gap-2">
+        <div className="mt-5 sm:mt-8 max-w-4xl">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
               <CategoryBadge category={article.category} locale={article.locale} size="md" />
               {article.syllabus && article.syllabus.length > 0 && (
                 article.syllabus.map((syl) => (
                   <span
                     key={syl}
-                    className="rounded-full bg-accent/15 px-3 py-1 text-xs font-bold text-accent-foreground uppercase tracking-wide border border-accent/10"
+                    className="rounded-full bg-accent/15 px-2.5 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-bold text-accent-foreground uppercase tracking-wide border border-accent/10"
                   >
                     {syl}
                   </span>
@@ -74,11 +74,11 @@ export async function ArticleHero({ article }: { article: Article }) {
               )}
             </div>
 
-            <h1 className="mt-3 sm:mt-4 text-balance text-xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-snug sm:leading-tight tracking-tight text-foreground">
+            <h1 className="mt-2.5 sm:mt-4 text-balance text-[17px] sm:text-2xl md:text-3xl lg:text-4xl font-extrabold leading-[1.35] sm:leading-tight tracking-tight text-foreground">
               {article.title}
             </h1>
 
-            <p className="mt-2.5 sm:mt-4 max-w-2xl text-pretty text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
+            <p className="mt-2 sm:mt-3 max-w-2xl text-pretty text-[13px] sm:text-base md:text-lg text-muted-foreground leading-normal">
               {article.excerpt}
             </p>
 
