@@ -50,9 +50,13 @@ export async function POST(req: NextRequest) {
 
   const pathsToRevalidate: string[] = [];
 
-  // Always revalidate both homepages
+  // Always revalidate both homepages, sitemaps, and RSS feeds
   pathsToRevalidate.push("/");
   pathsToRevalidate.push("/en");
+  pathsToRevalidate.push("/sitemap.xml");
+  pathsToRevalidate.push("/en/sitemap.xml");
+  pathsToRevalidate.push("/rss.xml");
+  pathsToRevalidate.push("/en/rss.xml");
 
   // Map type to path segment
   const typeMap: Record<string, string> = {
@@ -65,12 +69,17 @@ export async function POST(req: NextRequest) {
     "weekly": "weekly",
     "monthly": "monthly",
     "monthly-pdf": "monthly-pdf",
+    "monthlyPdf": "monthly-pdf",
     "downloadPageConfig": "download",
     "onlineCourse": "online-courses",
+    "online-course": "online-courses",
     "testSeries": "test-series",
+    "test-series": "test-series",
     "publication": "publications",
     "offlineBatch": "offline-courses",
     "faculty": "faculty",
+    "notification": "notifications",
+    "notifications": "notifications",
   };
 
   const segment = typeMap[_type];
@@ -80,7 +89,7 @@ export async function POST(req: NextRequest) {
     pathsToRevalidate.push(`/en/${segment}`);
 
     // If PDF or monthly-pdf, also revalidate free-pdf page
-    if (segment === "monthly-pdf") {
+    if (segment === "monthly-pdf" || _type === "monthlyPdf") {
       pathsToRevalidate.push("/free-pdf");
       pathsToRevalidate.push("/en/free-pdf");
     }
@@ -131,6 +140,8 @@ export async function POST(req: NextRequest) {
       staticGk: "articles",
       editorial: "articles",
       blog: "articles",
+      notification: "notifications",
+      notifications: "notifications",
     };
 
     const targetTag = tagMap[_type];

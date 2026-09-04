@@ -1611,7 +1611,7 @@ export class SanityRepository implements ContentRepository {
     };
   }
 
-  async listNotifications(locale: Locale, limit = 50): Promise<ExamNotification[]> {
+  async listNotifications(locale: Locale, limit = 1000): Promise<ExamNotification[]> {
     const isHi = locale === "hi";
     const q = `*[_type == "notification"] | order(date desc) [0...$limit] {
       _id,
@@ -2621,7 +2621,7 @@ export class SanityRepository implements ContentRepository {
     return result?.brochureUrl || null;
   }
 
-  async listAds(): Promise<AdConfig[]> {
+  async listAdConfigs(): Promise<AdConfig[]> {
     const query = `*[_type == "ad" && !(_id in path("drafts.**"))] | order(_createdAt asc) {
       _id,
       titleHi,

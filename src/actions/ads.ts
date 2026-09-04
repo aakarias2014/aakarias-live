@@ -6,7 +6,7 @@ import type { AdConfig } from "@/data/ads";
 export async function getSanityAdsAction(): Promise<AdConfig[]> {
   try {
     const repo = await getContentRepository();
-    const ads = await repo.listAds();
+    const ads = await repo.listAdConfigs();
     return ads;
   } catch (error) {
     console.error("Error fetching Sanity ads action:", error);

@@ -3,8 +3,8 @@ import { getContentRepository } from "@/lib/content/content-repository";
 import { siteConfig } from "@/lib/site-config";
 import { getAllTopperCopies } from "@/lib/toppers-data";
 
-/** Cache sitemap for 24 hours — content changes are picked up on next regen */
-export const revalidate = 86400;
+/** Cache sitemap for 1 hour — content changes are revalidated automatically via ISR webhook */
+export const revalidate = 3600;
 
 /**
  * Dynamic sitemap. Includes static pages + all articles per locale.
@@ -31,8 +31,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     repo.getAllSlugs("en"),
     repo.listAllTags(),
     repo.getAllDatesWithContent(),
-    repo.listNotifications("hi"),
-    repo.listNotifications("en"),
+    repo.listNotifications("hi", 1000),
+    repo.listNotifications("en", 1000),
     repo.listMonthlyPdfs("hi"),
     repo.listMonthlyPdfs("en"),
     repo.listPublications("hi"),

@@ -38,12 +38,14 @@ import type {
   AboutPageConfig,
   NcertBook,
   HomeNotice,
+  SearchHit,
 } from "@/lib/content/types";
+import type { Locale } from "@/lib/i18n/locales";
 import type { AdConfig } from "@/data/ads";
 
 export interface ContentRepository {
   /** Fetch sponsored ads dynamically from Sanity CMS. */
-  listAds(): Promise<AdConfig[]>;
+  listAdConfigs(): Promise<AdConfig[]>;
 
   /** Fetch active homepage notices. */
   getHomeNotices(locale: Locale): Promise<HomeNotice[]>;
