@@ -106,8 +106,31 @@ export default async function OneDayExamPage({ params }: Props) {
           {exam.desc}
         </p>
 
+        {/* Official MPSI Notification Direct Link Banner */}
+        {slug === "mpsi" && (
+          <div className="mt-8 rounded-2xl border border-primary/30 bg-primary/5 p-5 max-w-md mx-auto text-left shadow-soft">
+            <div className="flex items-center gap-3">
+              <div className="h-10 w-10 rounded-xl bg-primary text-white flex items-center justify-center shrink-0 font-bold">
+                NEW
+              </div>
+              <div className="flex-1">
+                <h3 className="font-bold text-sm text-foreground">MPSI 2026 आधिकारिक नोटिफिकेशन (507 पद)</h3>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  नियमपुस्तिका, आयु सीमा, चयन प्रक्रिया और विस्तृत सिलेबस टेबल देखें।
+                </p>
+                <Link
+                  href="/notifications/mpsi-recruitment-2026-notification-out-507-posts"
+                  className="inline-flex items-center gap-1.5 mt-2.5 text-xs font-extrabold text-primary hover:underline"
+                >
+                  MPSI Rulebook 2026 पढ़ें <ArrowLeft className="h-3.5 w-3.5 rotate-180" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Coming Soon Premium Info Block */}
-        <div className="mt-10 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md p-6 max-w-md mx-auto text-left flex gap-4 shadow-soft">
+        <div className="mt-6 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md p-6 max-w-md mx-auto text-left flex gap-4 shadow-soft">
           <div className="h-10 w-10 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center shrink-0">
             <Clock className="h-5 w-5 animate-spin-slow" />
           </div>
