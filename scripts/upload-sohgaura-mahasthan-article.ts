@@ -386,7 +386,7 @@ async function main() {
     category: "History",
     subcategory: "Ancient History",
     examTags: ["tag-mppsc", "tag-upsc", "tag-ssc"],
-    authorName: "Deepraj Sikarwar (Editorial Team)",
+    authorName: "Aakar IAS Team",
     publishedAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     readTime: "8 min read",

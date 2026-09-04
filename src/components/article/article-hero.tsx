@@ -10,6 +10,7 @@ import { getCurrentUser } from "@/actions/auth";
 import { checkIsBookmarked } from "@/actions/user";
 import { BookmarkButton } from "./bookmark-button";
 import { ShareDropdown } from "./share-dropdown";
+import { ArticleViewCounter } from "./article-view-counter";
 import { siteConfig } from "@/lib/site-config";
 
 /**
@@ -110,6 +111,7 @@ export async function ArticleHero({ article }: { article: Article }) {
                   {article.readingTime} min read
                 </span>
               )}
+              <ArticleViewCounter slug={article.slug || article.id} locale={article.locale} />
               <ShareDropdown
                 title={article.title}
                 url={`${siteConfig.url}${article.href}`}

@@ -78,13 +78,13 @@ async function main() {
   const authorDoc = {
     _id: "author-aakar",
     _type: "author",
-    slug: { _type: "slug", current: "deepraj-sikarwar" },
-    name: "Deepraj Sikarwar (Editorial Team)",
+    slug: { _type: "slug", current: "aakar-ias-team" },
+    name: "Aakar IAS Team",
     role: "Senior Content Developer & Exam Strategist",
-    bio: "Deepraj Sikarwar leads the Editorial Team at Aakar IAS, specializing in MPPSC & UPSC Science & Tech, Current Affairs, and Polity content development.",
+    bio: "Aakar IAS Team leads the Editorial Team at Aakar IAS, specializing in MPPSC & UPSC Science & Tech, Current Affairs, and Polity content development.",
   };
   await client.createOrReplace(authorDoc);
-  console.log("✔ Ensured Default Author: Deepraj Sikarwar (Editorial Team)");
+  console.log("✔ Ensured Default Author: Aakar IAS Team");
 
   const tagSciTech = {
     _id: "tag-scitech",

@@ -99,7 +99,7 @@ async function main() {
     },
     excerpt: "4 सितंबर 2026 को भारतीय अंतरिक्ष अनुसंधान संगठन (ISRO) ने सतीश धवन अंतरिक्ष केंद्र, श्रीहरिकोटा से GSLV-F17 रॉकेट के माध्यम से उन्नत पृथ्वी अवलोकन उपग्रह EOS-05 ('बाज' / Eye in the Sky) का सफल प्रक्षेपण किया। जानिए MPPSC और UPSC परीक्षा के दृष्टिकोण से इस मिशन के सभी प्रमुख पहलू।",
     excerptEn: "On 4 September 2026, ISRO successfully launched the advanced Earth Observation Satellite EOS-05 ('Eye in the Sky') using the GSLV-F17 launch vehicle from SDSC SHAR, Sriharikota. Explore technical details and MPPSC & UPSC exam highlights.",
-    author: "Deepraj Sikarwar (Editorial Team)",
+    author: "Aakar IAS Team",
     ca_date: "2026-09-04",
     publishedAt: "2026-09-04T10:30:00Z",
     category: "Science & Technology",

@@ -20,6 +20,7 @@ import { VacancyVideoEmbed } from "@/components/vacancy/vacancy-video-embed";
 import { ArticleBody } from "@/components/article/article-body";
 import { ArticleAdRotator } from "@/components/article/article-ad-rotator";
 import { ShareDropdown } from "@/components/article/share-dropdown";
+import { ArticleViewCounter } from "@/components/article/article-view-counter";
 import { siteConfig } from "@/lib/site-config";
 import Link from "next/link";
 import Image from "next/image";
@@ -155,7 +156,7 @@ export default async function EnNotificationDetailPage({ params }: PageProps) {
     dateModified: "2026-09-02T00:00:00Z",
     author: {
       "@type": "Person",
-      name: "Deepraj Sikarwar (Editorial Team)",
+      name: "Aakar IAS Team",
       jobTitle: "Chief Editor & MPPSC/MPSI Exam Expert",
       worksFor: {
         "@type": "Organization",
@@ -223,6 +224,7 @@ export default async function EnNotificationDetailPage({ params }: PageProps) {
                   {n.totalPosts}
                 </span>
               )}
+              <ArticleViewCounter slug={n.id} locale="en" />
               <ShareDropdown title={n.titleEn || n.title} url={pageUrl} locale="en" />
             </div>
 

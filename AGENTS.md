@@ -14,7 +14,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - **MPPSC MUST ALWAYS be prioritized first** over UPSC across all articles, SEO titles, meta descriptions, excerpts, tags, exam points, FAQs, and MCQs (e.g. always use "MPPSC & UPSC", "MPPSC / UPSC", put `tag-mppsc` before `tag-upsc`, and target MPPSC exam syllabus explicitly).
 
 # Mandatory Default Author Rule
-- **Deepraj Sikarwar (Editorial Team)** MUST ALWAYS be set as the default author for all articles, static GK, current affairs, publications, overrides, and repository fallbacks across the application.
+- **Aakar IAS Team** MUST ALWAYS be set as the default author for all articles, static GK, current affairs, publications, overrides, and repository fallbacks across the application.
 
 # Mandatory Bilingual Content Rule (Hindi & English)
 - **ALL ARTICLES MUST ALWAYS BE WRITTEN AND MAINTAINED BILINGUALLY IN BOTH HINDI AND ENGLISH**.
@@ -34,7 +34,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
      - Target high-intent Google search keywords in title & meta tags.
      - Include `JobPosting` schema (hiring org, location, baseSalary Level 9, validThrough).
      - Include `FAQPage` schema with 10 high-value FAQs in both Hindi & English.
-     - Include `NewsArticle` schema with default author **Deepraj Sikarwar (Editorial Team)**.
+     - Include `NewsArticle` schema with default author **Aakar IAS Team**.
 
 # Mandatory Sitemap & Full SEO Indexing Rule
 - **EVERY SINGLE CONTENT TYPE MUST BE IN `sitemap.ts`**: Whenever creating or updating any new dynamic content type (Current Affairs, Static GK, Notifications, Monthly PDFs, Publications, Online Courses, Topper Copies, Tag Pages, Date Pages, MPPSC Notes), ensure it is fetched and included in `src/app/sitemap.ts` for both Hindi (`/`) and English (`/en/`) routes.

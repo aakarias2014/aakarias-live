@@ -356,12 +356,12 @@ function mapCard(raw: any, locale: Locale): ArticleListItem {
             ? (typeof raw.author.avatar === "string"
               ? (raw.author.avatar.startsWith("/") || raw.author.avatar.startsWith("http") ? raw.author.avatar : imageUrl(raw.author.avatar, { width: 300, height: 300, fit: "crop", quality: 90 }))
               : imageUrl(raw.author.avatar?.asset?._ref, { width: 300, height: 300, fit: "crop", quality: 90 }))
-            : "/images/authors/deepraj-sikarwar.jpg",
+            : "/images/authors/aakar-ias-team.png",
         }
       : {
-          name: "Deepraj Sikarwar (Editorial Team)",
-          slug: "deepraj-sikarwar",
-          avatar: "/images/authors/deepraj-sikarwar.jpg",
+          name: "Aakar IAS Team",
+          slug: "aakar-ias-team",
+          avatar: "/images/authors/aakar-ias-team.png",
         },
     tags: raw.tags?.filter(Boolean).map(mapTag),
     locale,

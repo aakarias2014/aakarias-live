@@ -89,7 +89,7 @@ async function main() {
     },
     excerpt: "4 सितंबर 2026 को इसरो (ISRO) ने श्रीहरिकोटा से बाहुबली रॉकेट GSLV-F17 के माध्यम से अर्थ ऑब्जर्वेशन सैटेलाइट EOS-05 ('बाज' / Eye in the Sky) का सफल प्रक्षेपण किया। जानिए PM मोदी का वक्तव्य, PSLV vs GSLV अंतर, क्रायोजेनिक इंजन तथा MPPSC एवं UPSC परीक्षा हेतु संपूर्ण नोट्स।",
     excerptEn: "On 4 September 2026, ISRO successfully launched the advanced Earth Observation Satellite EOS-05 ('Eye in the Sky') aboard the GSLV-F17 rocket from Sriharikota. Read PM Modi's statement, technical specs, PSLV vs GSLV differences, and MPPSC & UPSC notes.",
-    author: "Deepraj Sikarwar (Editorial Team)",
+    author: "Aakar IAS Team",
     ca_date: "2026-09-04",
     publishedAt: "2026-09-04T10:30:00Z",
     category: "Science & Technology",

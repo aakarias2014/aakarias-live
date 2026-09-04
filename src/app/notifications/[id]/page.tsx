@@ -22,6 +22,7 @@ import { ArticleBody } from "@/components/article/article-body";
 import { ArticleAdRotator } from "@/components/article/article-ad-rotator";
 import { ShareWidget } from "@/components/article/share-widget";
 import { ShareDropdown } from "@/components/article/share-dropdown";
+import { ArticleViewCounter } from "@/components/article/article-view-counter";
 import Link from "next/link";
 import Image from "next/image";
 export const dynamic = "force-dynamic";
@@ -175,7 +176,7 @@ export default async function NotificationDetailPage({ params }: PageProps) {
     dateModified: "2026-09-02T00:00:00Z",
     author: {
       "@type": "Person",
-      name: "Deepraj Sikarwar (Editorial Team)",
+      name: "Aakar IAS Team",
       jobTitle: "Chief Editor & MPPSC/MPSI Exam Expert",
       worksFor: {
         "@type": "Organization",
@@ -242,6 +243,7 @@ export default async function NotificationDetailPage({ params }: PageProps) {
                   {n.totalPosts}
                 </span>
               )}
+              <ArticleViewCounter slug={n.id} locale="hi" />
               <ShareDropdown title={n.title} url={pageUrl} locale="hi" />
             </div>
 

@@ -79,7 +79,7 @@ export default async function MppscNotesArticlePage({ params }: Props) {
       url: articleUrl,
       image: article.featuredImage?.url ?? `${siteConfig.url}/opengraph-image.png`,
       datePublished: article.date,
-      authorName: article.author?.name ?? "Deepraj Sikarwar (Editorial Team)",
+      authorName: article.author?.name ?? "Aakar IAS Team",
     }),
     breadcrumb,
   ];

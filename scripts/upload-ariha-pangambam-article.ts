@@ -85,14 +85,14 @@ async function main() {
   console.log("🚀 Starting upload process for Ariha Pangambam Asian Gymnastics Gold Medal Article...");
 
   // 1. Ensure Default Author
-  let authorId = "author-deepraj-sikarwar";
+  let authorId = "author-aakar-ias-team";
   const existingAuthor = await client.getDocument(authorId);
   if (!existingAuthor) {
-    console.log("📝 Creating default author: Deepraj Sikarwar...");
+    console.log("📝 Creating default author: Aakar IAS Team...");
     await client.createIfNotExists({
       _id: authorId,
       _type: "author",
-      name: "Deepraj Sikarwar (Editorial Team)",
+      name: "Aakar IAS Team",
       role: "Senior Editorial & Subject Specialist",
       bio: "Chief Editor specializing in MPPSC & UPSC Current Affairs, Polity, Science & Sports Awareness.",
     });

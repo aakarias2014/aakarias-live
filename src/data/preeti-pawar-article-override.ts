@@ -11,9 +11,9 @@ export const preetiPawarArticleData = {
   featured: true,
   readingTime: 14,
   author: {
-    _id: "author-deepraj-sikarwar",
-    name: "Deepraj Sikarwar (Editorial Team)",
-    slug: { current: "deepraj-sikarwar" },
+    _id: "author-aakar-ias-team",
+    name: "Aakar IAS Team",
+    slug: { current: "aakar-ias-team" },
   },
   tags: [
     { _id: "tag-mppsc", name: "MPPSC", slug: { current: "mppsc" } },

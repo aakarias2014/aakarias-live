@@ -74,17 +74,17 @@ function createTable(key: string, caption: string, headers: string[], rows: stri
 async function main() {
   console.log("🚀 Starting upload process for Environmental Laws in India (Static GK Article)...");
 
-  // Ensure author-aakar (Deepraj Sikarwar) exists as default author per rules
+  // Ensure author-aakar (Aakar IAS Team) exists as default author per rules
   const authorDoc = {
     _id: "author-aakar",
     _type: "author",
-    slug: { _type: "slug", current: "deepraj-sikarwar" },
-    name: "Deepraj Sikarwar (Editorial Team)",
+    slug: { _type: "slug", current: "aakar-ias-team" },
+    name: "Aakar IAS Team",
     role: "Senior Editorial Lead & MPPSC/UPSC Subject Specialist",
     bio: "Lead content developer and researcher specializing in MPPSC & UPSC environment, governance, and national affairs.",
   };
   await client.createOrReplace(authorDoc);
-  console.log("✔ Verified/Updated Default Author: Deepraj Sikarwar (Editorial Team)");
+  console.log("✔ Verified/Updated Default Author: Aakar IAS Team");
 
   // Ensure environment category exists
   const categoryDoc = {

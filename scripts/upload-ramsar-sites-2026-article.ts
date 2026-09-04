@@ -31,13 +31,13 @@ async function main() {
   const authorDoc = {
     _id: "author-aakar",
     _type: "author",
-    slug: { _type: "slug", current: "deepraj-sikarwar" },
-    name: "Deepraj Sikarwar (Editorial Team)",
+    slug: { _type: "slug", current: "aakar-ias-team" },
+    name: "Aakar IAS Team",
     role: "Senior Editorial Lead & MPPSC/UPSC Subject Specialist",
     bio: "Lead content developer and researcher specializing in MPPSC & UPSC environment, governance, and national affairs.",
   };
   await client.createOrReplace(authorDoc);
-  console.log("✔ Verified/Updated Default Author: Deepraj Sikarwar (Editorial Team)");
+  console.log("✔ Verified/Updated Default Author: Aakar IAS Team");
 
   // 2. Prepare & Copy Image Assets
   const publicBlogDir = path.resolve(process.cwd(), "public/images/blog");
