@@ -24,7 +24,7 @@ const client = createClient({
 });
 
 async function main() {
-  const docId = "mpsi-recruitment-2026-notification-out-507-posts";
+  const docId = "mpsi-vacancy-2026-507-posts";
 
   console.log("Updating Sanity CMS document for MPSI SEO/GEO optimization...");
 

@@ -38,7 +38,7 @@ async function uploadImageAsset(filePath: string, filename: string) {
 }
 
 async function main() {
-  const docId = "mpsi-recruitment-2026-notification-out-507-posts";
+  const docId = "mpsi-vacancy-2026-507-posts";
 
   // 1. Copy user uploaded thumbnail & generated images to public directory
   const publicNotifDir = path.resolve(process.cwd(), "public/images/notifications");

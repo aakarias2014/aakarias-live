@@ -128,6 +128,26 @@ const nextConfig: NextConfig = {
       },
       // ─── Legacy Pages & Typos 301 Redirects ──────────────────────────
       {
+        source: "/notifications/mpsi-recruitment-2026-notification-out-507-posts",
+        destination: "/notifications/mpsi-vacancy-2026-507-posts",
+        permanent: true,
+      },
+      {
+        source: "/notifications/mpsi-sub-inspector-recruitment-2026-507-posts",
+        destination: "/notifications/mpsi-vacancy-2026-507-posts",
+        permanent: true,
+      },
+      {
+        source: "/en/notifications/mpsi-recruitment-2026-notification-out-507-posts",
+        destination: "/en/notifications/mpsi-vacancy-2026-507-posts",
+        permanent: true,
+      },
+      {
+        source: "/en/notifications/mpsi-sub-inspector-recruitment-2026-507-posts",
+        destination: "/en/notifications/mpsi-vacancy-2026-507-posts",
+        permanent: true,
+      },
+      {
         source: "/index.html",
         destination: "/",
         permanent: true,

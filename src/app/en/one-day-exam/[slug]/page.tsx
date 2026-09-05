@@ -119,7 +119,7 @@ export default async function EnglishOneDayExamPage({ params }: Props) {
                   View complete rulebook, age limits, selection process, and detailed syllabus tables.
                 </p>
                 <Link
-                  href="/en/notifications/mpsi-recruitment-2026-notification-out-507-posts"
+                  href="/en/notifications/mpsi-vacancy-2026-507-posts"
                   className="inline-flex items-center gap-1.5 mt-2.5 text-xs font-extrabold text-primary hover:underline"
                 >
                   Read MPSI Rulebook 2026 <ArrowLeft className="h-3.5 w-3.5 rotate-180" />
