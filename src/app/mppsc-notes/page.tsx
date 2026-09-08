@@ -52,7 +52,7 @@ export default function HindiMppscNotesPage() {
     name: "आकार आईएएस MPPSC कम्प्लीट स्टडी नोट्स पैकेज (हिंदी और अंग्रेजी माध्यम)",
     description: "नवीनतम पाठ्यक्रम के अनुसार तैयार की गई MPPSC प्रीलिम्स और मेन्स की प्रिंटेड और पीडीएफ अध्ययन सामग्री। इसमें यूनिट-वार बुकलेट्स और मॉडल उत्तर पुस्तिकाएं शामिल हैं।",
     url: pageUrl,
-    price: "4999",
+    price: "6500",
     ratingValue: "4.9",
     reviewCount: "342",
     reviews: [
@@ -66,8 +66,8 @@ export default function HindiMppscNotesPage() {
       title: "MPPSC प्रीलिम्स सम्पूर्ण नोट्स (सभी 10 यूनिट्स)",
       desc: "अपडेटेड सिलेबस का विस्तृत कवरेज, जिसमें यूनिट 10 (मध्य प्रदेश की जनजातियां) और राज्य-विशेष सामान्य ज्ञान शामिल हैं।",
       medium: "हिंदी और अंग्रेजी माध्यम में अलग-अलग उपलब्ध",
-      price: "₹1,499",
-      wasPrice: "₹2,500",
+      price: "₹2,500",
+      wasPrice: "₹5,000",
       features: [
         "नवीनतम MPPSC सिलेबस ब्लूप्रिंट के अनुसार अपडेटेड",
         "त्वरित रिवीजन के लिए माइंड मैप्स, टेबल्स और चार्ट्स का उपयोग",
@@ -81,8 +81,8 @@ export default function HindiMppscNotesPage() {
       title: "MPPSC मेन्स सम्पूर्ण नोट्स (पेपर्स I - VI)",
       desc: "स्टेप-बाय-स्टेप सिलेबस मैपिंग के साथ गहन वैचारिक विश्लेषण। इसमें विशेष उत्तर लेखन टेम्पलेट शामिल हैं।",
       medium: "हिंदी और अंग्रेजी माध्यम में अलग-अलग उपलब्ध",
-      price: "₹3,999",
-      wasPrice: "₹6,000",
+      price: "₹6,500",
+      wasPrice: "₹13,000",
       features: [
         "इतिहास, भूगोल, राजनीति, अर्थव्यवस्था, विज्ञान और नैतिकता का सम्पूर्ण कवरेज",
         "मॉडल उत्तर, आरेख टेम्पलेट्स और योजनाबद्ध निरूपण",
@@ -96,8 +96,8 @@ export default function HindiMppscNotesPage() {
       title: "इंटीग्रेटेड फाउंडेशन नोट्स सेट (प्रीलिम्स + मेन्स)",
       desc: "हमारा प्रमुख व्यापक पैकेज। आपको शीर्ष रैंक के लिए वैचारिक स्पष्टता और तथ्यात्मक ज्ञान दोनों से लैस करता है।",
       medium: "हिंदी और अंग्रेजी माध्यम में अलग-अलग उपलब्ध",
-      price: "₹4,999",
-      wasPrice: "₹8,000",
+      price: "₹6,500",
+      wasPrice: "₹13,000",
       features: [
         "सभी 10 प्रीलिम्स बुकलेट्स + सभी मेन्स पेपर्स बुकलेट्स शामिल हैं",
         "पूरे भारत में मुफ्त होम डिलीवरी (Printed Booklets)",
@@ -116,7 +116,7 @@ export default function HindiMppscNotesPage() {
     },
     {
       q: "आकार आईएएस MPPSC कोचिंग और नोट्स की फीस क्या है?",
-      a: "एमपीपीएससी मेन्स नोट्स (पेपर्स I से VI) का कम्प्लीट सेट ₹3,999 का है। यदि आप इंटीग्रेटेड प्रीलिम्स + मेन्स फाउंडेशन पैकेज चुनते हैं, तो इसकी कीमत ₹4,999 है, जिसमें पूरे भारत में मुफ्त फिजिकल बुकलेट्स डिलीवरी शामिल है।"
+      a: "एमपीपीएससी मेन्स नोट्स (पेपर्स I से VI) का कम्प्लीट सेट ₹6,500 का है। यदि आप इंटीग्रेटेड प्रीलिम्स + मेन्स फाउंडेशन पैकेज चुनते हैं, तो इसकी कीमत ₹6,500 है, जिसमें पूरे भारत में मुफ्त फिजिकल बुकलेट्स डिलीवरी शामिल है।"
     },
     {
       q: "मैं हिंदी में एमपीपीएससी मुख्य परीक्षा के नोट्स पीडीएफ कैसे डाउनलोड कर सकता हूं?",
@@ -283,7 +283,7 @@ export default function HindiMppscNotesPage() {
                     <p className="text-xs text-muted-foreground mt-0.5">इसमें एमपी इतिहास, भूगोल और आदिवासी नीतियों के विस्तृत बुकलेट्स शामिल हैं।</p>
                   </td>
                   <td className="p-4 text-center text-muted-foreground font-medium">हिंदी / अंग्रेजी</td>
-                  <td className="p-4 text-right font-extrabold text-foreground">₹1,499</td>
+                  <td className="p-4 text-right font-extrabold text-foreground">₹2,500</td>
                 </tr>
                 <tr className="hover:bg-muted/10">
                   <td className="p-4">
@@ -331,7 +331,7 @@ export default function HindiMppscNotesPage() {
                     <p className="text-xs text-primary/80 mt-0.5">पूरे भारत में मुफ्त होम डिलीवरी + मुफ्त प्रीलिम्स मॉक टेस्ट शामिल हैं।</p>
                   </td>
                   <td className="p-4 text-center">हिंदी / अंग्रेजी</td>
-                  <td className="p-4 text-right font-extrabold text-lg">₹4,999</td>
+                  <td className="p-4 text-right font-extrabold text-lg">₹6,500</td>
                 </tr>
               </tbody>
             </table>

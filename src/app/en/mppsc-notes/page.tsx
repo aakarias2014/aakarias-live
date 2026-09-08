@@ -58,7 +58,7 @@ export default function EnglishMppscNotesPage() {
     name: "Aakar IAS MPPSC Complete Study Notes Package (Hindi & English Medium)",
     description: "Premium printed and PDF study materials for MPPSC Prelims & Mains, designed strictly according to the latest syllabus. Includes unit-wise booklets and model answer notebooks.",
     url: pageUrl,
-    price: "4999",
+    price: "6500",
     ratingValue: "4.9",
     reviewCount: "342",
     reviews: [
@@ -72,8 +72,8 @@ export default function EnglishMppscNotesPage() {
       title: "MPPSC Prelims Complete Notes (All 10 Units)",
       desc: "Exhaustive coverage of the updated syllabus, including Unit 10 (Tribes of Madhya Pradesh) and state-special GK.",
       medium: "Available in Hindi & English separately",
-      price: "₹1,499",
-      wasPrice: "₹2,500",
+      price: "₹2,500",
+      wasPrice: "₹5,000",
       features: [
         "Updated according to the latest MPPSC syllabus blueprint",
         "Includes mind maps, tables, and charts for quick revision",
@@ -87,8 +87,8 @@ export default function EnglishMppscNotesPage() {
       title: "MPPSC Mains Complete Notes (Papers I - VI)",
       desc: "In-depth conceptual analysis with step-by-step syllabus mapping. Includes specialized answer writing templates.",
       medium: "Available in Hindi & English separately",
-      price: "₹3,999",
-      wasPrice: "₹6,000",
+      price: "₹6,500",
+      wasPrice: "₹13,000",
       features: [
         "Comprehensive coverage of History, Geography, Polity, Economy, Science & Ethics",
         "Model answers, diagram templates, and schematic representations",
@@ -102,8 +102,8 @@ export default function EnglishMppscNotesPage() {
       title: "Integrated Foundation Notes Set (Prelims + Mains)",
       desc: "Our flagship comprehensive package. Equips you with both conceptual clarity and factual knowledge for a top rank.",
       medium: "Available in Hindi & English separately",
-      price: "₹4,999",
-      wasPrice: "₹8,000",
+      price: "₹6,500",
+      wasPrice: "₹13,000",
       features: [
         "Includes all 10 Prelims booklets + all Mains papers notes booklets",
         "Free standard physical delivery across India",
@@ -122,7 +122,7 @@ export default function EnglishMppscNotesPage() {
     },
     {
       q: "What is the price of Aakar IAS MPPSC mains notes?",
-      a: "The complete set of MPPSC Mains Notes (Papers I to VI) is priced at ₹3,999. If you opt for the Integrated Prelims + Mains Foundation package, it costs ₹4,999 and includes free physical delivery across India."
+      a: "The complete set of MPPSC Mains Notes (Papers I to VI) is priced at ₹6,500. If you opt for the Integrated Prelims + Mains Foundation package, it costs ₹6,500 and includes free physical delivery across India."
     },
     {
       q: "How can I download MPPSC mains notes PDF in Hindi?",
@@ -289,7 +289,7 @@ export default function EnglishMppscNotesPage() {
                     <p className="text-xs text-muted-foreground mt-0.5">Includes detailed booklets for MP History, Geography, and tribal policies.</p>
                   </td>
                   <td className="p-4 text-center text-muted-foreground font-medium">Hindi / English</td>
-                  <td className="p-4 text-right font-extrabold text-foreground">₹1,499</td>
+                  <td className="p-4 text-right font-extrabold text-foreground">₹2,500</td>
                 </tr>
                 <tr className="hover:bg-muted/10">
                   <td className="p-4">
@@ -337,7 +337,7 @@ export default function EnglishMppscNotesPage() {
                     <p className="text-xs text-primary/80 mt-0.5">Includes free home delivery across India + free Prelims mock tests.</p>
                   </td>
                   <td className="p-4 text-center">Hindi / English</td>
-                  <td className="p-4 text-right font-extrabold text-lg">₹4,999</td>
+                  <td className="p-4 text-right font-extrabold text-lg">₹6,500</td>
                 </tr>
               </tbody>
             </table>
