@@ -188,21 +188,37 @@ function mapTag(t: any): Tag {
 function mapMCQs(mcqs: any[] | undefined, locale: Locale): Article["mcqs"] {
   if (!Array.isArray(mcqs)) return undefined;
   const isEn = locale === "en";
-  return mcqs.map((m) => ({
-    question: (isEn ? m.questionEn : m.question) ?? m.question ?? m.questionEn ?? "",
-    options: (isEn ? m.optionsEn : m.options) ?? m.options ?? m.optionsEn ?? [],
-    correctIndex: typeof m.correctIndex === "number" ? m.correctIndex : 0,
-    explanation: (isEn ? m.explanationEn : m.explanation) ?? m.explanation ?? m.explanationEn,
-  }));
+  return mcqs.map((m) => {
+    const qEn = m.questionEn && String(m.questionEn).trim() ? m.questionEn : undefined;
+    const qHi = m.question && String(m.question).trim() ? m.question : undefined;
+    const optEn = Array.isArray(m.optionsEn) && m.optionsEn.length > 0 ? m.optionsEn : undefined;
+    const optHi = Array.isArray(m.options) && m.options.length > 0 ? m.options : undefined;
+    const expEn = m.explanationEn && String(m.explanationEn).trim() ? m.explanationEn : undefined;
+    const expHi = m.explanation && String(m.explanation).trim() ? m.explanation : undefined;
+
+    return {
+      question: (isEn ? (qEn ?? qHi) : (qHi ?? qEn)) ?? "",
+      options: (isEn ? (optEn ?? optHi) : (optHi ?? optEn)) ?? [],
+      correctIndex: typeof m.correctIndex === "number" ? m.correctIndex : 0,
+      explanation: isEn ? (expEn ?? expHi) : (expHi ?? expEn),
+    };
+  });
 }
 
 function mapFAQs(faqs: any[] | undefined, locale: Locale): Article["faqs"] {
   if (!Array.isArray(faqs)) return undefined;
   const isEn = locale === "en";
-  return faqs.map((f) => ({
-    question: (isEn ? f.questionEn : f.question) ?? f.question ?? f.questionEn ?? "",
-    answer: (isEn ? f.answerEn : f.answer) ?? f.answer ?? f.answerEn ?? "",
-  }));
+  return faqs.map((f) => {
+    const qEn = f.questionEn && String(f.questionEn).trim() ? f.questionEn : undefined;
+    const qHi = f.question && String(f.question).trim() ? f.question : undefined;
+    const aEn = f.answerEn && String(f.answerEn).trim() ? f.answerEn : undefined;
+    const aHi = f.answer && String(f.answer).trim() ? f.answer : undefined;
+
+    return {
+      question: (isEn ? (qEn ?? qHi) : (qHi ?? qEn)) ?? "",
+      answer: (isEn ? (aEn ?? aHi) : (aHi ?? aEn)) ?? "",
+    };
+  });
 }
 
 function parseAssetDimensions(ref: string | undefined): { width?: number; height?: number } {
@@ -405,7 +421,9 @@ function mapPortableTextToBlocks(
     return (
       children
         ?.map((c) => {
-          const t = (isEn ? c.textEn : c.text) ?? c.text ?? c.textEn ?? "";
+          const textEnVal = c.textEn && c.textEn.trim() ? c.textEn : undefined;
+          const textVal = c.text && c.text.trim() ? c.text : undefined;
+          const t = (isEn ? (textEnVal ?? textVal) : (textVal ?? textEnVal)) ?? "";
           if (!t) return "";
           const marks = c.marks ?? [];
           const isBold = marks.includes("strong");
@@ -420,7 +438,7 @@ function mapPortableTextToBlocks(
 
           let formatted = isBold ? `**${t}**` : t;
           if (linkUrl) {
-            formatted = `[${t}](${linkUrl})`;
+            formatted = isBold ? `[**${t}**](${linkUrl})` : `[${t}](${linkUrl})`;
           }
           return formatted;
         })
@@ -428,9 +446,14 @@ function mapPortableTextToBlocks(
     );
   }
 
+  function cleanInvisibleChars(str: string): string {
+    if (!str) return "";
+    return str.replace(/[\u200B-\u200D\uFEFF\u200E\u200F\u202A-\u202E\u2060-\u206F]/g, "").trim();
+  }
+
   // Helper: detect if text starts with a bullet, hyphen, dash, or numbered prefix
   function parseBulletItem(rawText: string): { isBullet: boolean; isOrdered: boolean; cleanText: string } {
-    const text = rawText.trimStart();
+    const text = cleanInvisibleChars(rawText);
     // Detect • or * prefix (excluding double asterisk ** bold tags)
     if (text.startsWith("•") || (text.startsWith("*") && !text.startsWith("**"))) {
       const clean = text.replace(/^[•*]\s*/, "").trim();
@@ -487,12 +510,13 @@ function mapPortableTextToBlocks(
       const text = extractText(children, markDefs);
 
       if (blockStyle === "normal") {
-        const rawSubLines = text.includes("•") || text.includes("\n")
-          ? text
-              .split(/(?:\r?\n|(?<=\S)\s+(?=•\s*))/g)
-              .map((l) => l.trim())
+        const cleanTextStr = cleanInvisibleChars(text);
+        const rawSubLines = cleanTextStr.includes("•") || cleanTextStr.includes("\n")
+          ? cleanTextStr
+              .split(/(?:\r?\n|(?=•))/g)
+              .map((l) => cleanInvisibleChars(l))
               .filter(Boolean)
-          : [text];
+          : [cleanTextStr];
 
         for (const line of rawSubLines) {
           if (line.startsWith("### ") || line.startsWith("## ")) {

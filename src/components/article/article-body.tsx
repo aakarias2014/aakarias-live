@@ -166,89 +166,90 @@ function ArticleSectionBlock({ section }: { section: ArticleSection }) {
 /* ─── Internal: Block renderer ──────────────────────────────────────── */
 
 /**
- * Parse markdown links [text](url) inside a text fragment.
- * Returns an array of ReactNode (plain strings + Link elements).
+ * Helper: Render bold text **...** inside a string segment.
  */
-function renderLinks(text: string, keyOffset: number): React.ReactNode[] {
-  if (!text.includes("[")) return [text];
+function renderBoldText(text: string, keyPrefix: number): React.ReactNode {
+  if (!text) return "";
+  if (!text.includes("**")) return text;
+
+  const parts = text.split(/(\*\*[\s\S]*?\*\*)/g);
+  const nodes: React.ReactNode[] = [];
+
+  for (let i = 0; i < parts.length; i++) {
+    const part = parts[i];
+    if (!part) continue;
+
+    if (part.startsWith("**") && part.endsWith("**")) {
+      const inner = part.slice(2, -2);
+      nodes.push(
+        <strong key={`b-${keyPrefix}-${i}`} className="font-bold text-foreground">
+          {inner}
+        </strong>
+      );
+    } else {
+      const cleaned = part.replace(/\*\*/g, "").replace(/(^|\s)\*(\S)/g, "$1$2");
+      if (cleaned) {
+        nodes.push(cleaned);
+      }
+    }
+  }
+
+  return nodes.length === 1 ? nodes[0] : nodes;
+}
+
+/**
+ * Helper to strip emojis from text strings.
+ */
+function stripEmojis(str: string): string {
+  if (!str) return "";
+  return str
+    .replace(/[\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{1F600}-\u{1F64F}]|[\u{1F680}-\u{1F6FF}]|[\u{1F900}-\u{1F9FF}]|[\u{1FA00}-\u{1FA6F}]|[\u{1FA70}-\u{1FAFF}]/gu, "")
+    .replace(/\s+/g, " ");
+}
+
+/**
+ * Render markdown-formatted text supporting **bold** and [links](url),
+ * including links nested inside bold blocks or bold text inside links.
+ */
+function renderFormattedText(rawText: string): React.ReactNode {
+  if (!rawText) return "";
+  const text = stripEmojis(rawText);
+  if (!text.includes("**") && !text.includes("[")) return text;
 
   const result: React.ReactNode[] = [];
-  const linkRegex = /\[([^\]]*)\]\(([^)]+)\)/g;
+  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
   let lastIndex = 0;
-  let key = keyOffset;
+  let key = 0;
   let match: RegExpExecArray | null;
 
   while ((match = linkRegex.exec(text)) !== null) {
     if (match.index > lastIndex) {
-      result.push(text.slice(lastIndex, match.index));
+      const plainSegment = text.slice(lastIndex, match.index);
+      result.push(renderBoldText(plainSegment, key++));
     }
-    const linkText = match[1].replace(/\*\*/g, "");
+
+    const rawLinkText = match[1];
     const linkUrl = match[2];
+
     result.push(
       <Link
         key={`lnk-${key++}`}
         href={linkUrl}
         className="text-primary font-extrabold underline decoration-primary/60 underline-offset-4 hover:decoration-primary hover:text-primary/80 transition-colors cursor-pointer"
       >
-        {linkText}
-      </Link>,
+        {renderBoldText(rawLinkText, key++)}
+      </Link>
     );
+
     lastIndex = match.index + match[0].length;
   }
 
   if (lastIndex < text.length) {
-    result.push(text.slice(lastIndex));
+    const remainingSegment = text.slice(lastIndex);
+    result.push(renderBoldText(remainingSegment, key++));
   }
 
-  return result;
-}
-
-/**
- * Render markdown-formatted text supporting **bold** and [links](url),
- * including links nested inside bold blocks.
- */
-function renderFormattedText(text: string) {
-  if (!text) return "";
-  if (!text.includes("**") && !text.includes("[")) return text;
-
-  // If no bold markers, just parse links
-  if (!text.includes("**")) {
-    return renderLinks(text, 0);
-  }
-
-  const elements: React.ReactNode[] = [];
-  let key = 0;
-
-  // Split by bold markers — captures the **…** groups
-  const parts = text.split(/(\*\*[\s\S]*?\*\*)/g);
-
-  for (const part of parts) {
-    if (!part) continue;
-
-    if (part.startsWith("**") && part.endsWith("**")) {
-      const inner = part.slice(2, -2);
-      // Recursively process links inside the bold block
-      elements.push(
-        <strong key={`b-${key}`} className="font-bold text-foreground">
-          {inner.includes("[") ? renderLinks(inner, key * 100) : inner}
-        </strong>,
-      );
-    } else {
-      // Non-bold segment — clean any stray unclosed single or double asterisks
-      const cleanedPart = part.replace(/\*\*/g, "").replace(/(^|\s)\*(\S)/g, "$1$2");
-      if (cleanedPart.includes("[")) {
-        const linkNodes = renderLinks(cleanedPart, key * 100);
-        for (const node of linkNodes) {
-          elements.push(node);
-        }
-      } else {
-        elements.push(cleanedPart);
-      }
-    }
-    key++;
-  }
-
-  return elements;
+  return result.length === 1 ? result[0] : result;
 }
 
 function BlockRenderer({ block }: { block: ArticleBlock }) {
@@ -302,7 +303,7 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
 
     case "list":
       return block.ordered ? (
-        <ol className="my-3 sm:my-5 space-y-2 sm:space-y-3 pl-0 sm:pl-1">
+        <ol className="list-none my-3 sm:my-5 space-y-2 sm:space-y-3 pl-0 sm:pl-1">
           {block.items.map((item, i) => (
             <li key={i} className="flex items-start gap-2 sm:gap-3 text-[13.5px] sm:text-base md:text-[16.5px] leading-[1.6] sm:leading-[1.8] text-foreground/90">
               <span className="flex h-5 w-5 sm:h-6 sm:w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[11px] sm:text-xs font-bold text-primary mt-0.5 shadow-sm">
@@ -313,7 +314,7 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
           ))}
         </ol>
       ) : (
-        <ul className="my-3 sm:my-5 space-y-2 sm:space-y-3 pl-0 sm:pl-1">
+        <ul className="list-none my-3 sm:my-5 space-y-2 sm:space-y-3 pl-0 sm:pl-1">
           {block.items.map((item, i) => (
             <li key={i} className="flex items-start gap-2 sm:gap-3 text-[13.5px] sm:text-base md:text-[16.5px] leading-[1.6] sm:leading-[1.8] text-foreground/90">
               <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-primary shrink-0 mt-2 sm:mt-2.5 shadow-sm" />

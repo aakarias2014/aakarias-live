@@ -139,18 +139,20 @@ export function formatArticleSeoTitle(
     const mainPart = parts[0];
     const examPart = parts.slice(1).join(", ");
     const hasExam = examPart.includes("MPPSC") || examPart.includes("UPSC");
-    const examSuffix = hasExam ? examPart : "MPPSC, UPSC";
+    const examSuffix = hasExam ? examPart : "MPPSC & UPSC";
     return `${mainPart} | ${examSuffix} | ${siteConfig.name}`;
   }
 
-  // If title does not contain English in brackets but englishTitle is provided, append it
+  // If title does not contain English in brackets but englishTitle is provided, append it if under length limit
   if (englishTitle && !title.includes("(") && !title.toLowerCase().includes(englishTitle.toLowerCase())) {
-    title = `${title} (${englishTitle})`;
+    if ((title.length + englishTitle.length) < 55) {
+      title = `${title} (${englishTitle})`;
+    }
   }
 
   // Ensure exam keywords are present if missing
   if (!title.includes("MPPSC") && !title.includes("UPSC")) {
-    title = `${title} | MPPSC, UPSC`;
+    title = `${title} | MPPSC & UPSC`;
   }
   
   return `${title} | ${siteConfig.name}`;
