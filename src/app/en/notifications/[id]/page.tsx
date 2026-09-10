@@ -21,11 +21,13 @@ import { MpPoliceConstablePaidCourseBanner } from "@/components/vacancy/mp-polic
 import { VacancyVideoEmbed } from "@/components/vacancy/vacancy-video-embed";
 import { ArticleBody } from "@/components/article/article-body";
 import { ArticleAdRotator } from "@/components/article/article-ad-rotator";
+import { ShareWidget } from "@/components/article/share-widget";
 import { ShareDropdown } from "@/components/article/share-dropdown";
 import { ArticleViewCounter } from "@/components/article/article-view-counter";
 import { siteConfig } from "@/lib/site-config";
 import Link from "next/link";
 import Image from "next/image";
+export const dynamic = "force-dynamic";
 
 interface PageProps {
   params: Promise<{ id: string }>;
