@@ -606,6 +606,7 @@ export const notification: SchemaTypeDefinition = defineType({
     defineField({ name: "status", type: "string", options: { list: ["upcoming", "out", "closing-soon", "closed"] } }),
     defineField({ name: "url", type: "url", title: "Official URL / Website" }),
     defineField({ name: "officialPdfUrl", type: "url", title: "Official PDF Notification Link" }),
+    defineField({ name: "syllabusPdfUrl", type: "url", title: "Syllabus PDF Link" }),
     defineField({ name: "applyOnlineUrl", type: "url", title: "Apply Online Link" }),
     defineField({ name: "youtubeUrl", type: "url", title: "YouTube Analysis Video Link" }),
     defineField({ name: "totalPosts", type: "string", title: "Total Posts (e.g. 800+ Posts / 800+ पद)" }),

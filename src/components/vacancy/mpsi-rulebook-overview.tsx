@@ -381,7 +381,7 @@ export function MpsiRulebookOverview({ locale = "hi" }: { locale?: string }) {
             {isHi ? "8. विस्तृत परीक्षा पाठ्यक्रम (Detailed Exam Syllabus)" : "8. Detailed Examination Syllabus"}
           </h3>
           <Button className="rounded-full bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs gap-2 px-4 py-2 h-auto shrink-0 shadow-sm" asChild>
-            <a href="https://drive.google.com/file/d/1Db_HqaZzTvqSN5NQa-BEthIh1dv4un6J/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+            <a href="https://drive.google.com/file/d/1Wlx_JDWSRQUCFTfnWaZ3w3VwYlsgOcko/view?usp=sharing" target="_blank" rel="noopener noreferrer">
               <Download className="h-3.5 w-3.5" />
               {isHi ? "डाउनलोड विस्तृत सिलेबस PDF" : "Download Detailed Syllabus PDF"}
             </a>

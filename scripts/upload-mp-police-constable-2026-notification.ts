@@ -125,6 +125,7 @@ async function main() {
     status: "out",
     url: "https://esb.mp.gov.in",
     officialPdfUrl: "https://esb.mp.gov.in",
+    syllabusPdfUrl: "https://drive.google.com/file/d/1Wlx_JDWSRQUCFTfnWaZ3w3VwYlsgOcko/view?usp=sharing",
     applyOnlineUrl: "https://esb.mponline.gov.in/Portal/Examinations/Vyapam/examsList.aspx",
     youtubeUrl: "https://youtube.com/live/PaP_uUtYGMU?feature=share",
     totalPosts: "7,500 पद (6,800 GD Non-SAF + 700 GD SAF Male)",

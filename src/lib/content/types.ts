@@ -153,6 +153,7 @@ export interface ExamNotification {
   status: "upcoming" | "out" | "closing-soon" | "closed" | string;
   url?: string;
   officialPdfUrl?: string;
+  syllabusPdfUrl?: string;
   applyOnlineUrl?: string;
   youtubeUrl?: string;
   totalPosts?: string;
@@ -162,7 +163,7 @@ export interface ExamNotification {
   endDate?: string;
   examDate?: string;
   description?: string;
-  featuredImage?: ArticleImage;
+  featuredImage?: FeaturedImage | null;
   body?: ArticleBlock[];
   sections?: ArticleSection[];
   suggestedCourse?: {
