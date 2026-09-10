@@ -468,7 +468,7 @@ async function main() {
     status: "out",
     url: "https://esb.mp.gov.in",
     officialPdfUrl: "https://esb.mp.gov.in",
-    applyOnlineUrl: "https://esb.mp.gov.in",
+    applyOnlineUrl: "https://esb.mponline.gov.in/Portal/Examinations/Vyapam/examsList.aspx",
     youtubeUrl: "https://www.youtube.com/live/7J3YPQLgMAk?si=C2b5IQIempvtRtc7",
     totalPosts: "507 पद (सूबेदार: 81 | SI जिला पुलिस: 312 | SI SAF: 69 | तकनीकी SI: 45)",
     totalPostsEn: "507 Posts (Subedar: 81 | SI DEF: 312 | SI SAF: 69 | Technical SI: 45)",

@@ -16,6 +16,8 @@ import { CourseRecommendationCard } from "@/components/vacancy/course-recommenda
 import { VacancyRulebookOverview } from "@/components/vacancy/vacancy-rulebook-overview";
 import { MpsiRulebookOverview } from "@/components/vacancy/mpsi-rulebook-overview";
 import { MpsiPaidCourseBanner } from "@/components/vacancy/mpsi-paid-course-banner";
+import { MpPoliceConstableRulebookOverview } from "@/components/vacancy/mp-police-constable-rulebook-overview";
+import { MpPoliceConstablePaidCourseBanner } from "@/components/vacancy/mp-police-constable-paid-course-banner";
 import { VacancyVideoEmbed } from "@/components/vacancy/vacancy-video-embed";
 import { ArticleBody } from "@/components/article/article-body";
 import { ArticleAdRotator } from "@/components/article/article-ad-rotator";
@@ -36,13 +38,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!n) return {};
 
   const isMpsi = id.includes("mpsi") || n.slug?.includes("mpsi");
+  const isConstable = id.includes("constable") || n.slug?.includes("constable");
 
   const title = isMpsi
     ? "MPSI Vacancy 2026 Out (507 Posts): MP Police Sub Inspector Notification, Syllabus PDF, Age Limit & Online Form"
+    : isConstable
+    ? "MP Police Constable Vacancy 2026 Notification Out (7500 Posts): Apply Online, Syllabus, Physical Test & Salary"
     : `${n.titleEn || n.title} Notification 2026: Total Posts, Age Limit & Apply Online`;
 
   const description = isMpsi
     ? "MP Police MPSI Recruitment 2026: Notification out for 507 posts (Sub-Inspector & Subedar). Check MP SI syllabus in Hindi/English PDF, age limit, selection process, salary Level 9 & apply online link."
+    : isConstable
+    ? "MP Police Constable Recruitment 2026: MPESB has released 7,500 Constable vacancies. Check online application dates (22 Sept to 06 Oct 2026), syllabus in Hindi, physical height, 800m PET running test & salary after 5 years."
     : n.description?.slice(0, 160) || `Official notification details, total vacancies, age limit, eligibility, and direct apply link for ${n.titleEn || n.title}.`;
 
   const ogImageUrl = isMpsi
@@ -51,22 +58,40 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ? `${siteConfig.url}/images/notifications/mp-patwari-group-2-subgroup-4-bharti-2026-thumbnail.jpg`
     : n.featuredImage?.url;
 
-  const keywords = [
-    "mpsi vacancy 2026",
-    "mpsi 2026 vacancy",
-    "mpsi notification 2026",
-    "mp si syllabus 2026",
-    "mp si syllabus 2026 pdf download",
-    "mp si syllabus in english",
-    "mp si syllabus 2026 in english",
-    "mpsi grade pay",
-    "mpsi exam date 2026",
-    "mp si cut off 2026",
-    "mpesb subedar recruitment 2026",
-    "mp police si age limit",
-    n.titleEn || n.title,
-    `${n.exam} Vacancy 2026`,
-  ];
+  const keywords = isConstable
+    ? [
+        "mp police constable vacancy 2026",
+        "mp police constable syllabus in hindi 2026",
+        "mp police constable syllabus",
+        "mp police constable 2026 vacancy date",
+        "mp police constable exam date 2026",
+        "mp police constable notification 2026 pdf",
+        "mp police constable height for male",
+        "mp police constable vacancy 2026 last date",
+        "mp police constable vacancy 2026 online apply date",
+        "mp police constable passing marks",
+        "mp police constable salary after 5 years",
+        "mpesb constable vacancy 2026",
+        "mp constable physical test details",
+        n.titleEn || n.title,
+        `${n.exam} Vacancy 2026`,
+      ]
+    : [
+        "mpsi vacancy 2026",
+        "mpsi 2026 vacancy",
+        "mpsi notification 2026",
+        "mp si syllabus 2026",
+        "mp si syllabus 2026 pdf download",
+        "mp si syllabus in english",
+        "mp si syllabus 2026 in english",
+        "mpsi grade pay",
+        "mpsi exam date 2026",
+        "mp si cut off 2026",
+        "mpesb subedar recruitment 2026",
+        "mp police si age limit",
+        n.titleEn || n.title,
+        `${n.exam} Vacancy 2026`,
+      ];
 
   return buildMetadata({
     title,
@@ -296,9 +321,10 @@ export default async function EnNotificationDetailPage({ params }: PageProps) {
 
               <VacancyHighlightsTable notification={n} locale="en" />
 
-              {(n.youtubeUrl || n.slug?.includes("patwari") || n.id?.includes("patwari")) && (
+              {(n.youtubeUrl || n.slug?.includes("patwari") || n.id?.includes("patwari") || n.slug?.includes("constable") || n.id?.includes("constable")) && (
                 <VacancyVideoEmbed
-                  videoUrl={n.youtubeUrl || "https://youtu.be/CWBcJ86R2kc"}
+                  videoUrl={n.youtubeUrl || "https://youtube.com/live/PaP_uUtYGMU?feature=share"}
+                  playlistUrl="https://www.youtube.com/playlist?list=PLLSNJVlS0UIg"
                   title={n.titleEn || n.title}
                   locale="en"
                 />
@@ -309,6 +335,31 @@ export default async function EnNotificationDetailPage({ params }: PageProps) {
               ) : (n.slug?.includes("mpsi") || n.id?.includes("mpsi")) ? (
                 <div className="space-y-8">
                   <MpsiRulebookOverview locale="en" />
+                  {(n.faqs && n.faqs.length > 0) && (
+                    <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
+                      <ArticleBody
+                        article={{
+                          id: n.id,
+                          slug: n.slug || n.id,
+                          title: n.titleEn || n.title,
+                          excerpt: n.description || "",
+                          date: n.date,
+                          readingTime: 5,
+                          locale: "en",
+                          href: `/en/notifications/${n.slug || n.id}`,
+                          type: "article",
+                          sections: [],
+                          body: [],
+                          mcqs: [],
+                          faqs: n.faqs || [],
+                        } as any}
+                      />
+                    </div>
+                  )}
+                </div>
+              ) : (n.slug?.includes("constable") || n.id?.includes("constable")) ? (
+                <div className="space-y-8">
+                  <MpPoliceConstableRulebookOverview locale="en" />
                   {(n.faqs && n.faqs.length > 0) && (
                     <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
                       <ArticleBody
@@ -372,7 +423,7 @@ export default async function EnNotificationDetailPage({ params }: PageProps) {
                   )}
                   <Button className="w-full sm:w-auto rounded-full bg-amber-600 hover:bg-amber-700 text-white font-bold gap-2 px-5 py-3.5 h-auto text-xs sm:text-sm shadow-md text-center whitespace-normal leading-normal" asChild>
                     <a href="https://drive.google.com/file/d/1Db_HqaZzTvqSN5NQa-BEthIh1dv4un6J/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                      <FileText className="h-4 w-4 shrink-0" /> Download MPSI Syllabus PDF
+                      <FileText className="h-4 w-4 shrink-0" /> Download Syllabus PDF
                     </a>
                   </Button>
                   {n.applyOnlineUrl && (
@@ -385,17 +436,30 @@ export default async function EnNotificationDetailPage({ params }: PageProps) {
                 </div>
               </div>
 
-              {(n.slug?.includes("mpsi") || n.id?.includes("mpsi")) ? (
+              {/* Course Cross Promotion Card */}
+              {(n.slug?.includes("constable") || n.id?.includes("constable")) ? (
+                <MpPoliceConstablePaidCourseBanner variant="full" locale="en" />
+              ) : (n.slug?.includes("mpsi") || n.id?.includes("mpsi")) ? (
                 <MpsiPaidCourseBanner variant="full" locale="en" />
               ) : (
-                <CourseRecommendationCard course={n.suggestedCourse} examCategory={n.exam} locale="en" />
+                <CourseRecommendationCard
+                  course={n.suggestedCourse}
+                  examCategory={n.exam}
+                  locale="en"
+                />
               )}
+
+              <ShareWidget title={n.titleEn || n.title} url={pageUrl} />
             </main>
 
+            {/* Right Sidebar */}
             <aside className="lg:col-span-4 space-y-6">
-              {(n.slug?.includes("mpsi") || n.id?.includes("mpsi")) && (
+              {/* Right Sidebar Paid Course Card */}
+              {(n.slug?.includes("constable") || n.id?.includes("constable")) ? (
+                <MpPoliceConstablePaidCourseBanner variant="sidebar" locale="en" />
+              ) : (n.slug?.includes("mpsi") || n.id?.includes("mpsi")) ? (
                 <MpsiPaidCourseBanner variant="sidebar" locale="en" />
-              )}
+              ) : null}
               <div className="rounded-3xl border border-emerald-500/30 bg-emerald-500/10 p-6 shadow-soft space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500 text-white font-bold text-lg shadow-sm">
