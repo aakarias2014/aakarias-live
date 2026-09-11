@@ -100,6 +100,11 @@ async function main() {
       asset: { _type: "reference", _ref: assetStanding._id },
       alt: "Prime Minister Narendra Modi and President Prabowo Subianto standing with national flags",
     },
+    nextArticle: {
+      title: "रमन मैग्सेसे पुरस्कार 2026: विजेताओं की पूरी सूची, एशिया का प्रतिष्ठित सम्मान एवं महत्वपूर्ण तथ्य",
+      titleEn: "Ramon Magsaysay Award 2026: Full Winners List, Asia's Premier Honor & Key Exam Facts",
+      href: "/current-affairs/ramon-magsaysay-award-2026-winners-list",
+    },
 
     /* ─── SECTIONS ──────────────────────────────────────────────── */
     sections: [
@@ -116,7 +121,7 @@ async function main() {
           },
           {
             _key: "b1-2", _type: "block", style: "normal",
-            children: [{ _key: "s1-2", _type: "span", text: "यह पुरस्कार भारत-इंडोनेशिया के ऐतिहासिक द्विपक्षीय संबंधों, कूटनीतिक रणनीतिक साझेदारी को प्रगाढ़ बनाने और वैश्विक दक्षिण (Global South) के हितों को रेखांकित करने में प्रधानमंत्री मोदी के असाधारण नेतृत्व को मान्यता देता है।" }],
+            children: [{ _key: "s1-2", _type: "span", text: "यह पुरस्कार भारत-इंडोनेशिया के ऐतिहासिक द्विपक्षीय संबंधों, कूटनीतिक रणनीतिक साझेदारी को प्रगाढ़ बनाने और वैश्विक दक्षिण (Global South) के हितों को रेखांकित करने में प्रधानमंत्री मोदी के असाधारण नेतृत्व को मान्यता देता है। अंतर्राष्ट्रीय नागरिक पुरस्कारों एवं सम्मान की विस्तृत सूची हेतु हमारे [पुरस्कार एवं सम्मान पोर्टल](/awards-and-honors) तथा [रमन मैग्सेसे पुरस्कार 2026 विजेताओं की पूरी सूची](/current-affairs/ramon-magsaysay-award-2026-winners-list) को भी पढ़ें।" }],
           },
         ],
         bodyEn: [
@@ -126,7 +131,7 @@ async function main() {
           },
           {
             _key: "b1-4", _type: "block", style: "normal",
-            children: [{ _key: "s1-4", _type: "span", text: "This prestigious honor recognizes PM Modi's exceptional leadership in strengthening India-Indonesia historical bilateral ties, deepening the strategic diplomatic partnership, and championing the causes of the Global South." }],
+            children: [{ _key: "s1-4", _type: "span", text: "This prestigious honor recognizes PM Modi's exceptional leadership in strengthening India-Indonesia historical bilateral ties, deepening the strategic diplomatic partnership, and championing the causes of the Global South. For other major Asian honors, see our [Ramon Magsaysay Award 2026 Full Winners List](/en/current-affairs/ramon-magsaysay-award-2026-winners-list) and [Awards & Honors Section](/en/awards-and-honors)." }],
           },
         ],
       },

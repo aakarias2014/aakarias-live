@@ -40,3 +40,13 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - **EVERY SINGLE CONTENT TYPE MUST BE IN `sitemap.ts`**: Whenever creating or updating any new dynamic content type (Current Affairs, Static GK, Notifications, Monthly PDFs, Publications, Online Courses, Topper Copies, Tag Pages, Date Pages, MPPSC Notes), ensure it is fetched and included in `src/app/sitemap.ts` for both Hindi (`/`) and English (`/en/`) routes.
 - **Language Metadata Alignment**: Always pass `locale: "en"` to `buildMetadata` on all `/en/` routes so `og:locale` and hreflang alternates are strictly aligned.
 - **Immediate Indexing Safeguard**: Never omit dynamic content from `sitemap.ts` or leave missing canonical/hreflang tags so Googlebot can immediately discover and index all new posts.
+
+# Mandatory Rich Interlinking Rule & Standard Pattern
+- **ALL ARTICLES MUST BE RICHLY INTERLINKED**: Every single article, current affairs post, static GK note, publication, and notification MUST include contextually relevant internal markdown links `[anchor text](/url)` in both Hindi and English versions.
+- **Contextual In-Text Links**: Embed relevant internal links inside paragraph blocks and list items pointing to:
+  - Category / Hub pages: `/awards-and-honors`, `/mppsc-current-affairs`, `/general-awareness`, `/mppsc-notes`
+  - Syllabus & Exam pages: `/mppsc/prelims-syllabus`, `/mppsc/mains-syllabus`, `/online-courses`
+  - Related articles & topic notes: `/current-affairs/[slug]`, `/general-awareness/[slug]`
+- **Mandatory `nextArticle` Field**: Always set the `nextArticle: { title, titleEn, href }` field pointing to the next logically related article so the interactive "और पढ़ें / Read More" card automatically renders at the bottom.
+- **Bi-Directional Cross-Linking**: Whenever publishing a new article, update existing related articles or static GK notes to add a back-link pointing to the newly created article.
+
