@@ -26,30 +26,59 @@ const client = createClient({
 });
 
 async function main() {
-  console.log("🚀 Starting upload process for Comprehensive 18th BRICS Summit 2026 Article to Sanity CMS...");
+  console.log("🚀 Starting upload process for Comprehensive 18th BRICS Summit 2026 Article with Real Photos to Sanity CMS...");
 
-  // Banner image path
-  const imagePath = path.resolve(process.cwd(), "public/images/blog/brics_summit_2026_banner.png");
-  if (!fs.existsSync(imagePath)) {
-    console.error(`❌ Image not found at ${imagePath}`);
-    process.exit(1);
+  // Image file paths
+  const imagePaths = {
+    banner: path.resolve(process.cwd(), "public/images/blog/brics_summit_2026_banner.png"),
+    venue: path.resolve(process.cwd(), "public/images/blog/brics_bharat_mandapam_photo.png"),
+    gift: path.resolve(process.cwd(), "public/images/blog/brics_thirukkural_gift_photo.png"),
+    global: path.resolve(process.cwd(), "public/images/blog/un_headquarters_new_york_flags.png"),
+  };
+
+  for (const [key, p] of Object.entries(imagePaths)) {
+    if (!fs.existsSync(p)) {
+      console.error(`❌ Required image for '${key}' not found at ${p}`);
+      process.exit(1);
+    }
   }
 
   // 1. Upload Banner Image
   console.log("📸 Uploading BRICS Summit 2026 banner image...");
-  const assetBanner = await client.assets.upload("image", fs.createReadStream(imagePath), {
+  const assetBanner = await client.assets.upload("image", fs.createReadStream(imagePaths.banner), {
     filename: "brics_summit_2026_banner.png",
   });
-  console.log(`✔ Banner image uploaded successfully. Asset ID: ${assetBanner._id}`);
+  console.log(`✔ Banner image uploaded. Asset ID: ${assetBanner._id}`);
 
-  // 2. Construct Article Document with Maximum SEO Optimization
+  // 2. Upload Venue Photo (Bharat Mandapam)
+  console.log("📸 Uploading Bharat Mandapam venue photo...");
+  const assetVenue = await client.assets.upload("image", fs.createReadStream(imagePaths.venue), {
+    filename: "brics_bharat_mandapam_photo.png",
+  });
+  console.log(`✔ Venue photo uploaded. Asset ID: ${assetVenue._id}`);
+
+  // 3. Upload Thirukkural Gift Photo (PM Modi & Putin)
+  console.log("📸 Uploading Thirukkural gift photo...");
+  const assetGift = await client.assets.upload("image", fs.createReadStream(imagePaths.gift), {
+    filename: "brics_thirukkural_gift_photo.png",
+  });
+  console.log(`✔ Thirukkural gift photo uploaded. Asset ID: ${assetGift._id}`);
+
+  // 4. Upload Multilateral Governance Photo
+  console.log("📸 Uploading global multilateral governance photo...");
+  const assetGlobal = await client.assets.upload("image", fs.createReadStream(imagePaths.global), {
+    filename: "un_headquarters_new_york_flags.png",
+  });
+  console.log(`✔ Multilateral governance photo uploaded. Asset ID: ${assetGlobal._id}`);
+
+  // 5. Construct Article Document with Embedded Real Photos inside Sections
   const articleDoc = {
     _id: "ca-18th-brics-summit-2026-new-delhi",
     _type: "currentAffairs",
     slug: { _type: "slug", current: "18th-brics-summit-2026-new-delhi-india-chairship" },
     title: "18वां BRICS शिखर सम्मेलन 2026 (नई दिल्ली): भारत की अध्यक्षता, एजेंडा, महत्व, भारत के रणनीतिक हित, 11 सदस्य देश, NDB व 25 वर्षों का सफर | MPPSC & UPSC Notes",
     titleEn: "18th BRICS Summit 2026 (New Delhi): India's Chairship, Agenda, Strategic Interests, 11 Member Nations, NDB & 25-Year Journey | MPPSC & UPSC Notes",
-    excerpt: "भारत की अध्यक्षता में 12-13 सितंबर 2026 को नई दिल्ली के भारत मंडपम में आयोजित 18वें BRICS शिखर सम्मेलन का पूर्ण एजेंडा, 25 साल का सफर (2001-2026), भारत के 11 रणनीतिक हित, 11 सदस्य देश, तिरुक्कुरल भेंट, NDB बैंक, नई दिल्ली घोषणापत्र एवं MPPSC/UPSC हेतु 8 अभ्यास प्रश्न।",
+    excerpt: "भारत की अध्यक्षता में 12-13 सितंबर 2026 को नई दिल्ली के भारत मंडपम में आयोजित 18वें BRICS शिखर सम्मेलन का पूर्ण एजेंडा, 25 साल का सफर (2001-2026), भारत के 11 रणनीतिक हित, 11 सदस्य देश, तिरुक्कुरल पुस्तक भेंट, न्यू डेवलपमेंट बैंक (NDB), नई दिल्ली घोषणापत्र एवं MPPSC/UPSC हेतु 8 अभ्यास प्रश्न।",
     excerptEn: "Complete guide to the 18th BRICS Summit held under India's presidency on 12-13 September 2026 at Bharat Mandapam, New Delhi. Covers full summit agenda, India's 11 strategic interests, 25-year milestone (2001-2026), BRICS expansion to 11 members, Thirukkural gift, NDB & 8 MCQs for MPPSC & UPSC.",
     ca_date: "2026-09-12",
     publishedAt: new Date("2026-09-12T12:00:00.000Z").toISOString(),
@@ -91,7 +120,7 @@ async function main() {
       caption: "18वां BRICS शिखर सम्मेलन 2026: भारत मंडपम, नई दिल्ली में आयोजित सम्मेलन में प्रधानमंत्री नरेंद्र मोदी ने रूसी राष्ट्रपति व्लादिमीर पुतिन को 'तिरुक्कुरल' का रूसी अनुवाद भेंट किया",
     },
 
-    /* ─── SECTIONS (Bilingual PortableText with Full Verbatim Content) ──── */
+    /* ─── SECTIONS (Bilingual PortableText with Embedded Real Photos) ──── */
     sections: [
       /* ── 1. Context / Why in News ──────────────────────────────────── */
       {
@@ -103,6 +132,13 @@ async function main() {
           {
             _key: "b1-1", _type: "block", style: "normal",
             children: [{ _key: "s1-1", _type: "span", text: "भारत की अध्यक्षता में **12-13 सितंबर 2026** को नई दिल्ली स्थित **भारत मंडपम** में **18वां BRICS शिखर सम्मेलन 2026** सफलतापूर्वक आयोजित हुआ।" }],
+          },
+          {
+            _key: "b1-img-venue",
+            _type: "image",
+            asset: { _type: "reference", _ref: assetVenue._id },
+            alt: "Bharat Mandapam, New Delhi — Venue of 18th BRICS Summit 2026 under India presidency",
+            caption: "18वां BRICS शिखर सम्मेलन 2026: नई दिल्ली स्थित भारत मंडपम में सम्मेलन का भव्य आयोजन स्थल",
           },
           {
             _key: "b1-2", _type: "block", style: "normal",
@@ -117,6 +153,13 @@ async function main() {
           {
             _key: "b1-4", _type: "block", style: "normal",
             children: [{ _key: "s1-4", _type: "span", text: "Under India's presidency, the **18th BRICS Summit 2026** was successfully held on **12–13 September 2026** at the prestigious **Bharat Mandapam**, New Delhi." }],
+          },
+          {
+            _key: "b1-img-venue-en",
+            _type: "image",
+            asset: { _type: "reference", _ref: assetVenue._id },
+            alt: "Bharat Mandapam New Delhi — Venue of 18th BRICS Summit 2026",
+            caption: "Bharat Mandapam, New Delhi — Host venue for the 18th BRICS Summit 2026 under India's presidency",
           },
           {
             _key: "b1-5", _type: "block", style: "normal",
@@ -309,6 +352,13 @@ async function main() {
             children: [{ _key: "s4-0", _type: "span", text: "भारत की अध्यक्षता में आयोजित 18वां ब्रिक्स शिखर सम्मेलन 2026 महत्वपूर्ण है क्योंकि यह उभरती अर्थव्यवस्थाओं के बीच सहयोग को मजबूत करने और वैश्विक दक्षिण की प्राथमिकताओं को उजागर करने का अवसर प्रदान करता है:" }],
           },
           {
+            _key: "b4-img-global",
+            _type: "image",
+            asset: { _type: "reference", _ref: assetGlobal._id },
+            alt: "Global governance and multilateral institutions reforms championed by BRICS nations",
+            caption: "वैश्विक शासन सुधार: संयुक्त राष्ट्र सुरक्षा परिषद एवं अंतरराष्ट्रीय वित्तीय निकायों में विकासशील देशों के अधिक प्रतिनिधित्व का समर्थन",
+          },
+          {
             _key: "b4-1", _type: "block", style: "normal",
             children: [{ _key: "s4-1", _type: "span", text: "• **ग्लोबल साउथ का सशक्तिकरण**: वैश्विक निर्णय लेने में विकासशील और उभरती अर्थव्यवस्थाओं की सामूहिक आवाज को मजबूत करता है।" }],
           },
@@ -349,6 +399,13 @@ async function main() {
           {
             _key: "b4-10", _type: "block", style: "normal",
             children: [{ _key: "s4-10", _type: "span", text: "The significance of the 18th BRICS Summit 2026 under India's leadership:" }],
+          },
+          {
+            _key: "b4-img-global-en",
+            _type: "image",
+            asset: { _type: "reference", _ref: assetGlobal._id },
+            alt: "Multilateral institutions and global governance reforms advocated by BRICS",
+            caption: "Global Governance Reform: Advocating equitable representation for emerging economies in multilateral institutions",
           },
           {
             _key: "b4-11", _type: "block", style: "normal",
@@ -738,7 +795,14 @@ async function main() {
         body: [
           {
             _key: "b10-1", _type: "block", style: "normal",
-            children: [{ _key: "s10-1", _type: "span", text: "प्रधानमंत्री नरेंद्र मोदी ने रूसी राष्ट्रपति व्लादिमीर पुतिन को महान प्राचीन तमिल ग्रंथ **'तिरुक्कुरल' (Thirukkural)** का रूसी अनुवाद भेंट किया।" }],
+            children: [{ _key: "s10-1", _type: "span", text: "प्रधानमंत्री नरेंद्र मोदी ने रूसी राष्ट्रपति व्लादिमीर पुतिन को महान प्राचीन तमिल ग्रंथ **'तिरुक्कुरल' (Thirukkural)** का सुंदर रूसी अनुवाद भेंट किया।" }],
+          },
+          {
+            _key: "b10-img-gift",
+            _type: "image",
+            asset: { _type: "reference", _ref: assetGift._id },
+            alt: "PM Narendra Modi gifting Russian translation of Thirukkural to Russian President Vladimir Putin",
+            caption: "सांस्कृतिक कूटनीति: 18वें BRICS शिखर सम्मेलन के दौरान प्रधानमंत्री नरेंद्र मोदी ने रूसी राष्ट्रपति व्लादिमीर पुतिन को तमिल ग्रंथ 'तिरुक्कुरल' का रूसी अनुवाद भेंट किया",
           },
           {
             _key: "b10-2", _type: "block", style: "h3",
@@ -769,6 +833,13 @@ async function main() {
           {
             _key: "b10-8", _type: "block", style: "normal",
             children: [{ _key: "s10-8", _type: "span", text: "PM Modi gifted a Russian translation of Thirukkural to President Vladimir Putin." }],
+          },
+          {
+            _key: "b10-img-gift-en",
+            _type: "image",
+            asset: { _type: "reference", _ref: assetGift._id },
+            alt: "PM Narendra Modi gifting Russian translation of Thirukkural to Russian President Vladimir Putin",
+            caption: "Cultural Diplomacy: PM Narendra Modi presenting the Russian translation of Thirukkural to President Vladimir Putin",
           },
           {
             _key: "b10-9", _type: "block", style: "h3",
@@ -1102,12 +1173,12 @@ async function main() {
     },
   };
 
-  // 3. Save / Overwrite Article in Sanity CMS
-  console.log("💾 Uploading / Updating comprehensive document in Sanity CMS...");
+  // 6. Save / Overwrite Article in Sanity CMS
+  console.log("💾 Uploading / Updating document with embedded real photos in Sanity CMS...");
   const result = await client.createOrReplace(articleDoc);
   console.log(`✅ Article published successfully! Document ID: ${result._id}`);
 
-  // 4. Update Back-link in G-7 Summit 2026 Article for 2-Way Rich Interlinking
+  // 7. Update Back-link in G-7 Summit 2026 Article for 2-Way Rich Interlinking
   console.log("🔗 Updating bi-directional interlinking in G-7 Summit 2026 article...");
   try {
     const g7Doc = await client.getDocument("ca-g7-summit-2026-modi-outreach-session");
@@ -1128,7 +1199,7 @@ async function main() {
     console.warn("⚠️ Could not patch G-7 article for bi-directional link:", err);
   }
 
-  console.log("🎉 All upload, SEO optimization, and interlinking operations completed successfully!");
+  console.log("🎉 All upload, embedded photo integration, and interlinking operations completed successfully!");
 }
 
 main().catch((err) => {
