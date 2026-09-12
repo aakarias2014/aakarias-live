@@ -26,12 +26,12 @@ const client = createClient({
 });
 
 async function main() {
-  console.log("🚀 Starting upload process for Comprehensive 18th BRICS Summit 2026 Article with Real Photos to Sanity CMS...");
+  console.log("🚀 Starting upload process for Comprehensive 18th BRICS Summit 2026 Article with Updated Real Photos to Sanity CMS...");
 
   // Image file paths
   const imagePaths = {
     banner: path.resolve(process.cwd(), "public/images/blog/brics_summit_2026_banner.png"),
-    venue: path.resolve(process.cwd(), "public/images/blog/brics_bharat_mandapam_photo.png"),
+    venue: path.resolve(process.cwd(), "public/images/blog/brics_bharat_mandapam_photo.jpg"),
     gift: path.resolve(process.cwd(), "public/images/blog/brics_thirukkural_gift_photo.png"),
     global: path.resolve(process.cwd(), "public/images/blog/un_headquarters_new_york_flags.png"),
   };
@@ -50,19 +50,19 @@ async function main() {
   });
   console.log(`✔ Banner image uploaded. Asset ID: ${assetBanner._id}`);
 
-  // 2. Upload Venue Photo (Bharat Mandapam)
-  console.log("📸 Uploading Bharat Mandapam venue photo...");
+  // 2. Upload Bharat Mandapam venue photo (1st Photo)
+  console.log("📸 Uploading updated Bharat Mandapam venue photo (Nataraja Statue & Building)...");
   const assetVenue = await client.assets.upload("image", fs.createReadStream(imagePaths.venue), {
-    filename: "brics_bharat_mandapam_photo.png",
+    filename: "brics_bharat_mandapam_photo.jpg",
   });
-  console.log(`✔ Venue photo uploaded. Asset ID: ${assetVenue._id}`);
+  console.log(`✔ Updated Bharat Mandapam photo uploaded. Asset ID: ${assetVenue._id}`);
 
-  // 3. Upload Thirukkural Gift Photo (PM Modi & Putin)
-  console.log("📸 Uploading Thirukkural gift photo...");
+  // 3. Upload Thirukkural Gift photo (2nd Photo: PM Modi & Putin)
+  console.log("📸 Uploading updated Thirukkural book gift photo (PM Modi & Putin)...");
   const assetGift = await client.assets.upload("image", fs.createReadStream(imagePaths.gift), {
     filename: "brics_thirukkural_gift_photo.png",
   });
-  console.log(`✔ Thirukkural gift photo uploaded. Asset ID: ${assetGift._id}`);
+  console.log(`✔ Updated Thirukkural gift photo uploaded. Asset ID: ${assetGift._id}`);
 
   // 4. Upload Multilateral Governance Photo
   console.log("📸 Uploading global multilateral governance photo...");
@@ -71,7 +71,7 @@ async function main() {
   });
   console.log(`✔ Multilateral governance photo uploaded. Asset ID: ${assetGlobal._id}`);
 
-  // 5. Construct Article Document with Embedded Real Photos inside Sections
+  // 5. Construct Article Document with Updated Real Photos inside Sections
   const articleDoc = {
     _id: "ca-18th-brics-summit-2026-new-delhi",
     _type: "currentAffairs",
@@ -120,7 +120,7 @@ async function main() {
       caption: "18वां BRICS शिखर सम्मेलन 2026: भारत मंडपम, नई दिल्ली में आयोजित सम्मेलन में प्रधानमंत्री नरेंद्र मोदी ने रूसी राष्ट्रपति व्लादिमीर पुतिन को 'तिरुक्कुरल' का रूसी अनुवाद भेंट किया",
     },
 
-    /* ─── SECTIONS (Bilingual PortableText with Embedded Real Photos) ──── */
+    /* ─── SECTIONS (Bilingual PortableText with Updated Real Photos) ──── */
     sections: [
       /* ── 1. Context / Why in News ──────────────────────────────────── */
       {
@@ -137,8 +137,8 @@ async function main() {
             _key: "b1-img-venue",
             _type: "image",
             asset: { _type: "reference", _ref: assetVenue._id },
-            alt: "Bharat Mandapam, New Delhi — Venue of 18th BRICS Summit 2026 under India presidency",
-            caption: "18वां BRICS शिखर सम्मेलन 2026: नई दिल्ली स्थित भारत मंडपम में सम्मेलन का भव्य आयोजन स्थल",
+            alt: "Bharat Mandapam, New Delhi — Host Venue of 18th BRICS Summit 2026 with Nataraja Statue and international flags",
+            caption: "18वां BRICS शिखर सम्मेलन 2026: नई दिल्ली स्थित ऐतिहासिक भारत मंडपम परिसर (नटराज प्रतिमा एवं अंतर्राष्ट्रीय ध्वज)",
           },
           {
             _key: "b1-2", _type: "block", style: "normal",
@@ -158,8 +158,8 @@ async function main() {
             _key: "b1-img-venue-en",
             _type: "image",
             asset: { _type: "reference", _ref: assetVenue._id },
-            alt: "Bharat Mandapam New Delhi — Venue of 18th BRICS Summit 2026",
-            caption: "Bharat Mandapam, New Delhi — Host venue for the 18th BRICS Summit 2026 under India's presidency",
+            alt: "Bharat Mandapam New Delhi — Host venue for the 18th BRICS Summit 2026 featuring the Nataraja statue",
+            caption: "Bharat Mandapam, New Delhi — Host venue for the 18th BRICS Summit 2026 featuring the Nataraja statue and national flags",
           },
           {
             _key: "b1-5", _type: "block", style: "normal",
@@ -209,7 +209,7 @@ async function main() {
           },
           {
             _key: "b2-7", _type: "block", style: "normal",
-            children: [{ _key: "s2-7", _type: "span", text: "• **प्रकृति (Nature)**: सदस्य देशों के बीच आर्थिक, राजनीतिक और विकासात्मक सहयोग के लिए एक अनौपचारिक बहुपक्षीय मंच।" }],
+            children: [{ _key: "s2-7", _type: "span", text: "• **प्रकृति (Nature)**: सदस्य देशों के बीच आर्थिक, राजनीतिक और व विकासात्मक सहयोग के लिए एक अनौपचारिक बहुपक्षीय मंच।" }],
           },
           {
             _key: "b2-8", _type: "block", style: "normal",
@@ -795,14 +795,14 @@ async function main() {
         body: [
           {
             _key: "b10-1", _type: "block", style: "normal",
-            children: [{ _key: "s10-1", _type: "span", text: "प्रधानमंत्री नरेंद्र मोदी ने रूसी राष्ट्रपति व्लादिमीर पुतिन को महान प्राचीन तमिल ग्रंथ **'तिरुक्कुरल' (Thirukkural)** का सुंदर रूसी अनुवाद भेंट किया।" }],
+            children: [{ _key: "s10-1", _type: "span", text: "प्रधानमंत्री नरेंद्र मोदी ने रूसी राष्ट्रपति व्लादिमीर पुतिन को महान प्राचीन तमिल ग्रंथ **'तिरुक्कुरल' (Thirukkural)** का सुंदर अनुवाद भेंट किया।" }],
           },
           {
             _key: "b10-img-gift",
             _type: "image",
             asset: { _type: "reference", _ref: assetGift._id },
-            alt: "PM Narendra Modi gifting Russian translation of Thirukkural to Russian President Vladimir Putin",
-            caption: "सांस्कृतिक कूटनीति: 18वें BRICS शिखर सम्मेलन के दौरान प्रधानमंत्री नरेंद्र मोदी ने रूसी राष्ट्रपति व्लादिमीर पुतिन को तमिल ग्रंथ 'तिरुक्कुरल' का रूसी अनुवाद भेंट किया",
+            alt: "PM Narendra Modi gifting Thirukkural book to Russian President Vladimir Putin at 18th BRICS Summit 2026",
+            caption: "सांस्कृतिक कूटनीति: 18वें BRICS शिखर सम्मेलन 2026 के दौरान प्रधानमंत्री नरेंद्र मोदी ने रूसी राष्ट्रपति व्लादिमीर पुतिन को तमिल ग्रंथ 'तिरुक्कुरल' की प्रति भेंट की",
           },
           {
             _key: "b10-2", _type: "block", style: "h3",
@@ -832,14 +832,14 @@ async function main() {
         bodyEn: [
           {
             _key: "b10-8", _type: "block", style: "normal",
-            children: [{ _key: "s10-8", _type: "span", text: "PM Modi gifted a Russian translation of Thirukkural to President Vladimir Putin." }],
+            children: [{ _key: "s10-8", _type: "span", text: "PM Modi gifted a translation of Thirukkural to President Vladimir Putin." }],
           },
           {
             _key: "b10-img-gift-en",
             _type: "image",
             asset: { _type: "reference", _ref: assetGift._id },
-            alt: "PM Narendra Modi gifting Russian translation of Thirukkural to Russian President Vladimir Putin",
-            caption: "Cultural Diplomacy: PM Narendra Modi presenting the Russian translation of Thirukkural to President Vladimir Putin",
+            alt: "PM Narendra Modi gifting Thirukkural book to Russian President Vladimir Putin",
+            caption: "Cultural Diplomacy: PM Narendra Modi presenting the Thirukkural book to President Vladimir Putin at 18th BRICS Summit",
           },
           {
             _key: "b10-9", _type: "block", style: "h3",
@@ -1012,8 +1012,8 @@ async function main() {
         _key: "faq-8",
         question: "PM नरेंद्र मोदी ने रूसी राष्ट्रपति व्लादिमीर पुतिन को कौन सी प्रसिद्ध पुस्तक भेंट की?",
         questionEn: "Which literary classic did PM Modi gift to Russian President Vladimir Putin?",
-        answer: "PM मोदी ने व्लादिमीर पुतिन को महान तमिल संत-कवि तिरुवल्लुवर द्वारा रचित प्राचीन ग्रंथ 'तिरुक्कुरल' का रूसी अनुवाद भेंट किया।",
-        answerEn: "PM Modi presented a Russian translation of 'Thirukkural', authored by ancient Tamil saint Thiruvalluvar, to Vladimir Putin.",
+        answer: "PM मोदी ने व्लादिमीर पुतिन को महान तमिल संत-कवि तिरुवल्लुवर द्वारा रचित प्राचीन ग्रंथ 'तिरुक्कुरल' का अनुवाद भेंट किया।",
+        answerEn: "PM Modi presented a translation of 'Thirukkural', authored by ancient Tamil saint Thiruvalluvar, to Vladimir Putin.",
       },
       {
         _key: "faq-9",
@@ -1110,8 +1110,8 @@ async function main() {
           "It is available only in Tamil and has no foreign language translations"
         ],
         correctIndex: 3,
-        explanation: "कथन (d) गलत है क्योंकि 'तिरुक्कुरल' का रूसी, अंग्रेजी, फ्रेंच समेत 100 से अधिक विश्व भाषाओं में अनुवाद हो चुका है। PM मोदी ने पुतिन को इसका रूसी अनुवाद भेंट किया।",
-        explanationEn: "Statement (d) is incorrect because Thirukkural has been translated into over 100 global languages. PM Modi presented a Russian translation to President Putin.",
+        explanation: "कथन (d) गलत है क्योंकि 'तिरुक्कुरल' का रूसी, अंग्रेजी, फ्रेंच समेत 100 से अधिक विश्व भाषाओं में अनुवाद हो चुका है। PM मोदी ने पुतिन को इसकी प्रति भेंट की।",
+        explanationEn: "Statement (d) is incorrect because Thirukkural has been translated into over 100 global languages. PM Modi presented a translation to President Putin.",
       },
       {
         _key: "mcq-6",
@@ -1174,7 +1174,7 @@ async function main() {
   };
 
   // 6. Save / Overwrite Article in Sanity CMS
-  console.log("💾 Uploading / Updating document with embedded real photos in Sanity CMS...");
+  console.log("💾 Uploading / Updating document with user's exact uploaded photos in Sanity CMS...");
   const result = await client.createOrReplace(articleDoc);
   console.log(`✅ Article published successfully! Document ID: ${result._id}`);
 
@@ -1199,7 +1199,7 @@ async function main() {
     console.warn("⚠️ Could not patch G-7 article for bi-directional link:", err);
   }
 
-  console.log("🎉 All upload, embedded photo integration, and interlinking operations completed successfully!");
+  console.log("🎉 All upload, exact user photo updates, and interlinking operations completed successfully!");
 }
 
 main().catch((err) => {
