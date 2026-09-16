@@ -212,8 +212,8 @@ export default async function EnglishArticlePage({ params }: Props) {
         <ArticleHero article={article} />
       </AnimatedSection>
       <AnimatedSection variant="fade-up" duration={0.6} delay={0.15}>
-        <Container size="wide" className="mt-12 flex flex-col gap-12 pb-16 lg:flex-row">
-          <article className="min-w-0 max-w-3xl flex-1">
+        <Container size="wide" className="mt-12 flex flex-col gap-12 pb-16 lg:flex-row items-start">
+          <article className="min-w-0 max-w-3xl flex-1 self-start">
             <ArticleBody article={article} ads={ads} />
             <div className="mt-8 border-t border-border/40 pt-6">
               <ShareWidget

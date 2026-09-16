@@ -356,30 +356,44 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
         </figure>
       );
 
-    case "table":
+    case "table": {
+      const colWidths = ["w-[26%]", "w-[22%]", "w-[24%]", "w-[28%]"];
+
       return (
-        <div className="my-8 overflow-hidden rounded-2xl border border-primary/20 bg-background shadow-soft-sm">
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm text-left border-collapse">
-              {block.table.caption && (
-                <caption className="bg-primary/5 px-5 py-3 text-left text-sm font-bold text-primary border-b border-primary/15 tracking-wide">
-                  {block.table.caption}
-                </caption>
-              )}
+        <div className="my-5 h-auto self-start overflow-hidden rounded-xl border border-sky-300 dark:border-sky-800 shadow-soft bg-card">
+          {block.table.caption && (
+            <div className="bg-[#20698f] text-white px-3.5 sm:px-4 py-2 text-left text-xs sm:text-sm font-extrabold border-b border-sky-700 tracking-wide">
+              {block.table.caption}
+            </div>
+          )}
+          <div className="overflow-x-auto h-auto">
+            <table className="w-full min-w-[560px] text-xs sm:text-sm text-left border-collapse table-fixed !h-auto">
               <thead>
-                <tr className="border-b border-primary/20 bg-primary/10">
+                <tr className="bg-[#20698f] text-white font-extrabold text-xs sm:text-sm border-b border-sky-700 !h-auto">
                   {block.table.headers.map((h, i) => (
-                    <th key={i} className={`px-4 py-3 font-bold text-foreground tracking-wide text-xs uppercase ${i < 2 ? "whitespace-nowrap" : ""}`}>
+                    <th
+                      key={i}
+                      className={cn(
+                        "px-3.5 py-2.5 sm:py-3 align-middle tracking-wide border-r border-sky-600/50 last:border-r-0 leading-snug !h-auto",
+                        colWidths[i % colWidths.length]
+                      )}
+                    >
                       {renderFormattedText(h)}
                     </th>
                   ))}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-border/40">
+              <tbody className="divide-y divide-border/60 bg-card !h-auto">
                 {block.table.rows.map((row, ri) => (
-                  <tr key={ri} className="transition-colors hover:bg-primary/5 odd:bg-background even:bg-muted/20">
+                  <tr key={ri} className="transition-colors hover:bg-sky-500/5 odd:bg-card even:bg-sky-500/[0.03] !h-auto">
                     {row.map((cell, ci) => (
-                      <td key={ci} className={`px-4 py-3 text-foreground/90 font-medium ${ci < 2 ? "whitespace-nowrap text-center" : ""}`}>
+                      <td
+                        key={ci}
+                        className={cn(
+                          "px-3.5 py-2.5 sm:py-3 align-top text-foreground font-medium border-r border-border/40 last:border-r-0 leading-snug text-xs sm:text-sm !h-auto",
+                          colWidths[ci % colWidths.length]
+                        )}
+                      >
                         {renderFormattedText(cell)}
                       </td>
                     ))}
@@ -390,6 +404,7 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
           </div>
         </div>
       );
+    }
 
     case "timeline":
       return (

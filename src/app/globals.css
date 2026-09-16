@@ -219,28 +219,18 @@
   }
   .prose-aakar table {
     width: 100%;
+    height: auto !important;
+    max-height: max-content !important;
     border-collapse: collapse;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
     margin-bottom: 1.5rem;
   }
-  .prose-aakar thead {
-    background-color: color-mix(in oklch, var(--muted) 50%, transparent);
-  }
+  .prose-aakar tbody,
+  .prose-aakar thead,
+  .prose-aakar tr,
+  .prose-aakar td,
   .prose-aakar th {
-    border: 1px solid var(--border);
-    padding: 0.625rem 1rem;
-    text-align: left;
-    font-weight: 600;
-    color: var(--foreground);
-  }
-  .prose-aakar td {
-    border: 1px solid var(--border);
-    padding: 0.5rem 1rem;
-    color: var(--muted-foreground);
-  }
-  .prose-aakar tbody tr:hover {
-    background-color: color-mix(in oklch, var(--muted) 30%, transparent);
+    height: auto !important;
+    max-height: max-content !important;
   }
   .prose-aakar h4 {
     margin-top: 1.75rem;
