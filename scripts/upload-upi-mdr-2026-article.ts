@@ -76,23 +76,27 @@ async function main() {
 
   // Image file paths in public/images/blog/
   const publicBlogDir = path.resolve(process.cwd(), "public/images/blog");
+  const imgPathCover = path.join(publicBlogDir, "upi_mdr_2026_cover_banner.png");
   const imgPathQr = path.join(publicBlogDir, "upi_mdr_2026_merchant_payment_qr.jpg");
   const imgPathInfra = path.join(publicBlogDir, "upi_mdr_2026_banking_infrastructure.jpg");
 
-  if (!fs.existsSync(imgPathQr) || !fs.existsSync(imgPathInfra)) {
+  if (!fs.existsSync(imgPathCover) || !fs.existsSync(imgPathQr) || !fs.existsSync(imgPathInfra)) {
     console.error("❌ Image files not found in public/images/blog/");
     process.exit(1);
   }
 
   // Upload images to Sanity
-  console.log("📸 Uploading UPI MDR images to Sanity...");
+  console.log("📸 Uploading UPI MDR images & cover banner to Sanity...");
+  const assetCover = await client.assets.upload("image", fs.createReadStream(imgPathCover), {
+    filename: "upi_mdr_2026_cover_banner.png",
+  });
   const assetQr = await client.assets.upload("image", fs.createReadStream(imgPathQr), {
     filename: "upi_mdr_2026_merchant_payment_qr.jpg",
   });
   const assetInfra = await client.assets.upload("image", fs.createReadStream(imgPathInfra), {
     filename: "upi_mdr_2026_banking_infrastructure.jpg",
   });
-  console.log(`✔ Uploaded assets. QR Asset: ${assetQr._id}, Infra Asset: ${assetInfra._id}`);
+  console.log(`✔ Uploaded assets. Cover: ${assetCover._id}, QR Asset: ${assetQr._id}, Infra Asset: ${assetInfra._id}`);
 
   // Ensure Economy category exists
   const economyCategory = {
@@ -168,8 +172,8 @@ async function main() {
 
     featuredImage: {
       _type: "image",
-      asset: { _type: "reference", _ref: assetQr._id },
-      alt: "UPI MDR 2026 merchant payment QR code scanning smartphone digital india ecosystem MPPSC UPSC notes",
+      asset: { _type: "reference", _ref: assetCover._id },
+      alt: "UPI MDR 2026 Rule 2000 Free Merchant Charge NPCI RBI Payment Banner MPPSC UPSC Notes",
     },
 
     nextArticle: {
