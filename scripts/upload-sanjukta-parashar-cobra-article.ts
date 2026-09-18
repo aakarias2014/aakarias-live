@@ -27,13 +27,13 @@ const client = createClient({
 async function main() {
   console.log("🚀 Starting upload process for IPS Sanjukta Parashar CoBRA IG Article to Sanity CMS...");
 
-  const bannerImgPath = "/Users/aakariastech/.gemini/antigravity-ide/brain/bb2c6d67-18cc-486b-872a-592123954632/sanjukta_parashar_cobra_ig_1789737305084.jpg";
+  const bannerImgPath = "/Users/aakariastech/.gemini/antigravity-ide/brain/bb2c6d67-18cc-486b-872a-592123954632/.user_uploaded/media_1789737517464.png";
   const opsImgPath = "/Users/aakariastech/.gemini/antigravity-ide/brain/bb2c6d67-18cc-486b-872a-592123954632/cobra_commandos_jungle_warfare_1789737346165.jpg";
 
   console.log("📸 Uploading Banner Image Asset to Sanity...");
   const bannerAsset = await client.assets.upload("image", fs.createReadStream(bannerImgPath), {
-    filename: "sanjukta_parashar_cobra_ig.jpg",
-    contentType: "image/jpeg",
+    filename: "sanjukta_parashar_cobra_ig_banner.png",
+    contentType: "image/png",
   });
   console.log("✔ Banner Asset ID:", bannerAsset._id);
 
