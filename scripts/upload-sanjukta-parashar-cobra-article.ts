@@ -78,13 +78,13 @@ async function main() {
     caption,
   });
 
-  // Hindi Body Blocks
+  // Hindi Body Blocks with Rich Interlinking
   const body = [
-    pBlock("2006 बैच की भारतीय पुलिस सेवा (IPS) अधिकारी **डॉ. संजुक्ता पराशर** को केंद्रीय रिजर्व पुलिस बल (CRPF) की विशेष गुरिल्ला व जंगल युद्ध कमांडो यूनिट **CoBRA (Commando Battalion for Resolute Action)** का **Inspector General (IG)** नियुक्त किया गया है। वह इस प्रतिष्ठित और कठिन बल का नेतृत्व करने वाली देश की **पहली महिला अधिकारी** बन गई हैं।"),
-    pBlock("CRPF मुख्यालय द्वारा जारी आधिकारिक आदेशानुसार, डॉ. संजुक्ता पराशर 1996 बैच के IPS अधिकारी दानेश राणा का स्थान लेंगी। यह नियुक्ति भारतीय सुरक्षा बलों और वामपंथी उग्रवाद (LWE) विरोधी अभियानों में महिला नेतृत्व का एक नया इतिहास रचती है।"),
+    pBlock("2006 बैच की भारतीय पुलिस सेवा (IPS) अधिकारी **डॉ. संजुक्ता पराशर** को केंद्रीय रिजर्व पुलिस बल (CRPF) की विशेष गुरिल्ला व जंगल युद्ध कमांडो यूनिट **CoBRA (Commando Battalion for Resolute Action)** का **Inspector General (IG)** नियुक्त किया गया है। वह इस प्रतिष्ठित और कठिन बल का नेतृत्व करने वाली देश की **पहली महिला अधिकारी** बन गई हैं। [मध्य प्रदेश एवं राष्ट्रीय समसामयिकी](/mppsc-current-affairs) के दृष्टिकोण से यह नियुक्ति अत्यंत महत्वपूर्ण है।"),
+    pBlock("CRPF मुख्यालय द्वारा जारी आधिकारिक आदेशानुसार, डॉ. संजुक्ता पराशर 1996 बैच के IPS अधिकारी दानेश राणा का स्थान लेंगी। यह नियुक्ति भारतीय सुरक्षा बलों और वामपंथी उग्रवाद (LWE) विरोधी अभियानों में महिला नेतृत्व का एक नया इतिहास रचती है। रक्षा व पुलिस भर्ती संबंधी अन्य अपडेट्स के लिए हमारे [MP Police Constable Recruitment 2026](/notifications/mp-police-constable-recruitment-2026) तथा [MP Police Subedar Steno / ASI Bharti 2026](/notifications/mp-police-subedar-steno-asi-bharti-2026) और [MPSI Sub-Inspector Bharti](/notifications/mpsi-recruitment-2026) पेज देखें।"),
 
     h3Block("1. डॉ. संजुक्ता पराशर: साहसी आईपीएस अधिकारी और 'आयरन लेडी ऑफ असम'"),
-    pBlock("असम-मेघालय कैडर की 2006 बैच की आईपीएस अधिकारी संजुक्ता पराशर अपनी अद्वितीय निडरता और उग्रवाद-रोधी अभियानों के लिए पूरे देश में जानी जाती हैं। असम के संवेदनशील जिलों में एनडीएफबी (NDFB-S) और उल्फा (ULFA) उग्रवादियों के खिलाफ उन्होंने स्वयं हाथ में AK-47 लेकर अभियानों का नेतृत्व किया। इसी कारण उन्हें **'आयरन लेडी ऑफ असम'** और **'लेडी सिंघम'** के नाम से भी पुकारा जाता है।"),
+    pBlock("असम-मेघालय कैडर की 2006 बैच की आईपीएस अधिकारी संजुक्ता पराशर अपनी अद्वितीय निडरता और उग्रवाद-रोधी अभियानों के लिए पूरे देश में जानी जाती हैं। असम के संवेदनशील जिलों में एनडीएफबी (NDFB-S) और उल्फा (ULFA) उग्रवादियों के खिलाफ उन्होंने स्वयं हाथ में AK-47 लेकर अभियानों का नेतृत्व किया। इसी कारण उन्हें **'आयरन लेडी ऑफ असम'** और **'लेडी सिंघम'** के नाम से भी पुकारा जाता है। [सामान्य अध्ययन एवं आंतरिक सुरक्षा](/general-awareness) में यह एक प्रमुख उदाहरण है।"),
 
     bulletBlock("• जातीय हिंसा पर नियंत्रण (2008): पहली पोस्टिंग तिनसुकिया के माकुम में हुई। इसके बाद 2008 में बोडो और अन्य समुदायों के बीच भड़की उडालगुड़ी जातीय हिंसा के दौरान मौके पर पहुंचकर शांति स्थापित की।"),
     bulletBlock("• एके-47 लेकर घने जंगलों में ऑपरेशन: सोनितपुर में SP रहते हुए CRPF और पुलिस कमांडो के साथ घने जंगलों में एनडीएफबी (NDFB-S) के खिलाफ कई अभियानों की अगुवाई की।"),
@@ -99,7 +99,7 @@ async function main() {
     ),
 
     h3Block("2. संजुक्ता पराशर का संपूर्ण करियर टाइमलाइन (Career Profile)"),
-    bulletBlock("• 2005–2006: संघ लोक सेवा आयोग (UPSC CSE) परीक्षा में ऑल इंडिया रैंक 85 (AIR 85) प्राप्त की और IPS चयनित हुईं।"),
+    bulletBlock("• 2005–2006: संघ लोक सेवा आयोग (UPSC CSE) परीक्षा में ऑल इंडिया रैंक 85 (AIR 85) प्राप्त की और IPS चयनित हुईं। विस्तृत पैटर्न हेतु [MPPSC & UPSC सिलेबस गाइड](/mppsc/prelims-syllabus) देखें।"),
     bulletBlock("• 2006: भारतीय पुलिस सेवा (IPS) में औपचारिक रूप से शामिल हुईं और असम-मेघालय कैडर आवंटित हुआ।"),
     bulletBlock("• 2008: तिनसुकिया जिले के माकुम में असिस्टेंट एसपी के रूप में पहली पोस्टिंग।"),
     bulletBlock("• 2009–2011: असम के अत्यधिक संवेदनशील इलाकों में उग्रवाद-रोधी (Anti-Insurgency) अभियानों की कमान संभाली।"),
@@ -108,10 +108,10 @@ async function main() {
     bulletBlock("• 2024: पुलिस महानिरीक्षक (IGP) पद पर पदोन्नत हुईं।"),
     bulletBlock("• 2025: सीआईडी (CID Assam) में जांच एवं खुफिया संबंधी प्रमुख जिम्मेदारियां संभालीं।"),
     bulletBlock("• अगस्त 2026: केंद्रीय रिजर्व पुलिस बल (CRPF) में IG पद पर केंद्रीय प्रतिनियुक्ति।"),
-    bulletBlock("• सितंबर 2026: CRPF CoBRA (कमांडो बटालियन फॉर रिजॉल्यूट एक्शन) यूनिट की पहली महिला IG के रूप में कार्यभार ग्रहण किया।"),
+    bulletBlock("• सितंबर 2026: CRPF CoBRA (कमांडो बटालियन फॉर रिजॉल्यूट Action) यूनिट की पहली महिला IG के रूप में कार्यभार ग्रहण किया।"),
 
     h3Block("3. CRPF CoBRA यूनिट क्या है? (Commando Battalion for Resolute Action)"),
-    pBlock("**CoBRA** का पूरा नाम **Commando Battalion for Resolute Action** है। यह भारत के केंद्रीय सशस्त्र पुलिस बल **CRPF** की एक अत्यंत कुशल और घातक विशेष कमांडो यूनिट है।"),
+    pBlock("**CoBRA** का पूरा नाम **Commando Battalion for Resolute Action** है। यह भारत के केंद्रीय सशस्त्र पुलिस बल **CRPF** की एक अत्यंत कुशल और घातक विशेष कमांडो यूनिट है। अधिक जानकारी हेतु [MPPSC नोट्स एवं अध्ययन सामग्री](/mppsc-notes) पढ़ें।"),
     bulletBlock("• गठन (Establishment): CRPF ने वामपंथी उग्रवाद (LWE / Naxalism) तथा पूर्वोत्तर के उग्रवाद से निपटने के लिए वर्ष **2008-09** में CoBRA बटालियनों का गठन किया था।"),
     bulletBlock("• विशेषता (Specialization): CoBRA कमांडोज को **जंगल युद्ध (Jungle Warfare)**, गुरिल्ला रणनीति, घात लगाकर हमला करने (Ambush) तथा कठिन भौगोलिक परिस्थितियों में अभियानों हेतु विशेष प्रशिक्षण दिया जाता है।"),
     bulletBlock("• लोकप्रिय नाम: इस बल के जवानों को **'जंगल वॉरियर्स' (Jungle Warriors)** भी कहा जाता है।"),
@@ -126,18 +126,18 @@ async function main() {
     bulletBlock("• पद व अधिकारी: **डॉ. संजुक्ता पराशर** (2006 बैच IPS, असम-मेघालय कैडर) — CoBRA की **पहली महिला IG**"),
     bulletBlock("• पूर्ववर्ती अधिकारी: 1996 बैच के IPS अधिकारी **दानेश राणा** का स्थान लिया"),
     bulletBlock("• उपनाम / उपाधि: **'आयरन लेडी ऑफ असम'** एवं **'लेडी सिंघम'**"),
-    bulletBlock("• प्रासंगिकता (Syllabus): MPPSC मुख्य परीक्षा पेपर-3 (सुरक्षा बल व आंतरिक सुरक्षा) एवं UPSC GS Paper-3 (Internal Security & LWE Challenges)."),
+    bulletBlock("• प्रासंगिकता (Syllabus): MPPSC मुख्य परीक्षा पेपर-3 (सुरक्षा बल व आंतरिक सुरक्षा) एवं UPSC GS Paper-3 (Internal Security & LWE Challenges)। संपूर्ण पाठ्यक्रम हेतु [MPPSC मुख्य परीक्षा सिलेबस](/mppsc/mains-syllabus) देखें।"),
 
-    pBlock("आंतरिक सुरक्षा, नक्सलवाद एवं सुरक्षा बलों के अन्य महत्वपूर्ण नोट्स पढ़ने के लिए हमारे [MPPSC मुख्य परीक्षा नोट्स](/mppsc-notes) तथा [सामान्य अध्ययन अध्ययन सामग्री](/general-awareness) का अवलोकन करें।")
+    pBlock("आंतरिक सुरक्षा, नक्सलवाद एवं सुरक्षा बलों के अन्य महत्वपूर्ण नोट्स पढ़ने के लिए हमारे [MPPSC मुख्य परीक्षा नोट्स](/mppsc-notes), [सामान्य अध्ययन सामग्री](/general-awareness) तथा [Aakar IAS ऑनलाइन लाइव कोर्सेस](/online-courses) का अवलोकन करें।")
   ];
 
-  // English Body Blocks
+  // English Body Blocks with Rich Interlinking
   const bodyEn = [
-    pBlock("In a historic milestone for Indian Security Forces, 2006-batch Indian Police Service (IPS) officer **Dr. Sanjukta Parashar** has been appointed as the **Inspector General (IG)** of CRPF's elite jungle warfare unit — **CoBRA (Commando Battalion for Resolute Action)**. She is the **first woman officer** to head this specialized commando force."),
-    pBlock("According to the official order released by CRPF Headquarters, Dr. Sanjukta Parashar succeeds 1996-batch IPS officer Danesh Rana. Her appointment sets a revolutionary benchmark for women leadership in combat command and anti-Left Wing Extremism (LWE) counter-insurgency operations."),
+    pBlock("In a historic milestone for Indian Security Forces, 2006-batch Indian Police Service (IPS) officer **Dr. Sanjukta Parashar** has been appointed as the **Inspector General (IG)** of CRPF's elite jungle warfare unit — **CoBRA (Commando Battalion for Resolute Action)**. She is the **first woman officer** to head this specialized commando force. Stay updated with our [MPPSC Current Affairs](/en/mppsc-current-affairs) coverage."),
+    pBlock("According to the official order released by CRPF Headquarters, Dr. Sanjukta Parashar succeeds 1996-batch IPS officer Danesh Rana. Her appointment sets a revolutionary benchmark for women leadership in combat command and anti-Left Wing Extremism (LWE) counter-insurgency operations. For police recruitment updates, check out [MP Police Constable Recruitment 2026](/en/notifications/mp-police-constable-recruitment-2026), [MP Police Subedar Steno / ASI Bharti 2026](/en/notifications/mp-police-subedar-steno-asi-bharti-2026), and [MPSI Sub Inspector Bharti](/en/notifications/mpsi-recruitment-2026)."),
 
     h3Block("1. Dr. Sanjukta Parashar: The 'Iron Lady of Assam'"),
-    pBlock("An IPS officer of the Assam-Meghalaya Cadre (2006 Batch), Dr. Sanjukta Parashar is widely acclaimed for her unyielding courage in counter-insurgency operations. During her tenure in sensitive districts of Assam, she personally led armed raids with an AK-47 assault rifle against militant outfits such as NDFB(S) and ULFA, earning her the epithet of **'Iron Lady of Assam'** and **'Lady Singham'**."),
+    pBlock("An IPS officer of the Assam-Meghalaya Cadre (2006 Batch), Dr. Sanjukta Parashar is widely acclaimed for her unyielding courage in counter-insurgency operations. During her tenure in sensitive districts of Assam, she personally led armed raids with an AK-47 assault rifle against militant outfits such as NDFB(S) and ULFA, earning her the epithet of **'Iron Lady of Assam'** and **'Lady Singham'**. Explore more cases in our [General Studies Hub](/en/general-awareness)."),
 
     bulletBlock("• Handling Ethnic Conflicts (2008): Assigned to Udalguri following her first posting in Makum (Tinsukia), she restored law and order during violent Bodo ethnic clashes."),
     bulletBlock("• Leading Jungle Operations with AK-47: As Superintendent of Police (SP) in Sonitpur, she personally led CRPF commandos and police teams deep inside dense tropical forests against NDFB(S) insurgents."),
@@ -146,7 +146,7 @@ async function main() {
     bulletBlock("• Fearless Duty Despite Death Threats: Despite constant assassination threats from militant groups, she continued to spearhead front-line counter-terrorism operations."),
 
     h3Block("2. Sanjukta Parashar: Career Timeline"),
-    bulletBlock("• 2005–2006: Secured All India Rank 85 (AIR 85) in UPSC Civil Services Examination and joined the Indian Police Service (IPS)."),
+    bulletBlock("• 2005–2006: Secured All India Rank 85 (AIR 85) in UPSC Civil Services Examination and joined the Indian Police Service (IPS). Review the [MPPSC & UPSC Syllabus Guide](/en/mppsc/prelims-syllabus)."),
     bulletBlock("• 2006: Formally allocated the Assam-Meghalaya IPS Cadre."),
     bulletBlock("• 2008: First posting as Assistant SP in Makum, Tinsukia district."),
     bulletBlock("• 2009–2011: Handled anti-insurgency operations in conflict-prone belts of Assam."),
@@ -158,7 +158,7 @@ async function main() {
     bulletBlock("• September 2026: Took charge as the first woman Inspector General (IG) of CRPF CoBRA Sector."),
 
     h3Block("3. Understanding CRPF CoBRA Unit"),
-    pBlock("**CoBRA** stands for **Commando Battalion for Resolute Action**. It is the premier specialized commando wing of the **Central Reserve Police Force (CRPF)**."),
+    pBlock("**CoBRA** stands for **Commando Battalion for Resolute Action**. It is the premier specialized commando wing of the **Central Reserve Police Force (CRPF)**. Read more in our [MPPSC Mains Notes](/en/mppsc-notes)."),
     bulletBlock("• Formation: Established in **2008-09** specifically to counter Left Wing Extremism (LWE / Naxalism) and North-East insurgency."),
     bulletBlock("• Specialization: CoBRA commandos undergo grueling training in **Jungle Warfare**, guerrilla tactics, tactical ambushes, and survival in dense rainforests."),
     bulletBlock("• Nickname: Commonly known across armed forces as **'Jungle Warriors'**."),
@@ -172,9 +172,9 @@ async function main() {
     bulletBlock("• Official Appointed: **Dr. Sanjukta Parashar (IPS 2006 Assam-Meghalaya Cadre)** — **First Female IG of CoBRA**"),
     bulletBlock("• Predecessor: **Danesh Rana (IPS 1996 Batch)**"),
     bulletBlock("• Popular Sobriquet: **'Iron Lady of Assam'** / **'Lady Singham'**"),
-    bulletBlock("• Exam Relevance: MPPSC Mains Paper 3 (Internal Security & CAPF) and UPSC GS Paper 3 (LWE Challenges & Internal Security)."),
+    bulletBlock("• Exam Relevance: MPPSC Mains Paper 3 (Internal Security & CAPF) and UPSC GS Paper 3 (LWE Challenges & Internal Security). See complete [MPPSC Mains Syllabus](/en/mppsc/mains-syllabus)."),
 
-    pBlock("For detailed internal security notes, check out our [MPPSC Mains Notes](/en/mppsc-notes) and [General Studies Hub](/en/general-awareness).")
+    pBlock("For detailed internal security notes, check out our [MPPSC Mains Notes](/en/mppsc-notes), [General Studies Hub](/en/general-awareness), and [Aakar IAS Online Courses](/en/online-courses).")
   ];
 
   // Exactly 8 Practice MCQs for Current Affairs Rule
@@ -201,152 +201,152 @@ async function main() {
     },
     {
       _key: "mcq2",
-      question: "सितंबर 2026 में CRPF की CoBRA यूनिट की पहली महिला IG (Inspector General) किसे नियुक्त किया गया है?",
-      questionEn: "Who has been appointed as the first female IG of CRPF's CoBRA Unit in September 2026?",
+      question: "CRPF CoBRA यूनिट की पहली महिला IG के रूप में किसे नियुक्त किया गया है?",
+      questionEn: "Who has been appointed as the first female IG of the CRPF CoBRA unit?",
       options: [
-        "संजुक्ता पराशर (Sanjukta Parashar)",
-        "किरण बेदी (Kiran Bedi)",
-        "कंचन चौधरी भट्टाचार्य (Kanchan Chaudhary)",
-        "अर्चना रामसुंदरम (Archana Ramasundaram)"
+        "डॉ. संजुक्ता पराशर",
+        "किरण बेदी",
+        "कंचन चौधरी भट्टाचार्य",
+        "रूपा मौदगिल"
       ],
       optionsEn: [
-        "Sanjukta Parashar",
+        "Dr. Sanjukta Parashar",
         "Kiran Bedi",
         "Kanchan Chaudhary Bhattacharya",
-        "Archana Ramasundaram"
+        "Roopa Moudgil"
       ],
       correctIndex: 0,
-      explanation: "2006 बैच की IPS अधिकारी डॉ. संजुक्ता पराशर को CRPF की CoBRA यूनिट की पहली महिला Inspector General (IG) नियुक्त किया गया है।",
-      explanationEn: "2006-batch IPS officer Dr. Sanjukta Parashar has been appointed as the first female Inspector General (IG) of CRPF's CoBRA Unit."
+      explanation: "2006 बैच की असम-मेघालय कैडर की IPS अधिकारी डॉ. संजुक्ता पराशर को CRPF CoBRA की पहली महिला IG नियुक्त किया गया है।",
+      explanationEn: "Dr. Sanjukta Parashar, a 2006-batch IPS officer of Assam-Meghalaya cadre, has been appointed as the first woman IG of CRPF CoBRA."
     },
     {
       _key: "mcq3",
-      question: "IPS डॉ. संजुक्ता पराशर किस कैडर और बैच की भारतीय पुलिस सेवा (IPS) अधिकारी हैं?",
-      questionEn: "IPS Dr. Sanjukta Parashar belongs to which cadre and batch of the Indian Police Service?",
+      question: "डॉ. संजुक्ता पराशर किस कैडर और बैच की IPS अधिकारी हैं?",
+      questionEn: "Dr. Sanjukta Parashar belongs to which cadre and batch of the Indian Police Service?",
       options: [
         "2006 बैच, असम-मेघालय कैडर",
         "2004 बैच, मध्य प्रदेश कैडर",
         "2008 बैच, उत्तर प्रदेश कैडर",
-        "2005 बैच, महाराष्ट्र कैडर"
+        "2010 बैच, राजस्थान कैडर"
       ],
       optionsEn: [
         "2006 Batch, Assam-Meghalaya Cadre",
         "2004 Batch, Madhya Pradesh Cadre",
         "2008 Batch, Uttar Pradesh Cadre",
-        "2005 Batch, Maharashtra Cadre"
+        "2010 Batch, Rajasthan Cadre"
       ],
       correctIndex: 0,
-      explanation: "संजुक्ता पराशर 2006 बैच की IPS अधिकारी हैं जिन्हें असम-मेघालय कैडर आवंटित हुआ था।",
+      explanation: "संजुक्ता पराशर 2006 बैच की भारतीय पुलिस सेवा (IPS) अधिकारी हैं जिन्हें असम-मेघालय कैडर आवंटित हुआ था।",
       explanationEn: "Sanjukta Parashar is a 2006-batch IPS officer allocated to the Assam-Meghalaya Cadre."
     },
     {
       _key: "mcq4",
-      question: "CRPF द्वारा CoBRA (कमांडो बटालियन फॉर रिजॉल्यूट एक्शन) का गठन किस वर्ष किया गया था?",
-      questionEn: "In which year was CRPF's CoBRA (Commando Battalion for Resolute Action) established?",
+      question: "CoBRA यूनिट कमांडोज को किस अन्य लोकप्रिय नाम से भी जाना जाता है?",
+      questionEn: "CoBRA unit commandos are popular known by which other epithet?",
       options: [
-        "2008-09",
-        "2002-03",
-        "2014-15",
-        "1999-00"
+        "जंगल वॉरियर्स (Jungle Warriors)",
+        "डिजर्ट फाल्कन्स (Desert Falcons)",
+        "स्नो लेपर्ड्स (Snow Leopards)",
+        "सी हॉक्स (Sea Hawks)"
       ],
       optionsEn: [
-        "2008-09",
-        "2002-03",
-        "2014-15",
-        "1999-00"
+        "Jungle Warriors",
+        "Desert Falcons",
+        "Snow Leopards",
+        "Sea Hawks"
       ],
       correctIndex: 0,
-      explanation: "वामपंथी उग्रवाद (LWE / नक्सलवाद) और पूर्वोत्तर उग्रवाद से निपटने के लिए CRPF ने 2008-09 में CoBRA का गठन किया था।",
-      explanationEn: "CRPF established CoBRA in 2008-09 specifically to counter Left-Wing Extremism (LWE / Naxalism) and North-East insurgency."
+      explanation: "घने जंगलों और दुर्गम भौगोलिक क्षेत्रों में छापामार व उग्रवाद-रोधी अभियानों की महारत के कारण CoBRA जवानों को 'जंगल वॉरियर्स' कहा जाता है।",
+      explanationEn: "Due to their specialized mastery in jungle combat and anti-guerrilla operations, CoBRA commandos are known as 'Jungle Warriors'."
     },
     {
       _key: "mcq5",
-      question: "असम में उग्रवाद विरोधी अभियानों में उनकी अदम्य वीरता के लिए संजुक्ता पराशर को किस लोकप्रिय नाम से जाना जाता है?",
-      questionEn: "By what popular epithet is Sanjukta Parashar known for her fierce anti-insurgency operations in Assam?",
+      question: "CRPF द्वारा CoBRA कमांडो बल की स्थापना किस वर्ष की गई थी?",
+      questionEn: "In which year was the CoBRA commando force established by CRPF?",
       options: [
-        "आयरन लेडी ऑफ असम (Iron Lady of Assam)",
-        "झांसी की रानी",
-        "नाइटिंगेल ऑफ ईस्ट",
-        "ब्लेड रनर"
+        "2008-09",
+        "2001-02",
+        "2014-15",
+        "2019-20"
       ],
       optionsEn: [
-        "Iron Lady of Assam",
-        "Rani of Jhansi",
-        "Nightingale of the East",
-        "Blade Runner"
+        "2008-09",
+        "2001-02",
+        "2014-15",
+        "2019-20"
       ],
       correctIndex: 0,
-      explanation: "घने जंगलों में हाथ में AK-47 लेकर NDFB और ULFA उग्रवादियों के खिलाफ प्रहार करने के कारण उन्हें 'आयरन लेडी ऑफ असम' और 'लेडी सिंघम' कहा जाता है।",
-      explanationEn: "For leading operations with an AK-47 against NDFB and ULFA militants in dense forests, she is famously called the 'Iron Lady of Assam'."
+      explanation: "वामपंथी उग्रवाद (LWE) व नक्सल प्रभावित क्षेत्रों में अभियानों हेतु CRPF ने वर्ष 2008-09 में CoBRA का गठन किया था।",
+      explanationEn: "CRPF established CoBRA in 2008-09 specifically for counter-LWE (Naxalism) operations."
     },
     {
       _key: "mcq6",
-      question: "CoBRA (कमांडो बटालियन फॉर रिजॉल्यूट एक्शन) किस केंद्रीय सशस्त्र पुलिस बल (CAPF) की विशेष विंग है?",
-      questionEn: "CoBRA (Commando Battalion for Resolute Action) is a specialized wing of which Central Armed Police Force (CAPF)?",
+      question: "संजुक्ता पराशर को उनके अदम्य साहस और उग्रवाद-रोधी अभियानों के लिए क्या उपनाम दिया गया है?",
+      questionEn: "What popular epithets are associated with Sanjukta Parashar for her fearless counter-terrorism operations?",
       options: [
-        "CRPF (Central Reserve Police Force)",
-        "BSF (Border Security Force)",
-        "ITBP (Indo-Tibetan Border Police)",
-        "CISF (Central Industrial Security Force)"
+        "आयरन लेडी ऑफ असम एवं लेडी सिंघम",
+        "नाईटिंगेल ऑफ ईस्ट",
+        "झांसी की रानी",
+        "कारगिल वॉरियर"
       ],
       optionsEn: [
-        "CRPF (Central Reserve Police Force)",
-        "BSF (Border Security Force)",
-        "ITBP (Indo-Tibetan Border Police)",
-        "CISF (Central Industrial Security Force)"
+        "Iron Lady of Assam & Lady Singham",
+        "Nightingale of East",
+        "Rani of Jhansi",
+        "Kargil Warrior"
       ],
       correctIndex: 0,
-      explanation: "CoBRA केंद्रीय रिजर्व पुलिस बल (CRPF) की विशेष गुरिल्ला और जंगल युद्ध कमांडो यूनिट है।",
-      explanationEn: "CoBRA is the specialized guerrilla and jungle warfare commando unit of the Central Reserve Police Force (CRPF)."
+      explanation: "असम के जंगलों में AK-47 लेकर NDFB और ULFA उग्रवादियों के खिलाफ सीधी लड़ाई लड़ने के कारण उन्हें 'आयरन लेडी ऑफ असम' और 'लेडी सिंघम' कहा जाता है।",
+      explanationEn: "Her fearless front-line raids with an AK-47 assault rifle against NDFB and ULFA militants earned her the sobriquet 'Iron Lady of Assam'."
     },
     {
       _key: "mcq7",
-      question: "वर्तमान में CoBRA सेक्टर के अंतर्गत कितनी CoBRA यूनिट्स / बटालियन कार्यरत हैं?",
-      questionEn: "How many CoBRA battalions / units operate under the CoBRA Sector currently?",
+      question: "CoBRA के वर्तमान IG पद पर संजुक्ता पराशर ने किस IPS अधिकारी का स्थान लिया?",
+      questionEn: "Whom did Sanjukta Parashar succeed as Inspector General (IG) of CRPF CoBRA?",
+      options: [
+        "दानेश राणा (1996 बैच IPS)",
+        "अजय भटनागर (1989 बैच IPS)",
+        "अननीश दयाल सिंह (1988 बैच IPS)",
+        "कुलदीप सिंह (1986 बैच IPS)"
+      ],
+      optionsEn: [
+        "Danesh Rana (1996 Batch IPS)",
+        "Ajay Bhatnagar (1989 Batch IPS)",
+        "Aneesh Dayal Singh (1988 Batch IPS)",
+        "Kuldiep Singh (1986 Batch IPS)"
+      ],
+      correctIndex: 0,
+      explanation: "संजुक्ता पराशर ने 1996 बैच के IPS अधिकारी दानेश राणा का स्थान लिया है।",
+      explanationEn: "She succeeded 1996-batch IPS officer Danesh Rana as Inspector General of CRPF CoBRA."
+    },
+    {
+      _key: "mcq8",
+      question: "CoBRA सेक्टर के अंतर्गत वर्तमान में कुल कितनी कमांडो बटालियन (Units) कार्यरत हैं?",
+      questionEn: "How many commandos battalions operate under the CRPF CoBRA Sector currently?",
       options: [
         "10 बटालियन",
-        "05 बटालियन",
+        "5 बटालियन",
         "15 बटालियन",
         "20 बटालियन"
       ],
       optionsEn: [
         "10 Battalions",
-        "05 Battalions",
+        "5 Battalions",
         "15 Battalions",
         "20 Battalions"
       ],
       correctIndex: 0,
-      explanation: "वर्तमान में CoBRA सेक्टर के अंतर्गत 10 CoBRA बटालियन कार्यरत हैं जो वामपंथी उग्रवाद (LWE) प्रभावित राज्यों में तैनात हैं।",
-      explanationEn: "Currently, 10 CoBRA battalions operate under the CoBRA sector deployed in Left-Wing Extremism (LWE) affected regions."
-    },
-    {
-      _key: "mcq8",
-      question: "डॉ. संजुक्ता पराशर ने CRPF CoBRA के IG पद पर किस 1996 बैच के IPS अधिकारी का स्थान लिया?",
-      questionEn: "Dr. Sanjukta Parashar succeeded which 1996-batch IPS officer as IG of CRPF CoBRA?",
-      options: [
-        "दानेश राणा (Danesh Rana)",
-        "राजीव राय भटनागर (Rajiv Rai Bhatnagar)",
-        "कुलदीप सिंह (Kuldiep Singh)",
-        "अनीश दयाल सिंह (Anish Dayal Singh)"
-      ],
-      optionsEn: [
-        "Danesh Rana",
-        "Rajiv Rai Bhatnagar",
-        "Kuldiep Singh",
-        "Anish Dayal Singh"
-      ],
-      correctIndex: 0,
-      explanation: "संजुक्ता पराशर ने 1996 बैच के IPS अधिकारी दानेश राणा का स्थान लिया है।",
-      explanationEn: "Dr. Sanjukta Parashar succeeded 1996-batch IPS officer Danesh Rana."
+      explanation: "CoBRA के अंतर्गत वर्तमान में 10 विशेष कमांडो बटालियन कार्यरत हैं जो मुख्य रूप से छत्तीसगढ़, झारखंड, ओडिशा और पूर्वोत्तर राज्यों में तैनात हैं।",
+      explanationEn: "Currently, 10 CoBRA battalions are active across LWE states like Chhattisgarh, Jharkhand, Odisha, and North-Eastern states."
     }
   ];
 
-  // 10 Collapsible FAQs
+  // 10 Detailed FAQs for FAQPage Schema Rule
   const faqs = [
     {
       _key: "faq1",
-      question: "संजुक्ता पराशर कौन हैं और वे क्यों चर्चा में हैं?",
-      answer: "संजुक्ता पराशर 2006 बैच की असम-मेघालय कैडर की IPS अधिकारी हैं। सितंबर 2026 में उन्हें CRPF की विशेष कमांडो यूनिट CoBRA (Commando Battalion for Resolute Action) की पहली महिला Inspector General (IG) नियुक्त किया गया है।",
+      question: "संजुक्ता पराशर कौन हैं और वे चर्चा में क्यों हैं?",
+      answer: "संजुक्ता पराशर असम-मेघालय कैडर की 2006 बैच की वरिष्ठ IPS अधिकारी हैं। सितंबर 2026 में वे CRPF की विशेष कमांडो यूनिट CoBRA (Commando Battalion for Resolute Action) की पहली महिला Inspector General (IG) बनीं।",
       questionEn: "Who is Sanjukta Parashar and why is she in news?",
       answerEn: "Sanjukta Parashar is a 2006-batch IPS officer of Assam-Meghalaya cadre. In September 2026, she became the first woman Inspector General (IG) of CRPF's specialized commando unit CoBRA."
     },
@@ -453,7 +453,7 @@ async function main() {
 
   console.log("🚀 Creating/Replacing Current Affairs document in Sanity CMS...");
   const res = await client.createOrReplace(articleDoc);
-  console.log("✅ Successfully published Sanjukta Parashar CoBRA IG article to Sanity CMS!");
+  console.log("✅ Successfully published Sanjukta Parashar CoBRA IG article with Rich Interlinking to Sanity CMS!");
   console.log("📄 Document ID:", res._id);
   console.log("🔗 Slug:", res.slug.current);
 }
