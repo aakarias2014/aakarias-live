@@ -157,12 +157,12 @@ export function VacancyVideoEmbed({
                 </span>
               </div>
               <h4 className="font-extrabold text-foreground text-base sm:text-lg">
-                {isHi ? "MP Police Constable 2026 संपूर्ण फ्री तैयारी यूट्यूब प्लेलिस्ट" : "MP Police Constable 2026 Complete Free Prep Playlist"}
+                {isHi ? "MPSI , MP ASI, MP POLICE Constable संपूर्ण फ्री तैयारी यूट्यूब प्लेलिस्ट" : "MPSI, MP ASI, MP Police Constable Complete Free Prep Playlist"}
               </h4>
               <p className="text-xs text-muted-foreground leading-relaxed">
                 {isHi
-                  ? "आकार IAS के आधिकारिक YouTube चैनल पर रोजाना सुबह 9:00 AM से शाम 6:00 PM तक MP Police Constable परीक्षा हेतु सभी विषयों की निःशुल्क लाइव क्लासेस व प्रैक्टिस सेशंस प्रसारित किए जाते हैं।"
-                  : "Free daily live streaming classes for MP Police Constable exam covering full syllabus from 9:00 AM to 6:00 PM daily."}
+                  ? "आकार IAS के आधिकारिक YouTube चैनल पर रोजाना सुबह 9:00 AM से शाम 6:00 PM तक MPSI, MP ASI एवं MP Police Constable परीक्षा हेतु सभी विषयों की निःशुल्क लाइव क्लासेस व प्रैक्टिस सेशंस प्रसारित किए जाते हैं।"
+                  : "Free daily live streaming classes for MPSI, MP ASI & MP Police Constable exams covering full syllabus from 9:00 AM to 6:00 PM daily."}
               </p>
             </div>
           </div>

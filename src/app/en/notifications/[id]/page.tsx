@@ -17,6 +17,7 @@ import { VacancyRulebookOverview } from "@/components/vacancy/vacancy-rulebook-o
 import { MpsiRulebookOverview } from "@/components/vacancy/mpsi-rulebook-overview";
 import { MpsiPaidCourseBanner } from "@/components/vacancy/mpsi-paid-course-banner";
 import { MpPoliceConstableRulebookOverview } from "@/components/vacancy/mp-police-constable-rulebook-overview";
+import { MpPoliceStenoAsiRulebookOverview } from "@/components/vacancy/mp-police-steno-asi-rulebook-overview";
 import { MpPoliceConstablePaidCourseBanner } from "@/components/vacancy/mp-police-constable-paid-course-banner";
 import { VacancyVideoEmbed } from "@/components/vacancy/vacancy-video-embed";
 import { ArticleBody } from "@/components/article/article-body";
@@ -41,23 +42,30 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const isMpsi = id.includes("mpsi") || n.slug?.includes("mpsi");
   const isConstable = id.includes("constable") || n.slug?.includes("constable");
+  const isStenoAsi = id.includes("steno") || id.includes("asi") || n.slug?.includes("steno") || n.slug?.includes("asi");
 
   const title = isMpsi
     ? "MPSI Vacancy 2026 Out (507 Posts): MP Police Sub Inspector Notification, Syllabus PDF, Age Limit & Online Form"
     : isConstable
     ? "MP Police Constable Vacancy 2026 Notification Out (7500 Posts): Apply Online, Syllabus, Physical Test & Salary"
+    : isStenoAsi
+    ? "MP Police ASI Vacancy 2026 Out (655 Posts): Subedar Steno & ASI Recruitment Notification, Syllabus PDF, Qualification, Height & Salary"
     : `${n.titleEn || n.title} Notification 2026: Total Posts, Age Limit & Apply Online`;
 
   const description = isMpsi
     ? "MP Police MPSI Recruitment 2026: Notification out for 507 posts (Sub-Inspector & Subedar). Check MP SI syllabus in Hindi/English PDF, age limit, selection process, salary Level 9 & apply online link."
     : isConstable
     ? "MP Police Constable Recruitment 2026: MPESB has released 7,500 Constable vacancies. Check online application dates (22 Sept to 06 Oct 2026), syllabus in Hindi, physical height, 800m PET running test & salary after 5 years."
+    : isStenoAsi
+    ? "MP Police ASI Recruitment 2026: MPESB has released notification for 655 Subedar (Steno) & ASI posts. Check MP Police ASI Qualification, Syllabus PDF in Hindi/English, Physical Height (162 cm), Salary & Online Application dates."
     : n.description?.slice(0, 160) || `Official notification details, total vacancies, age limit, eligibility, and direct apply link for ${n.titleEn || n.title}.`;
 
   const ogImageUrl = isMpsi
     ? `${siteConfig.url}/images/notifications/mpsi-recruitment-2026-thumbnail.png`
     : (n.slug?.includes("patwari") || id.includes("patwari"))
     ? `${siteConfig.url}/images/notifications/mp-patwari-group-2-subgroup-4-bharti-2026-thumbnail.jpg`
+    : (isStenoAsi || n.featuredImage?.url)
+    ? (n.featuredImage?.url || `${siteConfig.url}/images/notifications/mp-police-steno-asi-recruitment-2026-thumbnail.png`)
     : n.featuredImage?.url;
 
   const keywords = isConstable
@@ -75,6 +83,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         "mp police constable salary after 5 years",
         "mpesb constable vacancy 2026",
         "mp constable physical test details",
+        n.titleEn || n.title,
+        `${n.exam} Vacancy 2026`,
+      ]
+    : isStenoAsi
+    ? [
+        "mp asi qualification",
+        "mp asi syllabus",
+        "mp asi vacancy 2026",
+        "mp asi ki salary kitni hoti hai",
+        "mp asi me physical hota hai kya",
+        "mp asi previous year question paper",
+        "mp asi salary",
+        "mp asi syllabus 2026",
+        "mp asi me height kitni chahiye",
+        "mp asi steno syllabus in hindi",
+        "asi ka pad kya hota hai",
+        "2026 me mp police si bharti kab aayegi",
+        "mp police subedar steno recruitment 2026",
+        "mpesb steno asi rulebook 2026 pdf",
+        "mp police asi height for male female",
         n.titleEn || n.title,
         `${n.exam} Vacancy 2026`,
       ]
@@ -323,9 +351,9 @@ export default async function EnNotificationDetailPage({ params }: PageProps) {
 
               <VacancyHighlightsTable notification={n} locale="en" />
 
-              {(n.youtubeUrl || n.slug?.includes("patwari") || n.id?.includes("patwari") || n.slug?.includes("constable") || n.id?.includes("constable")) && (
+              {(n.youtubeUrl || n.slug?.includes("patwari") || n.id?.includes("patwari") || n.slug?.includes("constable") || n.id?.includes("constable") || n.slug?.includes("steno") || n.id?.includes("steno")) && (
                 <VacancyVideoEmbed
-                  videoUrl={n.youtubeUrl || "https://youtube.com/live/PaP_uUtYGMU?feature=share"}
+                  videoUrl={n.youtubeUrl || "https://www.youtube.com/live/D_vZO-vP6lA?si=fFTw2VkJchKQgLoM"}
                   playlistUrl="https://www.youtube.com/playlist?list=PLLSNJVlS0UIg"
                   title={n.titleEn || n.title}
                   locale="en"
@@ -362,6 +390,31 @@ export default async function EnNotificationDetailPage({ params }: PageProps) {
               ) : (n.slug?.includes("constable") || n.id?.includes("constable")) ? (
                 <div className="space-y-8">
                   <MpPoliceConstableRulebookOverview locale="en" />
+                  {(n.faqs && n.faqs.length > 0) && (
+                    <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
+                      <ArticleBody
+                        article={{
+                          id: n.id,
+                          slug: n.slug || n.id,
+                          title: n.titleEn || n.title,
+                          excerpt: n.description || "",
+                          date: n.date,
+                          readingTime: 5,
+                          locale: "en",
+                          href: `/en/notifications/${n.slug || n.id}`,
+                          type: "article",
+                          sections: [],
+                          body: [],
+                          mcqs: [],
+                          faqs: n.faqs || [],
+                        } as any}
+                      />
+                    </div>
+                  )}
+                </div>
+              ) : (n.slug?.includes("steno") || n.slug?.includes("asi") || n.id?.includes("steno")) ? (
+                <div className="space-y-8">
+                  <MpPoliceStenoAsiRulebookOverview locale="en" />
                   {(n.faqs && n.faqs.length > 0) && (
                     <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
                       <ArticleBody
