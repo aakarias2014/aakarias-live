@@ -402,7 +402,7 @@ async function main() {
     status: "out",
     url: "https://esb.mp.gov.in",
     officialPdfUrl: "https://esb.mp.gov.in",
-    syllabusPdfUrl: "https://drive.google.com/file/d/1Wlx_JDWSRQUCFTfnWaZ3w3VwYlsgOcko/view?usp=sharing",
+    syllabusPdfUrl: "https://drive.google.com/file/d/10eUvsm6oBA1G-yDu0YuU9_rtCR6hyihC/view?usp=drive_link",
     applyOnlineUrl: "https://esb.mponline.gov.in/Portal/Examinations/Vyapam/examsList.aspx",
     youtubeUrl: "https://www.youtube.com/live/D_vZO-vP6lA?si=fFTw2VkJchKQgLoM",
     totalPosts: "655 पद (135 सूबेदार + 520 ASI)",

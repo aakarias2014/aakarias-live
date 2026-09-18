@@ -186,7 +186,7 @@
 ## महत्वपूर्ण लिंक्स (Direct Download Links)
 
 - [Download Official Notification PDF](https://esb.mp.gov.in)
-- [Download Syllabus PDF](https://drive.google.com/file/d/1Wlx_JDWSRQUCFTfnWaZ3w3VwYlsgOcko/view?usp=sharing)
+- [Download Syllabus PDF](https://drive.google.com/file/d/10eUvsm6oBA1G-yDu0YuU9_rtCR6hyihC/view?usp=drive_link)
 - [Online Application Portal](https://esb.mponline.gov.in/Portal/Examinations/Vyapam/examsList.aspx)
 
 ---

@@ -321,7 +321,7 @@ export default async function NotificationDetailPage({ params }: PageProps) {
               )}
 
               <Button className="w-full sm:w-auto rounded-full bg-amber-600 hover:bg-amber-700 text-white font-bold gap-2 px-5 py-3.5 h-auto text-xs sm:text-sm shadow-md text-center whitespace-normal leading-normal" asChild>
-                <a href={n.syllabusPdfUrl || "https://drive.google.com/file/d/1Wlx_JDWSRQUCFTfnWaZ3w3VwYlsgOcko/view?usp=sharing"} target="_blank" rel="noopener noreferrer">
+                <a href={n.syllabusPdfUrl || "https://drive.google.com/file/d/10eUvsm6oBA1G-yDu0YuU9_rtCR6hyihC/view?usp=drive_link"} target="_blank" rel="noopener noreferrer">
                   <FileText className="h-4 w-4 shrink-0" /> Download Syllabus PDF
                 </a>
               </Button>
@@ -500,7 +500,7 @@ export default async function NotificationDetailPage({ params }: PageProps) {
                     </Button>
                   )}
                   <Button className="w-full sm:w-auto rounded-full bg-amber-600 hover:bg-amber-700 text-white font-bold gap-2 px-5 py-3.5 h-auto text-xs sm:text-sm shadow-md text-center whitespace-normal leading-normal" asChild>
-                    <a href={n.syllabusPdfUrl || "https://drive.google.com/file/d/1Wlx_JDWSRQUCFTfnWaZ3w3VwYlsgOcko/view?usp=sharing"} target="_blank" rel="noopener noreferrer">
+                    <a href={n.syllabusPdfUrl || "https://drive.google.com/file/d/10eUvsm6oBA1G-yDu0YuU9_rtCR6hyihC/view?usp=drive_link"} target="_blank" rel="noopener noreferrer">
                       <FileText className="h-4 w-4 shrink-0" /> Download Syllabus PDF
                     </a>
                   </Button>
