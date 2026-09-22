@@ -568,9 +568,12 @@ function mapPortableTextToBlocks(
           rows = allRows.slice(1);
         }
 
+        const cleanStr = (s: string) => (typeof s === "string" ? s.replace(/[\u200B-\u200D\u200E\u200F\u202A-\u202E\u2060-\u206F\uFEFF\u00AD\u2000-\u200A]/g, "") : s);
         if (isEn && rawTable.headersEn) headers = rawTable.headersEn;
         if (isEn && rawTable.rowsEn) rows = rawTable.rowsEn;
-        const caption = (isEn ? rawTable.captionEn : rawTable.caption) || rawTable.caption || rawTable.captionEn || (b.caption as string);
+        headers = headers.map(cleanStr);
+        rows = rows.map((row) => (Array.isArray(row) ? row.map(cleanStr) : row));
+        const caption = cleanStr((isEn ? rawTable.captionEn : rawTable.caption) || rawTable.caption || rawTable.captionEn || (b.caption as string));
 
         out.push({
           type: "table",

@@ -198,11 +198,12 @@ function renderBoldText(text: string, keyPrefix: number): React.ReactNode {
 }
 
 /**
- * Helper to strip emojis from text strings.
+ * Helper to strip emojis and hidden invisible watermark characters from text strings.
  */
 function stripEmojis(str: string): string {
   if (!str) return "";
   return str
+    .replace(/[\u200B-\u200D\u200E\u200F\u202A-\u202E\u2060-\u206F\uFEFF\u00AD\u2000-\u200A]/g, "")
     .replace(/[\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{1F600}-\u{1F64F}]|[\u{1F680}-\u{1F6FF}]|[\u{1F900}-\u{1F9FF}]|[\u{1FA00}-\u{1FA6F}]|[\u{1FA70}-\u{1FAFF}]/gu, "")
     .replace(/\s+/g, " ");
 }
@@ -357,42 +358,68 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
       );
 
     case "table": {
-      const colWidths = ["w-[26%]", "w-[22%]", "w-[24%]", "w-[28%]"];
+      const colCount = block.table.headers?.length || 4;
+
+      const getColWidth = (index: number) => {
+        if (colCount === 2) return index === 0 ? "w-[35%]" : "w-[65%]";
+        if (colCount === 3) return index === 0 ? "w-[25%]" : index === 1 ? "w-[35%]" : "w-[40%]";
+        if (colCount === 4) return index === 0 ? "w-[20%]" : index === 1 ? "w-[22%]" : index === 2 ? "w-[38%]" : "w-[20%]";
+        return "w-auto";
+      };
 
       return (
-        <div className="my-5 h-auto self-start overflow-hidden rounded-xl border border-sky-300 dark:border-sky-800 shadow-soft bg-card">
+        <div
+          className="my-6 w-full max-w-full h-auto min-h-0 max-h-none self-start shrink-0 overflow-hidden rounded-xl border border-sky-300 dark:border-sky-800 shadow-soft bg-card block"
+          style={{ height: "auto", minHeight: "0px", flex: "none" }}
+        >
           {block.table.caption && (
-            <div className="bg-[#20698f] text-white px-3.5 sm:px-4 py-2 text-left text-xs sm:text-sm font-extrabold border-b border-sky-700 tracking-wide">
+            <div className="bg-[#0f4461] text-white px-4 py-2.5 text-left text-xs sm:text-sm font-extrabold border-b border-sky-700/60 tracking-wide shrink-0">
               {block.table.caption}
             </div>
           )}
-          <div className="overflow-x-auto h-auto">
-            <table className="w-full min-w-[560px] text-xs sm:text-sm text-left border-collapse table-fixed !h-auto">
-              <thead>
-                <tr className="bg-[#20698f] text-white font-extrabold text-xs sm:text-sm border-b border-sky-700 !h-auto">
+          <div
+            className="overflow-x-auto w-full h-auto min-h-0 block"
+            style={{ height: "auto", minHeight: "0px", flex: "none" }}
+          >
+            <table
+              className="w-full text-left text-xs sm:text-sm border-collapse h-auto min-h-0"
+              style={{ height: "auto", minHeight: "0px", tableLayout: "auto" }}
+            >
+              <thead className="h-auto min-h-0" style={{ height: "auto", minHeight: "0px" }}>
+                <tr
+                  className="bg-[#20698f] text-white font-extrabold text-xs sm:text-sm border-b border-sky-700 h-auto min-h-0"
+                  style={{ height: "auto", minHeight: "0px" }}
+                >
                   {block.table.headers.map((h, i) => (
                     <th
                       key={i}
+                      scope="col"
                       className={cn(
-                        "px-3.5 py-2.5 sm:py-3 align-middle tracking-wide border-r border-sky-600/50 last:border-r-0 leading-snug !h-auto",
-                        colWidths[i % colWidths.length]
+                        "px-4 py-3 align-top font-bold border-r border-sky-600/40 last:border-r-0 leading-normal h-auto min-h-0",
+                        getColWidth(i)
                       )}
+                      style={{ height: "auto", minHeight: "0px" }}
                     >
                       {renderFormattedText(h)}
                     </th>
                   ))}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-border/60 bg-card !h-auto">
+              <tbody className="divide-y divide-border/60 bg-card h-auto min-h-0" style={{ height: "auto", minHeight: "0px" }}>
                 {block.table.rows.map((row, ri) => (
-                  <tr key={ri} className="transition-colors hover:bg-sky-500/5 odd:bg-card even:bg-sky-500/[0.03] !h-auto">
+                  <tr
+                    key={ri}
+                    className="transition-colors hover:bg-sky-500/5 odd:bg-card even:bg-sky-500/[0.03] h-auto min-h-0"
+                    style={{ height: "auto", minHeight: "0px" }}
+                  >
                     {row.map((cell, ci) => (
                       <td
                         key={ci}
                         className={cn(
-                          "px-3.5 py-2.5 sm:py-3 align-top text-foreground font-medium border-r border-border/40 last:border-r-0 leading-snug text-xs sm:text-sm !h-auto",
-                          colWidths[ci % colWidths.length]
+                          "px-4 py-3 align-top text-foreground font-medium border-r border-border/40 last:border-r-0 leading-relaxed text-xs sm:text-sm break-words h-auto min-h-0",
+                          getColWidth(ci)
                         )}
+                        style={{ height: "auto", minHeight: "0px" }}
                       >
                         {renderFormattedText(cell)}
                       </td>

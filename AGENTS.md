@@ -50,3 +50,8 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - **Mandatory `nextArticle` Field**: Always set the `nextArticle: { title, titleEn, href }` field pointing to the next logically related article so the interactive "और पढ़ें / Read More" card automatically renders at the bottom.
 - **Bi-Directional Cross-Linking**: Whenever publishing a new article, update existing related articles or static GK notes to add a back-link pointing to the newly created article.
 
+# Mandatory Table Formatting & Text Sanitization Standard
+- **Clean Table Layout**: All tables in articles MUST render using rounded container cards with dark navy caption bar (`#0f4461`), ocean blue table headers (`#20698f`), top-aligned cells (`align-top`), dynamic column width ratios, and zero vertical height stretching (`height: auto !important`).
+- **Automatic Watermark Sanitization**: ALL text passed into Sanity CMS or rendered in articles MUST automatically strip invisible zero-width unicode characters (`/[\u200B-\u200D\u200E\u200F\u202A-\u202E\u2060-\u206F\uFEFF\u00AD]/g`) to prevent line-wrap height distortion bugs.
+
+

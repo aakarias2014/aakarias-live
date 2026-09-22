@@ -217,20 +217,29 @@
   .prose-aakar blockquote p {
     @apply mb-0 text-primary/90 font-medium not-italic;
   }
-  .prose-aakar table {
-    width: 100%;
-    height: auto !important;
-    max-height: max-content !important;
-    border-collapse: collapse;
-    margin-bottom: 1.5rem;
-  }
-  .prose-aakar tbody,
+  /* ─── Table Layout & Height Normalization ─── */
+  .prose-aakar table,
   .prose-aakar thead,
+  .prose-aakar tbody,
   .prose-aakar tr,
-  .prose-aakar td,
-  .prose-aakar th {
+  .prose-aakar th,
+  .prose-aakar td {
     height: auto !important;
-    max-height: max-content !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    flex: none !important;
+    flex-grow: 0 !important;
+  }
+  .prose-aakar table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-top: 1rem !important;
+    margin-bottom: 1.5rem !important;
+    table-layout: auto !important;
+  }
+  .prose-aakar th,
+  .prose-aakar td {
+    vertical-align: top !important;
   }
   .prose-aakar h4 {
     margin-top: 1.75rem;
