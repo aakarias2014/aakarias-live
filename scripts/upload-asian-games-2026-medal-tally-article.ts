@@ -1,7 +1,6 @@
 import { createClient } from "@sanity/client";
 import dotenv from "dotenv";
 import path from "path";
-import fs from "fs";
 
 dotenv.config({ path: path.resolve(process.cwd(), ".env.local") });
 
@@ -118,89 +117,128 @@ async function main() {
     slug: { _type: "slug", current: "upsc" },
   });
 
-  // Use the custom banner image asset ID created previously
   const customBannerAssetRef = "image-3cd35bfdbe79aa7dc4800a3ae54aea0ce422683b-1024x405-png";
 
   const featuredImageObj = {
     _type: "image",
     asset: { _type: "reference", _ref: customBannerAssetRef },
-    alt: "Asian Games 2026 Medal Tally: Complete Table and Full List of Indian Winners | एशियन गेम्स 2026 भारत पदक तालिका",
-    caption: "चित्र: आइची-नागोया, जापान में आयोजित एशियन गेम्स 2026 में 10 मीटर एयर राइफल और महिला क्रिकेट में भारत का ऐतिहासिक स्वर्णिम प्रदर्शन।",
+    alt: "Asian Games 2026 Medal Tally: 19 Medals (2 Gold, 8 Silver, 9 Bronze) | एशियन गेम्स 2026 भारत पदकों की पूरी सूची",
+    caption: "चित्र: आइची-नागोया, जापान में आयोजित एशियन गेम्स 2026 में भारत की 19 पदकों की तालिका (2 स्वर्ण, 8 रजत, 9 कांस्य)।",
   };
 
-  // Section 0: Why in News & Complete Medal Tally Overview
+  // Section 0: Overview & Complete Medal Tally Tables
   const sec0MedalTallyOverview = {
     _key: "sec-0-medal-tally-overview",
     kind: "whyInNews",
-    title: "एशियन गेम्स 2026 पदक तालिका: भारत के कुल पदक एवं विजेताओं की पूरी सूची (Asian Games 2026 Medal Tally India)",
-    titleEn: "Asian Games 2026 Medal Tally: Complete Table & Full List of Indian Winners",
+    title: "एशियन गेम्स 2026 पदक तालिका: भारत ने जीते 19 पदक (2 स्वर्ण, 8 रजत, 9 कांस्य)",
+    titleEn: "Asian Games 2026 Medal Tally: India Wins 19 Medals (2 Gold, 8 Silver, 9 Bronze)",
     body: [
       ...createBlocks([
         "### एशियन गेम्स 2026 (आइची-नागोया) में भारत का शानदार प्रदर्शन",
-        "• **एशियन गेम्स 2026 पदक तालिका में भारत**: आइची-नागोया, जापान में आयोजित 20वें एशियन गेम्स (**20th Asian Games 2026**) में भारतीय एथलीटों ने उत्कृष्ट प्रदर्शन करते हुए **7 पदक (1 स्वर्ण, 4 रजत, 2 कांस्य)** अपने नाम कर लिए हैं।",
-        "• **महिला क्रिकेट में पहला स्वर्ण पदक (First Gold)**: कप्तान हरमनप्रीत कौर के नेतृत्व में भारतीय महिला क्रिकेट टीम ने फाइनल में उत्कृष्ट खेल दिखाते हुए भारत को एशियन गेम्स 2026 का **पहला स्वर्ण पदक (Gold Medal 🥇)** दिलाया।",
-        "• **निशानेबाजी (Shooting) में 5 पदकों का दबदबा**: 10 मीटर एयर राइफल स्पर्धाओं में भारतीय निशानेबाज़ों ने 4 रजत (Silver) और 1 कांस्य (Bronze) पदक जीतकर पदकों का अंबार लगा दिया।",
-        "• **मिक्स्ड मार्शल आर्ट्स (MMA/Wushu) में इतिहास**: सुचिका तरियाल ने महिला पारंपरिक स्पर्धा में ऐतिहासिक **कांस्य पदक (Bronze Medal 🥉)** जीता।",
-        "• **MPPSC परीक्षा संदर्भ**: प्रतियोगी परीक्षाओं की तैयारी हेतु [MPPSC खेलकूद एवं समसामयिकी नोट्स](/mppsc-current-affairs) और [MPPSC मुख्य परीक्षा पाठ्यक्रम](/mppsc/mains-syllabus) अवश्य देखें।"
+        "• **एशियन गेम्स 2026 पदक तालिका (19 Medals)**: आइची-नागोया, जापान में आयोजित 20वें एशियन गेम्स (**20th Asian Games 2026**) में भारतीय खिलाड़ियों ने उत्कृष्ट प्रदर्शन जारी रखते हुए अब तक **2 स्वर्ण, 8 रजत और 9 कांस्य सहित कुल 19 पदक** हासिल कर लिए हैं।",
+        "• **क्रिकेट में स्वर्ण (Gold Medal 🥇)**: भारतीय महिला क्रिकेट टीम (कप्तान हरमनप्रीत कौर) ने टी-20 स्पर्धा में ऐतिहासिक स्वर्ण पदक जीता।",
+        "• **शूटिंग में स्वर्ण व पदकों की बौछार (Gold & Medals in Shooting)**: सुरुचि और कमलजीत ने शूटिंग में स्वर्ण पदक जीता। इसके अतिरिक्त एलावेनिल वलारिवन, सोनम उत्तम मस्कर, रुद्राक्ष पाटिल, हिमांशु ढिल्लों, ऐश्वर्य प्रताप सिंह तोमर और नीरज कुमार ने विभिन्न राइफल व पिस्तौल स्पर्धाओं में रजत व कांस्य पदक हासिल किए।",
+        "• **वुशू (Wushu Silver 🥈)**: नाओरेम रोशिबिना देवी ने सांडा 60 किग्रा वर्ग में शानदार रजत पदक हासिल किया।",
+        "• **रोइंग (Rowing Bronze 🥉)**: सतनाम सिंह और सलमान खान ने पुरुषों के डबल स्कल्स (Double Sculls) में कांस्य पदक जीता।",
+        "• **एथलेटिक्स (Athletics Bronze 🥉)**: सीमा कुमारी ने महिलाओं की 10,000 मीटर दौड़ में कांस्य पदक प्राप्त किया।",
+        "• **मिक्स्ड मार्शल आर्ट्स (MMA Bronze 🥉)**: सुचिका तरियाल ने ट्रेडिशनल -60 किग्रा वर्ग में ऐतिहासिक कांस्य पदक जीता।",
+        "• **MPPSC परीक्षा संदर्भ**: प्रतियोगी परीक्षाओं हेतु [MPPSC खेलकूद एवं समसामयिकी नोट्स](/mppsc-current-affairs) और [MPPSC मुख्य परीक्षा पाठ्यक्रम](/mppsc/mains-syllabus) का नियमित अभ्यास करें।"
       ]),
       createTable(
-        "table-indian-medallists-2026-hi",
-        "एशियन गेम्स 2026: भारतीय पदक विजेताओं की पूरी सूची (Indian Medallists at 2026 Asian Games)",
-        ["क्र.सं. (No.)", "खिलाड़ी / टीम (Athlete / Team)", "खेल (Sport)", "स्पर्धा (Event)", "पदक (Medal)"],
+        "table-overall-medal-tally-2026-hi",
+        "भारत की पदक तालिका (Asian Games 2026 India Medal Tally)",
+        ["पदक का प्रकार (Medal Category)", "कुल संख्या (Total Count)"],
         [
-          ["1", "एलावेनिल वालारिवन, सोनम मस्कर, विदार्सा विनोद", "निशानेबाजी (Shooting)", "महिला 10m एयर राइफल टीम", "सिल्वर (Silver 🥈)"],
-          ["2", "एलावेनिल वालारिवन (Elavenil Valarivan)", "निशानेबाजी (Shooting)", "महिला 10m एयर राइफल व्यक्तिगत", "सिल्वर (Silver 🥈)"],
-          ["3", "रुद्राक्ष पाटिल, पार्थ माने, हिमांशु ढिल्लों", "निशानेबाजी (Shooting)", "पुरुष 10m एयर राइफल टीम (1890.1 अंक)", "सिल्वर (Silver 🥈)"],
-          ["4", "हिमांशु ढिल्लों (Himanshu Dhillon)", "निशानेबाजी (Shooting)", "पुरुष 10m एयर राइफल व्यक्तिगत", "सिल्वर (Silver 🥈)"],
-          ["5", "रुद्राक्ष पाटिल (Rudrankksh Patil)", "निशानेबाजी (Shooting)", "पुरुष 10m एयर राइफल व्यक्तिगत", "कांस्य (Bronze 🥉)"],
-          ["6", "सुचिका तरियाल (Suchika Tariyal)", "मिक्स्ड मार्शल आर्ट्स (MMA)", "महिला पारंपरिक स्पर्धा", "कांस्य (Bronze 🥉)"],
-          ["7", "भारतीय महिला क्रिकेट टीम (Team India)", "क्रिकेट (Cricket)", "महिला टी-20 स्पर्धा", "स्वर्ण (Gold 🥇)"]
+          ["स्वर्ण (Gold 🥇)", "2"],
+          ["रजत (Silver 🥈)", "8"],
+          ["कांस्य (Bronze 🥉)", "9"],
+          ["**कुल योग (Total Medals)**", "**19**"]
         ]
       ),
       createTable(
         "table-sports-tally-2026-hi",
-        "एशियन गेम्स 2026: भारत की खेल-वार पदक तालिका (India's Asian Games 2026 Medal Table by Sport)",
-        ["खेल (Sport)", "गोल्ड (Gold 🥇)", "सिल्वर (Silver 🥈)", "ब्रॉन्ज (Bronze 🥉)", "कुल (Total)"],
+        "एशियन गेम्स 2026: खेल-वार पदक तालिका (Sport-wise Medal Tally)",
+        ["खेल (Sport)", "स्वर्ण (Gold 🥇)", "रजत (Silver 🥈)", "कांस्य (Bronze 🥉)", "कुल (Total)"],
         [
-          ["निशानेबाजी (Shooting)", "0", "4", "1", "5"],
-          ["मिक्स्ड मार्शल आर्ट्स (MMA / Wushu)", "0", "0", "1", "1"],
           ["क्रिकेट (Cricket)", "1", "0", "0", "1"],
-          ["**कुल योग (TOTAL)**", "**1**", "**4**", "**2**", "**7**"]
+          ["निशानेबाजी (Shooting)", "1", "7", "6", "14"],
+          ["वुशू (Wushu)", "0", "1", "0", "1"],
+          ["रोइंग (Rowing)", "0", "0", "1", "1"],
+          ["एथलेटिक्स (Athletics)", "0", "0", "1", "1"],
+          ["मिक्स्ड मार्शल आर्ट्स (MMA)", "0", "0", "1", "1"],
+          ["**कुल योग (TOTAL)**", "**2**", "**8**", "**9**", "**19**"]
+        ]
+      ),
+      createTable(
+        "table-indian-medallists-2026-hi",
+        "प्रमुख पदक विजेता और खेल (Major Indian Medallists & Sports List)",
+        ["क्र.सं. (No.)", "खिलाड़ी / टीम (Athlete / Team)", "खेल (Sport)", "स्पर्धा / श्रेणी (Event)", "पदक (Medal)"],
+        [
+          ["1", "भारतीय महिला क्रिकेट टीम (Team India)", "क्रिकेट (Cricket)", "महिला टी-20 स्पर्धा", "स्वर्ण (Gold 🥇)"],
+          ["2", "सुरुचि और कमलजीत (Suruchi & Kamaljeet)", "निशानेबाजी (Shooting)", "राइफल टीम स्पर्धा", "स्वर्ण (Gold 🥇)"],
+          ["3", "नाओरेम रोशिबिना देवी (Roshibina Devi)", "वुशू (Wushu)", "सांडा 60 किग्रा वर्ग", "रजत (Silver 🥈)"],
+          ["4", "एलावेनिल वलारिवन (Elavenil Valarivan)", "निशानेबाजी (Shooting)", "महिला 10m एयर राइफल व्यक्तिगत व टीम", "रजत (Silver 🥈)"],
+          ["5", "सोनम उत्तम मस्कर (Sonam Uttam Maskar)", "निशानेबाजी (Shooting)", "महिला 10m एयर राइफल टीम", "रजत (Silver 🥈)"],
+          ["6", "हिमांशु ढिल्लों (Himanshu Dhillon)", "निशानेबाजी (Shooting)", "पुरुष 10m एयर राइफल व्यक्तिगत व टीम", "रजत (Silver 🥈)"],
+          ["7", "ऐश्वर्य प्रताप सिंह तोमर (Aishwary Tomar)", "निशानेबाजी (Shooting)", "पुरुष राइफल 3-पोजीशन स्पर्धा", "रजत (Silver 🥈)"],
+          ["8", "नीरज कुमार (Neeraj Kumar)", "निशानेबाजी (Shooting)", "राइफल स्पर्धा", "रजत (Silver 🥈)"],
+          ["9", "रुद्राक्ष पाटिल (Rudrankksh Patil)", "निशानेबाजी (Shooting)", "पुरुष 10m एयर राइफल व्यक्तिगत व टीम", "कांस्य (Bronze 🥉)"],
+          ["10", "सतनाम सिंह और सलमान खान (Satnam & Salman)", "रोइंग (Rowing)", "पुरुषों के डबल स्कल्स स्पर्धा", "कांस्य (Bronze 🥉)"],
+          ["11", "सीमा कुमारी (Seema Kumari)", "एथलेटिक्स (Athletics)", "महिलाओं की 10,000 मीटर दौड़", "कांस्य (Bronze 🥉)"],
+          ["12", "सुचिका तरियाल (Suchika Tariyal)", "मिक्स्ड मार्शल आर्ट्स (MMA)", "ट्रेडिशनल -60 किग्रा वर्ग", "कांस्य (Bronze 🥉)"]
         ]
       )
     ],
     bodyEn: [
       ...createBlocks([
-        "### Asian Games 2026: India's Medal Tally Overview",
-        "• **Stellar Medal Tally**: At the **20th Asian Games 2026** in Aichi-Nagoya, Japan, Team India has accumulated **7 medals (1 Gold, 4 Silver, 2 Bronze)**.",
-        "• **Historic Gold in Women's Cricket**: Captain Harmanpreet Kaur led the Indian Women's Cricket Team to India's first **Gold Medal** of the Games.",
-        "• **Shooting Dominance (5 Medals)**: India's 10m Air Rifle squad bagged 4 Silver and 1 Bronze medals across team and individual events.",
-        "• **Martial Arts Milestone**: Suchika Tariyal secured a **Bronze Medal** in Women's Traditional Mixed Martial Arts.",
+        "### Asian Games 2026: India's Updated Medal Tally (19 Medals)",
+        "• **Stellar Tally**: At the **20th Asian Games 2026** in Aichi-Nagoya, Japan, Team India has accumulated **19 medals (2 Gold, 8 Silver, 9 Bronze)**.",
+        "• **Two Gold Medals**: Won by Indian Women's Cricket Team and Shooters Suruchi & Kamaljeet.",
+        "• **Multi-Sport Success**: Medals earned across Cricket, Shooting, Wushu, Rowing, Athletics, and Mixed Martial Arts.",
         "• **Exam Cross Reference**: For comprehensive exam preparation, check out our [MPPSC Current Affairs Hub](/mppsc-current-affairs) and [MPPSC Prelims Syllabus](/mppsc/prelims-syllabus)."
       ]),
       createTable(
-        "table-indian-medallists-2026-en",
-        "Indian Medallists at 2026 Asian Games (Full Winners List)",
-        ["No.", "Athlete / Team", "Sport", "Event", "Medal"],
+        "table-overall-medal-tally-2026-en",
+        "India's Medal Tally at Asian Games 2026",
+        ["Medal Category", "Total Count"],
         [
-          ["1", "Elavenil Valarivan, Sonam Maskar, Vidarsa Vinod", "Shooting", "Women's 10m Air Rifle Team", "Silver 🥈"],
-          ["2", "Elavenil Valarivan", "Shooting", "Women's 10m Air Rifle Individual", "Silver 🥈"],
-          ["3", "Rudrankksh Patil, Parth Mane, Himanshu Dhillon", "Shooting", "Men's 10m Air Rifle Team (1890.1 pts)", "Silver 🥈"],
-          ["4", "Himanshu Dhillon", "Shooting", "Men's 10m Air Rifle Individual", "Silver 🥈"],
-          ["5", "Rudrankksh Patil", "Shooting", "Men's 10m Air Rifle Individual", "Bronze 🥉"],
-          ["6", "Suchika Tariyal", "Mixed Martial Arts", "Women's Traditional Event", "Bronze 🥉"],
-          ["7", "Team India", "Cricket", "Women's T20 Tournament", "Gold 🥇"]
+          ["Gold 🥇", "2"],
+          ["Silver 🥈", "8"],
+          ["Bronze 🥉", "9"],
+          ["**TOTAL MEDALS**", "**19**"]
         ]
       ),
       createTable(
         "table-sports-tally-2026-en",
-        "India's Asian Games 2026 Medal Tally by Each Sport",
+        "India's Asian Games 2026 Medal Tally by Sport",
         ["Sport", "Gold 🥇", "Silver 🥈", "Bronze 🥉", "Total"],
         [
-          ["Shooting", "0", "4", "1", "5"],
-          ["Mixed Martial Arts", "0", "0", "1", "1"],
           ["Cricket", "1", "0", "0", "1"],
-          ["**TOTAL**", "**1**", "**4**", "**2**", "**7**"]
+          ["Shooting", "1", "7", "6", "14"],
+          ["Wushu", "0", "1", "0", "1"],
+          ["Rowing", "0", "0", "1", "1"],
+          ["Athletics", "0", "0", "1", "1"],
+          ["Mixed Martial Arts", "0", "0", "1", "1"],
+          ["**TOTAL**", "**2**", "**8**", "**9**", "**19**"]
+        ]
+      ),
+      createTable(
+        "table-indian-medallists-2026-en",
+        "Major Indian Medallists & Sports at Asian Games 2026",
+        ["No.", "Athlete / Team", "Sport", "Event", "Medal"],
+        [
+          ["1", "Team India Women's Cricket", "Cricket", "Women's T20 Tournament", "Gold 🥇"],
+          ["2", "Suruchi & Kamaljeet", "Shooting", "Rifle Team Event", "Gold 🥇"],
+          ["3", "Naorem Roshibina Devi", "Wushu", "Sanda 60kg Category", "Silver 🥈"],
+          ["4", "Elavenil Valarivan", "Shooting", "Women's 10m Air Rifle Individual & Team", "Silver 🥈"],
+          ["5", "Sonam Uttam Maskar", "Shooting", "Women's 10m Air Rifle Team", "Silver 🥈"],
+          ["6", "Himanshu Dhillon", "Shooting", "Men's 10m Air Rifle Individual & Team", "Silver 🥈"],
+          ["7", "Aishwary Pratap Singh Tomar", "Shooting", "Men's Rifle 3-Position", "Silver 🥈"],
+          ["8", "Neeraj Kumar", "Shooting", "Men's Rifle Event", "Silver 🥈"],
+          ["9", "Rudrankksh Patil", "Shooting", "Men's 10m Air Rifle Individual & Team", "Bronze 🥉"],
+          ["10", "Satnam Singh & Salman Khan", "Rowing", "Men's Double Sculls", "Bronze 🥉"],
+          ["11", "Seema Kumari", "Athletics", "Women's 10,000m Race", "Bronze 🥉"],
+          ["12", "Suchika Tariyal", "Mixed Martial Arts", "Traditional -60kg Category", "Bronze 🥉"]
         ]
       )
     ]
@@ -210,35 +248,41 @@ async function main() {
   const sec1DisciplineAnalysis = {
     _key: "sec-1-discipline-analysis",
     kind: "background",
-    title: "विभिन्न खेल स्पर्धाओं में भारत का प्रदर्शन: क्रिकेट, निशानेबाजी एवं मार्शल आर्ट्स",
-    titleEn: "Discipline-wise Breakdown: Cricket, Shooting & Mixed Martial Arts",
+    title: "विभिन्न खेल स्पर्धाओं में भारत की उपलब्धियाँ: क्रिकेट, शूटिंग, वुशू, रोइंग, एथलेटिक्स व MMA",
+    titleEn: "Discipline-wise Breakdown: Cricket, Shooting, Wushu, Rowing, Athletics & MMA",
     body: [
       ...createBlocks([
-        "### 1. महिला क्रिकेट (Women's Cricket) — भारत का पहला गोल्ड",
-        "• **ऐतिहासिक जीत**: भारतीय महिला क्रिकेट टीम ने एशियन गेम्स 2026 के फाइनल में असाधारण प्रदर्शन करते हुए **गोल्ड मेडल** जीता।",
-        "• **कप्तान का योगदान**: कप्तान **हरमनप्रीत कौर** के नेतृत्व में टीम इंडिया ने फाइनल मुकाबले में विरोधी टीम को पराजित कर भारत का स्वर्ण खाता खोला।",
-        "### 2. पुरुषों की 10 मीटर एयर राइफल (Men's 10m Air Rifle)",
-        "• **टीम सिल्वर (1890.1 अंक)**: हिमांशु ढिल्लों, रुद्राक्ष पाटिल और पार्थ माने की भारतीय त्रयी ने 1890.1 अंक जुटाकर सिल्वर मेडल जीता (चीन 1899.0 गोल्ड)।",
-        "• **व्यक्तिगत स्पर्धा**: हिमांशु ढिल्लों ने अपने डेब्यू गेम्स में **सिल्वर मेडल** तथा 2022 वर्ल्ड चैंपियन रुद्राक्ष पाटिल ने **कांस्य पदक** हासिल किया।",
-        "### 3. महिलाओं की 10 मीटर एयर राइफल (Women's 10m Air Rifle)",
-        "• **टीम सिल्वर**: एलावेनिल वालारिवन, सोनम मस्कर और विदार्सा विनोद ने महिलाओं की 10m एयर राइफल टीम स्पर्धा में **रजत पदक** जीता।",
-        "• **व्यक्तिगत सिल्वर**: एलावेनिल वालारिवन ने व्यक्तिगत फाइनल में निरंतरता का परिचय देते हुए **सिल्वर मेडल** हासिल किया।",
-        "### 4. मिक्स्ड मार्शल आर्ट्स (MMA/Wushu)",
-        "• **सुचिका तरियाल का कांस्य**: सुचिका तरियाल ने महिला पारंपरिक स्पर्धा में कांस्य पदक जीतकर मार्शल आर्ट्स में भारत का परचम लहराया।",
-        "• **ऑनलाइन कोर्स संदर्भ**: अधिक खेल नोट्स के लिए हमारे [Aakar IAS ऑनलाइन कोचिंग पाठ्यक्रम](/online-courses) से जुड़ें।"
+        "### 1. महिला क्रिकेट (Women's Cricket) — पहला स्वर्ण पदक",
+        "• **ऐतिहासिक स्वर्णिम प्रदर्शन**: कप्तान **हरमनप्रीत कौर** की कप्तानी में भारतीय महिला क्रिकेट टीम ने फाइनल में उत्कृष्ट प्रदर्शन करते हुए भारत के लिए **पहला स्वर्ण पदक (Gold Medal 🥇)** जीता।",
+        "### 2. निशानेबाजी (Shooting) — सुरुचि व कमलजीत का गोल्ड और 13 अन्य पदक",
+        "• **स्वर्ण पदक**: सुरुचि और कमलजीत ने शूटिंग में शानदार एकाग्रता का परिचय देते हुए भारत को **दूसरा स्वर्ण पदक** दिलाया।",
+        "• **रजत व कांस्य पदक विजेता**: एलावेनिल वलारिवन, सोनम उत्तम मस्कर, रुद्राक्ष पाटिल, हिमांशु ढिल्लों (1890.1 टीम स्कोर), ऐश्वर्य प्रताप सिंह तोमर तथा नीरज कुमार ने विभिन्न स्पर्धाओं में पदक जीते।",
+        "### 3. वुशू (Wushu) — रोशिबिना देवी का रजत पदक",
+        "• **सांडा 60 किग्रा वर्ग**: नाओरेम रोशिबिना देवी ने लगातार दूसरे एशियन गेम्स में पदक जीतते हुए **रजत पदक (Silver Medal 🥈)** अपने नाम किया।",
+        "### 4. रोइंग (Rowing) — डबल स्कल्स में कांस्य",
+        "• **सतनाम सिंह व सलमान खान**: पुरुषों की डबल स्कल्स स्पर्धा में सतनाम सिंह और सलमान खान की जोड़ी ने **कांस्य पदक (Bronze Medal 🥉)** जीता।",
+        "### 5. एथलेटिक्स (Athletics) — सीमा कुमारी का कांस्य",
+        "• **10,000 मीटर दौड़**: सीमा कुमारी ने महिलाओं की 10,000 मीटर दौड़ में बेहतरीन गति दिखाते हुए **कांस्य पदक** हासिल किया।",
+        "### 6. मिक्स्ड मार्शल आर्ट्स (MMA)",
+        "• **सुचिका तरियाल**: सुचिका तरियाल ने ट्रेडिशनल -60 किग्रा वर्ग में ऐतिहासिक **कांस्य पदक (Bronze Medal 🥉)** जीता।",
+        "• **ऑनलाइन कोर्स संदर्भ**: विस्तृत नोट्स के लिए हमारे [Aakar IAS ऑनलाइन कोचिंग पाठ्यक्रम](/online-courses) से जुड़ें।"
       ])
     ],
     bodyEn: [
       ...createBlocks([
-        "### 1. Women's Cricket — India's First Gold Medal",
-        "• **Historic Triumph**: Led by captain **Harmanpreet Kaur**, Team India clinched the Gold Medal in Women's Cricket.",
-        "### 2. Men's 10m Air Rifle Shooting",
-        "• **Team Silver (1890.1 pts)**: Himanshu Dhillon, Rudrankksh Patil, and Parth Mane won Team Silver.",
-        "• **Individual Double Medal**: Debutant Himanshu Dhillon bagged Silver, while 2022 World Champion Rudrankksh Patil won Bronze.",
-        "### 3. Women's 10m Air Rifle Shooting",
-        "• **Double Silver**: Elavenil Valarivan won Individual Silver and led the team (with Sonam Maskar & Vidarsa Vinod) to Team Silver.",
-        "### 4. Mixed Martial Arts (MMA)",
-        "• **Suchika Tariyal's Bronze**: Won Bronze in Women's Traditional Event."
+        "### 1. Women's Cricket — First Gold Medal",
+        "• **Gold Triumph**: Led by captain Harmanpreet Kaur, India won Gold in Women's Cricket.",
+        "### 2. Shooting — Gold by Suruchi & Kamaljeet",
+        "• **Gold Medal**: Suruchi & Kamaljeet secured Gold in Shooting.",
+        "• **Multi-Medal Squad**: Elavenil Valarivan, Sonam Uttam Maskar, Rudrankksh Patil, Himanshu Dhillon, Aishwary Tomar, and Neeraj Kumar bagged Silver and Bronze medals.",
+        "### 3. Wushu — Roshibina Devi's Silver",
+        "• **Silver Medal**: Naorem Roshibina Devi won Silver in Sanda 60kg class.",
+        "### 4. Rowing — Satnam Singh & Salman Khan",
+        "• **Bronze Medal**: Won Bronze in Men's Double Sculls.",
+        "### 5. Athletics — Seema Kumari",
+        "• **Bronze Medal**: Seema Kumari won Bronze in Women's 10,000m race.",
+        "### 6. Mixed Martial Arts (MMA)",
+        "• **Suchika Tariyal**: Won Bronze in Traditional -60kg event."
       ])
     ]
   };
@@ -253,14 +297,14 @@ async function main() {
       ...createBlocks([
         "### एशियन गेम्स (Asian Games) का अवलोकन",
         "• **परिभाषा व संचालन**: एशियन गेम्स एशियाई महाद्वीप की सबसे बड़ी बहु-खेल प्रतियोगिता है, जिसका आयोजन **ओलंपिक काउंसिल ऑफ एशिया (OCA)** द्वारा प्रत्येक 4 वर्ष में किया जाता है।",
-        "• **प्रथम एशियन गेम्स (1951 नई दिल्ली)**: पहले एशियन गेम्स का आयोजन वर्ष 1951 में **नई दिल्ली, भारत** में हुआ था (11 प्रतिभागी देश)।",
+        "• **प्रथम एशियन गेम्स (1951 नई दिल्ली)**: पहले एशियन गेम्स का आयोजन वर्ष 1951 में **नई दिल्ली, भारत** में हुआ था।",
         "• **भारत की दूसरी मेजबानी**: भारत ने वर्ष **1982 (9वें एशियन गेम्स)** में पुनः नई दिल्ली में मेजबानी की थी।",
         "### एशियन गेम्स मेज़बान शहरों की सूची (Host Cities Timeline)",
-        "• **2023 (19वाँ संस्करण)**: हांगझोऊ, चीन (Hangzhou, China) — भारत ने रिकॉर्ड 107 पदक जीते।",
-        "• **2026 (20वाँ संस्करण)**: आइची-नागोया, जापान (Aichi-Nagoya, Japan)।",
+        "• **2023 (19वाँ संस्करण)**: हांगझोऊ, चीन (Hangzhou, China) — भारत ने 107 पदक जीते थे।",
+        "• **2026 (20वाँ संस्करण)**: आइची-नागोया, जापान (Aichi-Nagoya, Japan) — वर्तमान में भारत के 19 पदक हैं।",
         "• **2030 (21वाँ संस्करण)**: दोहा, कतर (Doha, Qatar)।",
         "• **2034 (22वाँ संस्करण)**: रियाद, सऊदी अरब (Riyadh, Saudi Arabia)।",
-        "• **संबंधित पृष्ठ**: हमारे [सामान्य ज्ञान एवं खेलकूद हब](/general-awareness) पर विस्तृत इतिहास उपलब्ध है।"
+        "• **संबंधित पृष्ठ**: हमारे [सामान्य ज्ञान एवं खेलकूद हब](/general-awareness) पर विस्तृत जानकारी उपलब्ध है।"
       ]),
       createTable(
         "table-asian-games-hosts-hi",
@@ -268,9 +312,9 @@ async function main() {
         ["वर्ष (Year)", "संस्करण (Edition)", "मेज़बान शहर व देश (Host City & Country)", "महत्वपूर्ण तथ्य (Key Highlight)"],
         [
           ["1951", "1st Asian Games", "नई दिल्ली, भारत (New Delhi, India)", "प्रथम एशियन गेम्स (11 प्रतिभागी देश)"],
-          ["1982", "9th Asian Games", "नई दिल्ली, भारत (New Delhi, India)", "भारत में दूसरी बार आयोजन (अपोलो शुभंकर)"],
-          ["2023", "19th Asian Games", "हांगझोऊ, चीन (Hangzhou, China)", "भारत का रिकॉर्ड 107 पदकों का सर्वश्रेष्ठ प्रदर्शन"],
-          ["2026", "20th Asian Games", "आइची-नागोया, जापान (Aichi-Nagoya, Japan)", "भारत ने 7 पदक जीते (1 गोल्ड, 4 सिल्वर, 2 ब्रॉन्ज)"],
+          ["1982", "9th Asian Games", "नई दिल्ली, भारत (New Delhi, India)", "भारत में दूसरी बार आयोजन"],
+          ["2023", "19th Asian Games", "हांगझोऊ, चीन (Hangzhou, China)", "भारत का रिकॉर्ड 107 पदकों का प्रदर्शन"],
+          ["2026", "20th Asian Games", "आइची-नागोया, जापान (Aichi-Nagoya, Japan)", "भारत के 19 पदक (2 स्वर्ण, 8 रजत, 9 कांस्य)"],
           ["2030", "21st Asian Games", "दोहा, कतर (Doha, Qatar)", "पश्चिम एशिया में आयोजन"],
           ["2034", "22nd Asian Games", "रियाद, सऊदी अरब (Riyadh, Saudi Arabia)", "सऊदी अरब में पहला आयोजन"]
         ]
@@ -295,21 +339,23 @@ async function main() {
     body: [
       ...createBlocks([
         "### MPPSC प्रारंभिक परीक्षा (Unit 8: खेलकूद व समसामयिकी) क्विक पॉइंटर्स",
-        "• **प्रश्‍न**: एशियन गेम्स 2026 में भारत का पहला गोल्ड किस खेल में आया? — **उत्तर**: महिला क्रिकेट (कप्तान: हरमनप्रीत कौर)।",
-        "• **प्रश्‍न**: एशियन गेम्स 2026 में भारत ने कुल कितने पदक जीते हैं? — **उत्तर**: 7 पदक (1 स्वर्ण, 4 रजत, 2 कांस्य)।",
-        "• **प्रश्‍न**: पुरुषों की 10 मीटर एयर राइफल टीम का स्कोर कितना था? — **उत्तर**: 1890.1 अंक (सिल्वर मेडल)।",
-        "• **प्रश्‍न**: महिलाओं की 10m एयर राइफल व्यक्तिगत स्पर्धा में किसने सिल्वर जीता? — **उत्तर**: एलावेनिल वालारिवन।",
-        "• **प्रश्‍न**: मिक्स्ड मार्शल आर्ट्स में कांस्य पदक विजेता भारतीय कौन हैं? — **उत्तर**: सुचिका तरियाल।",
-        "• **प्रश्‍न**: प्रथम एशियाई खेलों (1951) का आयोजन कहाँ हुआ था? — **उत्तर**: नई दिल्ली, भारत।"
+        "• **प्रश्‍न**: एशियन गेम्स 2026 में भारत ने अब तक कुल कितने पदक जीते हैं? — **उत्तर**: 19 पदक (2 स्वर्ण, 8 रजत, 9 कांस्य)।",
+        "• **प्रश्‍न**: शूटिंग में भारत को स्वर्ण पदक किसने दिलाया? — **उत्तर**: सुरुचि और कमलजीत की जोड़ी ने।",
+        "• **प्रश्‍न**: क्रिकेट में स्वर्ण पदक किस टीम ने जीता? — **उत्तर**: भारतीय महिला क्रिकेट टीम (कप्तान: हरमनप्रीत कौर)।",
+        "• **प्रश्‍न**: वुशू में सांडा 60 किग्रा वर्ग में रजत पदक किसने जीता? — **उत्तर**: नाओरेम रोशिबिना देवी।",
+        "• **प्रश्‍न**: रोइंग में पुरुषों की डबल स्कल्स स्पर्धा में कांस्य पदक विजेता कौन हैं? — **उत्तर**: सतनाम सिंह और सलमान खान।",
+        "• **प्रश्‍न**: महिलाओं की 10,000 मीटर दौड़ में कांस्य पदक किसने जीता? — **उत्तर**: सीमा कुमारी।",
+        "• **प्रश्‍न**: मिक्स्ड मार्शल आर्ट्स (MMA) में कांस्य पदक विजेता कौन हैं? — **उत्तर**: सुचिका तरियाल।"
       ])
     ],
     bodyEn: [
       ...createBlocks([
         "### Key Revision Points for Competitive Exams",
-        "• **First Gold 2026**: Women's Cricket (Harmanpreet Kaur).",
-        "• **Total Medals**: 7 Medals (1 Gold, 4 Silver, 2 Bronze).",
-        "• **Men's 10m Air Rifle Team Score**: 1890.1 points (Silver).",
-        "• **Women's 10m Air Rifle Silver**: Elavenil Valarivan.",
+        "• **Total Medals 2026**: 19 Medals (2 Gold, 8 Silver, 9 Bronze).",
+        "• **Gold Medals**: Indian Women's Cricket Team & Shooters Suruchi & Kamaljeet.",
+        "• **Wushu Silver**: Naorem Roshibina Devi (Sanda 60kg).",
+        "• **Rowing Bronze**: Satnam Singh & Salman Khan (Men's Double Sculls).",
+        "• **Athletics Bronze**: Seema Kumari (Women's 10,000m).",
         "• **MMA Bronze**: Suchika Tariyal."
       ])
     ]
@@ -318,148 +364,148 @@ async function main() {
   // 8 High-Quality Practice MCQs
   const mcqs = [
     {
-      question: "एशियन गेम्स 2026 में भारत ने अपना पहला स्वर्ण पदक (Gold Medal) किस खेल स्पर्धा में जीता?",
-      questionEn: "In which sport did India win its first Gold Medal at the Asian Games 2026?",
-      options: ["पुरुष 10 मीटर एयर राइफल", "महिला क्रिकेट", "मिक्स्ड मार्शल आर्ट्स", "बैडमिंटन"],
-      optionsEn: ["Men's 10m Air Rifle", "Women's Cricket", "Mixed Martial Arts", "Badminton"],
+      question: "एशियन गेम्स 2026 में भारत ने अब तक (अद्यतन तालिका अनुसार) कुल कितने पदक जीत लिए हैं?",
+      questionEn: "According to the updated medal tally, how many total medals has India won at Asian Games 2026 so far?",
+      options: ["15 पदक", "19 पदक (2 स्वर्ण, 8 रजत, 9 कांस्य)", "22 पदक", "25 पदक"],
+      optionsEn: ["15 Medals", "19 Medals (2 Gold, 8 Silver, 9 Bronze)", "22 Medals", "25 Medals"],
       correctIndex: 1,
-      explanation: "हरमनप्रीत कौर के नेतृत्व में भारतीय महिला क्रिकेट टीम ने एशियन गेम्स 2026 में भारत को पहला स्वर्ण पदक दिलाया।",
-      explanationEn: "The Indian Women's Cricket Team, led by Harmanpreet Kaur, won India's first Gold Medal at Asian Games 2026."
+      explanation: "भारत ने एशियन गेम्स 2026 में 2 स्वर्ण, 8 रजत और 9 कांस्य सहित कुल 19 पदक हासिल किए हैं।",
+      explanationEn: "India has won a total of 19 medals (2 Gold, 8 Silver, 9 Bronze) at the 2026 Asian Games."
     },
     {
-      question: "एशियन गेम्स 2026 में भारत ने अब तक कुल कितने पदक हासिल किए हैं?",
-      questionEn: "How many total medals has India won so far at the Asian Games 2026?",
-      options: ["5 पदक", "7 पदक (1 गोल्ड, 4 सिल्वर, 2 ब्रॉन्ज)", "10 पदक", "12 पदक"],
-      optionsEn: ["5 Medals", "7 Medals (1 Gold, 4 Silver, 2 Bronze)", "10 Medals", "12 Medals"],
+      question: "एशियन गेम्स 2026 में निशानेबाजी (Shooting) में भारत के लिए स्वर्ण पदक (Gold Medal) किसने जीता?",
+      questionEn: "Who won the Gold Medal for India in Shooting at the Asian Games 2026?",
+      options: ["एलावेनिल वलारिवन और मनु भाकर", "सुरुचि और कमलजीत", "रुद्राक्ष पाटिल और हिमांशु ढिल्लों", "ऐश्वर्य प्रताप सिंह तोमर"],
+      optionsEn: ["Elavenil Valarivan & Manu Bhaker", "Suruchi & Kamaljeet", "Rudrankksh Patil & Himanshu Dhillon", "Aishwary Pratap Singh Tomar"],
       correctIndex: 1,
-      explanation: "भारत ने एशियन गेम्स 2026 में कुल 7 पदक जीते हैं (1 गोल्ड महिला क्रिकेट में, 4 सिल्वर निशानेबाजी में, 1 ब्रॉन्ज निशानेबाजी में तथा 1 ब्रॉन्ज मार्शल आर्ट्स में)।",
-      explanationEn: "India has won a total of 7 medals (1 Gold, 4 Silver, 2 Bronze)."
+      explanation: "सुरुचि और कमलजीत ने निशानेबाजी स्पर्धा में उत्कृष्ट प्रदर्शन करते हुए भारत के लिए स्वर्ण पदक जीता।",
+      explanationEn: "Suruchi and Kamaljeet won the Gold Medal for India in Shooting."
     },
     {
-      question: "पुरुषों की 10 मीटर एयर राइफल टीम स्पर्धा में सिल्वर मेडल जीतने वाली भारतीय टीम का कुल स्कोर कितना था?",
-      questionEn: "What was the total score of the Indian team that won Silver in Men's 10m Air Rifle Team event at Asian Games 2026?",
-      options: ["1899.0 अंक", "1890.1 अंक", "1884.2 अंक", "1905.0 अंक"],
-      optionsEn: ["1899.0 points", "1890.1 points", "1884.2 points", "1905.0 points"],
-      correctIndex: 1,
-      explanation: "हिमांशु ढिल्लों, रुद्राक्ष पाटिल और पार्थ माने की टीम ने 1890.1 अंकों के साथ सिल्वर मेडल जीता।",
-      explanationEn: "The team of Himanshu Dhillon, Rudrankksh Patil, and Parth Mane scored 1890.1 points to win Silver."
-    },
-    {
-      question: "महिलाओं की 10 मीटर एयर राइफल व्यक्तिगत स्पर्धा में किस भारतीय निशानेबाज ने सिल्वर मेडल हासिल किया?",
-      questionEn: "Which Indian shooter bagged the Silver Medal in Women's 10m Air Rifle Individual at Asian Games 2026?",
-      options: ["एलावेनिल वालारिवन", "सोनम मस्कर", "विदार्सा विनोद", "मनु भाकर"],
-      optionsEn: ["Elavenil Valarivan", "Sonam Maskar", "Vidarsa Vinod", "Manu Bhaker"],
+      question: "एशियन गेम्स 2026 में वुशू (Wushu) की सांडा 60 किग्रा वर्ग स्पर्धा में किस भारतीय खिलाड़ी ने रजत पदक जीता?",
+      questionEn: "Which Indian athlete won the Silver Medal in Wushu (Sanda 60kg category) at Asian Games 2026?",
+      options: ["नाओरेम रोशिबिना देवी", "सुचिका तरियाल", "सीमा कुमारी", "लवलीना बोरगोहेन"],
+      optionsEn: ["Naorem Roshibina Devi", "Suchika Tariyal", "Seema Kumari", "Lovlina Borgohain"],
       correctIndex: 0,
-      explanation: "एलावेनिल वालारिवन (Elavenil Valarivan) ने महिलाओं की 10m एयर राइफल व्यक्तिगत स्पर्धा में सिल्वर मेडल जीता।",
-      explanationEn: "Elavenil Valarivan won the Silver Medal in the Women's 10m Air Rifle Individual event."
+      explanation: "नाओरेम रोशिबिना देवी ने वुशू सांडा 60 किग्रा वर्ग में रजत पदक (Silver Medal) अपने नाम किया।",
+      explanationEn: "Naorem Roshibina Devi secured the Silver Medal in Wushu Sanda 60kg category."
     },
     {
-      question: "एशियन गेम्स 2026 में मिक्स्ड मार्शल आर्ट्स (MMA/Wushu) में भारत के लिए कांस्य पदक किसने जीता?",
-      questionEn: "Who won the Bronze Medal for India in Mixed Martial Arts (MMA) at the Asian Games 2026?",
-      options: ["सुचिका तरियाल", "रोशिबिना देवी", "लवलीना बोरगोहेन", "मैरी कॉम"],
-      optionsEn: ["Suchika Tariyal", "Roshibina Devi", "Lovlina Borgohain", "Mary Kom"],
+      question: "रोइंग (Rowing) में पुरुषों के डबल स्कल्स (Men's Double Sculls) में किस भारतीय जोड़ी ने कांस्य पदक हासिल किया?",
+      questionEn: "Which Indian pair won the Bronze Medal in Rowing (Men's Double Sculls) at Asian Games 2026?",
+      options: ["सतनाम सिंह और सलमान खान", "नीरज कुमार और ऐश्वर्य तोमर", "हिमांशु ढिल्लों और रुद्राक्ष पाटिल", "अर्जुन लाल और अरविंद सिंह"],
+      optionsEn: ["Satnam Singh & Salman Khan", "Neeraj Kumar & Aishwary Tomar", "Himanshu Dhillon & Rudrankksh Patil", "Arjun Lal & Arvind Singh"],
       correctIndex: 0,
-      explanation: "सुचिका तरियाल (Suchika Tariyal) ने महिला पारंपरिक मिक्स्ड मार्शल आर्ट्स स्पर्धा में कांस्य पदक जीता।",
-      explanationEn: "Suchika Tariyal won the Bronze Medal in Women's Traditional Mixed Martial Arts."
+      explanation: "सतनाम सिंह और सलमान खान ने पुरुषों के डबल स्कल्स रोइंग में भारत के लिए कांस्य पदक हासिल किया।",
+      explanationEn: "Satnam Singh and Salman Khan won the Bronze Medal in Men's Double Sculls Rowing."
     },
     {
-      question: "2022 के 10 मीटर एयर राइफल वर्ल्ड चैंपियन रह चुके किस निशानेबाज ने एशियन गेम्स 2026 में कांस्य पदक जीता?",
-      questionEn: "Which shooter, who won the 2022 10m Air Rifle World Championship, won Bronze at Asian Games 2026?",
-      options: ["रुद्राक्ष पाटिल", "हिमांशु ढिल्लों", "पार्थ माने", "दिव्यांश सिंह पंवार"],
-      optionsEn: ["Rudrankksh Patil", "Himanshu Dhillon", "Parth Mane", "Divyansh Singh Panwar"],
+      question: "एथलेटिक्स में महिलाओं की 10,000 मीटर दौड़ स्पर्धा में किस भारतीय धाविका ने कांस्य पदक प्राप्त किया?",
+      questionEn: "Which Indian athlete won the Bronze Medal in Women's 10,000m race at Asian Games 2026?",
+      options: ["सीमा कुमारी", "पारुल चौधरी", "अनु रानी", "हरमिलन बैंस"],
+      optionsEn: ["Seema Kumari", "Parul Chaudhary", "Annu Rani", "Harmilan Bains"],
       correctIndex: 0,
-      explanation: "रुद्राक्ष पाटिल ने व्यक्तिगत 10m एयर राइफल में कांस्य पदक और टीम स्पर्धा में सिल्वर मेडल जीता।",
-      explanationEn: "Rudrankksh Patil won the Individual Bronze Medal and Team Silver Medal."
+      explanation: "सीमा कुमारी ने महिलाओं की 10,000 मीटर दौड़ में कांस्य पदक (Bronze Medal) प्राप्त किया।",
+      explanationEn: "Seema Kumari won the Bronze Medal in Women's 10,000m race."
     },
     {
-      question: "प्रथम एशियन गेम्स (1951) का आयोजन किस शहर में हुआ था?",
-      questionEn: "Which city hosted the inaugural Asian Games in 1951?",
-      options: ["नई दिल्ली (भारत)", "टोक्यो (जापान)", "बैंकॉक (थाईलैंड)", "मनीला (फिलीपींस)"],
-      optionsEn: ["New Delhi (India)", "Tokyo (Japan)", "Bangkok (Thailand)", "Manila (Philippines)"],
+      question: "मिक्स्ड मार्शल आर्ट्स (MMA) के ट्रेडिशनल -60 किग्रा वर्ग में कांस्य पदक जीतने वाली भारतीय एथलीट कौन हैं?",
+      questionEn: "Who won the Bronze Medal for India in Mixed Martial Arts (MMA) Traditional -60kg event?",
+      options: ["सुचिका तरियाल", "रोशिबिना देवी", "सुरुचि", "कमलजीत"],
+      optionsEn: ["Suchika Tariyal", "Roshibina Devi", "Suruchi", "Kamaljeet"],
       correctIndex: 0,
-      explanation: "प्रथम एशियाई खेलों की मेजबानी 1951 में नई दिल्ली (भारत) ने की थी।",
-      explanationEn: "The first Asian Games were hosted by New Delhi, India in 1951."
+      explanation: "सुचिका तरियाल (Suchika Tariyal) ने ट्रेडिशनल -60 किग्रा मिक्स्ड मार्शल आर्ट्स में कांस्य पदक जीता।",
+      explanationEn: "Suchika Tariyal won the Bronze Medal in Traditional -60kg Mixed Martial Arts."
     },
     {
-      question: "21वें एशियन गेम्स 2030 की मेजबानी किस शहर को सौंपी गई है?",
-      questionEn: "Which city has been awarded the hosting rights for the 21st Asian Games in 2030?",
-      options: ["दोहा (कतर)", "रियाद (सऊदी अरब)", "आइची-नागोया (जापान)", "गुवांगझू (चीन)"],
-      optionsEn: ["Doha (Qatar)", "Riyadh (Saudi Arabia)", "Aichi-Nagoya (Japan)", "Guangzhou (China)"],
+      question: "एशियन गेम्स 2026 में महिला क्रिकेट में भारत ने कौन सा पदक जीता?",
+      questionEn: "Which medal did India win in Women's Cricket at Asian Games 2026?",
+      options: ["स्वर्ण पदक (Gold)", "रजत पदक (Silver)", "कांस्य पदक (Bronze)", "कोई नहीं"],
+      optionsEn: ["Gold Medal", "Silver Medal", "Bronze Medal", "None"],
       correctIndex: 0,
-      explanation: "2030 के 21वें एशियन गेम्स का आयोजन दोहा, कतर में किया जाएगा।",
-      explanationEn: "The 2030 Asian Games will be held in Doha, Qatar."
+      explanation: "कप्तान हरमनप्रीत कौर के नेतृत्व में भारतीय महिला क्रिकेट टीम ने स्वर्ण पदक (Gold Medal) जीता।",
+      explanationEn: "Indian Women's Cricket Team won the Gold Medal under captain Harmanpreet Kaur."
+    },
+    {
+      question: "20वें एशियन गेम्स 2026 का आयोजन स्थल कौन सा है?",
+      questionEn: "What is the host venue for the 20th Asian Games 2026?",
+      options: ["आइची-नागोया (जापान)", "हांगझोऊ (चीन)", "दोहा (कतर)", "रियाद (सऊदी अरब)"],
+      optionsEn: ["Aichi-Nagoya (Japan)", "Hangzhou (China)", "Doha (Qatar)", "Riyadh (Saudi Arabia)"],
+      correctIndex: 0,
+      explanation: "20वें एशियन गेम्स 2026 का आयोजन आइची-नागोया, जापान में हो रहा है।",
+      explanationEn: "The 20th Asian Games 2026 are hosted in Aichi-Nagoya, Japan."
     }
   ];
 
   // 10 Collapsible FAQs
   const faqs = [
     {
-      question: "एशियन गेम्स 2026 पदक तालिका (Medal Tally) में भारत ने कुल कितने पदक जीते हैं?",
-      questionEn: "How many total medals has India won in the Asian Games 2026 Medal Tally?",
-      answer: "भारत ने एशियन गेम्स 2026 में कुल 7 पदक जीते हैं — 1 स्वर्ण पदक (महिला क्रिकेट), 4 रजत पदक (निशानेबाजी) और 2 कांस्य पदक (निशानेबाजी व मार्शल आर्ट्स)।",
-      answerEn: "India has won a total of 7 medals at Asian Games 2026 — 1 Gold (Women's Cricket), 4 Silver (Shooting), and 2 Bronze (Shooting & MMA)."
+      question: "एशियन गेम्स 2026 पदक तालिका (Medal Tally) में भारत के पास कुल कितने पदक हैं?",
+      questionEn: "How many total medals does India have in the Asian Games 2026 Medal Tally?",
+      answer: "अद्यतन तालिका के अनुसार भारत ने एशियन गेम्स 2026 में कुल 19 पदक (2 स्वर्ण, 8 रजत और 9 कांस्य) जीते हैं।",
+      answerEn: "As per the updated tally, India has won 19 total medals (2 Gold, 8 Silver, and 9 Bronze) at Asian Games 2026."
     },
     {
-      question: "एशियन गेम्स 2026 में भारत का पहला स्वर्ण पदक किसने जीता?",
-      questionEn: "Who won India's first Gold Medal at Asian Games 2026?",
-      answer: "कप्तान हरमनप्रीत कौर की अगुवाई में भारतीय महिला क्रिकेट टीम ने एशियन गेम्स 2026 का भारत के लिए पहला गोल्ड मेडल जीता।",
-      answerEn: "The Indian Women's Cricket Team, captained by Harmanpreet Kaur, won India's first Gold Medal at the Games."
+      question: "एशियन गेम्स 2026 में भारत के 2 स्वर्ण पदक किन खेलों में आए हैं?",
+      questionEn: "In which sports did India win its 2 Gold Medals at Asian Games 2026?",
+      answer: "भारत के 2 स्वर्ण पदक महिला क्रिकेट टीम (कप्तान: हरमनप्रीत कौर) तथा निशानेबाजी (सुरुचि और कमलजीत) में आए हैं।",
+      answerEn: "India's 2 Gold Medals came in Women's Cricket Team and Shooting (Suruchi & Kamaljeet)."
     },
     {
-      question: "निशानेबाजी (Shooting) में भारत को कौन-कौन से पदक मिले?",
-      questionEn: "Which medals did India win in Shooting at Asian Games 2026?",
-      answer: "निशानेबाजी में भारत को 5 पदक मिले: पुरुषों की 10m एयर राइफल टीम (सिल्वर), महिलाओं की 10m एयर राइफल टीम (सिल्वर), हिमांशु ढिल्लों (व्यक्तिगत सिल्वर), एलावेनिल वालारिवन (व्यक्तिगत सिल्वर), तथा रुद्राक्ष पाटिल (व्यक्तिगत कांस्य)।",
-      answerEn: "India won 5 shooting medals: Men's 10m Air Rifle Team (Silver), Women's 10m Air Rifle Team (Silver), Himanshu Dhillon (Individual Silver), Elavenil Valarivan (Individual Silver), and Rudrankksh Patil (Individual Bronze)."
+      question: "वुशू (Wushu) में भारत को रजत पदक किसने दिलाया?",
+      questionEn: "Who won the Silver Medal for India in Wushu?",
+      answer: "नाओरेम रोशिबिना देवी ने सांडा 60 किग्रा वर्ग में भारत को रजत पदक दिलाया।",
+      answerEn: "Naorem Roshibina Devi won the Silver Medal in Sanda 60kg category."
     },
     {
-      question: "पुरुषों की 10 मीटर एयर राइफल टीम का कुल स्कोर क्या था?",
-      questionEn: "What was the score of the Men's 10m Air Rifle Team?",
-      answer: "हिमांशु ढिल्लों, रुद्राक्ष पाटिल और पार्थ माने की त्रयी ने 1890.1 अंकों का स्कोर बनाकर सिल्वर मेडल हासिल किया।",
-      answerEn: "The trio of Himanshu Dhillon, Rudrankksh Patil, and Parth Mane scored 1890.1 points to win Silver."
+      question: "रोइंग (Rowing) में भारत के पदक विजेता कौन हैं?",
+      questionEn: "Who are India's medal winners in Rowing?",
+      answer: "सतनाम सिंह और सलमान खान ने पुरुषों के डबल स्कल्स (Men's Double Sculls) में कांस्य पदक जीता।",
+      answerEn: "Satnam Singh and Salman Khan won the Bronze Medal in Men's Double Sculls."
     },
     {
-      question: "मिक्स्ड मार्शल आर्ट्स (MMA) में कांस्य पदक विजेता कौन हैं?",
-      questionEn: "Who won the Bronze Medal in Mixed Martial Arts (MMA)?",
-      answer: "सुचिका तरियाल (Suchika Tariyal) ने महिला पारंपरिक मिक्स्ड मार्शल आर्ट्स स्पर्धा में कांस्य पदक जीता।",
-      answerEn: "Suchika Tariyal won the Bronze Medal in Women's Traditional MMA."
+      question: "एथलेटिक्स में सीमा कुमारी ने कौन सा पदक हासिल किया?",
+      questionEn: "Which medal did Seema Kumari win in Athletics?",
+      answer: "सीमा कुमारी ने महिलाओं की 10,000 मीटर दौड़ में कांस्य पदक प्राप्त किया।",
+      answerEn: "Seema Kumari won the Bronze Medal in Women's 10,000m race."
     },
     {
-      question: "एशियन गेम्स 2026 का मेज़बान शहर कौन सा है?",
-      questionEn: "Which city is hosting the Asian Games 2026?",
-      answer: "20वें एशियन गेम्स 2026 का आयोजन आइची-नागोया, जापान (Aichi-Nagoya, Japan) में हो रहा है।",
-      answerEn: "The 20th Asian Games 2026 are taking place in Aichi-Nagoya, Japan."
+      question: "मिक्स्ड मार्शल आर्ट्स (MMA) में भारत की कांस्य पदक विजेता कौन हैं?",
+      questionEn: "Who is India's Bronze medallist in Mixed Martial Arts (MMA)?",
+      answer: "सुचिका तरियाल ने ट्रेडिशनल -60 किग्रा वर्ग में कांस्य पदक जीता।",
+      answerEn: "Suchika Tariyal won the Bronze Medal in Traditional -60kg class."
+    },
+    {
+      question: "निशानेबाजी (Shooting) में पदक जीतने वाले प्रमुख भारतीय निशानेबाज कौन हैं?",
+      questionEn: "Who are the major Indian shooters who won medals at Asian Games 2026?",
+      answer: "निशानेबाजी में सुरुचि व कमलजीत (स्वर्ण), एलावेनिल वलारिवन, सोनम उत्तम मस्कर, रुद्राक्ष पाटिल, हिमांशु ढिल्लों, ऐश्वर्य प्रताप सिंह तोमर और नीरज कुमार ने पदक जीते।",
+      answerEn: "Shooters Suruchi & Kamaljeet (Gold), Elavenil Valarivan, Sonam Uttam Maskar, Rudrankksh Patil, Himanshu Dhillon, Aishwary Tomar, and Neeraj Kumar won medals."
+    },
+    {
+      question: "एशियन गेम्स 2026 का आयोजन किस देश व शहर में हो रहा है?",
+      questionEn: "Which host country and city are organizing Asian Games 2026?",
+      answer: "20वें एशियाई खेलों का आयोजन आइची-नागोया, जापान (Aichi-Nagoya, Japan) में हो रहा है।",
+      answerEn: "The 20th Asian Games are taking place in Aichi-Nagoya, Japan."
     },
     {
       question: "प्रथम एशियन गेम्स का आयोजन कब और कहाँ हुआ था?",
-      questionEn: "When and where were the first Asian Games held?",
-      answer: "प्रथम एशियाई खेलों का आयोजन वर्ष 1951 में नई दिल्ली, भारत में हुआ था।",
-      answerEn: "The inaugural Asian Games were hosted in New Delhi, India in 1951."
+      questionEn: "When and where were the inaugural Asian Games held?",
+      answer: "प्रथम एशियाई खेल वर्ष 1951 में नई दिल्ली, भारत में आयोजित किए गए थे।",
+      answerEn: "The inaugural Asian Games were held in New Delhi, India in 1951."
     },
     {
-      question: "एशियन गेम्स का संचालन कौन सी संस्था करती है?",
-      questionEn: "Which organization conducts the Asian Games?",
-      answer: "एशियन गेम्स का आयोजन Olympic Council of Asia (OCA) द्वारा किया जाता है।",
-      answerEn: "The Asian Games are organized by the Olympic Council of Asia (OCA)."
-    },
-    {
-      question: "आगामी 2030 और 2034 एशियन गेम्स के मेज़बान शहर कौन से हैं?",
-      questionEn: "Which cities are hosting the 2030 and 2034 Asian Games?",
-      answer: "2030 के एशियन गेम्स दोहा (कतर) में तथा 2034 के एशियन गेम्स रियाद (सऊदी अरब) में आयोजित होंगे।",
-      answerEn: "The 2030 Games will be in Doha (Qatar) and the 2034 Games in Riyadh (Saudi Arabia)."
-    },
-    {
-      question: "यह जानकारी MPPSC एवं UPSC परीक्षा के लिए क्यों महत्वपूर्ण है?",
-      questionEn: "Why is this article critical for MPPSC & UPSC exams?",
-      answer: "यह जानकारी MPPSC Prelims (Unit 8: Sports & Current Affairs) तथा UPSC Prelims खेल सम्बंधित प्रश्नों के लिए अति-उपयोगी है।",
-      answerEn: "It covers essential sports current affairs for MPPSC Prelims Unit 8 and UPSC General Awareness."
+      question: "यह जानकारी MPPSC एवं UPSC परीक्षा के लिए क्यों आवश्यक है?",
+      questionEn: "Why is this article essential for MPPSC & UPSC preparation?",
+      answer: "MPPSC Prelims (Unit 8: खेलकूद व राष्ट्रीय समसामयिकी) तथा UPSC Prelims खेल जागरूकता खंड में पदकों, खिलाड़ियों और खेलों से संबंधित सीधे प्रश्न पूछे जाते हैं।",
+      answerEn: "MPPSC Prelims Unit 8 and UPSC General Awareness frequently feature direct questions on sports medals and athletes."
     }
   ];
 
   const docSlug = "asian-games-2026-10m-air-rifle-india-medals-himanshu-dhillon-rudrankksh-patil";
-  const docTitleHi = "एशियन गेम्स 2026 पदक तालिका (Medal Tally): भारत के कुल पदक, विजेताओं की पूरी सूची व टेबल | MPPSC & UPSC खेल नोट्स";
-  const docTitleEn = "Asian Games 2026 Medal Tally: India's Total Medals, Complete Winners Table & Sport-wise List | MPPSC & UPSC Sports Notes";
-  const docExcerptHi = "एशियन गेम्स 2026 (आइची-नागोया, जापान) में भारत ने कुल 7 पदक (1 स्वर्ण, 4 रजत, 2 कांस्य) हासिल किए हैं। महिला क्रिकेट में भारत ने पहला गोल्ड मेडल जीता, जबकि 10 मीटर एयर राइफल और मिक्स्ड मार्शल आर्ट्स में निशानेबाज़ों व एथलीटों ने रिकॉर्ड पदक तालिका बनाई। देखें भारतीय विजेताओं की पूरी सूची व टेबल।";
-  const docExcerptEn = "At the 2026 Asian Games in Aichi-Nagoya, Japan, Team India has clinched 7 medals (1 Gold, 4 Silver, 2 Bronze). Harmanpreet Kaur led India Women's Cricket to Gold, while shooters and MMA athletes added 6 medals. Explore the complete medal tally, winners list, and sport-wise table.";
+  const docTitleHi = "एशियन गेम्स 2026 पदक तालिका (Medal Tally): भारत के 19 पदक (2 स्वर्ण, 8 रजत, 9 कांस्य), विजेताओं की पूरी सूची व टेबल | MPPSC & UPSC खेल नोट्स";
+  const docTitleEn = "Asian Games 2026 Medal Tally: India's 19 Medals (2 Gold, 8 Silver, 9 Bronze), Complete Winners Table & Sport-wise List | MPPSC & UPSC Sports Notes";
+  const docExcerptHi = "एशियन गेम्स 2026 (आइची-नागोया, जापान) में भारत ने अब तक 2 स्वर्ण, 8 रजत और 9 कांस्य सहित कुल 19 पदक जीत लिए हैं। भारतीय महिला क्रिकेट टीम और शूटिंग में सुरुचि-कमलजीत ने स्वर्ण पदक हासिल किया। देखें क्रिकेट, शूटिंग, वुशू, रोइंग, एथलेटिक्स व MMA के विजेताओं की पूरी सूची व टेबल।";
+  const docExcerptEn = "At the 2026 Asian Games in Aichi-Nagoya, Japan, Team India has clinched a total of 19 medals (2 Gold, 8 Silver, 9 Bronze). Indian Women's Cricket Team and Shooters Suruchi & Kamaljeet secured Gold Medals. Explore the complete medal tally, sport-wise breakdown, and full winners list.";
 
   const keywordsArray = [
     "asian games 2026 medal tally",
@@ -473,8 +519,10 @@ async function main() {
     "india at asian games 2026 medal tally",
     "asian games 2026 medal list india winners list",
     "women cricket gold medal asian games 2026",
-    "himanshu dhillon rudrankksh patil parth mane",
-    "elavenil valarivan 10m air rifle silver",
+    "suruchi kamaljeet shooting gold asian games",
+    "roshibina devi wushu silver asian games",
+    "satnam singh salman khan rowing bronze",
+    "seema kumari athletics bronze asian games",
     "suchika tariyal mma bronze asian games"
   ];
 
@@ -492,7 +540,7 @@ async function main() {
       title: cleanText(docTitleHi),
       titleEn: cleanText(docTitleEn),
       slug: { _type: "slug", current: docSlug },
-      publishedAt: "2026-09-22T10:00:00.000Z",
+      publishedAt: "2026-09-25T10:00:00.000Z",
       excerpt: cleanText(docExcerptHi),
       excerptEn: cleanText(docExcerptEn),
       featuredImage: featuredImageObj,
@@ -503,8 +551,8 @@ async function main() {
         { _type: "reference", _ref: mppscTagId, _key: "ref-tag-mppsc" },
         { _type: "reference", _ref: upscTagId, _key: "ref-tag-upsc" },
       ],
-      seoTitle: cleanText("एशियन गेम्स 2026 पदक तालिका (Medal Tally): भारत के विजेताओं की सूची | MPPSC Notes"),
-      seoTitleEn: cleanText("Asian Games 2026 Medal Tally: Complete Table & Indian Winners List"),
+      seoTitle: cleanText("एशियन गेम्स 2026 पदक तालिका (Medal Tally): भारत के 19 पदकों की सूची व टेबल | MPPSC Notes"),
+      seoTitleEn: cleanText("Asian Games 2026 Medal Tally: India's 19 Medals Table & Full Winners List"),
       metaDescription: cleanText(docExcerptHi),
       metaDescriptionEn: cleanText(docExcerptEn),
       keywords: keywordsArray,
@@ -528,7 +576,7 @@ async function main() {
       ...docPayload,
     });
 
-    console.log(`✅ Document ${docId} successfully updated with complete Asian Games 2026 Medal Tally & Tables!`);
+    console.log(`✅ Document ${docId} successfully updated with 19 Medals Tally!`);
   }
 
   console.log("🎉 ALL ASIAN GAMES 2026 MEDAL TALLY ARTICLES SUCCESSFULLY PUBLISHED TO SANITY CMS!");
