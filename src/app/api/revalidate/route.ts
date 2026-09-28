@@ -142,6 +142,17 @@ export async function POST(req: NextRequest) {
       blog: "articles",
       notification: "notifications",
       notifications: "notifications",
+      homeNotice: "homeNotices",
+      homeNotices: "homeNotices",
+      homeConfig: "homeConfig",
+      downloadPageConfig: "downloadPageConfig",
+      aboutPageConfig: "aboutPageConfig",
+      offlinePageConfig: "offlinePageConfig",
+      ncertBook: "ncertBooks",
+      ad: "ads",
+      testSchedule: "testSchedules",
+      mediaRelease: "mediaReleases",
+      examCalendar: "examCalendar",
     };
 
     const targetTag = tagMap[_type];
@@ -233,6 +244,7 @@ export async function GET(req: NextRequest) {
   const allTags = [
     "faculties",
     "homeConfig",
+    "homeNotices",
     "articles",
     "toppers",
     "topperCopies",
@@ -244,6 +256,14 @@ export async function GET(req: NextRequest) {
     "publications",
     "notifications",
     "downloadPageConfig",
+    "aboutPageConfig",
+    "offlinePageConfig",
+    "ncertBooks",
+    "ads",
+    "testSchedules",
+    "mediaReleases",
+    "examCalendar",
+    "faqs",
   ];
 
   try {

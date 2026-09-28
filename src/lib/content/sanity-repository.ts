@@ -1933,7 +1933,14 @@ export class SanityRepository implements ContentRepository {
       isActive,
       orderIndex
     }`;
-    return sanityFetch<HomeNotice[]>({ query, revalidate: REVALIDATE, tags: ["homeNotices"] }) || [];
+    const cleanStr = (s?: string) => (typeof s === "string" ? s.replace(/[\u200B-\u200D\u200E\u200F\u202A-\u202E\u2060-\u206F\uFEFF\u00AD\u2000-\u200A]/g, "").trim() : "");
+    const results = (await sanityFetch<HomeNotice[]>({ query, revalidate: REVALIDATE, tags: ["homeNotices"] })) || [];
+    return results.map((n) => ({
+      ...n,
+      noticeTextHi: cleanStr(n.noticeTextHi),
+      noticeTextEn: cleanStr(n.noticeTextEn),
+      noticeText: cleanStr(n.noticeText),
+    }));
   }
 
   async getDownloadPageConfig(locale: Locale): Promise<DownloadPageConfig | null> {
