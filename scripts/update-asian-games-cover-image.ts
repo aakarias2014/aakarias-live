@@ -3,73 +3,75 @@ import dotenv from "dotenv";
 import fs from "fs";
 import path from "path";
 
-dotenv.config({ path: ".env.local" });
+dotenv.config({ path: path.resolve(process.cwd(), ".env.local") });
 
-const sanityClient = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "v8f99338",
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
-  apiVersion: "2023-01-01",
-  token: process.env.SANITY_API_WRITE_TOKEN,
+const {
+  NEXT_PUBLIC_SANITY_PROJECT_ID: projectId,
+  NEXT_PUBLIC_SANITY_DATASET: dataset,
+  SANITY_API_WRITE_TOKEN: token,
+} = process.env;
+
+if (!projectId || !dataset || !token) {
+  console.error("❌ Missing Sanity variables in .env.local!");
+  process.exit(1);
+}
+
+const client = createClient({
+  projectId,
+  dataset,
+  token,
+  apiVersion: "2024-10-01",
   useCdn: false,
 });
 
 async function main() {
-  const imagePath = "/Users/aakariastech/.gemini/antigravity-ide/brain/e3ff0c53-d00f-4d3d-a759-669ae0e099de/.user_uploaded/media_1790083719701.png";
+  const imagePath = "/Users/aakariastech/.gemini/antigravity-ide/brain/64b3f568-c32a-459a-a042-5de655665154/.user_uploaded/media_1790675794414.png";
 
   if (!fs.existsSync(imagePath)) {
     console.error("❌ Image file not found at:", imagePath);
     process.exit(1);
   }
 
-  console.log("🚀 Uploading Asian Games Air Rifle Custom Banner to Sanity Assets...");
+  console.log("🚀 Uploading new Asian Games 2026 48 Medals Custom Cover Banner to Sanity Assets...");
 
-  const imageAsset = await sanityClient.assets.upload("image", fs.createReadStream(imagePath), {
-    filename: "asian_games_2026_10m_air_rifle_banner.png",
+  const imageAsset = await client.assets.upload("image", fs.createReadStream(imagePath), {
+    filename: "asian_games_2026_48_medals_banner.png",
   });
 
   console.log("✅ Image asset uploaded to Sanity successfully! Asset ID:", imageAsset._id);
 
-  const featuredImageField = {
+  const featuredImageObj = {
     _type: "image",
     asset: {
       _type: "reference",
       _ref: imageAsset._id,
     },
-    alt: "एशियन गेम्स 2026: 10 मीटर एयर राइफल में भारत का शानदार प्रदर्शन",
+    alt: "एशियन गेम्स 2026: भारत के 48 पदक (5 स्वर्ण, 21 रजत, 22 कांस्य), नीरू ढांडा, हिमांशु ढिल्लों व रुद्राक्ष पाटिल",
+    caption: "चित्र: एशियन गेम्स 2026 (आइची-नागोया, जापान) में भारत का शानदार प्रदर्शन — नीरू ढांडा ट्रैप शूटिंग गोल्ड मेडल एवं 10 मीटर एयर राइफल पदक विजेता।",
   };
 
-  // Find all documents related to asian-games-2026 air rifle
-  const query = `*[_type in ["currentAffairs", "staticGk"] && slug.current match "*asian-games-2026*"]{ _id, title, "slug": slug.current }`;
-  const docs = await sanityClient.fetch(query);
+  const docIds = [
+    "ca-asian-games-2026-10m-air-rifle-india",
+    "gk-asian-games-2026-10m-air-rifle-india",
+  ];
 
-  console.log(`Found ${docs.length} document(s) matching asian-games-2026:`);
-  docs.forEach((d: any) => console.log(` - ID: ${d._id}, Slug: ${d.slug}`));
-
-  // Fallback to explicit IDs if query returns empty
-  let targetIds = docs.map((d: any) => d._id);
-  if (targetIds.length === 0) {
-    targetIds = [
-      "ca-asian-games-2026-10m-air-rifle-india",
-      "gk-asian-games-2026-10m-air-rifle-india",
-    ];
-  }
-
-  for (const docId of targetIds) {
-    console.log(`📌 Updating featuredImage & mainImage for document: ${docId}...`);
-    await sanityClient
+  for (const docId of docIds) {
+    console.log(`📌 Updating featuredImage & mainImage for Sanity document: ${docId}...`);
+    await client
       .patch(docId)
       .set({
-        featuredImage: featuredImageField,
-        mainImage: featuredImageField,
+        featuredImage: featuredImageObj,
+        mainImage: featuredImageObj,
       })
       .commit();
-    console.log(`✅ Successfully updated cover image for ${docId}`);
+
+    console.log(`✅ Successfully updated cover image for document ${docId}!`);
   }
 
-  console.log("🎉 ALL ASIAN GAMES AIR RIFLE COVER IMAGES UPDATED SUCCESSFULLY IN SANITY CMS!");
+  console.log("🎉 ALL ASIAN GAMES 2026 COVER IMAGES SUCCESSFULLY UPDATED IN SANITY CMS!");
 }
 
 main().catch((err) => {
-  console.error("❌ Failed to upload cover image:", err);
+  console.error("❌ Error updating cover image:", err);
   process.exit(1);
 });
