@@ -15,18 +15,19 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = buildMetadata({
   title:
-    "MPPSC Prelims Syllabus 2026 PDF Download in English | GS & CSAT | Aakar IAS",
+    "MPPSC Prelims Syllabus 2026 PDF in English (10 Units) | Aakar IAS",
   description:
-    "Official MPPSC Prelims Syllabus 2026 in English PDF Download: Paper 1 General Studies (10 Units breakdown) and Paper 2 CSAT. Exam pattern, negative marking & free PDF.",
+    "MPPSC Prelims Syllabus 2026 in English PDF Download: 10 Units breakdown for Paper 1 General Studies and Paper 2 CSAT. Exam pattern, marks scheme & free PDF download.",
   path: "/en/mppsc/prelims-syllabus",
   locale: "en",
   keywords: [
-    "mppsc prelims syllabus 2026 pdf english",
-    "mppsc syllabus 2026 pdf prelims english",
-    "mppsc prelims syllabus",
+    "mppsc prelims syllabus 2026",
+    "mppsc prelims syllabus 2026 pdf",
     "mppsc prelims syllabus 2026 english",
+    "mppsc prelims syllabus 2026 pdf english",
+    "mppsc prelims syllabus",
     "mppsc pre syllabus english pdf",
-    "mppsc csat syllabus english",
+    "mppsc syllabus 2026 pdf prelims english",
     "MPPSC State Service Prelims Exam Pattern",
   ],
   type: "article",
@@ -66,17 +67,17 @@ export default function EnMppscPrelimsSyllabusPage() {
         <Container size="wide" className="relative py-16 sm:py-20">
           <div className="max-w-3xl">
             <span className="inline-block rounded-full bg-primary/15 px-4 py-1 text-sm font-semibold text-primary">
-              MPPSC Prelims Exam 2026 PDF Download
+              MPPSC Prelims 2026 PDF
             </span>
             <h1 className="mt-4 text-balance text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              MPPSC Prelims Syllabus 2026 PDF Download in English
+              MPPSC Prelims Syllabus 2026 PDF in English (10 Units GS &amp; CSAT)
             </h1>
             <p className="mt-4 text-pretty text-lg text-white/75">
               Official MPPSC State Service Prelims Examination 2026 complete syllabus in English Medium — Paper 1 General Studies (10 Units) & Paper 2 CSAT.
             </p>
             <div className="mt-6 flex flex-wrap gap-4">
               <a
-                href="/pdf/mppsc-prelims-syllabus-in-hindi.pdf"
+                href="/downloads/mppsc-prelims-syllabus-in-hindi.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-primary-foreground shadow-md transition hover:bg-primary/90"
@@ -84,7 +85,7 @@ export default function EnMppscPrelimsSyllabusPage() {
                 📄 View Prelims Syllabus PDF
               </a>
               <a
-                href="/pdf/mppsc-mains-syllabus-in-english.pdf"
+                href="/downloads/mppsc-mains-syllabus-in-english.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-5 py-3 text-sm font-bold text-white border border-white/20 transition hover:bg-white/20"

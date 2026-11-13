@@ -39,11 +39,11 @@ export default async function MppscPage() {
   ]);
 
   const quickLinks = [
-    { href: "/mppsc/mains-syllabus", title: "MPPSC Mains Syllabus", desc: "Paper 1-6 complete breakdown" },
-    { href: "/mppsc/prelims-syllabus", title: "MPPSC Prelims Syllabus", desc: "10 Units GS Paper 1 & CSAT" },
-    { href: "/mppsc/syllabus-2026", title: "MPPSC Full Syllabus 2026", desc: "Complete exam plan & syllabus" },
-    { href: "/mppsc/previous-year-papers", title: "Previous Year Papers", desc: "2014-2025 Solved PYQs PDF" },
-    { href: "/mppsc/toppers-copy", title: "Toppers Answer Copies", desc: "Real answer sheets & analysis" },
+    { href: "/mppsc/syllabus-2026", title: "MPPSC Syllabus 2026 PDF", desc: "Complete 2026 exam plan & master syllabus" },
+    { href: "/mppsc/prelims-syllabus", title: "MPPSC Prelims Syllabus 2026 PDF", desc: "10 Units GS Paper 1 & CSAT breakdown" },
+    { href: "/mppsc/mains-syllabus", title: "MPPSC Mains Syllabus 2026 PDF", desc: "Paper 1 to 6 complete descriptive syllabus" },
+    { href: "/mppsc/previous-year-papers", title: "MPPSC Previous Year Papers", desc: "2014-2025 Solved PYQs PDF" },
+    { href: "/mppsc/toppers-copy", title: "MPPSC Toppers Answer Copies", desc: "Real answer sheets & analysis" },
     { href: "/test-series", title: "Best MPPSC Test Series", desc: "FLT & Mains answer writing" },
   ];
 

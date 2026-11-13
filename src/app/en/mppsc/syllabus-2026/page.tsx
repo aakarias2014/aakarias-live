@@ -5,26 +5,65 @@ import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Breadcrumb } from "@/components/content/breadcrumb";
 import { JsonLd } from "@/components/seo/json-ld";
-import { breadcrumbJsonLd, articleJsonLd, jsonLdGraph } from "@/lib/seo/jsonld";
+import { breadcrumbJsonLd, articleJsonLd, faqJsonLd, jsonLdGraph } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
+import Link from "next/link";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
 
 export const metadata: Metadata = buildMetadata({
-  title: "MPPSC State Service Examination 2026 – Exam Plan & Complete Syllabus",
+  title: "MPPSC Syllabus 2026: Prelims & Mains Full Exam Pattern PDF | Aakar IAS",
   description:
-    "Official MPPSC State Service Exam 2026 pattern and full syllabus for Prelims, Mains, and Interview. Paper-wise, unit-wise breakdown for UPSC/MPPSC aspirants.",
+    "Official MPPSC Syllabus 2026 in English PDF Download: Complete exam pattern & syllabus for Prelims (Paper 1 & 2 CSAT) and Mains (Papers 1 to 6). Free PDF download.",
   path: "/en/mppsc/syllabus-2026",
   locale: "en",
   keywords: [
-    "MPPSC 2026",
-    "MP State Service Exam",
-    "MPPSC syllabus",
-    "MPPSC prelims",
-    "MPPSC mains",
-    "MPPSC exam pattern",
+    "mppsc syllabus 2026",
+    "mppsc syllabus 2026 pdf",
+    "mppsc syllabus 2026 english",
+    "mppsc prelims syllabus 2026",
+    "mppsc mains syllabus 2026",
+    "mppsc syllabus pdf download",
+    "MPPSC State Service Exam Pattern 2026",
+    "mppsc syllabus",
   ],
   type: "article",
   publishedTime: "2026-01-05",
+  modifiedTime: new Date().toISOString().split("T")[0],
+  category: "MPPSC",
 });
+
+const faqsEn = [
+  {
+    question: "What are the key changes in the MPPSC Syllabus 2026?",
+    answer:
+      "The MPPSC 2026 examination scheme introduces (3R - W) negative marking in the Preliminary examination (100 MCQs, 300 marks per paper). The Mains examination consists of 6 descriptive papers totaling 1500 marks, with enhanced focus on case studies, philosophy, public administration, and contemporary MP heritage.",
+  },
+  {
+    question: "How many papers are there in MPPSC Prelims, and is there negative marking?",
+    answer:
+      "MPPSC Prelims consists of 2 objective papers: Paper 1 (General Studies - 10 Units) and Paper 2 (CSAT). Each paper carries 100 questions (300 marks) with (3R - W) negative marking (1 mark deducted for every incorrect response). For State Administrative Services, CSAT is qualifying only.",
+  },
+  {
+    question: "What is the total marks breakdown for MPPSC Mains Examination?",
+    answer:
+      "MPPSC Mains is conducted for 1500 marks across 6 papers: GS 1 (300), GS 2 (300), GS 3 (300), GS 4 (300), General Hindi (200), and Hindi Essay (100). The interview carries 185 marks, making the grand merit total 1685 marks.",
+  },
+  {
+    question: "How can I download the official MPPSC 2026 Syllabus PDF?",
+    answer:
+      "Candidates can download official PDFs for MPPSC Prelims 10 Units breakdown and MPPSC Mains Papers 1-6 in both English and Hindi free of cost directly from Aakar IAS at aakarias.com.",
+  },
+  {
+    question: "What topics are included in MPPSC Prelims Paper 1 Unit 10?",
+    answer:
+      "Unit 10 is dedicated to 'Tribes of Madhya Pradesh — Heritage, Folk Culture & Folk Literature', covering demographic distribution, PVTG, constitutional safeguards, tribal welfare schemes, folk arts, and contributions of tribal leaders to the freedom struggle.",
+  },
+];
 
 export default async function EnMppscSyllabus2026Page() {
   const repo = await getContentRepository();
@@ -115,11 +154,73 @@ export default async function EnMppscSyllabus2026Page() {
               MPPSC Syllabus 2026
             </span>
             <h1 className="mt-4 text-balance text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              MPPSC State Service Examination 2026 — Exam Plan &amp; Syllabus
+              MPPSC Syllabus 2026: Complete Exam Pattern &amp; Syllabus (Prelims &amp; Mains PDF)
             </h1>
             <p className="mt-4 text-pretty text-lg text-white/75">
-              Issued by the Madhya Pradesh Public Service Commission (MPPSC). Dated 05 January 2026.
+              Official Madhya Pradesh Public Service Commission (MPPSC) examination scheme — Preliminary Exam (10 Units GS &amp; CSAT) and Mains Examination (Papers 1 to 6).
             </p>
+            <div className="mt-6 flex flex-wrap gap-4">
+              <a
+                href="/downloads/mppsc-prelims-syllabus-in-hindi.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-primary-foreground shadow-md transition hover:bg-primary/90"
+              >
+                📥 Prelims Syllabus PDF (Hindi)
+              </a>
+              <a
+                href="/downloads/mppsc-mains-syllabus-in-english.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-5 py-3 text-sm font-bold text-white shadow-md transition hover:bg-emerald-700"
+              >
+                📥 Mains Syllabus PDF (English)
+              </a>
+              <a
+                href="/downloads/mppsc-mains-syllabus-in-hindi.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-5 py-3 text-sm font-bold text-white border border-white/20 transition hover:bg-white/20"
+              >
+                📥 Mains Syllabus PDF (Hindi)
+              </a>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ─── Dedicated Sub-Hub Fast Navigation Cards ────────────────────── */}
+      <section className="py-6 bg-muted/40 border-b">
+        <Container size="wide">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Link
+              href="/en/mppsc/prelims-syllabus"
+              className="flex items-center justify-between p-5 rounded-xl border border-primary/20 bg-background shadow-sm hover:border-primary hover:shadow-md transition group"
+            >
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-primary">Preliminary Exam</span>
+                <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition mt-1">
+                  MPPSC Prelims Syllabus 2026 (10 Units) →
+                </h3>
+                <p className="text-sm text-muted-foreground mt-0.5">
+                  GS Paper 1 (10 Units) &amp; CSAT Paper 2 complete breakdown &amp; free PDF
+                </p>
+              </div>
+            </Link>
+            <Link
+              href="/en/mppsc/mains-syllabus"
+              className="flex items-center justify-between p-5 rounded-xl border border-primary/20 bg-background shadow-sm hover:border-primary hover:shadow-md transition group"
+            >
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">Mains Examination</span>
+                <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition mt-1">
+                  MPPSC Mains Syllabus 2026 (Papers 1 to 6) →
+                </h3>
+                <p className="text-sm text-muted-foreground mt-0.5">
+                  GS 1-4, General Hindi &amp; Essay 1500 Marks breakdown &amp; PDF
+                </p>
+              </div>
+            </Link>
           </div>
         </Container>
       </section>
@@ -1830,7 +1931,40 @@ export default async function EnMppscSyllabus2026Page() {
         </Container>
       </Section>
 
-      <JsonLd data={jsonLdGraph([breadcrumb, article])} />
+      {/* ─── Frequently Asked Questions (Accordion) ────────────────────── */}
+      <Section className="bg-muted/30">
+        <Container size="narrow">
+          <div className="mb-8 text-center">
+            <span className="text-xs font-bold uppercase tracking-wider text-primary">Frequently Asked Questions</span>
+            <h2 id="faqs" className="mt-2 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+              MPPSC Syllabus 2026 FAQs
+            </h2>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Essential questions answered regarding MPPSC 2026 exam scheme and syllabus.
+            </p>
+          </div>
+          <Accordion type="single" collapsible className="w-full">
+            {faqsEn.map((f, i) => (
+              <AccordionItem key={i} value={`faq-${i}`}>
+                <AccordionTrigger className="text-left text-base font-semibold">
+                  {f.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-foreground/80 leading-relaxed text-sm">
+                  {f.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </Container>
+      </Section>
+
+      <JsonLd
+        data={jsonLdGraph([
+          breadcrumb,
+          article,
+          faqJsonLd(faqsEn.map((f) => ({ question: f.question, answer: f.answer }))),
+        ])}
+      />
     </>
   );
 }

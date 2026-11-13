@@ -22,19 +22,18 @@ import {
 /* ─── SEO Metadata ────────────────────────────────────────────────────────── */
 export const metadata: Metadata = buildMetadata({
   title:
-    "MPPSC Mains Syllabus 2026 PDF Download in Hindi | Paper 1-6 पूरा पाठ्यक्रम | Aakar IAS",
+    "MPPSC Mains Syllabus 2026 PDF in Hindi (Paper 1-6) | Aakar IAS",
   description:
-    "MPPSC Mains Syllabus 2026 in Hindi PDF Download: मुख्य परीक्षा Paper 1 (इतिहास-भूगोल), Paper 2 (राजनीति-समाजशास्त्र), Paper 3 (अर्थशास्त्र-विज्ञान), Paper 4 (दर्शनशास्त्र-प्रबंधन), हिंदी व निबंध। आधिकारिक PDF मुफ़्त डाउनलोड करें।",
+    "MPPSC Mains Syllabus 2026 in Hindi PDF Download: मुख्य परीक्षा Paper 1 (इतिहास-भूगोल), Paper 2 (राजनीति-समाजशास्त्र), Paper 3, 4, 5 व 6 का सम्पूर्ण पाठ्यक्रम। आधिकारिक PDF डाउनलोड करें।",
   path: "/mppsc/mains-syllabus",
   keywords: [
-    "mppsc mains syllabus pdf download",
-    "mppsc mains syllabus pdf download in hindi",
+    "mppsc mains syllabus 2026",
+    "mppsc mains syllabus 2026 pdf",
+    "mppsc mains syllabus in hindi",
     "mppsc mains syllabus 2026 pdf download",
     "mppsc mains syllabus",
-    "mppsc mains syllabus 2026",
-    "mppsc mains syllabus in hindi",
     "mppsc mains syllabus pdf",
-    "MPPSC मुख्य परीक्षा पाठ्यक्रम PDF",
+    "MPPSC मुख्य परीक्षा पाठ्यक्रम 2026",
     "MPPSC Mains Paper 1 2 3 4 5 6 Syllabus PDF",
   ],
   type: "article",
@@ -154,7 +153,7 @@ export default function MppscMainsSyllabusPage() {
             </p>
             <div className="mt-6 flex flex-wrap gap-4">
               <a
-                href="/pdf/mppsc-mains-syllabus-in-hindi.pdf"
+                href="/downloads/mppsc-mains-syllabus-in-hindi.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-primary-foreground shadow-md transition hover:bg-primary/90"
@@ -162,7 +161,7 @@ export default function MppscMainsSyllabusPage() {
                 📄 MPPSC Mains Syllabus PDF (Hindi) देखें / View
               </a>
               <a
-                href="/pdf/mppsc-mains-syllabus-in-english.pdf"
+                href="/downloads/mppsc-mains-syllabus-in-english.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-5 py-3 text-sm font-bold text-white border border-white/20 transition hover:bg-white/20"

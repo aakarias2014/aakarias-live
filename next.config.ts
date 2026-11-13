@@ -46,7 +46,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/(.*)",
+        source: "/((?!downloads|pdf).*)",
         headers: [
           { key: "X-Frame-Options", value: "DENY" },
           { key: "X-Content-Type-Options", value: "nosniff" },
@@ -54,6 +54,15 @@ const nextConfig: NextConfig = {
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
           { key: "X-DNS-Prefetch-Control", value: "on" },
           { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+        ],
+      },
+      {
+        source: "/(downloads|pdf)/:path*",
+        headers: [
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Content-Disposition", value: "inline" },
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
         ],
       },
     ];
@@ -195,12 +204,6 @@ const nextConfig: NextConfig = {
       {
         source: "/en/stitch",
         destination: "/en",
-        permanent: true,
-      },
-      // ─── Legacy PDF Files 301 Redirects ─────────────────────────────
-      {
-        source: "/pdf/:path*",
-        destination: "/free-pdf",
         permanent: true,
       },
       // ─── Existing Article & Notes Redirects ──────────────────────────

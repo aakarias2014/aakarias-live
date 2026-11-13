@@ -6,24 +6,32 @@ import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Breadcrumb } from "@/components/content/breadcrumb";
 import { JsonLd } from "@/components/seo/json-ld";
-import { breadcrumbJsonLd, articleJsonLd, jsonLdGraph } from "@/lib/seo/jsonld";
+import { breadcrumbJsonLd, articleJsonLd, faqJsonLd, jsonLdGraph } from "@/lib/seo/jsonld";
 import { siteConfig } from "@/lib/site-config";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
 
 export const metadata: Metadata = buildMetadata({
-  title: "MPPSC Syllabus 2026 PDF Download | Prelims & Mains Full Pattern in Hindi | Aakar IAS",
+  title: "MPPSC Syllabus 2026: Prelims & Mains Exam Pattern PDF | Aakar IAS",
   description:
-    "MPPSC राज्य सेवा परीक्षा 2026 का आधिकारिक सिलेबस व परीक्षा पैटर्न PDF डाउनलोड करें। प्रारंभिक परीक्षा (Prelims 10 इकाइयाँ) व मुख्य परीक्षा (Mains GS 1-6) का सम्पूर्ण विवरण।",
+    "MPPSC Syllabus 2026 PDF Download: आधिकारिक परीक्षा योजना, प्रारंभिक परीक्षा (GS 10 इकाइयाँ व CSAT) और मुख्य परीक्षा (Paper 1-6) का सम्पूर्ण पाठ्यक्रम। नि:शुल्क PDF डाउनलोड करें।",
   path: "/mppsc/syllabus-2026",
   keywords: [
-    "mppsc syllabus",
+    "mppsc syllabus 2026",
     "mppsc syllabus 2026 pdf",
-    "mppsc prelims syllabus",
-    "mppsc mains syllabus",
-    "mppsc mains syllabus in hindi",
+    "mppsc syllabus 2026 prelims",
+    "mppsc syllabus 2026 mains",
     "mppsc prelims syllabus 2026",
-    "mppsc mains syllabus pdf",
-    "MPPSC 2026",
-    "MPPSC पाठ्यक्रम",
+    "mppsc mains syllabus 2026",
+    "mppsc syllabus",
+    "mppsc syllabus 2026 pdf download",
+    "mppsc syllabus 2026 pdf in hindi",
+    "mppsc syllabus in hindi",
+    "MPPSC पाठ्यक्रम 2026",
     "MPPSC परीक्षा पैटर्न",
   ],
   type: "article",
@@ -31,6 +39,34 @@ export const metadata: Metadata = buildMetadata({
   modifiedTime: new Date().toISOString().split("T")[0],
   category: "MPPSC",
 });
+
+const faqs = [
+  {
+    question: "MPPSC Syllabus 2026 में क्या मुख्य बदलाव हुए हैं?",
+    answer:
+      "MPPSC 2026 परीक्षा योजना में प्रारंभिक परीक्षा में (3R - W) नेगेटिव मार्किंग पद्धति (100 प्रश्न, 300 अंक) लागू की गई है। मुख्य परीक्षा में कुल 6 प्रश्नपत्र (1500 अंक) हैं, जिसमें GS 4 में केस स्टडी और दर्शनशास्त्र-प्रबंधन, तथा समसामयिक मध्यप्रदेश विकास व तकनीकी विषयों को सुदृढ़ किया गया है।",
+  },
+  {
+    question: "MPPSC Prelims में कितने पेपर होते हैं और क्या नेगेटिव मार्किंग है?",
+    answer:
+      "MPPSC Prelims में 2 वस्तुनिष्ठ प्रश्नपत्र होते हैं: Paper 1 (General Studies - 10 इकाइयाँ) और Paper 2 (CSAT)। प्रत्येक प्रश्नपत्र में 100 प्रश्न (300 अंक) होते हैं तथा (3R - W) पद्धति से 1/3 नेगेटिव मार्किंग होती है। प्रशासनिक सेवा हेतु CSAT केवल अर्हकारी (Qualifying) होता है।",
+  },
+  {
+    question: "MPPSC Mains परीक्षा में कुल कितने अंक और कितने प्रश्नपत्र होते हैं?",
+    answer:
+      "MPPSC मुख्य परीक्षा में कुल 6 वर्णनात्मक प्रश्नपत्र होते हैं जिनका कुल योग 1500 अंक होता है (GS-1: 300, GS-2: 300, GS-3: 300, GS-4: 300, सामान्य हिंदी: 200, हिंदी निबंध: 100)। इसके उपरांत 185 अंकों का साक्षात्कार (Interview) होता है। कुल मेरिट 1685 अंकों पर बनती है।",
+  },
+  {
+    question: "MPPSC Syllabus 2026 PDF हिंदी व अंग्रेजी में कैसे डाउनलोड करें?",
+    answer:
+      "अभ्यर्थी आकार IAS की आधिकारिक वेबसाइट aakarias.com से MPPSC Prelims 10 Units PDF तथा Mains Paper 1-6 Full Syllabus PDF (Hindi व English दोनों माध्यमों में) एक क्लिक में निःशुल्क डाउनलोड कर सकते हैं।",
+  },
+  {
+    question: "MPPSC Prelims Paper 1 की 10वीं इकाई (Unit 10) में क्या विषय हैं?",
+    answer:
+      "Unit 10 विशेष रूप से 'मध्यप्रदेश की जनजातियाँ — विरासत, लोक संस्कृति एवं लोक साहित्य' पर आधारित है। इसमें जनजातियों का भौगोलिक विस्तार, PVTG, संवैधानिक प्रावधान, जनजातीय कला, साहित्य और स्वतंत्रता आंदोलन में जनजातीय नायकों का योगदान शामिल है।",
+  },
+];
 
 export default async function MppscSyllabus2026Page() {
   const repo = await getContentRepository();
@@ -118,32 +154,76 @@ export default async function MppscSyllabus2026Page() {
         <Container size="wide" className="relative py-16 sm:py-20">
           <div className="max-w-3xl">
             <span className="inline-block rounded-full bg-primary/15 px-4 py-1 text-sm font-semibold text-primary">
-              MPPSC पाठ्यक्रम 2026
+              MPPSC Syllabus 2026
             </span>
             <h1 className="mt-4 text-balance text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              मध्यप्रदेश राज्य सेवा परीक्षा 2026 — परीक्षा योजना एवं पाठ्यक्रम
+              MPPSC Syllabus 2026: परीक्षा योजना एवं सम्पूर्ण पाठ्यक्रम (Prelims &amp; Mains PDF)
             </h1>
             <p className="mt-4 text-pretty text-lg text-white/75">
-              मध्यप्रदेश लोक सेवा आयोग (MPPSC) द्वारा जारी। दिनांक 05 जनवरी 2026।
+              मध्यप्रदेश लोक सेवा आयोग (MPPSC) द्वारा जारी नवीनतम 2026 परीक्षा योजना — प्रारंभिक परीक्षा (GS 10 इकाइयाँ व CSAT) एवं मुख्य परीक्षा (Paper 1-6)।
             </p>
             <div className="mt-6 flex flex-wrap gap-4">
               <a
-                href="/pdf/mppsc-mains-syllabus-in-hindi.pdf"
+                href="/downloads/mppsc-prelims-syllabus-in-hindi.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-primary-foreground shadow-md transition hover:bg-primary/90"
               >
-                📄 MPPSC Mains Syllabus PDF (Hindi) देखें
+                📥 MPPSC Prelims Syllabus PDF (Hindi)
               </a>
               <a
-                href="/pdf/mppsc-mains-syllabus-in-english.pdf"
+                href="/downloads/mppsc-mains-syllabus-in-hindi.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-5 py-3 text-sm font-bold text-white shadow-md transition hover:bg-emerald-700"
+              >
+                📥 MPPSC Mains Syllabus PDF (Hindi)
+              </a>
+              <a
+                href="/downloads/mppsc-mains-syllabus-in-english.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-5 py-3 text-sm font-bold text-white border border-white/20 transition hover:bg-white/20"
               >
-                📄 MPPSC Mains Syllabus PDF (English) देखें
+                📥 Mains Syllabus PDF (English)
               </a>
             </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ─── Dedicated Sub-Hub Fast Navigation Cards ────────────────────── */}
+      <section className="py-6 bg-muted/40 border-b">
+        <Container size="wide">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Link
+              href="/mppsc/prelims-syllabus"
+              className="flex items-center justify-between p-5 rounded-xl border border-primary/20 bg-background shadow-sm hover:border-primary hover:shadow-md transition group"
+            >
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-primary">प्रारंभिक परीक्षा</span>
+                <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition mt-1">
+                  MPPSC Prelims Syllabus 2026 (10 इकाइयाँ) →
+                </h3>
+                <p className="text-sm text-muted-foreground mt-0.5">
+                  GS Paper 1 (10 Units) व CSAT Paper 2 का विस्तृत विवरण व PDF
+                </p>
+              </div>
+            </Link>
+            <Link
+              href="/mppsc/mains-syllabus"
+              className="flex items-center justify-between p-5 rounded-xl border border-primary/20 bg-background shadow-sm hover:border-primary hover:shadow-md transition group"
+            >
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">मुख्य परीक्षा</span>
+                <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition mt-1">
+                  MPPSC Mains Syllabus 2026 (Paper 1 से 6) →
+                </h3>
+                <p className="text-sm text-muted-foreground mt-0.5">
+                  GS-1, 2, 3, 4, सामान्य हिंदी व निबंध 1500 अंकों का पूरा विवरण व PDF
+                </p>
+              </div>
+            </Link>
           </div>
         </Container>
       </section>
@@ -1592,7 +1672,40 @@ export default async function MppscSyllabus2026Page() {
         </Container>
       </Section>
 
-      <JsonLd data={jsonLdGraph([breadcrumb, article])} />
+      {/* ─── Frequently Asked Questions (Accordion) ────────────────────── */}
+      <Section className="bg-muted/30">
+        <Container size="narrow">
+          <div className="mb-8 text-center">
+            <span className="text-xs font-bold uppercase tracking-wider text-primary">अक्सर पूछे जाने वाले प्रश्न</span>
+            <h2 id="faqs" className="mt-2 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+              MPPSC Syllabus 2026 FAQs
+            </h2>
+            <p className="mt-2 text-sm text-muted-foreground">
+              मध्य प्रदेश लोक सेवा आयोग परीक्षा पैटर्न व सिलेबस से जुड़े जरूरी सवाल-जवाब
+            </p>
+          </div>
+          <Accordion type="single" collapsible className="w-full">
+            {faqs.map((f, i) => (
+              <AccordionItem key={i} value={`faq-${i}`}>
+                <AccordionTrigger className="text-left text-base font-semibold">
+                  {f.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-foreground/80 leading-relaxed text-sm">
+                  {f.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </Container>
+      </Section>
+
+      <JsonLd
+        data={jsonLdGraph([
+          breadcrumb,
+          article,
+          faqJsonLd(faqs.map((f) => ({ question: f.question, answer: f.answer }))),
+        ])}
+      />
     </>
   );
 }

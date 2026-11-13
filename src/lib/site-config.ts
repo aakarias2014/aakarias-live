@@ -175,7 +175,9 @@ export const navigationConfig: MegaNavItem[] = [
     href: "/mppsc",
     isMega: true,
     dropdown: [
-      { title: "पाठ्यक्रम 2026", titleEn: "Syllabus 2026", href: "/mppsc/syllabus-2026" },
+      { title: "पाठ्यक्रम 2026 (Prelims + Mains)", titleEn: "MPPSC Syllabus 2026", href: "/mppsc/syllabus-2026" },
+      { title: "प्रीलिम्स सिलेबस 2026 PDF", titleEn: "Prelims Syllabus 2026 PDF", href: "/mppsc/prelims-syllabus" },
+      { title: "मेन्स सिलेबस 2026 PDF", titleEn: "Mains Syllabus 2026 PDF", href: "/mppsc/mains-syllabus" },
       { title: "नोट्स PDF", titleEn: "Notes PDF", href: "/mppsc-notes" },
       { title: "एमपीपीएससी करेंट अफेयर्स", titleEn: "MPPSC Current Affairs", href: "/tag/mppsc" },
       { title: "एमपीपीएससी पीवाईक्यू", titleEn: "MPPSC PYQ", href: "/pyq?exam=MPPSC" },

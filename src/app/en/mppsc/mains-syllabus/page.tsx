@@ -22,17 +22,18 @@ import {
 /* ─── SEO Metadata ────────────────────────────────────────────────────────── */
 export const metadata: Metadata = buildMetadata({
   title:
-    "MPPSC Mains Syllabus 2026 PDF Download in English | Paper 1-6 Breakdown | Aakar IAS",
+    "MPPSC Mains Syllabus 2026 PDF in English (Paper 1-6) | Aakar IAS",
   description:
-    "Official MPPSC Mains Syllabus 2026 in English PDF Download: Unit-wise breakdown for GS Paper 1 (History & Geography), GS Paper 2 (Polity & Sociology), GS Paper 3 (Economics & Science), GS Paper 4 (Ethics & Management), Hindi & Essay.",
+    "Official MPPSC Mains Syllabus 2026 in English PDF Download: Complete subject-wise breakdown for GS Paper 1, 2, 3, 4, Hindi & Essay. Free syllabus PDF download.",
   path: "/en/mppsc/mains-syllabus",
   locale: "en",
   keywords: [
-    "mppsc mains syllabus pdf download in english",
-    "mppsc mains syllabus pdf download",
-    "mppsc mains syllabus 2026 english pdf",
+    "mppsc mains syllabus 2026",
+    "mppsc mains syllabus 2026 pdf",
+    "mppsc mains syllabus in english",
+    "mppsc mains syllabus english pdf",
     "mppsc mains syllabus",
-    "mppsc mains syllabus 2026 english",
+    "mppsc mains syllabus pdf download in english",
     "MPPSC Mains Exam Pattern PDF",
     "MPPSC GS 1 2 3 4 Syllabus English PDF",
   ],
@@ -114,17 +115,17 @@ export default function EnMppscMainsSyllabusPage() {
         <Container size="wide" className="relative py-16 sm:py-20">
           <div className="max-w-3xl">
             <span className="inline-block rounded-full bg-primary/15 px-4 py-1 text-sm font-semibold text-primary">
-              MPPSC Mains Examination 2026 PDF Download
+              MPPSC Mains 2026 PDF
             </span>
             <h1 className="mt-4 text-balance text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              MPPSC Mains Syllabus 2026 PDF Download in English (Paper 1-6)
+              MPPSC Mains Syllabus 2026 PDF in English (Paper 1-6)
             </h1>
             <p className="mt-4 text-pretty text-lg text-white/75">
               Official MPPSC State Service Mains Examination 2026 complete syllabus in English Medium — 6 Papers, 1500 Marks, General Studies I-IV, Hindi & Essay.
             </p>
             <div className="mt-6 flex flex-wrap gap-4">
               <a
-                href="/pdf/mppsc-mains-syllabus-in-english.pdf"
+                href="/downloads/mppsc-mains-syllabus-in-english.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-primary-foreground shadow-md transition hover:bg-primary/90"
@@ -132,7 +133,7 @@ export default function EnMppscMainsSyllabusPage() {
                 📄 View Mains Syllabus PDF (English)
               </a>
               <a
-                href="/pdf/mppsc-mains-syllabus-in-hindi.pdf"
+                href="/downloads/mppsc-mains-syllabus-in-hindi.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-5 py-3 text-sm font-bold text-white border border-white/20 transition hover:bg-white/20"

@@ -30,11 +30,11 @@ export default async function EnglishMppscPage() {
   ]);
 
   const quickLinks = [
-    { href: "/mppsc/syllabus-2026", title: "MPPSC Syllabus 2026", desc: "Complete exam plan & syllabus" },
+    { href: "/en/mppsc/syllabus-2026", title: "MPPSC Syllabus 2026 PDF", desc: "Complete exam plan & master syllabus" },
+    { href: "/en/mppsc/prelims-syllabus", title: "MPPSC Prelims Syllabus 2026 PDF", desc: "10 Units GS Paper 1 & CSAT breakdown" },
+    { href: "/en/mppsc/mains-syllabus", title: "MPPSC Mains Syllabus 2026 PDF", desc: "Papers 1 to 6 complete breakdown" },
     { href: "/en/current-affairs", title: "Daily Current Affairs", desc: "Daily news relevant to MPPSC" },
-    { href: "/en/editorial", title: "Editorials", desc: "Analysis for Mains preparation" },
     { href: "/en/monthly-pdf", title: "Monthly PDFs", desc: "Consolidated monthly revisions" },
-    { href: "/en/free-pdf", title: "Free Study Material", desc: "MPPSC syllabus & PYQs" },
   ];
 
   const pageUrl = `${siteConfig.url}/en/mppsc`;
