@@ -50,24 +50,32 @@ async function main() {
 
   // Image file paths in public/images/blog/
   const imagePaths = {
+    cover: path.resolve(process.cwd(), "public/images/blog/bay-of-bengal-vs-arabian-sea-cyclone-user-cover.jpg"),
     satellite: path.resolve(process.cwd(), "public/images/blog/bay-of-bengal-cyclone-satellite-view.jpg"),
     infographic: path.resolve(process.cwd(), "public/images/blog/bay-of-bengal-vs-arabian-sea-cyclone-infographic.jpg"),
   };
 
   // Verify images exist
-  if (!fs.existsSync(imagePaths.satellite) || !fs.existsSync(imagePaths.infographic)) {
+  if (!fs.existsSync(imagePaths.cover) || !fs.existsSync(imagePaths.satellite) || !fs.existsSync(imagePaths.infographic)) {
     console.error("❌ Required generated images not found in public/images/blog/");
     process.exit(1);
   }
 
-  // 1. Upload Satellite Image
+  // 1. Upload Cover Image
+  console.log("📸 Uploading cover image to Sanity...");
+  const assetCover = await client.assets.upload("image", fs.createReadStream(imagePaths.cover), {
+    filename: "bay-of-bengal-vs-arabian-sea-cyclone-user-cover.jpg",
+  });
+  console.log(`✔ Uploaded Cover Image. Asset ID: ${assetCover._id}`);
+
+  // 2. Upload Satellite Image
   console.log("📸 Uploading satellite view image to Sanity...");
   const assetSatellite = await client.assets.upload("image", fs.createReadStream(imagePaths.satellite), {
     filename: "bay-of-bengal-cyclone-satellite-view.jpg",
   });
   console.log(`✔ Uploaded Satellite Image. Asset ID: ${assetSatellite._id}`);
 
-  // 2. Upload Infographic Image
+  // 3. Upload Infographic Image
   console.log("📸 Uploading infographic comparison image to Sanity...");
   const assetInfographic = await client.assets.upload("image", fs.createReadStream(imagePaths.infographic), {
     filename: "bay-of-bengal-vs-arabian-sea-cyclone-infographic.jpg",
@@ -142,13 +150,13 @@ async function main() {
       ],
       featuredImage: {
         _type: "image",
-        asset: { _type: "reference", _ref: assetSatellite._id },
-        alt: "Bay of Bengal Tropical Cyclone Satellite View showing Eye and Spiral Rainbands | बंगाल की खाड़ी में चक्रवात उपग्रह दृश्य",
+        asset: { _type: "reference", _ref: assetCover._id },
+        alt: "बंगाल की खाड़ी बनाम अरब सागर: बंगाल की खाड़ी में 4 गुना अधिक चक्रवात क्यों? | MPPSC & UPSC Notes",
       },
       mainImage: {
         _type: "image",
-        asset: { _type: "reference", _ref: assetSatellite._id },
-        alt: "Satellite Imagery of Severe Tropical Cyclone over Bay of Bengal Coast",
+        asset: { _type: "reference", _ref: assetCover._id },
+        alt: "बंगाल की खाड़ी बनाम अरब सागर: बंगाल की खाड़ी में 4 गुना अधिक चक्रवात क्यों? | MPPSC & UPSC Notes",
       },
       nextArticle: {
         title: "आपदा प्रबंधन क्या है? अर्थ, प्रकार, चरण, संस्थागत ढांचा एवं NCERT नोट्स",
@@ -188,6 +196,13 @@ async function main() {
               _type: "block",
               style: "normal",
               children: [{ _key: "s1-4", _type: "span", text: sanitizeText("• **आपदा प्रबंधन में महत्व**: [MPPSC Mains Syllabus 2026](/mppsc/mains-syllabus) के पेपर 1 (भाग-ब भूगोल) और [आपदा प्रबंधन](/general-awareness/what-is-disaster-management-ncert-types-mppsc-notes) के अंतर्गत चक्रवात, इसके उत्पत्ति तंत्र एवं पूर्व चेतावनी प्रणालियों से संबंधित प्रश्न प्रतिवर्ष पूछे जाते हैं।") }],
+            },
+            {
+              _key: "b1-img-sat",
+              _type: "image",
+              asset: { _type: "reference", _ref: assetSatellite._id },
+              alt: "Bay of Bengal Tropical Cyclone Satellite View showing Eye and Spiral Rainbands",
+              caption: "चित्र: बंगाल की खाड़ी के ऊपर विकसित उष्णकटिबंधीय चक्रवात का उपग्रह दृश्य (Eye एवं Spiral Rainbands)",
             },
           ],
           bodyEn: [
