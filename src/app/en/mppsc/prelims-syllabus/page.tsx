@@ -75,22 +75,30 @@ export default function EnMppscPrelimsSyllabusPage() {
             <p className="mt-4 text-pretty text-lg text-white/75">
               Official MPPSC State Service Prelims Examination 2026 complete syllabus in English Medium — Paper 1 General Studies (10 Units) & Paper 2 CSAT.
             </p>
-            <div className="mt-6 flex flex-wrap gap-4">
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href="/downloads/mppsc-prelims-syllabus-in-english.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-sky-600 px-4 py-2.5 text-sm font-bold text-white shadow-md transition hover:bg-sky-700"
+              >
+                📥 MPPSC Prelims Syllabus (English PDF)
+              </a>
               <a
                 href="/downloads/mppsc-prelims-syllabus-in-hindi.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-primary-foreground shadow-md transition hover:bg-primary/90"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-bold text-primary-foreground shadow-md transition hover:bg-primary/90"
               >
-                📄 View Prelims Syllabus PDF
+                📥 MPPSC Prelims Syllabus (Hindi PDF)
               </a>
               <a
                 href="/downloads/mppsc-mains-syllabus-in-english.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-5 py-3 text-sm font-bold text-white border border-white/20 transition hover:bg-white/20"
+                className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-bold text-white shadow-md transition hover:bg-indigo-700"
               >
-                📄 View Mains Syllabus PDF (English)
+                📥 MPPSC Mains Syllabus (English PDF)
               </a>
             </div>
           </div>

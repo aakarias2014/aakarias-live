@@ -60,9 +60,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${siteConfig.url}/mppsc/prelims-syllabus`, changeFrequency: "monthly", priority: 0.98 },
     // ─── Direct MPPSC Syllabus Official PDFs (Search Indexable) ──────
     { url: `${siteConfig.url}/downloads/mppsc-prelims-syllabus-in-hindi.pdf`, changeFrequency: "monthly", priority: 0.95 },
+    { url: `${siteConfig.url}/downloads/mppsc-prelims-syllabus-in-english.pdf`, changeFrequency: "monthly", priority: 0.95 },
     { url: `${siteConfig.url}/downloads/mppsc-mains-syllabus-in-hindi.pdf`, changeFrequency: "monthly", priority: 0.95 },
     { url: `${siteConfig.url}/downloads/mppsc-mains-syllabus-in-english.pdf`, changeFrequency: "monthly", priority: 0.95 },
     { url: `${siteConfig.url}/pdf/mppsc-prelims-syllabus-in-hindi.pdf`, changeFrequency: "monthly", priority: 0.95 },
+    { url: `${siteConfig.url}/pdf/mppsc-prelims-syllabus-in-english.pdf`, changeFrequency: "monthly", priority: 0.95 },
     { url: `${siteConfig.url}/pdf/mppsc-mains-syllabus-in-hindi.pdf`, changeFrequency: "monthly", priority: 0.95 },
     { url: `${siteConfig.url}/pdf/mppsc-mains-syllabus-in-english.pdf`, changeFrequency: "monthly", priority: 0.95 },
     { url: `${siteConfig.url}/pdf/mppsc-pre-syllabus-in-hindi.pdf`, changeFrequency: "monthly", priority: 0.9 },

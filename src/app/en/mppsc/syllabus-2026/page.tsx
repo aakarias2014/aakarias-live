@@ -159,30 +159,38 @@ export default async function EnMppscSyllabus2026Page() {
             <p className="mt-4 text-pretty text-lg text-white/75">
               Official Madhya Pradesh Public Service Commission (MPPSC) examination scheme — Preliminary Exam (10 Units GS &amp; CSAT) and Mains Examination (Papers 1 to 6).
             </p>
-            <div className="mt-6 flex flex-wrap gap-4">
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href="/downloads/mppsc-prelims-syllabus-in-english.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-sky-600 px-4 py-2.5 text-sm font-bold text-white shadow-md transition hover:bg-sky-700"
+              >
+                📥 MPPSC Prelims Syllabus (English PDF)
+              </a>
               <a
                 href="/downloads/mppsc-prelims-syllabus-in-hindi.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-primary-foreground shadow-md transition hover:bg-primary/90"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-bold text-primary-foreground shadow-md transition hover:bg-primary/90"
               >
-                📥 Prelims Syllabus PDF (Hindi)
+                📥 MPPSC Prelims Syllabus (Hindi PDF)
               </a>
               <a
                 href="/downloads/mppsc-mains-syllabus-in-english.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-5 py-3 text-sm font-bold text-white shadow-md transition hover:bg-emerald-700"
+                className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-bold text-white shadow-md transition hover:bg-indigo-700"
               >
-                📥 Mains Syllabus PDF (English)
+                📥 MPPSC Mains Syllabus (English PDF)
               </a>
               <a
                 href="/downloads/mppsc-mains-syllabus-in-hindi.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-5 py-3 text-sm font-bold text-white border border-white/20 transition hover:bg-white/20"
+                className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white shadow-md transition hover:bg-emerald-700"
               >
-                📥 Mains Syllabus PDF (Hindi)
+                📥 MPPSC Mains Syllabus (Hindi PDF)
               </a>
             </div>
           </div>
