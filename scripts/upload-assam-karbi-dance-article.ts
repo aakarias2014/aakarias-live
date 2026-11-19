@@ -76,19 +76,37 @@ async function main() {
 
   const authorId = "author-aakar-ias-team";
 
-  // SEO Target Keywords
+  // SEO Target Keywords - Optimized for Google Search Ranking & Exam Queries
   const keywordsArray = [
+    // Core high-volume search queries
     "असम के कार्बी लोकनृत्य ने बनाया गिनीज वर्ल्ड रिकॉर्ड",
     "निमसो केरुंग लोकनृत्य क्या है",
+    "निमसो केरुंग का शाब्दिक अर्थ",
     "nimso kerung folk dance guinness world record",
     "largest karbi folk dance diphu assam",
     "karbi anglong nimso kerung dance 15000 artists",
+    "karbi dance guinness world record 2026",
+    "assam karbi dance world record diphu 16 november 2026",
+    // Language, Ritual & Etymology queries
+    "nimso kerung meaning in karbi language",
     "chomangkan festival karbi tribe mppsc notes",
+    "चोमांगकान उत्सव किस जनजाति से संबंधित है",
+    "traditional dress of karbi tribe pini pekok poho",
+    // Exam-specific search queries (MPPSC, UPSC, APSC, SSC)
     "folk dances of assam upsc mppsc gk notes",
     "assam national parks kaziranga manas gk table",
-    "karbi anglong autonomous council kaac",
+    "karbi anglong autonomous council kaac sixth schedule",
     "mppsc prelims unit 1 and unit 10 tribal culture",
+    "mppsc mains paper 1 indian culture folk dances",
+    "sattriya classical dance srimanta sankardev",
     "bihu bagurumba bhortal nimso kerung comparison",
+    "judima rice wine gi tag dimasa tribe",
+    "majuli island world largest river island brahoputra",
+    "assam state symbols rhino wood duck hollong kopou",
+    "7 national parks of assam upsc notes",
+    "assam general knowledge for competitive exams 2026",
+    "which karbi folk dance created guinness world record",
+    "largest folk dance in the world guinness record"
   ];
 
   const docTitleHi = "असम के कार्बी लोकनृत्य ‘निमसो केरुंग’ ने बनाया गिनीज वर्ल्ड रिकॉर्ड: 15,000 कलाकारों की ऐतिहासिक प्रस्तुति, संस्कृति व परीक्षा नोट्स | MPPSC & UPSC";
@@ -437,6 +455,12 @@ async function main() {
               style: "normal",
               children: [{ _key: "s4-5", _type: "span", text: sanitizeText("• **सांस्कृतिक एकता का प्रदर्शन**: 15,000 कलाकारों की एक साथ समकालिक प्रस्तुति ने यह सिद्ध किया कि आधुनिकीकरण के दौर में भी पूर्वोत्तर भारत की जनजातीय परंपराएँ अपनी मूल पहचान के साथ पूरी तरह सुरक्षित और सुदृढ़ हैं।") }],
             },
+            {
+              _key: "b4-6",
+              _type: "block",
+              style: "normal",
+              children: [{ _key: "s4-6", _type: "span", text: sanitizeText("• **जनजातीय संस्कृति का तुलनात्मक अध्ययन**: [MPPSC Prelims Unit 10](/mppsc/prelims-syllabus) एवं मुख्य परीक्षा के दृष्टिकोण से भारत की जनजातीय परंपराओं में पूर्वजों की पूजा और विशिष्ट नृत्यों का गहरा स्थान है। जैसे मध्य प्रदेश में [बैगा विशेष पिछड़ी जनजाति (PVTG)](/general-awareness/baiga-tribe-madhya-pradesh-pvtg) के करमा व परधौनी नृत्य तथा समृद्ध जनजातीय कलाएँ प्रसिद्ध हैं, ठीक वैसे ही पूर्वोत्तर में कार्बी जनजाति की चोमांगकान परंपरा और निमसो केरुंग नृत्य सांस्कृतिक अस्मिता के प्रतीक हैं।") }],
+            },
           ],
           bodyEn: [
             {
@@ -468,6 +492,12 @@ async function main() {
               _type: "block",
               style: "normal",
               children: [{ _key: "s4-5e", _type: "span", text: sanitizeText("• **Living Cultural Preservation**: The 15,000-strong synchronous display demonstrates the resilience and vitality of Northeast India's indigenous heritage amid contemporary modernization.") }],
+            },
+            {
+              _key: "b4-6e",
+              _type: "block",
+              style: "normal",
+              children: [{ _key: "s4-6e", _type: "span", text: sanitizeText("• **Comparative Tribal Studies**: Under [MPPSC Prelims Unit 10](/en/mppsc/prelims-syllabus) and Mains Paper 1, studying indigenous customs reveals universal ancestral reverence. Just as Madhya Pradesh's [Baiga Particularly Vulnerable Tribal Group (PVTG)](/en/general-awareness/baiga-tribe-madhya-pradesh-pvtg) preserves sacred Karma and Pardhauni dances, Assam's Karbi people maintain their spiritual heritage through Chomangkan and Nimso Kerung.") }],
             },
           ],
         },
@@ -544,7 +574,13 @@ async function main() {
               _key: "b5-6",
               _type: "block",
               style: "normal",
-              children: [{ _key: "s5-6", _type: "span", text: sanitizeText("• **भौगोलिक संकेतक (GI Tags)**: **मूगा सिल्क (Muga Silk - असम का सुनहरा रेशम)**, असमिया **गामोसा (Gamosa)**, दिमासा जनजाति की **जुडिमा राइस वाइन (Judima Rice Wine)**, काजी नेमु (असमिया नींबू), और चोकुवा चावल (जादुई चावल)।") }],
+              children: [{ _key: "s5-6", _type: "span", text: sanitizeText("• **भौगोलिक संकेतक (GI Tags)**: **मूगा सिल्क (Muga Silk - असम का सुनहरा रेशम)**, असमिया **गामोसा (Gamosa)**, दिमासा जनजाति की **जुडिमा राइस वाइन (Judima Rice Wine)**, काजी नेमु (असमिया नींबू), और चोकुवा चावल। [भौगोलिक संकेतक (GI Tags) एवं GI Man of India डॉ. रजनीकांत](/current-affairs/dr-rajnikant-gi-man-of-india) तथा मध्य प्रदेश के [बुरहानपुर केला GI टैग](/current-affairs/burhanpur-banana-gi-tag) की तरह पूर्वोत्तर के पारंपरिक उत्पादों को भी राष्ट्रीय-अंतरराष्ट्रीय बौद्धिक संपदा संरक्षण मिला है (देखें [मेघालय लकाडोंग हल्दी मिशन](/current-affairs/golden-spice-mission-lakadong-turmeric-2026))।") }],
+            },
+            {
+              _key: "b5-6b",
+              _type: "block",
+              style: "normal",
+              children: [{ _key: "s5-6b", _type: "span", text: sanitizeText("• **पर्यावरण एवं राष्ट्रीय उद्यान संरक्षण**: काजीरंगा और मानस राष्ट्रीय उद्यान वैश्विक जैव विविधता के प्रतीक हैं। भारत में वन संरक्षण नीतियों एवं सतत विकास लक्ष्यों (SDGs) के गहन विश्लेषण हेतु [वैश्विक वन लक्ष्य रिपोर्ट 2026](/current-affairs/global-forest-goals-report-2026-sdg-india-rank-mppsc-upsc-notes) देखें।") }],
             },
             {
               _key: "b5-7",
@@ -556,7 +592,13 @@ async function main() {
               _key: "b5-8",
               _type: "block",
               style: "normal",
-              children: [{ _key: "s5-8", _type: "span", text: sanitizeText("• **माजुली द्वीप (Majuli Island)**: ब्रह्मपुत्र नदी पर स्थित विश्व का सबसे बड़ा नदी द्वीप (World's Largest River Island) तथा भारत का पहला द्वीपीय जिला।") }],
+              children: [{ _key: "s5-8", _type: "span", text: sanitizeText("• **माजुली द्वीप (Majuli Island)**: ब्रह्मपुत्र नदी पर स्थित विश्व का सबसे बड़ा नदी द्वीप (World's Largest River Island) तथा भारत का पहला द्वीपीय जिला। यह सत्रीय नव-वैष्णव संस्कृति का वैश्विक केंद्र है।") }],
+            },
+            {
+              _key: "b5-8b",
+              _type: "block",
+              style: "normal",
+              children: [{ _key: "s5-8b", _type: "span", text: sanitizeText("• **ब्रह्मपुत्र नदी एवं आपदा प्रबंधन**: ब्रह्मपुत्र बेसिन में वार्षिक बाढ़ नियंत्रण व आपदा न्यूनीकरण हेतु केंद्र व राज्य स्तर पर [आपदा प्रबंधन (संशोधन) अधिनियम 2025](/current-affairs/disaster-management-amendment-act-2025-mppsc-upsc-notes) के तहत एकीकृत प्रबंधन प्रणाली संचालित है।") }],
             },
             {
               _key: "b5-9",
@@ -575,6 +617,12 @@ async function main() {
               _type: "block",
               style: "normal",
               children: [{ _key: "s5-11", _type: "span", text: sanitizeText("• **अंतरराष्ट्रीय सीमाएँ**: असम उत्तर में **भूटान** तथा दक्षिण-पश्चिम में **बांग्लादेश** के साथ अंतरराष्ट्रीय सीमा साझा करता है।") }],
+            },
+            {
+              _key: "b5-12",
+              _type: "block",
+              style: "normal",
+              children: [{ _key: "s5-12", _type: "span", text: sanitizeText("• **संस्कृति व परीक्षा तैयारी**: भारतीय कला एवं संस्कृति से संबंधित अन्य राष्ट्रीय सम्मानों हेतु [72वें राष्ट्रीय फिल्म पुरस्कार 2026 विजेता सूची](/current-affairs/72nd-national-film-awards-2024-winners-list-mppsc-upsc) तथा [MPPSC करेंट अफेयर्स हब](/mppsc-current-affairs) का नियमित अध्ययन करें।") }],
             },
           ],
           bodyEn: [
@@ -643,7 +691,13 @@ async function main() {
               _key: "b5-6e",
               _type: "block",
               style: "normal",
-              children: [{ _key: "s5-6e", _type: "span", text: sanitizeText("• **Geographical Indications (GI Tags)**: **Muga Silk** (Golden silk of Assam), **Assamese Gamosa**, **Judima Rice Wine** (Dimasa tribe - first fermented beverage GI in NE), Kaji Nemu, and Chokuwa (magic rice).") }],
+              children: [{ _key: "s5-6e", _type: "span", text: sanitizeText("• **Geographical Indications (GI Tags)**: **Muga Silk** (Golden silk of Assam), **Assamese Gamosa**, **Judima Rice Wine** (Dimasa tribe - first fermented beverage GI in NE), Kaji Nemu, and Chokuwa (magic rice). Compare with national benchmarks like [GI Man of India Dr. Rajnikant](/en/current-affairs/dr-rajnikant-gi-man-of-india), Madhya Pradesh's [Burhanpur Banana GI Tag](/en/current-affairs/burhanpur-banana-gi-tag), and [Meghalaya Lakadong Turmeric Mission](/en/current-affairs/golden-spice-mission-lakadong-turmeric-2026).") }],
+            },
+            {
+              _key: "b5-6eb",
+              _type: "block",
+              style: "normal",
+              children: [{ _key: "s5-6eb", _type: "span", text: sanitizeText("• **Biodiversity Conservation Frameworks**: Kaziranga & Manas are premier UNESCO World Heritage sanctuaries. For global environmental goals and ecological governance, explore the [Global Forest Goals 2026 Report](/en/current-affairs/global-forest-goals-report-2026-sdg-india-rank-mppsc-upsc-notes).") }],
             },
             {
               _key: "b5-7e",
@@ -655,7 +709,13 @@ async function main() {
               _key: "b5-8e",
               _type: "block",
               style: "normal",
-              children: [{ _key: "s5-8e", _type: "span", text: sanitizeText("• **Majuli Island**: World's largest riverine island on Brahmaputra river and India's first island district.") }],
+              children: [{ _key: "s5-8e", _type: "span", text: sanitizeText("• **Majuli Island**: World's largest riverine island on Brahmaputra river and India's first island district. Global hub of Neo-Vaishnavite Sattra monasteries.") }],
+            },
+            {
+              _key: "b5-8eb",
+              _type: "block",
+              style: "normal",
+              children: [{ _key: "s5-8eb", _type: "span", text: sanitizeText("• **Brahmaputra Flood Risk Management**: Regional disaster mitigation and early warning frameworks in the Brahmaputra basin operate under the modernized statutory protocols of the [Disaster Management (Amendment) Act 2025](/en/current-affairs/disaster-management-amendment-act-2025-mppsc-upsc-notes).") }],
             },
             {
               _key: "b5-9e",
@@ -674,6 +734,12 @@ async function main() {
               _type: "block",
               style: "normal",
               children: [{ _key: "s5-11e", _type: "span", text: sanitizeText("• **International Frontiers**: Shares international land borders with **Bhutan** to the north and **Bangladesh** to the south and west.") }],
+            },
+            {
+              _key: "b5-12e",
+              _type: "block",
+              style: "normal",
+              children: [{ _key: "s5-12e", _type: "span", text: sanitizeText("• **Culture & Exam Synthesis**: For broader art, culture and cinema honors, refer to the [72nd National Film Awards 2026 Winners List](/en/current-affairs/72nd-national-film-awards-2024-winners-list-mppsc-upsc) and [Aakar IAS General Studies Hub](/en/general-awareness).") }],
             },
           ],
         },
