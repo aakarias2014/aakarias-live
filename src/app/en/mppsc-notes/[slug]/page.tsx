@@ -126,8 +126,8 @@ export default async function EnglishMppscNotesArticlePage({ params }: Props) {
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
               <aside className="hidden lg:block lg:col-span-3">
                 <div className="sticky top-24 space-y-6">
-                  <TableOfContents sections={article.sections ?? []} />
-                  <ShareWidget title={article.titleEn || article.title} url={articleUrl} />
+                  <TableOfContents items={article.tableOfContents} sections={article.sections ?? []} locale="en" />
+                  <ShareWidget title={article.titleEn || article.title} url={articleUrl} locale="en" />
                 </div>
               </aside>
 

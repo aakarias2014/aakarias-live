@@ -18,8 +18,8 @@ import { MobileTableOfContents } from "@/components/article/table-of-contents";
 export function ArticleBody({ article, ads }: { article: Article; ads?: AdConfig[] }) {
   return (
     <div className="prose-aakar space-y-6">
-      {article.tableOfContents && article.tableOfContents.length > 0 && (
-        <MobileTableOfContents items={article.tableOfContents} locale={article.locale} />
+      {((article.tableOfContents && article.tableOfContents.length > 0) || (article.sections && article.sections.length > 0)) && (
+        <MobileTableOfContents items={article.tableOfContents} sections={article.sections} locale={article.locale} />
       )}
       {(article.sections || []).map((section, idx) => (
         <ArticleSectionBlock key={section.id || `sec-${idx}`} section={section} />

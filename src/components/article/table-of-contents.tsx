@@ -2,15 +2,47 @@
 
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import type { TOCItem } from "@/lib/content/types";
+import type { TOCItem, ArticleSection } from "@/lib/content/types";
+
+export interface TableOfContentsProps {
+  items?: TOCItem[];
+  sections?: ArticleSection[];
+  locale?: string;
+  className?: string;
+}
+
+const cleanText = (str: string) =>
+  (str || "").replace(/[\u200B-\u200D\u200E\u200F\u202A-\u202E\u2060-\u206F\uFEFF\u00AD\u2000-\u200A]/g, "").trim();
 
 /**
  * Sticky table of contents with scrollspy highlighting.
  * Appears on desktop (lg+); hidden on mobile to save space.
  * Uses IntersectionObserver-free scroll position math for reliability.
  */
-export function TableOfContents({ items }: { items: TOCItem[] }) {
+export function TableOfContents({
+  items,
+  sections,
+  locale = "hi",
+  className,
+}: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string | null>(null);
+
+  const rawItems: TOCItem[] =
+    Array.isArray(items) && items.length > 0
+      ? items
+      : Array.isArray(sections) && sections.length > 0
+        ? sections.map((sec) => ({
+            id: sec.id,
+            text: sec.title,
+            level: 2,
+          }))
+        : [];
+
+  const resolvedItems = rawItems.map((item) => ({
+    ...item,
+    id: cleanText(item.id),
+    text: cleanText(item.text),
+  }));
 
   useEffect(() => {
     let ticking = false;
@@ -45,18 +77,26 @@ export function TableOfContents({ items }: { items: TOCItem[] }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (!Array.isArray(items) || items.length === 0) return null;
+  if (!Array.isArray(resolvedItems) || resolvedItems.length === 0) return null;
+
+  const isHi = locale === "hi";
 
   return (
     <nav
       aria-label="Table of contents"
-      className="sticky top-20 hidden max-h-[calc(100vh-6rem)] overflow-y-auto scrollbar-thin lg:block"
+      className={cn(
+        "sticky top-20 hidden max-h-[calc(100vh-6rem)] overflow-y-auto scrollbar-thin lg:block",
+        className,
+      )}
     >
-      <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-        On this page
-      </p>
-      <ul className="space-y-1 border-l border-border">
-        {items.map((item) => (
+      <div className="mb-3.5 flex items-center gap-2">
+        <span className="h-2 w-2 rounded-full bg-primary" />
+        <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground m-0">
+          {isHi ? "इस पृष्ठ पर (On This Page)" : "On This Page"}
+        </p>
+      </div>
+      <ul className="space-y-1 border-l border-border/80">
+        {resolvedItems.map((item) => (
           <li key={item.id}>
             <a
               href={`#${item.id}`}
@@ -82,9 +122,35 @@ export function TableOfContents({ items }: { items: TOCItem[] }) {
   );
 }
 
-export function MobileTableOfContents({ items, locale = "hi" }: { items: TOCItem[]; locale?: string }) {
+export function MobileTableOfContents({
+  items,
+  sections,
+  locale = "hi",
+}: {
+  items?: TOCItem[];
+  sections?: ArticleSection[];
+  locale?: string;
+}) {
   const [isOpen, setIsOpen] = useState(false);
-  if (!Array.isArray(items) || items.length === 0) return null;
+
+  const rawItems: TOCItem[] =
+    Array.isArray(items) && items.length > 0
+      ? items
+      : Array.isArray(sections) && sections.length > 0
+        ? sections.map((sec) => ({
+            id: sec.id,
+            text: sec.title,
+            level: 2,
+          }))
+        : [];
+
+  const resolvedItems = rawItems.map((item) => ({
+    ...item,
+    id: cleanText(item.id),
+    text: cleanText(item.text),
+  }));
+
+  if (!Array.isArray(resolvedItems) || resolvedItems.length === 0) return null;
 
   const isHi = locale === "hi";
   return (
@@ -105,7 +171,7 @@ export function MobileTableOfContents({ items, locale = "hi" }: { items: TOCItem
 
       {isOpen && (
         <ul className="mt-3 space-y-1.5 pt-3 border-t border-border/60">
-          {items.map((item) => (
+          {resolvedItems.map((item) => (
             <li key={`mob-${item.id}`}>
               <a
                 href={`#${item.id}`}

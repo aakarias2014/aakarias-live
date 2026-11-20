@@ -305,8 +305,11 @@ function mapCard(raw: any, locale: Locale): ArticleListItem {
   if (!raw) return {} as any;
   const slug = getSlug(raw.slug);
   const isEn = locale === "en";
-  const title = (isEn ? raw.titleEn : raw.title) ?? raw.title ?? raw.titleEn ?? "Untitled";
-  const excerpt = (isEn ? raw.excerptEn : raw.excerpt) ?? raw.excerpt ?? raw.excerptEn ?? "";
+  const rawTitle = (isEn ? raw.titleEn : raw.title) ?? raw.title ?? raw.titleEn ?? "Untitled";
+  const rawExcerpt = (isEn ? raw.excerptEn : raw.excerpt) ?? raw.excerpt ?? raw.excerptEn ?? "";
+  const cleanStr = (s: string) => (typeof s === "string" ? s.replace(/[\u200B-\u200D\u200E\u200F\u202A-\u202E\u2060-\u206F\uFEFF\u00AD\u2000-\u200A]/g, "").trim() : s);
+  const title = cleanStr(rawTitle);
+  const excerpt = cleanStr(rawExcerpt);
   let rawImage = raw.featuredImage || raw.mainImage;
 
   // Fallback overrides — only if Sanity has no image
@@ -448,7 +451,7 @@ function mapPortableTextToBlocks(
 
   function cleanInvisibleChars(str: string): string {
     if (!str) return "";
-    return str.replace(/[\u200B-\u200D\uFEFF\u200E\u200F\u202A-\u202E\u2060-\u206F]/g, "").trim();
+    return str.replace(/[\u200B-\u200D\u200E\u200F\u202A-\u202E\u2060-\u206F\uFEFF\u00AD\u2000-\u200A]/g, "").trim();
   }
 
   // Helper: detect if text starts with a bullet, hyphen, dash, or numbered prefix
@@ -543,7 +546,7 @@ function mapPortableTextToBlocks(
         }
       } else if (blockStyle === "h2" || blockStyle === "h3") {
         flushList();
-        const plainText = text.replace(/\*\*/g, "");
+        const plainText = cleanInvisibleChars(text.replace(/\*\*/g, ""));
         const id = slugify(plainText);
         out.push({ type: "heading", level: blockStyle === "h2" ? 2 : 3, text: plainText, id });
         toc.push({ id, text: plainText, level: blockStyle === "h2" ? 2 : 3 });
@@ -604,7 +607,8 @@ function mapPortableTextToBlocks(
 }
 
 function slugify(s: string): string {
-  const slugified = s
+  const clean = s.replace(/[\u200B-\u200D\u200E\u200F\u202A-\u202E\u2060-\u206F\uFEFF\u00AD\u2000-\u200A]/g, "");
+  const slugified = clean
     .toLowerCase()
     .trim()
     .replace(/[^\p{L}\p{N}\s-]/gu, "")
@@ -625,7 +629,10 @@ function mapSections(
     const kind = (s.kind as ArticleSectionKind) ?? "keyHighlights";
     const titleField = locale === "hi" ? "title" : "titleEn";
     const bodyField = locale === "hi" ? "body" : "bodyEn";
-    const title = (s[titleField] as string) ?? (s.title as string) ?? kind;
+    const rawTitle = (s[titleField] as string) ?? (s.title as string) ?? kind;
+    const title = typeof rawTitle === "string"
+      ? rawTitle.replace(/[\u200B-\u200D\u200E\u200F\u202A-\u202E\u2060-\u206F\uFEFF\u00AD\u2000-\u200A]/g, "").trim()
+      : rawTitle;
     const body = s[bodyField] ?? s.body;
     const { blocks, toc: subToc } = mapPortableTextToBlocks(
       body as Array<Record<string, unknown>>,
