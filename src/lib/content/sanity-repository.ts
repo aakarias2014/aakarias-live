@@ -951,7 +951,11 @@ export class SanityRepository implements ContentRepository {
     // contentType maps to the Sanity _type for editorial/blog/weekly/monthly;
     // currentAffairs falls back to a generic listing.
     if (query.contentType) {
-      filters.push(`_type == $contentType`);
+      if (query.contentType === "currentAffairs") {
+        filters.push(`(_type == "currentAffairs" || _type == "daily")`);
+      } else {
+        filters.push(`_type == $contentType`);
+      }
     } else {
       // Exclude staticGk, weekly, and monthly from standard feeds
       filters.push(`_type != "staticGk" && _type != "weekly" && _type != "monthly"`);

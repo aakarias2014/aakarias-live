@@ -84,7 +84,7 @@ async function main() {
 
   // Document types to create / replace
   const targetDocIds = [
-    { docId: "ca-west-bengal-name-change-paschim-banga-2026", type: "daily" },
+    { docId: "ca-west-bengal-name-change-paschim-banga-2026", type: "currentAffairs" },
     { docId: "gk-west-bengal-name-change-paschim-banga-2026", type: "staticGk" },
   ];
 
