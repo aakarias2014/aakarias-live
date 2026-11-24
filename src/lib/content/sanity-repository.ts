@@ -889,7 +889,9 @@ export class SanityRepository implements ContentRepository {
     const nextRaw = raw.nextArticle as { _type: string; slug: string; title: string } | null;
     let nextArticle = nextRaw
       ? {
-          title: nextRaw.title,
+          title: typeof nextRaw.title === "string"
+            ? nextRaw.title.replace(/[\u200B-\u200D\u200E\u200F\u202A-\u202E\u2060-\u206F\uFEFF\u00AD\u2000-\u200A]/g, "").trim()
+            : nextRaw.title,
           href: articleHref(nextRaw.slug, nextRaw._type, locale),
         }
       : null;
